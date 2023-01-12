@@ -187,7 +187,7 @@
 			first_matched = J.title
 	if(first_matched)
 		return first_matched
-	else if(length(ID.access))
+	else if(length_char(ID.access))
 		return "Custom [ADMIN_VV(ID.access)]"
 	else
 		return "None"
@@ -361,5 +361,9 @@
 			. = size ? "Mk.II " : "Mark II"
 		if("Mk.I")
 			. = size ? "Mk.I " : "Mark I"
+		if("MP")
+			. = size ? "MP " : "Military Police"
+		if("CLW")
+			. = size ? "HONK " : "Ship Clown"
 		else
 			. = paygrade + " " //custom paygrade

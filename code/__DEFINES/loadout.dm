@@ -134,6 +134,9 @@ GLOBAL_LIST_INIT(smartgunner_gear_listed_products, list(
 	/obj/item/weapon/gun/minigun/smart_minigun = list(CAT_SGSUP, "SG-85 Handheld Gatling Gun", 27, "orange"), //If a smartgunner buys a SG-85, then they should be able to buy only 1 powerpack and 2 ammo bins
 	/obj/item/ammo_magazine/minigun_powerpack/smartgun =  list(CAT_SGSUP, "SG-85 Powerpack", 10, "black"),
 	/obj/item/ammo_magazine/packet/smart_minigun = list(CAT_SGSUP, "SG-85 Ammo Bin", 4, "black"),
+	/obj/item/weapon/gun/rifle/T25 = list(CAT_SGSUP, "T-25 Smartrifle", 26, "orange"), //If smartganner buys a t25 , then they will have 2 mag and 3 ammo box
+	/obj/item/ammo_magazine/rifle/T25 =  list(CAT_SGSUP, "T-25 Smartrifle magazine", 2, "black"),
+	/obj/item/ammo_magazine/packet/T25_rifle = list(CAT_SGSUP, "T-25 Smartrifle ammo box", 5, "black"),
 	))
 
 
@@ -552,6 +555,8 @@ GLOBAL_LIST_INIT(synthetic_clothes_listed_products, list(
 		/obj/item/clothing/under/sl_suit = list(CAT_STD, "Amish Suit", 0, "black"),
 		/obj/item/clothing/under/kilt = list(CAT_STD, "Kilt", 0, "black"),
 		/obj/item/clothing/under/waiter = list(CAT_STD, "Waiter's uniform", 0, "black"),
+		/obj/item/clothing/under/maiddress = list(CAT_STD, "Maid dress", 0, "black"),
+		/obj/item/clothing/under/maiduniform = list(CAT_STD, "Maid uniform", 0, "black"),
 		/obj/item/clothing/glasses/meson = list(CAT_GLA, "Optical Meson Scanner", 0, "white"),
 		/obj/item/clothing/suit/storage/hazardvest = list(CAT_AMR, "Orange reflective safety vest", 0, "black"),
 		/obj/item/clothing/suit/storage/hazardvest/lime = list(CAT_AMR, "Lime reflective safety vest", 0, "black"),
@@ -585,7 +590,7 @@ GLOBAL_LIST_INIT(synthetic_clothes_listed_products, list(
 		/obj/item/storage/backpack/marine/radiopack = list(CAT_BAK, "Radio Pack", 0, "black"),
 		/obj/item/storage/backpack/lightpack = list(CAT_BAK, "Lightweight combat pack", 0, "black"),
 		/obj/item/storage/backpack/marine/satchel/officer_cloak = list(CAT_BAK, "Officer cloak", 0, "black"),
-		/obj/item/storage/backpack/marine/satchel/officer_cloak_red = list(CAT_BAK, "Officer cloak, red", 0, "black"),
+		/obj/item/storage/backpack/marine/satchel/officer_cloak_blue = list(CAT_BAK, "Officer cloak, blue", 0, "black"),
 		/obj/item/armor_module/storage/uniform/webbing = list(CAT_WEB, "Webbing", 0, "black"),
 		/obj/item/armor_module/storage/uniform/black_vest = list(CAT_WEB, "Tactical Black Vest", 0, "black"),
 		/obj/item/armor_module/storage/uniform/white_vest = list(CAT_WEB, "White medical vest", 0, "black"),

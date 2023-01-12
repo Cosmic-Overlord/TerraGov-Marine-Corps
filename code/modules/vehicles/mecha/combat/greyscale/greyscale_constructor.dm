@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(greyscale_weapons_data, generate_greyscale_weapons_data())
 			var/new_name = params["new_name"]
 			if(!new_name)
 				return FALSE
-			if(CHAT_FILTER_CHECK(new_name) || NON_ASCII_CHECK(new_name))
+			if(CHAT_FILTER_CHECK(new_name) || NON_ASCII_CYRILLIC_CHECK(new_name))
 				tgui_alert(usr, "You cannot set a name that contains a word prohibited in IC chat!")
 				return
 			selected_name = new_name
@@ -313,7 +313,7 @@ GLOBAL_LIST_INIT(greyscale_weapons_data, generate_greyscale_weapons_data())
 				return FALSE
 			if(!(initial(new_type.mech_flags) & EXOSUIT_MODULE_GREYSCALE))
 				return FALSE
-			if(length(selected_equipment[MECHA_POWER]) >= equipment_max[MECHA_POWER])
+			if(length_char(selected_equipment[MECHA_POWER]) >= equipment_max[MECHA_POWER])
 				return FALSE
 			selected_equipment[MECHA_POWER] += new_type
 			return TRUE
@@ -324,7 +324,7 @@ GLOBAL_LIST_INIT(greyscale_weapons_data, generate_greyscale_weapons_data())
 				return FALSE
 			if(!(initial(new_type.mech_flags) & EXOSUIT_MODULE_GREYSCALE))
 				return FALSE
-			if(length(selected_equipment[MECHA_ARMOR]) >= equipment_max[MECHA_ARMOR])
+			if(length_char(selected_equipment[MECHA_ARMOR]) >= equipment_max[MECHA_ARMOR])
 				return FALSE
 			selected_equipment[MECHA_ARMOR] += new_type
 			return TRUE
@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(greyscale_weapons_data, generate_greyscale_weapons_data())
 				return FALSE
 			if(!(initial(new_type.mech_flags) & EXOSUIT_MODULE_GREYSCALE))
 				return FALSE
-			if(length(selected_equipment[MECHA_UTILITY]) >= equipment_max[MECHA_UTILITY])
+			if(length_char(selected_equipment[MECHA_UTILITY]) >= equipment_max[MECHA_UTILITY])
 				return FALSE
 			selected_equipment[MECHA_UTILITY] += new_type
 			return TRUE

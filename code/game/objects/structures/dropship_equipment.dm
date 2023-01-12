@@ -53,8 +53,11 @@
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	if(!do_after(user, 7 SECONDS, FALSE, src))
 		return TRUE
-	if(installed_equipment || clamp.loaded != loaded_equipment)
-		return TRUE
+	if(!density)
+		for(var/atom/thing_to_check AS in loc)
+			if(thing_to_check.density)
+				balloon_alert(user, "Blocked by [thing_to_check]")
+				return TRUE
 	to_chat(user, span_notice("You install [loaded_equipment] on [src]."))
 	loaded_equipment.forceMove(loc)
 	clamp.loaded = null

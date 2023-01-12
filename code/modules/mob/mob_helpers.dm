@@ -137,11 +137,11 @@ GLOBAL_LIST_INIT(organ_rel_size, list(
 	if(probability <= 0)
 		return phrase
 	phrase = html_decode(phrase)
-	var/leng = length(phrase)
+	var/leng = length_char(phrase)
 	. = ""
 	var/char = ""
-	for(var/i = 1, i <= leng, i += length(char))
-		char = phrase[i]
+	for(var/i = 1, i <= leng, i += length_char(char))
+		char = copytext_char(phrase, i, i+1)
 		if(char == " " || !prob(probability))
 			. += char
 		else
@@ -154,12 +154,12 @@ GLOBAL_LIST_INIT(organ_rel_size, list(
  */
 /proc/slur(phrase)
 	phrase = html_decode(phrase)
-	var/leng = length(phrase)
+	var/leng = length_char(phrase)
 	. = ""
 	var/newletter = ""
 	var/rawchar = ""
-	for(var/i = 1, i <= leng, i += length(rawchar))
-		rawchar = newletter = phrase[i]
+	for(var/i = 1, i <= leng, i += length_char(rawchar))
+		rawchar = newletter = copytext_char(phrase, i, i+1)
 		if(rand(1, 3) == 3)
 			var/lowerletter = lowertext(newletter)
 			if(lowerletter == "o")
@@ -172,11 +172,23 @@ GLOBAL_LIST_INIT(organ_rel_size, list(
 				newletter = "oo"
 			else if(lowerletter == "c")
 				newletter = "k"
+			else if(lowerletter == "о")
+				newletter = "у"
+			else if(lowerletter == "с")
+				newletter = "ч"
+			else if(lowerletter == "а")
+				newletter = "ах"
+			else if(lowerletter == "ц")
+				newletter = "к"
+			else if(lowerletter == "э")
+				newletter = "о"
+			else if(lowerletter == "г")
+				newletter = "х"
 		if(prob(5))
 			if(newletter == " ")
-				newletter = "...huuuhhh..."
+				newletter = "...ээээээм..."
 			else if(newletter == ".")
-				newletter = " *BURP*."
+				newletter = " *ОТРЫЖКА*."
 		if(prob(15))
 			newletter += pick(list("'", "[newletter]", "[newletter][newletter]"))
 		. += "[newletter]"
@@ -185,13 +197,13 @@ GLOBAL_LIST_INIT(organ_rel_size, list(
 ///Adds stuttering to the message passed in, todo remove, deprecated
 /proc/stutter(phrase)
 	phrase = html_decode(phrase)
-	var/leng = length(phrase)
+	var/leng = length_char(phrase)
 	. = ""
 	var/newletter = ""
 	var/rawchar
-	for(var/i = 1, i <= leng, i += length(rawchar))
-		rawchar = newletter = phrase[i]
-		if(prob(80) && !(lowertext(newletter) in list("a", "e", "i", "o", "u", " ")))
+	for(var/i = 1, i <= leng, i += length_char(rawchar))
+		rawchar = newletter = copytext_char(phrase, i, i+1)
+		if(prob(80) && !(lowertext(newletter) in list("a", "e", "i", "o", "u", " ", "а", "у", "о", "и", "э", "ы", "я", "Ю", "е", "ё")))
 			if(prob(10))
 				newletter = "[newletter]-[newletter]-[newletter]-[newletter]"
 			else if(prob(20))
@@ -212,9 +224,9 @@ GLOBAL_LIST_INIT(organ_rel_size, list(
 	. = ""
 	var/rawchar = ""
 	var/letter = ""
-	var/lentext = length(text)
-	for(var/i = 1, i <= lentext, i += length(rawchar))
-		rawchar = letter = text[i]
+	var/lentext = length_char(text)
+	for(var/i = 1, i <= lentext, i += length_char(rawchar))
+		rawchar = letter = copytext_char(text, i, i+1)
 		if(prob(chance))
 			if(replace_characters)
 				letter = ""
@@ -357,7 +369,7 @@ GLOBAL_LIST_INIT(organ_rel_size, list(
 	return BODYTEMP_NORMAL
 
 /mob/log_message(message, message_type, color=null, log_globally = TRUE)
-	if(!length(message))
+	if(!length_char(message))
 		stack_trace("Empty message")
 		return
 
@@ -378,7 +390,7 @@ GLOBAL_LIST_INIT(organ_rel_size, list(
 		else
 			colored_message = "<font color='[color]'>[message]</font>"
 
-	var/list/timestamped_message = list("[length(logging[smessage_type]) + 1]\[[stationTimestamp()]\] [key_name(src)] [loc_name(src)]" = colored_message)
+	var/list/timestamped_message = list("[length_char(logging[smessage_type]) + 1]\[[stationTimestamp()]\] [key_name(src)] [loc_name(src)]" = colored_message)
 
 	logging[smessage_type] += timestamped_message
 

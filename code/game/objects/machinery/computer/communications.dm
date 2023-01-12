@@ -110,7 +110,7 @@
 					SSblackbox.record_feedback(FEEDBACK_TALLY, "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
 					return FALSE
 
-				if(NON_ASCII_CHECK(input))
+				if(NON_ASCII_CYRILLIC_CHECK(input))
 					to_chat(usr, span_warning("That announcement contained charachters prohibited in IC chat! Consider reviewing the server rules."))
 					return FALSE
 
@@ -346,7 +346,7 @@
 
 				if(authenticated == 2)
 					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=announce'>Make an announcement</A> \]"
-					dat += length(GLOB.admins) > 0 ? "<BR>\[ <A HREF='?src=\ref[src];operation=messageTGMC'>Send a message to TGMC</A> \]" : "<BR>\[ TGMC communication offline \]"
+					dat += length_char(GLOB.admins) > 0 ? "<BR>\[ <A HREF='?src=\ref[src];operation=messageTGMC'>Send a message to TGMC</A> \]" : "<BR>\[ TGMC communication offline \]"
 					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=award'>Award a medal</A> \]"
 					if(CONFIG_GET(flag/infestation_ert_allowed)) // We only add the UI if the flag is allowed
 						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=distress'>Send Distress Beacon</A> \]"

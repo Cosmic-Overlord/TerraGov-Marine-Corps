@@ -283,7 +283,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		return
 
 	var/list/datum/limb/parts = get_damageable_limbs()
-	var/partcount = length(parts)
+	var/partcount = length_char(parts)
 	if(!partcount)
 		return
 	damage = damage / partcount

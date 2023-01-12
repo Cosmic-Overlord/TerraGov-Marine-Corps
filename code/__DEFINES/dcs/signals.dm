@@ -650,6 +650,9 @@
 #define COMSIG_XENOABILITY_RALLY_MINION "xenoability_rally_minion"
 #define COMSIG_XENOABILITY_MINION_BEHAVIOUR "xenoability_minion_behavior"
 
+#define COMSIG_XENOABILITY_RETURN_CORE "xenoability_return_core"
+#define COMSIG_XENOABILITY_CHANGE_FORM "xenoability_change_form"
+
 #define COMSIG_XENOABILITY_TOXIC_SPIT "xenoability_toxic_spit"
 #define COMSIG_XENOABILITY_TOXIC_SLASH "xenoability_toxic_slash"
 #define COMSIG_XENOABILITY_DRAIN_STING "xenoability_drain_sting"

@@ -88,6 +88,7 @@
 	icon_state = "clown"
 	item_state = "clown"
 	slowdown = SHOES_SLOWDOWN + 1
+	var/enabled_waddle = TRUE
 
 
 /obj/item/clothing/shoes/clown_shoes/Initialize()

@@ -6,9 +6,16 @@
 /turf/closed/wall/mainship/outer/canterbury,
 /area/shuttle/canterbury/cic)
 "ac" = (
-/obj/structure/window/framed/mainship/hull/canterbury,
-/turf/open/floor/plating,
-/area/shuttle/canterbury/cic)
+/obj/structure/bed/chair/sofa,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/item/toy/plush/pig{
+	pixel_x = -4;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/mainship,
+/area/shuttle/canterbury)
 "ad" = (
 /obj/structure/table/mainship,
 /obj/machinery/computer/security/marine_network,
@@ -196,7 +203,7 @@
 /turf/open/floor/mainship/mono,
 /area/shuttle/canterbury)
 "aC" = (
-/obj/machinery/body_scanconsole,
+/obj/machinery/atmospherics/components/unary/cryo_cell,
 /turf/open/floor/mainship/sterile,
 /area/shuttle/canterbury/medical)
 "aD" = (
@@ -395,34 +402,24 @@
 /turf/open/floor/mainship/mono,
 /area/shuttle/canterbury)
 "bw" = (
-/obj/machinery/bodyscanner,
 /obj/machinery/alarm{
 	dir = 4
 	},
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/glass/beaker/cryomix,
+/obj/machinery/firealarm,
 /turf/open/floor/mainship/sterile,
 /area/shuttle/canterbury/medical)
 "by" = (
 /obj/structure/bed/chair/dropship/passenger,
-/obj/machinery/vending/nanomed,
 /obj/effect/landmark/start/job/crash/medicalofficer,
 /turf/open/floor/mainship/sterile,
 /area/shuttle/canterbury/medical)
 "bz" = (
-/obj/structure/table/reinforced,
-/obj/machinery/recharger,
-/obj/item/defibrillator,
-/obj/item/storage/firstaid/adv,
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/regular,
-/obj/item/storage/firstaid/o2,
-/obj/item/storage/box/bodybags,
-/obj/item/roller,
-/obj/item/roller,
-/obj/machinery/firealarm,
-/obj/machinery/light{
-	dir = 1
+/obj/machinery/vending/medical,
+/turf/open/floor/mainship/sterile/side{
+	dir = 4
 	},
-/turf/open/floor/mainship/sterile,
 /area/shuttle/canterbury/medical)
 "bA" = (
 /obj/item/lightreplacer,
@@ -473,15 +470,19 @@
 /turf/open/floor/mainship/red/full,
 /area/shuttle/canterbury)
 "bG" = (
-/obj/machinery/autodoc,
+/obj/machinery/shower{
+	dir = 4
+	},
 /turf/open/floor/mainship/sterile,
 /area/shuttle/canterbury/medical)
 "bH" = (
-/obj/machinery/autodoc_console,
 /turf/open/floor/mainship/sterile,
 /area/shuttle/canterbury/medical)
 "bI" = (
-/turf/open/floor/mainship/sterile,
+/obj/machinery/vending/MarineMed,
+/turf/open/floor/mainship/sterile/side{
+	dir = 4
+	},
 /area/shuttle/canterbury/medical)
 "bJ" = (
 /obj/machinery/vending/armor_supply,
@@ -496,27 +497,28 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/shuttle/canterbury)
 "bQ" = (
-/obj/machinery/vending/uniform_supply,
+/obj/machinery/marine_selector/clothes/commander,
 /turf/open/floor/mainship/red/full,
 /area/shuttle/canterbury)
 "bR" = (
-/obj/machinery/bioprinter/stocked,
-/turf/open/floor/mainship/sterile/dark,
+/obj/machinery/autodoc,
+/turf/open/floor/mainship/sterile/side{
+	dir = 8
+	},
 /area/shuttle/canterbury/medical)
 "bS" = (
-/obj/structure/bed/chair/dropship/passenger,
+/obj/machinery/autodoc_console,
 /turf/open/floor/mainship/sterile/dark,
 /area/shuttle/canterbury/medical)
 "bT" = (
-/obj/machinery/power/apc/mainship{
-	dir = 1
-	},
-/obj/structure/cable,
-/turf/open/floor/mainship/sterile,
-/area/shuttle/canterbury/medical)
+/obj/machinery/vending/boozeomat,
+/turf/open/floor/plating/mainship,
+/area/shuttle/canterbury)
 "bU" = (
-/obj/machinery/vending/MarineMed/Blood,
-/turf/open/floor/mainship/sterile/dark,
+/obj/machinery/chem_dispenser,
+/turf/open/floor/mainship/sterile/side{
+	dir = 4
+	},
 /area/shuttle/canterbury/medical)
 "bV" = (
 /obj/structure/bed/chair/dropship/passenger{
@@ -533,24 +535,20 @@
 /turf/open/floor/mainship/mono,
 /area/shuttle/canterbury)
 "bZ" = (
-/obj/machinery/optable,
-/obj/item/tank/anesthetic,
-/obj/item/clothing/mask/breath/medical,
-/obj/item/radio/intercom{
-	dir = 4;
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = -28
+/obj/machinery/bodyscanner,
+/turf/open/floor/mainship/sterile/side{
+	dir = 8
 	},
-/turf/open/floor/mainship/sterile/dark,
 /area/shuttle/canterbury/medical)
 "ca" = (
 /obj/effect/landmark/start/job/crash/cmo,
 /turf/open/floor/mainship/sterile/dark,
 /area/shuttle/canterbury/medical)
 "cb" = (
-/obj/machinery/vending/medical,
-/turf/open/floor/mainship/sterile/dark,
+/obj/machinery/chem_master,
+/turf/open/floor/mainship/sterile/side{
+	dir = 4
+	},
 /area/shuttle/canterbury/medical)
 "cc" = (
 /obj/machinery/door/window/right{
@@ -563,31 +561,23 @@
 /turf/open/floor/mainship/red,
 /area/shuttle/canterbury)
 "cd" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/surgical_tray,
-/obj/item/storage/firstaid/adv,
-/turf/open/floor/mainship/sterile/dark,
-/area/shuttle/canterbury/medical)
-"ce" = (
-/obj/structure/table/reinforced,
-/obj/item/healthanalyzer,
-/obj/machinery/light,
-/obj/machinery/reagentgrinder{
-	pixel_x = -1;
-	pixel_y = 8
-	},
-/turf/open/floor/mainship/sterile/dark,
-/area/shuttle/canterbury/medical)
-"cf" = (
-/obj/machinery/iv_drip,
-/obj/machinery/shower{
+/obj/structure/morgue,
+/turf/open/floor/mainship/sterile/corner{
 	dir = 8
 	},
-/turf/open/floor/mainship/sterile/dark,
+/area/shuttle/canterbury/medical)
+"ce" = (
+/obj/machinery/light,
+/turf/open/floor/mainship/sterile/side,
+/area/shuttle/canterbury/medical)
+"cf" = (
+/turf/open/floor/mainship/sterile/side,
 /area/shuttle/canterbury/medical)
 "cg" = (
-/obj/machinery/vending/MarineMed,
-/turf/open/floor/mainship/sterile,
+/obj/machinery/smartfridge,
+/turf/open/floor/mainship/sterile/corner{
+	dir = 4
+	},
 /area/shuttle/canterbury/medical)
 "ci" = (
 /obj/structure/bed/chair/dropship/passenger{
@@ -812,10 +802,137 @@
 	},
 /turf/open/floor/mainship/red,
 /area/shuttle/canterbury)
+"fo" = (
+/obj/machinery/optable,
+/obj/item/tank/anesthetic,
+/obj/item/clothing/mask/breath/medical,
+/obj/item/radio/intercom{
+	dir = 4;
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -28
+	},
+/turf/open/floor/mainship/sterile/side{
+	dir = 8
+	},
+/area/shuttle/canterbury/medical)
+"hd" = (
+/obj/machinery/iv_drip,
+/turf/open/floor/mainship/sterile/dark,
+/area/shuttle/canterbury/medical)
+"hu" = (
+/obj/structure/bed/chair/dropship/passenger,
+/turf/open/floor/mainship/sterile/side{
+	dir = 1
+	},
+/area/shuttle/canterbury/medical)
+"hF" = (
+/obj/structure/window/framed/mainship/hull/canterbury{
+	icon_state = "ship_rwindow2"
+	},
+/turf/open/floor/plating,
+/area/shuttle/canterbury)
+"jn" = (
+/obj/machinery/power/apc/mainship{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/mainship/sterile/dark,
+/area/shuttle/canterbury/medical)
+"kx" = (
+/obj/structure/bed/chair/sofa/right,
+/obj/item/toy/plush/rouny{
+	dir = 4;
+	pixel_x = 5
+	},
+/turf/open/floor/plating/mainship,
+/area/shuttle/canterbury)
+"ms" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/obj/item/defibrillator,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/o2,
+/obj/item/roller,
+/obj/item/roller,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/mainship/sterile,
+/area/shuttle/canterbury/medical)
+"mQ" = (
+/turf/open/floor/carpet/side{
+	dir = 1
+	},
+/area/shuttle/canterbury)
+"nf" = (
+/obj/structure/window/framed/mainship/hull/canterbury{
+	icon_state = "ship_rwindow2"
+	},
+/turf/open/floor/plating,
+/area/shuttle/canterbury/cic)
+"ob" = (
+/obj/machinery/bioprinter/stocked,
+/turf/open/floor/mainship/sterile/corner{
+	dir = 1
+	},
+/area/shuttle/canterbury/medical)
+"oK" = (
+/obj/structure/table/fancywoodentable,
+/obj/machinery/chem_dispenser/beer{
+	pixel_y = 2
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/mainship,
+/area/shuttle/canterbury)
+"qu" = (
+/obj/structure/bed/chair/sofa/left,
+/turf/open/floor/plating/mainship,
+/area/shuttle/canterbury)
+"sW" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 4
+	},
+/turf/open/floor/carpet/side{
+	dir = 10
+	},
+/area/shuttle/canterbury)
+"uN" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/surgical_tray,
+/obj/item/storage/firstaid/adv,
+/turf/open/floor/mainship/sterile/side{
+	dir = 8
+	},
+/area/shuttle/canterbury/medical)
 "vY" = (
 /obj/machinery/vending/tool,
 /turf/open/floor/mainship/orange/full,
 /area/shuttle/canterbury)
+"wp" = (
+/obj/structure/window/framed/mainship/hull/canterbury{
+	icon_state = "ship_rwindow8"
+	},
+/turf/open/floor/plating,
+/area/shuttle/canterbury/cic)
+"yB" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 8
+	},
+/turf/open/floor/carpet/side{
+	dir = 6
+	},
+/area/shuttle/canterbury)
+"zj" = (
+/obj/structure/window/framed/mainship/hull/canterbury{
+	icon_state = "ship_rwindow12"
+	},
+/turf/open/floor/plating,
+/area/shuttle/canterbury/cic)
 "zE" = (
 /obj/structure/window/framed/mainship/canterbury,
 /obj/structure/cable,
@@ -829,6 +946,11 @@
 	},
 /turf/open/floor/mainship/orange/full,
 /area/shuttle/canterbury)
+"zP" = (
+/turf/open/floor/carpet/side{
+	dir = 9
+	},
+/area/shuttle/canterbury)
 "Bu" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 1
@@ -837,25 +959,117 @@
 /obj/machinery/light/small,
 /turf/open/floor/mainship/mono,
 /area/shuttle/canterbury)
+"CO" = (
+/obj/machinery/door/airlock/hatch,
+/turf/open/floor/plating/mainship,
+/area/shuttle/canterbury)
+"GZ" = (
+/obj/structure/table/reinforced,
+/obj/machinery/reagentgrinder{
+	pixel_x = -1;
+	pixel_y = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/item/storage/box/bodybags{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/turf/open/floor/mainship/sterile/side{
+	dir = 8
+	},
+/area/shuttle/canterbury/medical)
 "Hv" = (
 /obj/structure/window/reinforced/toughened{
 	dir = 4
 	},
-/obj/machinery/loadout_vendor,
+/obj/machinery/vending/uniform_supply,
 /turf/open/floor/mainship/cargo,
 /area/shuttle/canterbury)
+"IR" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/glass/beaker/bluespace{
+	pixel_x = -2
+	},
+/obj/item/reagent_containers/glass/beaker/bluespace{
+	pixel_x = 4
+	},
+/turf/open/floor/mainship/sterile/side{
+	dir = 4
+	},
+/area/shuttle/canterbury/medical)
 "KE" = (
 /obj/effect/landmark/start/job/crash/squadmarine,
 /turf/open/floor/mainship/mono,
+/area/shuttle/canterbury)
+"Nn" = (
+/obj/machinery/body_scanconsole,
+/turf/open/floor/mainship/sterile/dark,
+/area/shuttle/canterbury/medical)
+"NW" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/mainship/sterile/dark,
+/area/shuttle/canterbury/medical)
+"QF" = (
+/obj/structure/table/gamblingtable,
+/obj/item/flashlight/lamp/green{
+	pixel_y = 4;
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/food/drinks/bottle/champagne{
+	pixel_y = 15;
+	pixel_x = -7
+	},
+/turf/open/floor/carpet/side,
 /area/shuttle/canterbury)
 "RS" = (
 /obj/machinery/vending/cigarette,
 /turf/open/floor/mainship/mono,
 /area/shuttle/canterbury)
+"TU" = (
+/obj/structure/table/fancywoodentable,
+/obj/machinery/chem_dispenser/soda{
+	pixel_y = 12
+	},
+/turf/open/floor/plating/mainship,
+/area/shuttle/canterbury)
 "UG" = (
 /obj/machinery/marine_selector/clothes/synth,
 /turf/open/floor/mainship/cargo,
 /area/shuttle/canterbury)
+"Vb" = (
+/obj/machinery/vending/MarineMed/Blood,
+/turf/open/floor/mainship/sterile/corner,
+/area/shuttle/canterbury/medical)
+"VZ" = (
+/obj/structure/window/framed/mainship/hull/canterbury{
+	icon_state = "ship_rwindow1"
+	},
+/turf/open/floor/plating,
+/area/shuttle/canterbury)
+"Ww" = (
+/obj/structure/window/framed/mainship/hull/canterbury{
+	icon_state = "ship_rwindow4"
+	},
+/turf/open/floor/plating,
+/area/shuttle/canterbury/cic)
+"XF" = (
+/turf/open/floor/carpet/side{
+	dir = 5
+	},
+/area/shuttle/canterbury)
+"Zh" = (
+/obj/structure/window/framed/mainship/hull/canterbury{
+	icon_state = "ship_rwindow1"
+	},
+/turf/open/floor/plating,
+/area/shuttle/canterbury/cic)
 
 (1,1,1) = {"
 aa
@@ -870,6 +1084,10 @@ an
 an
 an
 an
+bo
+bo
+bo
+bo
 bo
 bo
 bo
@@ -897,6 +1115,10 @@ bo
 bw
 bG
 bK
+ob
+fo
+uN
+GZ
 bR
 bZ
 cd
@@ -920,8 +1142,12 @@ bo
 aC
 bH
 bK
-bS
+hu
 ca
+hd
+cJ
+bS
+Nn
 ce
 bo
 cm
@@ -941,9 +1167,13 @@ bb
 zE
 bo
 by
-bI
+cJ
 cs
 cJ
+cJ
+cJ
+cJ
+NW
 cJ
 cf
 bo
@@ -951,8 +1181,8 @@ cm
 "}
 (5,1,1) = {"
 ab
-ac
-ac
+nf
+Zh
 ab
 ab
 cV
@@ -963,9 +1193,13 @@ zN
 cv
 aT
 bo
+ms
+cJ
+bK
+Vb
 bz
 bI
-bK
+IR
 bU
 cb
 cg
@@ -973,7 +1207,7 @@ bo
 cn
 "}
 (6,1,1) = {"
-ac
+Ww
 ad
 ai
 ap
@@ -987,7 +1221,11 @@ bg
 bl
 bo
 bA
-bT
+jn
+cI
+bK
+bK
+bK
 cI
 bK
 bK
@@ -996,7 +1234,7 @@ bo
 an
 "}
 (7,1,1) = {"
-ac
+zj
 ae
 aj
 aq
@@ -1015,11 +1253,15 @@ bV
 bV
 bV
 bV
+bV
+bV
+bV
+bV
 cY
 co
 "}
 (8,1,1) = {"
-ac
+zj
 af
 ak
 ar
@@ -1037,12 +1279,16 @@ bO
 aJ
 aJ
 aJ
+aJ
+aJ
+aJ
+aJ
 aI
 cZ
 co
 "}
 (9,1,1) = {"
-ac
+zj
 ag
 aj
 as
@@ -1061,11 +1307,15 @@ aJ
 KE
 bW
 bW
+aD
+aD
+aD
+aD
 da
 cp
 "}
 (10,1,1) = {"
-ac
+wp
 ah
 am
 at
@@ -1074,8 +1324,8 @@ cP
 aJ
 cS
 aO
-Hv
 bd
+Hv
 aJ
 bJ
 an
@@ -1085,12 +1335,16 @@ cK
 bD
 bF
 an
+hF
+CO
+VZ
+an
 an
 "}
 (11,1,1) = {"
 ab
-ac
-ac
+nf
+Zh
 ab
 ab
 cQ
@@ -1107,6 +1361,10 @@ aJ
 aD
 cc
 cE
+an
+kx
+zP
+sW
 an
 cl
 "}
@@ -1131,6 +1389,10 @@ aJ
 aJ
 cK
 an
+ac
+mQ
+QF
+an
 cm
 "}
 (13,1,1) = {"
@@ -1153,6 +1415,10 @@ cy
 cz
 bE
 cw
+an
+qu
+XF
+yB
 an
 cm
 "}
@@ -1177,6 +1443,10 @@ bQ
 db
 cA
 an
+bT
+oK
+TU
+an
 cn
 "}
 (15,1,1) = {"
@@ -1188,6 +1458,10 @@ aa
 aa
 aa
 aa
+an
+an
+an
+an
 an
 an
 an

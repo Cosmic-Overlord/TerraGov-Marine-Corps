@@ -174,8 +174,8 @@
 			modified_char = to_replace
 
 	if(prob(replacement_prob))
-		var/replacements_len = length(string_replacements)
-		var/additions_len = length(string_additions)
+		var/replacements_len = length_char(string_replacements)
+		var/additions_len = length_char(string_additions)
 		if(replacements_len && additions_len)
 			// Calculate the probability of grabbing a replacement vs an addition
 			var/weight = (replacements_len + additions_len) / replacements_len * 100

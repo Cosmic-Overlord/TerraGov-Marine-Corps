@@ -6,7 +6,7 @@
 	name = "Rest"
 	action_icon_state = "resting"
 	desc = "Rest on weeds to regenerate health and plasma."
-	use_state_flags = XACT_USE_LYING|XACT_USE_CRESTED|XACT_USE_AGILITY|XACT_USE_CLOSEDTURF
+	use_state_flags = XACT_USE_LYING|XACT_USE_CRESTED|XACT_USE_AGILITY|XACT_USE_CLOSEDTURF|XACT_USE_STAGGERED|XACT_USE_INCAP
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_REST,
 	)
@@ -188,6 +188,7 @@
 		/turf/closed/wall/resin/regenerating,
 		/obj/alien/resin/sticky,
 		/obj/structure/mineral_door/resin,
+		/obj/structure/bed/nest,
 		)
 
 /datum/action/xeno_action/activable/secrete_resin/update_button_icon()
@@ -217,7 +218,7 @@
 	if(X.selected_ability != src)
 		return ..()
 	var/i = buildable_structures.Find(X.selected_resin)
-	if(length(buildable_structures) == i)
+	if(length_char(buildable_structures) == i)
 		X.selected_resin = buildable_structures[1]
 	else
 		X.selected_resin = buildable_structures[i+1]
@@ -286,6 +287,11 @@
 					break
 		if(!wall_support)
 			to_chat(X, span_warning("Resin doors need a wall or resin door next to them to stand up."))
+			return fail_activate()
+
+	if(X.selected_resin == /obj/structure/bed/nest)
+		for(var/obj/structure/bed/nest/xeno_nest in range (2,X))
+			to_chat(X, span_warning("Another nest is too close!"))
 			return fail_activate()
 
 	if(!do_after(X, get_wait(), TRUE, T, BUSY_ICON_BUILD))
@@ -988,7 +994,7 @@
 			continue
 		target_list += possible_target
 
-	if(!length(target_list))
+	if(!length_char(target_list))
 		to_chat(X, span_warning("There's nobody nearby to whisper to."))
 		return
 

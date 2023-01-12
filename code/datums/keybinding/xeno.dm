@@ -45,7 +45,6 @@
 	full_name = "Place acid well"
 	description = "Builds acid well on your tile."
 	keybind_signal = COMSIG_XENOABILITY_PLACE_ACID_WELL
-	hotkey_keys = list("G")
 
 /datum/keybinding/xeno/emit_recovery
 	name = "emit_recovery"
@@ -645,6 +644,19 @@
 	description = "Inject an egg with neurogas, killing the little one inside"
 	keybind_signal = COMSIG_XENOABILITY_INJECT_EGG_NEUROGAS
 
+/datum/keybinding/xeno/return_to_core
+	name = "return to core"
+	full_name = "Hivemind: Return to core"
+	description = "back you to core"
+	keybind_signal = COMSIG_XENOABILITY_RETURN_CORE
+
+/datum/keybinding/xeno/change_form
+	name = "change form"
+	full_name = "Hivemind: Сhange form"
+	description = "Сhange you form"
+	keybind_signal = COMSIG_XENOABILITY_CHANGE_FORM
+
+
 /datum/keybinding/xeno/rally_hive
 	name = "rally_hive"
 	full_name = "Rally Hive"
@@ -671,7 +683,7 @@
 
 /datum/keybinding/xeno/scatter_spit
 	name = "scatter_spit"
-	full_name = "Spitter: Scatter Spit"
+	full_name = "Scatter Spit"
 	description = "Fires a scattershot of 6 acid globules which create acid puddles on impact or at the end of their range."
 	keybind_signal = COMSIG_XENOABILITY_SCATTER_SPIT
 

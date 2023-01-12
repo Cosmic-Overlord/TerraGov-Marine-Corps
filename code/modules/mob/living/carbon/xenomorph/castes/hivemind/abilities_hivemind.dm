@@ -3,9 +3,24 @@
 	action_icon_state = "lay_hivemind"
 	desc = "Teleport back to your core."
 	use_state_flags = XACT_USE_CLOSEDTURF
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_XENOABILITY_RETURN_CORE,
+	)
 
 /datum/action/xeno_action/return_to_core/action_activate()
 	SEND_SIGNAL(owner, COMSIG_XENOMORPH_CORE_RETURN)
+
+/datum/action/xeno_action/psy_gain/hivemind
+	name = "Psy Gain"
+	action_icon_state = "psy_gain"
+	desc = "Gives your hive 100 psy points, if marines are on the ground."
+	cooldown_timer = 200 SECONDS
+
+/datum/action/xeno_action/psy_gain/hivemind/action_activate()
+	if(length_char(GLOB.humans_by_zlevel["2"]) > 0.2 * length_char(GLOB.alive_human_list))\
+	    SSpoints.add_psy_points("[XENO_HIVE_NORMAL]", 100)
+	succeed_activate()
+	add_cooldown()
 
 /datum/action/xeno_action/activable/secrete_resin/hivemind/can_use_action(silent = FALSE, override_flags, selecting = FALSE)
 	if (owner.status_flags & INCORPOREAL)
@@ -20,6 +35,9 @@
 		KEYBINDING_NORMAL = COMSIG_XENOMORPH_HIVEMIND_CHANGE_FORM,
 	)
 	use_state_flags = XACT_USE_CLOSEDTURF
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_XENOABILITY_CHANGE_FORM,
+	)
 
 /datum/action/xeno_action/change_form/action_activate()
 	var/mob/living/carbon/xenomorph/xenomorph_owner = owner
@@ -74,4 +92,27 @@
 		return
 	var/mob/living/carbon/xenomorph/hivemind/hivemind = source
 	hivemind.jump(selected_xeno)
+
+/datum/action/xeno_action/sow/hivemind
+	cooldown_timer = 70 SECONDS
+
+/datum/action/xeno_action/sow/hivemind/can_use_action(silent = FALSE, override_flags, selecting = FALSE)
+	if (owner.status_flags & INCORPOREAL)
+		return FALSE
+	return ..()
+
+/datum/action/xeno_action/blessing_menu/hivemind/can_use_action(silent = FALSE, override_flags, selecting = FALSE)
+	if (owner.status_flags & INCORPOREAL)
+		return FALSE
+	return ..()
+
+/datum/action/xeno_action/place_acidwell/hivemind/can_use_action(silent = FALSE, override_flags, selecting = FALSE)
+	if (owner.status_flags & INCORPOREAL)
+		return FALSE
+	return ..()
+
+/datum/action/xeno_action/place_jelly_pod/hivemind/can_use_action(silent = FALSE, override_flags, selecting = FALSE)
+	if (owner.status_flags & INCORPOREAL)
+		return FALSE
+	return ..()
 

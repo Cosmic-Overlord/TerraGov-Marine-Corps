@@ -819,12 +819,12 @@
 /turf/open/floor/mainship/mono,
 /area/mainship/medical/upper_medical)
 "bcv" = (
-/obj/machinery/camera/autoname/mainship,
-/obj/structure/bed/chair/wood/wings{
+/obj/effect/decal/cleanable/blood/writing{
+	desc = "It looks like a writing in blood. It says, 'If you see this, you will join the dead.'";
 	dir = 4
 	},
-/turf/open/floor/wood,
-/area/mainship/medical/upper_medical)
+/turf/open/floor/plating/mainship,
+/area/mainship/hallways/starboard_hallway)
 "bcF" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/mainship/command/cic)
@@ -2494,7 +2494,7 @@
 	},
 /area/space)
 "dgm" = (
-/obj/machinery/computer/crew,
+/obj/machinery/computer/med_data,
 /turf/open/floor/mainship/sterile/side,
 /area/mainship/medical/lower_medical)
 "dgy" = (
@@ -4209,9 +4209,12 @@
 	},
 /area/mainship/living/chapel)
 "ftY" = (
-/obj/structure/table/woodentable,
-/turf/open/floor/wood,
-/area/mainship/medical/upper_medical)
+/obj/effect/decal/cleanable/blood/writing{
+	desc = "It looks like a writing in blood. It says, 'We are the monsters all along.'";
+	dir = 4
+	},
+/turf/open/floor/mainship/floor,
+/area/crew_quarters/toilet)
 "fuf" = (
 /obj/machinery/telecomms/server/presets/requisitions,
 /turf/open/floor/mainship/tcomms,
@@ -5336,14 +5339,9 @@
 /turf/open/floor/mainship,
 /area/mainship/squads/general)
 "gZf" = (
-/obj/structure/bed/chair/wood/wings{
-	dir = 8
-	},
-/obj/machinery/light/mainship{
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/mainship/medical/upper_medical)
+/obj/structure/sign/safety/cryogenic,
+/turf/closed/wall/mainship/white,
+/area/mainship/medical/lower_medical)
 "gZv" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -9171,6 +9169,7 @@
 	},
 /area/mainship/command/airoom)
 "lVR" = (
+/obj/docking_port/stationary/marine_dropship/crash_target,
 /turf/open/floor/mainship/sterile/side{
 	dir = 5
 	},
@@ -12359,20 +12358,6 @@
 /turf/open/floor/mainship/mono,
 /area/mainship/command/telecomms)
 "qfF" = (
-/obj/structure/table/mainship/nometal,
-/obj/item/storage/box/syringes{
-	pixel_x = -7
-	},
-/obj/item/storage/box/pillbottles{
-	pixel_x = 7;
-	pixel_y = 7
-	},
-/obj/item/storage/box/beakers{
-	pixel_x = -7;
-	pixel_y = 7
-	},
-/obj/item/mass_spectrometer,
-/obj/item/mass_spectrometer,
 /turf/open/floor/mainship/sterile/purple/side,
 /area/mainship/medical/chemistry)
 "qfG" = (
@@ -14571,6 +14556,23 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
 /turf/open/floor/mainship/sterile/plain,
 /area/mainship/living/pilotbunks)
+"tbW" = (
+/obj/structure/table/mainship/nometal,
+/obj/item/storage/box/syringes{
+	pixel_x = -7
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/mass_spectrometer,
+/obj/item/tool/hand_labeler,
+/obj/item/storage/box/beakers{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/turf/open/floor/mainship/sterile/purple/side,
+/area/mainship/medical/chemistry)
 "tdm" = (
 /obj/machinery/holopad,
 /turf/open/floor/mainship/sterile/dark,
@@ -14704,6 +14706,10 @@
 	dir = 1
 	},
 /obj/machinery/light/mainship/small,
+/obj/effect/decal/cleanable/blood/writing{
+	desc = "It looks like a writing in blood. It says, 'I want to go home.'";
+	dir = 4
+	},
 /obj/effect/landmark/corpsespawner/marine/regular,
 /obj/item/weapon/gun/pistol/standard_heavypistol/suppressed,
 /turf/open/floor/mainship/floor,
@@ -14720,6 +14726,20 @@
 /turf/open/floor/mainship/mono,
 /area/mainship/living/grunt_rnr)
 "tkS" = (
+/obj/structure/table/mainship/nometal,
+/obj/item/storage/box/autoinjectors{
+	pixel_x = 7
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/mass_spectrometer,
+/obj/item/tool/hand_labeler,
+/obj/item/storage/box/beakers{
+	pixel_x = -7;
+	pixel_y = 7
+	},
 /turf/open/floor/mainship/sterile/purple/side,
 /area/mainship/medical/chemistry)
 "tkW" = (
@@ -16169,7 +16189,6 @@
 /obj/item/stack/sheet/mineral/phoron,
 /obj/item/reagent_containers/dropper,
 /obj/structure/table/mainship/nometal,
-/obj/item/tool/hand_labeler,
 /turf/open/floor/mainship/sterile/dark,
 /area/mainship/medical/chemistry)
 "uWP" = (
@@ -16547,6 +16566,7 @@
 /area/mainship/hallways/starboard_hallway)
 "vwL" = (
 /obj/machinery/smartfridge/chemistry,
+/obj/docking_port/stationary/marine_dropship/crash_target,
 /turf/open/floor/plating/platebotc,
 /area/mainship/medical/chemistry)
 "vxx" = (
@@ -43041,9 +43061,9 @@ mvs
 qje
 mvs
 mvs
-bcv
 xzF
-bxv
+xzF
+xzF
 bmo
 tMy
 wnJ
@@ -43298,9 +43318,9 @@ eSw
 lMn
 lsc
 mvs
-ftY
 xzF
-bxv
+xzF
+xzF
 bmo
 mzF
 vTy
@@ -43555,9 +43575,9 @@ bUC
 lAT
 wFY
 mvs
-gZf
+xzF
 mmC
-bxv
+xzF
 giW
 tMy
 vFi
@@ -43814,7 +43834,7 @@ fvg
 mvs
 lCL
 xzF
-bxv
+xzF
 bmo
 vrx
 npN
@@ -44071,7 +44091,7 @@ evD
 mvs
 lQb
 xzF
-bxv
+xzF
 bmo
 rEY
 uFV
@@ -44328,7 +44348,7 @@ mvs
 ntb
 sJE
 xzF
-bxv
+xzF
 olX
 wcT
 wcT
@@ -44582,7 +44602,7 @@ qqU
 cYE
 qqU
 xXW
-mvs
+gZf
 mvs
 eUN
 eeY
@@ -48187,7 +48207,7 @@ dLo
 fZP
 uVk
 xXt
-tkS
+tbW
 xyS
 hUf
 nTx
@@ -51033,7 +51053,7 @@ hZr
 aNM
 aNM
 aNM
-aNM
+bcv
 aNM
 aNM
 aNM
@@ -54593,7 +54613,7 @@ hEa
 uzm
 fAJ
 rip
-kCk
+ftY
 kCk
 uIy
 fAJ

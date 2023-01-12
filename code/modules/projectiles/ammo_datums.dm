@@ -560,6 +560,20 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	penetration = 30
 	sundering = 3
 
+/datum/ammo/bullet/smg/acp
+	name = "submachinegun ACP bullet"
+	hud_state = "smg"
+	hud_state_empty = "smg_empty"
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SUNDERING
+	accuracy_var_low = 7
+	accuracy_var_high = 7
+	damage = 20
+	accurate_range = 4
+	damage_falloff = 1
+	sundering = 0.5
+	penetration = 0
+	shrapnel_chance = 25
+
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
 	hud_state = "smg_fire"
@@ -2407,7 +2421,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	name = "pistol laser bolt"
 	damage = 20
 	penetration = 5
-	hitscan_effect_icon = "beam_particle"
+	hitscan_effect_icon = "beam"
 
 /datum/ammo/energy/lasgun/marine/pistol/disabler
 	name = "disabler bolt"
@@ -2416,7 +2430,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	damage = 70
 	penetration = 0
 	damage_type = STAMINA
-	hitscan_effect_icon = "stun"
+	hitscan_effect_icon = "beam_particle"
 
 /datum/ammo/energy/lasgun/marine/pistol/heat
 	name = "microwave heat bolt"
@@ -2818,22 +2832,23 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 /datum/ammo/xeno/toxin/heavy //Praetorian
 	name = "neurotoxic splash"
 	added_spit_delay = 0
-	spit_cost = 100
-	damage = 40
+	spit_cost = 200
+	damage = 80
 	smoke_strength = 0.9
-	reagent_transfer_amount = 8.5
+	reagent_transfer_amount = 18
+	smoke_range = 1
 
 /datum/ammo/xeno/toxin/heavy/upgrade1
 	smoke_strength = 0.9
-	reagent_transfer_amount = 9
+	reagent_transfer_amount = 19
 
 /datum/ammo/xeno/toxin/heavy/upgrade2
 	smoke_strength = 0.95
-	reagent_transfer_amount = 9.5
+	reagent_transfer_amount = 20
 
 /datum/ammo/xeno/toxin/heavy/upgrade3
 	smoke_strength = 1
-	reagent_transfer_amount = 10
+	reagent_transfer_amount = 21
 
 
 /datum/ammo/xeno/sticky

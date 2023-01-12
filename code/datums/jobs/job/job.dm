@@ -1,16 +1,17 @@
 GLOBAL_LIST_INIT(exp_jobsmap, list(
+	EXP_TYPE_ALL = list("titles" = GLOB.jobs_all),
 	EXP_TYPE_REGULAR_ALL = list("titles" = GLOB.jobs_regular_all),
-	EXP_TYPE_COMMAND = list("titles" = GLOB.jobs_command),
+	EXP_TYPE_MARINES = list("titles" = GLOB.jobs_marines),
 	EXP_TYPE_ENGINEERING = list("titles" = GLOB.jobs_engineering),
 	EXP_TYPE_MEDICAL = list("titles" = GLOB.jobs_medical),
-	EXP_TYPE_MARINES = list("titles" = GLOB.jobs_marines),
 	EXP_TYPE_REQUISITIONS = list("titles" = GLOB.jobs_requisitions),
-	EXP_TYPE_SPECIAL = list("titles" = GLOB.jobs_xenos),
+	EXP_TYPE_COMMAND = list("titles" = GLOB.jobs_command),
+	EXP_TYPE_XENO = list("titles" = GLOB.jobs_xeno),
 ))
 
 GLOBAL_LIST_INIT(exp_specialmap, list(
 	EXP_TYPE_LIVING = list(),
-	EXP_TYPE_SPECIAL = list(ROLE_XENOMORPH, ROLE_XENO_QUEEN),
+	EXP_TYPE_SPECIAL = list(),
 	EXP_TYPE_GHOST = list(),
 	EXP_TYPE_ADMIN = list()
 ))
@@ -84,7 +85,7 @@ GLOBAL_PROTECT(exp_specialmap)
 		remembered_info += "<b>Your account number is:</b> #[bank_account.account_number]"
 		remembered_info += "<b>Your account pin is:</b> [bank_account.remote_access_pin]"
 		remembered_info += "<b>Your account funds are:</b> $[bank_account.money]"
-		if(length(bank_account.transaction_log))
+		if(length_char(bank_account.transaction_log))
 			var/datum/transaction/transaction_datum = bank_account.transaction_log[1]
 			remembered_info += "<b>Your account was created:</b> [transaction_datum.time], [transaction_datum.date] at [transaction_datum.source_terminal]"
 		M.mind.store_memory(remembered_info.Join("<br>"))

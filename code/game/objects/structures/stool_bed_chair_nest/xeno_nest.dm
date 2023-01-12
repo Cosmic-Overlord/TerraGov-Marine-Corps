@@ -1,9 +1,9 @@
-#define NEST_RESIST_TIME 2.5 SECONDS
+#define NEST_RESIST_TIME 1 MINUTES
 #define NEST_UNBUCKLED_COOLDOWN 5 SECONDS
 
 ///Alium nests. Essentially beds with an unbuckle delay that only aliums can buckle mobs to.
 /obj/structure/bed/nest
-	name = "alien nest"
+	name = ALIEN_NEST
 	desc = "It's a gruesome pile of thick, sticky resin shaped like a nest."
 	icon = 'icons/Xeno/Effects.dmi'
 	icon_state = "nest"
@@ -28,9 +28,20 @@
 
 
 /obj/structure/bed/nest/attack_alien(mob/living/carbon/xenomorph/X, damage_amount = X.xeno_caste.melee_damage, damage_type = BRUTE, damage_flag = "", effects = TRUE, armor_penetration = 0, isrightclick = FALSE)
-	if(X.a_intent != INTENT_HARM)
-		return attack_hand(X)
-	return ..()
+	if(X.status_flags & INCORPOREAL)
+		return
+
+	X.visible_message(span_xenonotice("\The [X] starts tearing down \the [src]!"), \
+	span_xenonotice("We start to tear down \the [src]."))
+	if(!do_after(X, 4 SECONDS, TRUE, X, BUSY_ICON_GENERIC))
+		return
+	if(!istype(src)) // Prevent jumping to other turfs if do_after completes with the wall already gone
+		return
+	X.do_attack_animation(src, ATTACK_EFFECT_CLAW)
+	X.visible_message(span_xenonotice("\The [X] tears down \the [src]!"), \
+	span_xenonotice("We tear down \the [src]."))
+	playsound(src, "alien_resin_break", 25)
+	take_damage(max_integrity) // Ensure its destroyed
 
 
 /obj/structure/bed/nest/user_buckle_mob(mob/living/buckling_mob, mob/user, check_loc = TRUE, silent)
@@ -39,6 +50,9 @@
 	if(!isxeno(user))
 		to_chat(user, span_warning("Gross! You're not touching that stuff."))
 		return FALSE
+	if(isxenohivemind(user))
+		to_chat(user, span_warning("We lack limbs to do that."))
+		return FALSE
 	if(LAZYLEN(buckled_mobs))
 		to_chat(user, span_warning("There's already someone in [src]."))
 		return FALSE
@@ -46,9 +60,6 @@
 		var/mob/living/carbon/human/H = buckling_mob
 		if(TIMER_COOLDOWN_CHECK(H, COOLDOWN_NEST))
 			to_chat(user, span_warning("[H] was recently unbuckled. Wait a bit."))
-			return FALSE
-		if(!H.lying_angle)
-			to_chat(user, span_warning("[H] is resisting, ground [H.p_them()]."))
 			return FALSE
 
 	user.visible_message(span_warning("[user] pins [buckling_mob] into [src], preparing the securing resin."),
@@ -60,9 +71,6 @@
 		return FALSE
 	if(LAZYLEN(buckled_mobs))
 		to_chat(user, span_warning("There's already someone in [src]."))
-		return FALSE
-	if(ishuman(buckling_mob) && !buckling_mob.lying_angle) //Improperly stunned Marines won't be nested
-		to_chat(user, span_warning("[buckling_mob] is resisting, ground [buckling_mob.p_them()]."))
 		return FALSE
 
 	buckling_mob.visible_message(span_xenonotice("[user] secretes a thick, vile resin, securing [buckling_mob] into [src]!"),

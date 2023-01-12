@@ -14,8 +14,8 @@
 	speed = -0.8
 
 	// *** Plasma *** //
-	plasma_max = 300
-	plasma_gain = 10
+	plasma_max = 350
+	plasma_gain = 15
 
 	// *** Health *** //
 	max_health = 225
@@ -28,7 +28,7 @@
 
 	// *** Flags *** //
 	caste_flags = CASTE_EVOLUTION_ALLOWED
-	can_flags = CASTE_CAN_BE_QUEEN_HEALED|CASTE_CAN_VENT_CRAWL|CASTE_CAN_BE_GIVEN_PLASMA|CASTE_CAN_BE_LEADER|CASTE_CAN_RIDE_CRUSHER
+	can_flags = CASTE_CAN_BE_QUEEN_HEALED|CASTE_CAN_VENT_CRAWL|CASTE_CAN_BE_GIVEN_PLASMA|CASTE_CAN_BE_LEADER|CASTE_CAN_RIDE_CRUSHER|CASTE_CAN_HOLD_FACEHUGGERS
 
 	// *** Defense *** //
 	soft_armor = list(MELEE = 15, BULLET = 15, LASER = 15, ENERGY = 15, BOMB = 0, BIO = 15, FIRE = 15, ACID = 15)
@@ -69,8 +69,8 @@
 	speed = -0.8
 
 	// *** Plasma *** //
-	plasma_max = 450
-	plasma_gain = 15
+	plasma_max = 500
+	plasma_gain = 18
 
 	// *** Health *** //
 	max_health = 250
@@ -101,8 +101,8 @@
 	speed = -0.9
 
 	// *** Plasma *** //
-	plasma_max = 550
-	plasma_gain = 18
+	plasma_max = 600
+	plasma_gain = 21
 
 	// *** Health *** //
 	max_health = 275
@@ -133,8 +133,8 @@
 	speed = -0.9
 
 	// *** Plasma *** //
-	plasma_max = 600
-	plasma_gain = 20
+	plasma_max = 650
+	plasma_gain = 21
 
 	// *** Health *** //
 	max_health = 300
@@ -165,8 +165,8 @@
 	speed = -0.9
 
 	// *** Plasma *** //
-	plasma_max = 600
-	plasma_gain = 20
+	plasma_max = 650
+	plasma_gain = 21
 
 	// *** Health *** //
 	max_health = 300

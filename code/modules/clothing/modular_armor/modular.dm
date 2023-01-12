@@ -26,7 +26,7 @@
 		/obj/item/instrument,
 		/obj/item/storage/belt/sparepouch,
 		/obj/item/storage/holster/blade,
-		/obj/item/weapon/claymore,
+		/obj/item/weapon/claymore/harvester,
 		/obj/item/storage/belt/gun,
 		/obj/item/storage/belt/knifepouch,
 		/obj/item/weapon/twohanded,
@@ -206,7 +206,7 @@
 
 /obj/item/clothing/suit/modular/attackby(obj/item/I, mob/user, params)
 	. = ..()
-	if(!istype(I, /obj/item/facepaint) || !length(icon_state_variants))
+	if(!istype(I, /obj/item/facepaint) || !length_char(icon_state_variants))
 		return
 	var/obj/item/facepaint/paint = I
 	if(paint.uses < 1)
@@ -297,7 +297,27 @@
 	soft_armor = list(MELEE = 40, BULLET = 50, LASER = 50, ENERGY = 25, BOMB = 30, BIO = 5, FIRE = 25, ACID = 30)
 	slowdown = 0.25
 
-	attachments_allowed = list()
+	attachments_allowed = list(
+		/obj/item/armor_module/module/better_shoulder_lamp,
+		/obj/item/armor_module/module/valkyrie_autodoc,
+		/obj/item/armor_module/module/fire_proof,
+		/obj/item/armor_module/module/tyr_extra_armor,
+		/obj/item/armor_module/module/tyr_extra_armor/mark1,
+		/obj/item/armor_module/module/mimir_environment_protection,
+		/obj/item/armor_module/module/mimir_environment_protection/mark1,
+		/obj/item/armor_module/module/hlin_explosive_armor,
+		/obj/item/armor_module/module/ballistic_armor,
+		/obj/item/armor_module/module/chemsystem,
+		/obj/item/armor_module/module/eshield,
+
+		/obj/item/armor_module/storage/general,
+		/obj/item/armor_module/storage/ammo_mag,
+		/obj/item/armor_module/storage/engineering,
+		/obj/item/armor_module/storage/medical,
+		/obj/item/armor_module/storage/injector,
+		/obj/item/armor_module/storage/integrated,
+		/obj/item/armor_module/armor/badge,
+	)
 
 	allowed = list(
 		/obj/item/weapon/gun,
@@ -451,7 +471,7 @@
 	if(.)
 		return
 
-	if(colorable_allowed == NOT_COLORABLE || (!length(colorable_colors) && colorable_colors == COLOR_WHEEL_NOT_ALLOWED) && greyscale_config)
+	if(colorable_allowed == NOT_COLORABLE || (!length_char(colorable_colors) && colorable_colors == COLOR_WHEEL_NOT_ALLOWED) && greyscale_config)
 		return
 
 	if(!istype(I, /obj/item/facepaint))
@@ -462,7 +482,7 @@
 		to_chat(user, span_warning("\the [paint] is out of color!"))
 		return
 
-	if(!greyscale_config && length(icon_state_variants))
+	if(!greyscale_config && length_char(icon_state_variants))
 		paint.uses--
 		var/variant = tgui_input_list(user, "Choose a color.", "Color", icon_state_variants)
 

@@ -16,9 +16,11 @@
 
 // Revolvers
 #define CALIBER_44 ".44 Magnum"
+#define CALIBER_44LS ".44 Long Special"
 #define CALIBER_357 ".357 Magnum"
 #define CALIBER_454 ".454 Casull" //Mateba
 #define CALIBER_762X38 "7.62x38mm Rimmed" //UPP
+#define CALIBER_500 ".500 Nigro Express" // t500
 
 // SMGs
 #define CALIBER_46X30 "4.6x30mm"

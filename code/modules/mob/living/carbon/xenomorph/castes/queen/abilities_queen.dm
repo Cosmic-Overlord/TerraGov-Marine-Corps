@@ -31,14 +31,14 @@
 	//Preferring the use of multiline input as the message box is larger and easier to quickly proofread before sending to hive.
 	var/input = stripped_multiline_input(Q, "Maximum message length: [MAX_BROADCAST_LEN]", "Hive Message", "", MAX_BROADCAST_LEN, TRUE)
 	//Newlines are of course stripped and replaced with a space.
-	input = capitalize(trim(replacetext(input, "\n", " ")))
+	input = capitalize(trim(replacetext_char(input, "\n", " ")))
 	if(!input)
 		return
 	if(CHAT_FILTER_CHECK(input))
 		to_chat(Q, span_warning("That announcement contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[input]\"</span>"))
 		SSblackbox.record_feedback(FEEDBACK_TALLY, "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
 		return FALSE
-	if(NON_ASCII_CHECK(input))
+	if(NON_ASCII_CYRILLIC_CHECK(input))
 		to_chat(Q, span_warning("That announcement contained characters prohibited in IC chat! Consider reviewing the server rules."))
 		return FALSE
 
@@ -298,7 +298,7 @@
 		unset_xeno_leader(selected_xeno)
 		return
 
-	if(xeno_ruler.xeno_caste.queen_leader_limit <= length(xeno_ruler.hive.xeno_leader_list))
+	if(xeno_ruler.xeno_caste.queen_leader_limit <= length_char(xeno_ruler.hive.xeno_leader_list))
 		xeno_ruler.balloon_alert(xeno_ruler, "No more leadership slots")
 		return
 

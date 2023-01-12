@@ -73,10 +73,6 @@
 
 	regen_power = -xeno_caste.regen_delay //Remember, this is in deciseconds.
 
-	if(isobj(pulling))
-		stop_pulling()
-
-
 	if(!COOLDOWN_CHECK(src, xeno_health_alert_cooldown))
 		return
 	//If we're alive and health is less than either the alert threshold, or the alert trigger percent, whichever is greater, and we're not on alert cooldown, trigger the hive alert
@@ -159,7 +155,7 @@
 		if(!decal) //Let's not stack blood, it just makes lagggggs.
 			add_splatter_floor(T) //Drop some on the ground first.
 		else
-			if(decal.random_icon_states && length(decal.random_icon_states) > 0) //If there's already one, just randomize it so it changes.
+			if(decal.random_icon_states && length_char(decal.random_icon_states) > 0) //If there's already one, just randomize it so it changes.
 				decal.icon_state = pick(decal.random_icon_states)
 
 		if(!(xeno_caste.caste_flags & CASTE_ACID_BLOOD))

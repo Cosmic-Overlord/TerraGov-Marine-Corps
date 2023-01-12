@@ -371,6 +371,7 @@
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/sniper,
 		/obj/item/ammo_magazine/handful,
+		/obj/item/ammo_magazine/railgun,
 		/obj/item/explosive/grenade,
 		/obj/item/explosive/mine,
 		/obj/item/reagent_containers/food/snacks,
@@ -603,7 +604,7 @@
 				to_chat(user, span_warning("[M] is empty."))
 				return
 
-			if(length(contents) >= storage_slots)
+			if(length_char(contents) >= storage_slots)
 				to_chat(user, span_warning("[src] is full."))
 				return
 
@@ -612,7 +613,7 @@
 			if(!do_after(user, 1.5 SECONDS, TRUE, src, BUSY_ICON_GENERIC))
 				return
 
-			for(var/x in 1 to (storage_slots - length(contents)))
+			for(var/x in 1 to (storage_slots - length_char(contents)))
 				var/cont = handle_item_insertion(M.create_handful(), 1, user)
 				if(!cont)
 					break
@@ -737,7 +738,7 @@
 	if(!draw_mode || !ishuman(user) && !contents.len)
 		open(user)
 
-	if(!length(contents))
+	if(!length_char(contents))
 		return
 
 	var/obj/item/I = contents[contents.len]
@@ -916,7 +917,7 @@
 	else
 		playsound(src,sheatheSound, 15, 1)
 		underlays -= gun_underlay
-		icon_state = copytext(icon_state,1,-2)
+		icon_state = copytext_char(icon_state,1,-2)
 		item_state = icon_state
 		qdel(gun_underlay)
 		gun_underlay = null
@@ -937,7 +938,7 @@
 	for(var/obj/item/ammo_magazine/mag in contents)
 		if(!(mag.type in gun.allowed_ammo_types))
 			continue
-		if(user.l_hand && user.r_hand || length(gun.chamber_items))
+		if(user.l_hand && user.r_hand || length_char(gun.chamber_items))
 			gun.tactical_reload(mag, user)
 		else
 			gun.reload(mag, user)
@@ -1052,11 +1053,12 @@
 	desc = "The T457 is the standard load-bearing equipment of the TGMC. It consists of a modular belt with various clips."
 	icon_state = "tp44_holster"
 	item_state = "tp44_holster"
-	bypass_w_limit = list(
-		/obj/item/weapon/gun/revolver,
-	)
 	can_hold = list(
-		/obj/item/weapon/gun/revolver,
+		/obj/item/weapon/gun/revolver/standard_revolver,
+		/obj/item/weapon/gun/revolver/upp,
+		/obj/item/weapon/gun/revolver/small,
+		/obj/item/weapon/gun/revolver/mateba,
+		/obj/item/weapon/gun/revolver/cmb,
 		/obj/item/ammo_magazine/revolver,
 	)
 
@@ -1066,7 +1068,7 @@
 	icon_state = "m44_holster"
 	item_state = "m44_holster"
 	max_storage_space = 16
-	max_w_class = 4
+	max_w_class = 3
 	can_hold = list(
 		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,

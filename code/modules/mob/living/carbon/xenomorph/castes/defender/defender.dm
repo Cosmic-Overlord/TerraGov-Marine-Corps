@@ -13,6 +13,7 @@
 	tier = XENO_TIER_ONE
 	upgrade = XENO_UPGRADE_ZERO
 	pull_speed = -2
+	bubble_icon = "alienroyal"
 
 // ***************************************
 // *********** Icon

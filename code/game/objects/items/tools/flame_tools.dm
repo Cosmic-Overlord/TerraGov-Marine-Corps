@@ -517,6 +517,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_on = "bonepipeon"  //Note - these are in masks.dmi
 	icon_off = "bonepipeoff"
 
+/obj/item/clothing/mask/cigarette/pipe/bonepipe
+	name = "Europan bone pipe"
+	desc = "A smoking pipe made out of the bones of the Europan bone whale."
+	icon_state = "bonepipeoff"
+	item_state = "bonepipeoff"
+	icon_on = "bonepipeon"  //Note - these are in masks.dmi
+	icon_off = "bonepipeoff"
+
 /////////
 //ZIPPO//
 /////////

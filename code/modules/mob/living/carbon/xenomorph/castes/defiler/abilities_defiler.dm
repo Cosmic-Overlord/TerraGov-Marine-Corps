@@ -367,7 +367,7 @@
 /datum/action/xeno_action/select_reagent/action_activate()
 	var/mob/living/carbon/xenomorph/X = owner
 	var/i = GLOB.defiler_toxin_type_list.Find(X.selected_reagent)
-	if(length(GLOB.defiler_toxin_type_list) == i)
+	if(length_char(GLOB.defiler_toxin_type_list) == i)
 		X.selected_reagent = GLOB.defiler_toxin_type_list[1]
 	else
 		X.selected_reagent = GLOB.defiler_toxin_type_list[i+1]

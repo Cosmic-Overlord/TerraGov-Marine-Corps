@@ -102,7 +102,7 @@
 	name = "LZ2: Civ Residence Hangar"
 
 /obj/docking_port/stationary/marine_dropship/hangar/one
-	name = "Shipside 'Alamo' Hangar Pad"
+	name = "Shipside 'Normandy' Hangar Pad"
 	id = SHUTTLE_ALAMO
 	roundstart_template = /datum/map_template/shuttle/dropship_one
 
@@ -112,7 +112,7 @@
 	roundstart_template = /datum/map_template/shuttle/dropship_three
 
 /obj/docking_port/stationary/marine_dropship/hangar/two
-	name = "Shipside 'Normandy' Hangar Pad"
+	name = "Shipside 'Alamo' Hangar Pad"
 	id = SHUTTLE_NORMANDY
 	roundstart_template = /datum/map_template/shuttle/dropship_two
 	dheight = 6
@@ -256,12 +256,12 @@
 	SSshuttle.moveShuttle(id, previous.id, TRUE)
 
 /obj/docking_port/mobile/marine_dropship/one
-	name = "Alamo"
+	name = "Normandy"
 	id = SHUTTLE_ALAMO
 	control_flags = SHUTTLE_MARINE_PRIMARY_DROPSHIP
 
 /obj/docking_port/mobile/marine_dropship/two
-	name = "Normandy"
+	name = "Alamo"
 	id = SHUTTLE_NORMANDY
 	control_flags = SHUTTLE_MARINE_PRIMARY_DROPSHIP
 	callTime = 28 SECONDS //smaller shuttle go whoosh
@@ -428,7 +428,7 @@
 		D.silicon_lock_airlocks(TRUE)
 		to_chat(user, span_warning("We have overriden the shuttle lockdown!"))
 		playsound(user, "alien_roar", 50)
-		priority_announce("Alamo lockdown protocol compromised. Interference preventing remote control", "Dropship Lock Alert")
+		priority_announce("Normandy lockdown protocol compromised. Interference preventing remote control", "Dropship Lock Alert")
 		return FALSE
 	if(D.mode != SHUTTLE_IDLE && D.mode != SHUTTLE_RECHARGING)
 		to_chat(user, span_warning("The bird's mind is currently active. We need to wait until it's more vulnerable..."))
@@ -442,7 +442,7 @@
 			if(H.faction == FACTION_XENO)
 				continue
 			humans_on_ground++
-	if(length(GLOB.alive_human_list) && ((humans_on_ground / length(GLOB.alive_human_list)) > ALIVE_HUMANS_FOR_CALLDOWN))
+	if(length_char(GLOB.alive_human_list) && ((humans_on_ground / length_char(GLOB.alive_human_list)) > ALIVE_HUMANS_FOR_CALLDOWN))
 		to_chat(user, span_warning("There's too many tallhosts still on the ground. They interfere with our psychic field. We must dispatch them before we are able to do this."))
 		return FALSE
 	return TRUE
@@ -456,7 +456,7 @@
 			continue
 		if(S.id == "lz1" || S.id == "lz2")
 			lzs[S] = get_dist(S, A)
-	if(!length(lzs))
+	if(!length_char(lzs))
 		stack_trace("couldn't find any lzs to call down the dropship to")
 		return FALSE
 	var/obj/docking_port/stationary/closest = lzs[1]
@@ -549,7 +549,7 @@
 			reardoor++
 	if(!reardoor)
 		.["rear"] = 0
-	else if(reardoor==length(shuttle.rear_airlocks))
+	else if(reardoor==length_char(shuttle.rear_airlocks))
 		.["rear"] = 2
 		locked++
 	else
@@ -562,7 +562,7 @@
 			leftdoor++
 	if(!leftdoor)
 		.["left"] = 0
-	else if(leftdoor==length(shuttle.left_airlocks))
+	else if(leftdoor==length_char(shuttle.left_airlocks))
 		.["left"] = 2
 		locked++
 	else
@@ -575,7 +575,7 @@
 			rightdoor++
 	if(!rightdoor)
 		.["right"] = 0
-	else if(rightdoor==length(shuttle.right_airlocks))
+	else if(rightdoor==length_char(shuttle.right_airlocks))
 		.["right"] = 2
 		locked++
 	else
@@ -701,7 +701,7 @@
 		var/confirm = tgui_alert(usr, "Would you like to capture the metal bird?\n THIS WILL END THE ROUND", "Capture the ship?", list( "Yes", "No"))
 		if(confirm != "Yes")
 			return
-		priority_announce("The Alamo has been captured! Losing their main mean of accessing the ground, the marines have no choice but to retreat.", title = "ALAMO CAPTURED")
+		priority_announce("The Normandy has been captured! Losing their main mean of accessing the ground, the marines have no choice but to retreat.", title = "NORMANDY CAPTURED")
 		var/datum/game_mode/infestation/infestation_mode = SSticker.mode
 		infestation_mode.round_stage = INFESTATION_DROPSHIP_CAPTURED_XENOS
 		return
@@ -733,8 +733,8 @@
 
 
 /obj/machinery/computer/shuttle/marine_dropship/one
-	name = "\improper 'Alamo' flight controls"
-	desc = "The flight controls for the 'Alamo' Dropship. Named after the Alamo Mission, stage of the Battle of the Alamo in the United States' state of Texas in the Spring of 1836. The defenders held to the last, encouraging other Texians to rally to the flag."
+	name = "\improper 'Normandy' flight controls"
+	desc = "The flight controls for the 'Normandy' Dropship. Named after a department in France, noteworthy for the famous naval invasion of Normandy on the 6th of June 1944, a bloody but decisive victory in World War II and the campaign for the Liberation of France."
 	possible_destinations = "lz1;lz2;alamo"
 
 /obj/machinery/computer/shuttle/marine_dropship/one/Initialize()
@@ -745,7 +745,7 @@
 
 /obj/machinery/computer/shuttle/marine_dropship/two
 	name = "\improper 'Normandy' flight controls"
-	desc = "The flight controls for the 'Normandy' Dropship. Named after a department in France, noteworthy for the famous naval invasion of Normandy on the 6th of June 1944, a bloody but decisive victory in World War II and the campaign for the Liberation of France."
+	desc = "The flight controls for the 'Alamo' Dropship. Named after the Alamo Mission, stage of the Battle of the Alamo in the United States' state of Texas in the Spring of 1836. The defenders held to the last, encouraging other Texians to rally to the flag."
 	icon_state = "console2"
 	possible_destinations = "lz1;lz2;alamo;normandy"
 
@@ -1352,8 +1352,8 @@
 
 
 /obj/machinery/computer/shuttle/shuttle_control/dropship
-	name = "\improper 'Alamo' dropship console"
-	desc = "The remote controls for the 'Alamo' Dropship. Named after the Alamo Mission, stage of the Battle of the Alamo in the United States' state of Texas in the Spring of 1836. The defenders held to the last, encouraging other Texans to rally to the flag."
+	name = "\improper 'Normandy' dropship console"
+	desc = "The flight controls for the 'Normandy' Dropship. Named after a department in France, noteworthy for the famous naval invasion of Normandy on the 6th of June 1944, a bloody but decisive victory in World War II and the campaign for the Liberation of France."
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "shuttle"
 	resistance_flags = RESIST_ALL
@@ -1364,7 +1364,7 @@
 
 
 /obj/machinery/computer/shuttle/shuttle_control/dropship/two
-	name = "\improper 'Normandy' dropship console"
+	name = "\improper 'Alamo' dropship console"
 	desc = "The remote controls for the 'Normandy' Dropship. Named after a department in France, noteworthy for the famous naval invasion of Normandy on the 6th of June 1944, a bloody but decisive victory in World War II and the campaign for the Liberation of France."
 	shuttleId = SHUTTLE_NORMANDY
 	possible_destinations = "lz1;lz2;alamo;normandy"
@@ -1377,8 +1377,8 @@
 	compatible_control_flags = SHUTTLE_REBEL_PRIMARY_DROPSHIP
 
 /obj/machinery/computer/shuttle/shuttle_control/dropship/loyalist
-	name = "\improper 'Alamo' dropship console"
-	desc = "The remote controls for the 'Alamo' Dropship."
+	name = "\improper 'Normandy' dropship console"
+	desc = "The remote controls for the 'Normandy' Dropship."
 	shuttleId = SHUTTLE_ALAMO
 	possible_destinations = "lz2;alamo"
 
@@ -1419,11 +1419,11 @@
 		to_chat(usr, span_warning("[src] is unresponsive."))
 		return FALSE
 
-	if(!length(GLOB.active_nuke_list) && tgui_alert(usr, "Are you sure you want to launch the shuttle? Without sufficiently dealing with the threat, you will be in direct violation of your orders!", "Are you sure?", list("Yes", "Cancel")) != "Yes")
+	if(!length_char(GLOB.active_nuke_list) && tgui_alert(usr, "Are you sure you want to launch the shuttle? Without sufficiently dealing with the threat, you will be in direct violation of your orders!", "Are you sure?", list("Yes", "Cancel")) != "Yes")
 		return TRUE
 
-	log_admin("[key_name(usr)] is launching the canterbury[!length(GLOB.active_nuke_list)? " early" : ""].")
-	message_admins("[ADMIN_TPMONTY(usr)] is launching the canterbury[!length(GLOB.active_nuke_list)? " early" : ""].")
+	log_admin("[key_name(usr)] is launching the canterbury[!length_char(GLOB.active_nuke_list)? " early" : ""].")
+	message_admins("[ADMIN_TPMONTY(usr)] is launching the canterbury[!length_char(GLOB.active_nuke_list)? " early" : ""].")
 
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 	#ifndef TESTING

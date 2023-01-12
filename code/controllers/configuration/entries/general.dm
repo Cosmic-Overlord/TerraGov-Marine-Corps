@@ -32,6 +32,15 @@ Basics, the most important.
 /// URL for the CentCom Galactic Ban DB API
 /datum/config_entry/string/centcom_ban_db
 
+/// URL for the TheLostBay DiscordBot API
+/datum/config_entry/string/tlb_api_url
+
+/// Key for the TheLostBay DiscordBot API
+/datum/config_entry/string/tlb_api_key
+
+/// Server Name for the TheLostBay DiscordBot API
+/datum/config_entry/string/api_server_name
+
 /// Host of the webmap
 /datum/config_entry/string/webmap_host
 	config_entry_value = "https://affectedarc07.co.uk/tgmc.php?m="
@@ -125,18 +134,11 @@ Administrative related.
 
 /datum/config_entry/flag/use_exp_tracking
 
+/datum/config_entry/flag/use_exp_restrictions
+
 /datum/config_entry/flag/use_exp_restrictions_admin_bypass
 
-/datum/config_entry/flag/use_exp_restrictions_command
-
-/datum/config_entry/number/use_exp_restrictions_command_hours
-	config_entry_value = 0
-	integer = FALSE
-	min_val = 0
-
-/datum/config_entry/flag/use_exp_restrictions_command_department
-
-/datum/config_entry/flag/use_exp_restrictions_other
+/datum/config_entry/flag/use_exp_restrictions_mentor_bypass
 
 /datum/config_entry/flag/prevent_dupe_names
 

@@ -69,12 +69,22 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
 		if(GAME_STATE_STARTUP)
-			if(Master.initializations_finished_with_no_players_logged_in && !length(GLOB.clients))
+			if(Master.initializations_finished_with_no_players_logged_in && !length_char(GLOB.clients))
 				return
 			if(isnull(start_at))
 				start_at = time_left || world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 			for(var/client/C in GLOB.clients)
 				window_flash(C)
+
+			// Notify bot about roundstart.
+			if(!CONFIG_GET(string/tlb_api_url) || !CONFIG_GET(string/tlb_api_key) || !CONFIG_GET(string/api_server_name))
+				to_chat(world, span_warning("TheLostBay BOT API is disabled!"))
+			else
+				var/datum/http_request/request = new()
+				request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/tlb_api_url)]/round?key=[CONFIG_GET(string/tlb_api_key)]&state=starting&server=[CONFIG_GET(string/api_server_name)]&id=[GLOB.round_id]&map1=[length_char(SSmapping.configs) ? SSmapping.configs[GROUND_MAP].map_name : "Loading..."]&map2=[length_char(SSmapping.configs) ? SSmapping.configs[SHIP_MAP].map_name : "Loading..."]", "", "")
+				request.begin_async()
+				UNTIL(request.is_complete())
+
 			to_chat(world, span_round_body("Welcome to the pre-game lobby of [CONFIG_GET(string/server_name)]!"))
 			to_chat(world, span_role_body("Please, setup your character and select ready. Game will start in [round(time_left / 10) || CONFIG_GET(number/lobby_countdown)] seconds."))
 			current_state = GAME_STATE_PREGAME
@@ -116,6 +126,15 @@ SUBSYSTEM_DEF(ticker)
 			check_queue()
 
 			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
+				// Notify bot about roundstart.
+				if(!CONFIG_GET(string/tlb_api_url) || !CONFIG_GET(string/tlb_api_key) || !CONFIG_GET(string/api_server_name))
+					to_chat(world, span_warning("TheLostBay BOT API is disabled!"))
+				else
+					var/datum/http_request/request = new()
+					request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/tlb_api_url)]/round?key=[CONFIG_GET(string/tlb_api_key)]&state=finished&server=[CONFIG_GET(string/api_server_name)]&id=[GLOB.round_id]&map1=[length_char(SSmapping.configs) ? SSmapping.configs[GROUND_MAP].map_name : "Loading..."]&map2=[length_char(SSmapping.configs) ? SSmapping.configs[SHIP_MAP].map_name : "Loading..."]", "", "")
+					request.begin_async()
+					UNTIL(request.is_complete())
+
 				current_state = GAME_STATE_FINISHED
 				GLOB.ooc_allowed = TRUE
 				GLOB.dooc_allowed = TRUE
@@ -172,6 +191,15 @@ SUBSYSTEM_DEF(ticker)
 	log_world("Game start took [(world.timeofday - init_start) / 10]s")
 	round_start_time = world.time
 	SSdbcore.SetRoundStart()
+
+	// Notify bot about roundstart.
+	if(!CONFIG_GET(string/tlb_api_url) || !CONFIG_GET(string/tlb_api_key) || !CONFIG_GET(string/api_server_name))
+		to_chat(world, span_warning("TheLostBay BOT API is disabled!"))
+	else
+		var/datum/http_request/request = new()
+		request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/tlb_api_url)]/round?key=[CONFIG_GET(string/tlb_api_key)]&state=started&server=[CONFIG_GET(string/api_server_name)]&id=[GLOB.round_id]&map1=[length_char(SSmapping.configs) ? SSmapping.configs[GROUND_MAP].map_name : "Loading..."]&map2=[length_char(SSmapping.configs) ? SSmapping.configs[SHIP_MAP].map_name : "Loading..."]", "", "")
+		request.begin_async()
+		UNTIL(request.is_complete())
 
 	current_state = GAME_STATE_PLAYING
 	Master.SetRunLevel(RUNLEVEL_GAME)
@@ -338,9 +366,9 @@ SUBSYSTEM_DEF(ticker)
 
 	if(selected_tip)
 		tip = selected_tip
-	else if(prob(95) && length(ALLTIPS))
+	else if(prob(95) && length_char(ALLTIPS))
 		tip = pick(ALLTIPS)
-	else if(length(SSstrings.get_list_from_file("tips/meme")))
+	else if(length_char(SSstrings.get_list_from_file("tips/meme")))
 		tip = pick(SSstrings.get_list_from_file("tips/meme"))
 
 	if(tip)
@@ -348,7 +376,7 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/check_queue()
-	if(!length(queued_players))
+	if(!length_char(queued_players))
 		return
 	var/hpc = CONFIG_GET(number/hard_popcap)
 	if(!hpc)

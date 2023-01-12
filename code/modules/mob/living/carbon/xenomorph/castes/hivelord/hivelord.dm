@@ -14,6 +14,7 @@
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = XENO_TIER_TWO
 	upgrade = XENO_UPGRADE_ZERO
+	bubble_icon = "alienroyal"
 	var/list/tunnels = list() //list of active tunnels
 
 // ***************************************

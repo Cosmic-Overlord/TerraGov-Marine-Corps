@@ -40,6 +40,14 @@
 		X.soft_armor = X.soft_armor.modifyAllRatings(armor_change)
 		last_agility_bonus = armor_change
 		owner.toggle_move_intent(MOVE_INTENT_RUN) //By default we swap to running when activating agility
+		if(istype(owner.r_hand, /obj/item/clothing/mask/facehugger)) // start drop huggers
+			var/obj/item/clothing/mask/facehugger/FH = owner.r_hand
+			if(FH.stat != DEAD)
+				owner.drop_r_hand()
+		if(istype(owner.l_hand, /obj/item/clothing/mask/facehugger))
+			var/obj/item/clothing/mask/facehugger/FH = owner.l_hand
+			if(FH.stat != DEAD)
+				owner.drop_l_hand() // stop drop huggers
 	else
 		to_chat(X, span_xenowarning("We raise ourselves to stand on two feet, hard scales setting back into place."))
 		X.remove_movespeed_modifier(MOVESPEED_ID_WARRIOR_AGILITY)
@@ -77,7 +85,7 @@
 	if(!.)
 		return FALSE
 
-	if(get_dist_euclide_square(A, owner) > 20)
+	if(get_dist_euclide_square(A, owner) > 36)
 		if(!silent)
 			to_chat(owner, span_xenonotice("You are too far!"))
 		return FALSE
@@ -490,7 +498,7 @@
 
 /mob/living/punch_act(mob/living/carbon/xenomorph/warrior/X, damage, target_zone, push = TRUE, punch_description = "powerful", stagger_stacks = 3, slowdown_stacks = 3)
 	if(pulledby == X) //If we're being grappled by the Warrior punching us, it's gonna do extra damage and debuffs; combolicious
-		damage *= 1.5
+		damage *= 2
 		slowdown_stacks *= 2
 		stagger_stacks *= 2
 		ParalyzeNoChain(0.5 SECONDS)

@@ -15,7 +15,7 @@
 
 
 /mob/new_player/Initialize()
-	if(length(GLOB.newplayer_start))
+	if(length_char(GLOB.newplayer_start))
 		var/turf/spawn_loc = get_turf(pick(GLOB.newplayer_start))
 		forceMove(spawn_loc)
 	else
@@ -79,7 +79,7 @@
 
 		if(SSticker.current_state == GAME_STATE_PREGAME)
 			stat("Time To Start:", "[SSticker.time_left > 0 ? SSticker.GetTimeLeft() : "(DELAYED)"]")
-			stat("Players: [length(GLOB.player_list)]", "Players Ready: [length(GLOB.ready_players)]")
+			stat("Players: [length_char(GLOB.player_list)]", "Players Ready: [length_char(GLOB.ready_players)]")
 			for(var/i in GLOB.player_list)
 				if(isnewplayer(i))
 					var/mob/new_player/N = i
@@ -213,7 +213,7 @@
 			else
 				position_amount = job_datum.current_positions
 			dept_dat += "<a class='job[command_bold]' href='byond://?src=[REF(src)];lobby_choice=SelectedJob;job_selected=[REF(job_datum)]'>[job_datum.title] ([position_amount])</a>"
-		if(!length(dept_dat))
+		if(!length_char(dept_dat))
 			dept_dat += span_nopositions("No positions open.")
 		dat += jointext(dept_dat, "")
 		dat += "</fieldset><br>"
@@ -233,28 +233,28 @@
 
 /mob/new_player/proc/view_lore()
 	var/output = "<div align='center'>"
-	output += "<a href='byond://?src=[REF(src)];lobby_choice=marines'>TerraGov Marine Corps</A><br><br><a href='byond://?src=[REF(src)];lobby_choice=aliens'>Xenomorph Hive</A>"
+		output += "<a href='byond://?src=[REF(src)];lobby_choice=marines'>Корпус морпехов TerraGov</A><br><br><a href='byond://?src=[REF(src)];lobby_choice=aliens'>Улей ксеноморфов</A>"
 	output += "</div>"
 
-	var/datum/browser/popup = new(src, "lore", "<div align='center'>Current Year: [GAME_YEAR]</div>", 240, 300)
+	var/datum/browser/popup = new(src, "lore", "<div align='center'>Текущий год: [GAME_YEAR]</div>", 240, 300)
 	popup.set_content(output)
 	popup.open(FALSE)
 
 /mob/new_player/proc/view_marines()
 	var/output = "<div align='center'>"
-	output += "<p><i>The <b>TerraGov Marine Corps'</b> mission is to enforce space law for the purpose of defending Terra's orbit as well as other solar colonies around the galaxy under the conflict of the Independent Colonial Confederation and the intelligent xenomorph threat. \nThe TGMC is composed by willing men and women from all kinds of social strata, hailing from all across the TerraGov systems. \nAs the vessel approaches to the ordered location on space, the cryostasis pods deactivate and awake you from your long-term stasis. Knowing that it's one of those days again, you hope that you'll make this out alive...</i></p>"
+	output += "<p>Вглядываясь в оглушительную пустоту космоса, вы думаете со сколькими угрозами человечеству вам придется столкнуться и какая ещё угроза только ждет своего часа.<br/><br/>Миссия <b>корпуса морской пехоты TerraGov</b> заключается в поддержании и принуждении к соблюдению космического закона на территории сверхгосударства. Корпус морпехов обязан защищать территорию самой Терры, солнечную систему и колонии за её пределами. Братство морской пехоты состоит из добровольцев с разных миров и слоев общества, готовых отдать свою жизнь ради высшей цели защиты этого самого общества, из которого они вышли.<br/><br/>Пройдя через очередную мясорубку, командир вновь загнал всех в криокапсулы в ожидании миссии. Корабль вышел на орбиту новой планеты. И вот вы вновь ощущаете тяжесть от долгого сна, просыпаясь лишь затем, что бы начать новую войну.<br/><br/>Наши враги, такие как мятежные против закона TerraGov колонии, несущие хаос Сыны Марса, и всепожирающие ульи ксеноморфов желают лишь одного – нашей смерти. Но нас направляет воля TerraGov и у нас нет права умирать. Мы щит оберегающий верных граждан и меч карающий врагов TerraGov. Поражение и смерть — это удел людей, а мы — солдаты морской пехоты!</p>"
 	output += "</div>"
 
-	var/datum/browser/popup = new(src, "marines", "<div align='center'>TerraGov Marine Corps</div>", 480, 280)
+	var/datum/browser/popup = new(src, "marines", "<div align='center'>Корпус морпехов TerraGov</div>", 480, 600)
 	popup.set_content(output)
 	popup.open(FALSE)
 
 /mob/new_player/proc/view_aliens()
 	var/output = "<div align='center'>"
-	output += "<p><i>Hailing from one of many unknown planets and other unlisted habitats, the <b>xenomorph threat</b> remains at large and still unclear. Extremely dangerous extraterrestrial lifeforms, part of the hive under the Queen Mother, had caught the TGMC and NT colonies off-guard during their discovery in 2414. \nThey are divided into castes, each with their specialized roles equivalent to a traditional squad member in a human force, thanks to the xenomorph's lifecycle. \nAfter days of ravaging the current area, a metal hive was sighted by the Queen Mother and transported you on the ground. With your intent to spread the hive is in motion, you and your fellow sisters get to work...</i></p>"
+	output += "<p>Вглядываясь в мелодичную насыщенность космоса, вы думаете о бесконечных мирах лишь ожидающих жатвы и о том, что все живое должно стать пищей для роста улья.<br/><br/>Из глубины темного космоса пугающего своей неизвестностью мира пришел неописуемый кошмар человечества - <b>ксеноморфы</b>. Чрезвычайно опасные инопланетные формы жизни, разделенные в разные ульи под управлением королев-матерей, застали миры миры TerraGov и Nanotrasen врасплох во время их открытия в 2414 году. Они разделены на касты, каждая из которых имеет свою специализацию схожую с родами войск. Устройство ульев, идеальная координация их атак и самое главное, ненасытный голод привели к потере многих человеческих миров. Связь с колониями была потеряна, а космическая карта потемнела. На одной из потемневших планет после нескольких дней жатвы одним из ульев королева почувствовала прибытие чужеродного железного улья на орбите.<br/><br/>Закончив жатву в этом мире, вы двинетесь в следующий, так же как и было с многими мирами до этого. По той причине, что улей живет лишь с целью постоянного роста и ассимилирования всего живого. У всех существ, встреченных вами, есть лишь право быть поглощенными... во благо улья и королевы-матери.</p>"
 	output += "</div>"
 
-	var/datum/browser/popup = new(src, "aliens", "<div align='center'>Xenomorph Hive</div>", 480, 280)
+	var/datum/browser/popup = new(src, "aliens", "<div align='center'>Улей ксеноморфов</div>", 480, 600)
 	popup.set_content(output)
 	popup.open(FALSE)
 
@@ -368,7 +368,7 @@
 
 	var/failed = FALSE
 
-	if(length(GLOB.latejoin))
+	if(length_char(GLOB.latejoin))
 		var/i = pick(GLOB.latejoin)
 		var/turf/T = get_turf(i)
 		if(!T)
@@ -435,7 +435,7 @@
 	else
 		relevant_cap = max(hpc, epc)
 
-	if(length(SSticker.queued_players) || (relevant_cap && living_player_count() >= relevant_cap && !(check_rights(R_ADMIN, FALSE) || GLOB.deadmins[ckey])))
+	if(length_char(SSticker.queued_players) || (relevant_cap && living_player_count() >= relevant_cap && !(check_rights(R_ADMIN, FALSE) || GLOB.deadmins[ckey])))
 		to_chat(usr, span_danger("[CONFIG_GET(string/hard_popcap_message)]"))
 
 		var/queue_position = SSticker.queued_players.Find(usr)
@@ -445,6 +445,6 @@
 			to_chat(usr, span_notice("There are [queue_position - 1] players in front of you in the queue to join the game."))
 		else
 			SSticker.queued_players += usr
-			to_chat(usr, span_notice("You have been added to the queue to join the game. Your position in queue is [length(SSticker.queued_players)]."))
+			to_chat(usr, span_notice("You have been added to the queue to join the game. Your position in queue is [length_char(SSticker.queued_players)]."))
 		return
 	late_choices()

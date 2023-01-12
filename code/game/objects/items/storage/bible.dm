@@ -9,9 +9,45 @@
 	var/deity_name = "Christ"
 
 /obj/item/storage/bible/koran
-	name = "koran"
-	icon_state = "koran"
+	name = "Luxury Koran"
+	icon = 'icons/obj/items/priest.dmi'
+	icon_state = "Koran"
 	deity_name = "Allah"
+	actions_types = list(/datum/action/item_action)
+
+/obj/item/storage/bible/koran/attack_self(mob/user)
+	var/mob/living/carbon/human/activator = user
+	TIMER_COOLDOWN_START(user, "KoranSpam", 5 SECONDS)
+	if(TIMER_COOLDOWN_CHECK(user, "Koran"))
+		user.balloon_alert(user, "Allah already helped you")
+		if(TIMER_COOLDOWN_CHECK(user, "KoranSpam"))
+			activator.adjustBrainLoss(1, TRUE)
+			return
+		return
+	if(!((activator.religion == "Islam (Shia)") || (activator.religion == "Islam (Sunni)")))
+		user.balloon_alert(user, "Infidel can't use that")
+		return
+	if(locate(/obj/structure/bed/namaz, activator.loc))
+		activator.say("أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللَّهِ")
+		TIMER_COOLDOWN_START(user, "Koran", 600 SECONDS)
+		if(prob(10))
+			explosion(activator, 1, 1, 1, 1, 1)
+		if(prob(80))
+			activator.heal_limb_damage(50, 50)
+			activator.adjustCloneLoss(-10)
+			activator.playsound_local(loc, 'sound/hallucinations/im_here1.ogg', 50)
+	else
+		user.balloon_alert(user, "This place is not holy")
+
+/obj/item/storage/bible/koran/basic
+	name = "Koran"
+	max_w_class = 3
+	storage_slots = 1
+	can_hold = list(
+		/obj/item/weapon/gun/pistol/plasma_pistol,
+		/obj/item/explosive/grenade,
+		/obj/item/explosive/mine,
+    )
 
 /obj/item/storage/bible/booze
 	name = "bible"

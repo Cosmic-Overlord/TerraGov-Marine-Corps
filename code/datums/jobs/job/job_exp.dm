@@ -7,44 +7,24 @@ GLOBAL_PROTECT(exp_to_update)
 		return FALSE
 	if(!CONFIG_GET(flag/use_exp_tracking))
 		return FALSE
+	if(!CONFIG_GET(flag/use_exp_restrictions))
+		return FALSE
 	if(!SSdbcore.Connect())
 		return FALSE
 	if(!exp_requirements || !exp_type)
 		return FALSE
-	if(!job_is_xp_locked(src))
-		return FALSE
 	if(CONFIG_GET(flag/use_exp_restrictions_admin_bypass) && check_other_rights(C, R_ADMIN, FALSE))
 		return FALSE
-	var/my_exp = C.calc_exp_type(get_exp_req_type())
-	var/job_requirement = get_exp_req_amount()
+	if(CONFIG_GET(flag/use_exp_restrictions_mentor_bypass) && check_other_rights(C, R_MENTOR, FALSE))
+		return FALSE
+
+	// Calc client exp and how much do we need
+	var/my_exp = C.calc_exp_type(exp_type)
+	var/job_requirement = exp_requirements
 	if(my_exp >= job_requirement)
 		return FALSE
 	else
 		return (job_requirement - my_exp)
-
-
-/datum/job/proc/get_exp_req_amount()
-	if(job_flags & JOB_FLAG_ISCOMMAND)
-		var/uerhh = CONFIG_GET(number/use_exp_restrictions_command_hours)
-		if(uerhh)
-			return uerhh * 60
-	return exp_requirements
-
-
-/datum/job/proc/get_exp_req_type()
-	if(job_flags & JOB_FLAG_ISCOMMAND)
-		if(CONFIG_GET(flag/use_exp_restrictions_command_department) && exp_type_department)
-			return exp_type_department
-	return exp_type
-
-
-/proc/job_is_xp_locked(datum/job/job)
-	if(!CONFIG_GET(flag/use_exp_restrictions_command) && job.job_flags & JOB_FLAG_ISCOMMAND)
-		return FALSE
-	if(!CONFIG_GET(flag/use_exp_restrictions_other) && !(job.job_flags & JOB_FLAG_ISCOMMAND))
-		return FALSE
-	return TRUE
-
 
 /client/proc/calc_exp_type(exptype)
 	var/list/explist = prefs.exp.Copy()
@@ -62,10 +42,10 @@ GLOBAL_PROTECT(exp_to_update)
 	if(!CONFIG_GET(flag/use_exp_tracking))
 		return "Tracking is disabled in the server configuration file."
 	var/list/play_records = prefs.exp
-	if(!length(play_records))
+	if(!length_char(play_records))
 		set_exp_from_db()
 		play_records = prefs.exp
-		if(!length(play_records))
+		if(!length_char(play_records))
 			return "[key] has no records."
 	var/return_text = list()
 	return_text += "<UL>"
@@ -104,24 +84,24 @@ GLOBAL_PROTECT(exp_to_update)
 			return_text += "<LI>[dep] [get_exp_format(exp_data[dep])] </LI>"
 	if(CONFIG_GET(flag/use_exp_restrictions_admin_bypass) && check_other_rights(src, R_ADMIN, FALSE))
 		return_text += "<LI>Admin (all jobs auto-unlocked)</LI>"
+	if(CONFIG_GET(flag/use_exp_restrictions_mentor_bypass) && check_other_rights(src, R_MENTOR, FALSE))
+		return_text += "<LI>Mentor (all jobs auto-unlocked)</LI>"
 	return_text += "</UL>"
 	var/list/jobs_locked = list()
 	var/list/jobs_unlocked = list()
 	for(var/j in SSjob.joinable_occupations)
 		var/datum/job/job = j
 		if(job.exp_requirements && job.exp_type)
-			if(!job_is_xp_locked(job))
-				continue
-			else if(!job.required_playtime_remaining(mob.client))
+			if(!job.required_playtime_remaining(mob.client))
 				jobs_unlocked += job.title
 			else
-				var/xp_req = job.get_exp_req_amount()
-				jobs_locked += "[job.title] [get_exp_format(text2num(calc_exp_type(job.get_exp_req_type())))] / [get_exp_format(xp_req)] as [job.get_exp_req_type()])"
-	if(length(jobs_unlocked))
+				var/xp_req = job.exp_requirements
+				jobs_locked += "[job.title] [get_exp_format(text2num(calc_exp_type(job.exp_type)))] / [get_exp_format(xp_req)] as [job.exp_type])"
+	if(length_char(jobs_unlocked))
 		return_text += "<BR><BR>Jobs Unlocked:<UL><LI>"
 		return_text += jobs_unlocked.Join("</LI><LI>")
 		return_text += "</LI></UL>"
-	if(length(jobs_locked))
+	if(length_char(jobs_locked))
 		return_text += "<BR><BR>Jobs Not Unlocked:<UL><LI>"
 		return_text += jobs_locked.Join("</LI><LI>")
 		return_text += "</LI></UL>"
@@ -130,7 +110,7 @@ GLOBAL_PROTECT(exp_to_update)
 
 /client/proc/get_exp(role)
 	var/list/play_records = prefs.exp
-	if(!length(play_records))
+	if(!length_char(play_records))
 		return 0
 	return text2num(play_records[role])
 
@@ -248,6 +228,8 @@ GLOBAL_PROTECT(exp_to_update)
 	if(!CONFIG_GET(flag/use_exp_tracking))
 		return FALSE
 	if(CONFIG_GET(flag/use_exp_restrictions_admin_bypass) && check_other_rights(C, R_ADMIN, FALSE))
+		return FALSE
+	if(CONFIG_GET(flag/use_exp_restrictions_mentor_bypass) && check_other_rights(C, R_MENTOR, FALSE))
 		return FALSE
 	var/my_exp = C.prefs.exp[ROLE_XENOMORPH]
 	return my_exp < XP_REQ_UNSEASONED

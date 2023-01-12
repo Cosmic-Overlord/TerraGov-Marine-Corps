@@ -5,7 +5,9 @@
 	selection_color = "#B2A3CC"
 	display_order = JOB_DISPLAY_ORDER_XENOMORPH
 	job_flags = JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE|JOB_FLAG_NOHEADSET|JOB_FLAG_OVERRIDELATEJOINSPAWN|JOB_FLAG_SHOW_OPEN_POSITIONS
-	jobworth = list(/datum/job/survivor/rambo = SURVIVOR_POINTS_REGULAR)
+	jobworth = list(
+		/datum/job/survivor/rambo = SURVIVOR_POINTS_REGULAR
+	)
 	job_points_needed  = 10 //Redefined via config.
 	faction = FACTION_XENO
 	exp_type = EXP_TYPE_SPECIAL
@@ -26,7 +28,7 @@
 	return /mob/living/carbon/xenomorph/larva
 
 /datum/job/xenomorph/return_spawn_turf()
-	if(length(GLOB.xeno_resin_silos))
+	if(length_char(GLOB.xeno_resin_silos))
 		return pick(GLOB.xeno_resin_silos)
 	return pick(GLOB.spawns_by_job[/datum/job/xenomorph])
 
@@ -59,10 +61,16 @@
 	req_admin_notify = TRUE
 	supervisors = "Queen mother"
 	selection_color = "#8972AA"
+
+	exp_requirements = XP_REQ_INTERMEDIATE
+	exp_type = EXP_TYPE_XENO
+
+
 	display_order = JOB_DISPLAY_ORDER_XENO_QUEEN
-	exp_requirements = XP_REQ_EXPERIENCED
 	job_flags = JOB_FLAG_ROUNDSTARTJOINABLE|JOB_FLAG_NOHEADSET|JOB_FLAG_OVERRIDELATEJOINSPAWN|JOB_FLAG_BOLD_NAME_ON_SELECTION|JOB_FLAG_HIDE_CURRENT_POSITIONS
-	jobworth = list(/datum/job/survivor/rambo = SURVIVOR_POINTS_REGULAR)
+	jobworth = list(
+		/datum/job/survivor/rambo = SURVIVOR_POINTS_REGULAR*3
+	)
 	html_description = {"
 		<b>Difficulty</b>: Soul crushing<br /><br />
 		<b>You answer to the</b> Queen Mother<br /><br />

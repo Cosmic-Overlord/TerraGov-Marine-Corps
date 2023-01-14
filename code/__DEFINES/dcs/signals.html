@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm - RU TerraGov Marine Corps</title>
+</head>
+<body>
+<header>
+    <a href="index.html">RU TerraGov Marine Corps</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/dcs/signals.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/dcs/signals.dm 
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_NEW_Z">COMSIG_GLOB_NEW_Z</a></th><td>from base of datum/controller/subsystem/mapping/proc/add_new_zlevel(): (list/args)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_MACHINERY_ANCHORED_CHANGE">COMSIG_GLOB_MACHINERY_ANCHORED_CHANGE</a></th><td>from /obj/machinery/setAnchored(): (machine, anchoredstate)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_EXPLOSION">COMSIG_GLOB_EXPLOSION</a></th><td>called after an explosion happened : (epicenter, devastation_range, heavy_impact_range, light_impact_range, took, orig_dev_range, orig_heavy_range, orig_light_range)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_DROPSHIP_TRANSIT">COMSIG_GLOB_DROPSHIP_TRANSIT</a></th><td>Sent when a marine dropship enters transit level</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_DROPSHIP_HIJACKED">COMSIG_GLOB_DROPSHIP_HIJACKED</a></th><td>Sent when xenos launch a hijacked dropship</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_LIGHT_OFF">COMSIG_GLOB_LIGHT_OFF</a></th><td>Sent when nightfall is casted</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_FLOODLIGHT_SWITCH">COMSIG_GLOB_FLOODLIGHT_SWITCH</a></th><td>Sent when the floodlight switch is powered</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_COMPONENT_ADDED">COMSIG_COMPONENT_ADDED</a></th><td>when a component is added to a datum: (/datum/component)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_COMPONENT_REMOVING">COMSIG_COMPONENT_REMOVING</a></th><td>before a component is removed from a datum because of RemoveComponent: (/datum/component)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_PARENT_PREQDELETED">COMSIG_PARENT_PREQDELETED</a></th><td>before a datum's Destroy() is called: (force), returning a nonzero value will cancel the qdel operation</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_PARENT_QDELETING">COMSIG_PARENT_QDELETING</a></th><td>just before a datum's Destroy() is called: (force), at this point none of the other components chose to interrupt qdel and Destroy will be called</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_TOPIC">COMSIG_TOPIC</a></th><td>generic topic handler (usr, href_list)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_COMBAT_LOG">COMSIG_COMBAT_LOG</a></th><td>generic topic handler (usr, href_list)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ELEMENT_ATTACH">COMSIG_ELEMENT_ATTACH</a></th><td>fires on the target datum when an element is attached to it (/datum/element)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ELEMENT_DETACH">COMSIG_ELEMENT_DETACH</a></th><td>fires on the target datum when an element is attached to it  (/datum/element)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ADMIN_HELP_MADE_INACTIVE">COMSIG_ADMIN_HELP_MADE_INACTIVE</a></th><td>Admin helps
+From /datum/admin_help/RemoveActive().
+Fired when an adminhelp is made inactive either due to closing or resolving.</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ADMIN_HELP_REPLIED">COMSIG_ADMIN_HELP_REPLIED</a></th><td>Called when the player replies. From /client/proc/cmd_admin_pm().</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_BUMPED">COMSIG_ATOM_BUMPED</a></th><td>from base of atom/Bumped(): (/atom/movable)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_GET_EXAMINE_NAME">COMSIG_ATOM_GET_EXAMINE_NAME</a></th><td>from base of atom/get_examine_name(): (/mob, list/overrides)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_SET_OPACITY">COMSIG_ATOM_SET_OPACITY</a></th><td>from base of atom/set_opacity(): (new_opacity)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_SET_LIGHT_RANGE">COMSIG_ATOM_SET_LIGHT_RANGE</a></th><td>Called right before the atom changes the value of light_range to a different one, from base atom/set_light_range(): (new_range)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_SET_LIGHT_POWER">COMSIG_ATOM_SET_LIGHT_POWER</a></th><td>Called right before the atom changes the value of light_power to a different one, from base atom/set_light_power(): (new_power)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_SET_LIGHT_COLOR">COMSIG_ATOM_SET_LIGHT_COLOR</a></th><td>Called right before the atom changes the value of light_color to a different one, from base atom/set_light_color(): (new_color)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_SET_LIGHT_ON">COMSIG_ATOM_SET_LIGHT_ON</a></th><td>Called right before the atom changes the value of light_on to a different one, from base atom/set_light_on(): (new_value)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_SET_LIGHT_FLAGS">COMSIG_ATOM_SET_LIGHT_FLAGS</a></th><td>Called right before the atom changes the value of light_flags to a different one, from base atom/set_light_flags(): (new_value)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOVABLE_CROSS">COMSIG_MOVABLE_CROSS</a></th><td>from base of atom/movable/Cross(): (/atom/movable)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOVABLE_LOCATION_CHANGE">COMSIG_MOVABLE_LOCATION_CHANGE</a></th><td>from base of atom/movable/update_loc(): (/atom/oldloc)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOVABLE_PREBUCKLE">COMSIG_MOVABLE_PREBUCKLE</a></th><td>from /atom/movable/proc/buckle_mob(): (mob/living/M, force, check_loc, buckle_mob_flags)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_RIDDEN_DRIVER_MOVE">COMSIG_RIDDEN_DRIVER_MOVE</a></th><td>from /obj/vehicle/proc/driver_move, caught by the riding component to check and execute the driver trying to drive the vehicle</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOVABLE_SHUTTLE_CRUSH">COMSIG_MOVABLE_SHUTTLE_CRUSH</a></th><td>sent before a thing is crushed by a shuttle</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_OBJ_HIDE">COMSIG_OBJ_HIDE</a></th><td>from base of /turf/proc/levelupdate(). (intact) true to hide and false to unhide</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MACHINERY_POWERED">COMSIG_MACHINERY_POWERED</a></th><td>from /obj/machinery/proc/powered: ()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MACHINERY_USE_POWER">COMSIG_MACHINERY_USE_POWER</a></th><td>from /obj/machinery/proc/use_power: (amount, chan, list/power_sources)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_PORTGEN_POWER_TOGGLE">COMSIG_PORTGEN_POWER_TOGGLE</a></th><td>from /obj/machinery/power/port_gen/proc/TogglePower: ()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_PORTGEN_PROCESS">COMSIG_PORTGEN_PROCESS</a></th><td>from /obj/machinery/power/port_gen/process: ()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_UNMANNED_TURRET_UPDATED">COMSIG_UNMANNED_TURRET_UPDATED</a></th><td>from /obj/vehicle/unmanned/attackby: (newtype)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_EXAMINATE">COMSIG_MOB_EXAMINATE</a></th><td>from base of /mob/verb/examinate(): (atom/target)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ITEM_GRILLED">COMSIG_ITEM_GRILLED</a></th><td>Called when an object is grilled ontop of a griddle</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GRILL_COMPLETED">COMSIG_GRILL_COMPLETED</a></th><td>Called when an object is turned into another item through grilling ontop of a griddle</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_LIVING_SET_LYING_ANGLE">COMSIG_LIVING_SET_LYING_ANGLE</a></th><td>from /mob/living/proc/set_lying_angle</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_LIVING_TREAT_MESSAGE">COMSIG_LIVING_TREAT_MESSAGE</a></th><td>From mob/living/treat_message(): (list/message_args)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_LIVING_POST_FULLY_HEAL">COMSIG_LIVING_POST_FULLY_HEAL</a></th><td>from end of fully_heal(): (admin_revive)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_LIVING_WEEDS_AT_LOC_CREATED">COMSIG_LIVING_WEEDS_AT_LOC_CREATED</a></th><td>from obj/alien/weeds/Initialize()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_LIVING_WEEDS_ADJACENT_REMOVED">COMSIG_LIVING_WEEDS_ADJACENT_REMOVED</a></th><td>from obj/alien/weeds/Destroy()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_HUMAN_APPLY_OVERLAY">COMSIG_HUMAN_APPLY_OVERLAY</a></th><td>from [/mob/living/carbon/human/proc/apply_overlay]: (cache_index, list/overlays_to_apply)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_HUMAN_REMOVE_OVERLAY">COMSIG_HUMAN_REMOVE_OVERLAY</a></th><td>from [/mob/living/carbon/human/proc/remove_overlay]: (cache_index, list/overlays_to_remove)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_XENO_OBJ_THROW_HIT">COMSIG_XENO_OBJ_THROW_HIT</a></th><td>from [/mob/living/carbon/xenomorph/throw_impact]: (obj/target, speed)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_XENO_LIVING_THROW_HIT">COMSIG_XENO_LIVING_THROW_HIT</a></th><td>from [/mob/living/carbon/xenomorph/throw_impact]: (mob/living/target)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_XENO_PROJECTILE_HIT">COMSIG_XENO_PROJECTILE_HIT</a></th><td>from [/mob/living/carbon/xenomorph/projectile_hit] called when a projectile hits a xeno but before confirmation of a hit (can miss due to inaccuracy/evasion)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_SONG_START">COMSIG_SONG_START</a></th><td>sent to the instrument when a song starts playing</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_SONG_END">COMSIG_SONG_END</a></th><td>sent to the instrument when a song stops playing</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MECHA_ACTION_TRIGGER">COMSIG_MECHA_ACTION_TRIGGER</a></th><td>sent from mecha action buttons to the mecha they're linked to</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MECHA_MELEE_CLICK">COMSIG_MECHA_MELEE_CLICK</a></th><td>sent from clicking while you have no equipment selected. Sent before cooldown and adjacency checks, so you can use this for infinite range things if you want.</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMPONENT_CANCEL_MELEE_CLICK">COMPONENT_CANCEL_MELEE_CLICK</a></th><td>Prevents click from happening.</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MECHA_EQUIPMENT_CLICK">COMSIG_MECHA_EQUIPMENT_CLICK</a></th><td>sent from clicking while you have equipment selected.</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMPONENT_CANCEL_EQUIPMENT_CLICK">COMPONENT_CANCEL_EQUIPMENT_CLICK</a></th><td>Prevents click from happening.</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ACTION_TRIGGER">COMSIG_ACTION_TRIGGER</a></th><td>Non-Signal Component Related Defines</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_UI_ACT">COMSIG_UI_ACT</a></th><td>from datum ui_act (usr, action)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_REEQUIP_FAILURE">COMSIG_REEQUIP_FAILURE</a></th><td>From reequip components</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/COMPONENT_CANCEL_EQUIPMENT_CLICK"><aside class="declaration">#define </aside>COMPONENT_CANCEL_EQUIPMENT_CLICK
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L857">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 857"/></a>
+    </h3>
+    <p>Prevents click from happening.</p><h3 id="define/COMPONENT_CANCEL_MELEE_CLICK"><aside class="declaration">#define </aside>COMPONENT_CANCEL_MELEE_CLICK
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L853">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 853"/></a>
+    </h3>
+    <p>Prevents click from happening.</p><h3 id="define/COMSIG_ACTION_TRIGGER"><aside class="declaration">#define </aside>COMSIG_ACTION_TRIGGER
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L863">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 863"/></a>
+    </h3>
+    <p>Non-Signal Component Related Defines</p><h3 id="define/COMSIG_ADMIN_HELP_MADE_INACTIVE"><aside class="declaration">#define </aside>COMSIG_ADMIN_HELP_MADE_INACTIVE
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L99">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 99"/></a>
+    </h3>
+    <p>Admin helps
+From /datum/admin_help/RemoveActive().
+Fired when an adminhelp is made inactive either due to closing or resolving.</p><h3 id="define/COMSIG_ADMIN_HELP_REPLIED"><aside class="declaration">#define </aside>COMSIG_ADMIN_HELP_REPLIED
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L102">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 102"/></a>
+    </h3>
+    <p>Called when the player replies. From /client/proc/cmd_admin_pm().</p><h3 id="define/COMSIG_ATOM_BUMPED"><aside class="declaration">#define </aside>COMSIG_ATOM_BUMPED
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L150">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 150"/></a>
+    </h3>
+    <p>from base of atom/Bumped(): (/atom/movable)</p><h3 id="define/COMSIG_ATOM_GET_EXAMINE_NAME"><aside class="declaration">#define </aside>COMSIG_ATOM_GET_EXAMINE_NAME
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L161">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 161"/></a>
+    </h3>
+    <p>from base of atom/get_examine_name(): (/mob, list/overrides)</p><h3 id="define/COMSIG_ATOM_SET_LIGHT_COLOR"><aside class="declaration">#define </aside>COMSIG_ATOM_SET_LIGHT_COLOR
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L189">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 189"/></a>
+    </h3>
+    <p>Called right before the atom changes the value of light_color to a different one, from base atom/set_light_color(): (new_color)</p><h3 id="define/COMSIG_ATOM_SET_LIGHT_FLAGS"><aside class="declaration">#define </aside>COMSIG_ATOM_SET_LIGHT_FLAGS
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L193">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 193"/></a>
+    </h3>
+    <p>Called right before the atom changes the value of light_flags to a different one, from base atom/set_light_flags(): (new_value)</p><h3 id="define/COMSIG_ATOM_SET_LIGHT_ON"><aside class="declaration">#define </aside>COMSIG_ATOM_SET_LIGHT_ON
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L191">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 191"/></a>
+    </h3>
+    <p>Called right before the atom changes the value of light_on to a different one, from base atom/set_light_on(): (new_value)</p><h3 id="define/COMSIG_ATOM_SET_LIGHT_POWER"><aside class="declaration">#define </aside>COMSIG_ATOM_SET_LIGHT_POWER
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L187">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 187"/></a>
+    </h3>
+    <p>Called right before the atom changes the value of light_power to a different one, from base atom/set_light_power(): (new_power)</p><h3 id="define/COMSIG_ATOM_SET_LIGHT_RANGE"><aside class="declaration">#define </aside>COMSIG_ATOM_SET_LIGHT_RANGE
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L185">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 185"/></a>
+    </h3>
+    <p>Called right before the atom changes the value of light_range to a different one, from base atom/set_light_range(): (new_range)</p><h3 id="define/COMSIG_ATOM_SET_OPACITY"><aside class="declaration">#define </aside>COMSIG_ATOM_SET_OPACITY
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L182">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 182"/></a>
+    </h3>
+    <p>from base of atom/set_opacity(): (new_opacity)</p><h3 id="define/COMSIG_COMBAT_LOG"><aside class="declaration">#define </aside>COMSIG_COMBAT_LOG
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L71">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 71"/></a>
+    </h3>
+    <p>generic topic handler (usr, href_list)</p><h3 id="define/COMSIG_COMPONENT_ADDED"><aside class="declaration">#define </aside>COMSIG_COMPONENT_ADDED
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L60">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 60"/></a>
+    </h3>
+    <p>when a component is added to a datum: (/datum/component)</p><h3 id="define/COMSIG_COMPONENT_REMOVING"><aside class="declaration">#define </aside>COMSIG_COMPONENT_REMOVING
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L62">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 62"/></a>
+    </h3>
+    <p>before a component is removed from a datum because of RemoveComponent: (/datum/component)</p><h3 id="define/COMSIG_ELEMENT_ATTACH"><aside class="declaration">#define </aside>COMSIG_ELEMENT_ATTACH
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L75">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 75"/></a>
+    </h3>
+    <p>fires on the target datum when an element is attached to it (/datum/element)</p><h3 id="define/COMSIG_ELEMENT_DETACH"><aside class="declaration">#define </aside>COMSIG_ELEMENT_DETACH
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L77">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 77"/></a>
+    </h3>
+    <p>fires on the target datum when an element is attached to it  (/datum/element)</p><h3 id="define/COMSIG_GLOB_DROPSHIP_HIJACKED"><aside class="declaration">#define </aside>COMSIG_GLOB_DROPSHIP_HIJACKED
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 42"/></a>
+    </h3>
+    <p>Sent when xenos launch a hijacked dropship</p><h3 id="define/COMSIG_GLOB_DROPSHIP_TRANSIT"><aside class="declaration">#define </aside>COMSIG_GLOB_DROPSHIP_TRANSIT
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 40"/></a>
+    </h3>
+    <p>Sent when a marine dropship enters transit level</p><h3 id="define/COMSIG_GLOB_EXPLOSION"><aside class="declaration">#define </aside>COMSIG_GLOB_EXPLOSION
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 28"/></a>
+    </h3>
+    <p>called after an explosion happened : (epicenter, devastation_range, heavy_impact_range, light_impact_range, took, orig_dev_range, orig_heavy_range, orig_light_range)</p><h3 id="define/COMSIG_GLOB_FLOODLIGHT_SWITCH"><aside class="declaration">#define </aside>COMSIG_GLOB_FLOODLIGHT_SWITCH
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L46">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 46"/></a>
+    </h3>
+    <p>Sent when the floodlight switch is powered</p><h3 id="define/COMSIG_GLOB_LIGHT_OFF"><aside class="declaration">#define </aside>COMSIG_GLOB_LIGHT_OFF
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 44"/></a>
+    </h3>
+    <p>Sent when nightfall is casted</p><h3 id="define/COMSIG_GLOB_MACHINERY_ANCHORED_CHANGE"><aside class="declaration">#define </aside>COMSIG_GLOB_MACHINERY_ANCHORED_CHANGE
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 25"/></a>
+    </h3>
+    <p>from /obj/machinery/setAnchored(): (machine, anchoredstate)</p><h3 id="define/COMSIG_GLOB_NEW_Z"><aside class="declaration">#define </aside>COMSIG_GLOB_NEW_Z
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 10"/></a>
+    </h3>
+    <p>from base of datum/controller/subsystem/mapping/proc/add_new_zlevel(): (list/args)</p><h3 id="define/COMSIG_GRILL_COMPLETED"><aside class="declaration">#define </aside>COMSIG_GRILL_COMPLETED
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L396">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 396"/></a>
+    </h3>
+    <p>Called when an object is turned into another item through grilling ontop of a griddle</p><h3 id="define/COMSIG_HUMAN_APPLY_OVERLAY"><aside class="declaration">#define </aside>COMSIG_HUMAN_APPLY_OVERLAY
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L466">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 466"/></a>
+    </h3>
+    <p>from [/mob/living/carbon/human/proc/apply_overlay]: (cache_index, list/overlays_to_apply)</p><h3 id="define/COMSIG_HUMAN_REMOVE_OVERLAY"><aside class="declaration">#define </aside>COMSIG_HUMAN_REMOVE_OVERLAY
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L468">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 468"/></a>
+    </h3>
+    <p>from [/mob/living/carbon/human/proc/remove_overlay]: (cache_index, list/overlays_to_remove)</p><h3 id="define/COMSIG_ITEM_GRILLED"><aside class="declaration">#define </aside>COMSIG_ITEM_GRILLED
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L393">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 393"/></a>
+    </h3>
+    <p>Called when an object is grilled ontop of a griddle</p><h3 id="define/COMSIG_LIVING_POST_FULLY_HEAL"><aside class="declaration">#define </aside>COMSIG_LIVING_POST_FULLY_HEAL
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L448">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 448"/></a>
+    </h3>
+    <p>from end of fully_heal(): (admin_revive)</p><h3 id="define/COMSIG_LIVING_SET_LYING_ANGLE"><aside class="declaration">#define </aside>COMSIG_LIVING_SET_LYING_ANGLE
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L430">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 430"/></a>
+    </h3>
+    <p>from /mob/living/proc/set_lying_angle</p><h3 id="define/COMSIG_LIVING_TREAT_MESSAGE"><aside class="declaration">#define </aside>COMSIG_LIVING_TREAT_MESSAGE
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L433">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 433"/></a>
+    </h3>
+    <p>From mob/living/treat_message(): (list/message_args)</p><h3 id="define/COMSIG_LIVING_WEEDS_ADJACENT_REMOVED"><aside class="declaration">#define </aside>COMSIG_LIVING_WEEDS_ADJACENT_REMOVED
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L455">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 455"/></a>
+    </h3>
+    <p>from obj/alien/weeds/Destroy()</p><h3 id="define/COMSIG_LIVING_WEEDS_AT_LOC_CREATED"><aside class="declaration">#define </aside>COMSIG_LIVING_WEEDS_AT_LOC_CREATED
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L454">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 454"/></a>
+    </h3>
+    <p>from obj/alien/weeds/Initialize()</p><h3 id="define/COMSIG_MACHINERY_POWERED"><aside class="declaration">#define </aside>COMSIG_MACHINERY_POWERED
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L251">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 251"/></a>
+    </h3>
+    <p>from /obj/machinery/proc/powered: ()</p><h3 id="define/COMSIG_MACHINERY_USE_POWER"><aside class="declaration">#define </aside>COMSIG_MACHINERY_USE_POWER
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L253">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 253"/></a>
+    </h3>
+    <p>from /obj/machinery/proc/use_power: (amount, chan, list/power_sources)</p><h3 id="define/COMSIG_MECHA_ACTION_TRIGGER"><aside class="declaration">#define </aside>COMSIG_MECHA_ACTION_TRIGGER
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L848">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 848"/></a>
+    </h3>
+    <p>sent from mecha action buttons to the mecha they're linked to</p><h3 id="define/COMSIG_MECHA_EQUIPMENT_CLICK"><aside class="declaration">#define </aside>COMSIG_MECHA_EQUIPMENT_CLICK
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L855">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 855"/></a>
+    </h3>
+    <p>sent from clicking while you have equipment selected.</p><h3 id="define/COMSIG_MECHA_MELEE_CLICK"><aside class="declaration">#define </aside>COMSIG_MECHA_MELEE_CLICK
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L851">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 851"/></a>
+    </h3>
+    <p>sent from clicking while you have no equipment selected. Sent before cooldown and adjacency checks, so you can use this for infinite range things if you want.</p><h3 id="define/COMSIG_MOB_EXAMINATE"><aside class="declaration">#define </aside>COMSIG_MOB_EXAMINATE
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L382">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 382"/></a>
+    </h3>
+    <p>from base of /mob/verb/examinate(): (atom/target)</p><h3 id="define/COMSIG_MOVABLE_CROSS"><aside class="declaration">#define </aside>COMSIG_MOVABLE_CROSS
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L202">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 202"/></a>
+    </h3>
+    <p>from base of atom/movable/Cross(): (/atom/movable)</p><h3 id="define/COMSIG_MOVABLE_LOCATION_CHANGE"><aside class="declaration">#define </aside>COMSIG_MOVABLE_LOCATION_CHANGE
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L204">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 204"/></a>
+    </h3>
+    <p>from base of atom/movable/update_loc(): (/atom/oldloc)</p><h3 id="define/COMSIG_MOVABLE_PREBUCKLE"><aside class="declaration">#define </aside>COMSIG_MOVABLE_PREBUCKLE
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L209">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 209"/></a>
+    </h3>
+    <p>from /atom/movable/proc/buckle_mob(): (mob/living/M, force, check_loc, buckle_mob_flags)</p><h3 id="define/COMSIG_MOVABLE_SHUTTLE_CRUSH"><aside class="declaration">#define </aside>COMSIG_MOVABLE_SHUTTLE_CRUSH
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L234">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 234"/></a>
+    </h3>
+    <p>sent before a thing is crushed by a shuttle</p><h3 id="define/COMSIG_OBJ_HIDE"><aside class="declaration">#define </aside>COMSIG_OBJ_HIDE
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L247">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 247"/></a>
+    </h3>
+    <p>from base of /turf/proc/levelupdate(). (intact) true to hide and false to unhide</p><h3 id="define/COMSIG_PARENT_PREQDELETED"><aside class="declaration">#define </aside>COMSIG_PARENT_PREQDELETED
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L64">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 64"/></a>
+    </h3>
+    <p>before a datum's Destroy() is called: (force), returning a nonzero value will cancel the qdel operation</p><h3 id="define/COMSIG_PARENT_QDELETING"><aside class="declaration">#define </aside>COMSIG_PARENT_QDELETING
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L66">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 66"/></a>
+    </h3>
+    <p>just before a datum's Destroy() is called: (force), at this point none of the other components chose to interrupt qdel and Destroy will be called</p><h3 id="define/COMSIG_PORTGEN_POWER_TOGGLE"><aside class="declaration">#define </aside>COMSIG_PORTGEN_POWER_TOGGLE
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L256">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 256"/></a>
+    </h3>
+    <p>from /obj/machinery/power/port_gen/proc/TogglePower: ()</p><h3 id="define/COMSIG_PORTGEN_PROCESS"><aside class="declaration">#define </aside>COMSIG_PORTGEN_PROCESS
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L257">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 257"/></a>
+    </h3>
+    <p>from /obj/machinery/power/port_gen/process: ()</p><h3 id="define/COMSIG_REEQUIP_FAILURE"><aside class="declaration">#define </aside>COMSIG_REEQUIP_FAILURE
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L889">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 889"/></a>
+    </h3>
+    <p>From reequip components</p><h3 id="define/COMSIG_RIDDEN_DRIVER_MOVE"><aside class="declaration">#define </aside>COMSIG_RIDDEN_DRIVER_MOVE
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L215">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 215"/></a>
+    </h3>
+    <p>from /obj/vehicle/proc/driver_move, caught by the riding component to check and execute the driver trying to drive the vehicle</p><h3 id="define/COMSIG_SONG_END"><aside class="declaration">#define </aside>COMSIG_SONG_END
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L843">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 843"/></a>
+    </h3>
+    <p>sent to the instrument when a song stops playing</p><h3 id="define/COMSIG_SONG_START"><aside class="declaration">#define </aside>COMSIG_SONG_START
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L841">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 841"/></a>
+    </h3>
+    <p>sent to the instrument when a song starts playing</p><h3 id="define/COMSIG_TOPIC"><aside class="declaration">#define </aside>COMSIG_TOPIC
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L68">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 68"/></a>
+    </h3>
+    <p>generic topic handler (usr, href_list)</p><h3 id="define/COMSIG_UI_ACT"><aside class="declaration">#define </aside>COMSIG_UI_ACT
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L886">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 886"/></a>
+    </h3>
+    <p>from datum ui_act (usr, action)</p><h3 id="define/COMSIG_UNMANNED_TURRET_UPDATED"><aside class="declaration">#define </aside>COMSIG_UNMANNED_TURRET_UPDATED
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L259">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 259"/></a>
+    </h3>
+    <p>from /obj/vehicle/unmanned/attackby: (newtype)</p><h3 id="define/COMSIG_XENO_LIVING_THROW_HIT"><aside class="declaration">#define </aside>COMSIG_XENO_LIVING_THROW_HIT
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L543">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 543"/></a>
+    </h3>
+    <p>from [/mob/living/carbon/xenomorph/throw_impact]: (mob/living/target)</p><h3 id="define/COMSIG_XENO_OBJ_THROW_HIT"><aside class="declaration">#define </aside>COMSIG_XENO_OBJ_THROW_HIT
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L542">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 542"/></a>
+    </h3>
+    <p>from [/mob/living/carbon/xenomorph/throw_impact]: (obj/target, speed)</p><h3 id="define/COMSIG_XENO_PROJECTILE_HIT"><aside class="declaration">#define </aside>COMSIG_XENO_PROJECTILE_HIT
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/dcs/signals.dm#L545">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 545"/></a>
+    </h3>
+    <p>from [/mob/living/carbon/xenomorph/projectile_hit] called when a projectile hits a xeno but before confirmation of a hit (can miss due to inaccuracy/evasion)</p></main>
+<footer>
+    tgmc.dme
+    <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/tree/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e">1ab5be0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

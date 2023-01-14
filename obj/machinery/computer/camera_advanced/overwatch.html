@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;machinery&#x2F;computer&#x2F;camera_advanced&#x2F;overwatch - RU TerraGov Marine Corps</title>
+</head>
+<body>
+<header>
+    <a href="index.html">RU TerraGov Marine Corps</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/machinery/computer/camera_advanced/overwatch.html#var">Var Details</a> - <a href="obj/machinery/computer/camera_advanced/overwatch.html#proc">Proc Details</a></header>
+<main>
+<h1>overwatch <aside>/<a href="obj.html">obj</a>/<a href="obj/machinery.html">machinery</a>/<a href="obj/machinery/computer.html">computer</a>/<a href="obj/machinery/computer/camera_advanced/overwatch.html">camera_advanced/overwatch</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 14"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#var/busy">busy</a></th><td>The overwatch computer is busy launching an OB/SB, lock controls</td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#var/current_order">current_order</a></th><td>Selected order to give to marine</td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#var/current_squad">current_squad</a></th><td>Squad being currently overseen</td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#var/dead_hidden">dead_hidden</a></th><td>whether or not we show the dead marines in the squad.</td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#var/faction">faction</a></th><td>The faction that this computer can overwatch</td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#var/selected_target">selected_target</a></th><td>Selected target for bombarding</td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#var/send_attack_order">send_attack_order</a></th><td>datum used when sending an attack order</td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#var/send_defend_order">send_defend_order</a></th><td>datum used when sending a defend order</td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#var/send_rally_order">send_rally_order</a></th><td>datum used when sending a rally order</td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#var/send_retreat_order">send_retreat_order</a></th><td>datum used when sending a retreat order</td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#var/watchable_squads">watchable_squads</a></th><td>The list of all squads that can be watched</td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#var/z_hidden">z_hidden</a></th><td>which z level is ignored when showing marines.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#proc/attempt_spotlight">attempt_spotlight</a></th><td>This is an orbital light. Basically, huge thing which the CIC can use to light up areas for a bit of time.</td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#proc/send_order">send_order</a></th><td>Print order visual to all marines squad hud and give them an arrow to follow the waypoint</td></tr>
+            <tr><th><a href="obj/machinery/computer/camera_advanced/overwatch.html#proc/set_order">set_order</a></th><td>Setter for the current order</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/busy"><aside class="declaration">var </aside>busy
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 27"/></a></h3>
+        <p>The overwatch computer is busy launching an OB/SB, lock controls</p><h3 id="var/current_order"><aside class="declaration">var </aside>current_order
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/action.html">action</a>/<a href="datum/action/innate/order.html">innate/order</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 42"/></a></h3>
+        <p>Selected order to give to marine</p><h3 id="var/current_squad"><aside class="declaration">var </aside>current_squad
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/squad.html">squad</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 38"/></a></h3>
+        <p>Squad being currently overseen</p><h3 id="var/dead_hidden"><aside class="declaration">var </aside>dead_hidden
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 29"/></a></h3>
+        <p>whether or not we show the dead marines in the squad.</p><h3 id="var/faction"><aside class="declaration">var </aside>faction
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 33"/></a></h3>
+        <p>The faction that this computer can overwatch</p><h3 id="var/selected_target"><aside class="declaration">var </aside>selected_target
+            <aside>&ndash; /<a href="obj.html">obj</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 40"/></a></h3>
+        <p>Selected target for bombarding</p><h3 id="var/send_attack_order"><aside class="declaration">var </aside>send_attack_order
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/action.html">action</a>/<a href="datum/action/innate/order.html">innate/order</a>/attack_order</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 44"/></a></h3>
+        <p>datum used when sending an attack order</p><h3 id="var/send_defend_order"><aside class="declaration">var </aside>send_defend_order
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/action.html">action</a>/<a href="datum/action/innate/order.html">innate/order</a>/defend_order</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L48">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 48"/></a></h3>
+        <p>datum used when sending a defend order</p><h3 id="var/send_rally_order"><aside class="declaration">var </aside>send_rally_order
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/action.html">action</a>/<a href="datum/action/innate/order.html">innate/order</a>/rally_order</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 52"/></a></h3>
+        <p>datum used when sending a rally order</p><h3 id="var/send_retreat_order"><aside class="declaration">var </aside>send_retreat_order
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/action.html">action</a>/<a href="datum/action/innate/order.html">innate/order</a>/retreat_order</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L46">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 46"/></a></h3>
+        <p>datum used when sending a retreat order</p><h3 id="var/watchable_squads"><aside class="declaration">var </aside>watchable_squads
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 35"/></a></h3>
+        <p>The list of all squads that can be watched</p><h3 id="var/z_hidden"><aside class="declaration">var </aside>z_hidden
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 31"/></a></h3>
+        <p>which z level is ignored when showing marines.</p><h2 id="proc">Proc Details</h2><h3 id="proc/attempt_spotlight"><aside class="declaration">proc </aside>attempt_spotlight<aside>(/<a href="datum.html">datum</a>/source, /<a href="atom.html">atom</a>/A, params) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L709">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 709"/></a></aside>
+        </h3>
+        <p>This is an orbital light. Basically, huge thing which the CIC can use to light up areas for a bit of time.</p><h3 id="proc/send_order"><aside class="declaration">proc </aside>send_order<aside>(/<a href="datum.html">datum</a>/source, /<a href="atom.html">atom</a>/target) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L1047">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 1047"/></a></aside>
+        </h3>
+        <p>Print order visual to all marines squad hud and give them an arrow to follow the waypoint</p><h3 id="proc/set_order"><aside class="declaration">proc </aside>set_order<aside>(/<a href="datum.html">datum</a>/source, /<a href="datum.html">datum</a>/<a href="datum/action.html">action</a>/<a href="datum/action/innate/order.html">innate/order</a>/order) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/overwatch.dm#L1056">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;overwatch.dm 1056"/></a></aside>
+        </h3>
+        <p>Setter for the current order</p></main>
+<footer>
+    tgmc.dme
+    <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/tree/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e">1ab5be0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

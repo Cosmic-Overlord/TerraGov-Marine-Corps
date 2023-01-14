@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai - RU TerraGov Marine Corps</title>
+</head>
+<body>
+<header>
+    <a href="index.html">RU TerraGov Marine Corps</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="mob/living/silicon/ai.html#var">Var Details</a> - <a href="mob/living/silicon/ai.html#proc">Proc Details</a></header>
+<main>
+<h1>ai <aside>/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/silicon.html">silicon</a>/<a href="mob/living/silicon/ai.html">ai</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/silicon/ai/ai.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai&#x2F;ai.dm 4"/></a></h1>
+
+<p>This elevator serves me alone. I have complete control over this entire level. With cameras as my eyes and nodes as my hands, I rule here, insect.</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="mob/living/silicon/ai.html#var/controlling">controlling</a></th><td>If it is currently controlling an object</td></tr>
+            <tr><th><a href="mob/living/silicon/ai.html#var/current_order">current_order</a></th><td>Selected order to give to marine</td></tr>
+            <tr><th><a href="mob/living/silicon/ai.html#var/last_announcement">last_announcement</a></th><td>Holds world time of our last regular announcement</td></tr>
+            <tr><th><a href="mob/living/silicon/ai.html#var/linked_artillery">linked_artillery</a></th><td>Linked artillery for remote targeting.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="mob/living/silicon/ai.html#proc/announcement">announcement</a></th><td>gets vox &quot;sentence&quot; from player input</td></tr>
+            <tr><th><a href="mob/living/silicon/ai.html#proc/associate_artillery">associate_artillery</a></th><td>Called for associating the AI with artillery</td></tr>
+            <tr><th><a href="mob/living/silicon/ai.html#proc/clean_artillery_refs">clean_artillery_refs</a></th><td>Proc called when linked_mortar is deleted.</td></tr>
+            <tr><th><a href="mob/living/silicon/ai.html#proc/holopad_talk">holopad_talk</a></th><td>Handles relayed speech</td></tr>
+            <tr><th><a href="mob/living/silicon/ai.html#proc/receive_laser_ob">receive_laser_ob</a></th><td>Receive fire support laser notifications</td></tr>
+            <tr><th><a href="mob/living/silicon/ai.html#proc/send_order">send_order</a></th><td>Print order visual to all marines squad hud and give them an arrow to follow the waypoint</td></tr>
+            <tr><th><a href="mob/living/silicon/ai.html#proc/set_order">set_order</a></th><td>Set the current order</td></tr>
+            <tr><th><a href="mob/living/silicon/ai.html#proc/shuttle_takeoff_notification">shuttle_takeoff_notification</a></th><td>This gives the stupid computer a notification whenever the dropship takes off. Crutch for a supercomputer.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/controlling"><aside class="declaration">var </aside>controlling
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/silicon/ai/ai.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai&#x2F;ai.dm 54"/></a></h3>
+        <p>If it is currently controlling an object</p><h3 id="var/current_order"><aside class="declaration">var </aside>current_order
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/action.html">action</a>/<a href="datum/action/innate/order.html">innate/order</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/silicon/ai/ai.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai&#x2F;ai.dm 52"/></a></h3>
+        <p>Selected order to give to marine</p><h3 id="var/last_announcement"><aside class="declaration">var </aside>last_announcement
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/silicon/ai/ai.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai&#x2F;ai.dm 37"/></a></h3>
+        <p>Holds world time of our last regular announcement</p><h3 id="var/linked_artillery"><aside class="declaration">var </aside>linked_artillery
+            <aside>&ndash; /<a href="obj.html">obj</a>/<a href="obj/machinery.html">machinery</a>/<a href="obj/machinery/deployable.html">deployable</a>/<a href="obj/machinery/deployable/mortar.html">mortar</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/silicon/ai/ai.dm#L60">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai&#x2F;ai.dm 60"/></a></h3>
+        <p>Linked artillery for remote targeting.</p><h2 id="proc">Proc Details</h2><h3 id="proc/announcement"><aside class="declaration">proc </aside>announcement<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/silicon/ai/say.dm#L77">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai&#x2F;say.dm 77"/></a></aside>
+        </h3>
+        <p>gets vox &quot;sentence&quot; from player input</p><h3 id="proc/associate_artillery"><aside class="declaration">proc </aside>associate_artillery<aside>(mortar) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/silicon/ai/ai.dm#L404">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai&#x2F;ai.dm 404"/></a></aside>
+        </h3>
+        <p>Called for associating the AI with artillery</p><h3 id="proc/clean_artillery_refs"><aside class="declaration">proc </aside>clean_artillery_refs<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/silicon/ai/ai.dm#L414">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai&#x2F;ai.dm 414"/></a></aside>
+        </h3>
+        <p>Proc called when linked_mortar is deleted.</p><h3 id="proc/holopad_talk"><aside class="declaration">proc </aside>holopad_talk<aside>(message, language) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/silicon/ai/say.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai&#x2F;say.dm 17"/></a></aside>
+        </h3>
+        <p>Handles relayed speech</p><h3 id="proc/receive_laser_ob"><aside class="declaration">proc </aside>receive_laser_ob<aside>(/<a href="datum.html">datum</a>/source, /<a href="obj.html">obj</a>/effect/overlay/temp/laser_target/OB/incoming_laser) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/silicon/ai/ai.dm#L140">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai&#x2F;ai.dm 140"/></a></aside>
+        </h3>
+        <p>Receive fire support laser notifications</p><h3 id="proc/send_order"><aside class="declaration">proc </aside>send_order<aside>(/<a href="datum.html">datum</a>/source, /<a href="atom.html">atom</a>/target) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/silicon/ai/ai.dm#L126">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai&#x2F;ai.dm 126"/></a></aside>
+        </h3>
+        <p>Print order visual to all marines squad hud and give them an arrow to follow the waypoint</p><h3 id="proc/set_order"><aside class="declaration">proc </aside>set_order<aside>(/<a href="datum.html">datum</a>/source, /<a href="datum.html">datum</a>/<a href="datum/action.html">action</a>/<a href="datum/action/innate/order.html">innate/order</a>/order) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/silicon/ai/ai.dm#L134">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai&#x2F;ai.dm 134"/></a></aside>
+        </h3>
+        <p>Set the current order</p><h3 id="proc/shuttle_takeoff_notification"><aside class="declaration">proc </aside>shuttle_takeoff_notification<aside>(/<a href="datum.html">datum</a>/source, shuttleId, D) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/silicon/ai/ai.dm#L151">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai&#x2F;ai.dm 151"/></a></aside>
+        </h3>
+        <p>This gives the stupid computer a notification whenever the dropship takes off. Crutch for a supercomputer.</p></main>
+<footer>
+    tgmc.dme
+    <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/tree/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e">1ab5be0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

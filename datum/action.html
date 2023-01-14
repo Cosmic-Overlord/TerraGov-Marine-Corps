@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;action - RU TerraGov Marine Corps</title>
+</head>
+<body>
+<header>
+    <a href="index.html">RU TerraGov Marine Corps</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/action.html#var">Var Details</a> - <a href="datum/action.html#proc">Proc Details</a></header>
+<main>
+<h1>action <aside>/<a href="datum.html">datum</a>/<a href="datum/action.html">action</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/actions/action.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;actions&#x2F;action.dm 11"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/action.html#var/action_type">action_type</a></th><td>Defines what visual references will be initialized at round-start</td></tr>
+            <tr><th><a href="datum/action.html#var/keybinding_signals">keybinding_signals</a></th><td>Used for keybindings , use KEYBINDING_NORMAL or KEYBINDING_ALTERNATE for keybinding_activation or alternate_ability_activate</td></tr>
+            <tr><th><a href="datum/action.html#var/toggled">toggled</a></th><td>Used for keeping track of the addition of the selected/active frames</td></tr>
+            <tr><th><a href="datum/action.html#var/visual_references">visual_references</a></th><td>holds a set of misc visual references to use with the overlay API. Always atleast one</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/action.html#proc/alternate_action_activate">alternate_action_activate</a></th><td>Signal Handler for alternate actions</td></tr>
+            <tr><th><a href="datum/action.html#proc/handle_button_status_visuals">handle_button_status_visuals</a></th><td>A proc called on update button action for  additional visuals beyond the very base</td></tr>
+            <tr><th><a href="datum/action.html#proc/keybind_activation">keybind_activation</a></th><td>Signal Handler for main action</td></tr>
+            <tr><th><a href="datum/action.html#proc/keybind_trigger">keybind_trigger</a></th><td>Handler for what action to trigger, inherit from this and call parent before for extra actions</td></tr>
+            <tr><th><a href="datum/action.html#proc/set_toggle">set_toggle</a></th><td>Depending on the action type , toggles the selected/active frame to show without allowing stacking multiple overlays</td></tr>
+            <tr><th><a href="datum/action.html#proc/update_map_text">update_map_text</a></th><td>A handler used to update the maptext and show the change immediately.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/action_type"><aside class="declaration">var </aside>action_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/actions/action.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;actions&#x2F;action.dm 26"/></a></h3>
+        <p>Defines what visual references will be initialized at round-start</p><h3 id="var/keybinding_signals"><aside class="declaration">var </aside>keybinding_signals
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/actions/action.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;actions&#x2F;action.dm 24"/></a></h3>
+        <p>Used for keybindings , use KEYBINDING_NORMAL or KEYBINDING_ALTERNATE for keybinding_activation or alternate_ability_activate</p><h3 id="var/toggled"><aside class="declaration">var </aside>toggled
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/actions/action.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;actions&#x2F;action.dm 28"/></a></h3>
+        <p>Used for keeping track of the addition of the selected/active frames</p><h3 id="var/visual_references"><aside class="declaration">var </aside>visual_references
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/actions/action.dm#L22">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;actions&#x2F;action.dm 22"/></a></h3>
+        <p>holds a set of misc visual references to use with the overlay API. Always atleast one</p><h2 id="proc">Proc Details</h2><h3 id="proc/alternate_action_activate"><aside class="declaration">proc </aside>alternate_action_activate<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/actions/action.dm#L147">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;actions&#x2F;action.dm 147"/></a></aside>
+        </h3>
+        <p>Signal Handler for alternate actions</p><h3 id="proc/handle_button_status_visuals"><aside class="declaration">proc </aside>handle_button_status_visuals<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/actions/action.dm#L128">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;actions&#x2F;action.dm 128"/></a></aside>
+        </h3>
+        <p>A proc called on update button action for  additional visuals beyond the very base</p><h3 id="proc/keybind_activation"><aside class="declaration">proc </aside>keybind_activation<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/actions/action.dm#L140">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;actions&#x2F;action.dm 140"/></a></aside>
+        </h3>
+        <p>Signal Handler for main action</p><h3 id="proc/keybind_trigger"><aside class="declaration">proc </aside>keybind_trigger<aside>(/<a href="mob.html">mob</a>/source, /<a href="datum.html">datum</a>/<a href="datum/keybinding.html">keybinding</a>/kb_type) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/actions/action.dm#L152">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;actions&#x2F;action.dm 152"/></a></aside>
+        </h3>
+        <p>Handler for what action to trigger, inherit from this and call parent before for extra actions</p><h3 id="proc/set_toggle"><aside class="declaration">proc </aside>set_toggle<aside>(value) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/actions/action.dm#L72">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;actions&#x2F;action.dm 72"/></a></aside>
+        </h3>
+        <p>Depending on the action type , toggles the selected/active frame to show without allowing stacking multiple overlays</p><h3 id="proc/update_map_text"><aside class="declaration">proc </aside>update_map_text<aside>(key_string, key_signal) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/actions/action.dm#L91">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;actions&#x2F;action.dm 91"/></a></aside>
+        </h3>
+        <p>A handler used to update the maptext and show the change immediately.</p></main>
+<footer>
+    tgmc.dme
+    <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/tree/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e">1ab5be0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

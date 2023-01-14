@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;controllers&#x2F;subsystem&#x2F;minimaps.dm - RU TerraGov Marine Corps</title>
+</head>
+<body>
+<header>
+    <a href="index.html">RU TerraGov Marine Corps</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+</header>
+<main>
+<h1>code/controllers/subsystem/minimaps.dm 
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem/minimaps.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimaps.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th>/var/<a href="global.html#var/SSminimaps">SSminimaps</a></th>
+                <td></td></tr>
+        <tr><th><a href="datum&#x2F;hud_displays.html">&#x2F;datum&#x2F;hud_displays</a></th><td>Holder datum for a zlevels data, concerning the overlays and the drawn level itself
+The individual image trackers have a raw and a normal list
+raw lists just store the images, while the normal ones are assoc list of [tracked_atom] = image
+the raw lists are to speed up the Fire() of the subsystem so we dont have to filter through
+WARNING!
+There is a byond bug: http://www.byond.com/forum/post/2661309
+That that forces us to use a seperate list ref when accessing the lists of this datum
+Yea it hurts me too</td></tr>
+        <tr><th><a href="datum&#x2F;minimap_updator.html">&#x2F;datum&#x2F;minimap_updator</a></th><td>Holder datum to ease updating of atoms to update</td></tr>
+        <tr><th>/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/<a href="atom/movable/screen.html">screen</a>/minimap</th><td>Default HUD screen minimap object</td></tr>
+        <tr><th><a href="datum&#x2F;action&#x2F;minimap.html">&#x2F;datum&#x2F;action&#x2F;minimap</a></th><td>Action that gives the owner access to the minimap pool</td></tr></table></main>
+<footer>
+    tgmc.dme
+    <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/tree/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e">1ab5be0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;mob&#x2F;living - RU TerraGov Marine Corps</title>
+</head>
+<body>
+<header>
+    <a href="index.html">RU TerraGov Marine Corps</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="mob/living.html#var">Var Details</a> - <a href="mob/living.html#proc">Proc Details</a></header>
+<main>
+<h1>living <aside>/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="mob/living.html#var/afk_status">afk_status</a></th><td>If this mob is afk</td></tr>
+            <tr><th><a href="mob/living.html#var/afk_timer_id">afk_timer_id</a></th><td>Id of the timer to set the afk status to MOB_DISCONNECTED</td></tr>
+            <tr><th><a href="mob/living.html#var/brainloss">brainloss</a></th><td>Brain damage caused by someone hitting you in the head with a bible or being infected with brainrot.</td></tr>
+            <tr><th><a href="mob/living.html#var/bruteloss">bruteloss</a></th><td>Brutal damage caused by brute force (punching, being clubbed by a toolbox ect... this also accounts for pressure damage)</td></tr>
+            <tr><th><a href="mob/living.html#var/cloneloss">cloneloss</a></th><td>Damage caused by being cloned or ejected from the cloner early</td></tr>
+            <tr><th><a href="mob/living.html#var/drowsyness">drowsyness</a></th><td>Drowsyness amount. Reduces movespeed and if inhaling smoke with a sleep trait [/mob/living/carbon/inhale_smoke] will cause them to fall asleep.</td></tr>
+            <tr><th><a href="mob/living.html#var/emitted_auras">emitted_auras</a></th><td>List of strings for auras this mob is currently emitting via ssAura</td></tr>
+            <tr><th><a href="mob/living.html#var/fireloss">fireloss</a></th><td>Burn damage caused by being way too hot, too cold or burnt.</td></tr>
+            <tr><th><a href="mob/living.html#var/friendly_fire">friendly_fire</a></th><td>How much friendly fire damage has this mob done in the last 30 seconds.</td></tr>
+            <tr><th><a href="mob/living.html#var/hard_armor">hard_armor</a></th><td>Flat-damage-reduction-based armor.</td></tr>
+            <tr><th><a href="mob/living.html#var/health">health</a></th><td>Mob's current health</td></tr>
+            <tr><th><a href="mob/living.html#var/health_threshold_crit">health_threshold_crit</a></th><td>Health at which a mob goes into crit</td></tr>
+            <tr><th><a href="mob/living.html#var/health_threshold_dead">health_threshold_dead</a></th><td>Health at which a mob dies</td></tr>
+            <tr><th><a href="mob/living.html#var/last_stamina_exhaustion">last_stamina_exhaustion</a></th><td>This is the cooldown on suffering additional effects for when we exhaust all stamina</td></tr>
+            <tr><th><a href="mob/living.html#var/maxHealth">maxHealth</a></th><td>Maximum health that should be possible.</td></tr>
+            <tr><th><a href="mob/living.html#var/max_stamina">max_stamina</a></th><td>Maximum amount of stamina a mob can have. Different from the stamina buffer because stamina has a positive and negative part</td></tr>
+            <tr><th><a href="mob/living.html#var/max_stamina_buffer">max_stamina_buffer</a></th><td>How much stamina can you regen</td></tr>
+            <tr><th><a href="mob/living.html#var/oxyloss">oxyloss</a></th><td>Oxygen depravation damage (no air in lungs)</td></tr>
+            <tr><th><a href="mob/living.html#var/received_auras">received_auras</a></th><td>Assoc list mapping aura types to strength, based on what we've received since the last life tick. Handled in handle_status_effects()</td></tr>
+            <tr><th><a href="mob/living.html#var/slowdown">slowdown</a></th><td>Stagger and slow vars; Stagger penalizes projectile damage for non-Xenos and disables ability use for Xenos. Slowdown is obvious.
+Temporary penalty on movement. Regenerates each tick.</td></tr>
+            <tr><th><a href="mob/living.html#var/smoke_delays">smoke_delays</a></th><td>Lazy assoc list of smoke type mapped to the next world time that smoke can affect this mob</td></tr>
+            <tr><th><a href="mob/living.html#var/soft_armor">soft_armor</a></th><td>%-reduction-based armor.</td></tr>
+            <tr><th><a href="mob/living.html#var/stagger">stagger</a></th><td>Temporary inability to use special actions; hurts projectile damage. Regenerates each tick.</td></tr>
+            <tr><th><a href="mob/living.html#var/stamina_regen_modifiers">stamina_regen_modifiers</a></th><td>Maps modifiers by name to a value, applied additively to stamina_regen_multiplier</td></tr>
+            <tr><th><a href="mob/living.html#var/stamina_regen_multiplier">stamina_regen_multiplier</a></th><td>How fast does a mob regen its stamina. Shouldn't go below 0.</td></tr>
+            <tr><th><a href="mob/living.html#var/staminaloss">staminaloss</a></th><td>Stamina damage caused by running to much, or specific toxins</td></tr>
+            <tr><th><a href="mob/living.html#var/toxloss">toxloss</a></th><td>Toxic damage caused by being poisoned or radiation</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="mob/living.html#proc/AdjustConfused">AdjustConfused</a></th><td>Increases confused effect duration by the provided value.</td></tr>
+            <tr><th><a href="mob/living.html#proc/AdjustImmobilized">AdjustImmobilized</a></th><td>Adds to remaining duration.</td></tr>
+            <tr><th><a href="mob/living.html#proc/AdjustMute">AdjustMute</a></th><td>Adds to remaining mute duration</td></tr>
+            <tr><th><a href="mob/living.html#proc/AmountConfused">AmountConfused</a></th><td>Returns the remaining duration if a confuse effect exists, else 0</td></tr>
+            <tr><th><a href="mob/living.html#proc/AmountImmobilized">AmountImmobilized</a></th><td>How many deciseconds remain in our Immobilized status effect.</td></tr>
+            <tr><th><a href="mob/living.html#proc/AmountMute">AmountMute</a></th><td>Checks the duration left on our mute status effect</td></tr>
+            <tr><th><a href="mob/living.html#proc/Confused">Confused</a></th><td>Set confused effect duration to the provided value if not less than current duration</td></tr>
+            <tr><th><a href="mob/living.html#proc/Immobilize">Immobilize</a></th><td>Can't go below remaining duration.</td></tr>
+            <tr><th><a href="mob/living.html#proc/ImmobilizeNoChain">ImmobilizeNoChain</a></th><td>Immobilize only if not already immobilized.</td></tr>
+            <tr><th><a href="mob/living.html#proc/IsAdminSleeping">IsAdminSleeping</a></th><td>ADMIN SLEEP</td></tr>
+            <tr><th><a href="mob/living.html#proc/IsConfused">IsConfused</a></th><td>///////////////CONFUSED
+Returns the current confuse status effect if any, else FALSE</td></tr>
+            <tr><th><a href="mob/living.html#proc/IsImmobilized">IsImmobilized</a></th><td>////////////////////////////// IMMOBILIZED /////////////////////////////////////
+If we're immobilized.</td></tr>
+            <tr><th><a href="mob/living.html#proc/IsKnockdown">IsKnockdown</a></th><td>KNOCKDOWN</td></tr>
+            <tr><th><a href="mob/living.html#proc/IsMute">IsMute</a></th><td>/////////////////////////// MUTE ////////////////////////////////////
+Checks to see if we're muted</td></tr>
+            <tr><th><a href="mob/living.html#proc/IsParalyzed">IsParalyzed</a></th><td>PARALYZED</td></tr>
+            <tr><th><a href="mob/living.html#proc/IsSleeping">IsSleeping</a></th><td>SLEEPING</td></tr>
+            <tr><th><a href="mob/living.html#proc/IsSlowed">IsSlowed</a></th><td>/////////////////////////// SLOW ////////////////////////////////////
+Returns number of slowdown stacks if any</td></tr>
+            <tr><th><a href="mob/living.html#proc/IsStaggered">IsStaggered</a></th><td>/////////////////////////// STAGGER ////////////////////////////////////
+Returns number of stagger stacks if any</td></tr>
+            <tr><th><a href="mob/living.html#proc/IsStun">IsStun</a></th><td>STUN</td></tr>
+            <tr><th><a href="mob/living.html#proc/IsUnconscious">IsUnconscious</a></th><td>UNCONSCIOUS</td></tr>
+            <tr><th><a href="mob/living.html#proc/Mute">Mute</a></th><td>Mutes the target for the stated duration</td></tr>
+            <tr><th><a href="mob/living.html#proc/SetConfused">SetConfused</a></th><td>Set confused effect duration to the provided value</td></tr>
+            <tr><th><a href="mob/living.html#proc/SetImmobilized">SetImmobilized</a></th><td>Sets remaining duration.</td></tr>
+            <tr><th><a href="mob/living.html#proc/activate_hand">activate_hand</a></th><td>Swap to the hand clicked on the hud</td></tr>
+            <tr><th><a href="mob/living.html#proc/add_emitted_auras">add_emitted_auras</a></th><td>Add a list of auras to our current emitted, update self as needed</td></tr>
+            <tr><th><a href="mob/living.html#proc/add_splatter_floor">add_splatter_floor</a></th><td>add_splatter_floor</td></tr>
+            <tr><th><a href="mob/living.html#proc/add_stamina_regen_modifier">add_stamina_regen_modifier</a></th><td>Adds an entry to our stamina_regen_modifiers and updates stamina_regen_multiplier</td></tr>
+            <tr><th><a href="mob/living.html#proc/add_stun_absorption">add_stun_absorption</a></th><td>STUN ABSORPTION</td></tr>
+            <tr><th><a href="mob/living.html#proc/adjust_drugginess">adjust_drugginess</a></th><td>Modify mob's drugginess in either direction, minimum zero. Adds or removes druggy overlay as appropriate.</td></tr>
+            <tr><th><a href="mob/living.html#proc/adjust_radiation">adjust_radiation</a></th><td>Modifies irradiation duration</td></tr>
+            <tr><th><a href="mob/living.html#proc/adjust_slowdown">adjust_slowdown</a></th><td>This is where we normalize the set_slowdown input to be at least 0</td></tr>
+            <tr><th><a href="mob/living.html#proc/adjust_stagger">adjust_stagger</a></th><td>Where the magic happens. Actually applies stagger stacks.</td></tr>
+            <tr><th><a href="mob/living.html#proc/adjust_timed_status_effect">adjust_timed_status_effect</a></th><td>Adjusts a timed status effect on the mob,taking into account any existing timed status effects.
+This can be any status effect that takes into account &quot;duration&quot; with their initialize arguments.</td></tr>
+            <tr><th><a href="mob/living.html#proc/amount_irradiated">amount_irradiated</a></th><td>How many deciseconds remain in our irradiated status effect</td></tr>
+            <tr><th><a href="mob/living.html#proc/apply_damages">apply_damages</a></th><td>Used to apply multiple types of damage to a mob at the same time</td></tr>
+            <tr><th><a href="mob/living.html#proc/apply_effect">apply_effect</a></th><td>Apply status effect to mob</td></tr>
+            <tr><th><a href="mob/living.html#proc/attacked_by_alternate">attacked_by_alternate</a></th><td>/mob/living attacked_by_alternate //TODO!! MAKE THIS UNIQUE FROM NORMAL ATTACKED_BY AS A FEATURE</td></tr>
+            <tr><th><a href="mob/living.html#proc/clean_mob">clean_mob</a></th><td>Washes the blood and such off a mob</td></tr>
+            <tr><th><a href="mob/living.html#proc/create_thinking_indicator">create_thinking_indicator</a></th><td>Overrides for overlay creation</td></tr>
+            <tr><th><a href="mob/living.html#proc/despawn">despawn</a></th><td>Despawn the mob, remove its job and store its item</td></tr>
+            <tr><th><a href="mob/living.html#proc/enable_throw_parry">enable_throw_parry</a></th><td>Sends a signal to enable throw parrying for the handed duration, provided the throw_parry component is attached. Otherwise, has no real effect.
+For more information on parries, see throw_parry.dm</td></tr>
+            <tr><th><a href="mob/living.html#proc/end_flying">end_flying</a></th><td>remove flying flags and reset the sprite layer</td></tr>
+            <tr><th><a href="mob/living.html#proc/finish_aura_cycle">finish_aura_cycle</a></th><td>Adjusts our stats based on the auras we've received and care about, then cleans out the list for next tick.</td></tr>
+            <tr><th><a href="mob/living.html#proc/fly_at">fly_at</a></th><td>Throw the mob while giving HOVERING to flag_pass and setting layer to FLY_LAYER</td></tr>
+            <tr><th><a href="mob/living.html#proc/get_living_limb_descriptive_name">get_living_limb_descriptive_name</a></th><td>Gives us a more natural sounding limb name for descriptions and such</td></tr>
+            <tr><th><a href="mob/living.html#proc/get_soft_armor">get_soft_armor</a></th><td>Returns the soft armor for the given mob. If human and no limb is specified, it takes the weighted average of all available limbs.</td></tr>
+            <tr><th><a href="mob/living.html#proc/handle_blood">handle_blood</a></th><td>BLOOD SYSTEM</td></tr>
+            <tr><th><a href="mob/living.html#proc/handle_slowdown">handle_slowdown</a></th><td>Standard slowdown regen called by life.dm</td></tr>
+            <tr><th><a href="mob/living.html#proc/handle_stagger">handle_stagger</a></th><td>Standard stagger regen called by life.dm</td></tr>
+            <tr><th><a href="mob/living.html#proc/hud_set_firestacks">hud_set_firestacks</a></th><td>Set fire stacks on the hud</td></tr>
+            <tr><th><a href="mob/living.html#proc/irradiate">irradiate</a></th><td>Applies irradiation from a source</td></tr>
+            <tr><th><a href="mob/living.html#proc/is_irradiated">is_irradiated</a></th><td>////////////////////////////// Irradiated //////////////////////////////////
+Returns whether the mob is irradiated or not</td></tr>
+            <tr><th><a href="mob/living.html#proc/modify_by_armor">modify_by_armor</a></th><td>Returns a number after taking into account both soft and hard armor for the specified damage type, usually damage</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_dodged_bullet">on_dodged_bullet</a></th><td>Is the shooter a living mob. Defined before the check as used later as well
+accumulated movement related evasion bonus</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_fakedeath_trait_gain">on_fakedeath_trait_gain</a></th><td>Called when TRAIT_FAKEDEATH is added to the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_fakedeath_trait_loss">on_fakedeath_trait_loss</a></th><td>Called when TRAIT_FAKEDEATH is removed from the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_floored_trait_gain">on_floored_trait_gain</a></th><td>Called when TRAIT_FLOORED is added to the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_floored_trait_loss">on_floored_trait_loss</a></th><td>Called when TRAIT_FLOORED is removed from the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_immobile_trait_gain">on_immobile_trait_gain</a></th><td>Called when TRAIT_LEGLESS is added to the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_immobile_trait_loss">on_immobile_trait_loss</a></th><td>Called when TRAIT_LEGLESS is removed from the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_knockedout_trait_gain">on_knockedout_trait_gain</a></th><td>Called when TRAIT_KNOCKEDOUT is added to the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_knockedout_trait_loss">on_knockedout_trait_loss</a></th><td>Called when TRAIT_KNOCKEDOUT is removed from the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_legless_trait_gain">on_legless_trait_gain</a></th><td>Called when TRAIT_LEGLESS is added to the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_legless_trait_loss">on_legless_trait_loss</a></th><td>Called when TRAIT_LEGLESS is removed from the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_sdd_grace_period_end">on_sdd_grace_period_end</a></th><td>Set the mob as afk after AFK_TIMER</td></tr>
+            <tr><th><a href="mob/living.html#proc/recalc_stamina_regen_multiplier">recalc_stamina_regen_multiplier</a></th><td>Regenerates stamina_regen_multiplier from initial based on the current modifier list, minimum 0.</td></tr>
+            <tr><th><a href="mob/living.html#proc/receive_aura">receive_aura</a></th><td>Update what auras we'll receive this life tick if it's either new or stronger than current. aura_type as AURA_ define, strength as number.</td></tr>
+            <tr><th><a href="mob/living.html#proc/register_init_signals">register_init_signals</a></th><td>Called on /mob/living/Initialize(), for the mob to register to relevant signals.</td></tr>
+            <tr><th><a href="mob/living.html#proc/remove_emitted_auras">remove_emitted_auras</a></th><td>Remove a list of auras from our current emitted, update self as needed</td></tr>
+            <tr><th><a href="mob/living.html#proc/remove_stamina_regen_modifier">remove_stamina_regen_modifier</a></th><td>Removes an entry from our stamina_regen_modifiers and updates stamina_regen_multiplier. Returns TRUE if an entry was removed</td></tr>
+            <tr><th><a href="mob/living.html#proc/setBruteLoss">setBruteLoss</a></th><td>We straight up set bruteloss/brute damage to a desired amount unless godmode is enabled</td></tr>
+            <tr><th><a href="mob/living.html#proc/setFireLoss">setFireLoss</a></th><td>We straight up set fireloss/burn damage to a desired amount unless godmode is enabled</td></tr>
+            <tr><th><a href="mob/living.html#proc/set_afk_status">set_afk_status</a></th><td>Set the afk status of the mob</td></tr>
+            <tr><th><a href="mob/living.html#proc/set_drugginess">set_drugginess</a></th><td>Sets mob's drugginess to provided amount, minimum 0. Adds or removes druggy overlay as appropriate.</td></tr>
+            <tr><th><a href="mob/living.html#proc/set_lying_angle">set_lying_angle</a></th><td>Changes the inclination angle of a mob, used by humans and others to differentiate between standing up and prone positions.</td></tr>
+            <tr><th><a href="mob/living.html#proc/set_radiation">set_radiation</a></th><td>Sets irradiation  duration</td></tr>
+            <tr><th><a href="mob/living.html#proc/set_remote_control">set_remote_control</a></th><td>Set the remote_control and reset the perspective</td></tr>
+            <tr><th><a href="mob/living.html#proc/set_slowdown">set_slowdown</a></th><td>Where the magic happens. Actually applies slow stacks.</td></tr>
+            <tr><th><a href="mob/living.html#proc/set_timed_status_effect">set_timed_status_effect</a></th><td>Sets a timed status effect of some kind on a mob to a specific value.
+If only_if_higher is TRUE, it will only set the value up to the passed duration,
+so any pre-existing status effects of the same type won't be reduced down</td></tr>
+            <tr><th><a href="mob/living.html#proc/shared_living_ui_distance">shared_living_ui_distance</a></th><td>public</td></tr>
+            <tr><th><a href="mob/living.html#proc/stun_effect_act">stun_effect_act</a></th><td>stun_effect_act(stun_amount, agony_amount, def_zone)</td></tr>
+            <tr><th><a href="mob/living.html#proc/swap_hand">swap_hand</a></th><td>Swap the active hand</td></tr>
+            <tr><th><a href="mob/living.html#proc/take_overall_damage">take_overall_damage</a></th><td>Damages all limbs equally. Overridden by human, otherwise just does apply_damage</td></tr>
+            <tr><th><a href="mob/living.html#proc/transfer_mob">transfer_mob</a></th><td>Transfer the candidate mind into src</td></tr>
+            <tr><th><a href="mob/living.html#proc/update_aura_overlay">update_aura_overlay</a></th><td>Bring however we represent emitted auras up to date. Implemented for human and xenomorph.</td></tr>
+            <tr><th><a href="mob/living.html#proc/user_can_buckle">user_can_buckle</a></th><td>Returns TRUE or FALSE depending on whether src can buckle buckling_mob into something</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/afk_status"><aside class="declaration">var </aside>afk_status
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L133">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 133"/></a></h3>
+        <p>If this mob is afk</p><h3 id="var/afk_timer_id"><aside class="declaration">var </aside>afk_timer_id
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L131">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 131"/></a></h3>
+        <p>Id of the timer to set the afk status to MOB_DISCONNECTED</p><h3 id="var/brainloss"><aside class="declaration">var </aside>brainloss
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 37"/></a></h3>
+        <p>Brain damage caused by someone hitting you in the head with a bible or being infected with brainrot.</p><h3 id="var/bruteloss"><aside class="declaration">var </aside>bruteloss
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 25"/></a></h3>
+        <p>Brutal damage caused by brute force (punching, being clubbed by a toolbox ect... this also accounts for pressure damage)</p><h3 id="var/cloneloss"><aside class="declaration">var </aside>cloneloss
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 35"/></a></h3>
+        <p>Damage caused by being cloned or ejected from the cloner early</p><h3 id="var/drowsyness"><aside class="declaration">var </aside>drowsyness
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L39">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 39"/></a></h3>
+        <p>Drowsyness amount. Reduces movespeed and if inhaling smoke with a sleep trait [/mob/living/carbon/inhale_smoke] will cause them to fall asleep.</p><h3 id="var/emitted_auras"><aside class="declaration">var </aside>emitted_auras
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L90">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 90"/></a></h3>
+        <p>List of strings for auras this mob is currently emitting via ssAura</p><h3 id="var/fireloss"><aside class="declaration">var </aside>fireloss
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 27"/></a></h3>
+        <p>Burn damage caused by being way too hot, too cold or burnt.</p><h3 id="var/friendly_fire"><aside class="declaration">var </aside>friendly_fire
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L123">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 123"/></a></h3>
+        <p>How much friendly fire damage has this mob done in the last 30 seconds.</p><h3 id="var/hard_armor"><aside class="declaration">var </aside>hard_armor
+            <aside>&ndash; /<a href="datum.html">datum</a>/armor</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 21"/></a></h3>
+        <p>Flat-damage-reduction-based armor.</p><h3 id="var/health"><aside class="declaration">var </aside>health
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 12"/></a></h3>
+        <p>Mob's current health</p><h3 id="var/health_threshold_crit"><aside class="declaration">var </aside>health_threshold_crit
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 16"/></a></h3>
+        <p>Health at which a mob goes into crit</p><h3 id="var/health_threshold_dead"><aside class="declaration">var </aside>health_threshold_dead
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 14"/></a></h3>
+        <p>Health at which a mob dies</p><h3 id="var/last_stamina_exhaustion"><aside class="declaration">var </aside>last_stamina_exhaustion
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L136">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 136"/></a></h3>
+        <p>This is the cooldown on suffering additional effects for when we exhaust all stamina</p><h3 id="var/maxHealth"><aside class="declaration">var </aside>maxHealth
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 10"/></a></h3>
+        <p>Maximum health that should be possible.</p><h3 id="var/max_stamina"><aside class="declaration">var </aside>max_stamina
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 43"/></a></h3>
+        <p>Maximum amount of stamina a mob can have. Different from the stamina buffer because stamina has a positive and negative part</p><h3 id="var/max_stamina_buffer"><aside class="declaration">var </aside>max_stamina_buffer
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 45"/></a></h3>
+        <p>How much stamina can you regen</p><h3 id="var/oxyloss"><aside class="declaration">var </aside>oxyloss
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 29"/></a></h3>
+        <p>Oxygen depravation damage (no air in lungs)</p><h3 id="var/received_auras"><aside class="declaration">var </aside>received_auras
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L88">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 88"/></a></h3>
+        <p>Assoc list mapping aura types to strength, based on what we've received since the last life tick. Handled in handle_status_effects()</p><h3 id="var/slowdown"><aside class="declaration">var </aside>slowdown
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L127">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 127"/></a></h3>
+        <p>Stagger and slow vars; Stagger penalizes projectile damage for non-Xenos and disables ability use for Xenos. Slowdown is obvious.
+Temporary penalty on movement. Regenerates each tick.</p><h3 id="var/smoke_delays"><aside class="declaration">var </aside>smoke_delays
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L105">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 105"/></a></h3>
+        <p>Lazy assoc list of smoke type mapped to the next world time that smoke can affect this mob</p><h3 id="var/soft_armor"><aside class="declaration">var </aside>soft_armor
+            <aside>&ndash; /<a href="datum.html">datum</a>/armor</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 19"/></a></h3>
+        <p>%-reduction-based armor.</p><h3 id="var/stagger"><aside class="declaration">var </aside>stagger
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L129">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 129"/></a></h3>
+        <p>Temporary inability to use special actions; hurts projectile damage. Regenerates each tick.</p><h3 id="var/stamina_regen_modifiers"><aside class="declaration">var </aside>stamina_regen_modifiers
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 49"/></a></h3>
+        <p>Maps modifiers by name to a value, applied additively to stamina_regen_multiplier</p><h3 id="var/stamina_regen_multiplier"><aside class="declaration">var </aside>stamina_regen_multiplier
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 47"/></a></h3>
+        <p>How fast does a mob regen its stamina. Shouldn't go below 0.</p><h3 id="var/staminaloss"><aside class="declaration">var </aside>staminaloss
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 33"/></a></h3>
+        <p>Stamina damage caused by running to much, or specific toxins</p><h3 id="var/toxloss"><aside class="declaration">var </aside>toxloss
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defines.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 31"/></a></h3>
+        <p>Toxic damage caused by being poisoned or radiation</p><h2 id="proc">Proc Details</h2><h3 id="proc/AdjustConfused"><aside class="declaration">proc </aside>AdjustConfused<aside>(amount, ignore_canstun) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L445">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 445"/></a></aside>
+        </h3>
+        <p>Increases confused effect duration by the provided value.</p><h3 id="proc/AdjustImmobilized"><aside class="declaration">proc </aside>AdjustImmobilized<aside>(amount, ignore_canstun) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L186">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 186"/></a></aside>
+        </h3>
+        <p>Adds to remaining duration.</p><h3 id="proc/AdjustMute"><aside class="declaration">proc </aside>AdjustMute<aside>(amount) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L734">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 734"/></a></aside>
+        </h3>
+        <p>Adds to remaining mute duration</p><h3 id="proc/AmountConfused"><aside class="declaration">proc </aside>AmountConfused<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L407">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 407"/></a></aside>
+        </h3>
+        <p>Returns the remaining duration if a confuse effect exists, else 0</p><h3 id="proc/AmountImmobilized"><aside class="declaration">proc </aside>AmountImmobilized<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L135">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 135"/></a></aside>
+        </h3>
+        <p>How many deciseconds remain in our Immobilized status effect.</p><h3 id="proc/AmountMute"><aside class="declaration">proc </aside>AmountMute<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L695">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 695"/></a></aside>
+        </h3>
+        <p>Checks the duration left on our mute status effect</p><h3 id="proc/Confused"><aside class="declaration">proc </aside>Confused<aside>(amount, ignore_canstun) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L414">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 414"/></a></aside>
+        </h3>
+        <p>Set confused effect duration to the provided value if not less than current duration</p><h3 id="proc/Immobilize"><aside class="declaration">proc </aside>Immobilize<aside>(amount, ignore_canstun) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L150">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 150"/></a></aside>
+        </h3>
+        <p>Can't go below remaining duration.</p><h3 id="proc/ImmobilizeNoChain"><aside class="declaration">proc </aside>ImmobilizeNoChain<aside>(amount, ignore_canstun) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L142">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 142"/></a></aside>
+        </h3>
+        <p>Immobilize only if not already immobilized.</p><h3 id="proc/IsAdminSleeping"><aside class="declaration">proc </aside>IsAdminSleeping<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L330">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 330"/></a></aside>
+        </h3>
+        <p>ADMIN SLEEP</p><h3 id="proc/IsConfused"><aside class="declaration">proc </aside>IsConfused<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L403">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 403"/></a></aside>
+        </h3>
+        <p>///////////////CONFUSED
+Returns the current confuse status effect if any, else FALSE</p><h3 id="proc/IsImmobilized"><aside class="declaration">proc </aside>IsImmobilized<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L131">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 131"/></a></aside>
+        </h3>
+        <p>////////////////////////////// IMMOBILIZED /////////////////////////////////////
+If we're immobilized.</p><h3 id="proc/IsKnockdown"><aside class="declaration">proc </aside>IsKnockdown<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L63">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 63"/></a></aside>
+        </h3>
+        <p>KNOCKDOWN</p><h3 id="proc/IsMute"><aside class="declaration">proc </aside>IsMute<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L691">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 691"/></a></aside>
+        </h3>
+        <p>/////////////////////////// MUTE ////////////////////////////////////
+Checks to see if we're muted</p><h3 id="proc/IsParalyzed"><aside class="declaration">proc </aside>IsParalyzed<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L202">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 202"/></a></aside>
+        </h3>
+        <p>PARALYZED</p><h3 id="proc/IsSleeping"><aside class="declaration">proc </aside>IsSleeping<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L277">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 277"/></a></aside>
+        </h3>
+        <p>SLEEPING</p><h3 id="proc/IsSlowed"><aside class="declaration">proc </aside>IsSlowed<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L646">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 646"/></a></aside>
+        </h3>
+        <p>/////////////////////////// SLOW ////////////////////////////////////
+Returns number of slowdown stacks if any</p><h3 id="proc/IsStaggered"><aside class="declaration">proc </aside>IsStaggered<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L619">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 619"/></a></aside>
+        </h3>
+        <p>/////////////////////////// STAGGER ////////////////////////////////////
+Returns number of stagger stacks if any</p><h3 id="proc/IsStun"><aside class="declaration">proc </aside>IsStun<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 3"/></a></aside>
+        </h3>
+        <p>STUN</p><h3 id="proc/IsUnconscious"><aside class="declaration">proc </aside>IsUnconscious<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L350">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 350"/></a></aside>
+        </h3>
+        <p>UNCONSCIOUS</p><h3 id="proc/Mute"><aside class="declaration">proc </aside>Mute<aside>(amount) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L702">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 702"/></a></aside>
+        </h3>
+        <p>Mutes the target for the stated duration</p><h3 id="proc/SetConfused"><aside class="declaration">proc </aside>SetConfused<aside>(amount, ignore_canstun) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L428">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 428"/></a></aside>
+        </h3>
+        <p>Set confused effect duration to the provided value</p><h3 id="proc/SetImmobilized"><aside class="declaration">proc </aside>SetImmobilized<aside>(amount, ignore_canstun) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L166">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 166"/></a></aside>
+        </h3>
+        <p>Sets remaining duration.</p><h3 id="proc/activate_hand"><aside class="declaration">proc </aside>activate_hand<aside>(selhand) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living.dm#L907">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 907"/></a></aside>
+        </h3>
+        <p>Swap to the hand clicked on the hud</p><h3 id="proc/add_emitted_auras"><aside class="declaration">proc </aside>add_emitted_auras<aside>(source, aura_list) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 34"/></a></aside>
+        </h3>
+        <p>Add a list of auras to our current emitted, update self as needed</p><h3 id="proc/add_splatter_floor"><aside class="declaration">proc </aside>add_splatter_floor<aside>(/<a href="turf.html">turf</a>/T, small_drip, b_color) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/blood.dm#L327">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;blood.dm 327"/></a></aside>
+        </h3>
+        <p>add_splatter_floor</p><h3 id="proc/add_stamina_regen_modifier"><aside class="declaration">proc </aside>add_stamina_regen_modifier<aside>(mod_name, mod_value) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_health_procs.dm#L124">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 124"/></a></aside>
+        </h3>
+        <p>Adds an entry to our stamina_regen_modifiers and updates stamina_regen_multiplier</p><h3 id="proc/add_stun_absorption"><aside class="declaration">proc </aside>add_stun_absorption<aside>(key, duration, priority, message, self_message, examine_message) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L460">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 460"/></a></aside>
+        </h3>
+        <p>STUN ABSORPTION</p><h3 id="proc/adjust_drugginess"><aside class="declaration">proc </aside>adjust_drugginess<aside>(amount) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L580">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 580"/></a></aside>
+        </h3>
+        <p>Modify mob's drugginess in either direction, minimum zero. Adds or removes druggy overlay as appropriate.</p><h3 id="proc/adjust_radiation"><aside class="declaration">proc </aside>adjust_radiation<aside>(amount, ignore_canstun) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L789">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 789"/></a></aside>
+        </h3>
+        <p>Modifies irradiation duration</p><h3 id="proc/adjust_slowdown"><aside class="declaration">proc </aside>adjust_slowdown<aside>(amount) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L663">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 663"/></a></aside>
+        </h3>
+        <p>This is where we normalize the set_slowdown input to be at least 0</p><h3 id="proc/adjust_stagger"><aside class="declaration">proc </aside>adjust_stagger<aside>(amount, ignore_canstun, capped) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L629">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 629"/></a></aside>
+        </h3>
+        <p>Where the magic happens. Actually applies stagger stacks.</p><h3 id="proc/adjust_timed_status_effect"><aside class="declaration">proc </aside>adjust_timed_status_effect<aside>(duration, effect, max_duration) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/status_effects/debuffs.dm#L170">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;status_effects&#x2F;debuffs.dm 170"/></a></aside>
+        </h3>
+        <p>Adjusts a timed status effect on the mob,taking into account any existing timed status effects.
+This can be any status effect that takes into account &quot;duration&quot; with their initialize arguments.</p>
+<p>Positive durations will add deciseconds to the duration of existing status effects
+or apply a new status effect of that duration to the mob.</p>
+<p>Negative durations will remove deciseconds from the duration of an existing version of the status effect,
+removing the status effect entirely if the duration becomes less than zero (less than the current world time).</p>
+<p>duration - the duration, in deciseconds, to add or remove from the effect
+effect - the type of status effect being adjusted on the mob
+max_duration - optional - if set, positive durations will only be added UP TO the passed max duration</p><h3 id="proc/amount_irradiated"><aside class="declaration">proc </aside>amount_irradiated<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L756">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 756"/></a></aside>
+        </h3>
+        <p>How many deciseconds remain in our irradiated status effect</p><h3 id="proc/apply_damages"><aside class="declaration">proc </aside>apply_damages<aside>(brute, burn, tox, oxy, clone, def_zone, blocked, sharp, edge, updating_health, penetration) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/damage_procs.dm#L59">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;damage_procs.dm 59"/></a></aside>
+        </h3>
+        <p>Used to apply multiple types of damage to a mob at the same time</p><h3 id="proc/apply_effect"><aside class="declaration">proc </aside>apply_effect<aside>(effect, effecttype, blocked, updating_health) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/damage_procs.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;damage_procs.dm 84"/></a></aside>
+        </h3>
+        <p>Apply status effect to mob</p>
+<p>Arguments
+effect {int} how much of an effect to apply
+effecttype {enum} which affect to apply
+blocked {int} an amount of the effect that is blocked
+updating_health {boolean} if we should update health [/mob/living/updatehealth]</p><h3 id="proc/attacked_by_alternate"><aside class="declaration">proc </aside>attacked_by_alternate<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/I, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user, def_zone) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/_onclick/item_attack.dm#L261">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_onclick&#x2F;item_attack.dm 261"/></a></aside>
+        </h3>
+        <p>/mob/living attacked_by_alternate //TODO!! MAKE THIS UNIQUE FROM NORMAL ATTACKED_BY AS A FEATURE</p>
+<p>Called when a mob is attacked by an item
+while the user clicked on them with left click
+Arguments:
+I: item this mob is being attacked by
+user: the attacker
+def_zone: targetted area that will be attacked</p><h3 id="proc/clean_mob"><aside class="declaration">proc </aside>clean_mob<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/blood.dm#L119">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;blood.dm 119"/></a></aside>
+        </h3>
+        <p>Washes the blood and such off a mob</p><h3 id="proc/create_thinking_indicator"><aside class="parent"><a title="/mob" href="mob.html#proc/create_thinking_indicator">&uarr;</a></aside>create_thinking_indicator<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui_input/say_modal/typing.dm#L65">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui_input&#x2F;say_modal&#x2F;typing.dm 65"/></a></aside>
+        </h3>
+        <p>Overrides for overlay creation</p><h3 id="proc/despawn"><aside class="declaration">proc </aside>despawn<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/cryopod.dm#L143">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;cryopod.dm 143"/></a></aside>
+        </h3>
+        <p>Despawn the mob, remove its job and store its item</p><h3 id="proc/enable_throw_parry"><aside class="declaration">proc </aside>enable_throw_parry<aside>(duration) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_helpers.dm#L129">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_helpers.dm 129"/></a></aside>
+        </h3>
+        <p>Sends a signal to enable throw parrying for the handed duration, provided the throw_parry component is attached. Otherwise, has no real effect.
+For more information on parries, see throw_parry.dm</p><h3 id="proc/end_flying"><aside class="declaration">proc </aside>end_flying<aside>(init_layer) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living.dm#L496">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 496"/></a></aside>
+        </h3>
+        <p>remove flying flags and reset the sprite layer</p><h3 id="proc/finish_aura_cycle"><aside class="declaration">proc </aside>finish_aura_cycle<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 24"/></a></aside>
+        </h3>
+        <p>Adjusts our stats based on the auras we've received and care about, then cleans out the list for next tick.</p><h3 id="proc/fly_at"><aside class="declaration">proc </aside>fly_at<aside>(/<a href="atom.html">atom</a>/target, range, speed, hovering_time) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living.dm#L489">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 489"/></a></aside>
+        </h3>
+        <p>Throw the mob while giving HOVERING to flag_pass and setting layer to FLY_LAYER</p>
+<p>target : where will the mob be thrown at
+range : how far the mob will be thrown, in tile
+speed : how fast will it fly</p><h3 id="proc/get_living_limb_descriptive_name"><aside class="declaration">proc </aside>get_living_limb_descriptive_name<aside>(target_zone) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_helpers.dm#L100">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_helpers.dm 100"/></a></aside>
+        </h3>
+        <p>Gives us a more natural sounding limb name for descriptions and such</p><h3 id="proc/get_soft_armor"><aside class="declaration">proc </aside>get_soft_armor<aside>(armor_type, proj_def_zone) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/projectile.dm#L1178">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;projectile.dm 1178"/></a></aside>
+        </h3>
+        <p>Returns the soft armor for the given mob. If human and no limb is specified, it takes the weighted average of all available limbs.</p><h3 id="proc/handle_blood"><aside class="declaration">proc </aside>handle_blood<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/blood.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;blood.dm 5"/></a></aside>
+        </h3>
+        <p>BLOOD SYSTEM</p><h3 id="proc/handle_slowdown"><aside class="declaration">proc </aside>handle_slowdown<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L678">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 678"/></a></aside>
+        </h3>
+        <p>Standard slowdown regen called by life.dm</p><h3 id="proc/handle_stagger"><aside class="declaration">proc </aside>handle_stagger<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L623">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 623"/></a></aside>
+        </h3>
+        <p>Standard stagger regen called by life.dm</p><h3 id="proc/hud_set_firestacks"><aside class="declaration">proc </aside>hud_set_firestacks<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/data_huds.dm#L427">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;data_huds.dm 427"/></a></aside>
+        </h3>
+        <p>Set fire stacks on the hud</p><h3 id="proc/irradiate"><aside class="declaration">proc </aside>irradiate<aside>(amount, ignore_canstun) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L763">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 763"/></a></aside>
+        </h3>
+        <p>Applies irradiation from a source</p><h3 id="proc/is_irradiated"><aside class="declaration">proc </aside>is_irradiated<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L752">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 752"/></a></aside>
+        </h3>
+        <p>////////////////////////////// Irradiated //////////////////////////////////
+Returns whether the mob is irradiated or not</p><h3 id="proc/modify_by_armor"><aside class="declaration">proc </aside>modify_by_armor<aside>(damage_amount, armor_type, penetration, def_zone) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/damage_procs.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;damage_procs.dm 14"/></a></aside>
+        </h3>
+        <p>Returns a number after taking into account both soft and hard armor for the specified damage type, usually damage</p>
+<p>Arguments</p>
+<ul>
+<li>Damage_amount: The original unmodified damage</li>
+<li>armor_type: The type of armor by which the damage will be modified</li>
+<li>penetration: How much the damage source might bypass the armour value (optional)</li>
+<li>def_zone: What part of the body we want to check the armor of (optional)</li>
+</ul>
+<p>Hard armor is calculated as a flat reduction before soft armor is applied as a multiplier.
+Penetration reduces soft armor by a flat amount, but reduces hard armor as a multiplier.
+Damage cannot go into the negative, or exceed the original amount.</p><h3 id="proc/on_dodged_bullet"><aside class="declaration">proc </aside>on_dodged_bullet<aside>(/<a href="obj.html">obj</a>/<a href="obj/projectile.html">projectile</a>/proj) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/projectile.dm#L809">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;projectile.dm 809"/></a></aside>
+        </h3>
+        <p>Is the shooter a living mob. Defined before the check as used later as well
+accumulated movement related evasion bonus</p><h3 id="proc/on_fakedeath_trait_gain"><aside class="declaration">proc </aside>on_fakedeath_trait_gain<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/init_signals.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 44"/></a></aside>
+        </h3>
+        <p>Called when TRAIT_FAKEDEATH is added to the mob.</p><h3 id="proc/on_fakedeath_trait_loss"><aside class="declaration">proc </aside>on_fakedeath_trait_loss<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/init_signals.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 49"/></a></aside>
+        </h3>
+        <p>Called when TRAIT_FAKEDEATH is removed from the mob.</p><h3 id="proc/on_floored_trait_gain"><aside class="declaration">proc </aside>on_floored_trait_gain<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/init_signals.dm#L55">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 55"/></a></aside>
+        </h3>
+        <p>Called when TRAIT_FLOORED is added to the mob.</p><h3 id="proc/on_floored_trait_loss"><aside class="declaration">proc </aside>on_floored_trait_loss<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/init_signals.dm#L64">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 64"/></a></aside>
+        </h3>
+        <p>Called when TRAIT_FLOORED is removed from the mob.</p><h3 id="proc/on_immobile_trait_gain"><aside class="declaration">proc </aside>on_immobile_trait_gain<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/init_signals.dm#L73">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 73"/></a></aside>
+        </h3>
+        <p>Called when TRAIT_LEGLESS is added to the mob.</p><h3 id="proc/on_immobile_trait_loss"><aside class="declaration">proc </aside>on_immobile_trait_loss<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/init_signals.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 78"/></a></aside>
+        </h3>
+        <p>Called when TRAIT_LEGLESS is removed from the mob.</p><h3 id="proc/on_knockedout_trait_gain"><aside class="declaration">proc </aside>on_knockedout_trait_gain<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/init_signals.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 20"/></a></aside>
+        </h3>
+        <p>Called when TRAIT_KNOCKEDOUT is added to the mob.</p><h3 id="proc/on_knockedout_trait_loss"><aside class="declaration">proc </aside>on_knockedout_trait_loss<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/init_signals.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 26"/></a></aside>
+        </h3>
+        <p>Called when TRAIT_KNOCKEDOUT is removed from the mob.</p><h3 id="proc/on_legless_trait_gain"><aside class="declaration">proc </aside>on_legless_trait_gain<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/init_signals.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 33"/></a></aside>
+        </h3>
+        <p>Called when TRAIT_LEGLESS is added to the mob.</p><h3 id="proc/on_legless_trait_loss"><aside class="declaration">proc </aside>on_legless_trait_loss<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/init_signals.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 38"/></a></aside>
+        </h3>
+        <p>Called when TRAIT_LEGLESS is removed from the mob.</p><h3 id="proc/on_sdd_grace_period_end"><aside class="declaration">proc </aside>on_sdd_grace_period_end<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living.dm#L937">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 937"/></a></aside>
+        </h3>
+        <p>Set the mob as afk after AFK_TIMER</p><h3 id="proc/recalc_stamina_regen_multiplier"><aside class="declaration">proc </aside>recalc_stamina_regen_multiplier<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_health_procs.dm#L136">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 136"/></a></aside>
+        </h3>
+        <p>Regenerates stamina_regen_multiplier from initial based on the current modifier list, minimum 0.</p><h3 id="proc/receive_aura"><aside class="declaration">proc </aside>receive_aura<aside>(aura_type, strength) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 28"/></a></aside>
+        </h3>
+        <p>Update what auras we'll receive this life tick if it's either new or stronger than current. aura_type as AURA_ define, strength as number.</p><h3 id="proc/register_init_signals"><aside class="declaration">proc </aside>register_init_signals<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/init_signals.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 2"/></a></aside>
+        </h3>
+        <p>Called on /mob/living/Initialize(), for the mob to register to relevant signals.</p><h3 id="proc/remove_emitted_auras"><aside class="declaration">proc </aside>remove_emitted_auras<aside>(source, aura_list) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 40"/></a></aside>
+        </h3>
+        <p>Remove a list of auras from our current emitted, update self as needed</p><h3 id="proc/remove_stamina_regen_modifier"><aside class="declaration">proc </aside>remove_stamina_regen_modifier<aside>(mod_name) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_health_procs.dm#L129">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 129"/></a></aside>
+        </h3>
+        <p>Removes an entry from our stamina_regen_modifiers and updates stamina_regen_multiplier. Returns TRUE if an entry was removed</p><h3 id="proc/setBruteLoss"><aside class="declaration">proc </aside>setBruteLoss<aside>(amount) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_health_procs.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 9"/></a></aside>
+        </h3>
+        <p>We straight up set bruteloss/brute damage to a desired amount unless godmode is enabled</p><h3 id="proc/setFireLoss"><aside class="declaration">proc </aside>setFireLoss<aside>(amount) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_health_procs.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 26"/></a></aside>
+        </h3>
+        <p>We straight up set fireloss/burn damage to a desired amount unless godmode is enabled</p><h3 id="proc/set_afk_status"><aside class="declaration">proc </aside>set_afk_status<aside>(new_status, afk_timer) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living.dm#L921">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 921"/></a></aside>
+        </h3>
+        <p>Set the afk status of the mob</p><h3 id="proc/set_drugginess"><aside class="declaration">proc </aside>set_drugginess<aside>(amount) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L588">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 588"/></a></aside>
+        </h3>
+        <p>Sets mob's drugginess to provided amount, minimum 0. Adds or removes druggy overlay as appropriate.</p><h3 id="proc/set_lying_angle"><aside class="declaration">proc </aside>set_lying_angle<aside>(new_lying) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living.dm#L831">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 831"/></a></aside>
+        </h3>
+        <p>Changes the inclination angle of a mob, used by humans and others to differentiate between standing up and prone positions.</p>
+<p>In BYOND-angles 0 is NORTH, 90 is EAST, 180 is SOUTH and 270 is WEST.
+This usually means that 0 is standing up, 90 and 270 are horizontal positions to right and left respectively, and 180 is upside-down.
+Mobs that do now follow these conventions due to unusual sprites should require a special handling or redefinition of this proc, due to the density and layer changes.
+The return of this proc is the previous value of the modified lying_angle if a change was successful (might include zero), or null if no change was made.</p><h3 id="proc/set_radiation"><aside class="declaration">proc </aside>set_radiation<aside>(amount, ignore_canstun) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L774">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 774"/></a></aside>
+        </h3>
+        <p>Sets irradiation  duration</p><h3 id="proc/set_remote_control"><aside class="declaration">proc </aside>set_remote_control<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/controlled) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living.dm#L881">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 881"/></a></aside>
+        </h3>
+        <p>Set the remote_control and reset the perspective</p><h3 id="proc/set_slowdown"><aside class="declaration">proc </aside>set_slowdown<aside>(amount) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/status_procs.dm#L650">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;status_procs.dm 650"/></a></aside>
+        </h3>
+        <p>Where the magic happens. Actually applies slow stacks.</p><h3 id="proc/set_timed_status_effect"><aside class="declaration">proc </aside>set_timed_status_effect<aside>(duration, effect, only_if_higher) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/status_effects/debuffs.dm#L219">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;status_effects&#x2F;debuffs.dm 219"/></a></aside>
+        </h3>
+        <p>Sets a timed status effect of some kind on a mob to a specific value.
+If only_if_higher is TRUE, it will only set the value up to the passed duration,
+so any pre-existing status effects of the same type won't be reduced down</p>
+<p>duration - the duration, in deciseconds, of the effect. 0 or lower will either remove the current effect or do nothing if none are present
+effect - the type of status effect given to the mob
+only_if_higher - if TRUE, we will only set the effect to the new duration if the new duration is longer than any existing duration</p><h3 id="proc/shared_living_ui_distance"><aside class="declaration">proc </aside>shared_living_ui_distance<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/src_object, viewcheck) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui/states.dm#L104">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states.dm 104"/></a></aside>
+        </h3>
+        <p>public</p>
+<p>Distance versus interaction check.</p>
+<p>required src_object atom/movable The object which owns the UI.</p>
+<p>return UI_state The state of the UI.</p><h3 id="proc/stun_effect_act"><aside class="declaration">proc </aside>stun_effect_act<aside>(stun_amount, agony_amount, def_zone) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_defense.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defense.dm 11"/></a></aside>
+        </h3>
+        <p>stun_effect_act(stun_amount, agony_amount, def_zone)</p>
+<p>Handle the effects of a &quot;stun&quot; weapon</p>
+<p>Arguments
+stun_amount {int} applied as Stun and Paralyze
+def_zone {enum} which body part to target</p><h3 id="proc/swap_hand"><aside class="declaration">proc </aside>swap_hand<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living.dm#L886">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 886"/></a></aside>
+        </h3>
+        <p>Swap the active hand</p><h3 id="proc/take_overall_damage"><aside class="declaration">proc </aside>take_overall_damage<aside>(damage, damagetype, armortype, sharp, edge, updating_health, penetration) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living_health_procs.dm#L229">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 229"/></a></aside>
+        </h3>
+        <p>Damages all limbs equally. Overridden by human, otherwise just does apply_damage</p><h3 id="proc/transfer_mob"><aside class="declaration">proc </aside>transfer_mob<aside>(/<a href="mob.html">mob</a>/candidate) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living.dm#L953">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 953"/></a></aside>
+        </h3>
+        <p>Transfer the candidate mind into src</p><h3 id="proc/update_aura_overlay"><aside class="declaration">proc </aside>update_aura_overlay<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/living.dm#L46">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 46"/></a></aside>
+        </h3>
+        <p>Bring however we represent emitted auras up to date. Implemented for human and xenomorph.</p><h3 id="proc/user_can_buckle"><aside class="declaration">proc </aside>user_can_buckle<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/buckling_mob) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/buckling.dm#L161">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;buckling.dm 161"/></a></aside>
+        </h3>
+        <p>Returns TRUE or FALSE depending on whether src can buckle buckling_mob into something</p></main>
+<footer>
+    tgmc.dme
+    <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/tree/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e">1ab5be0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

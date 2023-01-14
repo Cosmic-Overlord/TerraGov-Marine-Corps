@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;greyscale_config - RU TerraGov Marine Corps</title>
+</head>
+<body>
+<header>
+    <a href="index.html">RU TerraGov Marine Corps</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/greyscale_config.html#var">Var Details</a> - <a href="datum/greyscale_config.html#proc">Proc Details</a></header>
+<main>
+<h1>greyscale_config <aside>/<a href="datum.html">datum</a>/<a href="datum/greyscale_config.html">greyscale_config</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/greyscale/_greyscale_config.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;greyscale&#x2F;_greyscale_config.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/greyscale_config.html#var/expected_colors">expected_colors</a></th><td>How many colors are expected to be given when building the sprite</td></tr>
+            <tr><th><a href="datum/greyscale_config.html#var/icon_cache">icon_cache</a></th><td>Generated icons keyed by their color arguments</td></tr>
+            <tr><th><a href="datum/greyscale_config.html#var/icon_file">icon_file</a></th><td>Reference to the dmi file for this config</td></tr>
+            <tr><th><a href="datum/greyscale_config.html#var/icon_states">icon_states</a></th><td>A list of icon states and their layers</td></tr>
+            <tr><th><a href="datum/greyscale_config.html#var/json_config">json_config</a></th><td>Reference to the json config file</td></tr>
+            <tr><th><a href="datum/greyscale_config.html#var/string_icon_file">string_icon_file</a></th><td>String path to the icon file, used for reloading</td></tr>
+            <tr><th><a href="datum/greyscale_config.html#var/string_json_config">string_json_config</a></th><td>String path to the json file, used for reloading</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/greyscale_config.html#proc/DebugName">DebugName</a></th><td>Gets the name used for debug purposes</td></tr>
+            <tr><th><a href="datum/greyscale_config.html#proc/Generate">Generate</a></th><td>Actually create the icon and color it in, handles caching</td></tr>
+            <tr><th><a href="datum/greyscale_config.html#proc/GenerateLayerGroup">GenerateLayerGroup</a></th><td>Internal recursive proc to handle nested layer groups</td></tr>
+            <tr><th><a href="datum/greyscale_config.html#proc/ReadIconStateConfiguration">ReadIconStateConfiguration</a></th><td>Takes the json icon state configuration and puts it into a more processed format</td></tr>
+            <tr><th><a href="datum/greyscale_config.html#proc/ReadLayersFromJson">ReadLayersFromJson</a></th><td>Takes the json layers configuration and puts it into a more processed format</td></tr>
+            <tr><th><a href="datum/greyscale_config.html#proc/ReadMetadata">ReadMetadata</a></th><td>Reads layer configurations to take out some useful overall information</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/expected_colors"><aside class="declaration">var </aside>expected_colors
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/greyscale/_greyscale_config.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;greyscale&#x2F;_greyscale_config.dm 21"/></a></h3>
+        <p>How many colors are expected to be given when building the sprite</p><h3 id="var/icon_cache"><aside class="declaration">var </aside>icon_cache
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/greyscale/_greyscale_config.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;greyscale&#x2F;_greyscale_config.dm 28"/></a></h3>
+        <p>Generated icons keyed by their color arguments</p><h3 id="var/icon_file"><aside class="declaration">var </aside>icon_file
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/greyscale/_greyscale_config.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;greyscale&#x2F;_greyscale_config.dm 6"/></a></h3>
+        <p>Reference to the dmi file for this config</p><h3 id="var/icon_states"><aside class="declaration">var </aside>icon_states
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/greyscale/_greyscale_config.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;greyscale&#x2F;_greyscale_config.dm 18"/></a></h3>
+        <p>A list of icon states and their layers</p><h3 id="var/json_config"><aside class="declaration">var </aside>json_config
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/greyscale/_greyscale_config.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;greyscale&#x2F;_greyscale_config.dm 3"/></a></h3>
+        <p>Reference to the json config file</p><h3 id="var/string_icon_file"><aside class="declaration">var </aside>string_icon_file
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/greyscale/_greyscale_config.dm#L15">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;greyscale&#x2F;_greyscale_config.dm 15"/></a></h3>
+        <p>String path to the icon file, used for reloading</p><h3 id="var/string_json_config"><aside class="declaration">var </aside>string_json_config
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/greyscale/_greyscale_config.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;greyscale&#x2F;_greyscale_config.dm 12"/></a></h3>
+        <p>String path to the json file, used for reloading</p><h2 id="proc">Proc Details</h2><h3 id="proc/DebugName"><aside class="declaration">proc </aside>DebugName<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/greyscale/_greyscale_config.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;greyscale&#x2F;_greyscale_config.dm 56"/></a></aside>
+        </h3>
+        <p>Gets the name used for debug purposes</p><h3 id="proc/Generate"><aside class="declaration">proc </aside>Generate<aside>(color_string, /list/render_steps) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/greyscale/_greyscale_config.dm#L110">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;greyscale&#x2F;_greyscale_config.dm 110"/></a></aside>
+        </h3>
+        <p>Actually create the icon and color it in, handles caching</p><h3 id="proc/GenerateLayerGroup"><aside class="declaration">proc </aside>GenerateLayerGroup<aside>(/list/colors, /list/group, /list/render_steps) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/greyscale/_greyscale_config.dm#L130">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;greyscale&#x2F;_greyscale_config.dm 130"/></a></aside>
+        </h3>
+        <p>Internal recursive proc to handle nested layer groups</p><h3 id="proc/ReadIconStateConfiguration"><aside class="declaration">proc </aside>ReadIconStateConfiguration<aside>(/list/data) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/greyscale/_greyscale_config.dm#L60">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;greyscale&#x2F;_greyscale_config.dm 60"/></a></aside>
+        </h3>
+        <p>Takes the json icon state configuration and puts it into a more processed format</p><h3 id="proc/ReadLayersFromJson"><aside class="declaration">proc </aside>ReadLayersFromJson<aside>(/list/data) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/greyscale/_greyscale_config.dm#L71">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;greyscale&#x2F;_greyscale_config.dm 71"/></a></aside>
+        </h3>
+        <p>Takes the json layers configuration and puts it into a more processed format</p><h3 id="proc/ReadMetadata"><aside class="declaration">proc </aside>ReadMetadata<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/greyscale/_greyscale_config.dm#L89">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;greyscale&#x2F;_greyscale_config.dm 89"/></a></aside>
+        </h3>
+        <p>Reads layer configurations to take out some useful overall information</p></main>
+<footer>
+    tgmc.dme
+    <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/tree/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e">1ab5be0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

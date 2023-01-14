@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>(global) - RU TerraGov Marine Corps</title>
+</head>
+<body>
+<header>
+    <a href="index.html">RU TerraGov Marine Corps</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="global.html#var">Var Details</a> - <a href="global.html#proc">Proc Details</a></header>
+<main>
+<h1>(global)
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/(unknown)">
+        <img src="git.png" width="16" height="16" title="(unknown)"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="global.html#var/Failsafe">Failsafe</a></th><td>Failsafe</td></tr>
+            <tr><th><a href="global.html#var/Master">Master</a></th><td>StonedMC</td></tr>
+            <tr><th><a href="global.html#var/SSambience">SSambience</a></th><td>The subsystem used to play ambience to users every now and then, makes them real excited.</td></tr>
+            <tr><th><a href="global.html#var/SSaura">SSaura</a></th><td>Tracks aura emitters and tells them to pulse. Also used for creating new ones.</td></tr>
+            <tr><th><a href="global.html#var/SSautomatedfire">SSautomatedfire</a></th><td></td></tr>
+            <tr><th><a href="global.html#var/SSminimaps">SSminimaps</a></th><td></td></tr>
+            <tr><th><a href="global.html#var/SStgui">SStgui</a></th><td>tgui subsystem</td></tr>
+            <tr><th><a href="global.html#var/SStimer">SStimer</a></th><td></td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="global.html#proc/DirBlocked">DirBlocked</a></th><td>Checks if moving in a direction is blocked</td></tr>
+            <tr><th><a href="global.html#proc/Gibberish">Gibberish</a></th><td>Turn text into complete gibberish!</td></tr>
+            <tr><th><a href="global.html#proc/LeftAndRightOfDir">LeftAndRightOfDir</a></th><td>Returns the left and right dir of the input dir, used for AI stutter step while attacking</td></tr>
+            <tr><th><a href="global.html#proc/LinkBlocked">LinkBlocked</a></th><td>Returns true if the path from A to B is blocked. Checks both paths where the direction is diagonal
+Variables:
+bypass_window - check for PASSLASER - laser like behavior
+projectile - check for PASSPROJECTILE - bullet like behavior
+bypass_xeno - whether to bypass dense xeno structures like flamers
+air_pass - whether to bypass non airtight atoms</td></tr>
+            <tr><th><a href="global.html#proc/TurfBlockedNonWindow">TurfBlockedNonWindow</a></th><td>Returns true if any object on a turf is both dense and not a window</td></tr>
+            <tr><th><a href="global.html#proc/_addtimer">_addtimer</a></th><td>Create a new timer and insert it in the queue.
+You should not call this directly, and should instead use the addtimer macro, which includes source information.</td></tr>
+            <tr><th><a href="global.html#proc/add_keybinding">add_keybinding</a></th><td>Adds an instanced keybinding to the global tracker</td></tr>
+            <tr><th><a href="global.html#proc/adminscrub">adminscrub</a></th><td>Runs STRIP_HTML_SIMPLE and byond's sanitization proc.</td></tr>
+            <tr><th><a href="global.html#proc/assoc_to_keys">assoc_to_keys</a></th><td>Turns an associative list into a flat list of keys</td></tr>
+            <tr><th><a href="global.html#proc/auxtools_expr_stub">auxtools_expr_stub</a></th><td>auxtools expression evaluation</td></tr>
+            <tr><th><a href="global.html#proc/buy_category">buy_category</a></th><td>Return true if you can buy this category, and also change the loadout seller buying bitfield</td></tr>
+            <tr><th><a href="global.html#proc/buy_item_in_vendor">buy_item_in_vendor</a></th><td>Return true if the item was found in a linked vendor and successfully bought</td></tr>
+            <tr><th><a href="global.html#proc/buy_stack">buy_stack</a></th><td>Check if that stack is buyable in a points vendor (currently, only metal, sandbags and plasteel)</td></tr>
+            <tr><th><a href="global.html#proc/can_buy_category">can_buy_category</a></th><td>Will check if the selected category can be bought according to the category choices left</td></tr>
+            <tr><th><a href="global.html#proc/can_see_through">can_see_through</a></th><td>Returns if a turf can be seen from another turf.</td></tr>
+            <tr><th><a href="global.html#proc/can_sell_human_body">can_sell_human_body</a></th><td>Return TRUE if the relation between the two factions are bad enough that a bounty is on the human_to_sell head</td></tr>
+            <tr><th><a href="global.html#proc/center_image">center_image</a></th><td>Center's an image.
+Requires:
+The Image
+The x dimension of the icon file used in the image
+The y dimension of the icon file used in the image
+eg: center_image(image_to_center, 32,32)
+eg2: center_image(image_to_center, 96,96)</td></tr>
+            <tr><th><a href="global.html#proc/cheap_get_humans_near">cheap_get_humans_near</a></th><td>Returns a list of humans via get_dist and same z level method, very cheap compared to range()</td></tr>
+            <tr><th><a href="global.html#proc/cheap_get_xenos_near">cheap_get_xenos_near</a></th><td>Returns a list of xenos via get_dist and same z level method, very cheap compared to range()</td></tr>
+            <tr><th><a href="global.html#proc/check_admin_pings">check_admin_pings</a></th><td>Checks a given message to see if any of the words contain an active admin's ckey with an @ before it</td></tr>
+            <tr><th><a href="global.html#proc/check_path">check_path</a></th><td>Draws a line between two atoms, then checks if the path is blocked.
+Variables:
+start -start point of the path
+end - end point of the path
+bypass_window - whether it will go through transparent windows in the same way as lasers
+projectile - whether PASSPROJECTILE will be checked to ignore dense objects in the same way as projectiles
+bypass_xeno - whether to bypass dense xeno structures in the same way as flamers
+air_pass - whether to bypass non airtight atoms</td></tr>
+            <tr><th><a href="global.html#proc/closest_cardinal_dir">closest_cardinal_dir</a></th><td>If given a diagonal dir, return a corresponding cardinal dir. East/west preferred</td></tr>
+            <tr><th><a href="global.html#proc/compare_list">compare_list</a></th><td>flat list comparison, checks if two lists have the same contents</td></tr>
+            <tr><th><a href="global.html#proc/create_empty_loadout">create_empty_loadout</a></th><td>Return a new empty loayout</td></tr>
+            <tr><th><a href="global.html#proc/deadchat_broadcast">deadchat_broadcast</a></th><td>Displays a message in deadchat, sent by source. Source is not linkified, message is, to avoid stuff like character names to be linkified.
+Automatically gives the class deadsay to the whole message (message + source)</td></tr>
+            <tr><th><a href="global.html#proc/default_ui_state">default_ui_state</a></th><td>The sane defaults for a UI such as a computer or a machine.</td></tr>
+            <tr><th><a href="global.html#proc/deltimer">deltimer</a></th><td>Delete a timer</td></tr>
+            <tr><th><a href="global.html#proc/dview">dview</a></th><td>Version of view() which ignores darkness, because BYOND doesn't have it (I actually suggested it but it was tagged redundant, BUT HEARERS IS A T- /rant).</td></tr>
+            <tr><th><a href="global.html#proc/emissive_appearance">emissive_appearance</a></th><td>Produces a mutable appearance glued to the <a href="code/__DEFINES/layers.html#define/EMISSIVE_PLANE" title="EMISSIVE_PLANE">EMISSIVE_PLANE</a> dyed to be the <a href="code/__DEFINES/lighting.html#define/EMISSIVE_COLOR" title="EMISSIVE_COLOR">EMISSIVE_COLOR</a>.</td></tr>
+            <tr><th><a href="global.html#proc/emissive_blocker">emissive_blocker</a></th><td>Produces a mutable appearance glued to the <a href="code/__DEFINES/layers.html#define/EMISSIVE_PLANE" title="EMISSIVE_PLANE">EMISSIVE_PLANE</a> dyed to be the <a href="code/__DEFINES/lighting.html#define/EM_BLOCK_COLOR" title="EM_BLOCK_COLOR">EM_BLOCK_COLOR</a>.</td></tr>
+            <tr><th><a href="global.html#proc/extend_line_to_radius">extend_line_to_radius</a></th><td>gets a line from a x and y, to the offset x and y of length radius</td></tr>
+            <tr><th><a href="global.html#proc/flick_overlay_view">flick_overlay_view</a></th><td>wrapper for flick_overlay(), flicks to everyone who can see the target atom</td></tr>
+            <tr><th><a href="global.html#proc/generate_asset_name">generate_asset_name</a></th><td>Generate a filename for this asset
+The same asset will always lead to the same asset name
+(Generated names do not include file extention.)</td></tr>
+            <tr><th><a href="global.html#proc/generate_cone">generate_cone</a></th><td>Generates a cone shape. Any other checks should be handled with the resulting list. Can work with up to 359 degrees
+Variables:
+center - where the cone begins, or center of a circle drawn with this
+max_row_count - how many rows are checked
+starting_row - from how far should the turfs start getting included in the cone
+cone_width - big the angle of the cone is
+cone_direction - at what angle should the cone be made, relative to the game board's orientation
+blocked - whether the cone should take into consideration solid walls</td></tr>
+            <tr><th><a href="global.html#proc/generate_greyscale_weapons_data">generate_greyscale_weapons_data</a></th><td>generates the static list data containig all printable mech equipment modules for greyscale</td></tr>
+            <tr><th><a href="global.html#proc/generate_true_cone">generate_true_cone</a></th><td>Generates a cone shape. Any other checks should be handled with the resulting list. Can work with up to 359 degrees
+Variables:
+center - where the cone begins, or center of a circle drawn with this
+max_row_count - how many rows are checked
+starting_row - from how far should the turfs start getting included in the cone
+cone_width - big the angle of the cone is
+cone_direction - at what angle should the cone be made, relative to the game board's orientation
+blocked - whether the cone should take into consideration solid walls
+bypass_window - whether it will go through transparent windows like lasers
+projectile - whether PASSPROJECTILE will be checked to ignore dense objects like projectiles
+bypass_xeno - whether to bypass dense xeno structures like flamers
+air_pass - whether to bypass non airtight atoms</td></tr>
+            <tr><th><a href="global.html#proc/get_allowed_instrument_ids">get_allowed_instrument_ids</a></th><td>Get all non admin_only instruments as a list of text ids.</td></tr>
+            <tr><th><a href="global.html#proc/get_areas">get_areas</a></th><td>Takes: Area type as text string or as typepath OR an instance of the area. Returns: A list of all areas of that type in the world.</td></tr>
+            <tr><th><a href="global.html#proc/get_atom_on_turf">get_atom_on_turf</a></th><td>Returns the top-most atom sitting on the turf.
+For example, using this on a disk, which is in a bag, on a mob,
+will return the mob because it's on the turf.</td></tr>
+            <tr><th><a href="global.html#proc/get_bbox_of_atoms">get_bbox_of_atoms</a></th><td>Get a bounding box of a list of atoms.</td></tr>
+            <tr><th><a href="global.html#proc/get_between_angles">get_between_angles</a></th><td>returns degrees between two angles</td></tr>
+            <tr><th><a href="global.html#proc/get_hearers_in_view">get_hearers_in_view</a></th><td>Returns a list of hearers in view(view_radius) from source (ignoring luminosity). uses important_recursive_contents<a href="code/__DEFINES/say.html#define/RECURSIVE_CONTENTS_HEARING_SENSITIVE" title="RECURSIVE_CONTENTS_HEARING_SENSITIVE">RECURSIVE_CONTENTS_HEARING_SENSITIVE</a></td></tr>
+            <tr><th><a href="global.html#proc/get_item_stack_number">get_item_stack_number</a></th><td>If the item is not a stack, return 1. If it is a stack, return the stack size</td></tr>
+            <tr><th><a href="global.html#proc/get_item_stack_representation_amount">get_item_stack_representation_amount</a></th><td>If the item representation is not a stack, return 1. Else, return the satck size</td></tr>
+            <tr><th><a href="global.html#proc/get_line">get_line</a></th><td>Get a list of turfs in a line from <code>starting_atom</code> to <code>ending_atom</code>.</td></tr>
+            <tr><th><a href="global.html#proc/get_mech_limb">get_mech_limb</a></th><td>helper that converts greyscale mech slots and types into typepaths</td></tr>
+            <tr><th><a href="global.html#proc/get_nearest_target">get_nearest_target</a></th><td>Returns the nearest target that has the right target flag</td></tr>
+            <tr><th><a href="global.html#proc/get_nested_locs">get_nested_locs</a></th><td>the 3 directions in the direction on the cone that will be checked
+turfs that are checked whether the cone can continue further from them
+Returns a list of all locations (except the area) the movable is within.</td></tr>
+            <tr><th><a href="global.html#proc/get_path">get_path</a></th><td>Returns the most optimal path to get from starting atom to goal atom</td></tr>
+            <tr><th><a href="global.html#proc/get_screen_size">get_screen_size</a></th><td>gets the current screen size as defined in config</td></tr>
+            <tr><th><a href="global.html#proc/get_turf_on_clickcatcher">get_turf_on_clickcatcher</a></th><td>Helper proc that processes a clicked target, if the target is not black tiles, it will not change it. If they are it will return the turf of the black tiles. It will return null if the object is a screen object other than black tiles.</td></tr>
+            <tr><th><a href="global.html#proc/get_view_center">get_view_center</a></th><td>Return the center turf of the user's view</td></tr>
+            <tr><th><a href="global.html#proc/getpois">getpois</a></th><td>Returns a list of all items of interest with their name</td></tr>
+            <tr><th><a href="global.html#proc/give_admin_popup">give_admin_popup</a></th><td>Tries to give the target an admin popup.
+If it fails, will send the error to the passed admin.</td></tr>
+            <tr><th><a href="global.html#proc/give_free_headset">give_free_headset</a></th><td>Will give a headset corresponding to the user job to the user</td></tr>
+            <tr><th><a href="global.html#proc/handle_initial_squad">handle_initial_squad</a></th><td>A generic proc for handling the initial squad role assignment in SSjob</td></tr>
+            <tr><th><a href="global.html#proc/in_view_range">in_view_range</a></th><td>Returns TRUE if the atom is in the user view range.</td></tr>
+            <tr><th><a href="global.html#proc/init_emote_keybinds">init_emote_keybinds</a></th><td>Create a keybind for each datum/emote</td></tr>
+            <tr><th><a href="global.html#proc/init_keybindings">init_keybindings</a></th><td>Creates and sorts all the keybinding datums</td></tr>
+            <tr><th><a href="global.html#proc/init_quick_loadouts">init_quick_loadouts</a></th><td>The list is shared across all quick vendors, but they will only display the tabs specified by the vendor, and only show the loadouts with jobs that match the displayed tabs.</td></tr>
+            <tr><th><a href="global.html#proc/init_subtypes">init_subtypes</a></th><td>Minimap icons for UI display</td></tr>
+            <tr><th><a href="global.html#proc/is_handful_buyable">is_handful_buyable</a></th><td>Return TRUE if this handful should be buyable, aka if it's corresponding aka box is in a linked vendor</td></tr>
+            <tr><th><a href="global.html#proc/item2representation_type">item2representation_type</a></th><td>Return wich type of item_representation should representate any item_type</td></tr>
+            <tr><th><a href="global.html#proc/jatum_deserialize">jatum_deserialize</a></th><td>Attempt to create a value from a JATUN JSON.</td></tr>
+            <tr><th><a href="global.html#proc/jatum_serialize">jatum_serialize</a></th><td>Attempt to serialize a given value to the JATUM format.</td></tr>
+            <tr><th><a href="global.html#proc/json_deserialize_datum">json_deserialize_datum</a></th><td>Convert a list of json to datum</td></tr>
+            <tr><th><a href="global.html#proc/json_serialize_datum">json_serialize_datum</a></th><td>Convert a datum into a json blob</td></tr>
+            <tr><th><a href="global.html#proc/line_of_sight">line_of_sight</a></th><td>Checks if ending atom is viewable by starting atom, uses bresenham line algorithm but checks some extra tiles on a diagonal next tile</td></tr>
+            <tr><th><a href="global.html#proc/load_map">load_map</a></th><td>Shortcut function to parse a map and apply it to the world.</td></tr>
+            <tr><th><a href="global.html#proc/load_poll_data">load_poll_data</a></th><td>Loads all current and future server polls and their options to store both as datums.</td></tr>
+            <tr><th><a href="global.html#proc/log_speech_indicators">log_speech_indicators</a></th><td>Logging for speech indicators.</td></tr>
+            <tr><th><a href="global.html#proc/log_tgui">log_tgui</a></th><td>Appends a tgui-related log entry. All arguments are optional.</td></tr>
+            <tr><th><a href="global.html#proc/make_datum_references_lists">make_datum_references_lists</a></th><td>Initial Building</td></tr>
+            <tr><th><a href="global.html#proc/md5asfile">md5asfile</a></th><td>Save file as an external file then md5 it.
+Used because md5ing files stored in the rsc sometimes gives incorrect md5 results.</td></tr>
+            <tr><th><a href="global.html#proc/md5filepath">md5filepath</a></th><td>Returns the md5 of a file at a given path.</td></tr>
+            <tr><th><a href="global.html#proc/message_to_html">message_to_html</a></th><td>Message-related procs</td></tr>
+            <tr><th><a href="global.html#proc/movespeed_data_null_check">movespeed_data_null_check</a></th><td>Checks if a move speed modifier is valid and not missing any data</td></tr>
+            <tr><th><a href="global.html#proc/play_vox_word">play_vox_word</a></th><td>play vox words for mobs on our zlevel</td></tr>
+            <tr><th><a href="global.html#proc/playsound">playsound</a></th><td>*Proc used to play a sound.</td></tr>
+            <tr><th><a href="global.html#proc/playsound_z">playsound_z</a></th><td>Play sound for all online mobs on a given Z-level. Good for ambient sounds.</td></tr>
+            <tr><th><a href="global.html#proc/playsound_z_humans">playsound_z_humans</a></th><td>Play a sound for all cliented humans and ghosts by zlevel</td></tr>
+            <tr><th><a href="global.html#proc/playsound_z_xenos">playsound_z_xenos</a></th><td>Play a sound for all cliented xenos and ghosts by hive on a zlevel</td></tr>
+            <tr><th><a href="global.html#proc/pretty_string_from_reagent_list">pretty_string_from_reagent_list</a></th><td>Convert reagent list to a printable string for logging etc</td></tr>
+            <tr><th><a href="global.html#proc/propagate_network">propagate_network</a></th><td>remove the old powernet and replace it with a new one throughout the network.</td></tr>
+            <tr><th><a href="global.html#proc/qdel">qdel</a></th><td>Should be treated as a replacement for the 'del' keyword.</td></tr>
+            <tr><th><a href="global.html#proc/recoil_camera">recoil_camera</a></th><td>Makes a recoil-like animation on the mob camera.</td></tr>
+            <tr><th><a href="global.html#proc/reject_bad_text">reject_bad_text</a></th><td>Returns the text if properly formatted, or null else.</td></tr>
+            <tr><th><a href="global.html#proc/remove_image_from_client">remove_image_from_client</a></th><td>Removes an image from a client's <code>.images</code>. Useful as a callback.</td></tr>
+            <tr><th><a href="global.html#proc/return_generator_args">return_generator_args</a></th><td>returns the arguments given to a generator and manually extracts them from the internal byond object
+returns:</td></tr>
+            <tr><th><a href="global.html#proc/rustg_get_version">rustg_get_version</a></th><td>Gets the version of rust_g</td></tr>
+            <tr><th><a href="global.html#proc/sanitize">sanitize</a></th><td>Runs byond's html encoding sanitization proc, after replacing new-lines and tabs for the # character.</td></tr>
+            <tr><th><a href="global.html#proc/sanitize_is_full_emote_list">sanitize_is_full_emote_list</a></th><td>Sanitize the custom emote list</td></tr>
+            <tr><th><a href="global.html#proc/send2adminchat">send2adminchat</a></th><td>Sends a message to TGS admin chat channels.</td></tr>
+            <tr><th><a href="global.html#proc/send2chat">send2chat</a></th><td>Sends a message to TGS chat channels.</td></tr>
+            <tr><th><a href="global.html#proc/siunit">siunit</a></th><td>Formats a number to human readable form with the appropriate SI unit.</td></tr>
+            <tr><th><a href="global.html#proc/slur">slur</a></th><td>Makes you speak like you're drunk
+todo remove, deprecated</td></tr>
+            <tr><th><a href="global.html#proc/stars">stars</a></th><td>Convert random parts of a passed in message to stars</td></tr>
+            <tr><th><a href="global.html#proc/string_list">string_list</a></th><td>Caches lists with non-numeric stringify-able values (text or typepath).</td></tr>
+            <tr><th><a href="global.html#proc/strip_html">strip_html</a></th><td>Runs STRIP_HTML_SIMPLE and sanitize.</td></tr>
+            <tr><th><a href="global.html#proc/stripped_input">stripped_input</a></th><td>Used to get a properly sanitized input. Returns null if cancel is pressed.</td></tr>
+            <tr><th><a href="global.html#proc/stripped_multiline_input">stripped_multiline_input</a></th><td>Used to get a properly sanitized input in a larger box. Works very similarly to stripped_input.</td></tr>
+            <tr><th><a href="global.html#proc/stutter">stutter</a></th><td>Adds stuttering to the message passed in, todo remove, deprecated</td></tr>
+            <tr><th><a href="global.html#proc/tgalert">tgalert</a></th><td><strong>DEPRECATED: USE tgui_alert(...) INSTEAD</strong></td></tr>
+            <tr><th><a href="global.html#proc/tgui_Topic">tgui_Topic</a></th><td>Middleware for /client/Topic.</td></tr>
+            <tr><th><a href="global.html#proc/tgui_alert">tgui_alert</a></th><td>Creates a TGUI alert window and returns the user's response.</td></tr>
+            <tr><th><a href="global.html#proc/tgui_input_list">tgui_input_list</a></th><td>Creates a TGUI input list window and returns the user's response.</td></tr>
+            <tr><th><a href="global.html#proc/tgui_input_number">tgui_input_number</a></th><td>Creates a TGUI window with a number input. Returns the user's response as num | null.</td></tr>
+            <tr><th><a href="global.html#proc/tgui_input_text">tgui_input_text</a></th><td>Creates a TGUI window with a text input. Returns the user's response.</td></tr>
+            <tr><th><a href="global.html#proc/timeleft">timeleft</a></th><td>Get the remaining deciseconds on a timer</td></tr>
+            <tr><th><a href="global.html#proc/to_chat">to_chat</a></th><td>Sends the message to the recipient (target).</td></tr>
+            <tr><th><a href="global.html#proc/to_chat_immediate">to_chat_immediate</a></th><td>Circumvents the message queue and sends the message
+to the recipient (target) as soon as possible.</td></tr>
+            <tr><th><a href="global.html#proc/turf_block_check">turf_block_check</a></th><td>Return TRUE if we have a block, return FALSE otherwise</td></tr>
+            <tr><th><a href="global.html#proc/ui_status_only_living">ui_status_only_living</a></th><td>Returns a UI status such that the dead will be able to watch, but not interact.</td></tr>
+            <tr><th><a href="global.html#proc/ui_status_silicon_has_access">ui_status_silicon_has_access</a></th><td>Returns a UI status such that silicons will be able to interact with whatever
+they would have access to if this was a machine. For example, AIs can
+interact if there's cameras with wireless control is enabled.</td></tr>
+            <tr><th><a href="global.html#proc/ui_status_user_has_free_hands">ui_status_user_has_free_hands</a></th><td>Returns a UI status such that those without blocked hands will be able to interact,
+but everyone else can only watch.</td></tr>
+            <tr><th><a href="global.html#proc/ui_status_user_is_abled">ui_status_user_is_abled</a></th><td>Returns a UI status such that users with debilitating conditions, such as
+being dead or not having power for silicons, will not be able to interact.
+Being dead will disable UI, being incapacitated will continue updating it,
+and anything else will make it interactive.</td></tr>
+            <tr><th><a href="global.html#proc/ui_status_user_is_adjacent">ui_status_user_is_adjacent</a></th><td>Returns a UI status such that users adjacent to source will be able to interact,
+far away users will be able to see, and anyone farther won't see anything.
+Dead users will receive updates no matter what, though you likely want to add
+a [<code>ui_status_only_living</code>] check for finer observer interactions.</td></tr>
+            <tr><th><a href="global.html#proc/ui_status_user_is_advanced_tool_user">ui_status_user_is_advanced_tool_user</a></th><td>Returns a UI status such that advanced tool users will be able to interact,
+but everyone else can only watch.</td></tr>
+            <tr><th><a href="global.html#proc/ui_status_user_is_conscious_and_lying_down">ui_status_user_is_conscious_and_lying_down</a></th><td>Returns UI_INTERACTIVE if the user is conscious and lying down.
+Returns UI_UPDATE otherwise.</td></tr>
+            <tr><th><a href="global.html#proc/ui_status_user_strictly_adjacent">ui_status_user_strictly_adjacent</a></th><td>Return UI_INTERACTIVE if the user is strictly adjacent to the target atom, whether they can see it or not.
+Return UI_CLOSE otherwise.</td></tr>
+            <tr><th><a href="global.html#proc/url2htmlloader">url2htmlloader</a></th><td>Return html to load a url.
+for use inside of browse() calls to html assets that might be loaded on a cdn.</td></tr>
+            <tr><th><a href="global.html#proc/weight_class_to_text">weight_class_to_text</a></th><td>Returns a string based on the weight class define used as argument</td></tr>
+            <tr><th><a href="global.html#proc/xeno_message">xeno_message</a></th><td>Send a message to all xenos. Force forces the message whether or not the hivemind is intact. Target is an atom that is pointed out to the hive. Filter list is a list of xenos we don't message.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/Failsafe"><aside class="declaration">var </aside>Failsafe
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/controller/failsafe</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/failsafe.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;failsafe.dm 7"/></a></h3>
+        <p>Failsafe</p>
+<p>Pretty much pokes the MC to make sure it's still alive.</p><h3 id="var/Master"><aside class="declaration">var </aside>Master
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/master.html">controller/master</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/master.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;master.dm 12"/></a></h3>
+        <p>StonedMC</p>
+<p>Designed to properly split up a given tick among subsystems
+Note: if you read parts of this code and think &quot;why is it doing it that way&quot;
+Odds are, there is a reason</p><h3 id="var/SSambience"><aside class="declaration">var </aside>SSambience
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/ambience.html">ambience</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem/ambience.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;ambience.dm 2"/></a></h3>
+        <p>The subsystem used to play ambience to users every now and then, makes them real excited.</p><h3 id="var/SSaura"><aside class="declaration">var </aside>SSaura
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/aura.html">aura</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem/aura.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;aura.dm 2"/></a></h3>
+        <p>Tracks aura emitters and tells them to pulse. Also used for creating new ones.</p><h3 id="var/SSautomatedfire"><aside class="declaration">var </aside>SSautomatedfire
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/automatedfire.html">automatedfire</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem/autofire.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;autofire.dm 18"/></a></h3>
+        <h1 id="autofire-subsystem">Autofire Subsystem</h1>
+<p>Maintains a timer-like system to handle autofiring. Much of this code is modeled
+after or adapted from the runechat subsytem.</p>
+<p>Note that this has the same structure for storing and queueing shooter component as the timer subsystem does
+for handling timers: the bucket_list is a list of autofire component, each of which are the head
+of a linked list. Any given index in bucket_list could be null, representing an empty bucket.</p>
+<p>Doesn't support any event scheduled for more than 100 ticks in the future, as it has no secondary queue by design</p><h3 id="var/SSminimaps"><aside class="declaration">var </aside>SSminimaps
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/minimaps.html">minimaps</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem/minimaps.dm#L15">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimaps.dm 15"/></a></h3>
+        <h1 id="minimaps-subsystem">Minimaps subsystem</h1>
+<p>Handles updating and handling of the by-zlevel minimaps</p>
+<p>Minimaps are a low priority subsystem that fires relatively often
+the Initialize proc for this subsystem draws the maps as one of the last initializing subsystems</p>
+<p>Fire() for this subsystem doens't actually updates anything, and purely just reapplies the overlays that it already tracks
+actual updating of marker locations is handled by <a href="datum/controller/subsystem/minimaps.html#proc/on_move" title="/datum/controller/subsystem/minimaps">/datum/controller/subsystem/minimaps/proc/on_move</a>
+and zlevel changes are handled in <a href="datum/controller/subsystem/minimaps.html#proc/on_z_change" title="/datum/controller/subsystem/minimaps">/datum/controller/subsystem/minimaps/proc/on_z_change</a>
+tracking of the actual atoms you want to be drawn on is done by means of datums holding info pertaining to them with <a href="datum/hud_displays.html" title="/datum/hud_displays">/datum/hud_displays</a>
+There is a byond bug to be aware of when working with minimaps, see <a href="datum/hud_displays.html" title="/datum/hud_displays">/datum/hud_displays</a> and http://www.byond.com/forum/post/2661309</p><h3 id="var/SStgui"><aside class="declaration">var </aside>SStgui
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/tgui.html">tgui</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem/tgui.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;tgui.dm 13"/></a></h3>
+        <p>tgui subsystem</p>
+<p>Contains all tgui state and subsystem code.</p><h3 id="var/SStimer"><aside class="declaration">var </aside>SStimer
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/timer.html">timer</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem/timer.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;timer.dm 19"/></a></h3>
+        <h1 id="timer-subsystem">Timer Subsystem</h1>
+<p>Handles creation, callbacks, and destruction of timed events.</p>
+<p>It is important to understand the buckets used in the timer subsystem are just a series of doubly-linked
+lists. The object at a given index in bucket_list is a /datum/timedevent, the head of a list, which has prev
+and next references for the respective elements in that bucket's list.</p><h2 id="proc">Proc Details</h2><h3 id="proc/DirBlocked"><aside class="declaration">proc </aside>DirBlocked<aside>(/<a href="turf.html">turf</a>/loc, direction, bypass_window, projectile, bypass_xeno, air_pass) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L199">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 199"/></a></aside>
+        </h3>
+        <p>Checks if moving in a direction is blocked</p><h3 id="proc/Gibberish"><aside class="declaration">proc </aside>Gibberish<aside>(text, replace_characters, chance) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/mob_helpers.dm#L222">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_helpers.dm 222"/></a></aside>
+        </h3>
+        <p>Turn text into complete gibberish!</p>
+<p>text is the inputted message, replace_characters will cause original letters to be replaced and chance are the odds that a character gets modified.</p><h3 id="proc/LeftAndRightOfDir"><aside class="declaration">proc </aside>LeftAndRightOfDir<aside>(direction, diagonal_check) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L1129">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 1129"/></a></aside>
+        </h3>
+        <p>Returns the left and right dir of the input dir, used for AI stutter step while attacking</p><h3 id="proc/LinkBlocked"><aside class="declaration">proc </aside>LinkBlocked<aside>(/<a href="turf.html">turf</a>/A, /<a href="turf.html">turf</a>/B, bypass_window, projectile, bypass_xeno, air_pass) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L175">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 175"/></a></aside>
+        </h3>
+        <p>Returns true if the path from A to B is blocked. Checks both paths where the direction is diagonal
+Variables:
+bypass_window - check for PASSLASER - laser like behavior
+projectile - check for PASSPROJECTILE - bullet like behavior
+bypass_xeno - whether to bypass dense xeno structures like flamers
+air_pass - whether to bypass non airtight atoms</p><h3 id="proc/TurfBlockedNonWindow"><aside class="declaration">proc </aside>TurfBlockedNonWindow<aside>(/<a href="turf.html">turf</a>/loc) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L217">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 217"/></a></aside>
+        </h3>
+        <p>Returns true if any object on a turf is both dense and not a window</p><h3 id="proc/_addtimer"><aside class="declaration">proc </aside>_addtimer<aside>(/<a href="datum.html">datum</a>/callback/callback, wait, flags, /<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/timer.html">timer</a>/timer_subsystem, file, line) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem/timer.dm#L558">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;timer.dm 558"/></a></aside>
+        </h3>
+        <p>Create a new timer and insert it in the queue.
+You should not call this directly, and should instead use the addtimer macro, which includes source information.</p>
+<p>Arguments:</p>
+<ul>
+<li>callback the callback to call on timer finish</li>
+<li>wait deciseconds to run the timer for</li>
+<li>flags flags for this timer, see: code__DEFINES\subsystems.dm</li>
+</ul><h3 id="proc/add_keybinding"><aside class="declaration">proc </aside>add_keybinding<aside>(/<a href="datum.html">datum</a>/<a href="datum/keybinding.html">keybinding</a>/instance) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/_globalvars/lists/keybinding.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;keybinding.dm 14"/></a></aside>
+        </h3>
+        <p>Adds an instanced keybinding to the global tracker</p><h3 id="proc/adminscrub"><aside class="declaration">proc </aside>adminscrub<aside>(text, limit) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/text.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;text.dm 31"/></a></aside>
+        </h3>
+        <p>Runs STRIP_HTML_SIMPLE and byond's sanitization proc.</p><h3 id="proc/assoc_to_keys"><aside class="declaration">proc </aside>assoc_to_keys<aside>(/list/input) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/_lists.dm#L447">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;_lists.dm 447"/></a></aside>
+        </h3>
+        <p>Turns an associative list into a flat list of keys</p><h3 id="proc/auxtools_expr_stub"><aside class="declaration">proc </aside>auxtools_expr_stub<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/spaceman_dmm.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;spaceman_dmm.dm 35"/></a></aside>
+        </h3>
+        <p>auxtools expression evaluation</p><h3 id="proc/buy_category"><aside class="declaration">proc </aside>buy_category<aside>(category, /<a href="datum.html">datum</a>/<a href="datum/loadout_seller.html">loadout_seller</a>/seller) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/loadout/loadout_helper.dm#L139">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;loadout&#x2F;loadout_helper.dm 139"/></a></aside>
+        </h3>
+        <p>Return true if you can buy this category, and also change the loadout seller buying bitfield</p><h3 id="proc/buy_item_in_vendor"><aside class="declaration">proc </aside>buy_item_in_vendor<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/item_to_buy_type, /<a href="datum.html">datum</a>/<a href="datum/loadout_seller.html">loadout_seller</a>/seller, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/loadout/loadout_helper.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;loadout&#x2F;loadout_helper.dm 10"/></a></aside>
+        </h3>
+        <p>Return true if the item was found in a linked vendor and successfully bought</p><h3 id="proc/buy_stack"><aside class="declaration">proc </aside>buy_stack<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/stack.html">stack</a>/stack_to_buy_type, /<a href="datum.html">datum</a>/<a href="datum/loadout_seller.html">loadout_seller</a>/seller, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user, amount) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/loadout/loadout_helper.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;loadout&#x2F;loadout_helper.dm 56"/></a></aside>
+        </h3>
+        <p>Check if that stack is buyable in a points vendor (currently, only metal, sandbags and plasteel)</p><h3 id="proc/can_buy_category"><aside class="declaration">proc </aside>can_buy_category<aside>(category, category_choices) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/loadout/loadout_helper.dm#L135">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;loadout&#x2F;loadout_helper.dm 135"/></a></aside>
+        </h3>
+        <p>Will check if the selected category can be bought according to the category choices left</p><h3 id="proc/can_see_through"><aside class="declaration">proc </aside>can_see_through<aside>(/<a href="turf.html">turf</a>/from_turf, /<a href="turf.html">turf</a>/to_turf) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/math.dm#L46">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;math.dm 46"/></a></aside>
+        </h3>
+        <p>Returns if a turf can be seen from another turf.</p><h3 id="proc/can_sell_human_body"><aside class="declaration">proc </aside>can_sell_human_body<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/human_to_sell, seller_faction) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/requisitions/supply_export.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;requisitions&#x2F;supply_export.dm 49"/></a></aside>
+        </h3>
+        <p>Return TRUE if the relation between the two factions are bad enough that a bounty is on the human_to_sell head</p><h3 id="proc/center_image"><aside class="declaration">proc </aside>center_image<aside>(/image/image_to_center, x_dimension, y_dimension) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/icons.dm#L1156">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;icons.dm 1156"/></a></aside>
+        </h3>
+        <p>Center's an image.
+Requires:
+The Image
+The x dimension of the icon file used in the image
+The y dimension of the icon file used in the image
+eg: center_image(image_to_center, 32,32)
+eg2: center_image(image_to_center, 96,96)</p><h3 id="proc/cheap_get_humans_near"><aside class="declaration">proc </aside>cheap_get_humans_near<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/source, distance) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/ai.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;ai.dm 5"/></a></aside>
+        </h3>
+        <p>Returns a list of humans via get_dist and same z level method, very cheap compared to range()</p><h3 id="proc/cheap_get_xenos_near"><aside class="declaration">proc </aside>cheap_get_xenos_near<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/source, distance) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/ai.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;ai.dm 13"/></a></aside>
+        </h3>
+        <p>Returns a list of xenos via get_dist and same z level method, very cheap compared to range()</p><h3 id="proc/check_admin_pings"><aside class="declaration">proc </aside>check_admin_pings<aside>(msg, adminonly) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/admin/verbs/adminhelp.dm#L1001">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;verbs&#x2F;adminhelp.dm 1001"/></a></aside>
+        </h3>
+        <p>Checks a given message to see if any of the words contain an active admin's ckey with an @ before it</p>
+<p>Returns nothing if no pings are found, otherwise returns an associative list with ckey -&gt; client
+Also modifies msg to underline the pings, then stores them in the key <a href="code/__DEFINES/admin.html#define/ADMINSAY_PING_UNDERLINE_NAME_INDEX" title="ADMINSAY_PING_UNDERLINE_NAME_INDEX">ADMINSAY_PING_UNDERLINE_NAME_INDEX</a> for returning</p>
+<p>Arguments:</p>
+<ul>
+<li>msg - the message being scanned</li>
+<li>adminonly - if it should only look for ASAY admins and not just a holder</li>
+</ul><h3 id="proc/check_path"><aside class="declaration">proc </aside>check_path<aside>(/<a href="atom.html">atom</a>/start, /<a href="atom.html">atom</a>/end, bypass_window, projectile, bypass_xeno, air_pass) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L1290">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 1290"/></a></aside>
+        </h3>
+        <p>Draws a line between two atoms, then checks if the path is blocked.
+Variables:
+start -start point of the path
+end - end point of the path
+bypass_window - whether it will go through transparent windows in the same way as lasers
+projectile - whether PASSPROJECTILE will be checked to ignore dense objects in the same way as projectiles
+bypass_xeno - whether to bypass dense xeno structures in the same way as flamers
+air_pass - whether to bypass non airtight atoms</p><h3 id="proc/closest_cardinal_dir"><aside class="declaration">proc </aside>closest_cardinal_dir<aside>(dir) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L603">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 603"/></a></aside>
+        </h3>
+        <p>If given a diagonal dir, return a corresponding cardinal dir. East/west preferred</p><h3 id="proc/compare_list"><aside class="declaration">proc </aside>compare_list<aside>(/list/l, /list/d) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/_lists.dm#L454">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;_lists.dm 454"/></a></aside>
+        </h3>
+        <p>flat list comparison, checks if two lists have the same contents</p><h3 id="proc/create_empty_loadout"><aside class="declaration">proc </aside>create_empty_loadout<aside>(name, job) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/loadout/loadout_helper.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;loadout&#x2F;loadout_helper.dm 2"/></a></aside>
+        </h3>
+        <p>Return a new empty loayout</p><h3 id="proc/deadchat_broadcast"><aside class="declaration">proc </aside>deadchat_broadcast<aside>(message, source, /<a href="mob.html">mob</a>/follow_target, /<a href="turf.html">turf</a>/turf_target, speaker_key, message_type) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/mobs.dm#L177">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;mobs.dm 177"/></a></aside>
+        </h3>
+        <p>Displays a message in deadchat, sent by source. Source is not linkified, message is, to avoid stuff like character names to be linkified.
+Automatically gives the class deadsay to the whole message (message + source)</p><h3 id="proc/default_ui_state"><aside class="declaration">proc </aside>default_ui_state<aside>(/<a href="mob.html">mob</a>/user, /<a href="atom.html">atom</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui/status_composers.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;status_composers.dm 2"/></a></aside>
+        </h3>
+        <p>The sane defaults for a UI such as a computer or a machine.</p><h3 id="proc/deltimer"><aside class="declaration">proc </aside>deltimer<aside>(id, /<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/timer.html">timer</a>/timer_subsystem) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem/timer.dm#L609">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;timer.dm 609"/></a></aside>
+        </h3>
+        <p>Delete a timer</p>
+<p>Arguments:</p>
+<ul>
+<li>id a timerid or a /datum/timedevent</li>
+</ul><h3 id="proc/dview"><aside class="declaration">proc </aside>dview<aside>(range, center, invis_flags) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L986">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 986"/></a></aside>
+        </h3>
+        <p>Version of view() which ignores darkness, because BYOND doesn't have it (I actually suggested it but it was tagged redundant, BUT HEARERS IS A T- /rant).</p><h3 id="proc/emissive_appearance"><aside class="declaration">proc </aside>emissive_appearance<aside>(icon, icon_state, layer, alpha, appearance_flags) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/lighting.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;lighting.dm 2"/></a></aside>
+        </h3>
+        <p>Produces a mutable appearance glued to the <a href="code/__DEFINES/layers.html#define/EMISSIVE_PLANE" title="EMISSIVE_PLANE">EMISSIVE_PLANE</a> dyed to be the <a href="code/__DEFINES/lighting.html#define/EMISSIVE_COLOR" title="EMISSIVE_COLOR">EMISSIVE_COLOR</a>.</p><h3 id="proc/emissive_blocker"><aside class="declaration">proc </aside>emissive_blocker<aside>(icon, icon_state, layer, alpha, appearance_flags) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/lighting.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;lighting.dm 8"/></a></aside>
+        </h3>
+        <p>Produces a mutable appearance glued to the <a href="code/__DEFINES/layers.html#define/EMISSIVE_PLANE" title="EMISSIVE_PLANE">EMISSIVE_PLANE</a> dyed to be the <a href="code/__DEFINES/lighting.html#define/EM_BLOCK_COLOR" title="EM_BLOCK_COLOR">EM_BLOCK_COLOR</a>.</p><h3 id="proc/extend_line_to_radius"><aside class="declaration">proc </aside>extend_line_to_radius<aside>(delta_x, delta_y, radius, offset_x, offset_y) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/lighting/lighting_mask/shadow_calculator.dm#L674">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;lighting&#x2F;lighting_mask&#x2F;shadow_calculator.dm 674"/></a></aside>
+        </h3>
+        <p>gets a line from a x and y, to the offset x and y of length radius</p><h3 id="proc/flick_overlay_view"><aside class="declaration">proc </aside>flick_overlay_view<aside>(/image/image_to_show, /<a href="atom.html">atom</a>/target, duration) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/game.dm#L133">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;game.dm 133"/></a></aside>
+        </h3>
+        <p>wrapper for flick_overlay(), flicks to everyone who can see the target atom</p><h3 id="proc/generate_asset_name"><aside class="declaration">proc </aside>generate_asset_name<aside>(file) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/icons.dm#L941">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;icons.dm 941"/></a></aside>
+        </h3>
+        <p>Generate a filename for this asset
+The same asset will always lead to the same asset name
+(Generated names do not include file extention.)</p><h3 id="proc/generate_cone"><aside class="declaration">proc </aside>generate_cone<aside>(/<a href="atom.html">atom</a>/center, max_row_count, starting_row, cone_width, cone_direction, blocked) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L1176">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 1176"/></a></aside>
+        </h3>
+        <p>Generates a cone shape. Any other checks should be handled with the resulting list. Can work with up to 359 degrees
+Variables:
+center - where the cone begins, or center of a circle drawn with this
+max_row_count - how many rows are checked
+starting_row - from how far should the turfs start getting included in the cone
+cone_width - big the angle of the cone is
+cone_direction - at what angle should the cone be made, relative to the game board's orientation
+blocked - whether the cone should take into consideration solid walls</p><h3 id="proc/generate_greyscale_weapons_data"><aside class="declaration">proc </aside>generate_greyscale_weapons_data<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/vehicles/mecha/combat/greyscale/greyscale_constructor.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;greyscale&#x2F;greyscale_constructor.dm 4"/></a></aside>
+        </h3>
+        <p>generates the static list data containig all printable mech equipment modules for greyscale</p><h3 id="proc/generate_true_cone"><aside class="declaration">proc </aside>generate_true_cone<aside>(/<a href="atom.html">atom</a>/center, max_row_count, starting_row, cone_width, cone_direction, blocked, bypass_window, projectile, bypass_xeno, air_pass) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L1240">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 1240"/></a></aside>
+        </h3>
+        <p>Generates a cone shape. Any other checks should be handled with the resulting list. Can work with up to 359 degrees
+Variables:
+center - where the cone begins, or center of a circle drawn with this
+max_row_count - how many rows are checked
+starting_row - from how far should the turfs start getting included in the cone
+cone_width - big the angle of the cone is
+cone_direction - at what angle should the cone be made, relative to the game board's orientation
+blocked - whether the cone should take into consideration solid walls
+bypass_window - whether it will go through transparent windows like lasers
+projectile - whether PASSPROJECTILE will be checked to ignore dense objects like projectiles
+bypass_xeno - whether to bypass dense xeno structures like flamers
+air_pass - whether to bypass non airtight atoms</p><h3 id="proc/get_allowed_instrument_ids"><aside class="declaration">proc </aside>get_allowed_instrument_ids<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/instruments/instrument_data/_instrument_data.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;instrument_data&#x2F;_instrument_data.dm 4"/></a></aside>
+        </h3>
+        <p>Get all non admin_only instruments as a list of text ids.</p><h3 id="proc/get_areas"><aside class="declaration">proc </aside>get_areas<aside>(areatype, subtypes) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L1143">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 1143"/></a></aside>
+        </h3>
+        <p>Takes: Area type as text string or as typepath OR an instance of the area. Returns: A list of all areas of that type in the world.</p><h3 id="proc/get_atom_on_turf"><aside class="declaration">proc </aside>get_atom_on_turf<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/something_in_turf, stop_type) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L911">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 911"/></a></aside>
+        </h3>
+        <p>Returns the top-most atom sitting on the turf.
+For example, using this on a disk, which is in a bag, on a mob,
+will return the mob because it's on the turf.</p>
+<p>Arguments</p>
+<ul>
+<li>something_in_turf - a movable within the turf, somewhere.</li>
+<li>stop_type - optional - stops looking if stop_type is found in the turf, returning that type (if found).</li>
+</ul><h3 id="proc/get_bbox_of_atoms"><aside class="declaration">proc </aside>get_bbox_of_atoms<aside>(/list/atoms) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/game.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;game.dm 31"/></a></aside>
+        </h3>
+        <p>Get a bounding box of a list of atoms.</p>
+<p>Arguments:</p>
+<ul>
+<li>atoms - List of atoms. Can accept output of view() and range() procs.</li>
+</ul>
+<p>Returns: list(x1, y1, x2, y2)</p><h3 id="proc/get_between_angles"><aside class="declaration">proc </aside>get_between_angles<aside>(degree_one, degree_two) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L163">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 163"/></a></aside>
+        </h3>
+        <p>returns degrees between two angles</p><h3 id="proc/get_hearers_in_view"><aside class="declaration">proc </aside>get_hearers_in_view<aside>(view_radius, /<a href="atom.html">atom</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/say.dm#L230">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;say.dm 230"/></a></aside>
+        </h3>
+        <p>Returns a list of hearers in view(view_radius) from source (ignoring luminosity). uses important_recursive_contents<a href="code/__DEFINES/say.html#define/RECURSIVE_CONTENTS_HEARING_SENSITIVE" title="RECURSIVE_CONTENTS_HEARING_SENSITIVE">RECURSIVE_CONTENTS_HEARING_SENSITIVE</a></p><h3 id="proc/get_item_stack_number"><aside class="declaration">proc </aside>get_item_stack_number<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/I) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/loadout/loadout_helper.dm#L175">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;loadout&#x2F;loadout_helper.dm 175"/></a></aside>
+        </h3>
+        <p>If the item is not a stack, return 1. If it is a stack, return the stack size</p><h3 id="proc/get_item_stack_representation_amount"><aside class="declaration">proc </aside>get_item_stack_representation_amount<aside>(/<a href="datum.html">datum</a>/<a href="datum/item_representation.html">item_representation</a>/item_representation) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/loadout/loadout_helper.dm#L182">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;loadout&#x2F;loadout_helper.dm 182"/></a></aside>
+        </h3>
+        <p>If the item representation is not a stack, return 1. Else, return the satck size</p><h3 id="proc/get_line"><aside class="declaration">proc </aside>get_line<aside>(/<a href="atom.html">atom</a>/starting_atom, /<a href="atom.html">atom</a>/ending_atom) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/math.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;math.dm 6"/></a></aside>
+        </h3>
+        <p>Get a list of turfs in a line from <code>starting_atom</code> to <code>ending_atom</code>.</p>
+<p>Uses the ultra-fast <a href="https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm">Bresenham Line-Drawing Algorithm</a>.</p><h3 id="proc/get_mech_limb"><aside class="declaration">proc </aside>get_mech_limb<aside>(slot, mech_type) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/mech.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;mech.dm 3"/></a></aside>
+        </h3>
+        <p>helper that converts greyscale mech slots and types into typepaths</p><h3 id="proc/get_nearest_target"><aside class="declaration">proc </aside>get_nearest_target<aside>(/<a href="atom.html">atom</a>/source, distance, target_flags, attacker_faction, attacker_hive) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/ai.dm#L23">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;ai.dm 23"/></a></aside>
+        </h3>
+        <p>Returns the nearest target that has the right target flag</p><h3 id="proc/get_nested_locs"><aside class="declaration">proc </aside>get_nested_locs<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/atom_on_location, include_turf) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L1216">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 1216"/></a></aside>
+        </h3>
+        <p>the 3 directions in the direction on the cone that will be checked
+turfs that are checked whether the cone can continue further from them
+Returns a list of all locations (except the area) the movable is within.</p><h3 id="proc/get_path"><aside class="declaration">proc </aside>get_path<aside>(/<a href="atom.html">atom</a>/starting_atom, /<a href="atom.html">atom</a>/goal_atom, pathing_type) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem/advanced_pathfinding.dm#L89">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;advanced_pathfinding.dm 89"/></a></aside>
+        </h3>
+        <p>Returns the most optimal path to get from starting atom to goal atom</p><h3 id="proc/get_screen_size"><aside class="declaration">proc </aside>get_screen_size<aside>(widescreen) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/view.dm#L147">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;view.dm 147"/></a></aside>
+        </h3>
+        <p>gets the current screen size as defined in config</p><h3 id="proc/get_turf_on_clickcatcher"><aside class="declaration">proc </aside>get_turf_on_clickcatcher<aside>(/<a href="atom.html">atom</a>/target, /<a href="mob.html">mob</a>/user, params) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/gun_helpers.dm#L208">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;gun_helpers.dm 208"/></a></aside>
+        </h3>
+        <p>Helper proc that processes a clicked target, if the target is not black tiles, it will not change it. If they are it will return the turf of the black tiles. It will return null if the object is a screen object other than black tiles.</p><h3 id="proc/get_view_center"><aside class="declaration">proc </aside>get_view_center<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/view.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;view.dm 21"/></a></aside>
+        </h3>
+        <p>Return the center turf of the user's view</p><h3 id="proc/getpois"><aside class="declaration">proc </aside>getpois<aside>(mobs_only, skip_mindless, specify_dead_role) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L1105">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 1105"/></a></aside>
+        </h3>
+        <p>Returns a list of all items of interest with their name</p><h3 id="proc/give_admin_popup"><aside class="declaration">proc </aside>give_admin_popup<aside>(/<a href="client.html">client</a>/target, /<a href="client.html">client</a>/admin, message) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/components/admin_popup.dm#L115">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;admin_popup.dm 115"/></a></aside>
+        </h3>
+        <p>Tries to give the target an admin popup.
+If it fails, will send the error to the passed admin.</p><h3 id="proc/give_free_headset"><aside class="declaration">proc </aside>give_free_headset<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/user, faction) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/loadout/loadout_helper.dm#L123">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;loadout&#x2F;loadout_helper.dm 123"/></a></aside>
+        </h3>
+        <p>Will give a headset corresponding to the user job to the user</p><h3 id="proc/handle_initial_squad"><aside class="declaration">proc </aside>handle_initial_squad<aside>(/<a href="mob.html">mob</a>/<a href="mob/new_player.html">new_player</a>/player, /<a href="datum.html">datum</a>/<a href="datum/job.html">job</a>/job, latejoin, faction) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/jobs/squads.dm#L461">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;jobs&#x2F;squads.dm 461"/></a></aside>
+        </h3>
+        <p>A generic proc for handling the initial squad role assignment in SSjob</p><h3 id="proc/in_view_range"><aside class="declaration">proc </aside>in_view_range<aside>(/<a href="mob.html">mob</a>/user, /<a href="atom.html">atom</a>/A) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/view.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;view.dm 10"/></a></aside>
+        </h3>
+        <p>Returns TRUE if the atom is in the user view range.</p><h3 id="proc/init_emote_keybinds"><aside class="declaration">proc </aside>init_emote_keybinds<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/_globalvars/lists/keybinding.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;keybinding.dm 26"/></a></aside>
+        </h3>
+        <p>Create a keybind for each datum/emote</p><h3 id="proc/init_keybindings"><aside class="declaration">proc </aside>init_keybindings<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/_globalvars/lists/keybinding.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;keybinding.dm 2"/></a></aside>
+        </h3>
+        <p>Creates and sorts all the keybinding datums</p><h3 id="proc/init_quick_loadouts"><aside class="declaration">proc </aside>init_quick_loadouts<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/machinery/vending/quick_vendor.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;machinery&#x2F;vending&#x2F;quick_vendor.dm 4"/></a></aside>
+        </h3>
+        <p>The list is shared across all quick vendors, but they will only display the tabs specified by the vendor, and only show the loadouts with jobs that match the displayed tabs.</p><h3 id="proc/init_subtypes"><aside class="declaration">proc </aside>init_subtypes<aside>(prototype, /list/L) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/global_lists.dm#L190">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;global_lists.dm 190"/></a></aside>
+        </h3>
+        <p>Minimap icons for UI display</p><h3 id="proc/is_handful_buyable"><aside class="declaration">proc </aside>is_handful_buyable<aside>(ammo_type) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/loadout/loadout_helper.dm#L112">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;loadout&#x2F;loadout_helper.dm 112"/></a></aside>
+        </h3>
+        <p>Return TRUE if this handful should be buyable, aka if it's corresponding aka box is in a linked vendor</p><h3 id="proc/item2representation_type"><aside class="declaration">proc </aside>item2representation_type<aside>(item_type) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/loadout/loadout_helper.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;loadout&#x2F;loadout_helper.dm 84"/></a></aside>
+        </h3>
+        <p>Return wich type of item_representation should representate any item_type</p><h3 id="proc/jatum_deserialize"><aside class="declaration">proc </aside>jatum_deserialize<aside>(json) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/jatum.dm#L144">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;jatum.dm 144"/></a></aside>
+        </h3>
+        <p>Attempt to create a value from a JATUN JSON.</p>
+<ul>
+<li>json - The JSON to deserialize.</li>
+</ul><h3 id="proc/jatum_serialize"><aside class="declaration">proc </aside>jatum_serialize<aside>(value) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/jatum.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;jatum.dm 17"/></a></aside>
+        </h3>
+        <p>Attempt to serialize a given value to the JATUM format.</p>
+<ul>
+<li>value - The var to serialize.</li>
+</ul><h3 id="proc/json_deserialize_datum"><aside class="declaration">proc </aside>json_deserialize_datum<aside>(/list/jsonlist, /list/options, target_type, strict_target_type) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/datum.dm#L206">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;datum.dm 206"/></a></aside>
+        </h3>
+        <p>Convert a list of json to datum</p><h3 id="proc/json_serialize_datum"><aside class="declaration">proc </aside>json_serialize_datum<aside>(/<a href="datum.html">datum</a>/D, /list/options) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/datum.dm#L197">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;datum.dm 197"/></a></aside>
+        </h3>
+        <p>Convert a datum into a json blob</p><h3 id="proc/line_of_sight"><aside class="declaration">proc </aside>line_of_sight<aside>(/<a href="atom.html">atom</a>/starting_atom, /<a href="atom.html">atom</a>/ending_atom, maximum_dist, ignore_target_opacity) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/math.dm#L62">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;math.dm 62"/></a></aside>
+        </h3>
+        <p>Checks if ending atom is viewable by starting atom, uses bresenham line algorithm but checks some extra tiles on a diagonal next tile</p><h3 id="proc/load_map"><aside class="declaration">proc </aside>load_map<aside>(dmm_file, x_offset, y_offset, z_offset, cropMap, measureOnly, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mapping/reader.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mapping&#x2F;reader.dm 44"/></a></aside>
+        </h3>
+        <p>Shortcut function to parse a map and apply it to the world.</p>
+<ul>
+<li><code>dmm_file</code>: A .dmm file to load (Required).</li>
+<li><code>x_offset</code>, <code>y_offset</code>, <code>z_offset</code>: Positions representign where to load the map (Optional).</li>
+<li><code>cropMap</code>: When true, the map will be cropped to fit the existing world dimensions (Optional).</li>
+<li><code>measureOnly</code>: When true, no changes will be made to the world (Optional).</li>
+<li><code>no_changeturf</code>: When true, <a href="turf.html" title="/turf">turf/AfterChange</a> won't be called on loaded turfs</li>
+<li><code>x_lower</code>, <code>x_upper</code>, <code>y_lower</code>, <code>y_upper</code>: Coordinates (relative to the map) to crop to (Optional).</li>
+<li><code>placeOnTop</code>: Whether to use <a href="turf.html" title="/turf">turf/PlaceOnTop</a> rather than <a href="turf.html" title="/turf">turf/ChangeTurf</a> (Optional).</li>
+</ul><h3 id="proc/load_poll_data"><aside class="declaration">proc </aside>load_poll_data<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/admin/verbs/poll_managment.dm#L696">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;verbs&#x2F;poll_managment.dm 696"/></a></aside>
+        </h3>
+        <p>Loads all current and future server polls and their options to store both as datums.</p><h3 id="proc/log_speech_indicators"><aside class="declaration">proc </aside>log_speech_indicators<aside>(text) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/_logging.dm#L132">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;_logging.dm 132"/></a></aside>
+        </h3>
+        <p>Logging for speech indicators.</p><h3 id="proc/log_tgui"><aside class="declaration">proc </aside>log_tgui<aside>(user, message, context, /<a href="datum.html">datum</a>/<a href="datum/tgui_window.html">tgui_window</a>/window, /<a href="datum.html">datum</a>/src_object) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/_logging.dm#L233">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;_logging.dm 233"/></a></aside>
+        </h3>
+        <p>Appends a tgui-related log entry. All arguments are optional.</p><h3 id="proc/make_datum_references_lists"><aside class="declaration">proc </aside>make_datum_references_lists<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/global_lists.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;global_lists.dm 17"/></a></aside>
+        </h3>
+        <p>Initial Building</p><h3 id="proc/md5asfile"><aside class="declaration">proc </aside>md5asfile<aside>(file) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/files.dm#L81">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;files.dm 81"/></a></aside>
+        </h3>
+        <p>Save file as an external file then md5 it.
+Used because md5ing files stored in the rsc sometimes gives incorrect md5 results.</p><h3 id="proc/md5filepath"><aside class="declaration">proc </aside>md5filepath<aside>(path) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/files.dm#L76">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;files.dm 76"/></a></aside>
+        </h3>
+        <p>Returns the md5 of a file at a given path.</p><h3 id="proc/message_to_html"><aside class="declaration">proc </aside>message_to_html<aside>(message) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgchat/message.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgchat&#x2F;message.dm 14"/></a></aside>
+        </h3>
+        <p>Message-related procs</p>
+<p>Message format (/list):</p>
+<ul>
+<li>type - Message type, must be one of defines in <code>code/__DEFINES/chat.dm</code></li>
+<li>text - Plain message text</li>
+<li>html - HTML message text</li>
+<li>Optional metadata, can be any key/value pair.</li>
+</ul>
+<p>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</p><h3 id="proc/movespeed_data_null_check"><aside class="declaration">proc </aside>movespeed_data_null_check<aside>(/list/data) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/mob_movespeed.dm#L143">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_movespeed.dm 143"/></a></aside>
+        </h3>
+        <p>Checks if a move speed modifier is valid and not missing any data</p><h3 id="proc/play_vox_word"><aside class="declaration">proc </aside>play_vox_word<aside>(word, z_level, /<a href="mob.html">mob</a>/only_listener) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/silicon/ai/say.dm#L123">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;silicon&#x2F;ai&#x2F;say.dm 123"/></a></aside>
+        </h3>
+        <p>play vox words for mobs on our zlevel</p><h3 id="proc/playsound"><aside class="declaration">proc </aside>playsound<aside>(/<a href="atom.html">atom</a>/source, soundin, vol, vary, sound_range, falloff, is_global, frequency, channel) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/sound.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;sound.dm 11"/></a></aside>
+        </h3>
+        <p>*Proc used to play a sound.</p>
+<ul>
+<li>Arguments:</li>
+<li>
+<ul>
+<li>source: what played the sound.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>soundin: the .ogg to use.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>vol: the initial volume of the sound, 0 is no sound at all, 75 is loud queen screech.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>vary: to make the frequency var of the sound vary (mostly unused).</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>sound_range: the maximum theoretical range (in tiles) of the sound, by default is equal to the volume.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>falloff: how the sound's volume decreases with distance, low is fast decrease and high is slow decrease. <br />
+A good representation is: 'byond applies a volume reduction to the sound every X tiles', where X is falloff.</li>
+</ul>
+</li>
+</ul><h3 id="proc/playsound_z"><aside class="declaration">proc </aside>playsound_z<aside>(z, soundin, _volume) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/sound.dm#L118">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;sound.dm 118"/></a></aside>
+        </h3>
+        <p>Play sound for all online mobs on a given Z-level. Good for ambient sounds.</p><h3 id="proc/playsound_z_humans"><aside class="declaration">proc </aside>playsound_z_humans<aside>(z, soundin, _volume) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/sound.dm#L127">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;sound.dm 127"/></a></aside>
+        </h3>
+        <p>Play a sound for all cliented humans and ghosts by zlevel</p><h3 id="proc/playsound_z_xenos"><aside class="declaration">proc </aside>playsound_z_xenos<aside>(z, soundin, _volume, hive_type) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/sound.dm#L137">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;sound.dm 137"/></a></aside>
+        </h3>
+        <p>Play a sound for all cliented xenos and ghosts by hive on a zlevel</p><h3 id="proc/pretty_string_from_reagent_list"><aside class="declaration">proc </aside>pretty_string_from_reagent_list<aside>(/list/reagent_list) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/reagents/reagents.dm#L178">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;reagents.dm 178"/></a></aside>
+        </h3>
+        <p>Convert reagent list to a printable string for logging etc</p><h3 id="proc/propagate_network"><aside class="declaration">proc </aside>propagate_network<aside>(/<a href="obj.html">obj</a>/<a href="obj/structure/cable.html">structure/cable</a>/C, /<a href="datum.html">datum</a>/powernet/PN, skip_assigned_powernets) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/power/power.dm#L152">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;power.dm 152"/></a></aside>
+        </h3>
+        <p>remove the old powernet and replace it with a new one throughout the network.</p><h3 id="proc/qdel"><aside class="declaration">proc </aside>qdel<aside>(/<a href="datum.html">datum</a>/D, force, ...) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem/garbage.dm#L317">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;garbage.dm 317"/></a></aside>
+        </h3>
+        <p>Should be treated as a replacement for the 'del' keyword.</p>
+<p>Datums passed to this will be given a chance to clean up references to allow the GC to collect them.</p><h3 id="proc/recoil_camera"><aside class="declaration">proc </aside>recoil_camera<aside>(/<a href="mob.html">mob</a>/M, duration, backtime_duration, strength, angle) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/mob_helpers.dm#L257">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_helpers.dm 257"/></a></aside>
+        </h3>
+        <p>Makes a recoil-like animation on the mob camera.</p><h3 id="proc/reject_bad_text"><aside class="declaration">proc </aside>reject_bad_text<aside>(text, max_length, ascii_cyrillic_only) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/text.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;text.dm 45"/></a></aside>
+        </h3>
+        <p>Returns the text if properly formatted, or null else.</p>
+<p>Things considered improper:</p>
+<ul>
+<li>Larger than max_length.</li>
+<li>Presence of non-ASCII characters if asci_only is set to TRUE.</li>
+<li>Only whitespaces, tabs and/or line breaks in the text.</li>
+<li>Presence of the &lt;, &gt;, \ and / characters.</li>
+<li>Presence of ASCII special control characters (horizontal tab and new line not included).</li>
+</ul><h3 id="proc/remove_image_from_client"><aside class="declaration">proc </aside>remove_image_from_client<aside>(/image/image, /<a href="client.html">client</a>/remove_from) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/game.dm#L119">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;game.dm 119"/></a></aside>
+        </h3>
+        <p>Removes an image from a client's <code>.images</code>. Useful as a callback.</p><h3 id="proc/return_generator_args"><aside class="declaration">proc </aside>return_generator_args<aside>(/generator/target) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/generators.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;generators.dm 7"/></a></aside>
+        </h3>
+        <p>returns the arguments given to a generator and manually extracts them from the internal byond object
+returns:</p>
+<ul>
+<li>flat list of strings for args given to the generator.</li>
+<li>Note: this means things like &quot;list(1,2,3)&quot; will need to be processed</li>
+</ul><h3 id="proc/rustg_get_version"><aside class="declaration">proc </aside>rustg_get_version<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__DEFINES/rust_g.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;rust_g.dm 42"/></a></aside>
+        </h3>
+        <p>Gets the version of rust_g</p><h3 id="proc/sanitize"><aside class="declaration">proc </aside>sanitize<aside>(text) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/text.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;text.dm 20"/></a></aside>
+        </h3>
+        <p>Runs byond's html encoding sanitization proc, after replacing new-lines and tabs for the # character.</p><h3 id="proc/sanitize_is_full_emote_list"><aside class="declaration">proc </aside>sanitize_is_full_emote_list<aside>(value) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/sanitize_values.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;sanitize_values.dm 29"/></a></aside>
+        </h3>
+        <p>Sanitize the custom emote list</p><h3 id="proc/send2adminchat"><aside class="declaration">proc </aside>send2adminchat<aside>(category, message) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/chat.dm#L69">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;chat.dm 69"/></a></aside>
+        </h3>
+        <p>Sends a message to TGS admin chat channels.</p>
+<p>category - The category of the mssage.
+message - The message to send.</p><h3 id="proc/send2chat"><aside class="declaration">proc </aside>send2chat<aside>(message, channel_tag) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/chat.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;chat.dm 44"/></a></aside>
+        </h3>
+        <p>Sends a message to TGS chat channels.</p>
+<p>message - The message to send.
+channel_tag - Required. If &quot;&quot;, the message with be sent to all connected (Game-type for TGS3) channels. Otherwise, it will be sent to TGS4 channels with that tag (Delimited by ','s).</p><h3 id="proc/siunit"><aside class="declaration">proc </aside>siunit<aside>(value, unit, maxdecimals) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/text.dm#L414">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;text.dm 414"/></a></aside>
+        </h3>
+        <p>Formats a number to human readable form with the appropriate SI unit.</p>
+<p>Supports SI exponents between 1e-15 to 1e15, but properly handles numbers outside that range as well.
+Examples:</p>
+<ul>
+<li>
+<p><code>siunit(1234, &quot;Pa&quot;, 1)</code> -&gt; <code>&quot;1.2 kPa&quot;</code></p>
+</li>
+<li>
+<p><code>siunit(0.5345, &quot;A&quot;, 0)</code> -&gt; <code>&quot;535 mA&quot;</code></p>
+</li>
+<li>
+<p><code>siunit(1000, &quot;Pa&quot;, 4)</code> -&gt; <code>&quot;1 kPa&quot;</code>
+Arguments:</p>
+</li>
+<li>
+<p>value - The number to convert to text. Can be positive or negative.</p>
+</li>
+<li>
+<p>unit - The base unit of the number, such as &quot;Pa&quot; or &quot;W&quot;.</p>
+</li>
+<li>
+<p>maxdecimals - Maximum amount of decimals to display for the final number. Defaults to 1.</p>
+</li>
+<li>
+<p>For pressure conversion, use proc/siunit_pressure() below</p>
+</li>
+</ul><h3 id="proc/slur"><aside class="declaration">proc </aside>slur<aside>(phrase) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/mob_helpers.dm#L155">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_helpers.dm 155"/></a></aside>
+        </h3>
+        <p>Makes you speak like you're drunk
+todo remove, deprecated</p><h3 id="proc/stars"><aside class="declaration">proc </aside>stars<aside>(phrase, probability) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/mob_helpers.dm#L136">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_helpers.dm 136"/></a></aside>
+        </h3>
+        <p>Convert random parts of a passed in message to stars</p>
+<ul>
+<li>phrase - the string to convert</li>
+<li>probability - probability any character gets changed</li>
+</ul>
+<p>This proc is dangerously laggy, avoid it or die</p><h3 id="proc/string_list"><aside class="declaration">proc </aside>string_list<aside>(/list/values) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/string_lists.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;string_lists.dm 6"/></a></aside>
+        </h3>
+        <p>Caches lists with non-numeric stringify-able values (text or typepath).</p><h3 id="proc/strip_html"><aside class="declaration">proc </aside>strip_html<aside>(text, limit) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/text.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;text.dm 26"/></a></aside>
+        </h3>
+        <p>Runs STRIP_HTML_SIMPLE and sanitize.</p><h3 id="proc/stripped_input"><aside class="declaration">proc </aside>stripped_input<aside>(/<a href="mob.html">mob</a>/user, message, title, default, max_length, no_trim) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/text.dm#L73">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;text.dm 73"/></a></aside>
+        </h3>
+        <p>Used to get a properly sanitized input. Returns null if cancel is pressed.</p>
+<p>Arguments</p>
+<ul>
+<li>user - Target of the input prompt.</li>
+<li>message - The text inside of the prompt.</li>
+<li>title - The window title of the prompt.</li>
+<li>max_length - If you intend to impose a length limit - default is 1024.</li>
+<li>no_trim - Prevents the input from being trimmed if you intend to parse newlines or whitespace.</li>
+</ul><h3 id="proc/stripped_multiline_input"><aside class="declaration">proc </aside>stripped_multiline_input<aside>(/<a href="mob.html">mob</a>/user, message, title, default, max_length, no_trim) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/text.dm#L92">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;text.dm 92"/></a></aside>
+        </h3>
+        <p>Used to get a properly sanitized input in a larger box. Works very similarly to stripped_input.</p>
+<p>Arguments</p>
+<ul>
+<li>user - Target of the input prompt.</li>
+<li>message - The text inside of the prompt.</li>
+<li>title - The window title of the prompt.</li>
+<li>max_length - If you intend to impose a length limit - default is 1024.</li>
+<li>no_trim - Prevents the input from being trimmed if you intend to parse newlines or whitespace.</li>
+</ul><h3 id="proc/stutter"><aside class="declaration">proc </aside>stutter<aside>(phrase) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/mob_helpers.dm#L198">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_helpers.dm 198"/></a></aside>
+        </h3>
+        <p>Adds stuttering to the message passed in, todo remove, deprecated</p><h3 id="proc/tgalert"><aside class="declaration">proc </aside>tgalert<aside>(/<a href="mob.html">mob</a>/User, Message, Title, Button1, Button2, Button3, StealFocus, Timeout) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/browser.dm#L199">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;browser.dm 199"/></a></aside>
+        </h3>
+        <p><strong>DEPRECATED: USE tgui_alert(...) INSTEAD</strong></p>
+<p>Designed as a drop in replacement for alert(); functions the same. (outside of needing User specified)
+Arguments:</p>
+<ul>
+<li>User - The user to show the alert to.</li>
+<li>Message - The textual body of the alert.</li>
+<li>Title - The title of the alert's window.</li>
+<li>Button1 - The first button option.</li>
+<li>Button2 - The second button option.</li>
+<li>Button3 - The third button option.</li>
+<li>StealFocus - Boolean operator controlling if the alert will steal the user's window focus.</li>
+<li>Timeout - The timeout of the window, after which no responses will be valid.</li>
+</ul><h3 id="proc/tgui_Topic"><aside class="declaration">proc </aside>tgui_Topic<aside>(href_list) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui/external.dm#L185">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;external.dm 185"/></a></aside>
+        </h3>
+        <p>Middleware for /client/Topic.</p>
+<p>return bool If TRUE, prevents propagation of the topic call.</p><h3 id="proc/tgui_alert"><aside class="declaration">proc </aside>tgui_alert<aside>(/<a href="mob.html">mob</a>/user, message, title, /list/buttons, timeout, autofocus) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui_input/alert.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui_input&#x2F;alert.dm 13"/></a></aside>
+        </h3>
+        <p>Creates a TGUI alert window and returns the user's response.</p>
+<p>This proc should be used to create alerts that the caller will wait for a response from.
+Arguments:</p>
+<ul>
+<li>user - The user to show the alert to.</li>
+<li>message - The content of the alert, shown in the body of the TGUI window.</li>
+<li>title - The of the alert modal, shown on the top of the TGUI window.</li>
+<li>buttons - The options that can be chosen by the user, each string is assigned a button on the UI.</li>
+<li>timeout - The timeout of the alert, after which the modal will close and qdel itself. Set to zero for no timeout.</li>
+<li>autofocus - The bool that controls if this alert should grab window focus.</li>
+</ul><h3 id="proc/tgui_input_list"><aside class="declaration">proc </aside>tgui_input_list<aside>(/<a href="mob.html">mob</a>/user, message, title, /list/items, default, timeout) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui_input/list.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui_input&#x2F;list.dm 13"/></a></aside>
+        </h3>
+        <p>Creates a TGUI input list window and returns the user's response.</p>
+<p>This proc should be used to create alerts that the caller will wait for a response from.
+Arguments:</p>
+<ul>
+<li>user - The user to show the input box to.</li>
+<li>message - The content of the input box, shown in the body of the TGUI window.</li>
+<li>title - The title of the input box, shown on the top of the TGUI window.</li>
+<li>items - The options that can be chosen by the user, each string is assigned a button on the UI.</li>
+<li>default - If an option is already preselected on the UI. Current values, etc.</li>
+<li>timeout - The timeout of the input box, after which the menu will close and qdel itself. Set to zero for no timeout.</li>
+</ul><h3 id="proc/tgui_input_number"><aside class="declaration">proc </aside>tgui_input_number<aside>(/<a href="mob.html">mob</a>/user, message, title, default, max_value, min_value, timeout, round_value) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui_input/number.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui_input&#x2F;number.dm 18"/></a></aside>
+        </h3>
+        <p>Creates a TGUI window with a number input. Returns the user's response as num | null.</p>
+<p>This proc should be used to create windows for number entry that the caller will wait for a response from.
+If tgui fancy chat is turned off: Will return a normal input. If a max or min value is specified, will
+validate the input inside the UI and ui_act.</p>
+<p>Arguments:</p>
+<ul>
+<li>user - The user to show the number input to.</li>
+<li>message - The content of the number input, shown in the body of the TGUI window.</li>
+<li>title - The title of the number input modal, shown on the top of the TGUI window.</li>
+<li>default - The default (or current) value, shown as a placeholder. Users can press refresh with this.</li>
+<li>max_value - Specifies a maximum value. If none is set, any number can be entered. Pressing &quot;max&quot; defaults to 1000.</li>
+<li>min_value - Specifies a minimum value. Often 0.</li>
+<li>timeout - The timeout of the number input, after which the modal will close and qdel itself. Set to zero for no timeout.</li>
+<li>round_value - whether the inputted number is rounded down into an integer.</li>
+</ul><h3 id="proc/tgui_input_text"><aside class="declaration">proc </aside>tgui_input_text<aside>(/<a href="mob.html">mob</a>/user, message, title, default, max_length, multiline, encode, timeout) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui_input/text.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui_input&#x2F;text.dm 18"/></a></aside>
+        </h3>
+        <p>Creates a TGUI window with a text input. Returns the user's response.</p>
+<p>This proc should be used to create windows for text entry that the caller will wait for a response from.
+If tgui fancy chat is turned off: Will return a normal input. If max_length is specified, will return
+stripped_multiline_input.</p>
+<p>Arguments:</p>
+<ul>
+<li>user - The user to show the text input to.</li>
+<li>message - The content of the text input, shown in the body of the TGUI window.</li>
+<li>title - The title of the text input modal, shown on the top of the TGUI window.</li>
+<li>default - The default (or current) value, shown as a placeholder.</li>
+<li>max_length - Specifies a max length for input. MAX_MESSAGE_LEN is default (1024)</li>
+<li>multiline -  Bool that determines if the input box is much larger. Good for large messages, laws, etc.</li>
+<li>encode - Toggling this determines if input is filtered via html_encode. Setting this to FALSE gives raw input.</li>
+<li>timeout - The timeout of the textbox, after which the modal will close and qdel itself. Set to zero for no timeout.</li>
+</ul><h3 id="proc/timeleft"><aside class="declaration">proc </aside>timeleft<aside>(id, /<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/timer.html">timer</a>/timer_subsystem) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem/timer.dm#L631">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;timer.dm 631"/></a></aside>
+        </h3>
+        <p>Get the remaining deciseconds on a timer</p>
+<p>Arguments:</p>
+<ul>
+<li>id a timerid or a /datum/timedevent</li>
+</ul><h3 id="proc/to_chat"><aside class="declaration">proc </aside>to_chat<aside>(target, html, type, text, avoid_highlighting, handle_whitespace, trailing_newline, confidential) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgchat/to_chat.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgchat&#x2F;to_chat.dm 56"/></a></aside>
+        </h3>
+        <p>Sends the message to the recipient (target).</p>
+<p>Recommended way to write to_chat calls:</p>
+<pre><code>to_chat(client,
+    type = MESSAGE_TYPE_INFO,
+    html = &quot;You have found &lt;strong&gt;[object]&lt;/strong&gt;&quot;)
+</code></pre><h3 id="proc/to_chat_immediate"><aside class="declaration">proc </aside>to_chat_immediate<aside>(target, html, type, text, avoid_highlighting, handle_whitespace, trailing_newline, confidential) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgchat/to_chat.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgchat&#x2F;to_chat.dm 10"/></a></aside>
+        </h3>
+        <p>Circumvents the message queue and sends the message
+to the recipient (target) as soon as possible.</p><h3 id="proc/turf_block_check"><aside class="declaration">proc </aside>turf_block_check<aside>(/<a href="atom.html">atom</a>/subject, /<a href="atom.html">atom</a>/target, ignore_can_pass, ignore_density, ignore_closed_turf, ignore_invulnerable, ignore_objects, ignore_mobs, ignore_space) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/castes/wraith/abilities_wraith.dm#L373">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;castes&#x2F;wraith&#x2F;abilities_wraith.dm 373"/></a></aside>
+        </h3>
+        <p>Return TRUE if we have a block, return FALSE otherwise</p><h3 id="proc/ui_status_only_living"><aside class="declaration">proc </aside>ui_status_only_living<aside>(/<a href="mob.html">mob</a>/user, source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui/status_composers.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;status_composers.dm 26"/></a></aside>
+        </h3>
+        <p>Returns a UI status such that the dead will be able to watch, but not interact.</p><h3 id="proc/ui_status_silicon_has_access"><aside class="declaration">proc </aside>ui_status_silicon_has_access<aside>(/<a href="mob.html">mob</a>/user, /<a href="atom.html">atom</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui/status_composers.dm#L61">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;status_composers.dm 61"/></a></aside>
+        </h3>
+        <p>Returns a UI status such that silicons will be able to interact with whatever
+they would have access to if this was a machine. For example, AIs can
+interact if there's cameras with wireless control is enabled.</p><h3 id="proc/ui_status_user_has_free_hands"><aside class="declaration">proc </aside>ui_status_user_has_free_hands<aside>(/<a href="mob.html">mob</a>/user, /<a href="atom.html">atom</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui/status_composers.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;status_composers.dm 50"/></a></aside>
+        </h3>
+        <p>Returns a UI status such that those without blocked hands will be able to interact,
+but everyone else can only watch.</p><h3 id="proc/ui_status_user_is_abled"><aside class="declaration">proc </aside>ui_status_user_is_abled<aside>(/<a href="mob.html">mob</a>/user, /<a href="atom.html">atom</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui/status_composers.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;status_composers.dm 45"/></a></aside>
+        </h3>
+        <p>Returns a UI status such that users with debilitating conditions, such as
+being dead or not having power for silicons, will not be able to interact.
+Being dead will disable UI, being incapacitated will continue updating it,
+and anything else will make it interactive.</p><h3 id="proc/ui_status_user_is_adjacent"><aside class="declaration">proc </aside>ui_status_user_is_adjacent<aside>(/<a href="mob.html">mob</a>/user, /<a href="atom.html">atom</a>/source, viewcheck) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui/status_composers.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;status_composers.dm 18"/></a></aside>
+        </h3>
+        <p>Returns a UI status such that users adjacent to source will be able to interact,
+far away users will be able to see, and anyone farther won't see anything.
+Dead users will receive updates no matter what, though you likely want to add
+a [<code>ui_status_only_living</code>] check for finer observer interactions.</p><h3 id="proc/ui_status_user_is_advanced_tool_user"><aside class="declaration">proc </aside>ui_status_user_is_advanced_tool_user<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui/status_composers.dm#L55">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;status_composers.dm 55"/></a></aside>
+        </h3>
+        <p>Returns a UI status such that advanced tool users will be able to interact,
+but everyone else can only watch.</p><h3 id="proc/ui_status_user_is_conscious_and_lying_down"><aside class="declaration">proc </aside>ui_status_user_is_conscious_and_lying_down<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui/status_composers.dm#L94">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;status_composers.dm 94"/></a></aside>
+        </h3>
+        <p>Returns UI_INTERACTIVE if the user is conscious and lying down.
+Returns UI_UPDATE otherwise.</p><h3 id="proc/ui_status_user_strictly_adjacent"><aside class="declaration">proc </aside>ui_status_user_strictly_adjacent<aside>(/<a href="mob.html">mob</a>/user, /<a href="atom.html">atom</a>/target) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/tgui/status_composers.dm#L105">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;status_composers.dm 105"/></a></aside>
+        </h3>
+        <p>Return UI_INTERACTIVE if the user is strictly adjacent to the target atom, whether they can see it or not.
+Return UI_CLOSE otherwise.</p><h3 id="proc/url2htmlloader"><aside class="declaration">proc </aside>url2htmlloader<aside>(url) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/type2type.dm#L383">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;type2type.dm 383"/></a></aside>
+        </h3>
+        <p>Return html to load a url.
+for use inside of browse() calls to html assets that might be loaded on a cdn.</p><h3 id="proc/weight_class_to_text"><aside class="declaration">proc </aside>weight_class_to_text<aside>(w_class) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/__HELPERS/unsorted.dm#L787">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 787"/></a></aside>
+        </h3>
+        <p>Returns a string based on the weight class define used as argument</p><h3 id="proc/xeno_message"><aside class="declaration">proc </aside>xeno_message<aside>(message, span_class, size, hivenumber, force, /<a href="atom.html">atom</a>/target, sound, apply_preferences, filter_list, arrow_type, arrow_color, report_distance) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/xenoprocs.dm#L80">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;xenoprocs.dm 80"/></a></aside>
+        </h3>
+        <p>Send a message to all xenos. Force forces the message whether or not the hivemind is intact. Target is an atom that is pointed out to the hive. Filter list is a list of xenos we don't message.</p></main>
+<footer>
+    tgmc.dme
+    <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/tree/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e">1ab5be0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

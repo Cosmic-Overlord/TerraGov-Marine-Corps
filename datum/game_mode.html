@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;game_mode - RU TerraGov Marine Corps</title>
+</head>
+<body>
+<header>
+    <a href="index.html">RU TerraGov Marine Corps</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/game_mode.html#var">Var Details</a> - <a href="datum/game_mode.html#proc">Proc Details</a></header>
+<main>
+<h1>game_mode <aside>/<a href="datum.html">datum</a>/<a href="datum/game_mode.html">game_mode</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/game_mode.html#var/allow_persistence_save">allow_persistence_save</a></th><td>Determines whether rounds with the gamemode will be factored in when it comes to persistency</td></tr>
+            <tr><th><a href="datum/game_mode.html#var/blacklist_ground_maps">blacklist_ground_maps</a></th><td>If the gamemode has a blacklist of disallowed ground maps</td></tr>
+            <tr><th><a href="datum/game_mode.html#var/blacklist_ship_maps">blacklist_ship_maps</a></th><td>If the gamemode has a blacklist of disallowed ship maps</td></tr>
+            <tr><th><a href="datum/game_mode.html#var/factions">factions</a></th><td>What factions are used in this gamemode, typically TGMC and xenos</td></tr>
+            <tr><th><a href="datum/game_mode.html#var/points_per_faction">points_per_faction</a></th><td>The points per faction, assoc list</td></tr>
+            <tr><th><a href="datum/game_mode.html#var/respawn_time">respawn_time</a></th><td>The respawn time for marines</td></tr>
+            <tr><th><a href="datum/game_mode.html#var/shutters_drop_time">shutters_drop_time</a></th><td>When are the shutters dropping</td></tr>
+            <tr><th><a href="datum/game_mode.html#var/silo_scaling">silo_scaling</a></th><td>Ponderation rate of silos output. 1 is normal, 2 is twice</td></tr>
+            <tr><th><a href="datum/game_mode.html#var/time_between_round">time_between_round</a></th><td></td></tr>
+            <tr><th><a href="datum/game_mode.html#var/whitelist_ground_maps">whitelist_ground_maps</a></th><td>If the gamemode has a whitelist of valid ground maps. Whitelist overrides the blacklist</td></tr>
+            <tr><th><a href="datum/game_mode.html#var/whitelist_ship_maps">whitelist_ship_maps</a></th><td>If the gamemode has a whitelist of valid ship maps. Whitelist overrides the blacklist</td></tr>
+            <tr><th><a href="datum/game_mode.html#var/win_points_needed">win_points_needed</a></th><td>How many points do you need to win in a point gamemode</td></tr>
+            <tr><th><a href="datum/game_mode.html#var/zombie_transformation_time">zombie_transformation_time</a></th><td>Time before becoming a zombie when going undefibbable</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/announce_bioscans">announce_bioscans</a></th><td>Annonce to everyone the number of xeno and marines on ship and ground</td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/game_end_countdown">game_end_countdown</a></th><td>Provides the amount of time left before the game ends, used for the stat panel</td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/get_joinable_factions">get_joinable_factions</a></th><td>Return the list of joinable factions, with regards with the current round balance</td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/get_siloless_collapse_countdown">get_siloless_collapse_countdown</a></th><td>starts the timer to end the round when no silo is left</td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/is_faction_balanced">is_faction_balanced</a></th><td>If joining the job.faction will make the game too unbalanced, return FALSE</td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/siloless_hive_collapse">siloless_hive_collapse</a></th><td>handles end of the round when no silo is left</td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/wave_countdown">wave_countdown</a></th><td>Provides the amount of time left before the next respawn wave, used for the stat panel</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/allow_persistence_save"><aside class="declaration">var </aside>allow_persistence_save
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 9"/></a></h3>
+        <p>Determines whether rounds with the gamemode will be factored in when it comes to persistency</p><h3 id="var/blacklist_ground_maps"><aside class="declaration">var </aside>blacklist_ground_maps
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 56"/></a></h3>
+        <p>If the gamemode has a blacklist of disallowed ground maps</p><h3 id="var/blacklist_ship_maps"><aside class="declaration">var </aside>blacklist_ship_maps
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 52"/></a></h3>
+        <p>If the gamemode has a blacklist of disallowed ship maps</p><h3 id="var/factions"><aside class="declaration">var </aside>factions
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L39">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 39"/></a></h3>
+        <p>What factions are used in this gamemode, typically TGMC and xenos</p><h3 id="var/points_per_faction"><aside class="declaration">var </aside>points_per_faction
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 28"/></a></h3>
+        <p>The points per faction, assoc list</p><h3 id="var/respawn_time"><aside class="declaration">var </aside>respawn_time
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 24"/></a></h3>
+        <p>The respawn time for marines</p><h3 id="var/shutters_drop_time"><aside class="declaration">var </aside>shutters_drop_time
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L30">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 30"/></a></h3>
+        <p>When are the shutters dropping</p><h3 id="var/silo_scaling"><aside class="declaration">var </aside>silo_scaling
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 47"/></a></h3>
+        <p>Ponderation rate of silos output. 1 is normal, 2 is twice</p><h3 id="var/time_between_round"><aside class="declaration">var </aside>time_between_round
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 37"/></a></h3>
+        <ul>
+<li>The time between two rounds of this gamemode. If it's zero, this mode i always votable.
+<ul>
+<li>It an integer in ticks, set in config. If it's 8 HOURS, it means that it will be votable again 8 hours</li>
+<li>after the end of the last round with the gamemode type</li>
+</ul>
+</li>
+</ul><h3 id="var/whitelist_ground_maps"><aside class="declaration">var </aside>whitelist_ground_maps
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 54"/></a></h3>
+        <p>If the gamemode has a whitelist of valid ground maps. Whitelist overrides the blacklist</p><h3 id="var/whitelist_ship_maps"><aside class="declaration">var </aside>whitelist_ship_maps
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 50"/></a></h3>
+        <p>If the gamemode has a whitelist of valid ship maps. Whitelist overrides the blacklist</p><h3 id="var/win_points_needed"><aside class="declaration">var </aside>win_points_needed
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 26"/></a></h3>
+        <p>How many points do you need to win in a point gamemode</p><h3 id="var/zombie_transformation_time"><aside class="declaration">var </aside>zombie_transformation_time
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 32"/></a></h3>
+        <p>Time before becoming a zombie when going undefibbable</p><h2 id="proc">Proc Details</h2><h3 id="proc/announce_bioscans"><aside class="declaration">proc </aside>announce_bioscans<aside>(show_locations, delta, announce_humans, announce_xenos, send_fax) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L256">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 256"/></a></aside>
+        </h3>
+        <p>Annonce to everyone the number of xeno and marines on ship and ground</p><h3 id="proc/game_end_countdown"><aside class="declaration">proc </aside>game_end_countdown<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L383">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 383"/></a></aside>
+        </h3>
+        <p>Provides the amount of time left before the game ends, used for the stat panel</p><h3 id="proc/get_joinable_factions"><aside class="declaration">proc </aside>get_joinable_factions<aside>(should_look_balance) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L714">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 714"/></a></aside>
+        </h3>
+        <p>Return the list of joinable factions, with regards with the current round balance</p><h3 id="proc/get_siloless_collapse_countdown"><aside class="declaration">proc </aside>get_siloless_collapse_countdown<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L379">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 379"/></a></aside>
+        </h3>
+        <p>starts the timer to end the round when no silo is left</p><h3 id="proc/is_faction_balanced"><aside class="declaration">proc </aside>is_faction_balanced<aside>(/<a href="datum.html">datum</a>/<a href="datum/job.html">job</a>/job) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L667">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 667"/></a></aside>
+        </h3>
+        <p>If joining the job.faction will make the game too unbalanced, return FALSE</p><h3 id="proc/siloless_hive_collapse"><aside class="declaration">proc </aside>siloless_hive_collapse<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L375">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 375"/></a></aside>
+        </h3>
+        <p>handles end of the round when no silo is left</p><h3 id="proc/wave_countdown"><aside class="declaration">proc </aside>wave_countdown<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/datums/gamemodes/game_mode.dm#L387">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;gamemodes&#x2F;game_mode.dm 387"/></a></aside>
+        </h3>
+        <p>Provides the amount of time left before the next respawn wave, used for the stat panel</p></main>
+<footer>
+    tgmc.dme
+    <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/tree/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e">1ab5be0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;hive_status - RU TerraGov Marine Corps</title>
+</head>
+<body>
+<header>
+    <a href="index.html">RU TerraGov Marine Corps</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/hive_status.html#var">Var Details</a> - <a href="datum/hive_status.html#proc">Proc Details</a></header>
+<main>
+<h1>hive_status <aside>/<a href="datum.html">datum</a>/<a href="datum/hive_status.html">hive_status</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/hive_status.html#var/candidate">candidate</a></th><td>Queue of all observer wanting to join xeno side</td></tr>
+            <tr><th><a href="datum/hive_status.html#var/evotowers">evotowers</a></th><td>list of evo towers</td></tr>
+            <tr><th><a href="datum/hive_status.html#var/living_xeno_king">living_xeno_king</a></th><td>Current king, there can only be one</td></tr>
+            <tr><th><a href="datum/hive_status.html#var/maturitytowers">maturitytowers</a></th><td>list of upgrade towers</td></tr>
+            <tr><th><a href="datum/hive_status.html#var/pherotowers">pherotowers</a></th><td>list of phero towers</td></tr>
+            <tr><th><a href="datum/hive_status.html#var/purchases">purchases</a></th><td>Reference to upgrades available and purchased by this hive.</td></tr>
+            <tr><th><a href="datum/hive_status.html#var/xeno_king_timer">xeno_king_timer</a></th><td>Timer for king evolution after the last one dying</td></tr>
+            <tr><th><a href="datum/hive_status.html#var/xeno_queen_timer">xeno_queen_timer</a></th><td>Timer for queen evolution after the last one dying</td></tr>
+            <tr><th><a href="datum/hive_status.html#var/xenos_per_king">xenos_per_king</a></th><td>minimum amount of xenos needed to support a king</td></tr>
+            <tr><th><a href="datum/hive_status.html#var/xenos_per_queen">xenos_per_queen</a></th><td>minimum amount of xenos needed to support a queen</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/add_to_larva_candidate_queue">add_to_larva_candidate_queue</a></th><td>Add a mob to the candidate queue, the first mobs of the queue will have priority on new larva spots
+return TRUE if the observer was added, FALSE if it was removed</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/clean_observer">clean_observer</a></th><td>Remove ref to avoid hard del and null error</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/end_king_death_timer">end_king_death_timer</a></th><td>Allows a new king to evolve. Safe for use by gamemode code, this allows per hive overrides</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/end_queen_death_timer">end_queen_death_timer</a></th><td>Allows a new queen to evolve. Safe for use by gamemode code, this allows per hive overrides</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/get_evolution_boost">get_evolution_boost</a></th><td>fetches number of bonus evo points given to the hive</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/get_structure_packet">get_structure_packet</a></th><td>Returns a data entry for the &quot;xeno structures&quot; list based on the structure passed</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/get_upgrade_boost">get_upgrade_boost</a></th><td>fetches number of bonus upgrade points given to the hive</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/get_watchable_xenos">get_watchable_xenos</a></th><td>Returning all xenos including queen that are not at centcom and not self</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/get_xeno_location">get_xeno_location</a></th><td>Returns the string location of the xeno</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/give_larva_to_next_in_queue">give_larva_to_next_in_queue</a></th><td>Propose larvas until their is no more candidates, or no more burrowed</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/handle_silo_death_timer">handle_silo_death_timer</a></th><td>Handles the timer when all silos are destroyed</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/remove_from_larva_candidate_queue">remove_from_larva_candidate_queue</a></th><td>Remove an observer from the larva candidate queue</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/set_all_xeno_trackers">set_all_xeno_trackers</a></th><td>Used for setting the trackers of all xenos in the hive, like when a nuke activates</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/try_to_give_larva">try_to_give_larva</a></th><td>Attempt to give a larva to the next in line, if not possible, free the xeno position and propose it to another candidate</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/update_tier_limits">update_tier_limits</a></th><td>updates and sets the t2 and t3 xeno limits</td></tr>
+            <tr><th><a href="datum/hive_status.html#proc/xeno_message">xeno_message</a></th><td>Used for Hive Message alerts</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/candidate"><aside class="declaration">var </aside>candidate
+            <aside>&ndash; /list/mob/dead/observer</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 35"/></a></h3>
+        <p>Queue of all observer wanting to join xeno side</p><h3 id="var/evotowers"><aside class="declaration">var </aside>evotowers
+            <aside>&ndash; /list/obj/structure/xeno/evotower</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 27"/></a></h3>
+        <p>list of evo towers</p><h3 id="var/living_xeno_king"><aside class="declaration">var </aside>living_xeno_king
+            <aside>&ndash; /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/xenomorph.html">xenomorph</a>/king</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 8"/></a></h3>
+        <p>Current king, there can only be one</p><h3 id="var/maturitytowers"><aside class="declaration">var </aside>maturitytowers
+            <aside>&ndash; /list/obj/structure/xeno/maturitytower</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 29"/></a></h3>
+        <p>list of upgrade towers</p><h3 id="var/pherotowers"><aside class="declaration">var </aside>pherotowers
+            <aside>&ndash; /list/obj/structure/xeno/pherotower</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 31"/></a></h3>
+        <p>list of phero towers</p><h3 id="var/purchases"><aside class="declaration">var </aside>purchases
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/hive_purchases.html">hive_purchases</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 38"/></a></h3>
+        <p>Reference to upgrades available and purchased by this hive.</p><h3 id="var/xeno_king_timer"><aside class="declaration">var </aside>xeno_king_timer
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 12"/></a></h3>
+        <p>Timer for king evolution after the last one dying</p><h3 id="var/xeno_queen_timer"><aside class="declaration">var </aside>xeno_queen_timer
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 10"/></a></h3>
+        <p>Timer for queen evolution after the last one dying</p><h3 id="var/xenos_per_king"><aside class="declaration">var </aside>xenos_per_king
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 16"/></a></h3>
+        <p>minimum amount of xenos needed to support a king</p><h3 id="var/xenos_per_queen"><aside class="declaration">var </aside>xenos_per_queen
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 14"/></a></h3>
+        <p>minimum amount of xenos needed to support a queen</p><h2 id="proc">Proc Details</h2><h3 id="proc/add_to_larva_candidate_queue"><aside class="declaration">proc </aside>add_to_larva_candidate_queue<aside>(/<a href="mob.html">mob</a>/<a href="mob/dead/observer.html">dead/observer</a>/observer) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L1002">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 1002"/></a></aside>
+        </h3>
+        <p>Add a mob to the candidate queue, the first mobs of the queue will have priority on new larva spots
+return TRUE if the observer was added, FALSE if it was removed</p><h3 id="proc/clean_observer"><aside class="declaration">proc </aside>clean_observer<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L1063">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 1063"/></a></aside>
+        </h3>
+        <p>Remove ref to avoid hard del and null error</p><h3 id="proc/end_king_death_timer"><aside class="declaration">proc </aside>end_king_death_timer<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L666">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 666"/></a></aside>
+        </h3>
+        <p>Allows a new king to evolve. Safe for use by gamemode code, this allows per hive overrides</p><h3 id="proc/end_queen_death_timer"><aside class="declaration">proc </aside>end_queen_death_timer<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L661">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 661"/></a></aside>
+        </h3>
+        <p>Allows a new queen to evolve. Safe for use by gamemode code, this allows per hive overrides</p><h3 id="proc/get_evolution_boost"><aside class="declaration">proc </aside>get_evolution_boost<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L367">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 367"/></a></aside>
+        </h3>
+        <p>fetches number of bonus evo points given to the hive</p><h3 id="proc/get_structure_packet"><aside class="declaration">proc </aside>get_structure_packet<aside>(/<a href="obj.html">obj</a>/<a href="obj/structure/xeno.html">structure/xeno</a>/struct) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L165">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 165"/></a></aside>
+        </h3>
+        <p>Returns a data entry for the &quot;xeno structures&quot; list based on the structure passed</p><h3 id="proc/get_upgrade_boost"><aside class="declaration">proc </aside>get_upgrade_boost<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L373">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 373"/></a></aside>
+        </h3>
+        <p>fetches number of bonus upgrade points given to the hive</p><h3 id="proc/get_watchable_xenos"><aside class="declaration">proc </aside>get_watchable_xenos<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/xenomorph.html">xenomorph</a>/self) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L341">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 341"/></a></aside>
+        </h3>
+        <p>Returning all xenos including queen that are not at centcom and not self</p><h3 id="proc/get_xeno_location"><aside class="declaration">proc </aside>get_xeno_location<aside>(/<a href="atom.html">atom</a>/xeno) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L265">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 265"/></a></aside>
+        </h3>
+        <p>Returns the string location of the xeno</p><h3 id="proc/give_larva_to_next_in_queue"><aside class="declaration">proc </aside>give_larva_to_next_in_queue<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L1034">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 1034"/></a></aside>
+        </h3>
+        <p>Propose larvas until their is no more candidates, or no more burrowed</p><h3 id="proc/handle_silo_death_timer"><aside class="declaration">proc </aside>handle_silo_death_timer<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L970">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 970"/></a></aside>
+        </h3>
+        <p>Handles the timer when all silos are destroyed</p><h3 id="proc/remove_from_larva_candidate_queue"><aside class="declaration">proc </aside>remove_from_larva_candidate_queue<aside>(/<a href="mob.html">mob</a>/<a href="mob/dead/observer.html">dead/observer</a>/observer) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L1021">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 1021"/></a></aside>
+        </h3>
+        <p>Remove an observer from the larva candidate queue</p><h3 id="proc/set_all_xeno_trackers"><aside class="declaration">proc </aside>set_all_xeno_trackers<aside>(/<a href="atom.html">atom</a>/target) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L767">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 767"/></a></aside>
+        </h3>
+        <p>Used for setting the trackers of all xenos in the hive, like when a nuke activates</p><h3 id="proc/try_to_give_larva"><aside class="declaration">proc </aside>try_to_give_larva<aside>(/<a href="mob.html">mob</a>/<a href="mob/dead/observer.html">dead/observer</a>/next_in_line) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L1068">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 1068"/></a></aside>
+        </h3>
+        <p>Attempt to give a larva to the next in line, if not possible, free the xeno position and propose it to another candidate</p><h3 id="proc/update_tier_limits"><aside class="declaration">proc </aside>update_tier_limits<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L1076">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 1076"/></a></aside>
+        </h3>
+        <p>updates and sets the t2 and t3 xeno limits</p><h3 id="proc/xeno_message"><aside class="declaration">proc </aside>xeno_message<aside>(message, span_class, size, force, /<a href="atom.html">atom</a>/target, sound, apply_preferences, filter_list, arrow_type, arrow_color, report_distance) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/xenomorph/hive_datum.dm#L729">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;hive_datum.dm 729"/></a></aside>
+        </h3>
+        <p>Used for Hive Message alerts</p></main>
+<footer>
+    tgmc.dme
+    <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/tree/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e">1ab5be0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

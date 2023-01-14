@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;mob&#x2F;living&#x2F;carbon - RU TerraGov Marine Corps</title>
+</head>
+<body>
+<header>
+    <a href="index.html">RU TerraGov Marine Corps</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="mob/living/carbon.html#var">Var Details</a> - <a href="mob/living/carbon.html#proc">Proc Details</a></header>
+<main>
+<h1>carbon <aside>/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/carbon_defines.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;carbon_defines.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="mob/living/carbon.html#var/dream_amounts">dream_amounts</a></th><td>amount of dreams left to go</td></tr>
+            <tr><th><a href="mob/living/carbon.html#var/gib_chance">gib_chance</a></th><td>% Chance of exploding on death, incremented by total damage taken if not initially zero.</td></tr>
+            <tr><th><a href="mob/living/carbon.html#var/losebreath">losebreath</a></th><td>Causes breathing to fail and generate oxyloss instead of recover it, even outside crit.</td></tr>
+            <tr><th><a href="mob/living/carbon.html#var/oxygen_alert">oxygen_alert</a></th><td>Tracks whether we can breath right now. Used for a hud icon and for message generation.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="mob/living/carbon.html#proc/do_give">do_give</a></th><td>Look for a nearby human to give the held item, and ask him if he wants it</td></tr>
+            <tr><th><a href="mob/living/carbon.html#proc/get_damaged_organ">get_damaged_organ</a></th><td>Return the most damaged internal_organ that isn't at 0, or null.</td></tr>
+            <tr><th><a href="mob/living/carbon.html#proc/give_signal_handler">give_signal_handler</a></th><td>Signal handler for give keybind</td></tr>
+            <tr><th><a href="mob/living/carbon.html#proc/inject_blood">inject_blood</a></th><td>BLOOD TRANSFERS</td></tr>
+            <tr><th><a href="mob/living/carbon.html#proc/update_transform">update_transform</a></th><td>IMPORTANT: Multiple animate() calls do not stack well, so try to do them all at once if you can.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/dream_amounts"><aside class="declaration">var </aside>dream_amounts
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/flufftext/Dreaming.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;flufftext&#x2F;Dreaming.dm 32"/></a></h3>
+        <p>amount of dreams left to go</p><h3 id="var/gib_chance"><aside class="declaration">var </aside>gib_chance
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/carbon_defines.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;carbon_defines.dm 42"/></a></h3>
+        <p>% Chance of exploding on death, incremented by total damage taken if not initially zero.</p><h3 id="var/losebreath"><aside class="declaration">var </aside>losebreath
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/carbon_defines.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;carbon_defines.dm 28"/></a></h3>
+        <p>Causes breathing to fail and generate oxyloss instead of recover it, even outside crit.</p><h3 id="var/oxygen_alert"><aside class="declaration">var </aside>oxygen_alert
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/carbon_defines.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;carbon_defines.dm 13"/></a></h3>
+        <p>Tracks whether we can breath right now. Used for a hud icon and for message generation.</p><h2 id="proc">Proc Details</h2><h3 id="proc/do_give"><aside class="declaration">proc </aside>do_give<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/give.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;give.dm 13"/></a></aside>
+        </h3>
+        <p>Look for a nearby human to give the held item, and ask him if he wants it</p><h3 id="proc/get_damaged_organ"><aside class="declaration">proc </aside>get_damaged_organ<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/carbon_helpers.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;carbon_helpers.dm 17"/></a></aside>
+        </h3>
+        <p>Return the most damaged internal_organ that isn't at 0, or null.</p><h3 id="proc/give_signal_handler"><aside class="declaration">proc </aside>give_signal_handler<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/give.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;give.dm 8"/></a></aside>
+        </h3>
+        <p>Signal handler for give keybind</p><h3 id="proc/inject_blood"><aside class="declaration">proc </aside>inject_blood<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/reagent_containers.html">reagent_containers</a>/container, amount) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/blood.dm#L170">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;blood.dm 170"/></a></aside>
+        </h3>
+        <p>BLOOD TRANSFERS</p><h3 id="proc/update_transform">update_transform<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/mob/living/carbon/update_icons.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;update_icons.dm 19"/></a></aside>
+        </h3>
+        <p>IMPORTANT: Multiple animate() calls do not stack well, so try to do them all at once if you can.</p></main>
+<footer>
+    tgmc.dme
+    <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/tree/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e">1ab5be0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

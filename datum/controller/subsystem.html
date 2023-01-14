@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;controller&#x2F;subsystem - RU TerraGov Marine Corps</title>
+</head>
+<body>
+<header>
+    <a href="index.html">RU TerraGov Marine Corps</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/controller/subsystem.html#proc">Proc Details</a></header>
+<main>
+<h1>subsystem <aside>/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem.dm 2"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/controller/subsystem.html#proc/OnConfigLoad">OnConfigLoad</a></th><td>Called after the config has been loaded or reloaded.</td></tr>
+            <tr><th><a href="datum/controller/subsystem.html#proc/PreInit">PreInit</a></th><td>datum/controller/subsystem/New()</td></tr>
+            <tr><th><a href="datum/controller/subsystem.html#proc/enqueue">enqueue</a></th><td>Queue it to run.
+(we loop thru a linked list until we get to the end or find the right point)
+(this lets us sort our run order correctly without having to re-sort the entire already sorted list)</td></tr>
+            <tr><th><a href="datum/controller/subsystem.html#proc/fire">fire</a></th><td>previously, this would have been named 'process()' but that name is used everywhere for different things!
+fire() seems more suitable. This is the procedure that gets called every 'wait' deciseconds.
+Sleeping in here prevents future fires until returned..</td></tr>
+            <tr><th><a href="datum/controller/subsystem.html#proc/ignite">ignite</a></th><td>This is used so the mc knows when the subsystem sleeps. do not override.</td></tr></table><h2 id="proc">Proc Details</h2><h3 id="proc/OnConfigLoad"><aside class="declaration">proc </aside>OnConfigLoad<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem.dm#L159">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem.dm 159"/></a></aside>
+        </h3>
+        <p>Called after the config has been loaded or reloaded.</p><h3 id="proc/PreInit"><aside class="declaration">proc </aside>PreInit<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem.dm 44"/></a></aside>
+        </h3>
+        <p>datum/controller/subsystem/New()</p><h3 id="proc/enqueue"><aside class="declaration">proc </aside>enqueue<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem.dm 78"/></a></aside>
+        </h3>
+        <p>Queue it to run.
+(we loop thru a linked list until we get to the end or find the right point)
+(this lets us sort our run order correctly without having to re-sort the entire already sorted list)</p><h3 id="proc/fire"><aside class="declaration">proc </aside>fire<aside>(resumed) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem.dm#L64">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem.dm 64"/></a></aside>
+        </h3>
+        <p>previously, this would have been named 'process()' but that name is used everywhere for different things!
+fire() seems more suitable. This is the procedure that gets called every 'wait' deciseconds.
+Sleeping in here prevents future fires until returned..</p><h3 id="proc/ignite"><aside class="declaration">proc </aside>ignite<aside>(resumed) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/controllers/subsystem.dm#L48">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem.dm 48"/></a></aside>
+        </h3>
+        <p>This is used so the mc knows when the subsystem sleeps. do not override.</p></main>
+<footer>
+    tgmc.dme
+    <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/tree/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e">1ab5be0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;ammo - RU TerraGov Marine Corps</title>
+</head>
+<body>
+<header>
+    <a href="index.html">RU TerraGov Marine Corps</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/ammo.html#var">Var Details</a> - <a href="datum/ammo.html#proc">Proc Details</a></header>
+<main>
+<h1>ammo <aside>/<a href="datum.html">datum</a>/<a href="datum/ammo.html">ammo</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 5"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/ammo.html#var/airburst_multiplier">airburst_multiplier</a></th><td>how much damage airbursts do to mobs around the target, multiplier of the bullet's damage</td></tr>
+            <tr><th><a href="datum/ammo.html#var/bullet_color">bullet_color</a></th><td>Determines what color our bullet will be when it flies</td></tr>
+            <tr><th><a href="datum/ammo.html#var/deflagrate_multiplier">deflagrate_multiplier</a></th><td>Multiplier for deflagrate chance</td></tr>
+            <tr><th><a href="datum/ammo.html#var/fire_burst_damage">fire_burst_damage</a></th><td>Flat damage caused if fire_burst is triggered by deflagrate</td></tr>
+            <tr><th><a href="datum/ammo.html#var/handful_amount">handful_amount</a></th><td>how much of this ammo you can carry in a handful</td></tr>
+            <tr><th><a href="datum/ammo.html#var/handful_greyscale_colors">handful_greyscale_colors</a></th><td>greyscale color for the bullet items associated with the ammo</td></tr>
+            <tr><th><a href="datum/ammo.html#var/handful_greyscale_config">handful_greyscale_config</a></th><td>greyscale config for the bullet items associated with the ammo</td></tr>
+            <tr><th><a href="datum/ammo.html#var/handful_icon_state">handful_icon_state</a></th><td>used in icons/obj/items/ammo for use in generating handful sprites</td></tr>
+            <tr><th><a href="datum/ammo.html#var/hitscan_effect_icon">hitscan_effect_icon</a></th><td>If this ammo is hitscan, the icon of beam coming out from the gun</td></tr>
+            <tr><th><a href="datum/ammo.html#var/incendiary_strength">incendiary_strength</a></th><td>Base fire stacks added on hit if the projectile has AMMO_INCENDIARY</td></tr>
+            <tr><th><a href="datum/ammo.html#var/on_pierce_multiplier">on_pierce_multiplier</a></th><td>A multiplier applied to piercing projectile, that reduces its damage/penetration/sundering on hit</td></tr>
+            <tr><th><a href="datum/ammo.html#var/projectile_greyscale_colors">projectile_greyscale_colors</a></th><td>greyscale color for the projectile associated with the ammo</td></tr>
+            <tr><th><a href="datum/ammo.html#var/projectile_greyscale_config">projectile_greyscale_config</a></th><td>greyscale config for the projectile associated with the ammo</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/ammo.html#proc/ammo_process">ammo_process</a></th><td>called on projectile process() when SPECIAL_PROCESS flag is active</td></tr>
+            <tr><th><a href="datum/ammo.html#proc/deflagrate">deflagrate</a></th><td>handles the probability of a projectile hit to trigger fire_burst, based off actual damage done</td></tr>
+            <tr><th><a href="datum/ammo.html#proc/fire_burst">fire_burst</a></th><td>the actual fireblast triggered by deflagrate</td></tr>
+            <tr><th><a href="datum/ammo.html#proc/fire_directionalburst">fire_directionalburst</a></th><td>A variant of Fire_bonus_projectiles without fixed scatter and no link between gun and bonus_projectile accuracy</td></tr>
+            <tr><th><a href="datum/ammo.html#proc/on_leave_turf">on_leave_turf</a></th><td>Special effects for leaving a turf. Only called if the projectile has AMMO_LEAVE_TURF enabled</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/airburst_multiplier"><aside class="declaration">var </aside>airburst_multiplier
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 42"/></a></h3>
+        <p>how much damage airbursts do to mobs around the target, multiplier of the bullet's damage</p><h3 id="var/bullet_color"><aside class="declaration">var </aside>bullet_color
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 45"/></a></h3>
+        <p>Determines what color our bullet will be when it flies</p><h3 id="var/deflagrate_multiplier"><aside class="declaration">var </aside>deflagrate_multiplier
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L59">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 59"/></a></h3>
+        <p>Multiplier for deflagrate chance</p><h3 id="var/fire_burst_damage"><aside class="declaration">var </aside>fire_burst_damage
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L61">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 61"/></a></h3>
+        <p>Flat damage caused if fire_burst is triggered by deflagrate</p><h3 id="var/handful_amount"><aside class="declaration">var </aside>handful_amount
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 12"/></a></h3>
+        <p>how much of this ammo you can carry in a handful</p><h3 id="var/handful_greyscale_colors"><aside class="declaration">var </aside>handful_greyscale_colors
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L53">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 53"/></a></h3>
+        <p>greyscale color for the bullet items associated with the ammo</p><h3 id="var/handful_greyscale_config"><aside class="declaration">var </aside>handful_greyscale_config
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 51"/></a></h3>
+        <p>greyscale config for the bullet items associated with the ammo</p><h3 id="var/handful_icon_state"><aside class="declaration">var </aside>handful_icon_state
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 10"/></a></h3>
+        <p>used in icons/obj/items/ammo for use in generating handful sprites</p><h3 id="var/hitscan_effect_icon"><aside class="declaration">var </aside>hitscan_effect_icon
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 47"/></a></h3>
+        <p>If this ammo is hitscan, the icon of beam coming out from the gun</p><h3 id="var/incendiary_strength"><aside class="declaration">var </aside>incendiary_strength
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L63">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 63"/></a></h3>
+        <p>Base fire stacks added on hit if the projectile has AMMO_INCENDIARY</p><h3 id="var/on_pierce_multiplier"><aside class="declaration">var </aside>on_pierce_multiplier
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 49"/></a></h3>
+        <p>A multiplier applied to piercing projectile, that reduces its damage/penetration/sundering on hit</p><h3 id="var/projectile_greyscale_colors"><aside class="declaration">var </aside>projectile_greyscale_colors
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L57">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 57"/></a></h3>
+        <p>greyscale color for the projectile associated with the ammo</p><h3 id="var/projectile_greyscale_config"><aside class="declaration">var </aside>projectile_greyscale_config
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L55">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 55"/></a></h3>
+        <p>greyscale config for the projectile associated with the ammo</p><h2 id="proc">Proc Details</h2><h3 id="proc/ammo_process"><aside class="declaration">proc </aside>ammo_process<aside>(/<a href="obj.html">obj</a>/<a href="obj/projectile.html">projectile</a>/proj, damage) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L272">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 272"/></a></aside>
+        </h3>
+        <p>called on projectile process() when SPECIAL_PROCESS flag is active</p><h3 id="proc/deflagrate"><aside class="declaration">proc </aside>deflagrate<aside>(/<a href="atom.html">atom</a>/target, /<a href="obj.html">obj</a>/<a href="obj/projectile.html">projectile</a>/proj) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L171">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 171"/></a></aside>
+        </h3>
+        <p>handles the probability of a projectile hit to trigger fire_burst, based off actual damage done</p><h3 id="proc/fire_burst"><aside class="declaration">proc </aside>fire_burst<aside>(/<a href="atom.html">atom</a>/target, /<a href="obj.html">obj</a>/<a href="obj/projectile.html">projectile</a>/proj) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L187">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 187"/></a></aside>
+        </h3>
+        <p>the actual fireblast triggered by deflagrate</p><h3 id="proc/fire_directionalburst"><aside class="declaration">proc </aside>fire_directionalburst<aside>(/<a href="obj.html">obj</a>/<a href="obj/projectile.html">projectile</a>/main_proj, /<a href="atom.html">atom</a>/shooter, /<a href="atom.html">atom</a>/source, range, speed, angle, target) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L231">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 231"/></a></aside>
+        </h3>
+        <p>A variant of Fire_bonus_projectiles without fixed scatter and no link between gun and bonus_projectile accuracy</p><h3 id="proc/on_leave_turf"><aside class="declaration">proc </aside>on_leave_turf<aside>(/<a href="turf.html">turf</a>/T, /<a href="atom.html">atom</a>/firer, /<a href="obj.html">obj</a>/<a href="obj/projectile.html">projectile</a>/proj) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/modules/projectiles/ammo_datums.dm#L81">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;ammo_datums.dm 81"/></a></aside>
+        </h3>
+        <p>Special effects for leaving a turf. Only called if the projectile has AMMO_LEAVE_TURF enabled</p></main>
+<footer>
+    tgmc.dme
+    <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/tree/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e">1ab5be0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

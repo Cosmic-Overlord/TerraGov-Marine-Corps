@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;item&#x2F;storage - RU TerraGov Marine Corps</title>
+</head>
+<body>
+<header>
+    <a href="index.html">RU TerraGov Marine Corps</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/item/storage.html#var">Var Details</a> - <a href="obj/item/storage.html#proc">Proc Details</a></header>
+<main>
+<h1>storage <aside>/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/storage.html">storage</a></aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/items/storage/storage.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;storage&#x2F;storage.dm 8"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/item/storage.html#var/access_delay">access_delay</a></th><td>How long does it take to put items into or out of this, in ticks</td></tr>
+            <tr><th><a href="obj/item/storage.html#var/storage_type_limits">storage_type_limits</a></th><td>Associated list of types and their max count, formatted as
+storage_type_limits = list(
+/obj/A = 3,
+)</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/item/storage.html#proc/attempt_draw_object">attempt_draw_object</a></th><td>attempts to get the first possible object from this container</td></tr>
+            <tr><th><a href="obj/item/storage.html#proc/delete_contents">delete_contents</a></th><td>Delete everything that's inside the storage</td></tr>
+            <tr><th><a href="obj/item/storage.html#proc/handle_access_delay">handle_access_delay</a></th><td>This proc handles the delay associated with a storage object.
+If there is no delay, or the delay is negative, it simply returns TRUE.
+Should return true if the access delay is completed successfully.</td></tr>
+            <tr><th><a href="obj/item/storage.html#proc/handle_item_insertion">handle_item_insertion</a></th><td>This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted.
+That's done by can_be_inserted()
+The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
+such as when picking up all the items on a tile with one click.
+user can be null, it refers to the potential mob doing the insertion.</td></tr>
+            <tr><th><a href="obj/item/storage.html#proc/should_access_delay">should_access_delay</a></th><td>This proc checks to see if we should actually delay access in this scenario
+This proc should return TRUE or FALSE</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/access_delay"><aside class="declaration">var </aside>access_delay
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/items/storage/storage.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;storage&#x2F;storage.dm 51"/></a></h3>
+        <p>How long does it take to put items into or out of this, in ticks</p><h3 id="var/storage_type_limits"><aside class="declaration">var </aside>storage_type_limits
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/items/storage/storage.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;storage&#x2F;storage.dm 24"/></a></h3>
+        <p>Associated list of types and their max count, formatted as
+storage_type_limits = list(
+/obj/A = 3,
+)</p>
+<p>Any inserted objects will decrement the allowed count of every listed type which matches or is a parent of that object.
+With entries for both /obj/A and /obj/A/B, inserting a B requires non-zero allowed count remaining for, and reduces, both.</p><h2 id="proc">Proc Details</h2><h3 id="proc/attempt_draw_object"><aside class="declaration">proc </aside>attempt_draw_object<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/items/storage/storage.dm#L799">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;storage&#x2F;storage.dm 799"/></a></aside>
+        </h3>
+        <p>attempts to get the first possible object from this container</p><h3 id="proc/delete_contents"><aside class="declaration">proc </aside>delete_contents<aside>() 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/items/storage/storage.dm#L580">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;storage&#x2F;storage.dm 580"/></a></aside>
+        </h3>
+        <p>Delete everything that's inside the storage</p><h3 id="proc/handle_access_delay"><aside class="declaration">proc </aside>handle_access_delay<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/accessed, /<a href="mob.html">mob</a>/user, taking_out, alert_user) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/items/storage/storage.dm#L413">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;storage&#x2F;storage.dm 413"/></a></aside>
+        </h3>
+        <p>This proc handles the delay associated with a storage object.
+If there is no delay, or the delay is negative, it simply returns TRUE.
+Should return true if the access delay is completed successfully.</p><h3 id="proc/handle_item_insertion"><aside class="declaration">proc </aside>handle_item_insertion<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/item, prevent_warning, /<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/items/storage/storage.dm#L444">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;storage&#x2F;storage.dm 444"/></a></aside>
+        </h3>
+        <p>This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted.
+That's done by can_be_inserted()
+The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
+such as when picking up all the items on a tile with one click.
+user can be null, it refers to the potential mob doing the insertion.</p><h3 id="proc/should_access_delay"><aside class="declaration">proc </aside>should_access_delay<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/accessed, /<a href="mob.html">mob</a>/user, taking_out) 
+        
+    
+            <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/blob/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e/code/game/objects/items/storage/storage.dm#L434">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;storage&#x2F;storage.dm 434"/></a></aside>
+        </h3>
+        <p>This proc checks to see if we should actually delay access in this scenario
+This proc should return TRUE or FALSE</p></main>
+<footer>
+    tgmc.dme
+    <a href="https://github.com/Cosmic-Overlord/TerraGov-Marine-Corps/tree/1ab5be0aa38d42459b58aa3d206f76c2214c1d3e">1ab5be0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

@@ -213,3 +213,27 @@
 /mob/living/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	M.visible_message(span_danger("[M] nudges its head against [src]."), \
 	span_danger("We nudge our head against [src]."), null, 5)
+
+/mob/living/attack_facehugger(mob/living/carbon/xenomorph/facehugger/F, damage_amount = F.xeno_caste.melee_damage, damage_type = BRUTE, damage_flag = "", effects = TRUE, armor_penetration = 0, isrightclick = FALSE)
+	if(F.status_flags & INCORPOREAL)
+		return FALSE
+
+	switch(F.a_intent)
+		if(INTENT_HELP, INTENT_GRAB)
+			if(ishuman(src))
+				if(!do_after(F, 10 SECONDS, TRUE, src, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
+					F.balloon_alert(F, "Climbing interrupted")
+					return FALSE
+				if(F.try_attach(src))
+					qdel(F)
+			else if(on_fire)
+				F.visible_message(span_danger("[F] stares at [src]."), \
+				span_notice("We stare at the roasting [src], toasty."), null, 5)
+			else
+				F.visible_message(span_notice("[F] stares at [src]."), \
+				span_notice("We stare at [src]."), null, 5)
+			return FALSE
+
+		if(INTENT_HARM, INTENT_DISARM)
+			return attack_alien_harm(F)
+	return FALSE

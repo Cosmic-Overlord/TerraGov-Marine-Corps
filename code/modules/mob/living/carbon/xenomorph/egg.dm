@@ -142,6 +142,30 @@
 			playsound(loc, "alien_resin_break", 25)
 			qdel(src)
 
+/obj/alien/egg/hugger/attack_ghost(mob/dead/observer/user)
+	. = ..()
+
+	if(!user.client?.prefs || !(user.client.prefs.be_special & (BE_ALIEN)) || is_banned_from(user.ckey, ROLE_XENOMORPH))
+		return FALSE
+	if(maturity_stage != stage_ready_to_burst) //already popped, or not ready yet
+		return FALSE
+	if(!hugger_type)
+		return FALSE
+
+	advance_maturity(stage_ready_to_burst + 1)
+	for(var/turf/turf_to_watch AS in filled_turfs(src, trigger_size, "circle", FALSE))
+		UnregisterSignal(turf_to_watch, COMSIG_ATOM_ENTERED)
+	playsound(loc, "sound/effects/alien_egg_move.ogg", 25)
+	flick("egg opening", src)
+
+	var/mob/living/carbon/xenomorph/facehugger/new_hugger = new /mob/living/carbon/xenomorph/facehugger()
+	hugger_type = null
+	addtimer(CALLBACK(new_hugger, /atom/movable.proc/forceMove, loc), 1 SECONDS)
+	addtimer(CALLBACK(new_hugger, /mob/living.proc/transfer_mob, user), 1 SECONDS)
+
+	return TRUE
+
+
 /obj/alien/egg/hugger/attackby(obj/item/I, mob/user, params)
 	. = ..()
 

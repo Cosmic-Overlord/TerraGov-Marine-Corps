@@ -40,7 +40,7 @@
 	return TRUE
 
 /mob/living/carbon/xenomorph/facehugger/proc/try_attach(mob/living/carbon/human/host)
-	var/obj/item/clothing/mask/facehugger/mask = new(host)
+	var/obj/item/clothing/mask/facehugger/mask = new /obj/item/clothing/mask/facehugger(host, src.hivenumber, src)
 	if(host.can_be_facehugged(mask, provoked = TRUE))
 		if(mask.Attach(host))
 			src.forceMove(get_turf(host))

@@ -162,7 +162,7 @@
 	hugger_type = null
 	addtimer(CALLBACK(new_hugger, /atom/movable.proc/forceMove, loc), 1 SECONDS)
 	addtimer(CALLBACK(new_hugger, /mob/living.proc/transfer_mob, user), 1 SECONDS)
-
+	log_admin("[user.key] took control of [new_hugger.name] from an egg at [AREACOORD(src)].")
 	return TRUE
 
 

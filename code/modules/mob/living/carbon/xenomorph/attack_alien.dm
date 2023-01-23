@@ -221,6 +221,7 @@
 	switch(F.a_intent)
 		if(INTENT_HELP, INTENT_GRAB)
 			if(ishuman(src))
+				F.visible_message(null, span_notice("We're starting to climb on [src]"), null, 5)
 				if(!do_after(F, 10 SECONDS, TRUE, src, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
 					F.balloon_alert(F, "Climbing interrupted")
 					return FALSE

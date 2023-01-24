@@ -24,7 +24,8 @@
 // ***************************************
 /mob/living/carbon/xenomorph/facehugger/handle_living_health_updates()
 	. = ..()
-	if(!loc_weeds_type && !is_ventcrawling)
+	//We lose health if we go off the weed
+	if(!loc_weeds_type && !is_ventcrawling && !(lying_angle || resting))
 		adjustBruteLoss(2, TRUE)
 		return
 
@@ -39,6 +40,7 @@
 /mob/living/carbon/xenomorph/facehugger/pull_response(mob/puller)
 	return TRUE
 
+///Trying to attach facehagger to face. Returns true on success and false otherwise
 /mob/living/carbon/xenomorph/facehugger/proc/try_attach(mob/living/carbon/human/host)
 	var/obj/item/clothing/mask/facehugger/mask = new /obj/item/clothing/mask/facehugger(host, src.hivenumber, src)
 	if(host.can_be_facehugged(mask, provoked = TRUE))

@@ -219,7 +219,7 @@
 		return FALSE
 
 	switch(F.a_intent)
-		if(INTENT_HELP, INTENT_GRAB)
+		if(INTENT_HELP, INTENT_GRAB) //Try to hug target if this is a human
 			if(ishuman(src))
 				F.visible_message(null, span_notice("We're starting to climb on [src]"), null, 5)
 				if(!do_after(F, 10 SECONDS, TRUE, src, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))

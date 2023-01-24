@@ -47,6 +47,6 @@
 	vent_exit_speed = LARVA_VENT_CRAWL_TIME
 	silent_vent_crawl = TRUE
 
-	// *** Caste Ovrrides *** //
+	// *** Caste Overrides *** //
 	water_slowdown = 1.6
 	snow_slowdown = 0.5

@@ -142,6 +142,7 @@
 			playsound(loc, "alien_resin_break", 25)
 			qdel(src)
 
+//Observers can become playable facehuggers by clicking on the egg
 /obj/alien/egg/hugger/attack_ghost(mob/dead/observer/user)
 	. = ..()
 

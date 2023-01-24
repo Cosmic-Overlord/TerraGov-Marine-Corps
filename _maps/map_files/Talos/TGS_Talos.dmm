@@ -2165,14 +2165,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/mainship/hallways/port_hallway)
-"bIm" = (
-/obj/machinery/computer/mech_builder{
-	dir = 2
-	},
-/turf/open/floor/plating/icefloor/warnplate{
-	dir = 9
-	},
-/area/mainship/hallways/hangar)
 "bIr" = (
 /turf/open/floor/mainship/orange{
 	dir = 4
@@ -3014,6 +3006,9 @@
 "chD" = (
 /obj/machinery/light/mainship{
 	dir = 1
+	},
+/obj/machinery/computer/mech_builder{
+	dir = 2
 	},
 /turf/open/floor/plating/icefloor/warnplate{
 	dir = 1
@@ -14767,6 +14762,15 @@
 /obj/item/clothing/head/warning_cone,
 /turf/open/floor/plating,
 /area/mainship/hallways/starboard_hallway)
+"lzz" = (
+/obj/structure/window/framed/mainship/hull/canterbury{
+	name = "empty space";
+	icon = null;
+	icon_state = null;
+	hit_sound = null
+	},
+/turf/open/floor/mainship/mono,
+/area/mainship/hull/port_hull)
 "lzB" = (
 /obj/machinery/camera/autoname{
 	dir = 8
@@ -15036,7 +15040,7 @@
 /area/mainship/hallways/port_hallway)
 "lJv" = (
 /obj/structure/table/mainship,
-/obj/item/reagent_containers/food/snacks/mre_pack/meal4/req,
+/obj/item/reagent_containers/food/snacks/mre_pack/meal4,
 /turf/open/floor/prison/kitchen,
 /area/mainship/living/cafeteria)
 "lJK" = (
@@ -17103,6 +17107,15 @@
 /obj/structure/cable,
 /turf/open/floor/mainship_hull/dir,
 /area/space)
+"ngt" = (
+/obj/structure/window/framed/mainship/hull/canterbury{
+	name = "empty space";
+	icon = null;
+	icon_state = null;
+	hit_sound = null
+	},
+/turf/open/floor/mainship/mono,
+/area/mainship/hallways/bow_hallway)
 "ngX" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden/layer1{
 	dir = 4
@@ -17818,9 +17831,6 @@
 /area/mainship/medical/upper_medical)
 "nIv" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/machinery/computer/mech_builder{
-	dir = 2
-	},
 /turf/open/floor/plating/icefloor/warnplate{
 	dir = 5
 	},
@@ -18218,6 +18228,12 @@
 /turf/open/floor/prison/darkbrown,
 /area/mainship/hallways/starboard_hallway)
 "nUR" = (
+/obj/structure/window/framed/mainship/hull/canterbury{
+	name = "empty space";
+	icon = null;
+	icon_state = null;
+	hit_sound = null
+	},
 /turf/open/floor/prison/rampbottom,
 /area/mainship/hull/port_hull)
 "nUV" = (
@@ -29445,6 +29461,16 @@
 /obj/structure/plasticflaps,
 /turf/open/floor/plating,
 /area/mainship/hull/port_hull)
+"wNm" = (
+/obj/effect/ai_node,
+/obj/structure/window/framed/mainship/hull/canterbury{
+	name = "empty space";
+	icon = null;
+	icon_state = null;
+	hit_sound = null
+	},
+/turf/open/floor/mainship/mono,
+/area/mainship/hallways/bow_hallway)
 "wNn" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 4
@@ -30927,6 +30953,12 @@
 /turf/open/floor/mainship/cargo,
 /area/mainship/shipboard/ex_firing_range)
 "xWl" = (
+/obj/structure/window/framed/mainship/hull/canterbury{
+	name = "empty space";
+	icon = null;
+	icon_state = null;
+	hit_sound = null
+	},
 /turf/open/floor/prison/rampbottom{
 	dir = 1
 	},
@@ -31088,6 +31120,16 @@
 	},
 /turf/open/floor/mainship,
 /area/mainship/hallways/bow_hallway)
+"ybg" = (
+/obj/effect/ai_node,
+/obj/structure/window/framed/mainship/hull/canterbury{
+	name = "empty space";
+	icon = null;
+	icon_state = null;
+	hit_sound = null
+	},
+/turf/open/floor/mainship/mono,
+/area/mainship/hull/port_hull)
 "ybF" = (
 /obj/machinery/door/poddoor/shutters/mainship{
 	dir = 2;
@@ -63635,8 +63677,8 @@ xWl
 xWl
 xWl
 xWl
-vLJ
-sgP
+ngt
+wNm
 kUr
 xGL
 iPj
@@ -64258,7 +64300,7 @@ fqu
 cuk
 eQV
 iwc
-bIm
+wjJ
 gFd
 hoJ
 aHf
@@ -64553,8 +64595,8 @@ nUR
 nUR
 nUR
 nUR
-pas
-xlk
+lzz
+ybg
 xFv
 pCj
 qwP

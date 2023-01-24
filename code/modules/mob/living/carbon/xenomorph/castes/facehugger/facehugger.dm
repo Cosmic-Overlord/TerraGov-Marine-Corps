@@ -7,10 +7,10 @@
 	health = 50
 	maxHealth = 50
 	plasma_stored = 100
-	pixel_x = -12
-	pixel_y = -4
-	old_x = -12
-	old_y = -4
+	pixel_x = -8
+	pixel_y = -3
+	old_x = -8
+	old_y = -3
 	tier = XENO_TIER_MINION
 	upgrade = XENO_UPGRADE_BASETYPE
 	pull_speed = -2

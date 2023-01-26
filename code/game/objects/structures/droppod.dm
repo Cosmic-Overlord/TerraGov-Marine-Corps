@@ -175,6 +175,9 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 		to_chat(user, span_notice("The droppod has already landed!"))
 		return
 
+	if(!do_after(M, entertime, TRUE, src))
+		return
+
 	if(occupant != null)
 		to_chat(user, span_notice("The droppod is already occupied!"))
 		return

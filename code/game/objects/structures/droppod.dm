@@ -166,8 +166,9 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 	exitpod()
 
 /obj/structure/droppod/MouseDrop_T(mob/M, mob/user)
-	if(isliving(M) || ishuman(user))
-	    put_mob(M, user)
+	if(!isliving(M) || !ishuman(user))
+		return
+	put_mob(M, user)
 
 /obj/structure/droppod/proc/put_mob(mob/M, mob/living/user)
 	if(drop_state != DROPPOD_READY)

@@ -146,8 +146,21 @@
 /obj/alien/egg/hugger/attack_ghost(mob/dead/observer/user)
 	. = ..()
 
+	if(GLOB.key_to_time_of_death[user.key] + TIME_BEFORE_TAKING_FACEHUGGER > world.time && !user.started_as_observer)
+		to_chat(user, span_warning("You died too recently to be able to take a new facehugger."))
+		return FALSE
+
 	if(!user.client?.prefs || !(user.client.prefs.be_special & (BE_ALIEN)) || is_banned_from(user.ckey, ROLE_XENOMORPH))
 		return FALSE
+
+	if(maturity_stage != stage_ready_to_burst) //already popped, or not ready yet
+		return FALSE
+	if(!hugger_type)
+		return FALSE
+
+	if(alert("Are you sure you want to be a Facehugger?", "Become a Facehagger", "Yes", "No") != "Yes")
+		return FALSE
+
 	if(maturity_stage != stage_ready_to_burst) //already popped, or not ready yet
 		return FALSE
 	if(!hugger_type)

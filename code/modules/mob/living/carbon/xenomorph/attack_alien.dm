@@ -222,11 +222,10 @@
 		if(INTENT_HELP, INTENT_GRAB) //Try to hug target if this is a human
 			if(ishuman(src))
 				F.visible_message(null, span_notice("We're starting to climb on [src]"), null, 5)
-				if(!do_after(F, 10 SECONDS, TRUE, src, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
+				if(!do_after(F, 8 SECONDS, TRUE, src, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
 					F.balloon_alert(F, "Climbing interrupted")
 					return FALSE
-				if(F.try_attach(src))
-					qdel(F)
+				F.try_attach(src)
 			else if(on_fire)
 				F.visible_message(span_danger("[F] stares at [src]."), \
 				span_notice("We stare at the roasting [src], toasty."), null, 5)

@@ -29,7 +29,7 @@
 	can_flags = CASTE_CAN_VENT_CRAWL
 
 	// *** Defense *** //
-	soft_armor = list(MELEE = 14, BULLET = 5, LASER = 5, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
 	//*** Ranged Attack *** //
 	charge_type = CHARGE_TYPE_SMALL

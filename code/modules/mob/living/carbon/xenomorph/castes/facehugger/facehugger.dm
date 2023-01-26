@@ -16,6 +16,7 @@
 	mob_size = MOB_SIZE_SMALL
 	pull_speed = -2
 	flags_pass = PASSXENO | PASSTABLE | PASSMOB
+	density = FALSE
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
@@ -41,12 +42,15 @@
 /mob/living/carbon/xenomorph/facehugger/pull_response(mob/puller)
 	return TRUE
 
+/mob/living/carbon/xenomorph/facehugger/death_cry()
+	playsound(loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
+
 ///Trying to attach facehagger to face. Returns true on success and false otherwise
 /mob/living/carbon/xenomorph/facehugger/proc/try_attach(mob/living/carbon/human/host)
-	var/obj/item/clothing/mask/facehugger/mask = new /obj/item/clothing/mask/facehugger(host, src.hivenumber, src)
+	var/obj/item/clothing/mask/facehugger/larval/mask = new /obj/item/clothing/mask/facehugger/larval(host, src.hivenumber, src)
 	if(host.can_be_facehugged(mask, provoked = TRUE))
-		if(mask.Attach(host))
-			src.forceMove(get_turf(host))
+		if(mask.Attach(host, FALSE))
+			src.forceMove(host)
 			return TRUE
 		else
 			qdel(mask)

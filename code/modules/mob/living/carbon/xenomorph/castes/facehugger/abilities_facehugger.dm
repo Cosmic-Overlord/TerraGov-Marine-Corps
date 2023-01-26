@@ -14,16 +14,16 @@
 	use_state_flags = XACT_USE_BUCKLED
 	///How far can we leap.
 	var/range = 6
+	///Range for Hug
+	var/hug_range = 1
 	///For how long will we stun the victim
 	var/victim_paralyze_time = 0.5 SECONDS
 	///For how long will we freeze upon hitting our target
-	var/freeze_on_hit_time = 1 SECONDS
+	var/freeze_on_hit_time = 0.5 SECONDS
 	///How long is the windup before leap
 	var/windup_time = 1 SECONDS
 	///Where do we start the leap from
 	var/start_point
-	///Was the victim hugged successfully
-	var/hug_success = FALSE
 
 
 /datum/action/xeno_action/activable/pounce_hugger/proc/pounce_complete()
@@ -60,11 +60,8 @@
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(get_dist(start_point, H) <= 1) //Check whether we hugged the target or just knocked it down
-			if(caster.try_attach(H))
-				hug_success = TRUE
-			else if(freeze_on_hit_time)
-				caster.Immobilize(freeze_on_hit_time)
+		if(get_dist(start_point, H) <= hug_range) //Check whether we hugged the target or just knocked it down
+			caster.try_attach(H)
 		else
 			if(victim_paralyze_time)
 				H.Paralyze(victim_paralyze_time)
@@ -109,8 +106,26 @@
 
 	start_point = get_turf(caster)
 	caster.throw_at(A, range, 2, caster) //Victim, distance, speed
-	if(hug_success)
-		qdel(caster)
-
 
 	return TRUE
+
+/datum/action/xeno_action/activable/pounce_hugger/ai_should_start_consider()
+	return TRUE
+
+/datum/action/xeno_action/activable/pounce_hugger/ai_should_use(atom/target)
+	if(!ishuman(target))
+		return FALSE
+	if(!line_of_sight(owner, target, hug_range))
+		return FALSE
+	if(!can_use_action(override_flags = XACT_IGNORE_SELECTED_ABILITY))
+		return FALSE
+	if(target.get_xeno_hivenumber() == owner.get_xeno_hivenumber())
+		return FALSE
+	action_activate()
+	LAZYINCREMENT(owner.do_actions, target)
+	addtimer(CALLBACK(src, .proc/decrease_do_action, target), windup_time)
+	return TRUE
+
+///Decrease the do_actions of the owner
+/datum/action/xeno_action/activable/pounce_hugger/proc/decrease_do_action(atom/target)
+	LAZYDECREMENT(owner.do_actions, target)

@@ -164,6 +164,7 @@ You may not be a fully-fledged doctor, but you stand between life and death when
 	minimap_icon = "smartgunner"
 	outfit = /datum/outfit/job/som/squad/veteran
 	job_flags = JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE|JOB_FLAG_ALLOWS_PREFS_GEAR|JOB_FLAG_PROVIDES_BANK_ACCOUNT|JOB_FLAG_ADDTOMANIFEST|JOB_FLAG_PROVIDES_SQUAD_HUD|JOB_FLAG_CAN_SEE_ORDERS
+	access = list(ACCESS_SOM_PREP, ACCESS_SOM_VETPREP)
 	jobworth = list(/datum/job/xenomorph = LARVA_POINTS_REGULAR)
 	html_description = {"
 		<b>Difficulty</b>: Medium<br /><br />
@@ -182,7 +183,7 @@ You may not be a fully-fledged doctor, but you stand between life and death when
 /datum/outfit/job/som/squad/veteran
 	name = "SOM Veteran"
 	jobtype = /datum/job/som/squad/veteran
-	id = /obj/item/card/id/dogtag/som
+	id = /obj/item/card/id/dogtag/som/veteran
 
 /datum/job/som/squad/leader
 	title = SOM_SQUAD_LEADER

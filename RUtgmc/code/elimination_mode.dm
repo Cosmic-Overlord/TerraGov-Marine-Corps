@@ -1,35 +1,35 @@
-/datum/game_mode/infestation/distress
-	name = "Distress Signal"
-	config_tag = "Distress Signal"
+/datum/game_mode/infestation/elimination
+	name = "Elimination"
+	config_tag = "Elimination"
 
 	//More larvas in RUTGMC
-	silo_scaling = 1.10
+	silo_scaling = 3.2
 
-	flags_round_type = MODE_INFESTATION|MODE_LZ_SHUTTERS|MODE_XENO_RULER|MODE_PSY_POINTS|MODE_PSY_POINTS_ADVANCED|MODE_DEAD_GRAB_FORBIDDEN|MODE_HIJACK_POSSIBLE|MODE_SILO_RESPAWN|MODE_SPAWNING_MINIONS
+	flags_round_type = MODE_INFESTATION|MODE_PSY_POINTS|MODE_PSY_POINTS_ADVANCED|MODE_DEAD_GRAB_FORBIDDEN|MODE_SILO_RESPAWN|MODE_SPAWNING_MINIONS
 	flags_landmarks = MODE_LANDMARK_SPAWN_XENO_TURRETS
 	flags_xeno_abilities = ABILITY_DISTRESS
+	factions = list(FACTION_SOM)
 	valid_job_types = list(
-		/datum/job/terragov/command/captain = 1,
 		/datum/job/terragov/command/fieldcommander = 1,
-		/datum/job/terragov/command/staffofficer = 4,
-		/datum/job/terragov/command/pilot = 2,
-		/datum/job/terragov/engineering/chief = 1,
-		/datum/job/terragov/engineering/tech = 2,
-		/datum/job/terragov/requisitions/officer = 1,
-		/datum/job/terragov/medical/professor = 1,
 		/datum/job/terragov/medical/medicalofficer = 6,
-		/datum/job/terragov/medical/researcher = 2,
 		/datum/job/terragov/silicon/synthetic = 1,
-		/datum/job/terragov/squad/engineer = 8,
-		/datum/job/terragov/squad/corpsman = 8,
-		/datum/job/terragov/squad/smartgunner = 1,
-		/datum/job/terragov/squad/leader = 1,
-		/datum/job/terragov/squad/standard = -1,
+		/datum/job/som/squad/veteran = 1,
+		/datum/job/som/squad/leader = 1,
+		/datum/job/som/squad/medic = 8,
+		/datum/job/som/squad/standard = -1,
 		/datum/job/xenomorph = FREE_XENO_AT_START,
 		/datum/job/xenomorph/queen = 1,
 		/datum/job/survivor/rambo = 1,
 	)
-	var/siloless_hive_timer
+	// Round end conditions
+	var/shuttle_landed = FALSE
+	var/marines_evac = CRASH_EVAC_NONE
+
+	// Shuttle details
+	var/shuttle_id = SHUTTLE_CANTERBURY
+	var/obj/docking_port/mobile/crashmode/shuttle
+	var/starting_squad = "Zulu"
+	bioscan_interval = 0
 
 /datum/game_mode/infestation/distress/post_setup()
 	. = ..()

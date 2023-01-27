@@ -1832,5 +1832,7 @@
 #include "RUtgmc\code\necoarc.dm"
 #include "RUtgmc\code\reagents.dm"
 #include "RUtgmc\code\RU_items.dm"
+#include "RUtgmc\code\som_items.dm"
+#include "RUtgmc\code\vending.dm"
 #include "RUtgmc\code\vendorcw.dm"
 // END_INCLUDE

@@ -21,6 +21,10 @@
 #define CAT_SGSUP "SMARTGUNNER SUPPLIES"
 #define CAT_LOAD "LOADOUT"
 
+#define CAT_SOMMOD "ARMOR STORAGE MODULES"
+#define CAT_SOMARMMOD "ARMOR ARMOR MODULES"
+
+#define CAT_VETSUP "VETERAN SUPPLIES"
 
 GLOBAL_LIST_INIT(marine_selector_cats, list(
 		CAT_MOD = 1,
@@ -149,6 +153,8 @@ GLOBAL_LIST_INIT(job_specific_points_vendor, list(
 	SQUAD_CORPSMAN = GLOB.medic_gear_listed_products,
 	SQUAD_LEADER = GLOB.leader_gear_listed_products,
 	SQUAD_SMARTGUNNER = GLOB.smartgunner_gear_listed_products,
+	SOM_SQUAD_VETERAN = GLOB.veteran_gear_listed_products,
+	SOM_SQUAD_CORPSMAN = GLOB.som_medic_gear_listed_products,
 ))
 
 

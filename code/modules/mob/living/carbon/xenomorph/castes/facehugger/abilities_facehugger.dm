@@ -17,9 +17,9 @@
 	///Range for Hug
 	var/hug_range = 1
 	///For how long will we stun the victim
-	var/victim_paralyze_time = 0.5 SECONDS
+	var/victim_paralyze_time = 1 SECONDS
 	///For how long will we freeze upon hitting our target
-	var/freeze_on_hit_time = 0.5 SECONDS
+	var/freeze_on_hit_time = 1 SECONDS
 	///How long is the windup before leap
 	var/windup_time = 1 SECONDS
 	///Where do we start the leap from

@@ -574,6 +574,8 @@
 		if(!(locate(/obj/item/alien_embryo) in target))
 			var/obj/item/alien_embryo/embryo = new(target)
 			embryo.hivenumber = hivenumber
+			if(source?.mind && isxenofacehugger(source))
+				embryo.s_mind = source.mind
 			GLOB.round_statistics.now_pregnant++
 			SSblackbox.record_feedback("tally", "round_statistics", 1, "now_pregnant")
 			sterile = TRUE

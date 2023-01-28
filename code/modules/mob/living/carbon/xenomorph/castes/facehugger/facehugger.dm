@@ -4,22 +4,28 @@
 	desc = "This one looks much more active than its fellows"
 	icon = 'icons/Xeno/facehugger_playable.dmi'
 	icon_state = "Facehugger Walking"
+
 	health = 50
 	maxHealth = 50
 	plasma_stored = 100
+
 	pixel_x = -8
 	pixel_y = -3
 	old_x = -8
 	old_y = -3
+
 	tier = XENO_TIER_MINION
 	upgrade = XENO_UPGRADE_BASETYPE
 	mob_size = MOB_SIZE_SMALL
 	pull_speed = -2
 	flags_pass = PASSXENO | PASSTABLE | PASSMOB
 	density = FALSE
+
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
+
+	bubble_icon = "alien"
 
 // ***************************************
 // *********** Mob overrides

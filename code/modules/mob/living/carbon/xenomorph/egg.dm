@@ -158,7 +158,7 @@
 		to_chat(user, span_warning("You died too recently to be able to take a new facehugger."))
 		return FALSE
 
-	if(alert("Are you sure you want to be a Facehugger?", "Become a Facehagger", "Yes", "No") != "Yes")
+	if(alert("Are you sure you want to be a Facehugger?", "Become a part of the Horde", "Yes", "No") != "Yes")
 		return FALSE
 
 	if(maturity_stage != stage_ready_to_burst) //already popped, or not ready yet

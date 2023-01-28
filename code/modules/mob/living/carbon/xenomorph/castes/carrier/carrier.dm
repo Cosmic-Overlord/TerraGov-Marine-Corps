@@ -55,7 +55,7 @@
 	log_admin("[user.key] took control of [new_hugger.name] from a [name] at [AREACOORD(src)].")
 	return TRUE
 
-
+//Sentient facehugger can climb on the carrier
 /mob/living/carbon/xenomorph/carrier/attack_facehugger(mob/living/carbon/xenomorph/facehugger/F, damage_amount, damage_type, damage_flag, effects, armor_penetration, isrightclick)
 	. = ..()
 

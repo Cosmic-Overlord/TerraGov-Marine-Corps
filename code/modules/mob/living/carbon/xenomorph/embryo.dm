@@ -14,7 +14,7 @@
 	var/larva_autoburst_countdown = 20
 	///How long will the embryo's growth rate be increased
 	var/boost_timer = 0
-	///The xeno that spawned/threw/dropped the embryo.
+	///The xeno that spawned the embryo.
 	var/datum/mind/s_mind = null
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/admin = FALSE

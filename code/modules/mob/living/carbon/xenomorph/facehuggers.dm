@@ -574,7 +574,7 @@
 		if(!(locate(/obj/item/alien_embryo) in target))
 			var/obj/item/alien_embryo/embryo = new(target)
 			embryo.hivenumber = hivenumber
-			if(source?.mind && isxenofacehugger(source))
+			if(source?.mind && isxenofacehugger(source)) //If hugger sentient he will get an advantage for becoming a larva
 				embryo.s_mind = source.mind
 			GLOB.round_statistics.now_pregnant++
 			SSblackbox.record_feedback("tally", "round_statistics", 1, "now_pregnant")
@@ -660,6 +660,7 @@
 
 /obj/item/clothing/mask/facehugger/dropped(mob/user)
 	. = ..()
+	//If hugger sentient, then we drop player's hugger
 	if(isxenofacehugger(source))
 		var/mob/living/M = user
 		source.status_flags &= ~GODMODE

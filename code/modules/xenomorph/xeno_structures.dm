@@ -250,7 +250,7 @@
 	set_trap_type(TRAP_HUGGER)
 	balloon_alert(user, "Inserted facehugger")
 
-
+//Sentient facehugger can get in the trap
 /obj/structure/xeno/trap/attack_facehugger(mob/living/carbon/xenomorph/facehugger/F)
 	. = ..()
 

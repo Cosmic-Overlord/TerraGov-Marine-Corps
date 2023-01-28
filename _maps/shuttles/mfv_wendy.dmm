@@ -4,6 +4,7 @@
 /obj/effect/turf_decal/siding/white{
 	dir = 1
 	},
+/obj/docking_port/mobile/crashmode/wendy,
 /turf/open/floor/mainship/som,
 /area/shuttle/canterbury)
 "ab" = (
@@ -22,16 +23,17 @@
 /turf/open/floor/mainship/som/ne,
 /area/shuttle/canterbury)
 "ae" = (
-/obj/structure/table/mainship,
 /obj/machinery/computer/security/marine_network,
-/turf/open/floor/mainship,
+/obj/structure/table/black,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/blue/full,
 /area/shuttle/canterbury/cic)
 "af" = (
-/obj/structure/table/mainship,
+/obj/structure/table/black,
 /obj/machinery/computer/shuttle/shuttle_control/canterbury,
-/turf/open/floor/mainship/blue{
-	dir = 9
-	},
+/turf/open/floor/prison/blue/full,
 /area/shuttle/canterbury/cic)
 "ag" = (
 /obj/structure/shuttle/engine/propulsion/burst/left,
@@ -62,7 +64,7 @@
 /area/shuttle/canterbury)
 "ao" = (
 /obj/structure/cable,
-/turf/open/floor/mainship/blue/full,
+/turf/open/floor/prison/blue,
 /area/shuttle/canterbury/cic)
 "ap" = (
 /turf/closed/wall/mainship/outer/canterbury,
@@ -89,17 +91,18 @@
 /area/shuttle/canterbury/medical)
 "au" = (
 /obj/machinery/door/airlock/mainship/engineering/free_access,
+/obj/structure/cable,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "av" = (
 /obj/structure/window/full{
 	dir = 8
 	},
-/obj/machinery/marine_selector/clothes,
+/obj/machinery/marine_selector/clothes/som,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "aw" = (
-/obj/machinery/vending/armor_supply,
+/obj/machinery/vending/armor_supply/som,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "ax" = (
@@ -110,17 +113,17 @@
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "ay" = (
-/obj/machinery/marine_selector/gear/medic,
 /obj/structure/window/full{
 	dir = 4
 	},
+/obj/machinery/marine_selector/gear/medic/som,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "az" = (
-/obj/machinery/marine_selector/clothes/smartgun,
 /obj/structure/window/full{
 	dir = 4
 	},
+/obj/machinery/marine_selector/clothes/som/veteran,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "aA" = (
@@ -146,10 +149,11 @@
 	pixel_y = 8;
 	pixel_x = 14
 	},
+/obj/structure/cable,
 /turf/open/floor/plating/mainship/striped,
 /area/shuttle/canterbury)
 "aD" = (
-/obj/machinery/vending/weapon/crash,
+/obj/machinery/vending/weaponsom,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "aF" = (
@@ -190,6 +194,9 @@
 "aM" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/glass/beaker/cryomix,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/prison/green,
 /area/shuttle/canterbury/medical)
 "aN" = (
@@ -280,6 +287,7 @@
 "be" = (
 /obj/structure/table/black,
 /obj/machinery/cell_charger,
+/obj/structure/cable,
 /turf/open/floor/plating/mainship/striped,
 /area/shuttle/canterbury)
 "bg" = (
@@ -295,8 +303,9 @@
 /obj/machinery/computer/cryopod{
 	dir = 8
 	},
+/obj/effect/turf_decal/tile/full/black,
 /obj/effect/turf_decal/box/red,
-/turf/open/floor/iron/dark/textured,
+/turf/open/floor/mainship/black/full,
 /area/shuttle/canterbury)
 "bi" = (
 /obj/effect/turf_decal/tile/transparent/bar{
@@ -313,10 +322,10 @@
 	},
 /area/shuttle/canterbury)
 "bk" = (
-/obj/machinery/marine_selector/clothes,
 /obj/structure/window/full{
 	dir = 4
 	},
+/obj/machinery/marine_selector/clothes/som/medic,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "bl" = (
@@ -350,9 +359,8 @@
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "bo" = (
-/obj/structure/cable,
-/obj/machinery/vending/armor_supply,
-/turf/open/floor/prison,
+/obj/effect/landmark/start/latejoin/crash,
+/turf/open/floor/mainship/black/full,
 /area/shuttle/canterbury)
 "bp" = (
 /obj/structure/window/framed/mainship/white/canterbury,
@@ -441,69 +449,80 @@
 "bH" = (
 /obj/structure/table/mainship,
 /obj/machinery/computer/camera_advanced/overwatch,
-/turf/open/floor/mainship/blue/full,
+/turf/open/floor/prison/blue/full,
 /area/shuttle/canterbury/cic)
 "bI" = (
-/obj/structure/table/mainship,
 /obj/machinery/faxmachine/cic,
-/turf/open/floor/mainship/blue{
-	dir = 5
-	},
+/obj/structure/table/black,
+/turf/open/floor/prison/blue/full,
 /area/shuttle/canterbury/cic)
 "bJ" = (
-/obj/structure/table/mainship,
 /obj/machinery/computer/marine_card,
-/turf/open/floor/mainship,
+/obj/structure/table/black,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/blue/full,
 /area/shuttle/canterbury/cic)
 "bK" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
 	},
 /obj/effect/landmark/start/job/crash/fieldcommander,
-/turf/open/floor/mainship/blue{
-	dir = 8
+/turf/open/floor/prison/blue{
+	dir = 1
 	},
 /area/shuttle/canterbury/cic)
 "bL" = (
 /obj/machinery/door/airlock/multi_tile/mainship/comdoor,
-/turf/open/floor/prison/plate,
+/obj/machinery/door/firedoor,
+/turf/open/floor/prison,
 /area/shuttle/canterbury/cic)
 "bM" = (
 /obj/machinery/cryopod,
-/turf/open/floor/iron/dark/textured,
+/obj/effect/turf_decal/tile/full/black,
+/turf/open/floor/mainship/black/full,
 /area/shuttle/canterbury)
 "bN" = (
 /obj/machinery/telecomms/relay/preset/telecomms,
-/turf/open/floor/mainship/blue{
-	dir = 4
+/obj/machinery/firealarm{
+	dir = 1
+	},
+/turf/open/floor/prison/blue{
+	dir = 10
 	},
 /area/shuttle/canterbury/cic)
 "bO" = (
 /obj/machinery/vending/snack,
 /obj/effect/turf_decal/tile/transparent/bar/diagonal_centre,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "bP" = (
 /obj/structure/cable,
+/turf/open/floor/prison/arrow,
+/area/shuttle/canterbury)
+"bQ" = (
+/obj/machinery/computer/crew,
 /obj/machinery/power/apc/mainship{
 	dir = 1
 	},
-/turf/open/floor/mainship/blue{
-	dir = 6
-	},
-/area/shuttle/canterbury/cic)
-"bQ" = (
-/obj/machinery/computer/crew,
-/turf/open/floor/mainship,
+/obj/structure/cable,
+/turf/open/floor/prison/blue,
 /area/shuttle/canterbury/cic)
 "bR" = (
-/obj/structure/table/mainship,
 /obj/item/clipboard,
 /obj/item/tool/pen,
 /obj/structure/paper_bin,
 /obj/item/pinpointer,
-/turf/open/floor/mainship/blue{
-	dir = 8
+/obj/machinery/alarm{
+	dir = 1
+	},
+/obj/structure/table/black,
+/turf/open/floor/prison/blue{
+	dir = 6
 	},
 /area/shuttle/canterbury/cic)
 "bS" = (
@@ -514,7 +533,8 @@
 /area/shuttle/canterbury/medical)
 "bT" = (
 /obj/structure/cable,
-/turf/open/floor/prison/plate,
+/obj/machinery/door/firedoor,
+/turf/open/floor/prison,
 /area/shuttle/canterbury/cic)
 "bU" = (
 /obj/machinery/door/poddoor/mainship{
@@ -552,6 +572,12 @@
 /obj/item/storage/firstaid/o2,
 /obj/item/defibrillator,
 /obj/item/defibrillator,
+/obj/item/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -28;
+	dir = 8
+	},
 /turf/open/floor/prison/green/corner{
 	dir = 8
 	},
@@ -562,10 +588,21 @@
 	},
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
+"dm" = (
+/obj/structure/cable,
+/obj/structure/cable,
+/turf/open/floor/prison/sterilewhite/full,
+/area/shuttle/canterbury/medical)
 "dP" = (
 /obj/machinery/vending/dinnerware,
 /obj/effect/turf_decal/tile/transparent/bar/diagonal_centre,
 /turf/open/floor/prison/bright_clean,
+/area/shuttle/canterbury)
+"eG" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/cleanmarked,
 /area/shuttle/canterbury)
 "fL" = (
 /turf/open/floor/plating/mainship,
@@ -592,6 +629,12 @@
 	dir = 1
 	},
 /area/shuttle/canterbury)
+"jZ" = (
+/obj/structure/cable,
+/turf/open/floor/prison/green{
+	dir = 4
+	},
+/area/shuttle/canterbury/medical)
 "ki" = (
 /obj/effect/turf_decal/medical_decals/cryo/cell,
 /turf/open/floor/prison/sterilewhite/full,
@@ -637,6 +680,7 @@
 /obj/item/pizzabox/meat{
 	pixel_y = 8
 	},
+/obj/machinery/light,
 /turf/open/floor/wood,
 /area/shuttle/canterbury)
 "oa" = (
@@ -671,17 +715,14 @@
 /turf/open/floor/prison/sterilewhite,
 /area/shuttle/canterbury/medical)
 "qh" = (
-/obj/machinery/alarm{
-	dir = 1
-	},
 /obj/structure/closet/secure_closet/guncabinet/canterbury,
-/turf/open/floor/mainship,
+/turf/open/floor/prison/blue,
 /area/shuttle/canterbury/cic)
 "ql" = (
-/obj/machinery/marine_selector/gear/smartgun,
 /obj/structure/window/full{
 	dir = 8
 	},
+/obj/machinery/marine_selector/gear/veteran,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "qE" = (
@@ -695,11 +736,11 @@
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "qM" = (
-/obj/effect/landmark/start/latejoinsom,
+/obj/effect/landmark/start/latejoin/crash/som,
 /turf/open/floor/carpet,
 /area/shuttle/canterbury)
 "rq" = (
-/obj/structure/rack,
+/obj/structure/largecrate/supply/supplies/sandbags,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "su" = (
@@ -717,6 +758,17 @@
 /obj/item/reagent_containers/food/drinks/bottle/vodka,
 /turf/open/floor/wood,
 /area/shuttle/canterbury)
+"tN" = (
+/obj/effect/turf_decal/tile/transparent/bar/half/contrasted,
+/obj/structure/bed/chair/dropship/passenger,
+/obj/effect/landmark/start/job/som/squadcorpsman,
+/obj/item/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -28
+	},
+/turf/open/floor/prison,
+/area/shuttle/canterbury)
 "tP" = (
 /obj/machinery/light,
 /turf/closed/wall/mainship/outer/canterbury,
@@ -731,6 +783,10 @@
 /obj/effect/landmark/start/job/som/squadcorpsman,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
+"un" = (
+/obj/structure/cable,
+/turf/open/floor/prison/sterilewhite/full,
+/area/shuttle/canterbury/medical)
 "up" = (
 /obj/effect/turf_decal/warning_stripes/thin{
 	dir = 1
@@ -741,8 +797,13 @@
 /turf/open/floor/plating/heatinggrate,
 /area/shuttle/canterbury)
 "uu" = (
-/turf/open/floor/mainship/blue{
-	dir = 4
+/obj/item/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -28
+	},
+/turf/open/floor/prison/blue{
+	dir = 9
 	},
 /area/shuttle/canterbury/cic)
 "uJ" = (
@@ -750,9 +811,6 @@
 /obj/structure/bed/chair/dropship/passenger,
 /obj/effect/landmark/start/job/som/squadleader,
 /turf/open/floor/prison,
-/area/shuttle/canterbury)
-"uZ" = (
-/turf/open/space/basic,
 /area/shuttle/canterbury)
 "vF" = (
 /obj/machinery/power/fusion_engine/random,
@@ -779,10 +837,22 @@
 	dir = 1
 	},
 /area/shuttle/canterbury/medical)
+"wD" = (
+/obj/item/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -28;
+	dir = 1
+	},
+/turf/open/floor/prison/cleanmarked,
+/area/shuttle/canterbury)
 "yp" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/surgical_tray,
 /obj/item/storage/firstaid/adv,
+/obj/machinery/alarm{
+	dir = 4
+	},
 /turf/open/floor/prison/green{
 	dir = 4
 	},
@@ -791,10 +861,10 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/machinery/light/small{
+/obj/effect/landmark/start/job/som/squadcorpsman,
+/obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/landmark/start/job/som/squadcorpsman,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "zy" = (
@@ -811,6 +881,10 @@
 	dir = 4
 	},
 /area/shuttle/canterbury/medical)
+"BC" = (
+/obj/machinery/light,
+/turf/open/floor/wood,
+/area/shuttle/canterbury)
 "BZ" = (
 /obj/structure/window/framed/mainship/hull/canterbury,
 /turf/open/floor/plating,
@@ -824,10 +898,7 @@
 /obj/machinery/door/airlock/multi_tile/mainship/blackgeneric/glass{
 	dir = 2
 	},
-/turf/open/space/basic,
-/area/shuttle/canterbury)
-"DH" = (
-/turf/open/floor/grayscale/round/black,
+/turf/open/floor/mainship/black/full,
 /area/shuttle/canterbury)
 "DI" = (
 /obj/structure/table/reinforced,
@@ -850,12 +921,15 @@
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "FZ" = (
-/obj/machinery/light,
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/open/floor/wood,
+/obj/machinery/cryopod,
+/obj/effect/turf_decal/tile/full/black,
+/obj/machinery/light/small,
+/turf/open/floor/mainship/black/full,
 /area/shuttle/canterbury)
+"Gu" = (
+/obj/structure/cable,
+/turf/open/floor/prison/green,
+/area/shuttle/canterbury/medical)
 "GE" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
@@ -863,6 +937,13 @@
 /obj/effect/landmark/start/job/som/squadveteran,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
+"Jt" = (
+/obj/structure/curtain/shower,
+/obj/structure/cable,
+/turf/open/floor/prison/green{
+	dir = 1
+	},
+/area/shuttle/canterbury/medical)
 "JM" = (
 /obj/structure/barricade/plasteel{
 	dir = 4
@@ -890,6 +971,7 @@
 	pixel_y = 5;
 	pixel_x = -8
 	},
+/obj/structure/cable,
 /turf/open/floor/plating/mainship/striped,
 /area/shuttle/canterbury)
 "JX" = (
@@ -922,16 +1004,35 @@
 	dir = 1
 	},
 /area/shuttle/canterbury/medical)
+"KO" = (
+/obj/effect/turf_decal/tile/transparent/bar/half/contrasted,
+/obj/structure/bed/chair/dropship/passenger,
+/obj/effect/landmark/start/job/som/squadstandard,
+/obj/item/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -28
+	},
+/turf/open/floor/prison,
+/area/shuttle/canterbury)
 "Mj" = (
 /obj/machinery/vending/boozeomat,
 /obj/effect/turf_decal/tile/transparent/bar/diagonal_centre,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/prison/bright_clean,
 /area/shuttle/canterbury)
 "MY" = (
-/turf/open/floor/mainship/blue/full,
+/turf/open/floor/prison/blue{
+	dir = 1
+	},
 /area/shuttle/canterbury/cic)
-"Ot" = (
+"No" = (
 /obj/structure/cable,
+/turf/open/floor/prison/sterilewhite,
+/area/shuttle/canterbury/medical)
+"Ot" = (
 /obj/machinery/loadout_vendor,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/shuttle/canterbury)
@@ -942,14 +1043,16 @@
 /turf/open/floor/prison/plate,
 /area/shuttle/canterbury)
 "OS" = (
-/obj/structure/bed/chair/dropship/pilot{
+/obj/structure/bed/bunkbed,
+/obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/landmark/start/job/crash/fieldcommander,
-/turf/open/floor/mainship/blue{
-	dir = 4
-	},
-/area/shuttle/canterbury/cic)
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/canterbury)
+"PQ" = (
+/obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/cope,
+/turf/open/floor/prison/arrow,
+/area/shuttle/canterbury)
 "PW" = (
 /obj/structure/barricade/plasteel{
 	dir = 8
@@ -969,6 +1072,17 @@
 	dir = 10
 	},
 /area/shuttle/canterbury/medical)
+"Qt" = (
+/obj/structure/cable,
+/obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/cope,
+/turf/open/floor/prison/arrow,
+/area/shuttle/canterbury)
+"QL" = (
+/obj/structure/cable,
+/obj/structure/cable,
+/obj/structure/cable,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/shuttle/canterbury)
 "Rd" = (
 /turf/open/floor/prison/arrow,
 /area/shuttle/canterbury)
@@ -1000,9 +1114,13 @@
 /obj/effect/landmark/start/job/som/squadcorpsman,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
+"SM" = (
+/obj/structure/cable,
+/turf/open/floor/plating/mainship,
+/area/shuttle/canterbury)
 "TE" = (
-/obj/structure/window/framed/mainship/hull/canterbury,
-/turf/closed/wall/mainship/outer/canterbury,
+/obj/effect/landmark/start/latejoinsom,
+/turf/open/floor/mainship/black/full,
 /area/shuttle/canterbury)
 "TS" = (
 /obj/effect/turf_decal/siding/white{
@@ -1022,21 +1140,25 @@
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "Ul" = (
-/obj/machinery/vending/nanomed,
-/turf/open/floor/mainship/blue{
-	dir = 10
-	},
+/turf/open/floor/prison/blue,
 /area/shuttle/canterbury/cic)
 "Uo" = (
 /turf/template_noop,
 /area/template_noop)
 "Uw" = (
-/turf/open/floor/mainship/blue{
-	dir = 8
+/obj/item/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -28
+	},
+/turf/open/floor/prison/blue{
+	dir = 5
 	},
 /area/shuttle/canterbury/cic)
 "UE" = (
-/turf/open/floor/iron/dark/textured,
+/obj/effect/turf_decal/tile/full/black,
+/obj/machinery/light/small,
+/turf/open/floor/mainship/black/full,
 /area/shuttle/canterbury)
 "UO" = (
 /turf/open/floor/wood,
@@ -1051,11 +1173,7 @@
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "Vq" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/transparent/bar/half{
-	dir = 4
-	},
-/turf/open/floor/prison/plate,
+/turf/open/floor/mainship/black/full,
 /area/shuttle/canterbury)
 "Wb" = (
 /obj/effect/turf_decal/tile/transparent/bar/half/contrasted,
@@ -1063,7 +1181,23 @@
 /obj/effect/landmark/start/job/som/squadengineer,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
+"We" = (
+/obj/structure/table,
+/obj/item/reagent_containers/food/drinks/britcup{
+	pixel_y = 1;
+	pixel_x = 3
+	},
+/obj/item/reagent_containers/food/drinks/coffee{
+	pixel_y = 17;
+	pixel_x = -4
+	},
+/turf/open/floor/mainship/black/full,
+/area/shuttle/canterbury)
 "Wk" = (
+/obj/machinery/power/apc/mainship{
+	dir = 1
+	},
+/obj/structure/cable,
 /turf/open/floor/prison/green{
 	dir = 1
 	},
@@ -1110,6 +1244,11 @@
 	dir = 4
 	},
 /turf/open/floor/prison/sterilewhite,
+/area/shuttle/canterbury/medical)
+"Xx" = (
+/obj/effect/turf_decal/bot_red,
+/obj/structure/cable,
+/turf/open/floor/prison/sterilewhite/full,
 /area/shuttle/canterbury/medical)
 "XO" = (
 /obj/structure/bed/chair/dropship/passenger{
@@ -1181,7 +1320,7 @@ Uo
 ab
 ww
 qM
-DH
+We
 bh
 ab
 PW
@@ -1190,10 +1329,10 @@ bj
 bj
 ab
 bk
-aI
+eG
 ay
 oi
-aI
+eG
 aN
 ab
 vF
@@ -1212,16 +1351,16 @@ Uo
 Uo
 Uo
 ab
-ww
+OS
 qM
-DH
+bo
 UE
 ab
 uJ
-mM
-mM
+bx
+bx
 bl
-TE
+aW
 aw
 Sg
 aB
@@ -1247,14 +1386,14 @@ Uo
 ab
 ww
 qM
-DH
+TE
 bM
 ab
 zy
 bu
-bx
+mM
 bm
-TE
+aW
 av
 aF
 ab
@@ -1278,22 +1417,22 @@ Uo
 Uo
 Uo
 ab
-ww
+OS
 qM
-DH
-bM
+TE
+FZ
 tP
 sR
 mM
 mM
 bm
-TE
+aW
 aI
 aF
 aD
 aq
 aH
-aI
+wD
 ab
 bs
 fL
@@ -1307,20 +1446,20 @@ Uo
 Uo
 Uo
 Uo
-BZ
+al
 BZ
 BZ
 al
 CA
 qM
-DH
+TE
 bM
 ab
 zy
 mM
 mM
 bn
-TE
+aW
 ax
 aF
 Ub
@@ -1329,7 +1468,7 @@ aH
 az
 ab
 lu
-fL
+SM
 JN
 ab
 ai
@@ -1339,25 +1478,25 @@ Uo
 Uo
 Uo
 Uo
-BZ
+al
 al
 uu
 bN
 al
 aW
-uZ
+Vq
 DF
 aW
 ab
-sR
+KO
 mM
 mM
 bn
 ab
 ab
 aF
-bo
-su
+aw
+ab
 aH
 su
 ab
@@ -1395,7 +1534,7 @@ mM
 Yn
 qE
 XO
-Rd
+bP
 gv
 bW
 Uo
@@ -1422,13 +1561,13 @@ bq
 am
 am
 mM
-Vq
+am
 am
 mM
 am
 bi
 aR
-Rd
+Qt
 gv
 bW
 Uo
@@ -1445,23 +1584,23 @@ ao
 bT
 aS
 aS
-mM
-mM
+aS
+aS
 aS
 aS
 aa
 as
-mM
 aS
 aS
 aS
 aS
-mM
-mM
-mM
-mM
-bx
-mM
+QL
+aS
+aS
+aS
+aS
+aS
+aS
 gv
 bW
 Uo
@@ -1473,8 +1612,8 @@ Uo
 Uo
 BZ
 bI
-OS
-bP
+bK
+ao
 oj
 Ui
 mM
@@ -1488,13 +1627,13 @@ Kk
 an
 an
 mM
-mM
+aS
 an
 an
 an
 OL
 aR
-Rd
+PQ
 gv
 bW
 Uo
@@ -1521,7 +1660,7 @@ cR
 aD
 Kh
 mM
-mM
+aS
 zc
 bD
 GE
@@ -1537,7 +1676,7 @@ Uo
 Uo
 Uo
 Uo
-BZ
+al
 al
 Uw
 bR
@@ -1547,14 +1686,14 @@ ms
 UO
 nM
 ab
-zy
+tN
 mM
 mM
 bn
 at
 bp
 ar
-ar
+jZ
 at
 bp
 bp
@@ -1571,7 +1710,7 @@ Uo
 Uo
 Uo
 Uo
-BZ
+al
 BZ
 BZ
 al
@@ -1587,7 +1726,7 @@ ul
 bp
 py
 cf
-aO
+un
 at
 mi
 aY
@@ -1611,7 +1750,7 @@ ab
 dP
 ms
 WY
-FZ
+WY
 su
 Wb
 mM
@@ -1620,7 +1759,7 @@ mM
 aT
 cf
 aX
-cf
+Xx
 bA
 aT
 aX
@@ -1648,18 +1787,18 @@ aK
 su
 Wl
 bu
-bx
+mM
 mM
 aT
 aO
 cf
-aO
-bA
-aT
-aX
-aX
-aX
-aX
+dm
+Jt
+Gu
+No
+No
+No
+No
 bg
 ap
 ah
@@ -1680,8 +1819,8 @@ hc
 hc
 su
 aU
-mM
-mM
+bx
+bx
 bn
 at
 Qg
@@ -1692,7 +1831,7 @@ jo
 aX
 Xp
 aX
-aX
+No
 Wk
 ap
 ah
@@ -1710,7 +1849,7 @@ ab
 Mj
 ms
 UO
-UO
+BC
 ab
 ow
 JM

@@ -1828,6 +1828,7 @@
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
 #include "RUtgmc\code\clown.dm"
+#include "RUtgmc\code\elimination_mode.dm"
 #include "RUtgmc\code\militarypolice.dm"
 #include "RUtgmc\code\necoarc.dm"
 #include "RUtgmc\code\reagents.dm"

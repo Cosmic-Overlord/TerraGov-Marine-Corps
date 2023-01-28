@@ -1,4 +1,4 @@
-/datum/game_mode/infestation/elimination
+/datum/game_mode/infestation/crash/elimination
 	name = "Elimination"
 	config_tag = "Elimination"
 
@@ -21,17 +21,46 @@
 		/datum/job/xenomorph/queen = 1,
 		/datum/job/survivor/rambo = 1,
 	)
-	// Round end conditions
-	var/shuttle_landed = FALSE
-	var/marines_evac = CRASH_EVAC_NONE
-
 	// Shuttle details
-	var/shuttle_id = SHUTTLE_CANTERBURY
-	var/obj/docking_port/mobile/crashmode/shuttle
-	var/starting_squad = "Zulu"
+	shuttle_id = SHUTTLE_WENDY
+	starting_squad = "Zulu"
 	bioscan_interval = 0
 
-/datum/game_mode/infestation/distress/post_setup()
+/datum/game_mode/infestation/crash/elimination/pre_setup()
+	. = ..()
+
+	// Spawn the ship
+	if(!SSmapping.shuttle_templates[shuttle_id])
+		message_admins("Gamemode: couldn't find a valid shuttle template for [shuttle_id]")
+		CRASH("Shuttle [shuttle_id] wasn't found and can't be loaded")
+
+	var/datum/map_template/shuttle/ST = SSmapping.shuttle_templates[shuttle_id]
+	shuttle = SSshuttle.load_template_to_transit(ST)
+
+	// Redefine the relevant spawnpoints after spawning the ship.
+	for(var/job_type in shuttle.spawns_by_job)
+		GLOB.spawns_by_job[job_type] = shuttle.spawns_by_job[job_type]
+
+	GLOB.latejoin = shuttle.latejoins
+	GLOB.latejoin_cryo = shuttle.latejoins
+	GLOB.latejoin_gateway = shuttle.latejoins
+	// Launch shuttle
+	var/list/valid_docks = list()
+	for(var/obj/docking_port/stationary/crashmode/potential_crash_site in SSshuttle.stationary)
+		if(!shuttle.check_dock(potential_crash_site, silent = TRUE))
+			continue
+		valid_docks += potential_crash_site
+
+	if(!length_char(valid_docks))
+		CRASH("No valid crash sides found!")
+	var/obj/docking_port/stationary/crashmode/actual_crash_site = pick(valid_docks)
+
+	shuttle.crashing = TRUE
+	SSshuttle.moveShuttleToDock(shuttle.id, actual_crash_site, TRUE) // FALSE = instant arrival
+	addtimer(CALLBACK(src, .proc/crash_shuttle, actual_crash_site), 10 MINUTES)
+
+
+/datum/game_mode/infestation/crash/elimination/post_setup()
 	. = ..()
 	SSpoints.add_psy_points(XENO_HIVE_NORMAL, 2 * SILO_PRICE + 4 * XENO_TURRET_PRICE)
 
@@ -41,7 +70,7 @@
 		corpse.create_mob()
 
 
-/datum/game_mode/infestation/distress/scale_roles(initial_players_assigned)
+/datum/game_mode/infestation/crash/elimination/scale_roles(initial_players_assigned)
 	. = ..()
 	if(!.)
 		return
@@ -49,7 +78,7 @@
 	scaled_job.job_points_needed  = DISTRESS_LARVA_POINTS_NEEDED
 
 
-/datum/game_mode/infestation/distress/orphan_hivemind_collapse()
+/datum/game_mode/infestation/crash/elimination/orphan_hivemind_collapse()
 	if(round_finished)
 		return
 	if(round_stage == INFESTATION_MARINE_CRASHING)
@@ -58,21 +87,8 @@
 	round_finished = MODE_INFESTATION_M_MAJOR
 
 
-/datum/game_mode/infestation/distress/get_hivemind_collapse_countdown()
+/datum/game_mode/infestation/crash/elimination/get_hivemind_collapse_countdown()
 	var/eta = timeleft(orphan_hive_timer) MILLISECONDS
 	return !isnull(eta) ? round(eta) : 0
 
 
-/datum/game_mode/infestation/distress/siloless_hive_collapse()
-	if(!(flags_round_type & MODE_INFESTATION))
-		return
-	if(round_finished)
-		return
-	if(round_stage == INFESTATION_MARINE_CRASHING)
-		return
-	round_finished = MODE_INFESTATION_M_MAJOR
-
-
-/datum/game_mode/infestation/distress/get_siloless_collapse_countdown()
-	var/eta = timeleft(siloless_hive_timer) MILLISECONDS
-	return !isnull(eta) ? round(eta) : 0

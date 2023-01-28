@@ -104,6 +104,7 @@
 #define SHUTTLE_TADPOLE "minidropship"
 #define SHUTTLE_TRIUMPH "triumph"
 #define SHUTTLE_CANTERBURY "tgs_canterbury"
+#define SHUTTLE_WENDY "mfv_wendy"
 #define SHUTTLE_CAS "casplane"
 #define SHUTTLE_CAS_DOCK "cas_dock"
 #define SHUTTLE_BIGBURY "tgs_bigbury"

@@ -111,6 +111,8 @@
 			"choice" = "points",
 			)
 
+/obj/machinery/marine_selector/ui_data(mob/living/user)
+	. = ..()
 	var/ui_theme
 	switch(faction)
 		if(FACTION_SOM)
@@ -118,6 +120,7 @@
 		else
 			ui_theme = "main"
 	.["ui_theme"] = ui_theme
+	return
 
 /obj/machinery/marine_selector/ui_act(action, list/params)
 	. = ..()

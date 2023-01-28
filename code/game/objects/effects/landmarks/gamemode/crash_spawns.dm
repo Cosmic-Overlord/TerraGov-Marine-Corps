@@ -97,3 +97,8 @@
 	if(istype(port, /obj/docking_port/mobile/crashmode))
 		var/obj/docking_port/mobile/crashmode/C = port
 		C.latejoins += src
+
+/obj/effect/landmark/start/latejoin/crash/som/Initialize()
+	. = ..()
+	GLOB.latejoinsom += loc
+	return INITIALIZE_HINT_QDEL

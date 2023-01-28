@@ -66,3 +66,11 @@
 	height = 31
 	dwidth = 9
 	dheight = 15
+
+/obj/docking_port/mobile/crashmode/wendy
+	name = "MFV Wendy"
+	dir = SOUTH
+	width = 19
+	height = 31
+	dwidth = 9
+	dheight = 15

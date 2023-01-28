@@ -250,6 +250,30 @@
 	set_trap_type(TRAP_HUGGER)
 	balloon_alert(user, "Inserted facehugger")
 
+
+/obj/structure/xeno/trap/attack_facehugger(mob/living/carbon/xenomorph/facehugger/F)
+	. = ..()
+
+	if(trap_type)
+		return
+
+	if(alert("Do you want to get into the trap?", "Get inside the trap", "Yes", "No") != "Yes")
+		return
+
+	if(trap_type)
+		return
+
+	var/obj/item/clothing/mask/facehugger/FH = new(src)
+	FH.go_idle(TRUE)
+	hugger = FH
+	set_trap_type(TRAP_HUGGER)
+
+	F.ghostize(FALSE)
+	qdel(F)
+
+
+
+
 /*
 TUNNEL
 */

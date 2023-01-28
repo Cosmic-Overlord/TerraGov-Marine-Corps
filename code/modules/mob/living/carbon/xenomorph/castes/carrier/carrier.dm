@@ -54,3 +54,20 @@
 	new_hugger.transfer_mob(user)
 	log_admin("[user.key] took control of [new_hugger.name] from a [name] at [AREACOORD(src)].")
 	return TRUE
+
+
+/mob/living/carbon/xenomorph/carrier/attack_facehugger(mob/living/carbon/xenomorph/facehugger/F, damage_amount, damage_type, damage_flag, effects, armor_penetration, isrightclick)
+	. = ..()
+
+	if(huggers >= xeno_caste.huggers_max)
+		return
+
+	if(alert("Do you want to climb on the carrier?", "Climb on the carrier", "Yes", "No") != "Yes")
+		return
+
+	if(huggers >= xeno_caste.huggers_max)
+		return
+
+	huggers++
+	F.ghostize(FALSE)
+	qdel(F)

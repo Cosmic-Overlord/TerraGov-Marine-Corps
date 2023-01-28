@@ -179,6 +179,19 @@
 	log_admin("[user.key] took control of [new_hugger.name] from an egg at [AREACOORD(src)].")
 	return TRUE
 
+/obj/alien/egg/hugger/attack_facehugger(mob/living/carbon/xenomorph/facehugger/F)
+	. = ..()
+
+	if(alert("Do you want to get into the egg?", "Get inside the egg", "Yes", "No") != "Yes")
+		return
+
+	if(!insert_new_hugger(new /obj/item/clothing/mask/facehugger/larval(), F))
+		return
+
+	F.ghostize(FALSE)
+	qdel(F)
+
+
 
 /obj/alien/egg/hugger/attackby(obj/item/I, mob/user, params)
 	. = ..()

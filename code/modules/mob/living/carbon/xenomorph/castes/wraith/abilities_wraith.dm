@@ -685,10 +685,10 @@ GLOBAL_LIST_INIT(wraith_banish_very_short_duration_list, typecacheof(list(
 /datum/action/xeno_action/activable/rewind/use_ability(atom/A)
 	targeted = A
 	last_target_locs_list = list(get_turf(A))
-	target_initial_brute_damage = targeted.getBruteLoss()
-	target_initial_burn_damage = targeted.getFireLoss()
 	if(isxeno(A))
 		var/mob/living/carbon/xenomorph/xeno_target = targeted
+		target_initial_brute_damage = targeted.getBruteLoss()
+		target_initial_burn_damage = targeted.getFireLoss()
 		target_initial_sunder = xeno_target.sunder
 	addtimer(CALLBACK(src, .proc/start_rewinding), start_rewinding)
 	RegisterSignal(targeted, COMSIG_MOVABLE_MOVED, .proc/save_move)

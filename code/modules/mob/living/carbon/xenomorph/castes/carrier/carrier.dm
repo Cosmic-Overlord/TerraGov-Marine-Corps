@@ -32,21 +32,16 @@
 /mob/living/carbon/xenomorph/carrier/attack_ghost(mob/dead/observer/user)
 	. = ..()
 
-	if(!user.client?.prefs || !(user.client.prefs.be_special & (BE_ALIEN)) || is_banned_from(user.ckey, ROLE_XENOMORPH))
+	var/datum/hive_status/hive = GLOB.hive_datums[hivenumber]
+	if(!hive.can_spawn_as_hugger(user))
 		return FALSE
 
 	if(!sentient_huggers)
-		return FALSE
-
-	if(GLOB.key_to_time_of_death[user.key] + TIME_BEFORE_TAKING_FACEHUGGER > world.time && !user.started_as_observer)
-		to_chat(user, span_warning("You died too recently to be able to take a new facehugger."))
-		return FALSE
-
-	if(alert("Are you sure you want to be a Facehugger?", "Become a part of the Horde", "Yes", "No") != "Yes")
+		to_chat(user, span_warning("The carrier did not allow possession."))
 		return FALSE
 
 	if(!huggers)
-		to_chat(user, span_warning("The carrier has no available huggers"))
+		to_chat(user, span_warning("The carrier doesn't have available huggers."))
 		return FALSE
 
 	var/mob/living/carbon/xenomorph/facehugger/new_hugger = new /mob/living/carbon/xenomorph/facehugger(get_turf(src))
@@ -59,15 +54,15 @@
 /mob/living/carbon/xenomorph/carrier/attack_facehugger(mob/living/carbon/xenomorph/facehugger/F, damage_amount, damage_type, damage_flag, effects, armor_penetration, isrightclick)
 	. = ..()
 
-	if(huggers >= xeno_caste.huggers_max)
-		return
-
 	if(alert("Do you want to climb on the carrier?", "Climb on the carrier", "Yes", "No") != "Yes")
 		return
 
 	if(huggers >= xeno_caste.huggers_max)
+		F.balloon_alert(F, "The carrier has no space")
 		return
 
 	huggers++
+	F.visible_message(span_xenowarning("[F] climb on the [src]."),span_xenonotice("You climb on the [src]."))
 	F.ghostize(FALSE)
+	F.death(deathmessage = "climb on the carrier", silent = TRUE)
 	qdel(F)

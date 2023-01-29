@@ -17,7 +17,8 @@
 
 /obj/alien/egg/Initialize(mapload, hivenumber)
 	. = ..()
-	src.hivenumber = hivenumber
+	if(hivenumber)
+		src.hivenumber = hivenumber
 	advance_maturity(maturity_stage)
 
 /obj/alien/egg/update_icon_state()
@@ -146,24 +147,15 @@
 /obj/alien/egg/hugger/attack_ghost(mob/dead/observer/user)
 	. = ..()
 
-	if(!user.client?.prefs || !(user.client.prefs.be_special & (BE_ALIEN)) || is_banned_from(user.ckey, ROLE_XENOMORPH))
+	var/datum/hive_status/hive = GLOB.hive_datums[hivenumber]
+	if(!hive.can_spawn_as_hugger(user))
 		return FALSE
 
-	if(maturity_stage != stage_ready_to_burst) //already popped, or not ready yet
+	if(maturity_stage != stage_ready_to_burst)
+		to_chat(user, span_warning("The egg is not ready."))
 		return FALSE
 	if(!hugger_type)
-		return FALSE
-
-	if(GLOB.key_to_time_of_death[user.key] + TIME_BEFORE_TAKING_FACEHUGGER > world.time && !user.started_as_observer)
-		to_chat(user, span_warning("You died too recently to be able to take a new facehugger."))
-		return FALSE
-
-	if(alert("Are you sure you want to be a Facehugger?", "Become a part of the Horde", "Yes", "No") != "Yes")
-		return FALSE
-
-	if(maturity_stage != stage_ready_to_burst) //already popped, or not ready yet
-		return FALSE
-	if(!hugger_type)
+		to_chat(user, span_warning("The egg is empty."))
 		return FALSE
 
 	advance_maturity(stage_ready_to_burst + 1)
@@ -172,9 +164,8 @@
 	playsound(loc, "sound/effects/alien_egg_move.ogg", 25)
 	flick("egg opening", src)
 
-	var/mob/living/carbon/xenomorph/facehugger/new_hugger = new /mob/living/carbon/xenomorph/facehugger()
+	var/mob/living/carbon/xenomorph/facehugger/new_hugger = new /mob/living/carbon/xenomorph/facehugger(loc)
 	hugger_type = null
-	addtimer(CALLBACK(new_hugger, /atom/movable.proc/forceMove, loc), 1 SECONDS)
 	addtimer(CALLBACK(new_hugger, /mob/living.proc/transfer_mob, user), 1 SECONDS)
 	log_admin("[user.key] took control of [new_hugger.name] from an egg at [AREACOORD(src)].")
 	return TRUE
@@ -186,10 +177,13 @@
 	if(alert("Do you want to get into the egg?", "Get inside the egg", "Yes", "No") != "Yes")
 		return
 
-	if(!insert_new_hugger(new /obj/item/clothing/mask/facehugger/larval(), F))
+	if(!insert_new_hugger(new /obj/item/clothing/mask/facehugger/larval()))
+		F.balloon_alert(F, span_xenowarning("We can't use this egg"))
 		return
 
+	F.visible_message(span_xenowarning("[F] slides back into [src]."),span_xenonotice("You slides back into [src]."))
 	F.ghostize(FALSE)
+	F.death(deathmessage = "get inside the egg", silent = TRUE)
 	qdel(F)
 
 /obj/alien/egg/hugger/attackby(obj/item/I, mob/user, params)

@@ -398,6 +398,7 @@ GLOBAL_VAR_INIT(join_as_robot_allowed, TRUE)
 	brute_damage_icon_state = "robot_brute"
 	burn_damage_icon_state = "robot_burn"
 	eyes = "blank_eyes"
+	default_language_holder = /datum/language_holder/robot
 	namepool = /datum/namepool/robotic
 
 	unarmed_type = /datum/unarmed_attack/punch/strong
@@ -461,6 +462,29 @@ GLOBAL_VAR_INIT(join_as_robot_allowed, TRUE)
 		clear_fullscreen("robothalf")
 		clear_fullscreen("robotlow")
 
+/datum/species/robot/alpharii
+	name = "Alpharii Combat Robot"
+	name_plural = "Alpharii Combat Robots"
+	icobase = 'icons/mob/human_races/r_robot_alpharii.dmi'
+	joinable_roundstart = FALSE
+
+/datum/species/robot/charlit
+	name = "Charlit Combat Robot"
+	name_plural = "Charlit Combat Robots"
+	icobase = 'icons/mob/human_races/r_robot_charlit.dmi'
+	joinable_roundstart = FALSE
+
+/datum/species/robot/deltad
+	name = "Deltad Combat Robot"
+	name_plural = "Deltad Combat Robots"
+	icobase = 'icons/mob/human_races/r_robot_deltad.dmi'
+	joinable_roundstart = FALSE
+
+/datum/species/robot/bravada
+	name = "Bravada Combat Robot"
+	name_plural = "Bravada Combat Robots"
+	icobase = 'icons/mob/human_races/r_robot_bravada.dmi'
+	joinable_roundstart = FALSE
 
 /datum/species/synthetic
 	name = "Synthetic"

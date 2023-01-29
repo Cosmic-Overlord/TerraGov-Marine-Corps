@@ -139,6 +139,7 @@
 	READ_FILE(S["windowflashing"], windowflashing)
 	READ_FILE(S["auto_fit_viewport"], auto_fit_viewport)
 	READ_FILE(S["widescreenpref"], widescreenpref)
+	READ_FILE(S["screen_resolution"], screen_resolution)
 	READ_FILE(S["pixel_size"], pixel_size)
 	READ_FILE(S["scaling_method"], scaling_method)
 	READ_FILE(S["menuoptions"], menuoptions)
@@ -192,6 +193,7 @@
 	windowflashing	= sanitize_integer(windowflashing, FALSE, TRUE, initial(windowflashing))
 	auto_fit_viewport= sanitize_integer(auto_fit_viewport, FALSE, TRUE, initial(auto_fit_viewport))
 	widescreenpref = sanitize_integer(widescreenpref, FALSE, TRUE, initial(widescreenpref))
+	screen_resolution = sanitize_inlist(screen_resolution, WIDESCREEN_RESOLUTIONS, initial(screen_resolution))
 	pixel_size = sanitize_float(pixel_size, PIXEL_SCALING_AUTO, PIXEL_SCALING_3X, 0.5, initial(pixel_size))
 	scaling_method  = sanitize_text(scaling_method, initial(scaling_method))
 	ghost_vision	= sanitize_integer(ghost_vision, FALSE, TRUE, initial(ghost_vision))
@@ -256,6 +258,7 @@
 	windowflashing	= sanitize_integer(windowflashing, FALSE, TRUE, initial(windowflashing))
 	auto_fit_viewport = sanitize_integer(auto_fit_viewport, FALSE, TRUE, initial(auto_fit_viewport))
 	widescreenpref = sanitize_integer(widescreenpref, FALSE, TRUE, initial(widescreenpref))
+	screen_resolution = sanitize_inlist(screen_resolution, WIDESCREEN_RESOLUTIONS, initial(screen_resolution))
 	pixel_size = sanitize_float(pixel_size, PIXEL_SCALING_AUTO, PIXEL_SCALING_3X, 0.5, initial(pixel_size))
 	scaling_method  = sanitize_text(scaling_method, initial(scaling_method))
 	chem_macros		= sanitize_islist(chem_macros, list())
@@ -300,6 +303,7 @@
 	WRITE_FILE(S["windowflashing"], windowflashing)
 	WRITE_FILE(S["auto_fit_viewport"], auto_fit_viewport)
 	WRITE_FILE(S["widescreenpref"], widescreenpref)
+	WRITE_FILE(S["screen_resolution"], screen_resolution)
 	WRITE_FILE(S["pixel_size"], pixel_size)
 	WRITE_FILE(S["scaling_method"], scaling_method)
 	WRITE_FILE(S["menuoptions"], menuoptions)
@@ -364,6 +368,7 @@
 
 	READ_FILE(S["synthetic_name"], synthetic_name)
 	READ_FILE(S["synthetic_type"], synthetic_type)
+	READ_FILE(S["robot_type"], robot_type)
 	READ_FILE(S["xeno_name"], xeno_name)
 	READ_FILE(S["ai_name"], ai_name)
 
@@ -420,6 +425,7 @@
 
 	synthetic_name	= reject_bad_name(synthetic_name, TRUE)
 	synthetic_type	= sanitize_inlist(synthetic_type, SYNTH_TYPES, initial(synthetic_type))
+	robot_type = sanitize_inlist(robot_type, ROBOT_TYPES, initial(robot_type))
 	xeno_name		= reject_bad_name(xeno_name)
 	ai_name			= reject_bad_name(ai_name, TRUE)
 
@@ -503,6 +509,7 @@
 
 	synthetic_name	= reject_bad_name(synthetic_name, TRUE)
 	synthetic_type	= sanitize_inlist(synthetic_type, SYNTH_TYPES, initial(synthetic_type))
+	robot_type = sanitize_inlist(robot_type, ROBOT_TYPES, initial(robot_type))
 	xeno_name		= reject_bad_name(xeno_name)
 	ai_name			= reject_bad_name(ai_name, TRUE)
 
@@ -560,6 +567,7 @@
 
 	WRITE_FILE(S["synthetic_name"], synthetic_name)
 	WRITE_FILE(S["synthetic_type"], synthetic_type)
+	WRITE_FILE(S["robot_type"], robot_type)
 	WRITE_FILE(S["xeno_name"], xeno_name)
 	WRITE_FILE(S["ai_name"], ai_name)
 

@@ -54,6 +54,7 @@
 			.["xeno_name"] = xeno_name
 			.["synthetic_name"] = synthetic_name
 			.["synthetic_type"] = synthetic_type
+			.["robot_type"] = robot_type
 			.["random_name"] = random_name
 			.["ai_name"] = ai_name
 			.["age"] = age
@@ -115,8 +116,9 @@
 			.["show_typing"] = show_typing
 			.["tooltips"] = tooltips
 			.["widescreenpref"] = widescreenpref
+			.["screen_resolution"] = screen_resolution
 			.["radialmedicalpref"] = toggles_gameplay & RADIAL_MEDICAL
-			.["radialstackspref"] = toggles_gameplay & RADIAL_STACKS
+			.["radialstackspref"] = (toggles_gameplay & RADIAL_STACKS) ? 1 : 0
 			.["scaling_method"] = scaling_method
 			.["pixel_size"] = pixel_size
 			.["parallax"] = parallax
@@ -246,6 +248,11 @@
 			var/choice = tgui_input_list(ui.user, "What kind of synthetic do you want to play with?", "Synthetic type choice", SYNTH_TYPES)
 			if(choice)
 				synthetic_type = choice
+
+		if("robot_type")
+			var/choice = tgui_input_list(ui.user, "What model of robot do you want to play with?", "Robot model choice", ROBOT_TYPES)
+			if(choice)
+				robot_type = choice
 
 		if("xeno_name")
 			var/newValue = params["newValue"]
@@ -698,7 +705,14 @@
 
 		if("widescreenpref")
 			widescreenpref = !widescreenpref
-			user.client.view_size.set_default(get_screen_size(widescreenpref))
+			user.client.view_size.set_default(get_screen_size(widescreenpref, screen_resolution))
+
+		if("screen_resolution")
+			var/choice = tgui_input_list(ui.user, "Choose widescreen resolution", "Resolutions", WIDESCREEN_RESOLUTIONS)
+			if(choice)
+				screen_resolution = choice
+				if(widescreenpref)
+					user.client.view_size.set_default(get_screen_size(widescreenpref, screen_resolution))
 
 		if("radialmedicalpref")
 			toggles_gameplay ^= RADIAL_MEDICAL

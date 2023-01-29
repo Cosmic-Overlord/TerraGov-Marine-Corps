@@ -35,6 +35,13 @@ const PreDeploy = (props, context) => {
   return (
     <Section title={`Welcome, ${occupant}`}>
       <LabeledList>
+        <LabeledList.Item label="Choose destination">
+          <Button
+            content="Camera mode"
+            color="blue"
+            onClick={() => act('camera_mode')}
+          />
+        </LabeledList.Item>
         <LabeledList.Item label="X Coordinate">
           <NumberInput
             value={target_x}
@@ -61,9 +68,9 @@ const PreDeploy = (props, context) => {
             onClick={() => act('launch')}
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Exit Drop pod">
+        <LabeledList.Item label="Pod door">
           <Button
-            content="Exit Pod"
+            content="Eject occupant"
             color="green"
             onClick={() => act('exitpod')}
           />

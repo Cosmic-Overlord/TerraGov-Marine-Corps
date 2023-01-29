@@ -58,6 +58,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/synthetic_name = "Undefined"
 	var/synthetic_type = "Synthetic"
 
+	//Robot specific preferences
+	var/robot_type = "Basic"
+
 	//Xenomorph specific preferences
 	var/xeno_name = "Undefined"
 
@@ -149,6 +152,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/datum/loadout_manager/loadout_manager
 	///Should we be in the widescreen mode set by the config?
 	var/widescreenpref = TRUE
+	///widescreen resolution
+	var/screen_resolution = "17x15"
 	///What size should pixels be displayed as? 0 is strech to fit
 	var/pixel_size = 0
 	///What scaling method should we use? Distort means nearest neighbor

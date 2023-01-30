@@ -6,6 +6,9 @@
 	plasma_cost = 20
 	pantherplasmaheal = 45
 
+/datum/action/xeno_action/activable/psydrain/panther
+	plasma_cost = 10
+
 ///////////////////////////////////
 // ***************************************
 // *********** Tearing tail

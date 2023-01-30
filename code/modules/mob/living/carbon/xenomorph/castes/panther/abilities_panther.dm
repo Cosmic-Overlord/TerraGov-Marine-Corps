@@ -1,13 +1,13 @@
 /// runner abilities
+/datum/action/xeno_action/activable/psydrain/panther
+	plasma_cost = 10
+
 /datum/action/xeno_action/evasion/panther
 	plasma_cost = 50
 
 /datum/action/xeno_action/activable/pounce/panther
 	plasma_cost = 20
 	pantherplasmaheal = 45
-
-/datum/action/xeno_action/activable/psydrain/panther
-	plasma_cost = 10
 
 ///////////////////////////////////
 // ***************************************
@@ -16,7 +16,7 @@
 
 /datum/action/xeno_action/tearingtail
 	name = "Tearing tail"
-	action_icon_state = "tail_attack"
+	action_icon_state = "tearing_tail"
 	desc = "Hit all adjacent units around you, poisoning them toxin for their mind."
 	ability_name = "tearing tail"
 	plasma_cost = 50

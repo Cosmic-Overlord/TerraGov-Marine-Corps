@@ -74,12 +74,12 @@ const SleeperContent = (props, context) => {
         <Section title="Functions">
           <Button
             onClick={() => act('toggle_filter')}
-            content="Start dialysis"
+            content="Toggle dialysis"
             color={filter ? "green" : "red"}
           />
           <Button
             onClick={() => act('toggle_stasis')}
-            content="Activate cryostasis"
+            content="Toggle cryostasis"
             color={stasis ? "green" : "red"}
           />
           <Button

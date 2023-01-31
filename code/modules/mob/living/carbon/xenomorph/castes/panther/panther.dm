@@ -3,7 +3,7 @@
 	name = "Panther"
 	desc = "What you have done with this cute little rouny?"
 	icon = 'icons/Xeno/2x2_Xenos.dmi'
-	icon_state = "Panther Walking"
+	icon_state = "Panther Walking" //Panther sprites by Drawsstuff (CC BY-NC-SA 3.0)
 	health = 50
 	maxHealth = 100
 	plasma_stored = 10

@@ -16,6 +16,7 @@
 		/datum/job/som/squad/veteran = 1,
 		/datum/job/som/squad/leader = 1,
 		/datum/job/som/squad/medic = 8,
+		/datum/job/som/squad/engineer = 4,
 		/datum/job/som/squad/standard = -1,
 		/datum/job/xenomorph = FREE_XENO_AT_START,
 		/datum/job/xenomorph/queen = 1,
@@ -41,7 +42,7 @@
 	for(var/job_type in shuttle.spawns_by_job)
 		GLOB.spawns_by_job[job_type] = shuttle.spawns_by_job[job_type]
 
-	GLOB.latejoin = shuttle.latejoins
+	GLOB.latejoinsom = shuttle.latejoins
 	GLOB.latejoin_cryo = shuttle.latejoins
 	GLOB.latejoin_gateway = shuttle.latejoins
 	// Launch shuttle
@@ -91,4 +92,29 @@
 	var/eta = timeleft(orphan_hive_timer) MILLISECONDS
 	return !isnull(eta) ? round(eta) : 0
 
+/datum/game_mode/infestation/crash/elimination/scale_squad_jobs()
+	var/datum/job/scaled_job = SSjob.GetJobType(/datum/job/som/squad/leader)
+	scaled_job.total_positions = length_char(SSjob.active_squads[FACTION_SOM])
+
+/datum/game_mode/infestation/crash/elimination/scale_roles()
+	if(SSjob.ssjob_flags & SSJOB_OVERRIDE_JOBS_START)
+		return FALSE
+	if(length_char(SSjob.active_squads[FACTION_SOM]))
+		scale_squad_jobs()
+	return TRUE
+
+/datum/game_mode/infestation/crash/elimination/scale_roles()
+	. = ..()
+	if(!.)
+		return
+	var/datum/job/scaled_job = SSjob.GetJobType(/datum/job/som/squad/veteran)
+	scaled_job.job_points_needed  = 5 //Every 5 non vets join, a new vet slot opens
+
+/datum/game_mode/infestation/crash/elimination/set_valid_squads()
+	SSjob.active_squads[FACTION_SOM] = list()
+	for(var/key in SSjob.squads)
+		var/datum/squad/squad = SSjob.squads[key]
+		if(squad.faction == FACTION_SOM)
+			SSjob.active_squads[squad.faction] += squad
+	return TRUE
 

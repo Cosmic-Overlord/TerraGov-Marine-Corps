@@ -162,3 +162,34 @@
 	desc = "A rucksack with origins dating back to the mining colonies."
 	icon_state = "som_lightpack"
 	item_state = "som_lightpack"
+
+/obj/item/storage/belt/utility/som
+	name = "\improper T14 pattern toolbelt"
+	desc = "The T14 is the standard load-bearing equipment of the SOM. It consists of a modular belt with various clips. This version lacks any combat functionality, and is commonly used by engineers to transport important tools."
+	icon_state = "utilitybelt_som"
+	item_state = "som_belt"
+
+/obj/item/storage/belt/utility/som/full/Initialize()
+	. = ..()
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/stack/cable_coil(src,30,pick("red","yellow","orange"))
+	new /obj/item/multitool(src)
+
+/obj/item/storage/pouch/electronics/som
+	icon_state = "electronics_som"
+
+/obj/item/storage/pouch/electronics/som/full/Initialize()
+	. = ..()
+	new /obj/item/circuitboard/airlock (src)
+	new /obj/item/circuitboard/apc (src)
+	new /obj/item/cell/high (src)
+
+/obj/item/clothing/suit/modular/som/heavy/leader/valkalt
+	starting_attachments = list(
+		/obj/item/armor_module/module/valkyrie_autodoc,
+	)
+

@@ -184,7 +184,7 @@
 
 			use_power(active_power_usage)
 
-			if(item_category == CAT_STD && !issynth(usr))
+			if(item_category == CAT_STD && !issynth(usr) && !item_category == CAT_SOMSTD)
 				var/mob/living/carbon/human/H = usr
 				if(!istype(H.job, /datum/job/terragov/command/fieldcommander))
 					var/headset_type = H.faction == FACTION_TERRAGOV ? /obj/item/radio/headset/mainship/marine : /obj/item/radio/headset/mainship/marine/rebel
@@ -193,6 +193,15 @@
 						vended_items += new /obj/item/clothing/gloves/marine(loc, H.assigned_squad, vendor_role)
 					if(istype(H.job, /datum/job/terragov/squad/leader))
 						vended_items += new /obj/item/hud_tablet(loc, vendor_role, H.assigned_squad)
+
+			if(item_category == CAT_SOMSTD)
+				var/mob/living/carbon/human/H = usr
+				var/headset_type = H.faction == FACTION_SOM ? /obj/item/radio/headset/mainship/som : /obj/item/radio/headset/mainship/marine/rebel
+				vended_items += new headset_type(loc, H.assigned_squad, vendor_role)
+				if(!istype(H.job, /datum/job/som/squad/engineer))
+					vended_items += new /obj/item/clothing/gloves/marine/som(loc, H.assigned_squad, vendor_role)
+				if(istype(H.job, /datum/job/som/squad/leader))
+					vended_items += new /obj/item/hud_tablet(loc, vendor_role, H.assigned_squad)
 
 			for (var/obj/item/vended_item in vended_items)
 				vended_item.on_vend(usr, faction, auto_equip = TRUE)

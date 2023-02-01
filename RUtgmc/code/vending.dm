@@ -98,12 +98,6 @@
 			/obj/item/explosive/grenade/smokebomb/cloak = 25,
 			/obj/item/storage/box/m94 = 200,
 		),
-		"Specialized" = list(
-			/obj/item/weapon/gun/flamer/som = 4,
-			/obj/item/ammo_magazine/flamer_tank/large/som = 10,
-			/obj/item/ammo_magazine/flamer_tank/backtank = 4,
-			/obj/item/jetpack_marine = 3,
-		),
 		"Attachments" = list(
 			/obj/item/attachable/bayonet = -1,
 			/obj/item/attachable/compensator = -1,
@@ -170,6 +164,16 @@
 	faction = FACTION_SOM
 	product_ads = "If it moves, it's hostile!;How many enemies have you killed today?;Shoot first, perform autopsy later!;Your ammo is right here.;Guns!;Die, scumbag!;Don't shoot me bro!;Shoot them, bro.;Why not have a donut?"
 	products = list(
+		"Standard" = list(
+			/obj/item/clothing/under/som = -1,
+			/obj/item/clothing/gloves/marine/som = -1,
+			/obj/item/clothing/shoes/marine/som/knife = -1,
+			/obj/item/armor_module/armor/badge = -1,
+			/obj/item/armor_module/armor/cape = -1,
+			/obj/item/armor_module/armor/cape/half = -1,
+			/obj/item/armor_module/armor/cape/scarf = -1,
+			/obj/item/armor_module/armor/cape/short = -1,
+		),
 		"Armors" = list(
 			/obj/item/clothing/suit/modular/som/light = -1,
 			/obj/item/clothing/suit/modular/som = -1,
@@ -198,14 +202,71 @@
 			/obj/item/armor_module/module/better_shoulder_lamp = -1,
 			/obj/item/armor_module/module/eshield/som = -1,
 		),
-
+		"Webbings" = list(
+			/obj/item/armor_module/storage/uniform/black_vest = -1,
+			/obj/item/armor_module/storage/uniform/brown_vest = -1,
+			/obj/item/armor_module/storage/uniform/white_vest = -1,
+			/obj/item/armor_module/storage/uniform/webbing = -1,
+			/obj/item/armor_module/storage/uniform/holster = -1,
+		),
+		"Belts" = list(
+			/obj/item/storage/belt/marine/som = -1,
+			/obj/item/storage/belt/shotgun/som = -1,
+			/obj/item/storage/belt/shotgun/martini = -1,
+			/obj/item/storage/belt/grenade/som = -1,
+			/obj/item/belt_harness = -1,
+			/obj/item/storage/belt/sparepouch = -1,
+			/obj/item/storage/belt/gun/pistol/m4a3/som = -1,
+			/obj/item/storage/belt/gun/revolver/standard_revolver/som = -1,
+			/obj/item/storage/holster/blade/machete/full = -1,
+			/obj/item/storage/belt/utility/som/full =-1,
+		),
+		"Pouches" = list(
+			/obj/item/storage/pouch/pistol/som = -1,
+			/obj/item/storage/pouch/magazine/large/som = -1,
+			/obj/item/storage/pouch/magazine/pistol/large = -1,
+			/obj/item/storage/pouch/shotgun/som = -1,
+			/obj/item/storage/pouch/flare/som/full = -1,
+			/obj/item/storage/pouch/grenade/som = -1,
+			/obj/item/storage/pouch/explosive/som = -1,
+			/obj/item/storage/pouch/medkit/som = -1,
+			/obj/item/storage/pouch/medical_injectors/som = -1,
+			/obj/item/storage/pouch/construction/som = -1,
+			/obj/item/storage/pouch/electronics/som = -1,
+			/obj/item/storage/pouch/tools/som/full = -1,
+			/obj/item/storage/pouch/general/large/som = -1,
+		),
+		"Masks" = list(
+			/obj/item/clothing/mask/rebreather/scarf = -1,
+			/obj/item/clothing/mask/rebreather = -1,
+			/obj/item/clothing/mask/breath = -1,
+			/obj/item/clothing/mask/gas = -1,
+			/obj/item/clothing/mask/breath = -1,
+		),
+		"Backpacks" = list(
+			/obj/item/storage/backpack/marine/standard/som = -1,
+			/obj/item/storage/backpack/satchel/som = -1,
+		),
+		"Instruments" = list(
+			/obj/item/instrument/violin = -1,
+			/obj/item/instrument/piano_synth = -1,
+			/obj/item/instrument/banjo = -1,
+			/obj/item/instrument/guitar = -1,
+			/obj/item/instrument/glockenspiel = -1,
+			/obj/item/instrument/accordion = -1,
+			/obj/item/instrument/trumpet = -1,
+			/obj/item/instrument/saxophone = -1,
+			/obj/item/instrument/trombone = -1,
+			/obj/item/instrument/recorder = -1,
+			/obj/item/instrument/harmonica = -1,
+		),
 	)
 
 	prices = list()
 
 
 /obj/machinery/marine_selector/clothes/som
-	name = "BLUR Automated Closet"
+	name = "NDRP Automated Closet"
 	desc = "An automated closet hooked up to a colossal storage unit of standard-issue uniform and armor."
 	icon_state = "marineuniform"
 	icon_vend = "marineuniform-vend"
@@ -214,7 +275,7 @@
 	vendor_role = /datum/job/som/squad/standard
 	use_points = TRUE
 	categories = list(
-		CAT_STD = 1,
+		CAT_SOMSTD = 1,
 		CAT_GLA = 1,
 		CAT_HEL = 1,
 		CAT_AMR = 1,
@@ -229,10 +290,12 @@
 
 /obj/machinery/marine_selector/clothes/som/Initialize()
 	. = ..()
-	listed_products = GLOB.som_marine_clothes_listed_products
+	listed_products = GLOB.som_marine_clothes_listed_products + GLOB.som_marine_gear_listed_products
+
+GLOBAL_LIST_INIT(som_marine_gear_listed_products, list())
 
 GLOBAL_LIST_INIT(som_marine_clothes_listed_products, list(
-		/obj/effect/vendor_bundle/basic_som = list(CAT_STD, "Standard Kit", 0, "white"),
+		/obj/effect/vendor_bundle/basic_som = list(CAT_SOMSTD, "Standard Kit", 0, "white"),
 		/obj/effect/vendor_bundle/som_light = list(CAT_AMR, "SOM scout armor kit", 0, "orange"),
 		/obj/effect/vendor_bundle/som_medium = list(CAT_AMR, "SOM light armor kit", 0, "orange"),
 		/obj/effect/vendor_bundle/som_heavy = list(CAT_AMR, "SOM heavy armor kit", 0, "orange"),
@@ -311,8 +374,8 @@ GLOBAL_LIST_INIT(som_marine_clothes_listed_products, list(
 	icon_state = "smartgunner"
 	icon_vend = "smartgunner-vend"
 	icon_deny = "smartgunner-deny"
+	faction = FACTION_SOM
 	vendor_role = /datum/job/som/squad/veteran
-	req_access = list(ACCESS_SOM_VETPREP)
 
 /obj/machinery/marine_selector/gear/veteran/Initialize()
 	. = ..()
@@ -335,20 +398,21 @@ GLOBAL_LIST_INIT(veteran_gear_listed_products, list(
 	))
 
 /obj/machinery/marine_selector/clothes/som/veteran
-	name = "BLUR Automated Veteran Closet"
+	name = "NDRP Automated Veteran Closet"
 	req_access = list(ACCESS_SOM_VETPREP)
 	vendor_role = /datum/job/som/squad/veteran
 	gives_webbing = FALSE
+	faction = FACTION_SOM
 
 /obj/machinery/marine_selector/clothes/som/veteran/Initialize()
 	. = ..()
 	listed_products = GLOB.veteran_clothes_listed_products
 
 GLOBAL_LIST_INIT(veteran_clothes_listed_products, list(
-		/obj/effect/vendor_bundle/basic_smartgunner = list(CAT_STD, "Standard kit", 0, "white"),
-		/obj/effect/vendor_bundle/xenonauten_light = list(CAT_AMR, "Xenonauten light armor kit", 0, "orange"),
-		/obj/effect/vendor_bundle/xenonauten_medium = list(CAT_AMR, "Xenonauten medium armor kit", 0, "orange"),
-		/obj/effect/vendor_bundle/xenonauten_heavy = list(CAT_AMR, "Xenonauten heavy armor kit", 0, "orange"),
+		/obj/effect/vendor_bundle/basic_veteran = list(CAT_SOMSTD, "Standard kit", 0, "white"),
+		/obj/effect/vendor_bundle/som_light = list(CAT_AMR, "SOM scout armor kit", 0, "orange"),
+		/obj/effect/vendor_bundle/som_medium = list(CAT_AMR, "SOM light armor kit", 0, "orange"),
+		/obj/effect/vendor_bundle/som_heavy = list(CAT_AMR, "SOM heavy armor kit", 0, "orange"),
 		/obj/item/armor_module/storage/uniform/black_vest = list(CAT_WEB, "Tactical black vest", 0, "orange"),
 		/obj/item/armor_module/storage/uniform/webbing = list(CAT_WEB, "Tactical webbing", 0, "black"),
 		/obj/item/armor_module/storage/uniform/holster = list(CAT_WEB, "Shoulder handgun holster", 0, "black"),
@@ -384,9 +448,14 @@ GLOBAL_LIST_INIT(veteran_clothes_listed_products, list(
 		/obj/item/clothing/mask/rebreather = list(CAT_MAS, "Rebreather", 0, "black"),
 	))
 
+/obj/effect/vendor_bundle/basic_veteran
+	gear_to_spawn = list(
+		/obj/item/clothing/under/som/veteran,
+		/obj/item/clothing/shoes/marine/som/knife,
+		/obj/item/storage/box/MRE/som,
+	)
 /obj/machinery/marine_selector/clothes/som/medic
-	name = "BLUR Automated Medic Closet"
-	req_access = list(ACCESS_SOM_MEDPREP)
+	name = "NDRP Automated Medic Closet"
 	vendor_role = /datum/job/som/squad/medic
 	gives_webbing = FALSE
 
@@ -395,7 +464,7 @@ GLOBAL_LIST_INIT(veteran_clothes_listed_products, list(
 	listed_products = GLOB.som_medic_clothes_listed_products
 
 GLOBAL_LIST_INIT(som_medic_clothes_listed_products, list(
-		/obj/effect/vendor_bundle/basic_som_medic = list(CAT_STD, "Standard kit", 0, "white"),
+		/obj/effect/vendor_bundle/basic_som_medic = list(CAT_SOMSTD, "Standard kit", 0, "white"),
 		/obj/effect/vendor_bundle/som_light = list(CAT_AMR, "SOM scout armor kit", 0, "orange"),
 		/obj/effect/vendor_bundle/som_medium = list(CAT_AMR, "SOM light armor kit", 0, "orange"),
 		/obj/effect/vendor_bundle/som_heavy = list(CAT_AMR, "SOM heavy armor kit", 0, "orange"),
@@ -453,7 +522,7 @@ GLOBAL_LIST_INIT(som_medic_clothes_listed_products, list(
 	icon_vend = "medic-vend"
 	icon_deny = "medic-deny"
 	vendor_role = /datum/job/som/squad/medic
-	req_access = list(ACCESS_SOM_MEDPREP)
+	faction = FACTION_SOM
 
 /obj/machinery/marine_selector/gear/medic/som/Initialize()
 	. = ..()
@@ -482,10 +551,155 @@ GLOBAL_LIST_INIT(som_medic_gear_listed_products, list(
 		/obj/item/clothing/glasses/hud/medsunglasses = list(CAT_MEDSUP, "Medical HUD sunglasses", 2, "black"),
 	))
 
-/obj/machinery/marine_selector/gear/engi
+/obj/machinery/marine_selector/gear/engi/som
+	name = "BLUR Automated Engineer Equipment Rack"
+	desc = "An automated engineer equipment rack hooked up to a colossal storage unit."
+	icon_state = "engineer"
+	icon_vend = "engineer-vend"
+	icon_deny = "engineer-deny"
+	faction = FACTION_SOM
+	vendor_role = /datum/job/som/squad/engineer
 
-/obj/machinery/marine_selector/clothes/engi
+/obj/machinery/marine_selector/gear/engi/som/Initialize()
+	. = ..()
+	listed_products = GLOB.som_engineer_gear_listed_products
 
-/obj/machinery/marine_selector/gear/leader
+GLOBAL_LIST_INIT(som_engineer_gear_listed_products, list(
+		/obj/effect/vendor_bundle/engi/som = list(CAT_ESS, "Essential Engineer Set", 0, "white"),
+		/obj/item/stack/sheet/metal/small_stack = list(CAT_ENGSUP, "Metal x10", METAL_PRICE_IN_GEAR_VENDOR, "orange"),
+		/obj/item/stack/sheet/plasteel/small_stack = list(CAT_ENGSUP, "Plasteel x10", PLASTEEL_PRICE_IN_GEAR_VENDOR, "orange"),
+		/obj/item/stack/sandbags_empty/half = list(CAT_ENGSUP, "Sandbags x25", SANDBAG_PRICE_IN_GEAR_VENDOR, "orange"),
+		/obj/item/weapon/shield/riot/marine/deployable = list(CAT_ENGSUP, "TL-182 deployable shield", 3, "orange"),
+		/obj/item/tool/weldingtool/hugetank = list(CAT_ENGSUP, "High-capacity industrial blowtorch", 5, "black"),
+		/obj/item/clothing/glasses/welding/superior = list(CAT_ENGSUP, "Superior welding goggles", 2, "black"),
+		/obj/item/armor_module/module/welding/superior = list(CAT_ENGSUP, "Superior welding module", 2, "black"),
+		/obj/item/tool/pickaxe/plasmacutter = list(CAT_ENGSUP, "Plasma cutter", 20, "black"),
+		/obj/item/explosive/plastique = list(CAT_ENGSUP, "Plastique explosive", 2, "black"),
+		/obj/item/detpack = list(CAT_ENGSUP, "Detonation pack", 5, "black"),
+		/obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/cope = list(CAT_ENGSUP, "COPE point defense sentry kit", 40, "black"),
+		/obj/structure/closet/crate/uav_crate = list(CAT_ENGSUP, "Iguana Unmanned Vehicle", 50, "black"),
+		/obj/item/attachable/buildasentry = list(CAT_ENGSUP, "Build-A-Sentry Attachment", 30, "black"),
+		/obj/item/binoculars/tactical/range = list(CAT_ENGSUP, "Range Finder", 10, "black"),
+		/obj/item/ai_target_beacon = list(CAT_ENGSUP, "AI remote targeting module", 10, "black"),
+		/obj/item/tool/handheld_charger = list(CAT_ENGSUP, "Hand-held cell charger", 3, "black"),
+		/obj/item/cell/high = list(CAT_ENGSUP, "High capacity powercell", 1, "black"),
+		/obj/item/cell/rtg/small = list(CAT_ENGSUP, "Recharger powercell", 5, "black"),
+		/obj/item/cell/rtg/large = list(CAT_ENGSUP, "Large recharger powercell", 15, "black"),
+		/obj/effect/teleporter_linker = list(CAT_ENGSUP, "Teleporters", 25, "black"),
+		/obj/item/storage/box/explosive_mines = list(CAT_ENGSUP, "M20 mine box", 18, "black"),
+		/obj/item/storage/box/explosive_mines/large = list(CAT_ENGSUP, "Large M20 mine box", 35, "black"),
+		/obj/item/minelayer = list(CAT_ENGSUP, "M21 APRDS \"Minelayer\"", 5, "black"),
+		/obj/item/minerupgrade/overclock = list(CAT_ENGSUP, "Mining well overclock upgrade", 4, "black"),
+		/obj/item/minerupgrade/reinforcement = list(CAT_ENGSUP, "Mining well reinforcement upgrade", 4, "black"),
+		/obj/item/storage/pouch/explosive/razorburn = list(CAT_ENGSUP, "Pack of Razorburn grenades", 11, "orange"),
+		/obj/item/explosive/grenade/chem_grenade/razorburn_large = list(CAT_ENGSUP, "Razorburn canister", 7, "black"),
+		/obj/item/explosive/grenade/chem_grenade/razorburn_smol = list(CAT_ENGSUP, "Razorburn grenade", 3, "black"),
+	))
+
+/obj/effect/vendor_bundle/engi/som
+	gear_to_spawn = list(
+		/obj/item/explosive/plastique,
+		/obj/item/explosive/grenade/chem_grenade/razorburn_smol,
+		/obj/item/clothing/gloves/marine/som/insulated,
+		/obj/item/cell/high,
+		/obj/item/lightreplacer,
+		/obj/item/circuitboard/apc,
+	)
+
+/obj/machinery/marine_selector/clothes/engi/som
+	name = "NDRP Automated Engineer Closet"
+	vendor_role = /datum/job/som/squad/engineer
+	gives_webbing = FALSE
+
+/obj/machinery/marine_selector/clothes/engi/som/Initialize()
+	. = ..()
+	listed_products = GLOB.som_engineer_clothes_listed_products
+
+GLOBAL_LIST_INIT(som_engineer_clothes_listed_products, list(
+		/obj/effect/vendor_bundle/basic_som = list(CAT_SOMSTD, "Standard kit", 0, "white"),
+		/obj/item/clothing/glasses/welding = list(CAT_GLA, "Welding Goggles", 0, "white"),
+		/obj/item/clothing/glasses/meson = list(CAT_GLA, "Optical Meson Scanner", 0, "white"),
+		/obj/effect/vendor_bundle/som_light = list(CAT_AMR, "SOM scout armor kit", 0, "orange"),
+		/obj/effect/vendor_bundle/som_medium = list(CAT_AMR, "SOM light armor kit", 0, "orange"),
+		/obj/effect/vendor_bundle/som_heavy = list(CAT_AMR, "SOM heavy armor kit", 0, "orange"),
+		/obj/item/storage/backpack/satchel/som = list(CAT_BAK, "Satchel", 0, "orange"),
+		/obj/item/storage/backpack/marine/standard/som = list(CAT_BAK, "Backpack", 0, "black"),
+		/obj/item/storage/holster/blade/machete/full = list(CAT_BAK, "Machete scabbard", 0, "black"),
+		/obj/item/storage/backpack/dispenser = list(CAT_BAK, "Dispenser", 0, "black"),
+		/obj/item/armor_module/storage/uniform/brown_vest = list(CAT_WEB, "Tactical brown vest", 0, "orange"),
+		/obj/item/armor_module/storage/uniform/webbing = list(CAT_WEB, "Tactical webbing", 0, "black"),
+		/obj/item/armor_module/storage/uniform/holster = list(CAT_WEB, "Shoulder handgun holster", 0, "black"),
+		/obj/item/storage/belt/utility/som/full = list(CAT_BEL, "Tool belt", 0, "white"),
+		/obj/item/armor_module/module/welding = list(CAT_HEL, "Armor welding module", 0, "orange"),
+		/obj/item/armor_module/module/binoculars =  list(CAT_HEL, "Armor binoculars module", 0, "orange"),
+		/obj/item/armor_module/storage/medical = list(CAT_SOMMOD, "Medical Storage Module", 0, "black"),
+		/obj/item/armor_module/storage/injector = list(CAT_SOMMOD, "Injector Storage Module", 0, "black"),
+		/obj/item/armor_module/storage/general = list(CAT_SOMMOD, "General Purpose Storage Module", 0, "black"),
+		/obj/item/armor_module/storage/engineering = list(CAT_SOMMOD, "Engineering Storage Module", 0, "black"),
+		/obj/item/armor_module/storage/grenade = list(CAT_SOMMOD, "Grenade Storage Module", 0, "black"),
+		/obj/item/storage/pouch/shotgun/som = list(CAT_POU, "Shotgun shell pouch", 0, "black"),
+		/obj/item/storage/pouch/construction/som = list(CAT_POU, "Construction pouch", 0, "orange"),
+		/obj/item/storage/pouch/explosive/som = list(CAT_POU, "Explosive pouch", 0, "black"),
+		/obj/item/storage/pouch/tools/som/full = list(CAT_POU, "Tools pouch", 0, "black"),
+		/obj/item/storage/pouch/grenade/som/slightlyfull = list(CAT_POU, "Grenade pouch (grenades included)", 0,"black"),
+		/obj/item/storage/pouch/electronics/som/full = list(CAT_POU, "Electronics pouch", 0, "black"),
+		/obj/item/storage/pouch/magazine/large/som = list(CAT_POU, "Magazine pouch", 0, "black"),
+		/obj/item/storage/pouch/general/large/som = list(CAT_POU, "Large general pouch", 0, "black"),
+		/obj/item/storage/pouch/flare/som/full = list(CAT_POU, "Flare pouch", 0, "black"),
+		/obj/item/storage/pouch/medkit/som/firstaid = list(CAT_POU, "First aid pouch", 0, "orange"),
+		/obj/item/storage/pouch/medical_injectors/som/firstaid = list(CAT_POU, "Combat injector pouch", 0, "orange"),
+		/obj/item/storage/pouch/magazine/pistol/large/som = list(CAT_POU, "Pistol magazine pouch", 0, "black"),
+		/obj/item/storage/pouch/pistol/som = list(CAT_POU, "Sidearm pouch", 0, "black"),
+		/obj/effect/vendor_bundle/mimir/som = list(CAT_SOMARMMOD, "Mithridatius Bio Armor set", 0,"black"),
+		/obj/effect/vendor_bundle/tyr/som = list(CAT_SOMARMMOD, "Lorica Armor Reinforcement set", 0,"black"),
+		/obj/item/armor_module/module/better_shoulder_lamp = list(CAT_SOMARMMOD, "Baldur light armor module", 0,"black"),
+		/obj/item/armor_module/module/eshield/som = list(CAT_SOMARMMOD, "Aegis Energy Dispersion Module", 0 , "black"),
+		/obj/item/clothing/mask/gas = list(CAT_MAS, "Transparent gas mask", 0,"black"),
+		/obj/item/clothing/mask/breath = list(CAT_MAS, "Breath mask", 0, "black"),
+		/obj/item/clothing/mask/rebreather/scarf = list(CAT_MAS, "Heat absorbent coif", 0, "black"),
+		/obj/item/clothing/mask/rebreather = list(CAT_MAS, "Rebreather", 0, "black"),
+	))
+
+/obj/machinery/marine_selector/gear/leader/som
+	name = "BLUR Automated Squad Leader Equipment Rack"
+	desc = "An automated squad leader equipment rack hooked up to a colossal storage unit."
+	icon_state = "squadleader"
+	icon_vend = "squadleader-vend"
+	icon_deny = "squadleader-deny"
+	vendor_role = /datum/job/som/squad/leader
+
+/obj/machinery/marine_selector/gear/leader/som/Initialize()
+	. = ..()
+	listed_products = GLOB.som_leader_gear_listed_products
+
+GLOBAL_LIST_INIT(som_leader_gear_listed_products, list(
+		/obj/effect/vendor_bundle/leader/som = list(CAT_ESS, "SL Set + Gordon pattern armot kit", 0, "white"),
+		/obj/item/whistle = list(CAT_LEDSUP, "Whistle", 5, "black"),
+		/obj/item/deployable_camera = list(CAT_LEDSUP, "Deployable Overwatch Camera", 2, "orange"),
+		/obj/item/stack/sandbags_empty/half = list(CAT_LEDSUP, "Sandbags x25", SANDBAG_PRICE_IN_GEAR_VENDOR, "black"),
+		/obj/item/explosive/plastique = list(CAT_LEDSUP, "Plastique explosive", 2, "black"),
+		/obj/item/detpack = list(CAT_LEDSUP, "Detonation pack", 5, "black"),
+		/obj/item/assembly/signaler = list(CAT_LEDSUP, "Signaler (for detpacks)", 1, "black"),
+		/obj/structure/closet/bodybag/tarp = list(CAT_LEDSUP, "V1 thermal-dampening tarp", 5, "black"),
+		/obj/item/explosive/grenade/smokebomb/cloak = list(CAT_LEDSUP, "Cloak grenade", 7, "black"),
+		/obj/item/explosive/grenade/incendiary = list(CAT_LEDSUP, "M40 HIDP incendiary grenade", 3, "black"),
+		/obj/item/storage/pouch/explosive/razorburn = list(CAT_LEDSUP, "Pack of Razorburn grenades", 24, "orange"),
+		/obj/item/explosive/grenade/chem_grenade/razorburn_large = list(CAT_LEDSUP, "Razorburn canister", 21, "black"),
+		/obj/item/explosive/grenade/chem_grenade/razorburn_smol = list(CAT_LEDSUP, "Razorburn grenade", 6, "black"),
+		/obj/item/storage/firstaid/adv = list(CAT_LEDSUP, "Advanced firstaid kit", 10, "orange"),
+		/obj/item/reagent_containers/hypospray/autoinjector/synaptizine = list(CAT_LEDSUP, "Injector (Synaptizine)", 10, "black"),
+		/obj/item/reagent_containers/hypospray/autoinjector/combat_advanced = list(CAT_LEDSUP, "Injector (Advanced)", 15, "orange"),
+	))
+
+/obj/effect/vendor_bundle/leader/som
+	gear_to_spawn = list(
+		/obj/item/clothing/head/modular/som/leader,
+		/obj/item/clothing/suit/modular/som/heavy/leader/valkalt,
+		/obj/item/explosive/plastique,
+		/obj/item/compass,
+		/obj/item/binoculars/tactical,
+		/obj/item/pinpointer,
+		/obj/item/clothing/glasses/hud/health,
+	)
 
 /obj/machinery/marine_selector/clothes/leader

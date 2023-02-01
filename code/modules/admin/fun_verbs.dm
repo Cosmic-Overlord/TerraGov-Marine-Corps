@@ -710,7 +710,7 @@
 		dat += "<br>"
 		dat += "Skillset: [H.skills.name] <a href='?src=[REF(usr.client.holder)];[HrefToken()];rank=skills;mob=[REF(H)]'>Edit</a><br>"
 		dat += "Comms title: [H.comm_title] <a href='?src=[REF(usr.client.holder)];[HrefToken()];rank=commstitle;mob=[REF(H)]'>Edit</a><br>"
-		if(ismarinejob(H.job))
+		if(ismarinejob(H.job) || issommarinejob(H.job))
 			dat += "Squad: [H.assigned_squad] <a href='?src=[REF(usr.client.holder)];[HrefToken()];rank=squad;mob=[REF(H)]'>Edit</a><br>"
 	if(istype(C))
 		dat += "<br>"

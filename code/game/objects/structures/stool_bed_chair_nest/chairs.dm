@@ -396,6 +396,9 @@
 		span_warning("You repair \the [src]."))
 		chair_state = DROPSHIP_CHAIR_FOLDED
 
+/obj/structure/bed/chair/dropship/passenger/alt
+	icon_state = "shuttle_chair_alt"
+	chairbar = "shuttle_bars_alt"
 
 /obj/structure/bed/chair/ob_chair
 	name = "seat"

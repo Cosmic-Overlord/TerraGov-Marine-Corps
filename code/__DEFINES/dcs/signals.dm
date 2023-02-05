@@ -13,6 +13,7 @@
 #define COMSIG_GLOB_OPEN_TIMED_SHUTTERS_CRASH "!open_timed_shutters_crash"
 #define COMSIG_GLOB_OPEN_SHUTTERS_EARLY "!open_shutters_early"
 #define COMSIG_GLOB_TADPOLE_LAUNCHED "!tadpole_launched"
+#define COMSIG_GLOB_DROPPOD_LANDED "!pod_landed"
 #define COMSIG_GLOB_EVACUATION_STARTED "!evacuation_started"
 
 #define COMSIG_GLOB_REMOVE_VOTE_BUTTON "!remove_vote_button"
@@ -786,6 +787,10 @@
 #define COMSIG_XENOABILITY_PSYCHIC_SHIELD "xenoability_psychic_shield"
 #define COMSIG_XENOABILITY_PSYCHIC_BLAST "xenoability_psychic_blast"
 #define COMSIG_XENOABILITY_PSYCHIC_CRUSH "xenoability_psychic_crush"
+
+#define COMSIG_XENOABILITY_TEARING_TAIL "xenoability_tearing_tail"
+#define COMSIG_XENOABILITY_ADRENALINE_JUMP "xenoability_adrenaline_jump"
+#define COMSIG_XENOABILITY_ADRENALINE_RUSH "xenoability_adrenaline_rush"
 
 // throw parry signals
 #define COMSIG_THROW_PARRY_CHECK "throw_parry_check"

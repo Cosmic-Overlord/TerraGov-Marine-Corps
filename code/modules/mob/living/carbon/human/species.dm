@@ -349,7 +349,7 @@
 	icobase = 'icons/mob/human_races/r_vatgrown.dmi'
 	brute_mod = 1.05
 	burn_mod = 1.05
-	slowdown = 1.05
+	slowdown = 0.05
 	joinable_roundstart = FALSE
 
 /datum/species/human/vatgrown/random_name(gender)
@@ -368,7 +368,7 @@
 	name_plural = "Early Vat-Grown Humans"
 	brute_mod = 1.3
 	burn_mod = 1.3
-	slowdown = 1.3
+	slowdown = 0.3
 
 	var/timerid
 
@@ -462,6 +462,29 @@ GLOBAL_VAR_INIT(join_as_robot_allowed, TRUE)
 		clear_fullscreen("robothalf")
 		clear_fullscreen("robotlow")
 
+/datum/species/robot/alpharii
+	name = "Alpharii Combat Robot"
+	name_plural = "Alpharii Combat Robots"
+	icobase = 'icons/mob/human_races/r_robot_alpharii.dmi'
+	joinable_roundstart = FALSE
+
+/datum/species/robot/charlit
+	name = "Charlit Combat Robot"
+	name_plural = "Charlit Combat Robots"
+	icobase = 'icons/mob/human_races/r_robot_charlit.dmi'
+	joinable_roundstart = FALSE
+
+/datum/species/robot/deltad
+	name = "Deltad Combat Robot"
+	name_plural = "Deltad Combat Robots"
+	icobase = 'icons/mob/human_races/r_robot_deltad.dmi'
+	joinable_roundstart = FALSE
+
+/datum/species/robot/bravada
+	name = "Bravada Combat Robot"
+	name_plural = "Bravada Combat Robots"
+	icobase = 'icons/mob/human_races/r_robot_bravada.dmi'
+	joinable_roundstart = FALSE
 
 /datum/species/synthetic
 	name = "Synthetic"

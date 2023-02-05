@@ -122,19 +122,25 @@
 		return
 	//Stationary stealth
 	else if(owner.last_move_intent < world.time - HUNTER_STEALTH_STEALTH_DELAY) //If we're standing still for 4 seconds we become almost completely invisible
-		owner.alpha = HUNTER_STEALTH_STILL_ALPHA * stealth_alpha_multiplier
+		owner.alpha = HUNTER_STEALTH_ALPHA * stealth_alpha_multiplier
 	//Walking stealth
 	else if(owner.m_intent == MOVE_INTENT_WALK)
 		xenoowner.use_plasma(HUNTER_STEALTH_WALK_PLASMADRAIN)
-		owner.alpha = HUNTER_STEALTH_WALK_ALPHA * stealth_alpha_multiplier
+		owner.alpha = HUNTER_STEALTH_ALPHA * stealth_alpha_multiplier
 	//Running stealth
 	else
 		xenoowner.use_plasma(HUNTER_STEALTH_RUN_PLASMADRAIN)
-		owner.alpha = HUNTER_STEALTH_RUN_ALPHA * stealth_alpha_multiplier
+		owner.alpha = HUNTER_STEALTH_ALPHA * stealth_alpha_multiplier
 	//If we have 0 plasma after expending stealth's upkeep plasma, end stealth.
 	if(!xenoowner.plasma_stored)
 		to_chat(xenoowner, span_xenodanger("We lack sufficient plasma to remain camouflaged."))
 		cancel_stealth()
+	//Held facehuggers change alpha for balance reason
+	if(istype(owner.r_hand, /obj/item/clothing/mask/facehugger))
+		owner.alpha = HUNTER_STEALTH_WALK_ALPHA * stealth_alpha_multiplier
+
+	if(istype(owner.l_hand, /obj/item/clothing/mask/facehugger))
+		owner.alpha = HUNTER_STEALTH_WALK_ALPHA * stealth_alpha_multiplier
 
 /// Callback listening for a xeno using the pounce ability
 /datum/action/xeno_action/stealth/proc/sneak_attack_pounce()

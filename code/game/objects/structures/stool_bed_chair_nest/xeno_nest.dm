@@ -1,5 +1,5 @@
 #define NEST_RESIST_TIME 80 SECONDS
-#define NEST_UNBUCKLED_COOLDOWN 5 SECONDS
+#define NEST_UNBUCKLED_COOLDOWN 15 SECONDS
 
 ///Alium nests. Essentially beds with an unbuckle delay that only aliums can buckle mobs to.
 /obj/structure/bed/nest
@@ -76,7 +76,6 @@
 	buckling_mob.visible_message(span_xenonotice("[user] secretes a thick, vile resin, securing [buckling_mob] into [src]!"),
 		span_xenonotice("[user] drenches you in a foul-smelling resin, trapping you in [src]!"),
 		span_notice("You hear squelching."))
-	buckling_mob.reagents.add_reagent(/datum/reagent/medicine/xenojelly, 15)
 	playsound(loc, "alien_resin_move", 50)
 
 	silent = TRUE
@@ -91,7 +90,6 @@
 			span_notice("\The [user] pulls you free from \the [src]."),
 			span_notice("You hear squelching."))
 		playsound(loc, "alien_resin_move", 50)
-		TIMER_COOLDOWN_START(user, COOLDOWN_NEST, NEST_UNBUCKLED_COOLDOWN)
 		silent = TRUE
 		return ..()
 
@@ -127,12 +125,14 @@
 	. = ..()
 	ENABLE_BITFIELD(buckling_mob.restrained_flags, RESTRAINED_XENO_NEST)
 	buckling_mob.pulledby?.stop_pulling()
+	buckling_mob.reagents.add_reagent(/datum/reagent/medicine/xenojelly, 15)
 
 /obj/structure/bed/nest/post_unbuckle_mob(mob/living/buckled_mob)
 	. = ..()
 	resisting_time = 0 //Reset it to keep track on if someone is actively resisting.
 	if(QDELETED(buckled_mob))
 		return
+	TIMER_COOLDOWN_START(buckled_mob, COOLDOWN_NEST, NEST_UNBUCKLED_COOLDOWN)
 	DISABLE_BITFIELD(buckled_mob.restrained_flags, RESTRAINED_XENO_NEST)
 
 

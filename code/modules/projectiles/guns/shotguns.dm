@@ -159,6 +159,7 @@
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 21,"rail_x" = 15, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 21, "stock_y" = 16)
 
 	fire_delay = 2
+	extra_delay = 2 SECONDS
 	burst_delay = 2
 	scatter = 4
 	scatter_unwielded = 8
@@ -716,6 +717,7 @@
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/motiondetector,
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/flashlight/under,
 	)
 	attachable_offset = list("muzzle_x" = 45, "muzzle_y" = 18,"rail_x" = 26, "rail_y" = 22, "under_x" = 14, "under_y" = 16, "stock_x" = 14, "stock_y" = 16)
 
@@ -749,6 +751,10 @@
 /obj/item/weapon/gun/shotgun/som/burst/pointman
 	default_ammo_type = /datum/ammo/bullet/shotgun/flechette
 	starting_attachment_types = list(/obj/item/attachable/bayonet, /obj/item/attachable/motiondetector)
+
+/obj/item/weapon/gun/shotgun/som/burst/ert
+	default_ammo_type = /datum/ammo/bullet/shotgun/flechette
+	starting_attachment_types = list(/obj/item/attachable/bayonet, /obj/item/attachable/magnetic_harness, /obj/item/attachable/flashlight/under)
 
 //-------------------------------------------------------
 //Inbuilt launcher for the V-31

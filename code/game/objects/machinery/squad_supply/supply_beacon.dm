@@ -10,6 +10,8 @@
 	var/obj/machinery/camera/beacon_cam = null
 	///Can work underground
 	var/underground_signal = FALSE
+	///Beacon minimap icon
+	var/beacon_mini_icon = null
 
 /obj/item/beacon/update_icon_state()
 	icon_state = activated ? icon_activated : initial(icon_state)
@@ -67,7 +69,7 @@
 		marker_flags = MINIMAP_FLAG_MARINE_SOM
 	else
 		marker_flags = MINIMAP_FLAG_MARINE
-	SSminimaps.add_marker(src, z, marker_flags, "supply")
+	SSminimaps.add_marker(src, z, marker_flags, beacon_mini_icon)
 	update_icon()
 	return TRUE
 
@@ -105,6 +107,8 @@
 	desc = "A bulky device that fires a beam up to an orbiting vessel to send local coordinates."
 	icon_state = "motion4"
 	icon_activated = "motion1"
+	underground_signal = FALSE
+	beacon_mini_icon = "ob_beacon"
 	///The squad this OB beacon belongs to
 	var/datum/squad/squad = null
 
@@ -120,6 +124,7 @@
 		return
 	else	//So we can just get a goshdarn name.
 		name += " ([H])"
+	GLOB.active_orbital_beacons += src
 
 /obj/item/beacon/orbital_bombardment_beacon/deactivate(mob/living/carbon/human/H)
 	. = ..()
@@ -127,10 +132,12 @@
 		return
 	squad?.squad_orbital_beacons -= src
 	squad = null
+	GLOB.active_orbital_beacons -= src
 
 /obj/item/beacon/orbital_bombardment_beacon/Destroy()
 	squad?.squad_orbital_beacons -= src
 	squad = null
+	GLOB.active_orbital_beacons -= src
 	return ..()
 
 /obj/item/beacon/supply_beacon
@@ -140,6 +147,7 @@
 	icon_activated = "motion2"
 	activation_time = 60
 	underground_signal = TRUE
+	beacon_mini_icon = "supply"
 	/// Reference to the datum used by the supply drop console
 	var/datum/supply_beacon/beacon_datum
 

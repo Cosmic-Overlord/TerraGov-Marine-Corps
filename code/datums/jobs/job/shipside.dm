@@ -1240,3 +1240,4 @@ If you require any help, use <b>mentorhelp</b> to ask mentors about what you're 
 /datum/job/terragov/silicon/ai/handle_special_preview(client/parent)
 	parent.show_character_previews(image('icons/mob/ai.dmi', icon_state = "ai", dir = SOUTH))
 	return TRUE
+

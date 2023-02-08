@@ -60,3 +60,20 @@
 
 /obj/effect/turf_decal/siding/metal/flatcorner/wide/full
 	icon_state = "wide_corner_full"
+
+//EMBLEM
+/obj/effect/turf_decal/siding/emblem
+	icon = 'RUtgmc/icons/turf/decals.dmi'
+	icon_state = "logo_central"
+
+/obj/effect/turf_decal/siding/emblem/second
+	icon_state = "logo_directional_south"
+
+/obj/effect/turf_decal/siding/emblem/third
+	icon_state = "logo_directional_north"
+
+/obj/effect/turf_decal/siding/emblem/fourth
+	icon_state = "logo_directional_east"
+
+/obj/effect/turf_decal/siding/emblem/fifth
+	icon_state = "logo_directional_west"

@@ -69,7 +69,6 @@
 //CATWALK
 /turf/open/floor/plating/plating_catwalk/alt
 	icon = 'RUtgmc/icons/turf/floors.dmi'
-	icon_state = "grate_dark"
 
 /turf/open/floor/plating/plating_catwalk/alt/white
 	icon_state = "grate_light"

@@ -1841,4 +1841,12 @@
 #include "RUtgmc\code\reagents.dm"
 #include "RUtgmc\code\RU_items.dm"
 #include "RUtgmc\code\vendorcw.dm"
+#include "RUtgmc\code\ship\atmospherics.dm"
+#include "RUtgmc\code\ship\decals.dm"
+#include "RUtgmc\code\ship\floors.dm"
+#include "RUtgmc\code\ship\props.dm"
+#include "RUtgmc\code\ship\structures.dm"
+#include "RUtgmc\code\ship\wallmounts.dm"
+#include "RUtgmc\code\ship\walls.dm"
+#include "RUtgmc\code\ship\windows.dm"
 // END_INCLUDE

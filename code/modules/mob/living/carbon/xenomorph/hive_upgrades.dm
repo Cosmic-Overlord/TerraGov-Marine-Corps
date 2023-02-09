@@ -247,7 +247,8 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 		return
 	var/turf/T = get_turf(buyer)
 	var/mob/living/carbon/human/H = locate() in T
-	if(!H || H.stat != DEAD)
+	var/mob/living/carbon/human/species/synthetic = locate() in T
+	if(!H || H.stat != DEAD || synthetic)
 		if(!silent)
 			to_chat(buyer, span_xenowarning("You cannot destroy nothing or alive"))
 		return FALSE

@@ -3380,6 +3380,10 @@
 	dir = 4
 	},
 /area/mainship/engineering/engine_core)
+"cwP" = (
+/obj/machinery/vending/lasgun,
+/turf/open/floor/mainship/mono,
+/area/mainship/hallways/hangar)
 "cxe" = (
 /turf/open/floor/mainship/red/alt{
 	dir = 1
@@ -62607,7 +62611,7 @@ jDj
 jSi
 mml
 jSi
-wJl
+cwP
 iwc
 ekG
 sys

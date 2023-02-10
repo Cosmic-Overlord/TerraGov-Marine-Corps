@@ -213,6 +213,15 @@
 			/obj/item/roller = 6,
 		),
 	)
+
+	premium = list(
+		/obj/item/storage/belt/lifesaver/full/upp = 2,
+		/obj/item/storage/pill_bottle/zoom = 1,
+		/obj/item/storage/pill_bottle/happy = 3,
+		/obj/item/storage/backpack/satchel/med = 2,
+		/obj/item/storage/backpack/corpsman = 2,
+	)
+
 	idle_power_usage = 211
 
 /obj/machinery/vending/medical/shipside

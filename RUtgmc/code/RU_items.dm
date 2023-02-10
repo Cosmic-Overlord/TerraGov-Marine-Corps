@@ -14,8 +14,8 @@ SUBSYSTEM_DEF(ru_items)
 		/obj/item/ammo_magazine/revolver/t500 = -1,
 		/obj/item/ammo_magazine/packet/t500 = -1,
 		/obj/item/storage/belt/gun/revolver/t500 = -1,
-		/obj/item/storage/box/t500case = 5,
 		/obj/item/ammo_magazine/som_mg = 20,
+		/obj/item/cell/lasgun/coin = 25,
 	)
 
 	var/list/items_val = list(
@@ -935,7 +935,7 @@ SUBSYSTEM_DEF(ru_items)
 	name = "\improper Finka NKVD"
 	icon_state = "upp_knife"
 	item_state = "knife"
-	desc = "Legendary Finka NKVD model 1934 with a 10-year warranty and delivery from 2 days."
+	desc = "Legendary Finka NKVD model 1934 with a 10-year warranty and delivery within 2 days."
 	force = 40
 	throwforce = 50
 	throw_speed = 2

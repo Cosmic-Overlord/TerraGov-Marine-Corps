@@ -213,6 +213,7 @@
 		/obj/item/weapon/gun/rifle/som_mg = 2,
 		/obj/item/storage/box/t500case = 10,
 		/obj/item/ammo_magazine/rifle/standard_skirmishrifle/extended = 10,
+		/obj/item/weapon/gun/energy/lasgun/M43/coin = 3,
 	)
 
 /obj/machinery/vending/weapon/crash
@@ -955,6 +956,7 @@
 	product_ads = "Power cell running low? Recharge here!;Need a charge?;Power up!;Electrifying!;Empower yourself!"
 	products = list(
 		/obj/item/cell/lasgun/lasrifle = 10,
+		/obj/item/cell/lasgun/coin = 0,
 	)
 
 
@@ -1243,6 +1245,14 @@
 		),
 	)
 
+	premium = list(
+		/obj/item/clothing/head/helmet/UPP/coin = 2,
+		/obj/item/clothing/head/helmet/marine/veteran/PMC/gunner/coin = 2,
+		/obj/item/clothing/head/helmet/marine/tanker/coin = 2,
+		/obj/item/clothing/head/helmet/marine/standard/coin = 2,
+		/obj/item/clothing/head/helmet/marine/veteran/dutch/coin = 2,
+	)
+
 	prices = list()
 
 /obj/machinery/vending/armor_supply/loyalist
@@ -1404,6 +1414,17 @@
 			/obj/item/clothing/head/servicecap = -1,
 			/obj/item/clothing/under/marine/black_suit = -1,
 		),
+	)
+
+	premium = list(
+		/obj/item/clothing/under/syndicate/combat = 2,
+		/obj/item/clothing/under/syndicate/tacticool = 2,
+		/obj/item/clothing/under/gimmick/mcclane = 2,
+		/obj/item/clothing/under/gimmick/dutch = 2,
+		/obj/item/clothing/under/marine/sniper = 2,
+		/obj/item/clothing/under/marine/tanker = 2,
+		/obj/item/clothing/under/marine/veteran/UPP = 2,
+		/obj/item/clothing/shoes/jackboots = 5,
 	)
 
 	prices = list()

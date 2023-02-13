@@ -31,6 +31,7 @@
 #define DEFILER_HEMODILE "Hemodile"
 #define DEFILER_TRANSVITOX "Transvitox"
 #define DEFILER_OZELOMELYN "Ozelomelyn"
+#define DEFILER_SANGUINAL "Sanguinal"
 
 #define TRAP_HUGGER "hugger"
 #define TRAP_SMOKE_NEURO "neurotoxin gas"
@@ -85,6 +86,14 @@ GLOBAL_LIST_INIT(defiler_toxins_typecache_list, typecacheof(list(
 		/datum/reagent/toxin/xeno_sanguinal,
 		/datum/status_effect/stacking/intoxicated,
 		)))
+
+GLOBAL_LIST_INIT(panther_toxin_type_list, list(
+		/datum/reagent/toxin/xeno_ozelomelyn,
+		/datum/reagent/toxin/xeno_hemodile,
+		/datum/reagent/toxin/xeno_transvitox,
+		/datum/reagent/toxin/xeno_neurotoxin,
+		/datum/reagent/toxin/xeno_sanguinal,
+		))
 
 //List of plant types
 GLOBAL_LIST_INIT(plant_type_list, list(

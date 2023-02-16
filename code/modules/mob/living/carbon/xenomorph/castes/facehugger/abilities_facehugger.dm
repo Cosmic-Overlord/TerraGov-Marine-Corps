@@ -35,12 +35,10 @@
 
 /datum/action/xeno_action/activable/pounce_hugger/proc/obj_hit(datum/source, obj/target, speed)
 	SIGNAL_HANDLER
-	var/mob/living/carbon/xenomorph/caster = owner
-	if(!istype(target, /obj/structure/table) && !istype(target, /obj/structure/rack))
-		target.hitby(caster, speed) //This resets throwing.
+
 	pounce_complete()
 
-/datum/action/xeno_action/activable/pounce_hugger/proc/mob_hit(datum/source, mob/living/M, test1)
+/datum/action/xeno_action/activable/pounce_hugger/proc/mob_hit(datum/source, mob/living/M)
 	SIGNAL_HANDLER
 	if(M.stat || isxeno(M))
 		return
@@ -50,13 +48,7 @@
 					span_xenodanger("We leap on [M]!"), null, 5)
 	playsound(caster.loc, 'sound/voice/alien_roar_larva3.ogg', 25, TRUE)
 
-	if(ishuman(M) && (M.dir in reverse_nearby_direction(caster.dir)))
-		var/mob/living/carbon/human/H = M
-		if(!H.check_shields(COMBAT_TOUCH_ATTACK, 30, "melee"))
-			caster.Paralyze(10 SECONDS)
-			caster.set_throwing(FALSE) //Reset throwing manually.
-			return COMPONENT_KEEP_THROWING
-
+	check_shield(M)
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -109,6 +101,16 @@
 
 	return TRUE
 
+/datum/action/xeno_action/activable/pounce_hugger/proc/check_shield(mob/living/M)
+	var/mob/living/carbon/xenomorph/caster = owner
+	if(ishuman(M) && (M.dir in reverse_nearby_direction(owner.dir)))
+		var/mob/living/carbon/human/H = M
+		if(!H.check_shields(COMBAT_TOUCH_ATTACK, 30, "melee"))
+			caster.Paralyze(10 SECONDS)
+			caster.set_throwing(FALSE) //Reset throwing manually.
+			return COMPONENT_KEEP_THROWING
+
+
 /datum/action/xeno_action/activable/pounce_hugger/ai_should_start_consider()
 	return TRUE
 
@@ -129,3 +131,179 @@
 ///Decrease the do_actions of the owner
 /datum/action/xeno_action/activable/pounce_hugger/proc/decrease_do_action(atom/target)
 	LAZYDECREMENT(owner.do_actions, target)
+
+
+// ***************************************
+// *********** Clawed Jump
+// ***************************************
+
+/datum/action/xeno_action/activable/pounce_hugger/clawed
+	name = "Multiple Onslaught"
+	action_icon_state = "pounce"
+	desc = "Jump through your enemies, up to three times in a row, dealing increased damage."
+	cooldown_timer = 0 SECONDS
+	windup_time = 0 SECONDS
+	plasma_cost = 5
+	//How many uses remain, and the regeneration of those uses.
+	var/jump_charges = 0
+	var/time_to_charge
+	var/jump_hit_mob
+
+/datum/action/xeno_action/activable/pounce_hugger/clawed/can_use_ability(atom/A, silent, override_flags)
+	. = ..()
+	var/mob/living/carbon/xenomorph/caster = owner
+	if(caster.usedPounce)
+		caster.balloon_alert(caster, "We're in a jump")
+		return FALSE
+	if(jump_charges < 1)
+		caster.balloon_alert(caster, "No charge left")
+		return FALSE
+
+/datum/action/xeno_action/activable/pounce_hugger/clawed/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/caster = owner
+	caster.usedPounce = TRUE
+	jump_hit_mob = FALSE
+	return ..()
+
+
+/datum/action/xeno_action/activable/pounce_hugger/clawed/mob_hit(datum/source, mob/living/M)
+	if(M.stat || isxeno(M))
+		return
+
+	check_shield(M)
+
+	M.attack_alien_harm(owner, 15)
+	if(!jump_hit_mob)
+		jump_hit_mob = TRUE
+		jump_charges -= 1
+		time_to_charge = addtimer(CALLBACK(src, .proc/increase_stacks), 5 SECONDS, TIMER_UNIQUE)
+		succeed_activate(15)
+	return COMPONENT_KEEP_THROWING
+
+/datum/action/xeno_action/activable/pounce_hugger/clawed/pounce_complete()
+	. = ..()
+	caster.usedPounce = FALSE
+
+/datum/action/xeno_action/activable/pounce_hugger/clawed/proc/increase_stacks()
+	jump_charges += 1
+	//if we aren't full, loop until we are.
+	if(jump_charges < 3)
+		time_to_charge = addtimer(CALLBACK(src, .proc/increase_stacks), 5 SECONDS, TIMER_UNIQUE)
+
+/datum/action/xeno_action/activable/pounce_hugger/clawed/give_action(mob/living/L)
+	. = ..()
+	time_to_charge = addtimer(CALLBACK(src, .proc/increase_stacks), 5 SECONDS, TIMER_UNIQUE)
+
+
+// ***************************************
+// *********** Neuro Jump
+// ***************************************
+
+/datum/action/xeno_action/activable/pounce_hugger/neuro
+	name = "Neurotoxin Jump"
+	action_icon_state = "pounce"
+	desc = "Pounce on the target and poison them with neurotox."
+	plasma_cost = 20
+	range = 4
+	windup_time = 0 SECONDS
+
+/datum/action/xeno_action/activable/pounce_hugger/neuro/mob_hit(datum/source, mob/living/M)
+	if(M.stat || isxeno(M))
+		return
+	if(!ishuman(M))
+		return
+
+	var/mob/living/carbon/xenomorph/caster = owner
+	var/mob/living/carbon/human/victim = M
+	caster.visible_message(span_danger("[caster] leaps on [victim]!"),
+					span_xenodanger("We leap on [victim]!"), null, 5)
+
+	check_shield(M)
+
+	if(victim.can_sting())
+		victim.adjustStaminaLoss(50)
+		victim.adjust_stagger(5, capped = 5)
+		victim.add_slowdown(10, 10)
+
+		victim.reagents.add_reagent(/datum/reagent/toxin/xeno_neurotoxin, 8, no_overdose = TRUE)
+
+		playsound(M, 'sound/effects/spray3.ogg', 25, 1)
+		victim.visible_message(span_danger("[caster] penetrates [victim] with its sharp probscius!"),span_danger("[caster] penetrates you with a sharp probscius!"))
+	else
+		victim.Paralyze(victim_paralyze_time)
+		caster.visible_message(span_danger("[caster] smashed into [victim]!"),
+					span_xenodanger("We smashed into [victim]!"), null, 5)
+
+	pounce_complete()
+
+
+// ***************************************
+// *********** Acid Jump
+// ***************************************
+
+/datum/action/xeno_action/activable/pounce_hugger/acid
+	name = "Suicide: Acid"
+	action_icon_state = "pounce"
+	desc = "Jump and explode with a cloud of acid when landing."
+	windup_time = 0.5 SECONDS
+
+/datum/action/xeno_action/activable/pounce_hugger/acid/mob_hit(datum/source, mob/living/M)
+	if(M.stat || isxeno(M))
+		return
+	pounce_complete()
+
+/datum/action/xeno_action/activable/pounce_hugger/acid/pounce_complete()
+	. = ..()
+
+	visible_message(span_danger("[owner] explodes into a smoking splatter of acid!"))
+	playsound(loc, 'sound/bullets/acid_impact1.ogg', 50, 1)
+
+	for(var/turf/acid_tile AS in RANGE_TURFS(1, owner.loc))
+		new /obj/effect/temp_visual/acid_splatter(acid_tile) //SFX
+		if(!locate(/obj/effect/xenomorph/spray) in acid_tile.contents)
+			new /obj/effect/xenomorph/spray(acid_tile, 6 SECONDS, 16)
+
+	var/datum/effect_system/smoke_spread/xeno/toxic/smoke = new(get_turf(owner)) //Spawn toxic smoke
+	smoke.set_up(2, owner.loc, 4 SECONDS)
+	smoke.start()
+
+	owner.death(TRUE)
+
+
+// ***************************************
+// *********** Resin Jump
+// ***************************************
+
+/datum/action/xeno_action/activable/pounce_hugger/resin
+	name = "Suicide: Resin"
+	action_icon_state = "pounce"
+	desc = "Jump and explode with a cloud of resin when landing."
+	windup_time = 0.5 SECONDS
+
+/datum/action/xeno_action/activable/pounce_hugger/resin/mob_hit(datum/source, mob/living/M)
+	if(M.stat || isxeno(M))
+		return
+
+	pounce_complete()
+
+/datum/action/xeno_action/activable/pounce_hugger/resin/pounce_complete()
+	. = ..()
+
+	visible_message(span_danger("[owner] explodes into a mess of viscous resin!"))
+	playsound(loc, get_sfx("alien_resin_build"), 50, 1)
+
+	spiral_range_turfs()
+	for(var/turf/sticky_tile AS in circle_range_turfs(owner.loc, 2))
+		if(!locate(/obj/effect/xenomorph/spray) in sticky_tile.contents)
+			new /obj/alien/resin/sticky(sticky_tile)
+
+	var/armor_block
+	for(var/mob/living/target RANGE_TURFS(1, owner.loc))
+		if(isxeno(target)) //Xenos aren't affected by sticky resin
+			continue
+
+		target.adjust_stagger(3)
+		target.add_slowdown(15)
+		armor_block = target.get_soft_armor("bio", BODY_ZONE_CHEST)
+		target.apply_damage(100, STAMINA, BODY_ZONE_CHEST, armor_block) //Small amount of stamina damage; meant to stop sprinting.
+	owner.death(TRUE)

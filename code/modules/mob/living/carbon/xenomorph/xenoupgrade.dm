@@ -599,3 +599,20 @@
 	upgrade_stored = TIER_TWO_ANCIENT_THRESHOLD
 
 //----PANTHER END----//
+
+
+/mob/living/carbon/xenomorph/facehugger/clawed
+	upgrade = XENO_UPGRADE_ONE
+	upgrade_stored = TIER_ONE_YOUNG_THRESHOLD
+
+/mob/living/carbon/xenomorph/facehugger/neuro
+	upgrade = XENO_UPGRADE_TWO
+	upgrade_stored = TIER_ONE_MATURE_THRESHOLD
+
+/mob/living/carbon/xenomorph/facehugger/acid
+	upgrade = XENO_UPGRADE_THREE
+	upgrade_stored = TIER_ONE_ELDER_THRESHOLD
+
+/mob/living/carbon/xenomorph/facehugger/resin
+	upgrade = XENO_UPGRADE_FOUR
+	upgrade_stored = TIER_ONE_ANCIENT_THRESHOLD

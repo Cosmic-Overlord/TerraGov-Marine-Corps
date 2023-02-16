@@ -182,6 +182,7 @@
 
 /datum/action/xeno_action/activable/pounce_hugger/clawed/pounce_complete()
 	. = ..()
+	var/mob/living/carbon/xenomorph/caster = owner
 	caster.usedPounce = FALSE
 
 /datum/action/xeno_action/activable/pounce_hugger/clawed/proc/increase_stacks()
@@ -255,8 +256,8 @@
 /datum/action/xeno_action/activable/pounce_hugger/acid/pounce_complete()
 	. = ..()
 
-	visible_message(span_danger("[owner] explodes into a smoking splatter of acid!"))
-	playsound(loc, 'sound/bullets/acid_impact1.ogg', 50, 1)
+	owner.visible_message(span_danger("[owner] explodes into a smoking splatter of acid!"))
+	playsound(owner.loc, 'sound/bullets/acid_impact1.ogg', 50, 1)
 
 	for(var/turf/acid_tile AS in RANGE_TURFS(1, owner.loc))
 		new /obj/effect/temp_visual/acid_splatter(acid_tile) //SFX
@@ -278,7 +279,6 @@
 	name = "Suicide: Resin"
 	action_icon_state = "pounce"
 	desc = "Jump and explode with a cloud of resin when landing."
-	windup_time = 0.5 SECONDS
 
 /datum/action/xeno_action/activable/pounce_hugger/resin/mob_hit(datum/source, mob/living/M)
 	if(M.stat || isxeno(M))
@@ -289,21 +289,20 @@
 /datum/action/xeno_action/activable/pounce_hugger/resin/pounce_complete()
 	. = ..()
 
-	visible_message(span_danger("[owner] explodes into a mess of viscous resin!"))
-	playsound(loc, get_sfx("alien_resin_build"), 50, 1)
+	owner.visible_message(span_danger("[owner] explodes into a mess of viscous resin!"))
+	playsound(owner.loc, get_sfx("alien_resin_build"), 50, 1)
 
-	spiral_range_turfs()
-	for(var/turf/sticky_tile AS in circle_range_turfs(owner.loc, 2))
+	for(var/turf/sticky_tile AS in RANGE_TURFS(1, owner.loc))
 		if(!locate(/obj/effect/xenomorph/spray) in sticky_tile.contents)
 			new /obj/alien/resin/sticky(sticky_tile)
 
 	var/armor_block
-	for(var/mob/living/target RANGE_TURFS(1, owner.loc))
+	for(var/mob/living/target in range(2, owner.loc))
 		if(isxeno(target)) //Xenos aren't affected by sticky resin
 			continue
 
 		target.adjust_stagger(3)
 		target.add_slowdown(15)
-		armor_block = target.get_soft_armor("bio", BODY_ZONE_CHEST)
-		target.apply_damage(100, STAMINA, BODY_ZONE_CHEST, armor_block) //Small amount of stamina damage; meant to stop sprinting.
+		//armor_block = target.get_soft_armor("bio", BODY_ZONE_CHEST)
+		//target.apply_damage(100, STAMINA, BODY_ZONE_CHEST, armor_block) //Small amount of stamina damage; meant to stop sprinting.
 	owner.death(TRUE)

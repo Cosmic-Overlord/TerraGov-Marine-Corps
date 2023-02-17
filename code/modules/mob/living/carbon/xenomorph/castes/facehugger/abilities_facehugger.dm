@@ -303,6 +303,5 @@
 
 		target.adjust_stagger(3)
 		target.add_slowdown(15)
-		//armor_block = target.get_soft_armor("bio", BODY_ZONE_CHEST)
-		//target.apply_damage(100, STAMINA, BODY_ZONE_CHEST, armor_block) //Small amount of stamina damage; meant to stop sprinting.
+		target.adjustStaminaLoss(25)
 	owner.death(TRUE)

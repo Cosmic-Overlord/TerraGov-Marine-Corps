@@ -391,8 +391,7 @@
 	seen_messages = null
 	QDEL_LIST_ASSOC_VAL(char_render_holders)
 	if(movingmob != null)
-		movingmob.client_mobs_in_contents -= mob
-		UNSETEMPTY(movingmob.client_mobs_in_contents)
+		LAZYREMOVE(movingmob.client_mobs_in_contents, mob)
 		movingmob = null
 	SSping.currentrun -= src
 	QDEL_NULL(tooltips)
@@ -811,28 +810,6 @@
 					movement_keys[key] = WEST
 				if("South")
 					movement_keys[key] = SOUTH
-				if(SAY_CHANNEL)
-					var/say = tgui_say_create_open_command(SAY_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[say]")
-				if(RADIO_CHANNEL)
-					var/radio = tgui_say_create_open_command(RADIO_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[radio]")
-				if(ME_CHANNEL)
-					var/me = tgui_say_create_open_command(ME_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[me]")
-				if(OOC_CHANNEL)
-					var/ooc = tgui_say_create_open_command(OOC_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[ooc]")
-				if(LOOC_CHANNEL)
-					var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[looc]")
-				if(MOOC_CHANNEL)
-					var/mooc = tgui_say_create_open_command(MOOC_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[mooc]")
-				if(XOOC_CHANNEL)
-					var/xooc = tgui_say_create_open_command(XOOC_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[xooc]")
-
 
 /client/proc/change_view(new_size)
 	if(isnull(new_size))

@@ -230,6 +230,11 @@ WEAPONS
 	contains = list(/obj/item/ammo_magazine/standard_agls/fragmentation)
 	cost = 40
 
+/datum/supply_packs/weapons/ags_incendiary
+	name = "AGLS-37 AGL White Phosphorous Grenades"
+	contains = list(/obj/item/ammo_magazine/standard_agls/incendiary)
+	cost = 40
+
 /datum/supply_packs/weapons/antitankgun
 	name = "AT-36 Anti Tank Gun"
 	contains = list(/obj/item/weapon/gun/standard_atgun)
@@ -259,6 +264,24 @@ WEAPONS
 		/obj/item/ammo_magazine/standard_atgun/he,
 		/obj/item/ammo_magazine/standard_atgun/he,
 		/obj/item/ammo_magazine/standard_atgun,
+	)
+	cost = 20
+
+/datum/supply_packs/weapons/antitankgunammo/beehive
+	name = "AT-36 Beehive Shell (x3)"
+	contains = list(
+		/obj/item/ammo_magazine/standard_atgun/beehive,
+		/obj/item/ammo_magazine/standard_atgun/beehive,
+		/obj/item/ammo_magazine/standard_atgun/beehive,
+	)
+	cost = 20
+
+/datum/supply_packs/weapons/antitankgunammo/incendiary
+	name = "AT-36 Napalm Shell (x3)"
+	contains = list(
+		/obj/item/ammo_magazine/standard_atgun/incend,
+		/obj/item/ammo_magazine/standard_atgun/incend,
+		/obj/item/ammo_magazine/standard_atgun/incend,
 	)
 	cost = 20
 
@@ -309,7 +332,7 @@ WEAPONS
 /datum/supply_packs/weapons/shell_heat
 	name = "RL-160 HEAT shell"
 	contains = list(/obj/item/ammo_magazine/rocket/recoilless/heat)
-	cost = 3
+	cost = 30
 	available_against_xeno_only = TRUE
 
 /datum/supply_packs/weapons/shell_smoke
@@ -1437,6 +1460,16 @@ Imports
 	contains = list(/obj/item/ammo_magazine/rifle/mkh)
 	cost = 10
 
+/datum/supply_packs/imports/garand
+	name = "CAU C1 Rifle"
+	contains = list(/obj/item/weapon/gun/rifle/garand)
+	cost = 50
+
+/datum/supply_packs/imports/garand/ammo
+	name = "CAU C1 Ammo"
+	contains = list(/obj/item/ammo_magazine/rifle/garand)
+	cost = 10
+
 /datum/supply_packs/imports/judge
 	name = "Judge Revolver"
 	contains = list(/obj/item/weapon/gun/revolver/judge)
@@ -1741,6 +1774,26 @@ FACTORY
 	contains = list(/obj/item/factory_refill/light_rr_missile_refill)
 	cost = 300
 
+/datum/supply_packs/factory/heat_recoilless_refill
+	name = "Recoilless heat missile assembly refill"
+	contains = list(/obj/item/factory_refill/heat_rr_missile_refill)
+	cost = 300
+
+/datum/supply_packs/factory/smoke_recoilless_refill
+	name = "Recoilless smoke missile assembly refill"
+	contains = list(/obj/item/factory_refill/smoke_rr_missile_refill)
+	cost = 300
+
+/datum/supply_packs/factory/cloak_recoilless_refill
+	name = "Recoilless cloak missile assembly refill"
+	contains = list(/obj/item/factory_refill/cloak_rr_missile_refill)
+	cost = 300
+
+/datum/supply_packs/factory/tfoot_recoilless_refill
+	name = "Recoilless tfoot missile assembly refill"
+	contains = list(/obj/item/factory_refill/tfoot_rr_missile_refill)
+	cost = 300
+
 /datum/supply_packs/factory/pizzarefill
 	name = "Nanotrasen \"Eat healthy!\" margerita pizza kit refill"
 	contains = list(/obj/item/factory_refill/pizza_refill)
@@ -1890,3 +1943,8 @@ FACTORY
 	name = "MLRS High Explosive rocket assembly refill"
 	contains = list(/obj/item/factory_refill/mlrs_rocket_refill)
 	cost = 240
+
+/datum/supply_packs/factory/thermobaric_wp_refill
+	name = "RL-57 Thermobaric WP rocket array assembly refill"
+	contains = list(/obj/item/factory_refill/thermobaric_wp_refill)
+	cost = 500

@@ -555,6 +555,7 @@
 
 	if(isxenofacehugger(source))
 		source.status_flags |= GODMODE
+		source.is_ventcrawling = TRUE
 
 	if(ishuman(user))
 		var/hugsound = user.gender == FEMALE ? get_sfx("female_hugged") : get_sfx("male_hugged")
@@ -664,6 +665,7 @@
 	if(isxenofacehugger(source))
 		var/mob/living/M = user
 		source.status_flags &= ~GODMODE
+		source.is_ventcrawling = FALSE
 		source.forceMove(get_turf(M))
 		if(source in M.client_mobs_in_contents)
 			M.client_mobs_in_contents -= source

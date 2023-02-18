@@ -210,9 +210,10 @@
 		alpha = 192 // ~ 3/4 visibility
 	if(obj_integrity <= 175)
 		alpha = 128 // ~ 2/4 visibility
-	if(obj_integrity <= 100)
+	if(obj_integrity <= 126 && obj_integrity >= 124)
+		owner.balloon_alert(owner, "Our shield is almost broken!")
+	if(obj_integrity <= 125)
 		alpha = 64 // ~ 1/4 visibility
-		owner.balloon_alert(owner, "NOW")
 	if(obj_integrity <= 0)
 		release_projectiles()
 		owner.apply_effects(weaken = 0.5)

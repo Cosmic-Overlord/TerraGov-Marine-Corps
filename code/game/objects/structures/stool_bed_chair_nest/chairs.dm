@@ -398,7 +398,19 @@
 
 /obj/structure/bed/chair/dropship/passenger/alt
 	icon_state = "shuttle_chair_alt"
-	chairbar = "shuttle_bars_alt"
+
+/obj/structure/bed/chair/dropship/passenger/alt/post_buckle_mob(mob/buckling_mob)
+	icon_state = "shuttle_chair_alt_buckled"
+	overlays += chairbar
+
+/obj/structure/bed/chair/dropship/passenger/alt/post_unbuckle_mob(mob/buckled_mob)
+	icon_state = "shuttle_chair_alt"
+	overlays -= chairbar
+
+/obj/structure/bed/chair/dropship/passenger/alt/Initialize()
+	. = ..()
+	chairbar = image("icons/obj/objects.dmi", "shuttle_bars_alt")
+	chairbar.layer = ABOVE_MOB_LAYER
 
 /obj/structure/bed/chair/ob_chair
 	name = "seat"

@@ -193,3 +193,42 @@
 		/obj/item/armor_module/module/valkyrie_autodoc,
 	)
 
+/turf/closed/wall/mainship/outer/canterbury/alt
+	icon = 'icons/turf/gorg_almayer.dmi'
+	icon_state = "rwall0"
+	walltype = "rwall"
+
+/turf/closed/wall/mainship/handle_icon_junction(junction)
+	if (!walltype)
+		return
+	else
+		icon_state = "[walltype][junction]"
+	junctiontype = junction
+
+/obj/structure/window/framed/mainship/canterbury/alt
+	icon = 'icons/obj/structures/gorg_windows.dmi'
+	icon_state = "prison_rwindow0"
+	basestate = "prison_rwindow"
+
+/obj/structure/window_frame/mainship/prisonalt
+	icon = 'icons/obj/structures/gorg_windows.dmi'
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+
+/obj/structure/window/framed/mainship/canterbury/alt
+	icon = 'icons/obj/structures/gorg_windows.dmi'
+	icon_state = "prison_rwindow0"
+	basestate = "prison_rwindow"
+	window_frame = /obj/structure/window_frame/mainship/prisonalt
+
+/obj/structure/window/framed/mainship/hull/canterbury/alt
+	icon = 'icons/obj/structures/gorg_windows.dmi'
+	icon_state = "prison_rwindow0"
+	basestate = "prison_rwindow"
+
+/obj/machinery/bioprinter/som
+	icon = 'RUtgmc/icons/object/vending.dmi'
+
+/obj/machinery/bioprinter/som/stocked
+	stored_metal = 1000
+	stored_matter = 1000

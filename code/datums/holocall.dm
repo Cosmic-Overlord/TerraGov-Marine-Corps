@@ -100,6 +100,7 @@
 		qdel(src)
 
 
+
 //Answers a call made to a holopad `H` which cannot be the calling holopad. Pads not in the call are ignored
 /datum/holocall/proc/Answer(obj/machinery/holopad/H)
 	if(H == calling_holopad)

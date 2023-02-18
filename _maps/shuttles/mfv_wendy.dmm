@@ -1,29 +1,20 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /obj/structure/cable,
-/obj/effect/turf_decal/siding/white{
-	dir = 1
-	},
 /obj/docking_port/mobile/crashmode/wendy,
 /obj/structure/cable/layer1,
 /obj/structure/cable/layer3,
 /turf/open/floor/mainship/som,
 /area/shuttle/canterbury)
 "ab" = (
-/turf/closed/wall/mainship/outer/canterbury,
+/turf/closed/wall/mainship/outer/canterbury/alt,
 /area/shuttle/canterbury)
 "ac" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 5
-	},
 /obj/structure/cable,
 /obj/structure/cable/layer3,
 /turf/open/floor/mainship/som/nw,
 /area/shuttle/canterbury)
 "ad" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 9
-	},
 /turf/open/floor/mainship/som/ne,
 /area/shuttle/canterbury)
 "ae" = (
@@ -52,7 +43,7 @@
 /turf/open/floor/podhatch/floor,
 /area/shuttle/canterbury)
 "al" = (
-/turf/closed/wall/mainship/outer/canterbury,
+/turf/closed/wall/mainship/outer/canterbury/alt,
 /area/shuttle/canterbury/cic)
 "am" = (
 /obj/effect/turf_decal/tile/transparent/bar/half{
@@ -71,7 +62,7 @@
 /turf/open/floor/prison/blue,
 /area/shuttle/canterbury/cic)
 "ap" = (
-/turf/closed/wall/mainship/outer/canterbury,
+/turf/closed/wall/mainship/outer/canterbury/alt,
 /area/shuttle/canterbury/medical)
 "aq" = (
 /obj/structure/window/full{
@@ -87,7 +78,6 @@
 /area/shuttle/canterbury/medical)
 "as" = (
 /obj/structure/cable,
-/obj/effect/turf_decal/siding/white,
 /obj/structure/cable/layer1,
 /obj/structure/cable/layer1,
 /obj/structure/cable/layer1,
@@ -205,9 +195,16 @@
 /area/shuttle/canterbury)
 "aM" = (
 /obj/structure/table/reinforced/prison,
-/obj/item/reagent_containers/glass/beaker/cryomix,
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/item/defibrillator,
+/obj/item/defibrillator,
+/obj/item/roller,
+/obj/item/storage/firstaid/o2,
+/obj/item/reagent_containers/glass/beaker/cryomix{
+	pixel_y = 8;
+	pixel_x = -9
 	},
 /turf/open/floor/prison/green,
 /area/shuttle/canterbury/medical)
@@ -252,7 +249,7 @@
 /turf/open/floor/prison/bright_clean,
 /area/shuttle/canterbury)
 "aW" = (
-/obj/structure/window/framed/mainship/canterbury,
+/obj/structure/window/framed/mainship/canterbury/alt,
 /turf/open/floor/plating,
 /area/shuttle/canterbury)
 "aX" = (
@@ -267,15 +264,7 @@
 	},
 /area/shuttle/canterbury/medical)
 "aZ" = (
-/obj/structure/table/reinforced/prison,
-/obj/machinery/reagentgrinder{
-	pixel_x = -1;
-	pixel_y = 8
-	},
-/obj/item/storage/box/bodybags{
-	pixel_x = 7;
-	pixel_y = 1
-	},
+/obj/machinery/vending/medical/som,
 /turf/open/floor/prison/green{
 	dir = 4
 	},
@@ -312,6 +301,10 @@
 /obj/structure/sink{
 	dir = 1;
 	pixel_y = -8
+	},
+/obj/item/tool/soap/syndie{
+	pixel_y = -2;
+	pixel_x = -1
 	},
 /turf/open/floor/prison/green{
 	dir = 1
@@ -405,9 +398,6 @@
 	},
 /area/shuttle/canterbury)
 "bt" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 10
-	},
 /obj/structure/cable/layer1,
 /obj/structure/cable/layer3,
 /turf/open/floor/mainship/som/se,
@@ -446,7 +436,7 @@
 /obj/machinery/shower{
 	dir = 8
 	},
-/turf/open/floor/prison/sterilewhite,
+/turf/open/floor/plating/plating_catwalk,
 /area/shuttle/canterbury/medical)
 "bD" = (
 /obj/structure/bed/chair/dropship/passenger/alt{
@@ -583,18 +573,20 @@
 /obj/effect/turf_decal/bot_red,
 /turf/open/floor/prison/sterilewhite/full,
 /area/shuttle/canterbury/medical)
+"cn" = (
+/obj/structure/window/framed/mainship/canterbury/alt{
+	icon_state = "prison_rwindow4"
+	},
+/turf/open/floor/plating,
+/area/shuttle/canterbury)
 "cF" = (
-/obj/structure/table/reinforced/prison,
-/obj/item/roller,
-/obj/item/storage/firstaid/o2,
-/obj/item/defibrillator,
-/obj/item/defibrillator,
 /obj/item/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
 	pixel_y = -28;
 	dir = 8
 	},
+/obj/machinery/bioprinter/som/stocked,
 /turf/open/floor/prison/green/corner{
 	dir = 8
 	},
@@ -667,12 +659,12 @@
 	},
 /area/shuttle/canterbury)
 "mi" = (
-/obj/machinery/bioprinter/stocked,
+/obj/machinery/vending/MarineMed/Blood/som,
 /turf/open/floor/prison/green/corner,
 /area/shuttle/canterbury/medical)
 "ml" = (
 /obj/structure/cable,
-/turf/closed/wall/mainship/outer/canterbury,
+/turf/closed/wall/mainship/outer/canterbury/alt,
 /area/shuttle/canterbury)
 "ms" = (
 /obj/effect/turf_decal/tile/transparent/bar/diagonal_centre,
@@ -720,11 +712,11 @@
 /obj/structure/window/full{
 	dir = 4
 	},
-/obj/machinery/marine_selector/clothes/engi/som,
+/obj/machinery/marine_selector/clothes/som/engi,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 "oj" = (
-/obj/structure/window/framed/mainship/canterbury,
+/obj/structure/window/framed/mainship/canterbury/alt,
 /turf/open/floor/plating,
 /area/shuttle/canterbury/cic)
 "ow" = (
@@ -736,7 +728,7 @@
 	},
 /area/shuttle/canterbury)
 "py" = (
-/obj/machinery/vending/MarineMed,
+/obj/machinery/vending/MarineMed/som,
 /turf/open/floor/prison/sterilewhite,
 /area/shuttle/canterbury/medical)
 "qh" = (
@@ -785,7 +777,7 @@
 	},
 /area/shuttle/canterbury)
 "su" = (
-/obj/structure/window/framed/mainship/hull/canterbury,
+/obj/structure/window/framed/mainship/hull/canterbury/alt,
 /turf/open/floor/plating,
 /area/shuttle/canterbury)
 "sR" = (
@@ -953,7 +945,7 @@
 /turf/open/floor/wood,
 /area/shuttle/canterbury)
 "BZ" = (
-/obj/structure/window/framed/mainship/hull/canterbury,
+/obj/structure/window/framed/mainship/hull/canterbury/alt,
 /turf/open/floor/plating,
 /area/shuttle/canterbury/cic)
 "Ck" = (
@@ -984,6 +976,14 @@
 	},
 /obj/item/reagent_containers/glass/beaker/bluespace{
 	pixel_x = 4
+	},
+/obj/machinery/reagentgrinder{
+	pixel_x = -1;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -8;
+	pixel_y = 3
 	},
 /turf/open/floor/prison/green{
 	dir = 8
@@ -1017,6 +1017,12 @@
 	},
 /obj/effect/landmark/start/job/som/squadveteran,
 /turf/open/floor/prison,
+/area/shuttle/canterbury)
+"Iu" = (
+/obj/structure/window/framed/mainship/canterbury/alt{
+	icon_state = "prison_rwindow8"
+	},
+/turf/open/floor/plating,
 /area/shuttle/canterbury)
 "Jt" = (
 /obj/structure/curtain/shower,
@@ -1235,9 +1241,6 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/shuttle/canterbury)
 "TS" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 6
-	},
 /obj/structure/cable/layer1,
 /turf/open/floor/mainship/som/sw,
 /area/shuttle/canterbury)
@@ -1268,6 +1271,9 @@
 	dir = 5
 	},
 /area/shuttle/canterbury/cic)
+"UD" = (
+/turf/closed/wall/mainship/outer/canterbury,
+/area/shuttle/canterbury)
 "UE" = (
 /obj/effect/turf_decal/tile/full/black,
 /obj/machinery/light/small,
@@ -1385,7 +1391,7 @@
 	},
 /area/shuttle/canterbury/medical)
 "Zn" = (
-/obj/machinery/vending/sovietsoda,
+/obj/machinery/vending/sovietsoda/som,
 /turf/open/floor/prison,
 /area/shuttle/canterbury)
 
@@ -1474,7 +1480,7 @@ uJ
 bx
 bx
 bl
-aW
+cn
 aw
 Sg
 aB
@@ -1510,7 +1516,7 @@ bm
 aW
 av
 aF
-ab
+UD
 aD
 aH
 ql
@@ -1573,7 +1579,7 @@ zy
 MC
 ur
 xH
-aW
+Iu
 ax
 aF
 Ub
@@ -1610,7 +1616,7 @@ ab
 ab
 rM
 aw
-ab
+UD
 Nf
 su
 ab

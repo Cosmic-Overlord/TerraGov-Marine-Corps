@@ -1,9 +1,10 @@
 /obj/machinery/vending/weaponsom
 	name = "\improper SOM Automated Weapons Rack"
 	desc = "A automated weapon rack hooked up to a colossal storage of standard-issue weapons."
-	icon_state = "marinerequisitions"
-	icon_vend = "marinerequisitions-vend"
-	icon_deny = "marinerequisitions-deny"
+	icon = 'RUtgmc/icons/object/vending.dmi'
+	icon_state = "somarmory"
+	icon_vend = "somarmory-vend"
+	icon_deny = "somarmory-deny"
 	faction = FACTION_SOM
 	wrenchable = FALSE
 	product_ads = "If it moves, it's hostile!;How many enemies have you killed today?;Shoot first, perform autopsy later!;Your ammo is right here.;Guns!;Die, scumbag!;Don't shoot me bro!;Shoot them, bro.;Why not have a donut?"
@@ -154,15 +155,34 @@
 		),
 	)
 
+/obj/machinery/vending/MarineMed/som
+	icon = 'RUtgmc/icons/object/vending.dmi'
+	icon_state = "sommed"
+	icon_vend = "sommed-vend"
+	icon_deny = "sommed-deny"
+
+/obj/machinery/vending/MarineMed/Blood/som
+	icon = 'RUtgmc/icons/object/vending.dmi'
+	icon_state = "sombloodvendor"
+	icon_vend = "sombloodvendor-vend"
+	icon_deny = "sombloodvendor-deny"
+
+/obj/machinery/vending/medical/som
+	icon = 'RUtgmc/icons/object/vending.dmi'
+	icon_state = "sombigmed"
+	icon_vend = "sombigmed-vend"
+	icon_deny = "sombigmed-deny"
+
+/obj/machinery/vending/sovietsoda/som
+	icon = 'RUtgmc/icons/object/vending.dmi'
+	icon_state = "somsoda"
+	icon_deny = "somsoda-deny"
+
 /obj/machinery/vending/armor_supply/som
 	name = "\improper SOM Armor Equipment Vendor"
 	desc = "Am automated equipment rack hooked up to a colossal storage of armor and accessories. Nanotrasen designed a new vendor that utilize bluespace technology to send surplus equipment from outer colonies' sweatshops to your hands! Be grateful."
-	icon_state = "surplus_armor"
-	icon_vend = "surplus-vend"
-	icon_deny = "surplus_armor-deny"
-	isshared = TRUE
+	icon = 'RUtgmc/icons/object/vending.dmi'
 	faction = FACTION_SOM
-	product_ads = "If it moves, it's hostile!;How many enemies have you killed today?;Shoot first, perform autopsy later!;Your ammo is right here.;Guns!;Die, scumbag!;Don't shoot me bro!;Shoot them, bro.;Why not have a donut?"
 	products = list(
 		"Standard" = list(
 			/obj/item/clothing/under/som = -1,
@@ -268,6 +288,7 @@
 /obj/machinery/marine_selector/clothes/som
 	name = "NDRP Automated Closet"
 	desc = "An automated closet hooked up to a colossal storage unit of standard-issue uniform and armor."
+	icon = 'RUtgmc/icons/object/vending.dmi'
 	icon_state = "marineuniform"
 	icon_vend = "marineuniform-vend"
 	icon_deny = "marineuniform-deny"
@@ -606,12 +627,12 @@ GLOBAL_LIST_INIT(som_engineer_gear_listed_products, list(
 		/obj/item/circuitboard/apc,
 	)
 
-/obj/machinery/marine_selector/clothes/engi/som
+/obj/machinery/marine_selector/clothes/som/engi
 	name = "NDRP Automated Engineer Closet"
 	vendor_role = /datum/job/som/squad/engineer
 	gives_webbing = FALSE
 
-/obj/machinery/marine_selector/clothes/engi/som/Initialize()
+/obj/machinery/marine_selector/clothes/som/engi/Initialize()
 	. = ..()
 	listed_products = GLOB.som_engineer_clothes_listed_products
 

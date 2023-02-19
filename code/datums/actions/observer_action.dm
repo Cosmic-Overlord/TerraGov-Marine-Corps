@@ -90,7 +90,7 @@
 		to_chat(owner, span_warning("There are no spawn points for facehugger on your Z level."))
 		return
 
-	var/selected = tgui_input_list(usr, "Please select a spawn point:", "Jump to a possible haggers spawn point", spawn_point)
+	var/selected = tgui_input_list(usr, "Please select a spawn point:", "Jump to a possible facehuggers spawn point", spawn_point)
 	if(!selected)
 		return
 

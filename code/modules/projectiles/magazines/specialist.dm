@@ -256,7 +256,7 @@
 
 //SOM RPG
 /obj/item/ammo_magazine/rocket/som
-	name = "\improper 84mm light-explosive RPG"
+	name = "\improper 84mm heavy-explosive RPG"
 	desc = "A high explosive warhead for the V-71 rocket launcher. Causes a strong explosion over a respectable area."
 	icon_state = "rpg_rocket"
 	default_ammo = /datum/ammo/rocket/som

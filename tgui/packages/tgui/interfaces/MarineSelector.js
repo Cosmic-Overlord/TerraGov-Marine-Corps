@@ -9,6 +9,8 @@ export const MarineSelector = (props, context) => {
 
   const [showDesc, setShowDesc] = useLocalState(context, 'showDesc', null);
 
+  const ui_theme = data.ui_theme;
+
   const categories = Object.keys(data.displayed_records)
     .map((key) => ({
       ...data.cats[key],
@@ -22,7 +24,7 @@ export const MarineSelector = (props, context) => {
     );
 
   return (
-    <Window width={600} height={700}>
+    <Window width={600} height={700} theme={ui_theme}>
       {!!showDesc && (
         <Modal width="400px">
           <Box>{showDesc}</Box>

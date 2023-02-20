@@ -83,6 +83,16 @@ GLOBAL_LIST_EMPTY(all_req_one_access)
 #define ACCESS_NT_CORPORATE 200
 #define ACCESS_ILLEGAL_PIRATE 201
 
+//SOM access levels
+#define ACCESS_SOM_COMMANDER 202
+#define ACCESS_SOM_LEADER 203
+#define ACCESS_SOM_MEDICAL 204
+#define ACCESS_SOM_ENGINEERING 205
+#define ACCESS_SOM_PREP 206
+#define ACCESS_SOM_MEDPREP 207
+#define ACCESS_SOM_ENGPREP 208
+#define ACCESS_SOM_VETPREP 209
+
 //=================================================
 
 #define PAYGRADES_MARINE list("C","CMN","E1","E2","E3","E3E","E4","E5","E6","E7","E8","E8E","E9","E9E","O1","O2","O3","O4","O5","O6","WO","CWO","PO3","PO2","PO1","CPO")

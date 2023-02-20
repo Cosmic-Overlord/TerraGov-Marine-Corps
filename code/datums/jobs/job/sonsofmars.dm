@@ -55,6 +55,7 @@ Make your way to the cafeteria for some post-cryosleep chow, and then get equipp
 	display_order = JOB_DISPLAY_ORDER_SQUAD_MARINE
 	total_positions = -1
 	job_flags = JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE|JOB_FLAG_ALLOWS_PREFS_GEAR|JOB_FLAG_PROVIDES_BANK_ACCOUNT|JOB_FLAG_ADDTOMANIFEST|JOB_FLAG_PROVIDES_SQUAD_HUD|JOB_FLAG_CAN_SEE_ORDERS
+	access = list(ACCESS_SOM_PREP)
 	outfit = /datum/outfit/job/som/squad/standard
 	jobworth = list(
 		/datum/job/xenomorph = LARVA_POINTS_REGULAR,
@@ -91,6 +92,7 @@ What you lack alone, you gain standing shoulder to shoulder with the men and wom
 	display_order = JOB_DISPLAY_ORDER_SUQAD_ENGINEER
 	outfit = /datum/outfit/job/som/squad/engineer
 	job_flags = JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE|JOB_FLAG_ALLOWS_PREFS_GEAR|JOB_FLAG_PROVIDES_BANK_ACCOUNT|JOB_FLAG_ADDTOMANIFEST|JOB_FLAG_PROVIDES_SQUAD_HUD|JOB_FLAG_CAN_SEE_ORDERS
+	access = list(ACCESS_SOM_PREP, ACCESS_SOM_ENGINEERING, ACCESS_SOM_ENGPREP)
 	jobworth = list(
 		/datum/job/xenomorph = LARVA_POINTS_REGULAR,
 		/datum/job/som/squad/veteran = VETERAN_POINTS_REGULAR,
@@ -114,9 +116,7 @@ Your squaddies will look to you when it comes to construction in the field of ba
 /datum/outfit/job/som/squad/engineer
 	name = "SOM Engineer"
 	jobtype = /datum/job/som/squad/engineer
-
-	id = /obj/item/card/id/dogtag/som
-
+	id = /obj/item/card/id/dogtag/som/engineer
 
 /datum/job/som/squad/medic
 	title = SOM_SQUAD_CORPSMAN
@@ -128,6 +128,7 @@ Your squaddies will look to you when it comes to construction in the field of ba
 	display_order = JOB_DISPLAY_ORDER_SQUAD_CORPSMAN
 	outfit = /datum/outfit/job/som/squad/medic
 	job_flags = JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE|JOB_FLAG_ALLOWS_PREFS_GEAR|JOB_FLAG_PROVIDES_BANK_ACCOUNT|JOB_FLAG_ADDTOMANIFEST|JOB_FLAG_PROVIDES_SQUAD_HUD|JOB_FLAG_CAN_SEE_ORDERS
+	access = list(ACCESS_SOM_PREP, ACCESS_SOM_MEDICAL, ACCESS_SOM_MEDPREP)
 	jobworth = list(
 		/datum/job/xenomorph = LARVA_POINTS_REGULAR,
 		/datum/job/som/squad/veteran = VETERAN_POINTS_REGULAR,
@@ -150,9 +151,7 @@ You may not be a fully-fledged doctor, but you stand between life and death when
 /datum/outfit/job/som/squad/medic
 	name = "SOM Medic"
 	jobtype = /datum/job/som/squad/medic
-
-	id = /obj/item/card/id/dogtag/som
-
+	id = /obj/item/card/id/dogtag/som/medic
 
 /datum/job/som/squad/veteran
 	title = SOM_SQUAD_VETERAN
@@ -164,6 +163,7 @@ You may not be a fully-fledged doctor, but you stand between life and death when
 	minimap_icon = "smartgunner"
 	outfit = /datum/outfit/job/som/squad/veteran
 	job_flags = JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE|JOB_FLAG_ALLOWS_PREFS_GEAR|JOB_FLAG_PROVIDES_BANK_ACCOUNT|JOB_FLAG_ADDTOMANIFEST|JOB_FLAG_PROVIDES_SQUAD_HUD|JOB_FLAG_CAN_SEE_ORDERS
+	access = list(ACCESS_SOM_PREP, ACCESS_SOM_VETPREP)
 	jobworth = list(/datum/job/xenomorph = LARVA_POINTS_REGULAR)
 	html_description = {"
 		<b>Difficulty</b>: Medium<br /><br />
@@ -182,7 +182,7 @@ You may not be a fully-fledged doctor, but you stand between life and death when
 /datum/outfit/job/som/squad/veteran
 	name = "SOM Veteran"
 	jobtype = /datum/job/som/squad/veteran
-	id = /obj/item/card/id/dogtag/som
+	id = /obj/item/card/id/dogtag/som/veteran
 
 /datum/job/som/squad/leader
 	title = SOM_SQUAD_LEADER
@@ -198,6 +198,7 @@ You may not be a fully-fledged doctor, but you stand between life and death when
 	exp_requirements = XP_REQ_INTERMEDIATE
 	exp_type = EXP_TYPE_REGULAR_ALL
 	job_flags = JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE|JOB_FLAG_ALLOWS_PREFS_GEAR|JOB_FLAG_PROVIDES_BANK_ACCOUNT|JOB_FLAG_ADDTOMANIFEST|JOB_FLAG_BOLD_NAME_ON_SELECTION|JOB_FLAG_PROVIDES_SQUAD_HUD|JOB_FLAG_CAN_SEE_ORDERS
+	access = list(ACCESS_SOM_PREP, ACCESS_SOM_LEADER, ACCESS_SOM_COMMANDER)
 	jobworth = list(
 		/datum/job/xenomorph = LARVA_POINTS_REGULAR,
 		/datum/job/som/squad/veteran = VETERAN_POINTS_REGULAR,
@@ -220,8 +221,7 @@ You are also in charge of communicating with command and letting them know about
 /datum/outfit/job/som/squad/leader
 	name = "SOM Leader"
 	jobtype = /datum/job/som/squad/leader
-
-	id = /obj/item/card/id/dogtag/som
+	id = /obj/item/card/id/dogtag/som/leader
 
 //ERT roles
 /datum/job/som/ert

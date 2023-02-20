@@ -160,6 +160,10 @@
 	shuttle_id = SHUTTLE_BIGBURY
 	name = "Bigbury"
 
+/datum/map_template/shuttle/mfv_wendy
+	shuttle_id = SHUTTLE_WENDY
+	name = "Wendy"
+
 /datum/map_template/shuttle/escape_shuttle
 	shuttle_id = SHUTTLE_ESCAPE_SHUTTLE
 	name = "Escape Shuttle"

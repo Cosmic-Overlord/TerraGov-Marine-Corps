@@ -92,6 +92,7 @@
 
 /obj/item/ammo_magazine/smg/ppsh/extended
 	name = "\improper PPSh-17b drum magazine (7.62x25mm)"
+	desc = "extended drum, lowers accuracy compared to a normal magazine"
 	icon_state = "ppsh_ext"
 	w_class = WEIGHT_CLASS_NORMAL
 	max_rounds = 78

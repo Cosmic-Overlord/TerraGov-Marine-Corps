@@ -21,6 +21,13 @@
 #define CAT_SGSUP "SMARTGUNNER SUPPLIES"
 #define CAT_LOAD "LOADOUT"
 
+// SOM Special Categories
+#define CAT_SOMSTD "STANDARD EQUIPMENT"
+#define CAT_SOMMOD "ARMOR STORAGE MODULES"
+#define CAT_SOMARMMOD "ARMOR ARMOR MODULES"
+
+#define CAT_VETSUP "VETERAN SUPPLIES"
+
 // Synth Special Categories
 #define CAT_SMR "SUITS AND ARMOR" // Synth's suits
 #define CAT_SHN "HATS" // Synth's non-protective hats
@@ -44,6 +51,9 @@ GLOBAL_LIST_INIT(marine_selector_cats, list(
 		CAT_MAS = 1,
 		CAT_ESS = 1,
 		CAT_POU = 2,
+		CAT_SOMSTD = 1,
+		CAT_SOMMOD = 1,
+		CAT_SOMARMMOD = 1,
 	))
 
 #define METAL_PRICE_IN_GEAR_VENDOR 2
@@ -156,6 +166,11 @@ GLOBAL_LIST_INIT(job_specific_points_vendor, list(
 	SQUAD_CORPSMAN = GLOB.medic_gear_listed_products,
 	SQUAD_LEADER = GLOB.leader_gear_listed_products,
 	SQUAD_SMARTGUNNER = GLOB.smartgunner_gear_listed_products,
+	SOM_SQUAD_MARINE = GLOB.som_marine_gear_listed_products,
+	SOM_SQUAD_ENGINEER = GLOB.som_engineer_gear_listed_products,
+	SOM_SQUAD_CORPSMAN = GLOB.som_medic_gear_listed_products,
+	SOM_SQUAD_LEADER = GLOB.som_leader_gear_listed_products,
+	SOM_SQUAD_VETERAN = GLOB.veteran_gear_listed_products,
 ))
 
 

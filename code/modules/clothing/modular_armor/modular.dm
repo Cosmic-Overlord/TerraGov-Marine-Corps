@@ -952,7 +952,7 @@
 	soft_armor = list(MELEE = 45, BULLET = 70, LASER = 60, ENERGY = 60, BOMB = 50, BIO = 50, FIRE = 50, ACID = 50)
 	greyscale_config = null
 	greyscale_colors = null
-	flags_inv_hide = HIDEEARS|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEALLHAIR|HIDEEYES
 	flags_armor_protection = HEAD|FACE|EYES
 	attachments_allowed = list(
 		/obj/item/armor_module/module/tyr_head/som,
@@ -983,6 +983,8 @@
 
 /obj/item/clothing/head/modular/som/veteran
 	name = "\improper SOM veteran helmet"
+	icon_state = "som_helmet_light"
+	item_state = "som_helmet_light"
 	desc = "The standard combat helmet worn by SOM combat specialists. State of the art materials provides more protection for more valuable brains."
 	soft_armor = list(MELEE = 50, BULLET = 75, LASER = 65, ENERGY = 65, BOMB = 50, BIO = 50, FIRE = 60, ACID = 55)
 

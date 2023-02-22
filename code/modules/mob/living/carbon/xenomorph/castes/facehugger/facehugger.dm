@@ -41,6 +41,9 @@
 		adjustBruteLoss(2, TRUE)
 		return
 
+/mob/living/carbon/xenomorph/facehugger/update_progression()
+	return
+
 /mob/living/carbon/xenomorph/facehugger/on_death()
 	///We QDEL them as cleanup and preventing them from being sold
 	QDEL_IN(src, 1 MINUTES)

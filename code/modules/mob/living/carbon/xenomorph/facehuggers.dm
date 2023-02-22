@@ -19,7 +19,7 @@
 	item_state = "facehugger"
 	w_class = WEIGHT_CLASS_TINY //Note: can be picked up by aliens unlike most other items of w_class below 4
 	resistance_flags = NONE
-	flags_inventory = COVEREYES|ALLOWINTERNALS|COVERMOUTH
+	flags_inventory = COVEREYES|COVERMOUTH
 	flags_armor_protection = FACE|EYES
 	flags_atom = CRITICAL_ATOM
 	flags_item = NOBLUDGEON
@@ -555,6 +555,8 @@
 
 	if(isxenofacehugger(source))
 		source.status_flags |= GODMODE
+		ADD_TRAIT(source, TRAIT_HANDS_BLOCKED, REF(src))
+
 
 	if(ishuman(user))
 		var/hugsound = user.gender == FEMALE ? get_sfx("female_hugged") : get_sfx("male_hugged")
@@ -664,6 +666,7 @@
 	if(isxenofacehugger(source))
 		var/mob/living/M = user
 		source.status_flags &= ~GODMODE
+		REMOVE_TRAIT(source, TRAIT_HANDS_BLOCKED, REF(src))
 		source.forceMove(get_turf(M))
 		if(source in M.client_mobs_in_contents)
 			M.client_mobs_in_contents -= source

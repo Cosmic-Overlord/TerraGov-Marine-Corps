@@ -713,6 +713,13 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	penetration = 15
 	sundering = 2
 
+/datum/ammo/bullet/rifle/garand
+	name = "heavy marksman bullet"
+	hud_state = "sniper"
+	damage = 75
+	penetration = 25
+	sundering = 1.25
+
 /datum/ammo/bullet/rifle/standard_br
 	name = "light marksman bullet"
 	hud_state = "hivelo"
@@ -1203,12 +1210,12 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 
 /datum/ammo/bullet/minigun/mech
 	name = "vulcan bullet"
-	damage = 30
+	damage = 18
 	penetration = 10
 	sundering = 0.5
 
-/datum/ammo/bullet/dual_cannon
-	name = "dualcannon bullet"
+/datum/ammo/bullet/auto_cannon
+	name = "autocannon high-velocity bullet"
 	hud_state = "minigun"
 	hud_state_empty = "smartgun_empty"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SUNDERING|AMMO_PASS_THROUGH_TURF|AMMO_PASS_THROUGH_MOVABLE
@@ -1217,17 +1224,31 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	accurate_range = 5
 	damage = 40
 	penetration = 100
-	sundering = 7
-	max_range = 30
+	sundering = 8
+	max_range = 35
 
-/datum/ammo/bullet/dual_cannon/on_hit_turf(turf/T, obj/projectile/P)
+/datum/ammo/bullet/auto_cannon/on_hit_turf(turf/T, obj/projectile/P)
 	P.proj_max_range -= 20
 
-/datum/ammo/bullet/dual_cannon/on_hit_mob(mob/M, obj/projectile/P)
-	P.proj_max_range -= 15
-
-/datum/ammo/bullet/dual_cannon/on_hit_obj(obj/O, obj/projectile/P)
+/datum/ammo/bullet/auto_cannon/on_hit_mob(mob/M, obj/projectile/P)
 	P.proj_max_range -= 5
+	staggerstun(M, P, max_range = 20, slowdown = 1)
+
+/datum/ammo/bullet/auto_cannon/on_hit_obj(obj/O, obj/projectile/P)
+	P.proj_max_range -= 5
+
+/datum/ammo/bullet/auto_cannon/flak
+	name = "autocannon smart-detonating bullet"
+	hud_state = "sniper_flak"
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SUNDERING|AMMO_PASS_THROUGH_TURF
+	damage = 40
+	penetration = 20
+	sundering = 12
+	max_range = 30
+	airburst_multiplier	= 1
+
+/datum/ammo/bullet/auto_cannon/flak/on_hit_mob(mob/victim, obj/projectile/proj)
+	airburst(victim, proj)
 
 /datum/ammo/bullet/railgun
 	name = "armor piercing railgun slug"
@@ -1275,11 +1296,11 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SUNDERING|AMMO_PASS_THROUGH_MOVABLE
 	shell_speed = 4
 	max_range = 14
-	damage = 150
-	penetration = 100
+	damage = 125
+	penetration = 80
 	sundering = 0
 	bullet_color = COLOR_PULSE_BLUE
-	on_pierce_multiplier = 0.85
+	on_pierce_multiplier = 0.70
 
 /datum/ammo/tx54
 	name = "20mm airburst grenade"
@@ -1406,8 +1427,8 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	projectile_greyscale_colors = "#4f0303"
 
 /datum/ammo/bullet/tx54_spread/mech
-	damage = 15
-	penetration = 10
+	damage = 11
+	penetration = 8
 	sundering = 0.5
 
 /datum/ammo/bullet/tx54_spread/mech/on_hit_mob(mob/M, obj/projectile/proj)
@@ -2073,7 +2094,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 
 /datum/ammo/rocket/atgun_shell/beehive
 	name = "beehive shell"
-	hud_state = "shell_beehive"
+	hud_state = "shell_le"
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET|AMMO_SUNDERING
 	shell_speed = 3
 	damage = 30
@@ -2113,7 +2134,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 
 /datum/ammo/rocket/atgun_shell/beehive/incend
 	name = "napalm shell"
-	hud_state = "shell_incend"
+	hud_state = "shell_heat"
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET|AMMO_SUNDERING
 	shell_speed = 3
 	bonus_projectiles_type = /datum/ammo/bullet/atgun_spread/incendiary
@@ -2708,7 +2729,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	damage_falloff = 0.5
 
 /datum/ammo/energy/lasgun/marine/mech/burst
-	damage = 30
+	damage = 22
 	penetration = 10
 	sundering = 0.75
 	damage_falloff = 0.6

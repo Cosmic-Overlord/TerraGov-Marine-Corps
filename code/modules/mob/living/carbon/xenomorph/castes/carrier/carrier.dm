@@ -37,6 +37,14 @@
 /mob/living/carbon/xenomorph/carrier/attack_ghost(mob/dead/observer/user)
 	. = ..()
 
+	if(!sentient_huggers)
+		to_chat(user, span_warning("The carrier did not allow possession."))
+		return FALSE
+
+	if(!huggers)
+		to_chat(user, span_warning("The carrier doesn't have available huggers."))
+		return FALSE
+
 	var/datum/hive_status/hive = GLOB.hive_datums[hivenumber]
 	if(!hive.can_spawn_as_hugger(user))
 		return FALSE
@@ -68,7 +76,7 @@
 
 	huggers++
 	F.visible_message(span_xenowarning("[F] climb on the [src]."),span_xenonotice("You climb on the [src]."))
-	F.ghostize(FALSE)
+	F.ghostize()
 	F.death(deathmessage = "climb on the carrier", silent = TRUE)
 	qdel(F)
 

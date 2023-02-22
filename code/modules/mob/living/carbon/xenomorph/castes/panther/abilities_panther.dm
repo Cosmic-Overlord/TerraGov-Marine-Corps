@@ -45,9 +45,10 @@
 			H.apply_damage(damage*2, BRUTE, affecting, MELEE)
 			X.plasma_stored += 25
 			X.heal_overall_damage(25, 25, updating_health = TRUE)
-			tearing_tail_reagent = X.selected_reagent
-			H.reagents.add_reagent(tearing_tail_reagent, 8)
-			playsound(H, 'sound/effects/spray3.ogg', 15, TRUE)
+			if(H.can_sting())
+				tearing_tail_reagent = X.selected_reagent
+				H.reagents.add_reagent(tearing_tail_reagent, PANTHER_TEARING_TAIL_REAGENT_AMOUNT)
+				playsound(H, 'sound/effects/spray3.ogg', 15, TRUE)
 		shake_camera(H, 2, 1)
 		to_chat(H, span_xenowarning("We are hit by \the [X]'s tail sweep!"))
 		playsound(H,'sound/weapons/alien_tail_attack.ogg', 50, 1)
@@ -253,11 +254,12 @@
 		owner.balloon_alert(owner, "We are too tired to run so fast")
 		resinwalk_off(TRUE)
 		return
-	if(!speed_bonus_active)
-		speed_bonus_active = TRUE
-		walker.add_movespeed_modifier(type, TRUE, 0, NONE, TRUE, -1.5)
-	walker.use_plasma(3)
-	return
+	if(owner.m_intent == MOVE_INTENT_RUN)
+		if(!speed_bonus_active)
+			speed_bonus_active = TRUE
+			walker.add_movespeed_modifier(type, TRUE, 0, NONE, TRUE, -1.5)
+		walker.use_plasma(3)
+		return
 	if(!speed_bonus_active)
 		return
 	speed_bonus_active = FALSE
@@ -269,10 +271,10 @@
 /datum/action/xeno_action/evasive_maneuvers
 	name = "Toggle evasive maneuvers"
 	action_icon_state = "evasive_maneuvers"
-	desc = "Toggle evasive action, forcing non-friendly projectiles that would hit you to miss ."
+	desc = "Toggle evasive action, forcing non-friendly projectiles that would hit you to miss."
 	plasma_cost = 10
 	keybinding_signals = list(
-		KEYBINDING_NORMAL = COMSIG_XENOABILITY_EVASION,
+		KEYBINDING_NORMAL = COMSIG_XENOABILITY_EVASIVE_MANEUVERS,
 	)
 	cooldown_timer = PANTHER_EVASION_COOLDOWN
 	///Whether evasion is currently active
@@ -295,11 +297,6 @@
 		to_chat(R, span_danger("We can't evade while on fire!"))
 		return FALSE
 	return TRUE
-
-	if(!(flags_to_check & XACT_USE_BURROWED) && HAS_TRAIT(X, TRAIT_BURROWED))
-		if(!silent)
-			X.balloon_alert(X, "Cannot while burrowed")
-		return FALSE
 
 /datum/action/xeno_action/evasive_maneuvers/action_activate()
 	var/mob/living/carbon/xenomorph/panther/R = owner
@@ -368,10 +365,13 @@
 ///After getting hit with an Evasion disabling debuff, this is where we check to see if evasion is active, and if we actually have debuff stacks
 /datum/action/xeno_action/evasive_maneuvers/proc/evasion_debuff_check(datum/source, amount)
 	SIGNAL_HANDLER
-	if(!evade_active) //If evasion isn't active we don't care
+
+	var/mob/living/carbon/xenomorph/X = owner
+
+	if(!(amount > 0) || !evade_active) //If evasion isn't active we don't care
 		return
 	to_chat(owner, span_highdanger("Our movements have been interrupted!"))
-	evasion_deactivate()
+	X.plasma_stored += -65
 
 
 ///Where we deactivate evasion and unregister the signals/zero out vars, etc.
@@ -503,11 +503,11 @@
 /datum/action/xeno_action/select_reagent/panther/select_reagent_radial()
 	//List of toxin images
 	var/static/list/panther_toxin_images_list = list(
-			DEFILER_NEUROTOXIN = image('icons/mob/actions.dmi', icon_state = DEFILER_NEUROTOXIN),
-			DEFILER_HEMODILE = image('icons/mob/actions.dmi', icon_state = DEFILER_HEMODILE),
-			DEFILER_TRANSVITOX = image('icons/mob/actions.dmi', icon_state = DEFILER_TRANSVITOX),
-			DEFILER_OZELOMELYN = image('icons/mob/actions.dmi', icon_state = DEFILER_OZELOMELYN),
-			DEFILER_SANGUINAL = image('icons/mob/actions.dmi', icon_state = DEFILER_SANGUINAL),
+			PANTHER_NEUROTOXIN = image('icons/mob/actions.dmi', icon_state = PANTHER_NEUROTOXIN),
+			PANTHER_HEMODILE = image('icons/mob/actions.dmi', icon_state = PANTHER_HEMODILE),
+			PANTHER_TRANSVITOX = image('icons/mob/actions.dmi', icon_state = PANTHER_TRANSVITOX),
+			PANTHER_OZELOMELYN = image('icons/mob/actions.dmi', icon_state = PANTHER_OZELOMELYN),
+			PANTHER_SANGUINAL = image('icons/mob/actions.dmi', icon_state = PANTHER_SANGUINAL),
 			)
 	var/toxin_choice = show_radial_menu(owner, owner, panther_toxin_images_list, radius = 48)
 	if(!toxin_choice)
@@ -522,8 +522,8 @@
 	update_button_icon()
 	return succeed_activate()
 
-#undef DEFILER_NEUROTOXIN
-#undef DEFILER_HEMODILE
-#undef DEFILER_TRANSVITOX
-#undef DEFILER_OZELOMELYN
-#undef DEFILER_SANGUINAL
+#undef PANTHER_NEUROTOXIN
+#undef PANTHER_HEMODILE
+#undef PANTHER_TRANSVITOX
+#undef PANTHER_OZELOMELYN
+#undef PANTHER_SANGUINAL

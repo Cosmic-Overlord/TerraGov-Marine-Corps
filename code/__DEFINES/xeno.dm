@@ -33,6 +33,12 @@
 #define DEFILER_OZELOMELYN "Ozelomelyn"
 #define DEFILER_SANGUINAL "Sanguinal"
 
+#define PANTHER_NEUROTOXIN "Neurotoxin"
+#define PANTHER_HEMODILE "Hemodile"
+#define PANTHER_TRANSVITOX "Transvitox"
+#define PANTHER_OZELOMELYN "Ozelomelyn"
+#define PANTHER_SANGUINAL "Sanguinal"
+
 #define TRAP_HUGGER "hugger"
 #define TRAP_SMOKE_NEURO "neurotoxin gas"
 #define TRAP_SMOKE_ACID "acid gas"

@@ -106,7 +106,7 @@
 //DEAGLE //DEAGLE BRAND DEAGLE
 
 /obj/item/ammo_magazine/pistol/heavy
-	name = "\improper Desert Eagle magazine (.50)"
+	name = "\improper Desert Eagle magazine (.50AE)"
 	default_ammo = /datum/ammo/bullet/pistol/superheavy
 	caliber = CALIBER_50AE
 	icon_state = "50ae"

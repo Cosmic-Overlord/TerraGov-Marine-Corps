@@ -286,6 +286,13 @@
 	item_state = "dogtag_som"
 	iff_signal = SON_OF_MARS_IFF
 
+/obj/item/card/id/som
+	name = "\improper Sons of Mars ID"
+	desc = "Used by the Sons of Mars."
+	icon_state = "som_id"
+	item_state = "gold_id"
+	iff_signal = SON_OF_MARS_IFF
+
 /obj/item/card/id/dogtag/som/veteran
 	marine_points = list(
 		CAT_VETSUP = DEFAULT_TOTAL_BUY_POINTS,

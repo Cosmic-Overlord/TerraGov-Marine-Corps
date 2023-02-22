@@ -232,3 +232,48 @@
 /obj/machinery/bioprinter/som/stocked
 	stored_metal = 1000
 	stored_matter = 1000
+
+//AMMO BOXES
+/obj/item/ammo_magazine/packet/akm
+	name = "box of 7.62x39mm"
+	desc = "A box containing 120 rounds of 7.62x39."
+	icon = 'RUtgmc/icons/item/ammunition.dmi'
+	icon_state = "7.62x39"
+	default_ammo = /datum/ammo/bullet/rifle/mpi_km
+	caliber = CALIBER_762X39
+	current_rounds = 120
+	icon_state_mini = "ammo_packet"
+	max_rounds = 120
+
+/obj/item/ammo_magazine/packet/m16
+	name = "box of 5.56x45mm"
+	desc = "A box containing 90 rounds of 5.56x45."
+	icon = 'RUtgmc/icons/item/ammunition.dmi'
+	icon_state = "5.56x45"
+	default_ammo = /datum/ammo/bullet/rifle
+	caliber = CALIBER_556X45
+	current_rounds = 90
+	icon_state_mini = "ammo_packet"
+	max_rounds = 90
+
+/obj/item/ammo_magazine/packet/deagle
+	name = "box of .50AE"
+	desc = "A box containing 35 rounds of 5.56x45."
+	icon = 'RUtgmc/icons/item/ammunition.dmi'
+	icon_state = ".50AE"
+	default_ammo = /datum/ammo/bullet/pistol/superheavy
+	caliber = CALIBER_50AE
+	current_rounds = 35
+	icon_state_mini = "ammo_packet"
+	max_rounds = 35
+
+/obj/item/ammo_magazine/packet/ppsh
+	name = "box of 7.62x25mm"
+	desc = "A box containing 155 rounds of 7.62x25."
+	icon = 'RUtgmc/icons/item/ammunition.dmi'
+	icon_state = "7.62x25"
+	default_ammo = /datum/ammo/bullet/smg
+	caliber = CALIBER_762X25
+	current_rounds = 155
+	icon_state_mini = "ammo_packet"
+	max_rounds = 155

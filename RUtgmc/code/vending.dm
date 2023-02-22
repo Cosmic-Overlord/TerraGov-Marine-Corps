@@ -47,6 +47,8 @@
 			/obj/item/weapon/gun/shotgun/pump/lever/repeater = -1,
 			/obj/item/weapon/gun/revolver/standard_revolver/coltrifle = -1,
 			/obj/item/ammo_magazine/revolver/rifle = -1,
+			/obj/item/weapon/gun/rifle/garand = -1,
+			/obj/item/ammo_magazine/rifle/garand = -1,
 		),
 		"Shotgun" = list(
 			/obj/item/weapon/gun/shotgun/double = -1,
@@ -126,11 +128,15 @@
 		),
 		"Boxes" = list(
 			/obj/item/ammo_magazine/rifle/bolt = -1,
+			/obj/item/ammo_magazine/packet/akm = -1,
+			/obj/item/ammo_magazine/packet/ppsh = -1,
+			/obj/item/ammo_magazine/packet/m16 = -1,
 			/obj/item/ammo_magazine/packet/p9mm = -1,
 			/obj/item/ammo_magazine/packet/p9mmap = -1,
 			/obj/item/ammo_magazine/packet/long_special = -1,
 			/obj/item/ammo_magazine/packet/magnum = -1,
 			/obj/item/ammo_magazine/packet/p4570 = -1,
+			/obj/item/ammo_magazine/packet/deagle = -1,
 			/obj/item/ammo_magazine/packet/p10x20mm = -1,
 			/obj/item/ammo_magazine/packet/p10x24mm = -1,
 			/obj/item/ammo_magazine/packet/p10x26mm = -1,
@@ -245,11 +251,10 @@
 		"Pouches" = list(
 			/obj/item/storage/pouch/pistol/som = -1,
 			/obj/item/storage/pouch/magazine/large/som = -1,
-			/obj/item/storage/pouch/magazine/pistol/large = -1,
+			/obj/item/storage/pouch/magazine/pistol/large/som = -1,
 			/obj/item/storage/pouch/shotgun/som = -1,
 			/obj/item/storage/pouch/flare/som/full = -1,
 			/obj/item/storage/pouch/grenade/som = -1,
-			/obj/item/storage/pouch/explosive/som = -1,
 			/obj/item/storage/pouch/medkit/som = -1,
 			/obj/item/storage/pouch/medical_injectors/som = -1,
 			/obj/item/storage/pouch/construction/som = -1,
@@ -295,6 +300,7 @@
 	icon_deny = "marineuniform-deny"
 	faction = FACTION_SOM
 	vendor_role = /datum/job/som/squad/standard
+	req_access = list(ACCESS_SOM_PREP)
 	use_points = TRUE
 	categories = list(
 		CAT_SOMSTD = 1,
@@ -479,6 +485,7 @@ GLOBAL_LIST_INIT(veteran_clothes_listed_products, list(
 	)
 /obj/machinery/marine_selector/clothes/som/medic
 	name = "NDRP Automated Medic Closet"
+	req_access = list(ACCESS_SOM_MEDPREP)
 	vendor_role = /datum/job/som/squad/medic
 	gives_webbing = FALSE
 
@@ -544,6 +551,7 @@ GLOBAL_LIST_INIT(som_medic_clothes_listed_products, list(
 	icon_state = "medic"
 	icon_vend = "medic-vend"
 	icon_deny = "medic-deny"
+	req_access = list(ACCESS_SOM_MEDPREP)
 	vendor_role = /datum/job/som/squad/medic
 	faction = FACTION_SOM
 
@@ -580,6 +588,7 @@ GLOBAL_LIST_INIT(som_medic_gear_listed_products, list(
 	icon_state = "engineer"
 	icon_vend = "engineer-vend"
 	icon_deny = "engineer-deny"
+	req_access = list(ACCESS_SOM_ENGPREP)
 	faction = FACTION_SOM
 	vendor_role = /datum/job/som/squad/engineer
 
@@ -632,6 +641,7 @@ GLOBAL_LIST_INIT(som_engineer_gear_listed_products, list(
 /obj/machinery/marine_selector/clothes/som/engi
 	name = "NDRP Automated Engineer Closet"
 	vendor_role = /datum/job/som/squad/engineer
+	req_access = list(ACCESS_SOM_ENGPREP)
 	gives_webbing = FALSE
 
 /obj/machinery/marine_selector/clothes/som/engi/Initialize()
@@ -689,6 +699,7 @@ GLOBAL_LIST_INIT(som_engineer_clothes_listed_products, list(
 	icon_state = "squadleader"
 	icon_vend = "squadleader-vend"
 	icon_deny = "squadleader-deny"
+	req_access = list(ACCESS_SOM_LEADER)
 	vendor_role = /datum/job/som/squad/leader
 
 /obj/machinery/marine_selector/gear/leader/som/Initialize()
@@ -725,4 +736,5 @@ GLOBAL_LIST_INIT(som_leader_gear_listed_products, list(
 		/obj/item/clothing/glasses/hud/health,
 	)
 
-/obj/machinery/marine_selector/clothes/leader
+/obj/machinery/marine_selector/clothes/som/leader
+	req_access = list(ACCESS_SOM_LEADER)

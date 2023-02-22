@@ -24,6 +24,7 @@
 #define JOB_DISPLAY_ORDER_SUQAD_ENGINEER 22
 #define JOB_DISPLAY_ORDER_SQUAD_MARINE 23
 #define JOB_DISPLAY_ORDER_SURVIVOR 24
+#define JOB_DISPLAY_ORDER_SOM_DROID 25
 
 #define JOB_FLAG_SPECIALNAME (1<<0)
 #define JOB_FLAG_LATEJOINABLE (1<<1) //Can this job be selected for prefs to join as?
@@ -91,6 +92,7 @@
 #define SOM_SQUAD_ENGINEER "SOM Squad Engineer"
 #define SOM_SQUAD_VETERAN "SOM Squad Veteran"
 #define SOM_SQUAD_MARINE "SOM Squad Standard"
+#define SOM_SUPPORT_DROID "SOM Support Droid"
 
 #define JOB_CAT_COMMAND "Command"
 #define JOB_CAT_SILICON "Silicon"

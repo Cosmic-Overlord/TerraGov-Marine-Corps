@@ -12,7 +12,7 @@
 	valid_job_types = list(
 		/datum/job/terragov/command/fieldcommander = 1,
 		/datum/job/terragov/medical/medicalofficer = 6,
-		/datum/job/terragov/silicon/synthetic = 1,
+		/datum/job/som/silicon/droid = 1,
 		/datum/job/som/squad/veteran = 1,
 		/datum/job/som/squad/leader = 1,
 		/datum/job/som/squad/medic = 8,

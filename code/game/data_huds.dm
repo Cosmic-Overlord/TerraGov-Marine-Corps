@@ -275,6 +275,21 @@
 		infection_hud.icon_state = "hudsynth" //Xenos can feel synths are not human.
 		return TRUE
 
+	if(species.species_flags & IS_SOM_DROID)
+		simple_status_hud.icon_state = ""
+		if(stat != DEAD)
+			status_hud.icon_state = "hudsomrobot"
+		else
+			if(!client)
+				var/mob/dead/observer/G = get_ghost(FALSE, TRUE)
+				if(!G)
+					status_hud.icon_state = "hudsynthdnr"
+				else
+					status_hud.icon_state = "hudsomrobotdead"
+			return
+		infection_hud.icon_state = "hudsomrobot" //Xenos can feel synths are not human.
+		return TRUE
+
 	if(species.species_flags & HEALTH_HUD_ALWAYS_DEAD)
 		status_hud.icon_state = "huddead"
 		infection_hud.icon_state = ""

@@ -1244,14 +1244,14 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	scatter_unwielded_mod = 4
 
 /obj/item/attachable/foldable/som_carbine
-	name = "\improper V-34 carbine stock"
-	desc = "A side folding stock built into the V-34 carbine. The gun is designed to be fired with the stock deployed, but can be done without, with some difficulty."
+	name = "\improper MPi-SU carbine stock"
+	desc = "A side folding stock built into the MPi-SU. The gun is designed to be fired with the stock deployed, but can be done without, with some difficulty."
 	flags_attach_features = ATTACH_ACTIVATION
 	wield_delay_mod = 0.1 SECONDS
 	melee_mod = 5
 	size_mod = 1
 	icon_state = "v34stock"
-	accuracy_mod = 0.3
+	accuracy_mod = 0.4
 	recoil_mod = -2
 	scatter_mod = -8
 

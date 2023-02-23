@@ -535,7 +535,8 @@
 	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
+	gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_AUTOMATIC)
+	actions_types = list(/datum/action/item_action/aim_mode)
 	attachable_offset = list("muzzle_x" = 35, "muzzle_y" = 18,"rail_x" = 6, "rail_y" = 20, "under_x" = 19, "under_y" = 14, "stock_x" = 5, "stock_y" = 12)
 	starting_attachment_types = list(/obj/item/attachable/stock/mpi_km)
 	force = 20
@@ -1878,7 +1879,7 @@
 //-------------------------------------------------------
 // V-34 SOM carbine
 /obj/item/weapon/gun/rifle/som_carbine
-	name = "\improper V-34 carbine"
+	name = "\improper MPi-SU carbine"
 	desc = "An old but robust weapon that saw extensive use in the Martian uprising. A comparatively light and compact weapon, it still packs a considerable punch thanks to a good rate of fire and high calibre, although at range its effective drops off considerably. Chambers 7.62x39mm."
 	icon = 'icons/Marine/gun64.dmi'
 	icon_state = "v34"
@@ -1908,16 +1909,17 @@
 	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
+	gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_AUTOMATIC)
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 18,"rail_x" = 8, "rail_y" = 20, "under_x" = 17, "under_y" = 13, "stock_x" = -6, "stock_y" = 16)
 	starting_attachment_types = list(/obj/item/attachable/foldable/som_carbine)
+	actions_types = list(/datum/action/item_action/aim_mode)
 	force = 15
 
 	burst_amount = 1
 	fire_delay = 0.15 SECONDS
 	accuracy_mult = 0.75
-	scatter = 12
-	recoil = 1.5
+	scatter = 15
+	recoil = 1.6
 	wield_delay = 0.4 SECONDS
 	aim_slowdown = 0.3
 	movement_acc_penalty_mult = 4

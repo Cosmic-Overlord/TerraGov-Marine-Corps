@@ -277,3 +277,19 @@
 	current_rounds = 155
 	icon_state_mini = "ammo_packet"
 	max_rounds = 155
+
+/obj/item/weapon/gun/shotgun/pump/lever/repeater/raven
+	name = "Raven Repeater"
+	icon = 'RUtgmc/icons/item/gun64.dmi'
+	icon_state = "raven_repeater"
+	item_state = "raven_repeater"
+	inhand_x_dimension = 64
+	inhand_y_dimension = 32
+	fire_sound = "winchester_fire"
+	cocked_sound = "winchester_lever"
+	hand_reload_sound = "winchester_reload"
+	item_icons = list(
+		slot_l_hand_str = 'RUtgmc/icons/mob/items_lefthand_64.dmi',
+		slot_r_hand_str = 'RUtgmc/icons/mob/items_righthand_64.dmi',
+		slot_s_store_str = 'RUtgmc/icons/mob/suit_slot.dmi',
+		slot_back_str = 'RUtgmc/icons/mob/back.dmi',)

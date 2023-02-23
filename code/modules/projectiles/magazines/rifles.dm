@@ -105,7 +105,7 @@
 //Kalashnikov rifles
 
 /obj/item/ammo_magazine/rifle/mpi_km
-	name = "\improper MPi-KM magazine (7.62x39mm)"
+	name = "\improper MPi standard magazine (7.62x39mm)"
 	desc = "A 40 round 7.62x39mm magazine for the Kalashnikov series of firearms."
 	caliber = CALIBER_762X39
 	icon_state = "ak_40"
@@ -128,12 +128,12 @@
 	bonus_overlay = "ak_40_black"
 
 /obj/item/ammo_magazine/rifle/mpi_km/carbine
-	name = "\improper V-34 magazine (7.62x39mm)"
-	desc = "A 30 round 7.62x39mm magazine for the Kalashnikov series of firearms."
+	name = "\improper MPi short magazine (7.62x39mm)"
+	desc = "A 30 round 7.62x39mm magazine for the Kalashnikov series of firearms. Provides better accuracy and less scatter compared to a normal one."
 	icon_state = "ak_30"
 	bonus_overlay = "ak_30"
 	max_rounds = 30
-	scatter_mod = 0
+	scatter_mod = -0.2
 	aim_speed_mod = 0
 	wield_delay_mod = 0
 
@@ -148,13 +148,14 @@
 	bonus_overlay = "ak_30_black"
 
 /obj/item/ammo_magazine/rifle/mpi_km/extended
-	name = "\improper MPi-KM extended magazine (7.62x39mm)"
-	desc = "A 60 round 7.62x39mm Kalashnikov magazine. this one is notably heavy."
+	name = "\improper MPi extended magazine (7.62x39mm)"
+	desc = "A 60 round 7.62x39mm Kalashnikov magazine. this one is notably heavy. Provides less accuracy compared to a normal one."
 	icon_state = "ak47_ext"
 	bonus_overlay = "ak47_ex"
 	max_rounds = 60
-	aim_speed_mod = 0.2
-	wield_delay_mod = 0.2
+	aim_speed_mod = 0.3
+	wield_delay_mod = 0.3
+	scatter_mod = 3
 
 //-------------------------------------------------------
 //M16 RIFLE

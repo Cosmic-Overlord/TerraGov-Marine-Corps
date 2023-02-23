@@ -5,12 +5,10 @@
 	//More larvas in RUTGMC
 	silo_scaling = 3.2
 
-	flags_round_type = MODE_INFESTATION|MODE_PSY_POINTS|MODE_PSY_POINTS_ADVANCED|MODE_DEAD_GRAB_FORBIDDEN|MODE_SILO_RESPAWN|MODE_SPAWNING_MINIONS
-	flags_landmarks = MODE_LANDMARK_SPAWN_XENO_TURRETS
+	flags_round_type = MODE_INFESTATION|MODE_PSY_POINTS|MODE_PSY_POINTS_ADVANCED|MODE_DEAD_GRAB_FORBIDDEN|MODE_SILO_RESPAWN|MODE_SILOS_SPAWN_MINIONS
 	flags_xeno_abilities = ABILITY_DISTRESS
 	factions = list(FACTION_SOM)
 	valid_job_types = list(
-		/datum/job/terragov/command/fieldcommander = 1,
 		/datum/job/terragov/medical/medicalofficer = 6,
 		/datum/job/som/silicon/droid = 1,
 		/datum/job/som/squad/veteran = 1,

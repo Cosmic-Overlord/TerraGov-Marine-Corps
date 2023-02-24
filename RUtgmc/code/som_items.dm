@@ -293,3 +293,29 @@
 		slot_r_hand_str = 'RUtgmc/icons/mob/items_righthand_64.dmi',
 		slot_s_store_str = 'RUtgmc/icons/mob/suit_slot.dmi',
 		slot_back_str = 'RUtgmc/icons/mob/back.dmi',)
+
+/obj/effect/landmark/start/job/som/squadleader/ru
+	icon = 'RUtgmc/icons/mob/landmarks.dmi'
+	icon_state = "SL"
+
+/obj/effect/landmark/start/job/som/squadstandard/ru
+	icon = 'RUtgmc/icons/mob/landmarks.dmi'
+	icon_state = "infantry"
+
+/obj/effect/landmark/start/job/som/squadcorpsman/ru
+	icon = 'RUtgmc/icons/mob/landmarks.dmi'
+	icon_state = "medic"
+
+/obj/effect/landmark/start/job/som/squadveteran/ru
+	icon = 'RUtgmc/icons/mob/landmarks.dmi'
+	icon_state = "veteran"
+
+/obj/effect/landmark/start/job/som/squadengineer/ru
+	icon = 'RUtgmc/icons/mob/landmarks.dmi'
+	icon_state = "engineer"
+
+/obj/effect/landmark/start/job/som/supportdroid
+	icon = 'RUtgmc/icons/mob/landmarks.dmi'
+	icon_state = "droid"
+	job = /datum/job/som/silicon/droid
+

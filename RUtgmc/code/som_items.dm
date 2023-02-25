@@ -205,10 +205,23 @@
 	icon_state = "rwall0"
 	walltype = "rwall"
 
+/turf/closed/wall/mainship/outer/canterbury/alt/handle_icon_junction(junction)
+	if (!walltype)
+		return
+	//lets make some detailed randomized shit happen.
+	var/r1 = rand(0,10) //Make a random chance for this to happen
+	if(junction == 12)
+		switch(r1)
+			if(0 to 8)
+				icon_state = "[walltype]12"
+	else
+		icon_state = "[walltype][junction]"
+
 /obj/structure/window/framed/mainship/canterbury/alt
 	icon = 'icons/obj/structures/gorg_windows.dmi'
 	icon_state = "prison_rwindow0"
 	basestate = "prison_rwindow"
+	smoothing_behavior = NO_SMOOTHING
 
 /obj/structure/window_frame/mainship/prisonalt
 	icon = 'icons/obj/structures/gorg_windows.dmi'
@@ -225,6 +238,7 @@
 	icon = 'icons/obj/structures/gorg_windows.dmi'
 	icon_state = "prison_rwindow0"
 	basestate = "prison_rwindow"
+	smoothing_behavior = NO_SMOOTHING
 
 /obj/machinery/bioprinter/som
 	icon = 'RUtgmc/icons/object/vending.dmi'
@@ -278,22 +292,6 @@
 	icon_state_mini = "ammo_packet"
 	max_rounds = 155
 
-/obj/item/weapon/gun/shotgun/pump/lever/repeater/raven
-	name = "Raven Repeater"
-	icon = 'RUtgmc/icons/item/gun64.dmi'
-	icon_state = "raven_repeater"
-	item_state = "raven_repeater"
-	inhand_x_dimension = 64
-	inhand_y_dimension = 32
-	fire_sound = "winchester_fire"
-	cocked_sound = "winchester_lever"
-	hand_reload_sound = "winchester_reload"
-	item_icons = list(
-		slot_l_hand_str = 'RUtgmc/icons/mob/items_lefthand_64.dmi',
-		slot_r_hand_str = 'RUtgmc/icons/mob/items_righthand_64.dmi',
-		slot_s_store_str = 'RUtgmc/icons/mob/suit_slot.dmi',
-		slot_back_str = 'RUtgmc/icons/mob/back.dmi',)
-
 /obj/effect/landmark/start/job/som/squadleader/ru
 	icon = 'RUtgmc/icons/mob/landmarks.dmi'
 	icon_state = "SL"
@@ -319,3 +317,71 @@
 	icon_state = "droid"
 	job = /datum/job/som/silicon/droid
 
+/obj/item/weapon/gun/shotgun/pump/lever/repeater/raven
+	name = "Raven Repeater"
+	icon = 'RUtgmc/icons/item/gun64.dmi'
+	icon_state = "raven_repeater"
+	item_state = "raven_repeater"
+	inhand_x_dimension = 64
+	inhand_y_dimension = 32
+	max_chamber_items = 9
+	fire_sound = "winchester_fire"
+	cocked_sound = "winchester_lever"
+	hand_reload_sound = "winchester_reload"
+	item_icons = list(
+		slot_l_hand_str = 'RUtgmc/icons/mob/items_lefthand_64.dmi',
+		slot_r_hand_str = 'RUtgmc/icons/mob/items_righthand_64.dmi',
+		slot_s_store_str = 'RUtgmc/icons/mob/suit_slot.dmi',
+		slot_back_str = 'RUtgmc/icons/mob/back.dmi',)
+
+	aim_fire_delay = 0.2 SECONDS
+
+	fire_delay = 7
+	accuracy_mult = 2
+	accuracy_mult_unwielded = 0.3
+	damage_falloff_mult = 0.3
+	scatter = -8
+	scatter_unwielded = 14
+	recoil = 0
+	recoil_unwielded = 4
+	aim_slowdown = 0.3
+
+/turf/open/floor/mainship/som/alt
+	icon = 'RUtgmc/icons/turf/som_flag.dmi'
+	icon_state = "somn"
+
+/turf/open/floor/mainship/som/alt/south
+	icon_state = "soms"
+
+/turf/open/floor/mainship/som/alt/northwest
+	icon_state = "somnw"
+
+/turf/open/floor/mainship/som/alt/southwest
+	icon_state = "somsw"
+
+/turf/open/floor/mainship/som/alt/southeast
+	icon_state = "somse"
+
+/turf/open/floor/mainship/som/alt/northeast
+	icon_state = "somne"
+
+/obj/structure/sign/prop1/som
+	icon = 'RUtgmc/icons/turf/som_flag.dmi'
+	name = "\improper Sons of Mars symbol"
+	desc = "The symbol of the SoM."
+	icon_state = "som_decal"
+
+/obj/structure/sign/prop1/som/Initialize()
+	. = ..()
+	icon = 'RUtgmc/icons/turf/som_flag.dmi'
+	if(!directional) //if not directional do not initialize to a x or y offset
+		return
+	switch(dir)
+		if(NORTH)
+			pixel_y = 0
+		if(SOUTH)
+			pixel_y = 0
+		if(EAST)
+			pixel_x = 0
+		if(WEST)
+			pixel_x = 0

@@ -501,8 +501,10 @@
 	name = "black metal table"
 	desc = "A sleek black metallic surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
 	icon_state = "blacktable"
+	reinforced = TRUE
 	table_prefix = "black"
 	parts = /obj/item/frame/table
+
 
 /*
 * Gambling tables

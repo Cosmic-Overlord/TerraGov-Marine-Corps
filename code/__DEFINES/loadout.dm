@@ -562,8 +562,6 @@ GLOBAL_LIST_INIT(synthetic_clothes_listed_products, list(
 		/obj/item/clothing/under/overalls = list(CAT_STD, "Overalls", 0, "black"),
 		/obj/item/clothing/under/CM_uniform = list(CAT_STD, "Colonial Marshal uniform", 0, "black"),
 		/obj/item/clothing/under/gentlesuit = list(CAT_STD, "Gentleman's Suit", 0, "black"),
-		/obj/item/clothing/under/maiddress = list(CAT_STD, "Maid dress", 0, "black"),
-		/obj/item/clothing/under/maiduniform = list(CAT_STD, "Maid uniform", 0, "black"),
 		/obj/item/clothing/under/sl_suit = list(CAT_STD, "Amish Suit", 0, "black"),
 		/obj/item/clothing/under/kilt = list(CAT_STD, "Kilt", 0, "black"),
 		/obj/item/clothing/under/waiter = list(CAT_STD, "Waiter's uniform", 0, "black"),

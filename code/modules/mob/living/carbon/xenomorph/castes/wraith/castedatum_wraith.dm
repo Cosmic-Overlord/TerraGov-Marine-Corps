@@ -9,7 +9,7 @@
 	wound_type = "wraith" //used to match appropriate wound overlays
 
 	// *** Melee Attacks *** //
-	melee_damage = 20
+	melee_damage = 30
 
 	// *** Speed *** //
 	speed = -1
@@ -19,7 +19,7 @@
 	plasma_gain = 15
 
 	// *** Health *** //
-	max_health = 240
+	max_health = 480
 
 	// *** Evolution *** //
 	evolution_threshold = 180
@@ -65,7 +65,7 @@
 	upgrade = XENO_UPGRADE_ONE
 
 	// *** Melee Attacks *** //
-	melee_damage = 20
+	melee_damage = 30
 
 	// *** Speed *** //
 	speed = -1.1
@@ -75,7 +75,7 @@
 	plasma_gain = 20
 
 	// *** Health *** //
-	max_health = 260
+	max_health = 520
 
 	// *** Evolution *** //
 	upgrade_threshold = TIER_TWO_MATURE_THRESHOLD
@@ -91,7 +91,7 @@
 	upgrade = XENO_UPGRADE_TWO
 
 	// *** Melee Attacks *** //
-	melee_damage = 22
+	melee_damage = 33
 
 	// *** Speed *** //
 	speed = -1.2
@@ -101,7 +101,7 @@
 	plasma_gain = 23
 
 	// *** Health *** //
-	max_health = 270
+	max_health = 540
 
 	// *** Evolution *** //
 	upgrade_threshold = TIER_TWO_ELDER_THRESHOLD
@@ -117,7 +117,7 @@
 	upgrade = XENO_UPGRADE_THREE
 
 	// *** Melee Attacks *** //
-	melee_damage = 22
+	melee_damage = 33
 
 	// *** Speed *** //
 	speed = -1.25
@@ -127,7 +127,7 @@
 	plasma_gain = 25
 
 	// *** Health *** //
-	max_health = 300
+	max_health = 600
 
 	// *** Evolution *** //
 	upgrade_threshold = TIER_TWO_ANCIENT_THRESHOLD
@@ -142,7 +142,7 @@
 	upgrade = XENO_UPGRADE_FOUR
 
 	// *** Melee Attacks *** //
-	melee_damage = 22
+	melee_damage = 33
 
 	// *** Speed *** //
 	speed = -1.25
@@ -152,7 +152,7 @@
 	plasma_gain = 25
 
 	// *** Health *** //
-	max_health = 300
+	max_health = 600
 
 	// *** Defense *** //
 	soft_armor = list(MELEE = 40, BULLET = 40, LASER = 20, ENERGY = 20, BOMB = 0, BIO = 18, FIRE = 30, ACID = 18)

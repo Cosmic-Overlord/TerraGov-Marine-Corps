@@ -387,3 +387,8 @@ GLOBAL_LIST_EMPTY(gear_datums)
 	cost = 2
 	slot = SLOT_R_HAND
 
+/datum/gear/b19
+	display_name = "B19 armor"
+	path = /obj/item/clothing/mask/gas/clown_hat
+	cost = 6
+	slot = SLOT_IN_BACKPACK

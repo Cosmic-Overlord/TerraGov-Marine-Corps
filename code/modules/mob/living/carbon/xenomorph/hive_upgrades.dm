@@ -121,6 +121,9 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 		if(!silent)
 			to_chat(buyer, span_xenowarning("You need [psypoint_cost-SSpoints.xeno_points_by_hive[buyer.hivenumber]] more points to request this blessing!"))
 		return FALSE
+	if(buyer.status_flags & INCORPOREAL)
+		to_chat(buyer, span_xenowarning("You need to be manifested to do this!"))
+		return FALSE
 	return TRUE
 
 /datum/hive_upgrade/building
@@ -216,7 +219,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 /datum/hive_upgrade/building/pherotower
 	name = "Pheromone Tower"
 	desc = "Constructs a tower that emanates a selectable type of pheromone."
-	psypoint_cost = 150
+	psypoint_cost = 100
 	icon = "pherotower"
 	flags_upgrade = ABILITY_DISTRESS
 	building_type = /obj/structure/xeno/pherotower
@@ -331,7 +334,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 	name = "Sticky resin turret"
 	desc = "Places a sticky spit spitting resin turret under you. Must be at least 6 tiles away from other turrets, not near fog and on a weeded area."
 	icon = "resinturret"
-	psypoint_cost = 50
+	psypoint_cost = 25
 	turret_type = /obj/structure/xeno/xeno_turret/sticky
 
 /datum/hive_upgrade/xenos
@@ -343,7 +346,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 	icon = "smartminions"
 	flags_gamemode = ABILITY_DISTRESS
 	flags_upgrade = UPGRADE_FLAG_ONETIME|UPGRADE_FLAG_MESSAGE_HIVE
-	psypoint_cost = 500
+	psypoint_cost = 100
 
 /datum/hive_upgrade/primordial
 	category = "Xenos"

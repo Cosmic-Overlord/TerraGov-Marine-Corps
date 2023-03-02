@@ -37,6 +37,18 @@ SUBSYSTEM_DEF(ru_items)
 		/obj/item/clothing/suit/storage/marine/robot/advanced/fire = -1,
 	)
 
+	var/list/clothes = list(
+		/obj/item/clothing/glasses/ru/orange = -1,
+		/obj/item/storage/backpack/marine/scav = -1,
+		/obj/item/clothing/suit/ru/fartumasti = -1,
+		/obj/item/clothing/under/marine/ru/black = -1,
+		/obj/item/clothing/under/marine/ru/slav = -1,
+		/obj/item/clothing/under/marine/ru/gorka_eng = -1,
+		/obj/item/clothing/under/marine/ru/gorka_med = -1,
+		/obj/item/clothing/under/marine/ru/camo = -1,
+		/obj/item/clothing/shoes/marine/ru/headskin = -1,
+		/obj/item/clothing/shoes/marine/coolcowboy = -1,
+	)
 
 // Override init of vendors
 /obj/machinery/vending/Initialize(mapload, ...)
@@ -53,6 +65,8 @@ SUBSYSTEM_DEF(ru_items)
 /obj/machinery/vending/weapon/valhalla/build_ru_items()
 	products["Imports"] = SSru_items.items_val
 
+/obj/machinery/vending/uniform_supply/build_ru_items()
+	products["Imports"] = SSru_items.clothes
 
 //List all custom items here
 

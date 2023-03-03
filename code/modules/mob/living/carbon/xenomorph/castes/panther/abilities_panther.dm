@@ -121,19 +121,20 @@
 	RegisterSignal(lunge_target, COMSIG_PARENT_QDELETING, .proc/clean_lunge_target)
 	RegisterSignal(X, COMSIG_MOVABLE_MOVED, .proc/check_if_lunge_possible)
 	RegisterSignal(X, COMSIG_MOVABLE_POST_THROW, .proc/clean_lunge_target)
+
 	if(lunge_target.Adjacent(X)) //They're already in range, neck grab without lunging.
 		playsound(X,'sound/weapons/thudswoosh.ogg', 75, 1)
 		X.plasma_stored += -50
 		clean_lunge_target()
 	else
 		X.throw_at(get_step_towards(A, X), 6, 2, X)
-		X.plasma_stored += 50
 
 	succeed_activate()
 	add_cooldown()
 	var/datum/action/xeno_action/pounce = X.actions_by_path[/datum/action/xeno_action/activable/pounce/panther]
 	if(pounce)
 		pounce.add_cooldown()
+
 	return TRUE
 
 ///Check if we are close enough to lunge, and if yes, grab neck
@@ -151,11 +152,11 @@
 	lunge_target = null
 	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
 	owner.stop_throw()
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 /datum/action/xeno_action/activable/adrenalinejump/proc/pantherfling(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
 	var/mob/living/lunge_target = A
-	var/facing = get_dir(X, lunge_target)
 	var/fling_distance = 1
 
 	X.face_atom(lunge_target) //Face towards the victim
@@ -164,25 +165,17 @@
 	span_xenowarning("We effortlessly trip [lunge_target] away!"))
 	playsound(lunge_target,'sound/weapons/alien_claw_block.ogg', 75, 1)
 
-	//var/turf/T = get_step(X.loc, facing)
-	var/turf/T = X.loc
-	var/turf/temp = X.loc
-
-	for (var/x in 1 to fling_distance)
-		temp = get_step(T, facing)
-		if (!temp)
-			break
-		T = temp
-
 	X.do_attack_animation(lunge_target, ATTACK_EFFECT_DISARM2)
-	lunge_target.throw_at(T, fling_distance, 1, X, 1)
+	lunge_target.ParalyzeNoChain(1 SECONDS)
+	lunge_target.throw_at(X, fling_distance, 1, X) //go under us
 
 	if(isxeno(lunge_target))
 		var/mob/living/carbon/xenomorph/x_lunge_target = lunge_target
 		if(X.issamexenohive(x_lunge_target)) //We don't fuck up friendlies
 			return
 
-	lunge_target.ParalyzeNoChain(1 SECONDS)
+	X.plasma_stored += 50 //reward for our smart little panther
+
 
 ///////////////////////////////////
 // ***************************************
@@ -203,7 +196,7 @@
 	var/speed_bonus_active = FALSE
 
 /datum/action/xeno_action/adrenaline_rush/remove_action()
-	resinwalk_off(TRUE) // Ensure we remove the movespeed
+	rush_off(TRUE) // Ensure we remove the movespeed
 	return ..()
 
 /datum/action/xeno_action/adrenaline_rush/can_use_action(silent = FALSE, override_flags)
@@ -213,13 +206,13 @@
 
 /datum/action/xeno_action/adrenaline_rush/action_activate()
 	if(speed_activated)
-		resinwalk_off()
+		rush_off()
 		return fail_activate()
-	resinwalk_on()
+	rush_on()
 	succeed_activate()
 
 
-/datum/action/xeno_action/adrenaline_rush/proc/resinwalk_on(silent = FALSE)
+/datum/action/xeno_action/adrenaline_rush/proc/rush_on(silent = FALSE)
 	var/mob/living/carbon/xenomorph/walker = owner
 	speed_activated = TRUE
 	if(!silent)
@@ -228,10 +221,10 @@
 		speed_bonus_active = TRUE
 		walker.add_movespeed_modifier(type, TRUE, 0, NONE, TRUE, -1.5)
 	set_toggle(TRUE)
-	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, .proc/resinwalk_on_moved)
+	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, .proc/rush_on_moved)
 
 
-/datum/action/xeno_action/adrenaline_rush/proc/resinwalk_off(silent = FALSE)
+/datum/action/xeno_action/adrenaline_rush/proc/rush_off(silent = FALSE)
 	var/mob/living/carbon/xenomorph/walker = owner
 	if(!silent)
 		owner.balloon_alert(owner, "Adrenaline rush is over")
@@ -243,12 +236,12 @@
 	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
 
 
-/datum/action/xeno_action/adrenaline_rush/proc/resinwalk_on_moved(datum/source, atom/oldloc, direction, Forced = FALSE)
+/datum/action/xeno_action/adrenaline_rush/proc/rush_on_moved(datum/source, atom/oldloc, direction, Forced = FALSE)
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/walker = owner
 	if(!isturf(walker.loc) || walker.plasma_stored < 3)
 		owner.balloon_alert(owner, "We are too tired to run so fast")
-		resinwalk_off(TRUE)
+		rush_off(TRUE)
 		return
 	if(owner.m_intent == MOVE_INTENT_RUN)
 		if(!speed_bonus_active)
@@ -354,7 +347,7 @@
 /datum/action/xeno_action/evasive_maneuvers/proc/evasion_burn_check()
 	SIGNAL_HANDLER
 
-	var/mob/living/carbon/xenomorph/runner/R = owner
+	var/mob/living/carbon/xenomorph/panther/R = owner
 	to_chat(R, span_danger("Being on fire compromises our ability to dodge!"))
 	evasion_deactivate()
 

@@ -435,9 +435,11 @@
 
 	attachable_offset = list("muzzle_x" = 44, "muzzle_y" = 19,"rail_x" = 15, "rail_y" = 21, "under_x" = 25, "under_y" = 16, "stock_x" = 18, "stock_y" = 15)
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/weapon/gun/grenade_launcher/underslung)
+	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
 
 
-	burst_delay = 0.2 SECONDS
+	burst_amount = 1
+	burst_delay = 0.15 SECONDS
 	accuracy_mult = 1.15
 	damage_mult = 1.5
 	scatter = -2
@@ -841,7 +843,6 @@
 		/obj/item/attachable/foldable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
-		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonetknife,
 		/obj/item/attachable/scope,
@@ -1167,7 +1168,7 @@
 	placed_overlay_iconstate = "smartgun"
 
 /obj/item/weapon/gun/rifle/standard_smartmachinegun/pmc
-	starting_attachment_types = list(/obj/item/attachable/stock/sgstock, /obj/item/attachable/sgbarrel, /obj/item/attachable/magnetic_harness)
+	starting_attachment_types = list(/obj/item/attachable/stock/sgstock, /obj/item/attachable/sgbarrel, /obj/item/attachable/motiondetector, /obj/item/attachable/lasersight)
 
 /obj/item/weapon/gun/rifle/standard_smartmachinegun/patrol
 	starting_attachment_types = list(/obj/item/attachable/stock/sgstock, /obj/item/attachable/sgbarrel, /obj/item/attachable/motiondetector, /obj/item/attachable/verticalgrip)

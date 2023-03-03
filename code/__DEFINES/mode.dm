@@ -122,8 +122,8 @@
 
 #define COUNT_IGNORE_ALIVE_SSD (COUNT_IGNORE_HUMAN_SSD|COUNT_IGNORE_XENO_SSD)
 
-#define SILO_PRICE 800
-#define XENO_TURRET_PRICE 100
+#define SILO_PRICE 600
+#define XENO_TURRET_PRICE 40
 
 //How many psych point one gen gives every second
 #define GENERATOR_PSYCH_POINT_OUTPUT 1

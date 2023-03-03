@@ -1,7 +1,7 @@
 /datum/game_mode/infestation/distress
 	name = "Distress Signal"
 	config_tag = "Distress Signal"
-	silo_scaling = 1.10
+	silo_scaling = 2.50
 
 	flags_round_type = MODE_INFESTATION|MODE_LATE_OPENING_SHUTTER_TIMER|MODE_XENO_RULER|MODE_PSY_POINTS|MODE_PSY_POINTS_ADVANCED|MODE_DEAD_GRAB_FORBIDDEN|MODE_HIJACK_POSSIBLE|MODE_SILO_RESPAWN|MODE_SILOS_SPAWN_MINIONS|MODE_ALLOW_XENO_QUICKBUILD
 	flags_xeno_abilities = ABILITY_DISTRESS
@@ -33,7 +33,7 @@
 
 /datum/game_mode/infestation/distress/post_setup()
 	. = ..()
-	SSpoints.add_psy_points(XENO_HIVE_NORMAL, 2 * SILO_PRICE + 4 * XENO_TURRET_PRICE)
+	SSpoints.add_psy_points(XENO_HIVE_NORMAL, 2000)
 
 	for(var/i in GLOB.xeno_turret_turfs)
 		new /obj/structure/xeno/xeno_turret(i)

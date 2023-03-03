@@ -119,17 +119,16 @@
 	lunge_target = A
 
 	RegisterSignal(lunge_target, COMSIG_PARENT_QDELETING, .proc/clean_lunge_target)
+	RegisterSignal(X, COMSIG_MOVABLE_MOVED, .proc/check_if_lunge_possible)
 	RegisterSignal(X, COMSIG_MOVABLE_POST_THROW, .proc/clean_lunge_target)
 	if(lunge_target.Adjacent(X)) //They're already in range, neck grab without lunging.
 		playsound(X,'sound/weapons/thudswoosh.ogg', 75, 1)
 		X.plasma_stored += -50
+		clean_lunge_target()
 	else
 		X.throw_at(get_step_towards(A, X), 6, 2, X)
-		pantherfling(lunge_target)
 		X.plasma_stored += 50
 
-	if(X.pulling && !isxeno(X.pulling)) //If we grabbed something give us combo.
-		X.empower(empowerable = FALSE) //Doesn't have a special interaction
 	succeed_activate()
 	add_cooldown()
 	var/datum/action/xeno_action/pounce = X.actions_by_path[/datum/action/xeno_action/activable/pounce/panther]
@@ -137,11 +136,12 @@
 		pounce.add_cooldown()
 	return TRUE
 
-///Do a last check to see if we can grab the target, and then clean up after the throw. Handles an in-place lunge.
-/datum/action/xeno_action/activable/adrenalinejump/proc/finish_lunge(datum/source)
+///Check if we are close enough to lunge, and if yes, grab neck
+/datum/action/xeno_action/activable/adrenalinejump/proc/check_if_lunge_possible(datum/source)
 	SIGNAL_HANDLER
-	if(lunge_target) //Still couldn't get them.
-		clean_lunge_target()
+	if(!lunge_target.Adjacent(source))
+		return
+	INVOKE_ASYNC(src, .proc/pantherfling, lunge_target)
 
 /// Null lunge target and reset throw vars
 /datum/action/xeno_action/activable/adrenalinejump/proc/clean_lunge_target()
@@ -164,18 +164,14 @@
 	span_xenowarning("We effortlessly trip [lunge_target] away!"))
 	playsound(lunge_target,'sound/weapons/alien_claw_block.ogg', 75, 1)
 
+	//var/turf/T = get_step(X.loc, facing)
 	var/turf/T = X.loc
 	var/turf/temp = X.loc
-	var/empowered = X.empower() //Should it knockdown everyone down its path ?
 
 	for (var/x in 1 to fling_distance)
 		temp = get_step(T, facing)
 		if (!temp)
 			break
-		if(empowered)
-			for(var/mob/living/carbon/human/human in temp)
-				human.KnockdownNoChain(2 SECONDS) //Bowling pins
-				to_chat(human, span_highdanger("[lunge_target] crashes into us!"))
 		T = temp
 
 	X.do_attack_animation(lunge_target, ATTACK_EFFECT_DISARM2)

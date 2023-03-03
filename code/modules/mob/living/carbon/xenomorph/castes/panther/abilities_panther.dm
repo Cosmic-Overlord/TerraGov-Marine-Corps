@@ -122,7 +122,7 @@
 	RegisterSignal(X, COMSIG_MOVABLE_MOVED, .proc/check_if_lunge_possible)
 	RegisterSignal(X, COMSIG_MOVABLE_POST_THROW, .proc/clean_lunge_target)
 
-	if(lunge_target.Adjacent(X)) //They're already in range, neck grab without lunging.
+	if(lunge_target.Adjacent(X)) //They're already in range, pat their head, we messed up.
 		playsound(X,'sound/weapons/thudswoosh.ogg', 75, 1)
 		X.plasma_stored += -50
 		clean_lunge_target()
@@ -137,7 +137,7 @@
 
 	return TRUE
 
-///Check if we are close enough to lunge, and if yes, grab neck
+///Check if we are close enough to lunge, and if yes, fling them
 /datum/action/xeno_action/activable/adrenalinejump/proc/check_if_lunge_possible(datum/source)
 	SIGNAL_HANDLER
 	if(!lunge_target.Adjacent(source))

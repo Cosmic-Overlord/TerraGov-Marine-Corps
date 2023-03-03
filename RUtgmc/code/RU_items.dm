@@ -38,13 +38,10 @@ SUBSYSTEM_DEF(ru_items)
 	)
 
 	var/list/clothes = list(
-		/obj/item/clothing/glasses/ru/orange = -1,
+		/obj/item/clothing/glasses/ru/orange = 1,
 		/obj/item/storage/backpack/marine/scav = -1,
-		/obj/item/clothing/suit/ru/fartumasti = -1,
 		/obj/item/clothing/under/marine/ru/black = -1,
 		/obj/item/clothing/under/marine/ru/slav = -1,
-		/obj/item/clothing/under/marine/ru/gorka_eng = -1,
-		/obj/item/clothing/under/marine/ru/gorka_med = -1,
 		/obj/item/clothing/under/marine/ru/camo = -1,
 		/obj/item/clothing/shoes/marine/ru/headskin = -1,
 		/obj/item/clothing/shoes/marine/coolcowboy = -1,

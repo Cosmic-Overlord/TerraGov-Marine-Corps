@@ -740,3 +740,123 @@ GLOBAL_LIST_INIT(som_leader_gear_listed_products, list(
 
 /obj/machinery/marine_selector/clothes/som/leader
 	req_access = list(ACCESS_SOM_LEADER)
+
+/obj/machinery/marine_selector/clothes/synth/som
+	name = "R700 Droid Equipper"
+	desc = "An automated synthetic equipment vendor hooked up to a modest storage unit."
+	icon_state = "synth"
+	icon_vend = "synth-vend"
+	icon_deny = "synth-deny"
+	vendor_role = /datum/job/som/silicon/droid
+	lock_flags = JOB_LOCK
+
+/obj/machinery/marine_selector/clothes/synth/Initialize()
+	. = ..()
+	listed_products = GLOB.som_droid_clothes_listed_products
+
+GLOBAL_LIST_INIT(synthetic_clothes_listed_products, list(
+		/obj/effect/vendor_bundle/synth = list(CAT_ESS, "Essential droid set", 0, "white"),
+		/obj/item/clothing/glasses/meson = list(CAT_GLA, "Optical Meson Scanner", 0, "white"),
+		/obj/item/clothing/under/marine = list(CAT_STD, "TGMC marine uniform", 0, "black"),
+		/obj/item/clothing/under/rank/medical/blue = list(CAT_STD, "Medical scrubs (blue)", 0, "black"),
+		/obj/item/clothing/under/rank/medical/green = list(CAT_STD, "Medical scrubs (green)", 0, "black"),
+		/obj/item/clothing/under/rank/medical/purple = list(CAT_STD, "Medical scrubs (purple)", 0, "black"),
+		/obj/item/clothing/under/marine/officer/engi = list(CAT_STD, "Engineering uniform", 0, "black"),
+		/obj/item/clothing/under/marine/officer/logistics = list(CAT_STD, "Officer uniform", 0, "black"),
+		/obj/item/clothing/under/whites = list(CAT_STD, "TGMC dress uniform", 0, "black"),
+		/obj/item/clothing/under/marine/officer/pilot = list(CAT_STD, "Pilot bodysuit", 0, "black"),
+		/obj/item/clothing/under/marine/mp = list(CAT_STD, "Military police uniform", 0, "black"),
+		/obj/item/clothing/under/marine/officer/warden = list(CAT_STD, "Marine Officer uniform", 0, "black"),
+		/obj/item/clothing/under/marine/officer/researcher = list(CAT_STD, "Researcher outfit", 0, "black"),
+		/obj/item/clothing/under/rank/chef = list(CAT_STD, "Chef uniform", 0, "black"),
+		/obj/item/clothing/under/rank/bartender = list(CAT_STD, "Bartender uniform", 0, "black"),
+		/obj/item/clothing/under/rank/chef/altchef = list(CAT_STD, "Red Chef uniform", 0, "black"),
+		/obj/item/clothing/under/rank/vice = list(CAT_STD, "Vice Officer's uniform", 0, "black"),
+		/obj/item/clothing/under/rank/janitor = list(CAT_STD, "Janitor uniform", 0, "black"),
+		/obj/item/clothing/under/rank/det = list(CAT_STD, "Detective uniform", 0, "black"),
+		/obj/item/clothing/under/rank/dispatch = list(CAT_STD, "Dispatch uniform", 0, "black"),
+		/obj/item/clothing/under/overalls = list(CAT_STD, "Overalls", 0, "black"),
+		/obj/item/clothing/under/CM_uniform = list(CAT_STD, "Colonial Marshal uniform", 0, "black"),
+		/obj/item/clothing/under/gentlesuit = list(CAT_STD, "Gentleman's Suit", 0, "black"),
+		/obj/item/clothing/under/maiddress = list(CAT_STD, "Maid dress", 0, "black"),
+		/obj/item/clothing/under/maiduniform = list(CAT_STD, "Maid uniform", 0, "black"),
+		/obj/item/clothing/under/sl_suit = list(CAT_STD, "Amish Suit", 0, "black"),
+		/obj/item/clothing/under/kilt = list(CAT_STD, "Kilt", 0, "black"),
+		/obj/item/clothing/under/waiter = list(CAT_STD, "Waiter's uniform", 0, "black"),
+		/obj/item/clothing/suit/modular/xenonauten/pilot = list(CAT_SMR, "M70 flak jacket", 0, "synth-rcmarmstorage"),
+		/obj/item/clothing/suit/armor/bulletproof = list(CAT_SMR, "Bulletproof Vest", 0, "synth-armor"),
+		/obj/item/clothing/suit/surgical = list(CAT_SMR, "Surgical apron", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/storage/labcoat = list(CAT_SMR, "Labcoat", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/storage/labcoat/researcher = list(CAT_SMR, "Researcher's labcoat", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/storage/hazardvest = list(CAT_SMR, "Orange reflective safety vest", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/storage/hazardvest/lime = list(CAT_SMR, "Lime reflective safety vest", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/storage/hazardvest/blue = list(CAT_SMR, "Blue reflective safety vest", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/storage/CMB = list(CAT_SMR, "CMB Jacket", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/storage/RO = list(CAT_SMR, "TGMC RO Jacket", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/storage/lawyer/bluejacket = list(CAT_SMR, "Blue Jacket", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/storage/lawyer/purpjacket = list(CAT_SMR, "Purple Jacket", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/storage/snow_suit = list(CAT_SMR, "Snowsuit", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/chef = list(CAT_SMR, "Chef's apron", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/wcoat = list(CAT_SMR, "Waistcoat", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/wizrobe/gentlecoat = list(CAT_SMR, "Gentleman's Coat", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/bomber = list(CAT_SMR, "Bomber Jacket", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/security/navyhos = list(CAT_SMR, "Navy HoS Jacket", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/chef/classic = list(CAT_SMR, "Classic Chef vest", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/ianshirt = list(CAT_SMR, "Ian Shirt", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/suspenders = list(CAT_SMR, "Suspenders", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/apron = list(CAT_SMR, "Apron", 0, "synth-cosmetic"),
+		/obj/item/clothing/suit/apron/overalls = list(CAT_SMR, "Overalls", 0, "synth-cosmetic"),
+		/obj/item/storage/backpack/marine/satchel = list(CAT_BAK, "Satchel", 0, "black"),
+		/obj/item/storage/backpack/marine = list(CAT_BAK, "Lightweight IMP backpack", 0, "black"),
+		/obj/item/storage/backpack/industrial = list(CAT_BAK, "Industrial backpack", 0, "black"),
+		/obj/item/storage/backpack/marine/corpsman = list(CAT_BAK, "TGMC corpsman backpack", 0, "black"),
+		/obj/item/storage/backpack/marine/tech = list(CAT_BAK, "TGMC technician backpack", 0, "black"),
+		/obj/item/storage/backpack/marine/engineerpack = list(CAT_BAK, "TGMC technician welderpack", 0, "black"),
+		/obj/item/storage/backpack/marine/radiopack = list(CAT_BAK, "Radio Pack", 0, "black"),
+		/obj/item/storage/backpack/lightpack = list(CAT_BAK, "Lightweight combat pack", 0, "black"),
+		/obj/item/storage/backpack/marine/satchel/officer_cloak = list(CAT_BAK, "Officer cloak", 0, "black"),
+		/obj/item/storage/backpack/marine/satchel/officer_cloak_blue = list(CAT_BAK, "Officer cloak, blue", 0, "black"),
+		/obj/item/armor_module/storage/uniform/webbing = list(CAT_WEB, "Webbing", 0, "black"),
+		/obj/item/armor_module/storage/uniform/black_vest = list(CAT_WEB, "Tactical Black Vest", 0, "black"),
+		/obj/item/armor_module/storage/uniform/white_vest = list(CAT_WEB, "White medical vest", 0, "black"),
+		/obj/item/armor_module/storage/uniform/surgery_webbing = list(CAT_WEB, "White surgical webbing", 0, "black"),
+		/obj/item/storage/belt/lifesaver/som/full = list(CAT_BEL, "Lifesaver belt", 0, "orange"),
+		/obj/item/storage/belt/rig/medical/som = list(CAT_BEL, "Rig belt", 0, "black"),
+		/obj/item/storage/belt/hypospraybelt/som = list(CAT_BEL, "Hypospray belt", 0, "black"),
+		/obj/item/storage/belt/sparepouch/som = list(CAT_BEL, "G8 general utility pouch", 0, "synth-attachable"),
+		/obj/item/storage/pouch/general/large/som = list(CAT_POU, "General pouch", 0, "black"),
+		/obj/item/storage/pouch/tools/som/full = list(CAT_POU, "Tool pouch", 0, "black"),
+		/obj/item/storage/pouch/construction/som/full = list(CAT_POU, "Construction pouch", 0, "black"),
+		/obj/item/storage/pouch/electronics/som/full = list(CAT_POU, "Electronics pouch", 0, "black"),
+		/obj/item/storage/pouch/medkit/som/medic = list(CAT_POU, "Medkit pouch", 0, "black"),
+		/obj/item/storage/pouch/surgery = list(CAT_WEB, "White surgical pouch", 0, "black"),
+		/obj/item/storage/pouch/flare/som/full = list(CAT_POU, "Flare pouch", 0, "black"),
+		/obj/item/storage/pouch/radio = list(CAT_POU, "Radio pouch", 0, "black"),
+		/obj/item/clothing/head/welding = list(CAT_SHN, "Welding helmet", 0, "black"),
+		/obj/item/clothing/head/surgery/green = list(CAT_SHN, "Surgical cap", 0, "black"),
+		/obj/item/clothing/head/boonie = list(CAT_SHN, "Boonie hat", 0, "black"),
+		/obj/item/clothing/head/tgmcberet/red = list(CAT_SHN, "MP beret", 0, "black"),
+		/obj/item/clothing/head/beret/eng = list(CAT_SHN, "Engineering beret", 0, "black"),
+		/obj/item/clothing/head/ushanka = list(CAT_SHN, "Ushanka", 0, "black"),
+		/obj/item/clothing/head/beret = list(CAT_SHN, "Beret", 0, "black"),
+		/obj/item/clothing/head/beanie = list(CAT_SHN, "Beanie", 0, "black"),
+		/obj/item/clothing/head/beret/jan = list(CAT_SHN, "Purple Beret", 0, "black"),
+		/obj/item/clothing/head/fez = list(CAT_SHN, "Fez", 0, "black"),
+	))
+
+/obj/effect/vendor_bundle/somdroid
+	gear_to_spawn = list(
+		/obj/item/stack/sheet/plasteel/medium_stack,
+		/obj/item/stack/sheet/metal/large_stack,
+		/obj/item/tool/weldingtool/hugetank,
+		/obj/item/lightreplacer,
+		/obj/item/healthanalyzer,
+		/obj/item/tool/handheld_charger,
+		/obj/item/defibrillator,
+		/obj/item/medevac_beacon,
+		/obj/item/roller/medevac,
+		/obj/item/roller,
+		/obj/item/bodybag/cryobag,
+		/obj/item/reagent_containers/hypospray/advanced/oxycodone,
+		/obj/item/tweezers,
+	)

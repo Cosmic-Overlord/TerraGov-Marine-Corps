@@ -562,7 +562,8 @@
 	name = "\improper Umbillical Airlock"
 	},
 /obj/machinery/door/poddoor/shutters/transit,
-/turf/open/floor/mainship/mono,
+/obj/effect/turf_decal/warning_stripes/stripedsquare,
+/turf/open/floor/prison/plate,
 /area/shuttle/canterbury)
 "bV" = (
 /obj/machinery/door/poddoor/mainship{
@@ -570,7 +571,8 @@
 	name = "\improper Umbillical Airlock"
 	},
 /obj/machinery/door/poddoor/shutters/transit,
-/turf/open/floor/mainship/mono,
+/obj/effect/turf_decal/warning_stripes/stripedsquare,
+/turf/open/floor/prison/plate,
 /area/shuttle/canterbury)
 "bW" = (
 /obj/machinery/door/poddoor/mainship{
@@ -580,7 +582,8 @@
 /obj/machinery/door/poddoor/shutters/transit{
 	dir = 2
 	},
-/turf/open/floor/plating,
+/obj/effect/turf_decal/warning_stripes/stripedsquare,
+/turf/open/floor/prison/plate,
 /area/shuttle/canterbury)
 "cf" = (
 /obj/effect/turf_decal/bot_red,
@@ -1206,14 +1209,6 @@
 /obj/structure/cable/layer3,
 /turf/open/floor/plating/mainship/striped,
 /area/shuttle/canterbury)
-"JX" = (
-/obj/machinery/door/poddoor/mainship{
-	id = "starboard_umbilical_outer";
-	name = "\improper Umbillical Airlock"
-	},
-/obj/machinery/door/poddoor/shutters/transit,
-/turf/open/floor/prison,
-/area/shuttle/canterbury)
 "Kh" = (
 /obj/structure/bed/chair/dropship/passenger/alt{
 	dir = 8
@@ -1526,7 +1521,8 @@
 	dir = 8;
 	id = "aft_engine_podlock"
 	},
-/turf/open/floor/plating,
+/obj/effect/turf_decal/warning_stripes/stripedsquare,
+/turf/open/floor/prison/plate,
 /area/shuttle/canterbury)
 "Xf" = (
 /obj/machinery/power/terminal,
@@ -2193,7 +2189,7 @@ ab
 ab
 ab
 ab
-JX
+bV
 bV
 bV
 bV

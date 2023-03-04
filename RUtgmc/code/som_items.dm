@@ -385,3 +385,11 @@
 			pixel_x = 0
 		if(WEST)
 			pixel_x = 0
+
+/obj/item/clothing/suit/storage/marine/harness
+	name = "\improper M3 pattern marine harness"
+	desc = "A standard Marine M3 Pattern Harness. No encumbrance and no protection."
+	icon_state = "10"
+	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	slowdown = 0
+	flags_atom = NONE

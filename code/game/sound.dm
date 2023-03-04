@@ -228,6 +228,8 @@ A good representation is: 'byond applies a volume reduction to the sound every X
 			S = pick('RUtgmc/sound/winchesterlever1.ogg', 'RUtgmc/sound/winchesterlever2.ogg', 'RUtgmc/sound/winchesterlever3.ogg')
 		if("winchester_reload")
 			S = pick('RUtgmc/sound/winchesterreload1.ogg', 'RUtgmc/sound/winchesterreload2.ogg', 'RUtgmc/sound/winchesterreload3.ogg', 'RUtgmc/sound/winchesterreload4.ogg', 'RUtgmc/sound/winchesterreload5.ogg')
+		if("svd_fire")
+			S = pick('sound/weapons/guns/fire/svd1.ogg', 'sound/weapons/guns/fire/svd2.ogg', 'sound/weapons/guns/fire/svd3.ogg')
 
 		// Xeno
 		if("acid_hit")

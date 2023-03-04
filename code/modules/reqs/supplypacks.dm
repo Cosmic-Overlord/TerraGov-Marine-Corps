@@ -495,6 +495,12 @@ WEAPONS
 	cost = 30
 	available_against_xeno_only = TRUE
 
+/datum/supply_packs/weapons/autosniper_packet
+	name = "SR-81 IFF sniper ammo box"
+	contains = list(/obj/item/ammo_magazine/packet/autosniper)
+	cost = 50
+	available_against_xeno_only = TRUE
+
 /datum/supply_packs/weapons/antimaterial
 	name = "SR-26 Antimaterial rifle (AMR) kit"
 	contains = list(/obj/item/weapon/gun/rifle/sniper/antimaterial)
@@ -1420,6 +1426,12 @@ Imports
 /datum/supply_packs/imports/mbx900/buckshot
 	name = "MBX-900 Buckshot Shells"
 	contains = list(/obj/item/ammo_magazine/shotgun/mbx900/buckshot)
+	cost = 50
+	available_against_xeno_only = TRUE
+
+/datum/supply_packs/imports/mbx900/sabot
+	name = "MBX-900 Sabot Shells"
+	contains = list(/obj/item/ammo_magazine/shotgun/mbx900)
 	cost = 50
 	available_against_xeno_only = TRUE
 

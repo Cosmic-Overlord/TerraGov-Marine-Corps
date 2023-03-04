@@ -73,10 +73,10 @@
 /datum/action/xeno_action/activable/adrenalinejump
 	name = "Adrenaline Jump"
 	action_icon_state = "adrenaline_jump"
-	desc = "Jump from some distance to target, knocking them down and pulling them to you, only works if you are at least 3 meters away from the target, this ability sends Pounce on cooldown."
+	desc = "Jump from some distance to target, knocking them down and pulling them to you, only works if you are at least from 3 to 8 meters away from the target, this ability sends Pounce on cooldown."
 	ability_name = "adrenaline jump"
-	plasma_cost = 10
-	cooldown_timer = 13 SECONDS
+	plasma_cost = 15
+	cooldown_timer = 12 SECONDS
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_ADRENALINE_JUMP,
 	)
@@ -94,9 +94,14 @@
 	if(!.)
 		return FALSE
 
-	if(get_dist_euclide_square(A, owner) > 18)
+	if(get_dist_euclide_square(A, owner) > 64) //8 tiles range
 		if(!silent)
 			to_chat(owner, span_xenonotice("You are too far!"))
+		return FALSE
+
+	if(!line_of_sight(A, owner))
+		if(!silent)
+			owner.balloon_alert(owner, "We need clear jump line!")
 		return FALSE
 
 	if(!isliving(A))
@@ -114,34 +119,35 @@
 	var/mob/living/carbon/xenomorph/X = owner
 
 	X.visible_message(span_xenowarning("\The [X] jump towards [A]!"), \
-	span_xenowarning("We lunge at [A]!"))
+	span_xenowarning("We jump at [A]!"))
 
 	lunge_target = A
 
 	RegisterSignal(lunge_target, COMSIG_PARENT_QDELETING, .proc/clean_lunge_target)
+	RegisterSignal(X, COMSIG_MOVABLE_MOVED, .proc/check_if_lunge_possible)
 	RegisterSignal(X, COMSIG_MOVABLE_POST_THROW, .proc/clean_lunge_target)
-	if(lunge_target.Adjacent(X)) //They're already in range, neck grab without lunging.
+
+	if(lunge_target.Adjacent(X)) //They're already in range, pat their head, we messed up.
 		playsound(X,'sound/weapons/thudswoosh.ogg', 75, 1)
 		X.plasma_stored += -50
+		clean_lunge_target()
 	else
 		X.throw_at(get_step_towards(A, X), 6, 2, X)
-		pantherfling(lunge_target)
-		X.plasma_stored += 50
 
-	if(X.pulling && !isxeno(X.pulling)) //If we grabbed something give us combo.
-		X.empower(empowerable = FALSE) //Doesn't have a special interaction
 	succeed_activate()
 	add_cooldown()
 	var/datum/action/xeno_action/pounce = X.actions_by_path[/datum/action/xeno_action/activable/pounce/panther]
 	if(pounce)
 		pounce.add_cooldown()
+
 	return TRUE
 
-///Do a last check to see if we can grab the target, and then clean up after the throw. Handles an in-place lunge.
-/datum/action/xeno_action/activable/adrenalinejump/proc/finish_lunge(datum/source)
+///Check if we are close enough to lunge, and if yes, fling them
+/datum/action/xeno_action/activable/adrenalinejump/proc/check_if_lunge_possible(datum/source)
 	SIGNAL_HANDLER
-	if(lunge_target) //Still couldn't get them.
-		clean_lunge_target()
+	if(!lunge_target.Adjacent(source))
+		return
+	INVOKE_ASYNC(src, .proc/pantherfling, lunge_target)
 
 /// Null lunge target and reset throw vars
 /datum/action/xeno_action/activable/adrenalinejump/proc/clean_lunge_target()
@@ -151,42 +157,30 @@
 	lunge_target = null
 	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
 	owner.stop_throw()
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 /datum/action/xeno_action/activable/adrenalinejump/proc/pantherfling(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
 	var/mob/living/lunge_target = A
-	var/facing = get_dir(X, lunge_target)
 	var/fling_distance = 1
 
 	X.face_atom(lunge_target) //Face towards the victim
 
-	X.visible_message(span_xenowarning("\The [X] effortlessly flings [lunge_target] away!"), \
-	span_xenowarning("We effortlessly fling [lunge_target] away!"))
+	X.visible_message(span_xenowarning("\The [X] effortlessly trips [lunge_target] !"), \
+	span_xenowarning("We effortlessly trip [lunge_target] !"))
 	playsound(lunge_target,'sound/weapons/alien_claw_block.ogg', 75, 1)
 
-	var/turf/T = X.loc
-	var/turf/temp = X.loc
-	var/empowered = X.empower() //Should it knockdown everyone down its path ?
-
-	for (var/x in 1 to fling_distance)
-		temp = get_step(T, facing)
-		if (!temp)
-			break
-		if(empowered)
-			for(var/mob/living/carbon/human/human in temp)
-				human.KnockdownNoChain(2 SECONDS) //Bowling pins
-				to_chat(human, span_highdanger("[lunge_target] crashes into us!"))
-		T = temp
-
 	X.do_attack_animation(lunge_target, ATTACK_EFFECT_DISARM2)
-	lunge_target.throw_at(T, fling_distance, 1, X, 1)
+	lunge_target.ParalyzeNoChain(1 SECONDS)
+	lunge_target.throw_at(X, fling_distance, 1, X) //go under us
 
 	if(isxeno(lunge_target))
 		var/mob/living/carbon/xenomorph/x_lunge_target = lunge_target
 		if(X.issamexenohive(x_lunge_target)) //We don't fuck up friendlies
 			return
 
-	lunge_target.ParalyzeNoChain(1 SECONDS)
+	X.plasma_stored += 50 //reward for our smart little panther
+
 
 ///////////////////////////////////
 // ***************************************
@@ -207,7 +201,7 @@
 	var/speed_bonus_active = FALSE
 
 /datum/action/xeno_action/adrenaline_rush/remove_action()
-	resinwalk_off(TRUE) // Ensure we remove the movespeed
+	rush_off(TRUE) // Ensure we remove the movespeed
 	return ..()
 
 /datum/action/xeno_action/adrenaline_rush/can_use_action(silent = FALSE, override_flags)
@@ -217,13 +211,13 @@
 
 /datum/action/xeno_action/adrenaline_rush/action_activate()
 	if(speed_activated)
-		resinwalk_off()
+		rush_off()
 		return fail_activate()
-	resinwalk_on()
+	rush_on()
 	succeed_activate()
 
 
-/datum/action/xeno_action/adrenaline_rush/proc/resinwalk_on(silent = FALSE)
+/datum/action/xeno_action/adrenaline_rush/proc/rush_on(silent = FALSE)
 	var/mob/living/carbon/xenomorph/walker = owner
 	speed_activated = TRUE
 	if(!silent)
@@ -232,10 +226,10 @@
 		speed_bonus_active = TRUE
 		walker.add_movespeed_modifier(type, TRUE, 0, NONE, TRUE, -1.5)
 	set_toggle(TRUE)
-	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, .proc/resinwalk_on_moved)
+	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, .proc/rush_on_moved)
 
 
-/datum/action/xeno_action/adrenaline_rush/proc/resinwalk_off(silent = FALSE)
+/datum/action/xeno_action/adrenaline_rush/proc/rush_off(silent = FALSE)
 	var/mob/living/carbon/xenomorph/walker = owner
 	if(!silent)
 		owner.balloon_alert(owner, "Adrenaline rush is over")
@@ -247,12 +241,12 @@
 	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
 
 
-/datum/action/xeno_action/adrenaline_rush/proc/resinwalk_on_moved(datum/source, atom/oldloc, direction, Forced = FALSE)
+/datum/action/xeno_action/adrenaline_rush/proc/rush_on_moved(datum/source, atom/oldloc, direction, Forced = FALSE)
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/walker = owner
 	if(!isturf(walker.loc) || walker.plasma_stored < 3)
 		owner.balloon_alert(owner, "We are too tired to run so fast")
-		resinwalk_off(TRUE)
+		rush_off(TRUE)
 		return
 	if(owner.m_intent == MOVE_INTENT_RUN)
 		if(!speed_bonus_active)
@@ -358,7 +352,7 @@
 /datum/action/xeno_action/evasive_maneuvers/proc/evasion_burn_check()
 	SIGNAL_HANDLER
 
-	var/mob/living/carbon/xenomorph/runner/R = owner
+	var/mob/living/carbon/xenomorph/panther/R = owner
 	to_chat(R, span_danger("Being on fire compromises our ability to dodge!"))
 	evasion_deactivate()
 
@@ -474,7 +468,7 @@
 /datum/action/xeno_action/select_reagent/panther
 	name = "Select Reagent"
 	action_icon_state = "select_reagent0"
-	desc = "Selects which reagent to use for tearing tail. Hemodile slows by 25%, increased to 50% with neurotoxin present, and deals 20% of damage received as stamina damage. Transvitox converts brute/burn damage to toxin based on 40% of damage received up to 45 toxin on target, upon reaching which causes a stun. Neurotoxin deals increasing stamina damage the longer it remains in the victim's system and prevents stamina regeneration."
+	desc = "Selects which reagent to use for tearing tail. Hemodile slows by 25%, increased to 50% with neurotoxin present, and deals 20% of damage received as stamina damage. Transvitox converts brute/burn damage to toxin based on 40% of damage received up to 45 toxin on target, upon reaching which causes a stun. Neurotoxin deals increasing stamina damage the longer it remains in the victim's system and prevents stamina regeneration. Ozelomelyn purges medical chemicals from humans, while also causing slight intoxication. Sanguinal does damage depending on presence and amount of all previously mentioned reagents, also causes light brute damage and bleeding."
 	use_state_flags = XACT_USE_BUSY|XACT_USE_LYING
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_SELECT_REAGENT,

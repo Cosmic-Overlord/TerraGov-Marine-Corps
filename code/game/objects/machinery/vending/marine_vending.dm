@@ -1356,6 +1356,7 @@
 			/obj/item/clothing/head/tgmcberet/darkgreen = -1,
 			/obj/item/clothing/head/tgmcberet/green = -1,
 			/obj/item/clothing/head/tgmcberet/snow = -1,
+			/obj/item/clothing/head/tgmcberet/black = -1,
 			/obj/item/clothing/head/beret/marine = -1,
 			/obj/item/clothing/head/tgmcberet = -1,
 			/obj/item/clothing/head/tgmcberet/commando = -1,

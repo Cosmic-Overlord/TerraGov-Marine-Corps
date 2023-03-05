@@ -82,6 +82,11 @@
 	icon_state = "beretsnow"
 	flags_item_map_variant = NONE
 
+/obj/item/clothing/head/tgmcberet/black
+	name = "\improper Black beret"
+	icon_state = "beretblack"
+	flags_item_map_variant = NONE
+
 /obj/item/clothing/head/tgmcberet/wo
 	name = "\improper Command Master at Arms beret"
 	desc = "A beret with the lieutenant insignia emblazoned on it. It shines with the glow of corrupt authority and a smudge of doughnut."

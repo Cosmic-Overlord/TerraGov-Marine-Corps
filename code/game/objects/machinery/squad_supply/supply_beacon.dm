@@ -46,7 +46,6 @@
 	span_notice("You start setting up [src] on the ground and inputting all the data it needs."))
 	if(!do_after(H, delay, TRUE, src, BUSY_ICON_GENERIC))
 		return FALSE
-	GLOB.active_orbital_beacons
 	var/obj/machinery/camera/beacon_cam/BC = new(src, "[H.get_paygrade()] [H.name] [src]")
 	H.transferItemToLoc(src, H.loc)
 	beacon_cam = BC
@@ -96,7 +95,6 @@
 	return TRUE
 
 /obj/item/beacon/Destroy()
-	GLOB.active_orbital_beacons -= src
 	if(beacon_cam)
 		qdel(beacon_cam)
 		beacon_cam = null
@@ -197,3 +195,4 @@
 /datum/supply_beacon/Destroy()
 	GLOB.supply_beacon[name] = null
 	return ..()
+

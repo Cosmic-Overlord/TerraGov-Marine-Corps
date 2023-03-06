@@ -66,3 +66,58 @@
 	var/static/list/id_by_area = list()
 	var/area/A = get_area(src)
 	c_tag = "[A.name] #[++id_by_area[A]]"
+
+/obj/machinery/iv_drip/alt
+	icon = 'RUtgmc/icons/objects/iv_drip.dmi'
+
+/obj/machinery/iv_drip/alt/update_icon()
+	if(src.attached)
+		icon_state = "hooked"
+	else
+		icon_state = ""
+
+	overlays = null
+
+	if(beaker)
+		var/datum/reagents/reagents = beaker.reagents
+		if(reagents.total_volume)
+			var/image/filling = image('RUtgmc/icons/objects/iv_drip.dmi', src, "reagent")
+
+			var/percent = round((reagents.total_volume / beaker.volume) * 100)
+			switch(percent)
+				if(0 to 9)		filling.icon_state = "reagent0"
+				if(10 to 24) 	filling.icon_state = "reagent10"
+				if(25 to 49)	filling.icon_state = "reagent25"
+				if(50 to 74)	filling.icon_state = "reagent50"
+				if(75 to 79)	filling.icon_state = "reagent75"
+				if(80 to 90)	filling.icon_state = "reagent80"
+				if(91 to INFINITY)	filling.icon_state = "reagent100"
+
+			filling.color = mix_color_from_reagents(reagents.reagent_list)
+			overlays += filling
+
+/obj/machinery/optable/alt
+	icon = 'RUtgmc/icons/objects/surgery.dmi'
+
+/obj/machinery/sleeper/alt
+	icon = 'RUtgmc/icons/objects/Cryogenics2.dmi'
+
+/obj/machinery/bodyscanner/alt
+	icon = 'RUtgmc/icons/objects/Cryogenics2.dmi'
+
+/obj/machinery/atmospherics/components/unary/cryo_cell/alt
+	icon = 'RUtgmc/icons/objects/cryogenics.dmi'
+
+/obj/machinery/sleep_console/alt
+	icon = 'RUtgmc/icons/objects/Cryogenics2.dmi'
+
+/obj/machinery/sleep_console/alt
+	icon = 'RUtgmc/icons/objects/Cryogenics2.dmi'
+
+/obj/machinery/body_scanconsole/alt
+	icon = 'RUtgmc/icons/objects/Cryogenics2.dmi'
+
+/obj/structure/closet/secure_closet/marine/standard/alpha
+	name = "alpha equipment locker"
+	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ALPHA)
+	closet_squad = "alpha"

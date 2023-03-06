@@ -8,6 +8,7 @@
 	icon = 'RUtgmc/icons/turf/windows.dmi'
 	icon_state = "alm_rwindow0"
 	basestate = "alm_rwindow"
+	smoothing_behavior = NO_SMOOTHING
 
 /obj/structure/window/framed/mainship/gray/toughened/hull/alt
 	icon = 'RUtgmc/icons/turf/windows.dmi'

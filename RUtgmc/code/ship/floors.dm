@@ -15,6 +15,9 @@
 /turf/open/floor/mainship/floor/metal/lino
 	icon_state = "lino_grey_smooth"
 
+/turf/open/floor/mainship/floor/metal/white
+	icon_state = "white"
+
 //RUBBER LINO
 /turf/open/floor/mainship/floor/metal/rubber
 	icon_state = "rub_carpet"

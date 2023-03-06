@@ -24,19 +24,11 @@
 
 
 /obj/structure/closet/secure_closet/marine/PopulateContents()
-	new /obj/item/clothing/shoes/marine(src)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		new /obj/item/clothing/mask/rebreather/scarf(src)
 
 
 // STANDARD MARINE
-
-/obj/structure/closet/secure_closet/marine/standard/PopulateContents()
-	. = ..()
-	new /obj/item/clothing/suit/storage/marine(src)
-	new /obj/item/storage/belt/marine(src)
-	new /obj/item/clothing/head/modular/marine/m10x(src)
-	new /obj/item/clothing/under/marine/standard(src)
 
 /obj/structure/closet/secure_closet/marine/standard/alpha
 	name = "alpha equipment locker"
@@ -46,8 +38,10 @@
 /obj/structure/closet/secure_closet/marine/standard/alpha/PopulateContents()
 	. = ..()
 	new /obj/item/radio/headset/mainship/marine/alpha(src)
-	new /obj/item/clothing/gloves/marine(src)
-
+	new /obj/item/clothing/head/soft/marine/alpha(src)
+	new /obj/item/clothing/head/tgmcberet/squad/alpha(src)
+	new /obj/item/clothing/mask/bandanna/alpha(src)
+	new /obj/item/clothing/head/squadhb(src)
 
 /obj/structure/closet/secure_closet/marine/standard/bravo
 	name = "bravo equipment locker"
@@ -57,7 +51,10 @@
 /obj/structure/closet/secure_closet/marine/standard/bravo/PopulateContents()
 	. = ..()
 	new /obj/item/radio/headset/mainship/marine/bravo(src)
-	new /obj/item/clothing/gloves/marine(src)
+	new /obj/item/clothing/head/soft/marine/bravo(src)
+	new /obj/item/clothing/head/tgmcberet/squad/bravo(src)
+	new /obj/item/clothing/mask/bandanna/bravo(src)
+	new /obj/item/clothing/head/squadhb/b(src)
 
 
 /obj/structure/closet/secure_closet/marine/standard/charlie
@@ -68,7 +65,10 @@
 /obj/structure/closet/secure_closet/marine/standard/charlie/PopulateContents()
 	. = ..()
 	new /obj/item/radio/headset/mainship/marine/charlie(src)
-	new /obj/item/clothing/gloves/marine(src)
+	new /obj/item/clothing/head/soft/marine/charlie(src)
+	new /obj/item/clothing/head/tgmcberet/squad(src)
+	new /obj/item/clothing/mask/bandanna/charlie(src)
+	new /obj/item/clothing/head/squadhb/c(src)
 
 
 /obj/structure/closet/secure_closet/marine/standard/delta
@@ -79,7 +79,10 @@
 /obj/structure/closet/secure_closet/marine/standard/delta/PopulateContents()
 	. = ..()
 	new /obj/item/radio/headset/mainship/marine/delta(src)
-	new /obj/item/clothing/gloves/marine(src)
+	new /obj/item/clothing/head/soft/marine/delta(src)
+	new /obj/item/clothing/head/tgmcberet/squad/delta(src)
+	new /obj/item/clothing/mask/bandanna/delta(src)
+	new /obj/item/clothing/head/squadhb/d(src)
 
 
 // MARINE LEADER

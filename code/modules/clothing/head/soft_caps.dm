@@ -103,16 +103,17 @@
 	desc = "It's a soft cap made from advanced ballistic-resistant fibres. Fails to prevent lumps in the head."
 	icon_state = "greysoft"
 	cap_color = "grey"
-	soft_armor = list(MELEE = 35, BULLET = 35, LASER = 35, ENERGY = 15, BOMB = 10, BIO = 0, FIRE = 15, ACID = 15)
+	soft_armor = list(MELEE = 15, BULLET = 15, LASER = 15, ENERGY = 15, BOMB = 10, BIO = 5, FIRE = 5, ACID = 5)
 	flags_inventory = BLOCKSHARPOBJ
+	flags_armor_features = ARMOR_NO_DECAP
 
 /obj/item/clothing/head/soft/marine/alpha
 	name = "alpha squad sergeant cap"
 	icon_state = "redsoft"
 	cap_color = "red"
 
-/obj/item/clothing/head/soft/marine/beta
-	name = "beta squad sergeant cap"
+/obj/item/clothing/head/soft/marine/bravo
+	name = "bravo squad sergeant cap"
 	icon_state = "yellowsoft"
 	cap_color = "yellow"
 

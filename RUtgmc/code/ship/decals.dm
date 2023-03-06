@@ -41,6 +41,19 @@
 /obj/effect/turf_decal/siding/metal/floorcee
 	icon_state = "borderfloorcee_black"
 
+/obj/effect/turf_decal/tile/metal
+	icon = 'RUtgmc/icons/turf/decals.dmi'
+	icon_state = "edge"
+
+/obj/effect/turf_decal/tile/metal/corner
+	icon_state = "edge_corner"
+
+/obj/effect/turf_decal/tile/metal/medical
+	color = "#53876F"
+
+/obj/effect/turf_decal/tile/metal/corner/medical
+	color = "#53876F"
+
 //ALT METAL DECAL
 /obj/effect/turf_decal/siding/metal/flatcorner
 	icon_state = "corner_white"

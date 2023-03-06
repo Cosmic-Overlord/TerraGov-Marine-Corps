@@ -938,6 +938,11 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	pixel_shift_x = 32
 	pixel_shift_y = 13
 
+/obj/item/attachable/stock/mpi_km/black
+	name = "MPi-KM polymer stock"
+	desc = "A black polymer stock, made to fit the MPi-KM."
+	icon_state = "ak47stock_black"
+
 /obj/item/attachable/stock/tx15
 	name = "\improper SH-15 stock"
 	desc = "The standard stock for the SH-15. Cannot be removed."
@@ -977,6 +982,13 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	name = "\improper C1 stock"
 	desc = "A irremovable C1 stock."
 	icon_state = "garandstock"
+	pixel_shift_x = 32
+	pixel_shift_y = 13
+
+/obj/item/attachable/stock/trenchgun
+	name = "\improper L-4043 stock"
+	desc = "A irremovable L-4043 stock."
+	icon_state = "trenchstock"
 	pixel_shift_x = 32
 	pixel_shift_y = 13
 
@@ -1231,6 +1243,18 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	accuracy_unwielded_mod = -0.1
 	scatter_unwielded_mod = 4
 
+/obj/item/attachable/foldable/som_carbine
+	name = "\improper V-34 carbine stock"
+	desc = "A side folding stock built into the V-34 carbine. The gun is designed to be fired with the stock deployed, but can be done without, with some difficulty."
+	flags_attach_features = ATTACH_ACTIVATION
+	wield_delay_mod = 0.1 SECONDS
+	melee_mod = 5
+	size_mod = 1
+	icon_state = "v34stock"
+	accuracy_mod = 0.3
+	recoil_mod = -2
+	scatter_mod = -8
+
 /obj/item/attachable/foldable/t35stock
 	name = "\improper SH-35 stock"
 	desc = "A non-standard heavy stock for the SH-35 shotgun. Less quick and more cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too."
@@ -1249,8 +1273,6 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	slot = ATTACHMENT_SLOT_UNDER
 	size_mod = 2
 	melee_mod = -10
-	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
-	attachment_action_type = /datum/action/item_action/toggle
 	deploy_time = 1 SECONDS
 	accuracy_mod = 0.3
 	recoil_mod = -2
@@ -1321,17 +1343,18 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 			/obj/structure/window/framed/prison,
 		)
 	master_gun.turret_flags |= TURRET_HAS_CAMERA|TURRET_SAFETY|TURRET_ALERTS
-	master_gun.AddElement(/datum/element/deployable_item, master_gun.deployable_item, master_gun.type, deploy_time, undeploy_time)
+	master_gun.AddElement(/datum/element/deployable_item, master_gun.deployable_item, deploy_time, undeploy_time)
 	update_icon()
 
 /obj/item/attachable/buildasentry/on_detach(detaching_item, mob/user)
 	. = ..()
 	var/obj/item/weapon/gun/detaching_gun = detaching_item
 	DISABLE_BITFIELD(detaching_gun.flags_item, IS_DEPLOYABLE)
+	detaching_gun.RemoveElement(/datum/element/deployable_item, detaching_gun.deployable_item, deploy_time, undeploy_time)
 	detaching_gun.ignored_terrains = null
 	detaching_gun.deployable_item = null
 	detaching_gun.turret_flags &= ~(TURRET_HAS_CAMERA|TURRET_SAFETY|TURRET_ALERTS)
-	detaching_gun.RemoveElement(/datum/element/deployable_item, master_gun.deployable_item, master_gun.type, deploy_time, undeploy_time)
+	detaching_gun.RemoveElement(/datum/element/deployable_item, master_gun.deployable_item, deploy_time, undeploy_time)
 
 
 /obj/item/attachable/shoulder_mount

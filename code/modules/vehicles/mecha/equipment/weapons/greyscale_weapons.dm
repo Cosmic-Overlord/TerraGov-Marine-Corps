@@ -245,10 +245,10 @@
 	max_integrity = 400
 	energy_drain = 5
 	variance = 0
-	projectile_delay = 0.6 SECONDS
+	projectile_delay = 0.8 SECONDS
 	burst_amount = 3
-	projectile_burst_delay = 0.2 SECONDS
-	slowdown = 0.4
+	projectile_burst_delay = 0.3 SECONDS
+	slowdown = 0.5
 	harmful = TRUE
 	fire_mode = GUN_FIREMODE_AUTOBURST
 
@@ -290,11 +290,12 @@
 	projectiles_cache_max = 15
 	variance = 0
 	projectile_delay = 1 SECONDS
-	slowdown = 1.2
+	slowdown = 1.5
 	harmful = TRUE
 	ammo_type = MECHA_AMMO_HEAVYCANNON
 	hud_icons = list("shell_apcr", "shell_empty")
 	fire_mode = GUN_FIREMODE_SEMIAUTO
+	rearm_time = 4 SECONDS
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/minigun
 	name = "\improper Rhea vulcan cannon"
@@ -355,13 +356,13 @@
 	mech_flags = EXOSUIT_MODULE_GREYSCALE
 	ammotype = /obj/item/explosive/grenade
 	max_integrity = 350
-	projectiles = 10
+	projectiles = 8
 	projectiles_cache = 40
 	projectiles_cache_max = 40
-	projectile_delay = 1.5 SECONDS
+	projectile_delay = 3 SECONDS
 	missile_speed = 1.5
-	equip_cooldown = 2 SECONDS
-	slowdown = 0.4
+	equip_cooldown = 3 SECONDS
+	slowdown = 0.7
 	ammo_type = MECHA_AMMO_GRENADE
 	hud_icons = list("grenade_he", "grenade_empty")
 	fire_mode = GUN_FIREMODE_SEMIAUTO
@@ -432,7 +433,7 @@
 /obj/item/mecha_parts/mecha_equipment/laser_sword
 	name = "\improper Moonlight particle cutter"
 	icon = 'icons/mecha/mecha_equipment_64x32.dmi'
-	desc = "A specialized mech laser blade made out of compressed energy with unimaginable power. Its compact size allows fast, short-ranged attacks. When activated, overloads the leg actuators to dash forward, before cutting with a superheated plasma beam. Melee core increases area cut and distance dashed. Heavy, but it is the top-of-the-line melee weapon of TGMC's fine line of mecha close-range offensive capability."
+	desc = "A specialized mech laser blade made out of compressed energy with unimaginable power. Its compact size allows fast, short-ranged attacks. When activated, overloads the leg actuators to dash forward, before cutting with a superheated plasma beam. Melee core increases area cut and distance dashed. It is a top-of-the-line melee weapon of TGMC's fine line of mecha close-range offensive capability."
 	icon_state = "moonlight"
 	mech_flags = EXOSUIT_MODULE_GREYSCALE
 	max_integrity = 400
@@ -513,3 +514,29 @@
 			slashed.attackby(src, source, list2params(modifiers))
 	source.a_intent = old_intent
 
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser_spear
+	name = "\improper Sunbeam particle piercer"
+	desc = "A spear made of compressed energy for the TGMC Combat Mech. A melee weapon for strong defense at short-to-medium range. Extends a spear of superheated plasma upon activation, piericing everything in its path. A melee core will increase both its range and power. It is a top-of-the-line melee weapon of TGMC's fine line of mecha close-range offensive capability."
+	icon = 'icons/mecha/mecha_equipment_64x32.dmi'
+	icon_state = "lance"
+	fire_sound = 'sound/mecha/weapons/laser_sword.ogg'
+	windup_sound = 'sound/weapons/guns/fire/tank_minigun_start.OGG'
+	mech_flags = EXOSUIT_MODULE_GREYSCALE
+	ammotype = /datum/ammo/energy/lasgun/marine/mech/lance_strike
+	max_integrity = 400
+	slowdown = 0.15
+	windup_delay = 0.6 SECONDS
+	harmful = TRUE
+	projectile_delay = 3 SECONDS
+	energy_drain = 100
+	variance = 0
+	range = MECHA_MELEE|MECHA_RANGED
+	muzzle_iconstate = null
+	muzzle_flash_color = COLOR_PULSE_BLUE
+	fire_mode = GUN_FIREMODE_SEMIAUTO
+
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser_spear/action_checks(mob/source, atom/target, list/modifiers)
+	. = ..()
+	if(!.)
+		return FALSE
+	ammotype = HAS_TRAIT(chassis, TRAIT_MELEE_CORE) ? /datum/ammo/energy/lasgun/marine/mech/lance_strike/super : /datum/ammo/energy/lasgun/marine/mech/lance_strike

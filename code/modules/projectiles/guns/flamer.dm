@@ -509,6 +509,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	firelevel -= 20 //Water level extinguish
 	updateicon()
 	if(firelevel < 1) //Extinguish if our firelevel is less than 1
+		playsound(S, 'sound/effects/smoke_extinguish.ogg', 20)
 		qdel(src)
 
 /obj/flamer_fire/proc/updateicon()
@@ -558,32 +559,6 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		A.flamer_fire_act(burnlevel)
 
 	firelevel -= 2 //reduce the intensity by 2 per tick
-
-// override this proc to give different idling-on-fire effects
-/mob/living/flamer_fire_act(burnlevel)
-	if(!burnlevel)
-		return
-	if(status_flags & (INCORPOREAL|GODMODE)) //Ignore incorporeal/invul targets
-		return
-	if(hard_armor.getRating(FIRE) >= 100)
-		to_chat(src, span_warning("Your suit protects you from the flames."))
-		return
-
-	take_overall_damage(rand(10, burnlevel), BURN, FIRE, updating_health = TRUE)
-	to_chat(src, span_warning("You are burned!"))
-
-	if(flags_pass & PASSFIRE) //Pass fire allow to cross fire without being ignited
-		return
-
-	adjust_fire_stacks(burnlevel)
-	IgniteMob()
-
-/mob/living/carbon/xenomorph/flamer_fire_act(burnlevel)
-	if(xeno_caste.caste_flags & CASTE_FIRE_IMMUNE)
-		return
-	if(get_fire_resist() <= 0)
-		return
-	. = ..()
 
 /obj/item/weapon/gun/flamer/hydro_cannon
 	name = "underslung hydrocannon"

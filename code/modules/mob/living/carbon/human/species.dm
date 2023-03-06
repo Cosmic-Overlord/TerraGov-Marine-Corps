@@ -361,7 +361,7 @@
 /datum/species/human/vatgrown/handle_post_spawn(mob/living/carbon/human/H)
 	. = ..()
 	H.h_style = "Bald"
-	H.skills = getSkillsType(/datum/skills/vatgrown)
+	H.set_skills(getSkillsType(/datum/skills/vatgrown))
 
 /datum/species/human/vatgrown/early
 	name = "Early Vat-Grown Human"
@@ -374,7 +374,7 @@
 
 /datum/species/human/vatgrown/early/handle_post_spawn(mob/living/carbon/human/H)
 	. = ..()
-	H.skills = getSkillsType(/datum/skills/vatgrown/early)
+	H.set_skills(getSkillsType(/datum/skills/vatgrown/early))
 	timerid = addtimer(CALLBACK(src, .proc/handle_age, H), 15 MINUTES, TIMER_STOPPABLE)
 
 /datum/species/human/vatgrown/early/post_species_loss(mob/living/carbon/human/H)
@@ -387,8 +387,6 @@
 /datum/species/human/vatgrown/early/proc/handle_age(mob/living/carbon/human/H)
 	H.set_species("Vat-Grown Human")
 
-
-GLOBAL_VAR_INIT(join_as_robot_allowed, TRUE)
 
 /datum/species/robot
 	name = "Combat Robot"

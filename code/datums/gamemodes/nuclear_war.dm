@@ -1,7 +1,7 @@
 /datum/game_mode/infestation/distress/nuclear_war
 	name = "Nuclear War"
 	config_tag = "Nuclear War"
-	silo_scaling = 1.80
+	silo_scaling = 2.50
 
 /datum/game_mode/infestation/distress/nuclear_war/post_setup()
 	. = ..()
@@ -18,7 +18,7 @@
 	if(world.time < (SSticker.round_start_time + 5 SECONDS))
 		return FALSE
 
-	var/living_player_list[] = count_humans_and_xenos(count_flags = COUNT_IGNORE_ALIVE_SSD|COUNT_IGNORE_XENO_SPECIAL_AREA)
+	var/list/living_player_list = count_humans_and_xenos(count_flags = COUNT_IGNORE_ALIVE_SSD|COUNT_IGNORE_XENO_SPECIAL_AREA)
 	var/num_humans = living_player_list[1]
 	var/num_xenos = living_player_list[2]
 	var/num_humans_ship = living_player_list[3]
@@ -68,4 +68,7 @@
 	return
 
 /datum/game_mode/infestation/distress/nuclear_war/get_siloless_collapse_countdown()
+	return
+
+/datum/game_mode/infestation/distress/nuclear_war/update_silo_death_timer(datum/hive_status/silo_owner)
 	return

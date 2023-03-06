@@ -41,6 +41,10 @@
 	if(!hive.can_spawn_as_hugger(user))
 		return FALSE
 
+	var/choice_hugger = show_radial_menu(user, src, GLOB.hugger_images_list, radius = 48) //fancy menu
+	if(!choice_hugger)
+		return FALSE
+
 	if(!sentient_huggers)
 		to_chat(user, span_warning("The carrier did not allow possession."))
 		return FALSE
@@ -49,7 +53,19 @@
 		to_chat(user, span_warning("The carrier doesn't have available huggers."))
 		return FALSE
 
-	var/mob/living/carbon/xenomorph/facehugger/new_hugger = new /mob/living/carbon/xenomorph/facehugger(get_turf(src))
+	var/mob/living/carbon/xenomorph/facehugger/new_hugger
+	switch(choice_hugger)
+		if(LARVAL_HUGGER)
+			new_hugger = new /mob/living/carbon/xenomorph/facehugger(get_turf(src))
+		if(CLAWED_HUGGER)
+			new_hugger = new /mob/living/carbon/xenomorph/facehugger/clawed(get_turf(src))
+		if(NEURO_HUGGER)
+			new_hugger = new /mob/living/carbon/xenomorph/facehugger/neuro(get_turf(src))
+		if(ACID_HUGGER)
+			new_hugger = new /mob/living/carbon/xenomorph/facehugger/acid(get_turf(src))
+		if(RESIN_HUGGER)
+			new_hugger = new /mob/living/carbon/xenomorph/facehugger/resin(get_turf(src))
+
 	huggers--
 	new_hugger.transfer_mob(user)
 	log_admin("[user.key] took control of [new_hugger.name] from a [name] at [AREACOORD(src)].")

@@ -158,9 +158,15 @@
 	var/datum/hive_status/hive = GLOB.hive_datums[hivenumber]
 	if(!hive.can_spawn_as_hugger(user))
 		return FALSE
+
+	var/choice_hugger = show_radial_menu(user, src, GLOB.hugger_images_list, radius = 48) //fancy menu
+	if(!choice_hugger)
+		return FALSE
+
 	if(maturity_stage != stage_ready_to_burst)
 		to_chat(user, span_warning("The egg is not ready."))
 		return FALSE
+
 	if(!hugger_type)
 		to_chat(user, span_warning("The egg is empty."))
 		return FALSE
@@ -171,7 +177,19 @@
 	playsound(loc, "sound/effects/alien_egg_move.ogg", 25)
 	flick("egg opening", src)
 
-	var/mob/living/carbon/xenomorph/facehugger/new_hugger = new /mob/living/carbon/xenomorph/facehugger(loc)
+	var/mob/living/carbon/xenomorph/facehugger/new_hugger
+	switch(choice_hugger)
+		if(LARVAL_HUGGER)
+			new_hugger = new /mob/living/carbon/xenomorph/facehugger(loc)
+		if(CLAWED_HUGGER)
+			new_hugger = new /mob/living/carbon/xenomorph/facehugger/clawed(loc)
+		if(NEURO_HUGGER)
+			new_hugger = new /mob/living/carbon/xenomorph/facehugger/neuro(loc)
+		if(ACID_HUGGER)
+			new_hugger = new /mob/living/carbon/xenomorph/facehugger/acid(loc)
+		if(RESIN_HUGGER)
+			new_hugger = new /mob/living/carbon/xenomorph/facehugger/resin(loc)
+
 	hugger_type = null
 	addtimer(CALLBACK(new_hugger, /mob/living.proc/transfer_mob, user), 1 SECONDS)
 	log_admin("[user.key] took control of [new_hugger.name] from an egg at [AREACOORD(src)].")

@@ -331,9 +331,6 @@
 		to_chat(user, span_warning("You died too recently to be able to take a new facehugger."))
 		return FALSE
 
-	if(alert("Are you sure you want to be a Facehugger?", "Become a part of the Horde", "Yes", "No") != "Yes")
-		return FALSE
-
 	if(length_char(facehuggers) >= MAX_FACEHUGGERS)
 		to_chat(user, span_warning("The Hive cannot support more facehuggers! Limit: <b>[length_char(facehuggers)]/[MAX_FACEHUGGERS]</b>."))
 		return FALSE
@@ -594,7 +591,7 @@
 	var/datum/xeno_caste/caste = X?.xeno_caste
 	if(caste.death_evolution_delay <= 0)
 		return
-	if(!caste_death_timers[caste.caste_type_path]) 
+	if(!caste_death_timers[caste.caste_type_path])
 		caste_death_timers[caste.caste_type_path] = addtimer(CALLBACK(src, .proc/end_caste_death_timer, caste), caste.death_evolution_delay , TIMER_STOPPABLE)
 
 /datum/hive_status/proc/on_xeno_revive(mob/living/carbon/xenomorph/X)

@@ -172,7 +172,7 @@
 
 	check_shield(M)
 
-	M.attack_alien_harm(owner, 15)
+	M.attack_alien_harm(owner, 10)
 	if(!jump_hit_mob)
 		jump_hit_mob = TRUE
 		jump_charges -= 1
@@ -223,8 +223,8 @@
 
 	if(victim.can_sting())
 		victim.adjustStaminaLoss(50)
-		victim.adjust_stagger(5, capped = 5)
-		victim.add_slowdown(10, 10)
+		victim.adjust_stagger(3, capped = 6)
+		victim.add_slowdown(5, 10)
 
 		victim.reagents.add_reagent(/datum/reagent/toxin/xeno_neurotoxin, 8, no_overdose = TRUE)
 
@@ -251,6 +251,7 @@
 /datum/action/xeno_action/activable/pounce_hugger/acid/mob_hit(datum/source, mob/living/M)
 	if(M.stat || isxeno(M))
 		return
+
 	pounce_complete()
 
 /datum/action/xeno_action/activable/pounce_hugger/acid/pounce_complete()
@@ -264,8 +265,8 @@
 		if(!locate(/obj/effect/xenomorph/spray) in acid_tile.contents)
 			new /obj/effect/xenomorph/spray(acid_tile, 6 SECONDS, 16)
 
-	var/datum/effect_system/smoke_spread/xeno/toxic/smoke = new(get_turf(owner)) //Spawn toxic smoke
-	smoke.set_up(2, owner.loc, 4 SECONDS)
+	var/datum/effect_system/smoke_spread/xeno/acid/light/smoke = new(get_turf(owner)) //Spawn acid smoke
+	smoke.set_up(1, owner.loc)
 	smoke.start()
 
 	owner.death(TRUE)
@@ -279,6 +280,7 @@
 	name = "Suicide: Resin"
 	action_icon_state = "pounce"
 	desc = "Jump and explode with a cloud of resin when landing."
+	windup_time = 0.5 SECONDS
 
 /datum/action/xeno_action/activable/pounce_hugger/resin/mob_hit(datum/source, mob/living/M)
 	if(M.stat || isxeno(M))
@@ -294,14 +296,14 @@
 
 	for(var/turf/sticky_tile AS in RANGE_TURFS(1, owner.loc))
 		if(!locate(/obj/effect/xenomorph/spray) in sticky_tile.contents)
-			new /obj/alien/resin/sticky(sticky_tile)
+			new /obj/alien/resin/sticky/thin(sticky_tile)
 
-	var/armor_block
-	for(var/mob/living/target in range(2, owner.loc))
+	for(var/mob/living/target in range(1, owner.loc))
 		if(isxeno(target)) //Xenos aren't affected by sticky resin
 			continue
 
 		target.adjust_stagger(3)
 		target.add_slowdown(15)
-		target.adjustStaminaLoss(25)
+		target.adjustStaminaLoss(50)
+
 	owner.death(TRUE)

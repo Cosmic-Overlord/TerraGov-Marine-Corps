@@ -22,6 +22,12 @@
 	. = ..()
 	AddComponent(/datum/component/ai_controller, /datum/ai_behavior/xeno)
 
+/mob/living/carbon/xenomorph/facehugger/ai
+
+/mob/living/carbon/xenomorph/facehugger/ai/Initialize()
+	. = ..()
+	AddComponent(/datum/component/ai_controller, /datum/ai_behavior/xeno)
+
 /mob/living/carbon/xenomorph/hivelord/ai
 
 /mob/living/carbon/xenomorph/hivelord/ai/Initialize()

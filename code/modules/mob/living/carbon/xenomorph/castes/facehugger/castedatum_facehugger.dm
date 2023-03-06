@@ -55,7 +55,6 @@
 
 
 /datum/xeno_caste/facehugger/clawed
-	caste_name = "Clawed Facehugger"
 	upgrade_name = "Clawed"
 	caste_desc = "Covered with thorns, it grew a sharp claw on the tip of his tail"
 	upgrade = XENO_UPGRADE_ONE
@@ -81,7 +80,6 @@
 
 
 /datum/xeno_caste/facehugger/neuro
-	caste_name = "Neuro Facehugger"
 	upgrade_name = "Neuro"
 	caste_desc = "Unhealthy color, it has a single protruding sharp proboscis."
 	upgrade = XENO_UPGRADE_TWO
@@ -95,13 +93,15 @@
 	)
 
 /datum/xeno_caste/facehugger/acid
-	caste_name = "Acid Facehugger"
 	upgrade_name = "Acid"
 	caste_desc = "A barely visible toxic smoke emanates from greenish boils visible all over the body."
 	upgrade = XENO_UPGRADE_THREE
 
 	// *** Melee Attacks *** //
 	melee_damage = 7.5
+
+	// *** Flags *** //
+	caste_flags = CASTE_NOT_IN_BIOSCAN|CASTE_DO_NOT_ANNOUNCE_DEATH|CASTE_DO_NOT_ALERT_LOW_LIFE|CASTE_ACID_BLOOD
 
 	// *** Defense *** //
 	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0)
@@ -114,7 +114,6 @@
 	)
 
 /datum/xeno_caste/facehugger/resin
-	caste_name = "Resin Facehugger"
 	upgrade_name = "Resin"
 	caste_desc = "Abandoning speed, it covered himself with a layer of rubber armor."
 	upgrade = XENO_UPGRADE_FOUR

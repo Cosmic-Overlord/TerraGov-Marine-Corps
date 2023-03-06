@@ -32,6 +32,15 @@
 // ***************************************
 /mob/living/carbon/xenomorph/facehugger/Initialize(mapload)
 	. = ..()
+	switch(xeno_caste.upgrade_name)
+		if("Clawed")
+			color = COLOR_RED
+		if("Neuro")
+			color = COLOR_DARK_ORANGE
+		if("Acid")
+			color = COLOR_GREEN
+		if("Resin")
+			color = COLOR_STRONG_VIOLET
 	GLOB.hive_datums[hivenumber].facehuggers += src
 
 /mob/living/carbon/xenomorph/facehugger/handle_living_health_updates()

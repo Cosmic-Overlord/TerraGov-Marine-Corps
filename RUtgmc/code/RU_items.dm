@@ -846,6 +846,7 @@ SUBSYSTEM_DEF(ru_items)
 		/obj/item/weapon/gun/revolver/t500,
 		/obj/item/ammo_magazine/revolver/t500,
 		/obj/item/ammo_magazine/packet/t500,
+		/obj/item/weapon/gun/revolver/t312,
 	)
 
 /obj/item/storage/box/t500case

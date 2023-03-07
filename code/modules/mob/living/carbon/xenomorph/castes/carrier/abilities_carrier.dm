@@ -1,9 +1,3 @@
-#define LARVAL_HUGGER "larval hugger"
-#define CLAWED_HUGGER "clawed hugger"
-#define NEURO_HUGGER "neuro hugger"
-#define ACID_HUGGER "acid hugger"
-#define RESIN_HUGGER "resin hugger"
-
 //List of huggie types
 GLOBAL_LIST_INIT(hugger_type_list, list(
 		/obj/item/clothing/mask/facehugger/larval,

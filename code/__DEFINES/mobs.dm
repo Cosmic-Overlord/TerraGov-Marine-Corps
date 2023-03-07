@@ -740,6 +740,13 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 #define PANTHER_EVASION_LOW_PLASMADRAIN 1.5
 #define PANTHER_TEARING_TAIL_REAGENT_AMOUNT 10
 
+//Playable Facehugger defines
+#define FACEHUGGER_HUG_RANGE 1 // range for hug
+#define FACEHUGGER_POST_JUMP_STUN_VICTIM 1 SECONDS //For how long will we stun the victim
+#define FACEHUGGER_POST_JUMP_STUN_OWNER 1 SECONDS //For how long will we freeze upon hitting our target
+#define FACEHUGGER_CHAIN_JUMP_CHARGES 3
+#define FACEHUGGER_NEURO_AMOUNT_INJECT 8
+
 //misc
 
 #define STANDARD_SLOWDOWN_REGEN 0.3

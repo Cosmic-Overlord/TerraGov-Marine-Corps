@@ -94,8 +94,10 @@
 	if(!selected)
 		return
 
-	var/target = spawn_point[selected]
+	var/atom/target = spawn_point[selected]
 	dead_owner.abstract_move(get_turf(target))
+	target.attack_ghost(dead_owner)
+
 
 
 /datum/action/observer_action/take_ssd_mob

@@ -39,12 +39,20 @@
 #define PANTHER_OZELOMELYN "Ozelomelyn"
 #define PANTHER_SANGUINAL "Sanguinal"
 
+//Xeno trap type defines
 #define TRAP_HUGGER "hugger"
 #define TRAP_SMOKE_NEURO "neurotoxin gas"
 #define TRAP_SMOKE_ACID "acid gas"
 #define TRAP_ACID_WEAK "weak acid"
 #define TRAP_ACID_NORMAL "acid"
 #define TRAP_ACID_STRONG "strong acid"
+
+//Xeno facehuggers type defines
+#define LARVAL_HUGGER "larval hugger"
+#define CLAWED_HUGGER "clawed hugger"
+#define NEURO_HUGGER "neuro hugger"
+#define ACID_HUGGER "acid hugger"
+#define RESIN_HUGGER "resin hugger"
 
 //List of weed types
 GLOBAL_LIST_INIT(weed_type_list, typecacheof(list(
@@ -124,6 +132,14 @@ GLOBAL_LIST_INIT(resin_images_list, list(
 		RESIN_DOOR = image('icons/mob/actions.dmi', icon_state = RESIN_DOOR),
 		ALIEN_NEST = image('icons/mob/actions.dmi', icon_state = ALIEN_NEST)
 		))
+
+GLOBAL_LIST_INIT(playable_hugger_type_list, list(
+	LARVAL_HUGGER = /mob/living/carbon/xenomorph/facehugger,
+	CLAWED_HUGGER = /mob/living/carbon/xenomorph/facehugger/clawed,
+	NEURO_HUGGER = /mob/living/carbon/xenomorph/facehugger/neuro,
+	ACID_HUGGER  = /mob/living/carbon/xenomorph/facehugger/acid,
+	RESIN_HUGGER = /mob/living/carbon/xenomorph/facehugger/resin,
+))
 
 //xeno upgrade flags
 ///Message the hive when we buy this upgrade

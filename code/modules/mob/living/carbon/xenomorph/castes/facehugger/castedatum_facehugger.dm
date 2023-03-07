@@ -16,13 +16,10 @@
 	// *** Speed *** //
 	speed = -1.6
 
-	// *** Plasma *** //
-	plasma_max = 100
-	plasma_gain = 5
-
 	// *** Health *** //
 	max_health = 50
 	crit_health = -25
+	regen_ramp_amount = 0.01
 
 	// *** Flags *** //
 	caste_flags = CASTE_NOT_IN_BIOSCAN|CASTE_DO_NOT_ANNOUNCE_DEATH|CASTE_DO_NOT_ALERT_LOW_LIFE

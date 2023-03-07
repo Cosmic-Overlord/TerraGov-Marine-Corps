@@ -46,11 +46,10 @@
 		return FALSE
 
 	var/datum/hive_status/hive = GLOB.hive_datums[hivenumber]
-	if(!hive.can_spawn_as_hugger(user))
-		return FALSE
+	var/mob/living/carbon/xenomorph/facehugger/new_hugger
+	new_hugger = hive.can_spawn_as_hugger(user)
 
-	var/choice_hugger = show_radial_menu(user, src, GLOB.hugger_images_list, radius = 48) //fancy menu
-	if(!choice_hugger)
+	if(!new_hugger)
 		return FALSE
 
 	if(!sentient_huggers)
@@ -61,19 +60,7 @@
 		to_chat(user, span_warning("The carrier doesn't have available huggers."))
 		return FALSE
 
-	var/mob/living/carbon/xenomorph/facehugger/new_hugger
-	switch(choice_hugger)
-		if(LARVAL_HUGGER)
-			new_hugger = new /mob/living/carbon/xenomorph/facehugger(get_turf(src))
-		if(CLAWED_HUGGER)
-			new_hugger = new /mob/living/carbon/xenomorph/facehugger/clawed(get_turf(src))
-		if(NEURO_HUGGER)
-			new_hugger = new /mob/living/carbon/xenomorph/facehugger/neuro(get_turf(src))
-		if(ACID_HUGGER)
-			new_hugger = new /mob/living/carbon/xenomorph/facehugger/acid(get_turf(src))
-		if(RESIN_HUGGER)
-			new_hugger = new /mob/living/carbon/xenomorph/facehugger/resin(get_turf(src))
-
+	new_hugger = new new_hugger(get_turf(src))
 	huggers--
 	new_hugger.transfer_mob(user)
 	log_admin("[user.key] took control of [new_hugger.name] from a [name] at [AREACOORD(src)].")
@@ -84,6 +71,10 @@
 	. = ..()
 
 	if(alert("Do you want to climb on the carrier?", "Climb on the carrier", "Yes", "No") != "Yes")
+		return
+
+	if(F.health < F.maxHealth)
+		F.balloon_alert(F, span_xenowarning("We're too injured"))
 		return
 
 	if(huggers >= xeno_caste.huggers_max)

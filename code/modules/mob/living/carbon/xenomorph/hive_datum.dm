@@ -339,7 +339,11 @@
 		to_chat(user, span_warning("The Hive cannot support more facehuggers! Limit: <b>[length_char(facehuggers)]/[MAX_FACEHUGGERS]</b>."))
 		return FALSE
 
-	return TRUE
+	var/choice_hugger = show_radial_menu(user, user, GLOB.hugger_images_list, radius = 48) //fancy menu
+	if(!choice_hugger)
+		return FALSE
+
+	return GLOB.playable_hugger_type_list[choice_hugger]
 
 // ***************************************
 // *********** List getters

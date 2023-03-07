@@ -7,19 +7,12 @@
 	desc = "Leap at your target and knock them down, if you jump close you will hug the target."
 	ability_name = "pounce"
 	cooldown_timer = 5 SECONDS
-	plasma_cost = 25
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_POUNCE,
 	)
 	use_state_flags = XACT_USE_BUCKLED
 	///How far can we leap.
 	var/range = 6
-	///Range for Hug
-	var/hug_range = 1
-	///For how long will we stun the victim
-	var/victim_paralyze_time = 1 SECONDS
-	///For how long will we freeze upon hitting our target
-	var/freeze_on_hit_time = 1 SECONDS
 	///How long is the windup before leap
 	var/windup_time = 1 SECONDS
 	///Where do we start the leap from
@@ -52,14 +45,11 @@
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(get_dist(start_point, H) <= hug_range) //Check whether we hugged the target or just knocked it down
+		if(get_dist(start_point, H) <= FACEHUGGER_HUG_RANGE) //Check whether we hugged the target or just knocked it down
 			caster.try_attach(H)
 		else
-			if(victim_paralyze_time)
-				H.Paralyze(victim_paralyze_time)
-
-			if(freeze_on_hit_time)
-				caster.Immobilize(freeze_on_hit_time)
+			H.Paralyze(FACEHUGGER_POST_JUMP_STUN_VICTIM)
+			caster.Immobilize(FACEHUGGER_POST_JUMP_STUN_OWNER)
 
 	pounce_complete()
 
@@ -117,7 +107,7 @@
 /datum/action/xeno_action/activable/pounce_hugger/ai_should_use(atom/target)
 	if(!ishuman(target))
 		return FALSE
-	if(!line_of_sight(owner, target, hug_range))
+	if(!line_of_sight(owner, target, FACEHUGGER_HUG_RANGE))
 		return FALSE
 	if(!can_use_action(override_flags = XACT_IGNORE_SELECTED_ABILITY))
 		return FALSE
@@ -143,7 +133,6 @@
 	desc = "Jump through your enemies, up to three times in a row, dealing increased damage."
 	cooldown_timer = 0 SECONDS
 	windup_time = 0 SECONDS
-	plasma_cost = 5
 	//How many uses remain, and the regeneration of those uses.
 	var/jump_charges = 0
 	var/time_to_charge
@@ -152,17 +141,18 @@
 /datum/action/xeno_action/activable/pounce_hugger/clawed/can_use_ability(atom/A, silent, override_flags)
 	. = ..()
 	var/mob/living/carbon/xenomorph/caster = owner
-	if(caster.usedPounce)
+	if(caster.usedPounce) //preventing jump mid-air
 		caster.balloon_alert(caster, "We're in a jump")
 		return FALSE
 	if(jump_charges < 1)
-		caster.balloon_alert(caster, "No charge left")
+		caster.balloon_alert(caster, "No charges left")
 		return FALSE
 
 /datum/action/xeno_action/activable/pounce_hugger/clawed/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/caster = owner
 	caster.usedPounce = TRUE
-	jump_hit_mob = FALSE
+	jump_charges -= 1
+	time_to_charge = addtimer(CALLBACK(src, .proc/increase_stacks), 5 SECONDS, TIMER_UNIQUE)
 	return ..()
 
 
@@ -171,13 +161,8 @@
 		return
 
 	check_shield(M)
-
 	M.attack_alien_harm(owner, 10)
-	if(!jump_hit_mob)
-		jump_hit_mob = TRUE
-		jump_charges -= 1
-		time_to_charge = addtimer(CALLBACK(src, .proc/increase_stacks), 5 SECONDS, TIMER_UNIQUE)
-		succeed_activate(15)
+
 	return COMPONENT_KEEP_THROWING
 
 /datum/action/xeno_action/activable/pounce_hugger/clawed/pounce_complete()
@@ -188,7 +173,7 @@
 /datum/action/xeno_action/activable/pounce_hugger/clawed/proc/increase_stacks()
 	jump_charges += 1
 	//if we aren't full, loop until we are.
-	if(jump_charges < 3)
+	if(jump_charges < FACEHUGGER_CHAIN_JUMP_CHARGES)
 		time_to_charge = addtimer(CALLBACK(src, .proc/increase_stacks), 5 SECONDS, TIMER_UNIQUE)
 
 /datum/action/xeno_action/activable/pounce_hugger/clawed/give_action(mob/living/L)
@@ -204,8 +189,8 @@
 	name = "Neurotoxin Jump"
 	action_icon_state = "pounce"
 	desc = "Pounce on the target and poison them with neurotox."
-	plasma_cost = 20
 	range = 4
+	cooldown_timer = 3 SECONDS
 	windup_time = 0 SECONDS
 
 /datum/action/xeno_action/activable/pounce_hugger/neuro/mob_hit(datum/source, mob/living/M)
@@ -226,12 +211,12 @@
 		victim.adjust_stagger(3, capped = 6)
 		victim.add_slowdown(5, 10)
 
-		victim.reagents.add_reagent(/datum/reagent/toxin/xeno_neurotoxin, 8, no_overdose = TRUE)
+		victim.reagents.add_reagent(/datum/reagent/toxin/xeno_neurotoxin, FACEHUGGER_NEURO_AMOUNT_INJECT, no_overdose = TRUE)
 
 		playsound(M, 'sound/effects/spray3.ogg', 25, 1)
 		victim.visible_message(span_danger("[caster] penetrates [victim] with its sharp probscius!"),span_danger("[caster] penetrates you with a sharp probscius!"))
 	else
-		victim.Paralyze(victim_paralyze_time)
+		victim.Paralyze(FACEHUGGER_POST_JUMP_STUN_VICTIM)
 		caster.visible_message(span_danger("[caster] smashed into [victim]!"),
 					span_xenodanger("We smashed into [victim]!"), null, 5)
 

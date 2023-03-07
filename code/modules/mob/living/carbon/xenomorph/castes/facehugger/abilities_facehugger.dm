@@ -153,6 +153,7 @@
 	caster.usedPounce = TRUE
 	jump_charges -= 1
 	time_to_charge = addtimer(CALLBACK(src, .proc/increase_stacks), 5 SECONDS, TIMER_UNIQUE)
+	update_button_icon()
 	return ..()
 
 
@@ -172,6 +173,7 @@
 
 /datum/action/xeno_action/activable/pounce_hugger/clawed/proc/increase_stacks()
 	jump_charges += 1
+	update_button_icon()
 	//if we aren't full, loop until we are.
 	if(jump_charges < FACEHUGGER_CHAIN_JUMP_CHARGES)
 		time_to_charge = addtimer(CALLBACK(src, .proc/increase_stacks), 5 SECONDS, TIMER_UNIQUE)
@@ -179,6 +181,10 @@
 /datum/action/xeno_action/activable/pounce_hugger/clawed/give_action(mob/living/L)
 	. = ..()
 	time_to_charge = addtimer(CALLBACK(src, .proc/increase_stacks), 5 SECONDS, TIMER_UNIQUE)
+
+/datum/action/xeno_action/activable/pounce_hugger/clawed/update_button_icon()
+	action_icon_state = "clawed_pounce_[jump_charges]"
+	return ..()
 
 
 // ***************************************

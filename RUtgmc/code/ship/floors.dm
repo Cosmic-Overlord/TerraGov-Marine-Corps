@@ -74,7 +74,8 @@
 	icon = 'RUtgmc/icons/turf/floors.dmi'
 
 /turf/open/floor/plating/plating_catwalk/alt/white
-	icon_state = "grate_light"
+	icon_state = "plating_catwalk_light"
+	catwalk_icon = "catwalk_light"
 
 //STAIRS
 /turf/open/floor/stairs/alt

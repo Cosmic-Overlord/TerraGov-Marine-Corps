@@ -41,6 +41,7 @@
 	name = "catwalk"
 	desc = "Cats really don't like these things."
 	var/covered = TRUE
+	var/catwalk_icon = "catwalk"
 	shoefootstep = FOOTSTEP_CATWALK
 	barefootstep = FOOTSTEP_CATWALK
 	mediumxenofootstep = FOOTSTEP_CATWALK
@@ -53,7 +54,7 @@
 
 
 /turf/open/floor/plating/plating_catwalk/proc/update_turf_overlay()
-	var/image/I = image(icon, src, "catwalk", CATWALK_LAYER)
+	var/image/I = image(icon, src, catwalk_icon, CATWALK_LAYER)
 	I.plane = FLOOR_PLANE
 	if(covered)
 		overlays += I

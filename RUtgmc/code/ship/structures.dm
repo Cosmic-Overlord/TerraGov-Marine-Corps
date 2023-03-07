@@ -117,7 +117,28 @@
 /obj/machinery/body_scanconsole/alt
 	icon = 'RUtgmc/icons/objects/Cryogenics2.dmi'
 
-/obj/structure/closet/secure_closet/marine/standard/alpha
-	name = "alpha equipment locker"
-	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ALPHA)
-	closet_squad = "alpha"
+/obj/machinery/bioprinter/alt
+	icon = 'RUtgmc/icons/objects/surgery.dmi'
+
+/obj/machinery/bioprinter/alt/stocked
+	stored_metal = 1000
+	stored_matter = 1000
+
+/obj/item/storage/surgical_tray/alt
+	icon = 'RUtgmc/icons/objects/surgery.dmi'
+
+/obj/structure/sink/bathroom/Initialize()
+	. = ..()
+	switch(dir)
+		if(WEST)
+			pixel_x = 11
+		if(NORTH)
+			pixel_y = -9
+		if(EAST)
+			pixel_x = -11
+		if(SOUTH)
+			pixel_y = 25
+
+/obj/effect/landmark/start/job/leader/alpha
+
+

@@ -984,15 +984,18 @@
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_HIDE,
 	)
+	action_type = ACTION_TOGGLE
 
 /datum/action/xeno_action/xenohide/action_activate()
 	var/mob/living/carbon/xenomorph/X = owner
 	if(X.layer != XENO_HIDING_LAYER)
 		X.layer = XENO_HIDING_LAYER
 		to_chat(X, span_notice("We are now hiding."))
+		set_toggle(TRUE)
 	else
 		X.layer = MOB_LAYER
 		to_chat(X, span_notice("We have stopped hiding."))
+		set_toggle(FALSE)
 
 
 //Neurotox Sting

@@ -843,7 +843,6 @@
 		/obj/item/attachable/foldable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
-		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonetknife,
 		/obj/item/attachable/scope,
@@ -1289,6 +1288,8 @@
 	cock_delay = 0.7 SECONDS
 	movement_acc_penalty_mult = 6
 
+/obj/item/weapon/gun/rifle/chambered/unscoped
+	starting_attachment_types = list(/obj/item/attachable/stock/tl127stock)
 
 //-------------------------------------------------------
 //SR-81 Auto-Sniper
@@ -1968,11 +1969,11 @@
 	max_shells = 200
 	force = 35
 	wield_delay = 1.5 SECONDS
-	fire_sound =  'sound/weapons/guns/fire/GPMG.ogg'
-	fire_rattle =  'sound/weapons/guns/fire/GPMG_low.ogg'
+	fire_sound =  'sound/weapons/guns/fire/v41.ogg'
 	dry_fire_sound = 'sound/weapons/guns/fire/m41a_empty.ogg'
 	unload_sound = 'sound/weapons/guns/interact/T42_unload.ogg'
-	reload_sound = 'sound/weapons/guns/interact/T42_reload.ogg'
+	reload_sound = 'sound/weapons/guns/interact/v41_reload.ogg'
+	cocked_sound = 'sound/weapons/guns/interact/v41_cocked.ogg'
 	default_ammo_type = /obj/item/ammo_magazine/som_mg
 	allowed_ammo_types = list(/obj/item/ammo_magazine/som_mg)
 	attachable_allowed = list(

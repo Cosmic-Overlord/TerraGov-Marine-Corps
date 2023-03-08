@@ -131,7 +131,7 @@
 /datum/action/xeno_action/activable/off_guard
 	name = "Off-guard"
 	action_icon_state = "off_guard"
-	desc = "Muddles the mind of an enemy, making it harder to aim and move for a while."
+	desc = "Muddles the mind of an enemy, making it harder for them to aim and move for a while."
 	ability_name = "off guard"
 	plasma_cost = 100
 	cooldown_timer = 20 SECONDS

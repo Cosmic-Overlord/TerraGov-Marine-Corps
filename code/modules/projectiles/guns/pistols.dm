@@ -84,6 +84,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/lace,
@@ -247,6 +248,7 @@
 	)
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	fire_delay = 0.15 SECONDS
+	damage_mult = 1.3
 
 //-------------------------------------------------------
 //P-22. Blocc

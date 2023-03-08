@@ -214,6 +214,12 @@
 	description = ""
 	keybind_signal = COMSIG_XENOABILITY_BOMBARD
 
+/datum/keybinding/xeno/dumpacid
+	name = "dump_acid"
+	full_name = "Boiler: Dump Acid"
+	description = ""
+	keybind_signal = COMSIG_XENOABILITY_DUMP_ACID
+
 /datum/keybinding/xeno/throw_hugger
 	name = "throw_hugger"
 	full_name = "Carrier: Throw Hugger"
@@ -475,6 +481,12 @@
 	description = ""
 	keybind_signal = COMSIG_XENOABILITY_PSYCHIC_FLING
 
+/datum/keybinding/xeno/psychic_grab
+	name = "psychic_grab"
+	full_name = "Shrike: Psychic Grab"
+	description = ""
+	keybind_signal = COMSIG_XENOABILITY_PSYCHIC_GRAB
+
 /datum/keybinding/xeno/unrelenting_force
 	name = "unrelenting_force"
 	full_name = "Shrike: Unrelenting Force"
@@ -492,13 +504,6 @@
 	full_name = "Shrike: Psychic Cure"
 	description = ""
 	keybind_signal = COMSIG_XENOABILITY_PSYCHIC_CURE
-
-
-/datum/keybinding/xeno/gravity_grenade
-	name = "gravnade"
-	full_name = "Shrike: Gravity Grenade"
-	description = ""
-	keybind_signal = COMSIG_XENOABILITY_GRAV_NADE
 
 /datum/keybinding/xeno/screech
 	name = "screech"

@@ -42,7 +42,7 @@
 
 #define isbrain(A) (istype(A, /mob/living/brain))
 
-#define isnestedhost(A) ((CHECK_BITFIELD(A.status_flags, XENO_HOST) && CHECK_BITFIELD(A.restrained_flags, RESTRAINED_XENO_NEST)))
+#define isnestedhost(A) ((CHECK_BITFIELD(A.restrained_flags, RESTRAINED_XENO_NEST)))
 
 //Carbon mobs
 #define iscarbon(A) (istype(A, /mob/living/carbon))
@@ -112,6 +112,7 @@
 #define isxenowarlock(A) (istype(A, /mob/living/carbon/xenomorph/warlock))
 #define isxenopanther(A) (istype(A, /mob/living/carbon/xenomorph/panther))
 #define isxenofacehugger(A) (istype(A, /mob/living/carbon/xenomorph/facehugger))
+#define isxenoking(A) (istype(A, /mob/living/carbon/xenomorph/king))
 
 //Silicon mobs
 #define issilicon(A) (istype(A, /mob/living/silicon))

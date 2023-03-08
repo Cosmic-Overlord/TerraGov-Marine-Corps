@@ -16,6 +16,9 @@ SUBSYSTEM_DEF(ru_items)
 		/obj/item/storage/belt/gun/revolver/t500 = -1,
 		/obj/item/storage/box/t500case = 5,
 		/obj/item/ammo_magazine/som_mg = 20,
+		/obj/item/mortar_kit/knee = 2,
+		/obj/item/mortal_shell/knee = 40,
+		/obj/item/storage/belt/mortar_belt = -1,
 	)
 
 	var/list/items_val = list(
@@ -738,6 +741,12 @@ SUBSYSTEM_DEF(ru_items)
 	w_class = WEIGHT_CLASS_SMALL
 	used_casings = 5
 
+/obj/item/ammo_magazine/packet/t500/attack_hand_alternate(mob/living/user)
+	if(current_rounds <= 0)
+		to_chat(user, span_notice("[src] is empty. There is nothing to grab."))
+		return
+	create_handful(user)
+
 /obj/item/ammo_magazine/packet/t500/qk
 	name = "packet of .500 'Queen Killer'"
 	icon_state = "boxt500_qk"
@@ -898,7 +907,7 @@ SUBSYSTEM_DEF(ru_items)
 	item_icons = list(
 		slot_head_str = 'icons/mob/Banzai.dmi')
 	icon_state = "Banzai"
-	soft_armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 	w_class = WEIGHT_CLASS_SMALL
 
 	var/list/armor_overlays
@@ -1002,6 +1011,7 @@ SUBSYSTEM_DEF(ru_items)
 	throw_speed = 2
 	throw_range = 8
 
+
 /obj/effect/vendor_bundle/gorka_engineer
 	gear_to_spawn = list(
 		/obj/item/clothing/under/marine/ru/gorka_eng,
@@ -1015,3 +1025,87 @@ SUBSYSTEM_DEF(ru_items)
 		/obj/item/clothing/shoes/marine/full,
 		/obj/item/storage/box/MRE,
 	)
+
+// Knee mortar
+/obj/item/mortar_kit/knee
+	name = "\improper TA-10 knee mortar"
+	desc = "A manual, crew-operated mortar system intended to rain down 50mm shells on anything it's aimed at, typically best known as a 'Knee' mortar. Cannot be actually fired from your kneecaps, so it needs to be set down first to fire. Has a light payload, but an extremely high rate of fire."
+	icon = 'RUtgmc/icons/item/kneemortar.dmi'
+	icon_state = "knee_mortar"
+	max_integrity = 250
+	w_class = WEIGHT_CLASS_NORMAL
+	deployable_item = /obj/machinery/deployable/mortar/knee
+
+/obj/machinery/deployable/mortar/knee
+	offset_per_turfs = 12
+	fire_sound = 'sound/weapons/guns/fire/kneemortar_fire.ogg'
+	fall_sound = 'sound/weapons/guns/misc/kneemortar_whistle.ogg'
+	minimum_range = 5
+	allowed_shells = list(
+		/obj/item/mortal_shell/knee,
+		/obj/item/mortal_shell/flare,
+	)
+
+	cool_off_time = 4 SECONDS
+	reload_time = 0.5 SECONDS
+	fire_delay = 0.5 SECONDS
+	max_spread = 6
+
+
+/obj/item/mortal_shell/knee
+	name = "\improper 50mm high explosive mortar shell"
+	desc = "An 50mm mortar shell, loaded with a high explosive charge."
+	icon = 'RUtgmc/icons/item/kneemortar.dmi'
+	icon_state = "knee_mortar_he"
+	w_class = WEIGHT_CLASS_TINY
+	ammo_type = /datum/ammo/mortar/knee
+
+/datum/ammo/mortar/knee
+	name = "50mm shell"
+	icon_state = "howi"
+	shell_speed = 0.75
+
+/datum/ammo/mortar/knee/drop_nade(turf/T)
+	explosion(T, 0, 1, 4, 2)
+
+
+/obj/item/storage/belt/mortar_belt
+	name = "TA-10 mortar belt"
+	desc = "A belt that holds a TA-10 50mm Mortar, rangefinder and a lot of ammo for it."
+	icon = 'RUtgmc/icons/item/kneemortar.dmi'
+	icon_state = "kneemortar_holster"
+	item_state = "m4a3_holster"
+	use_sound = null
+	w_class = WEIGHT_CLASS_BULKY
+	storage_type_limits = list(
+		/obj/item/mortar_kit/knee = 1,
+		/obj/item/binoculars = 1,
+		/obj/item/compass = 1,
+	)
+	storage_slots = 24
+	max_storage_space = 49
+	max_w_class = 3
+
+	can_hold = list(
+		/obj/item/mortar_kit/knee,
+		/obj/item/mortal_shell/knee,
+		/obj/item/compass,
+		/obj/item/binoculars,
+	)
+
+/obj/item/storage/belt/mortar_belt/full/Initialize()
+	. = ..()
+	new /obj/item/mortar_kit/knee(src)
+	new /obj/item/binoculars/tactical/range(src)
+
+
+/datum/supply_packs/explosives/knee_mortar
+	name = "T-10K Knee Mortar"
+	contains = list(/obj/item/mortar_kit/knee)
+	cost = 125
+
+/datum/supply_packs/explosives/knee_mortar_ammo
+	name = "TA-10K knee mortar HE shell"
+	contains = list(/obj/item/mortal_shell/knee, /obj/item/mortal_shell/knee)
+	cost = 5
+	available_against_xeno_only = TRUE

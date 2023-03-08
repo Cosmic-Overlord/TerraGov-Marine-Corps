@@ -214,7 +214,7 @@
 	description = ""
 	keybind_signal = COMSIG_XENOABILITY_BOMBARD
 
-	/datum/keybinding/xeno/bombard
+/datum/keybinding/xeno/dumpacid
 	name = "dump_acid"
 	full_name = "Boiler: Dump Acid"
 	description = ""

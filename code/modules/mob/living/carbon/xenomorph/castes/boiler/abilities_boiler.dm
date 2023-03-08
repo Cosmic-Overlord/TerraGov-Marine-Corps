@@ -323,11 +323,12 @@ GLOBAL_LIST_INIT(boiler_glob_image_list, list(
 /datum/action/xeno_action/dump_acid
 	name = "Dump Acid"
 	action_icon_state = "dump_acid"
-	desc = "You dump your acid to escape."
+	desc = "You dump your acid to escape, creating clouds of deadly acid mist behind you, while becoming faster for a short period of time."
 	ability_name = "dump acid"
-	plasma_cost = 200
-	cooldown_timer = 200 SECONDS
+	plasma_cost = 150
+	cooldown_timer = 230 SECONDS
 	keybind_flags = XACT_KEYBIND_USE_ABILITY|XACT_IGNORE_SELECTED_ABILITY
+	use_state_flags = XACT_USE_STAGGERED
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_DUMP_ACID,
 	)
@@ -351,14 +352,18 @@ GLOBAL_LIST_INIT(boiler_glob_image_list, list(
 	SSblackbox.record_feedback("tally", "round_statistics", 1, "boiler_dump_acid")
 
 	X.visible_message(span_xenodanger("[X] emits an acid!"),
-	span_xenodanger("We emit acid!"))
+	span_xenohighdanger("You dump your acid, disabling your offensive abilities to escape!"))
 	dispense_gas()
+
+	var/datum/action/xeno_action/activable/spray_acid = X.actions_by_path[/datum/action/xeno_action/activable/spray_acid/line/boiler]
+	if(spray_acid)
+		spray_acid.add_cooldown()
 
 /datum/action/xeno_action/dump_acid/fail_activate()
 	toggle_particles(FALSE)
 	return ..()
 
-/datum/action/xeno_action/dump_acid/proc/dispense_gas(count = 3)
+/datum/action/xeno_action/dump_acid/proc/dispense_gas(count = 6)
 	var/mob/living/carbon/xenomorph/boiler/X = owner
 	set waitfor = FALSE
 	var/smoke_range = 1
@@ -368,12 +373,8 @@ GLOBAL_LIST_INIT(boiler_glob_image_list, list(
 	while(count)
 		//здесь контролируется ускорение
 		owner.add_movespeed_modifier(type, TRUE, 0, NONE, TRUE, -1.5)
-		if(X.stagger) //If we got staggered, return
-			to_chat(X, span_xenowarning("We try to emit acid but are staggered!"))
-			toggle_particles(FALSE)
-			return
 		if(X.IsStun() || X.IsParalyzed())
-			to_chat(X, span_xenowarning("We try to emit acid but are disabled!"))
+			to_chat(X, span_xenohighdanger("We try to emit acid but are disabled!"))
 			toggle_particles(FALSE)
 			return
 		var/turf/T = get_turf(X)
@@ -383,7 +384,7 @@ GLOBAL_LIST_INIT(boiler_glob_image_list, list(
 		else //last emission is larger
 			gas.set_up(CEILING(smoke_range*1.3,1), T)
 		gas.start()
-		T.visible_message(span_danger("Noxious smoke billows from the hulking xenomorph!"))
+		T.visible_message(span_danger("Acidic mist emits from the hulking xenomorph!"))
 		count = max(0,count - 1)
 		sleep(BOILER_GAS_DELAY)
 

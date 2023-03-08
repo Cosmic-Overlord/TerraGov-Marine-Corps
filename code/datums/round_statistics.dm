@@ -35,11 +35,13 @@ GLOBAL_DATUM_INIT(round_statistics, /datum/round_statistics, new)
 	var/trap_holes = 0
 	var/boiler_acid_smokes = 0
 	var/boiler_neuro_smokes = 0
+	var/boiler_dump_acid = 0
 	var/crusher_stomps = 0
 	var/crusher_stomp_victims = 0
 	var/praetorian_acid_sprays = 0
 	var/praetorian_spray_direct_hits = 0
 	var/psychic_flings = 0
+	var/psychic_grab = 0
 	var/psychic_cures = 0
 	var/warrior_flings = 0
 	var/warrior_punches = 0

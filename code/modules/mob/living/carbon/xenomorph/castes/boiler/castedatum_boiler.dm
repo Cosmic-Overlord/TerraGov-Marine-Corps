@@ -35,7 +35,7 @@
 
 	// *** Flags *** //
 	caste_flags = CASTE_ACID_BLOOD
-	can_flags =CASTE_CAN_BE_QUEEN_HEALED|CASTE_CAN_BE_GIVEN_PLASMA|CASTE_CAN_BE_LEADER|CASTE_CAN_HOLD_FACEHUGGERS
+	can_flags =CASTE_CAN_BE_QUEEN_HEALED|CASTE_CAN_BE_GIVEN_PLASMA|CASTE_CAN_BE_LEADER|CASTE_CAN_HOLD_FACEHUGGERS|CASTE_CAN_HOLD_JELLY
 
 	// *** Defense *** //
 	soft_armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 0, BIO = 30, FIRE = 40, ACID = 30)
@@ -69,6 +69,7 @@
 		/datum/action/xeno_action/toggle_long_range,
 		/datum/action/xeno_action/toggle_bomb,
 		/datum/action/xeno_action/activable/spray_acid/line/boiler,
+		/datum/action/xeno_action/dump_acid,
 	)
 
 	water_slowdown = -0.5
@@ -230,4 +231,5 @@
 		/datum/action/xeno_action/toggle_long_range,
 		/datum/action/xeno_action/toggle_bomb,
 		/datum/action/xeno_action/activable/spray_acid/line/boiler,
+		/datum/action/xeno_action/dump_acid,
 	)

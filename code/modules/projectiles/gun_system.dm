@@ -678,8 +678,9 @@
 	if(modifiers["shift"])
 		return
 
-	if(modifiers["right"])
+	if(modifiers["right"] || modifiers["middle"])
 		modifiers -= "right"
+		modifiers -= "middle"
 		params = list2params(modifiers)
 		active_attachable?.start_fire(source, object, location, control, params, bypass_checks)
 		return
@@ -1218,7 +1219,8 @@
 			to_chat(user, span_notice("[new_mag] is empty!"))
 			return FALSE
 		var/flags_magazine_features = get_flags_magazine_features(new_mag)
-		if(flags_magazine_features && CHECK_BITFIELD(flags_magazine_features, MAGAZINE_WORN) && user && user.get_active_held_item() == new_mag)
+		if(flags_magazine_features && CHECK_BITFIELD(flags_magazine_features, MAGAZINE_WORN) && ((loc != user) || (new_mag.loc != user)))
+			to_chat(user, span_warning("You need to be carrying both [src] and [new_mag] to connect them!"))
 			return FALSE
 		if(get_magazine_reload_delay(new_mag) > 0 && user && !force)
 			to_chat(user, span_notice("You begin reloading [src] with [new_mag]."))

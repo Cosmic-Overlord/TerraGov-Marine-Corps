@@ -990,9 +990,11 @@
 	if(X.layer != XENO_HIDING_LAYER)
 		X.layer = XENO_HIDING_LAYER
 		to_chat(X, span_notice("We are now hiding."))
+		button.add_overlay(mutable_appearance('icons/mob/actions.dmi', "selecterd_purple_frame", ACTION_LAYER_ACTION_ICON_STATE, FLOAT_PLANE))
 	else
 		X.layer = MOB_LAYER
 		to_chat(X, span_notice("We have stopped hiding."))
+		button.cut_overlay(mutable_appearance('icons/mob/actions.dmi', "selecterd_purple_frame", ACTION_LAYER_ACTION_ICON_STATE, FLOAT_PLANE))
 
 
 //Neurotox Sting
@@ -1043,11 +1045,14 @@
 	succeed_activate()
 
 	add_cooldown()
+	X.recurring_injection(A, sting_chemical, XENO_NEURO_CHANNEL_TIME, XENO_NEURO_AMOUNT_RECURRING)
 
+	track_stats()
+
+///Adds ability tally to the end-round statistics.
+/datum/action/xeno_action/activable/neurotox_sting/proc/track_stats()
 	GLOB.round_statistics.sentinel_neurotoxin_stings++
 	SSblackbox.record_feedback("tally", "round_statistics", 1, "sentinel_neurotoxin_stings")
-
-	X.recurring_injection(A, sting_chemical, XENO_NEURO_CHANNEL_TIME, XENO_NEURO_AMOUNT_RECURRING)
 
 //Ozelomelyn Sting
 /datum/action/xeno_action/activable/neurotox_sting/ozelomelyn
@@ -1062,6 +1067,10 @@
 	plasma_cost = 100
 	sting_chemical = /datum/reagent/toxin/xeno_ozelomelyn
 
+///Adds ability tally to the end-round statistics.
+/datum/action/xeno_action/activable/neurotox_sting/ozelomelyn/track_stats()
+	GLOB.round_statistics.ozelomelyn_stings++
+	SSblackbox.record_feedback("tally", "round_statistics", 1, "ozelomelyn_stings")
 
 // ***************************************
 // *********** Psychic Whisper

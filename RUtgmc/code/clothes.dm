@@ -10,13 +10,31 @@
 	adjustment_variants = list()
 
 /obj/item/clothing/under/marine/ru/black
-	name = "Mercenary uniform"
-	desc = "Some tasteless uniform using by security specialized mercs. Usually stocks of this uniform refills by dead mercs on colonies attacked by xenomorphs."
-	icon_state = "merc"
-	item_state = "merc"
+	name = "Alpha squad turtleneck"
+	desc = "Tacticool looking, squad issued uniform. This one belong to Alpha, smells like hospital."
+	icon_state = "alpha_merc"
+	item_state = "alpha_merc"
 	adjustment_variants = list(
 		"Down" = "_d",
 	)
+
+/obj/item/clothing/under/marine/ru/black/bravo
+	name = "Bravo squad turtleneck"
+	desc = "Tacticool looking, squad issued uniform. This one belong to Bravo, smells like welder fuel."
+	icon_state = "bravo_merc"
+	item_state = "bravo_merc"
+
+/obj/item/clothing/under/marine/ru/black/delta
+	name = "Delta squad turtleneck"
+	desc = "Tacticool looking, squad issued uniform. This one belong to Bravo, smells like gunpowder."
+	icon_state = "delta_merc"
+	item_state = "delta_merc"
+
+/obj/item/clothing/under/marine/ru/black/charlie
+	name = "Charlie squad turtleneck"
+	desc = "Tacticool looking, squad issued uniform. This one belong to Bravo, smells like perfume."
+	icon_state = "charlie_merc"
+	item_state = "charlie_merc"
 
 /obj/item/clothing/under/marine/ru/slav
 	name = "Old slavic uniform"
@@ -61,12 +79,6 @@
 	desc = "Usual combat boots. There is nothing unusual about them. Nothing."
 	icon_state = "headskin"
 	item_state = "headskin"
-
-/obj/item/clothing/shoes/marine/ru/amogus
-	name = "Sport AMGS boots"
-	desc = "Sus."
-	icon_state = "amogus"
-	item_state = "amogus"
 
 /obj/item/clothing/shoes/marine/coolcowboy
 	name = "Marine cowboy combat boots"
@@ -189,3 +201,31 @@
 	)
 	flags_armor_protection = CHEST
 	soft_armor = list(MELEE = 20, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+
+//////////////////
+///////HATS///////
+//////////////////
+
+/obj/item/clothing/head/tgmcberet/squad/black
+	name = "\improper Alpha squad black beret"
+	icon_state = "alpha_black_beret"
+	desc = "Black stylish beret with TGMC marine squad insignia. This one belongs to the Charlie Squad."
+	icon = 'RUtgmc/icons/item/clothes.dmi'
+	item_icons = list(
+		slot_head_str = 'RUtgmc/icons/mob/clothes.dmi')
+
+/obj/item/clothing/head/tgmcberet/squad/black/bravo
+	name = "\improper Bravo squad black beret"
+	icon_state = "bravo_black_beret"
+	desc = "Black stylish beret with TGMC marine squad insignia. This one belongs to the Bravo Squad."
+
+/obj/item/clothing/head/tgmcberet/squad/black/delta
+	name = "\improper Delta squad black beret"
+	icon_state = "delta_black_beret"
+	desc = "Black stylish beret with TGMC marine squad insignia. This one belongs to the Delta Squad."
+
+/obj/item/clothing/head/tgmcberet/squad/black/charlie
+	name = "\improper Charlie squad black beret"
+	icon_state = "charlie_black_beret"
+	desc = "Black stylish beret with TGMC marine squad insignia. This one belongs to the Charlie Squad."
+

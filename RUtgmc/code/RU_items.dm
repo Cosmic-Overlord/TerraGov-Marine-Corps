@@ -38,9 +38,16 @@ SUBSYSTEM_DEF(ru_items)
 	)
 
 	var/list/clothes = list(
+		/obj/item/clothing/head/tgmcberet/squad/black = -1,
+		/obj/item/clothing/head/tgmcberet/squad/black/bravo = -1,
+		/obj/item/clothing/head/tgmcberet/squad/black/delta = -1,
+		/obj/item/clothing/head/tgmcberet/squad/black/charlie = -1,
+		/obj/item/clothing/under/marine/ru/black = -1,
+		/obj/item/clothing/under/marine/ru/black/bravo = -1,
+		/obj/item/clothing/under/marine/ru/black/delta = -1,
+		/obj/item/clothing/under/marine/ru/black/charlie = -1,
 		/obj/item/clothing/glasses/ru/orange = 1,
 		/obj/item/storage/backpack/marine/scav = -1,
-		/obj/item/clothing/under/marine/ru/black = -1,
 		/obj/item/clothing/under/marine/ru/slav = -1,
 		/obj/item/clothing/under/marine/ru/camo = -1,
 		/obj/item/clothing/shoes/marine/ru/headskin = -1,
@@ -994,3 +1001,17 @@ SUBSYSTEM_DEF(ru_items)
 	throwforce = 50
 	throw_speed = 2
 	throw_range = 8
+
+/obj/effect/vendor_bundle/gorka_engineer
+	gear_to_spawn = list(
+		/obj/item/clothing/under/marine/ru/gorka_eng,
+		/obj/item/clothing/shoes/marine/full,
+		/obj/item/storage/box/MRE,
+	)
+
+/obj/effect/vendor_bundle/gorka_medic
+	gear_to_spawn = list(
+		/obj/item/clothing/under/marine/ru/gorka_med,
+		/obj/item/clothing/shoes/marine/full,
+		/obj/item/storage/box/MRE,
+	)

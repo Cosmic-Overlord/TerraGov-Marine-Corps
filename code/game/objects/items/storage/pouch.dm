@@ -422,6 +422,7 @@
 		/obj/item/stack/medical,
 		/obj/item/storage/pill_bottle/packet,
 		/obj/item/reagent_containers/hypospray,
+		/obj/item/tweezers,
 	)
 
 /obj/item/storage/pouch/medkit/firstaid
@@ -753,7 +754,7 @@
 	new /obj/item/tool/wrench (src)
 	new /obj/item/tool/crowbar (src)
 
-/obj/item/storage/pouch/shotgun //New shotgun shell pouch that is actually worth a shit and will be replacing light general in vendors
+/obj/item/storage/pouch/shotgun
 	name = "shotgun shell pouch"
 	desc = "A pouch specialized for holding shotgun ammo."
 	icon_state = "shotshells"

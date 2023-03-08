@@ -42,6 +42,22 @@ SUBSYSTEM_DEF(ru_items)
 		/obj/item/clothing/suit/storage/marine/robot/advanced/fire = -1,
 	)
 
+	var/list/clothes = list(
+		/obj/item/clothing/head/tgmcberet/squad/black = -1,
+		/obj/item/clothing/head/tgmcberet/squad/black/bravo = -1,
+		/obj/item/clothing/head/tgmcberet/squad/black/delta = -1,
+		/obj/item/clothing/head/tgmcberet/squad/black/charlie = -1,
+		/obj/item/clothing/under/marine/ru/black = -1,
+		/obj/item/clothing/under/marine/ru/black/bravo = -1,
+		/obj/item/clothing/under/marine/ru/black/delta = -1,
+		/obj/item/clothing/under/marine/ru/black/charlie = -1,
+		/obj/item/clothing/glasses/ru/orange = 1,
+		/obj/item/storage/backpack/marine/scav = -1,
+		/obj/item/clothing/under/marine/ru/slav = -1,
+		/obj/item/clothing/under/marine/ru/camo = -1,
+		/obj/item/clothing/shoes/marine/ru/headskin = -1,
+		/obj/item/clothing/shoes/marine/coolcowboy = -1,
+	)
 
 // Override init of vendors
 /obj/machinery/vending/Initialize(mapload, ...)
@@ -58,6 +74,8 @@ SUBSYSTEM_DEF(ru_items)
 /obj/machinery/vending/weapon/valhalla/build_ru_items()
 	products["Imports"] = SSru_items.items_val
 
+/obj/machinery/vending/uniform_supply/build_ru_items()
+	products["Imports"] = SSru_items.clothes
 
 //List all custom items here
 
@@ -996,6 +1014,21 @@ SUBSYSTEM_DEF(ru_items)
 	throw_speed = 2
 	throw_range = 8
 
+
+/obj/effect/vendor_bundle/gorka_engineer
+	gear_to_spawn = list(
+		/obj/item/clothing/under/marine/ru/gorka_eng,
+		/obj/item/clothing/shoes/marine/full,
+		/obj/item/storage/box/MRE,
+	)
+
+/obj/effect/vendor_bundle/gorka_medic
+	gear_to_spawn = list(
+		/obj/item/clothing/under/marine/ru/gorka_med,
+		/obj/item/clothing/shoes/marine/full,
+		/obj/item/storage/box/MRE,
+	)
+
 // Knee mortar
 /obj/item/mortar_kit/knee
 	name = "\improper TA-10 knee mortar"
@@ -1079,4 +1112,3 @@ SUBSYSTEM_DEF(ru_items)
 	contains = list(/obj/item/mortal_shell/knee, /obj/item/mortal_shell/knee)
 	cost = 5
 	available_against_xeno_only = TRUE
-

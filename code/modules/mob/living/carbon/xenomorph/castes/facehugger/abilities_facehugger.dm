@@ -101,11 +101,13 @@
 			caster.set_throwing(FALSE) //Reset throwing manually.
 			return COMPONENT_KEEP_THROWING
 
-
+//AI stuff
 /datum/action/xeno_action/activable/pounce_hugger/ai_should_start_consider()
 	return TRUE
 
 /datum/action/xeno_action/activable/pounce_hugger/ai_should_use(atom/target)
+	if(HAS_TRAIT(owner, TRAIT_HANDS_BLOCKED))
+		return FALSE
 	if(!ishuman(target))
 		return FALSE
 	if(!line_of_sight(owner, target, FACEHUGGER_HUG_RANGE))
@@ -188,6 +190,17 @@
 	action_icon_state = "clawed_pounce_[jump_charges]"
 	return ..()
 
+//AI stuff
+/datum/action/xeno_action/activable/pounce_hugger/clawed/ai_should_use(atom/target)
+	if(!iscarbon(target))
+		return FALSE
+	if(!line_of_sight(owner, target, 5))
+		return FALSE
+	if(!can_use_ability(target, override_flags = XACT_IGNORE_SELECTED_ABILITY))
+		return FALSE
+	if(target.get_xeno_hivenumber() == owner.get_xeno_hivenumber())
+		return FALSE
+	return TRUE
 
 // ***************************************
 // *********** Neuro Jump
@@ -231,6 +244,18 @@
 
 	pounce_complete()
 
+//AI stuff
+/datum/action/xeno_action/activable/pounce_hugger/neuro/ai_should_use(atom/target)
+	if(!iscarbon(target))
+		return FALSE
+	if(!line_of_sight(owner, target, 4))
+		return FALSE
+	if(!can_use_ability(target, override_flags = XACT_IGNORE_SELECTED_ABILITY))
+		return FALSE
+	if(target.get_xeno_hivenumber() == owner.get_xeno_hivenumber())
+		return FALSE
+	return TRUE
+
 
 // ***************************************
 // *********** Acid Jump
@@ -265,6 +290,20 @@
 
 	owner.death(TRUE)
 
+//AI stuff
+/datum/action/xeno_action/activable/pounce_hugger/acid/ai_should_use(atom/target)
+	if(!ishuman(target))
+		return FALSE
+	if(!line_of_sight(owner, target, 5))
+		return FALSE
+	if(!can_use_action(override_flags = XACT_IGNORE_SELECTED_ABILITY))
+		return FALSE
+	if(target.get_xeno_hivenumber() == owner.get_xeno_hivenumber())
+		return FALSE
+	action_activate()
+	LAZYINCREMENT(owner.do_actions, target)
+	addtimer(CALLBACK(src, .proc/decrease_do_action, target), windup_time)
+	return TRUE
 
 // ***************************************
 // *********** Resin Jump
@@ -301,3 +340,18 @@
 		target.adjustStaminaLoss(50)
 
 	owner.death(TRUE)
+
+//AI stuff
+/datum/action/xeno_action/activable/pounce_hugger/resin/ai_should_use(atom/target)
+	if(!ishuman(target))
+		return FALSE
+	if(!line_of_sight(owner, target, 5))
+		return FALSE
+	if(!can_use_action(override_flags = XACT_IGNORE_SELECTED_ABILITY))
+		return FALSE
+	if(target.get_xeno_hivenumber() == owner.get_xeno_hivenumber())
+		return FALSE
+	action_activate()
+	LAZYINCREMENT(owner.do_actions, target)
+	addtimer(CALLBACK(src, .proc/decrease_do_action, target), windup_time)
+	return TRUE

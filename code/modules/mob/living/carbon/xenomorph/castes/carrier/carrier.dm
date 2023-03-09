@@ -46,8 +46,14 @@
 		return FALSE
 
 	var/datum/hive_status/hive = GLOB.hive_datums[hivenumber]
-	var/mob/living/carbon/xenomorph/facehugger/new_hugger
-	new_hugger = hive.can_spawn_as_hugger(user)
+	if(!hive.can_spawn_as_hugger(user))
+		return FALSE
+
+	var/choice_hugger = show_radial_menu(user, user, GLOB.hugger_images_list, radius = 48) //fancy menu
+	if(!choice_hugger)
+		return FALSE
+
+	var/mob/living/carbon/xenomorph/facehugger/new_hugger = GLOB.playable_hugger_type_list[choice_hugger]
 
 	if(!new_hugger)
 		return FALSE

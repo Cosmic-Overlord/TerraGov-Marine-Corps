@@ -89,7 +89,7 @@
 	stage_ready_to_burst = 2
 	trigger_size = 2
 	///What type of hugger are produced here
-	var/hugger_type = /obj/item/clothing/mask/facehugger
+	var/hugger_type = /obj/item/clothing/mask/facehugger/larval
 
 /obj/alien/egg/hugger/Initialize(mapload, hivenumber)
 	. = ..()
@@ -163,11 +163,11 @@
 		to_chat(user, span_warning("The egg is empty."))
 		return FALSE
 
-	var/datum/hive_status/hive = GLOB.hive_datums[hivenumber]
-	var/mob/living/carbon/xenomorph/facehugger/new_hugger
-	new_hugger = hive.can_spawn_as_hugger(user)
+	if(tgui_alert(user, "Are you sure you want to be a Facehugger?", "Become a part of the Horde", list("Yes", "No"), 30 SECONDS) != "Yes")
+		return FALSE
 
-	if(!new_hugger)
+	var/datum/hive_status/hive = GLOB.hive_datums[hivenumber]
+	if(!hive.can_spawn_as_hugger(user))
 		return FALSE
 
 	if(maturity_stage != stage_ready_to_burst)
@@ -184,7 +184,7 @@
 	playsound(loc, "sound/effects/alien_egg_move.ogg", 25)
 	flick("egg opening", src)
 
-	new_hugger = new new_hugger(get_turf(src))
+	var/mob/living/carbon/xenomorph/facehugger/new_hugger = new(get_turf(src))
 	hugger_type = null
 	addtimer(CALLBACK(new_hugger, /mob/living.proc/transfer_mob, user), 1 SECONDS)
 	log_admin("[user.key] took control of [new_hugger.name] from an egg at [AREACOORD(src)].")

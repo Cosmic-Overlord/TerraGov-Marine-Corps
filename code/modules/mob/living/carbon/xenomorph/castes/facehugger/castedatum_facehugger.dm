@@ -16,6 +16,10 @@
 	// *** Speed *** //
 	speed = -1.6
 
+	// *** Plasma *** //
+	plasma_max = 100
+	plasma_gain = 5
+
 	// *** Health *** //
 	max_health = 50
 	crit_health = -25

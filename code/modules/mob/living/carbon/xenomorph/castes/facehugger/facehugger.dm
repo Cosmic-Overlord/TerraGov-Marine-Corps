@@ -7,6 +7,7 @@
 
 	health = 50
 	maxHealth = 50
+	plasma_stored = 100
 
 	pixel_x = -8
 	pixel_y = -3

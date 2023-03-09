@@ -7,6 +7,7 @@
 	desc = "Leap at your target and knock them down, if you jump close you will hug the target."
 	ability_name = "pounce"
 	cooldown_timer = 5 SECONDS
+	plasma_cost = 25
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_POUNCE,
 	)
@@ -132,6 +133,7 @@
 	action_icon_state = "pounce"
 	desc = "Jump through your enemies, up to three times in a row, dealing increased damage."
 	cooldown_timer = 0 SECONDS
+	plasma_cost = 20
 	windup_time = 0 SECONDS
 	//How many uses remain, and the regeneration of those uses.
 	var/jump_charges = 0
@@ -197,6 +199,7 @@
 	desc = "Pounce on the target and poison them with neurotox."
 	range = 4
 	cooldown_timer = 3 SECONDS
+	plasma_cost = 30
 	windup_time = 0 SECONDS
 
 /datum/action/xeno_action/activable/pounce_hugger/neuro/mob_hit(datum/source, mob/living/M)

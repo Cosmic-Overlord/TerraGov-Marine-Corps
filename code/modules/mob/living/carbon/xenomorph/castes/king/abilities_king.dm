@@ -128,7 +128,7 @@
 // *********** Off-Guard
 // ***************************************
 #define OFF_GUARD_RANGE 8
-#define OFF_GUARD_STAMINALOSS 140
+#define OFF_GUARD_STAMINALOSS 200
 #define OFF_GUARD_STAGGER_AMOUNT 5
 
 /datum/action/xeno_action/activable/off_guard

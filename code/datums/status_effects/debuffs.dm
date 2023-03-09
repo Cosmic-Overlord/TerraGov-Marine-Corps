@@ -342,6 +342,23 @@
 	owner.remove_movespeed_modifier(MOVESPEED_ID_HARVEST_TRAM_SLOWDOWN)
 	return ..()
 
+/datum/status_effect/incapacitating/offguard_slowdown
+	id = "offguard_slow"
+	tick_interval = 10 SECONDS
+	status_type = STATUS_EFFECT_REPLACE
+	var/off_guard_slowdown = 10
+
+/datum/status_effect/incapacitating/offguard_slowdown/on_apply()
+	. = ..()
+	if(!.)
+		return
+	owner.add_movespeed_modifier(MOVESPEED_ID_OFF_GUARD_SLOWDOWN, TRUE, 0, NONE, TRUE, off_guard_slowdown)
+
+/datum/status_effect/incapacitating/offguard_slowdown/on_remove()
+	owner.remove_movespeed_modifier(MOVESPEED_ID_OFF_GUARD_SLOWDOWN)
+	return ..()
+
+
 //MUTE
 /datum/status_effect/mute
 	id = "mute"

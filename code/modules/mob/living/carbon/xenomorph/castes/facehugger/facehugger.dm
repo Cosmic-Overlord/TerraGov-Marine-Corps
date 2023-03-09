@@ -33,12 +33,16 @@
 	. = ..()
 	switch(xeno_caste.upgrade_name)
 		if("Clawed")
+			a_intent = INTENT_HARM
 			color = COLOR_RED
 		if("Neuro")
+			a_intent = INTENT_HARM
 			color = COLOR_DARK_ORANGE
 		if("Acid")
+			a_intent = INTENT_HARM
 			color = COLOR_GREEN
 		if("Resin")
+			a_intent = INTENT_HARM
 			color = COLOR_STRONG_VIOLET
 	GLOB.hive_datums[hivenumber].facehuggers += src
 
@@ -67,6 +71,11 @@
 
 /mob/living/carbon/xenomorph/facehugger/pull_response(mob/puller)
 	return TRUE
+
+/mob/living/carbon/xenomorph/facehugger/a_intent_change(input as text)
+	if(xeno_caste.upgrade_name == "Larval")
+		return ..()
+	return
 
 /mob/living/carbon/xenomorph/facehugger/death_cry()
 	playsound(loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)

@@ -71,6 +71,9 @@
 // ***************************************
 // *********** Screech
 // ***************************************
+
+#define SCREECH_STAGGER_AMOUNT 8 SECONDS
+
 /datum/action/xeno_action/activable/screech
 	name = "Screech"
 	action_icon_state = "screech"
@@ -120,6 +123,7 @@
 		if(get_dist(L, X) > WORLD_VIEW_NUM)
 			continue
 		L.screech_act(X, WORLD_VIEW_NUM, L in nearby_living)
+		L.adjust_stagger(SCREECH_STAGGER_AMOUNT)
 
 /datum/action/xeno_action/activable/screech/ai_should_start_consider()
 	return TRUE
@@ -350,11 +354,11 @@
 	action_icon_state = "heal_xeno"
 	desc = "Apply a minor heal to the target."
 	cooldown_timer = 5 SECONDS
-	plasma_cost = 150
+	plasma_cost = 200
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_QUEEN_HEAL,
 	)
-	heal_range = HIVELORD_HEAL_RANGE
+	heal_range = QUEEN_HEAL_RANGE
 	target_flags = XABB_MOB_TARGET
 
 /datum/action/xeno_action/activable/psychic_cure/queen_give_heal/use_ability(atom/target)
@@ -379,7 +383,7 @@
 	var/remainder = max(0, amount - getBruteLoss())
 	adjustBruteLoss(-amount)
 	adjustFireLoss(-remainder, updating_health = TRUE)
-	adjust_sunder(-amount/10)
+	adjust_sunder(-amount/5)
 
 // ***************************************
 // *********** Queen plasma

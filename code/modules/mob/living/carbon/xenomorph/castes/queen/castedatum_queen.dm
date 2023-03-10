@@ -16,7 +16,7 @@
 	speed = 0
 
 	// *** Plasma *** //
-	plasma_max = 900
+	plasma_max = 1000
 	plasma_gain = 40
 
 	// *** Health *** //
@@ -91,7 +91,7 @@
 	speed = -0.1
 
 	// *** Plasma *** //
-	plasma_max = 1000
+	plasma_max = 1100
 	plasma_gain = 50
 
 	// *** Health *** //
@@ -124,7 +124,7 @@
 	speed = -0.2
 
 	// *** Plasma *** //
-	plasma_max = 1100
+	plasma_max = 1200
 	plasma_gain = 60
 
 	// *** Health *** //
@@ -157,7 +157,7 @@
 	speed = -0.3
 
 	// *** Plasma *** //
-	plasma_max = 1200
+	plasma_max = 1300
 	plasma_gain = 70
 
 	// *** Health *** //
@@ -190,7 +190,7 @@
 	speed = -0.3
 
 	// *** Plasma *** //
-	plasma_max = 1200
+	plasma_max = 1300
 	plasma_gain = 70
 
 	// *** Health *** //

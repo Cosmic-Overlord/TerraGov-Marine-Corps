@@ -15,14 +15,18 @@
 	allowed_ammo_types = list(/obj/item/ammo_magazine/revolver/t500/t312, /obj/item/ammo_magazine/revolver/t500/med/adrenaline, /obj/item/ammo_magazine/revolver/t500/med/rr, /obj/item/ammo_magazine/revolver/t500/med/md, /obj/item/ammo_magazine/revolver/t500/med/rye)
 	force = 20
 	actions_types = null
+	gun_skill_category = GUN_SKILL_DARTGUN
 	attachable_allowed = list(
 		/obj/item/attachable/lace/t500,
 	)
 	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 0, "rail_y" = 0, "under_x" = 19, "under_y" = 13, "stock_x" = -19, "stock_y" = 0)
+	opened_sound = 'sound/weapons/guns/interact/type71_unload.ogg'
 	fire_sound = 'sound/weapons/guns/fire/medt500.ogg'
 	dry_fire_sound = 'sound/mecha/mag_bullet_insert.ogg'
 	fire_animation = "t312_fire"
 	fire_delay = 0.2 SECONDS
+	muzzleflash_iconstate = "muzzle_flash_pulse"
+	muzzle_flash_color = COLOR_PULSE_BLUE
 	scatter = -7
 	scatter_unwielded = -5
 	damage_mult = 0.25
@@ -32,6 +36,7 @@
 	accuracy_mult_unwielded = 2
 	type_of_casings = null
 	akimbo_additional_delay = 0.6
+
 ////// White Express /////
 /////////////////////////
 /obj/item/ammo_magazine/revolver/t500/t312
@@ -55,12 +60,13 @@
 /datum/ammo/bullet/revolver/t500/t312
 	name = ".500 White Express revolver bullet"
 	handful_icon_state = "nigro_we"
+
 ///////// packets ////////
 /////////////////////////
-/obj/item/ammo_magazine/packet/t500/med/
+/obj/item/ammo_magazine/packet/t500/med
 	caliber = CALIBER_500_EMB
-	current_rounds = 50
-	max_rounds = 50
+	current_rounds = 35
+	max_rounds = 35
 	w_class = WEIGHT_CLASS_SMALL
 	used_casings = 1
 
@@ -83,11 +89,13 @@
 	name = "packet of .500 Ryetalyn EMB"
 	icon_state = "boxt500_rye"
 	default_ammo = /datum/ammo/bullet/revolver/t500/med/rye
+
 ///////// loaders ////////
 /////////////////////////
 /obj/item/ammo_magazine/revolver/t500/med
 	name = "R-312 EMB speed loader"
 	desc = "A R-500 'Albedo' revolver speed loader."
+	caliber = CALIBER_500_EMB
 
 /obj/item/ammo_magazine/revolver/t500/med/adrenaline
 	name = "R-312 Adrenaline EMB speed loader"
@@ -108,6 +116,7 @@
 	name = "R-312 Ryetalyn EMB speed loader"
 	icon_state = "t500_rye"
 	default_ammo = /datum/ammo/bullet/revolver/t500/med/rye
+
 ///////// bullets ////////
 /////////////////////////
 /datum/ammo/bullet/revolver/t500/med
@@ -163,6 +172,7 @@
 /datum/ammo/bullet/revolver/t500/med/rye/on_hit_mob(mob/M,obj/projectile/P)
 	if(ishuman(M))
 		M.reagents.add_reagent(/datum/reagent/medicine/ryetalyn, 5)
+
 ///////// storage ////////
 /////////////////////////
 /obj/item/storage/box/t312case
@@ -221,6 +231,7 @@
 		/obj/item/ammo_magazine/revolver/t500/med,
 		/obj/item/tweezers,
 	)
+
 ///////// cargo //////////
 /////////////////////////
 /datum/supply_packs/medical/t312case

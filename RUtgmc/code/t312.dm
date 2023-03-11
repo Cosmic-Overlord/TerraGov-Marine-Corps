@@ -12,7 +12,7 @@
 	caliber =  CALIBER_500_EMB
 	max_chamber_items = 5 //codex
 	default_ammo_type = /datum/ammo/bullet/revolver/t500/t312
-	allowed_ammo_types = list(/obj/item/ammo_magazine/revolver/t500/t312, /obj/item/ammo_magazine/revolver/t500/med/adrenaline, /obj/item/ammo_magazine/revolver/t500/med/rr, /obj/item/ammo_magazine/revolver/t500/med/md, /obj/item/ammo_magazine/revolver/t500/med/rye)
+	allowed_ammo_types = list(/obj/item/ammo_magazine/revolver/t500/t312, /obj/item/ammo_magazine/revolver/t500/med/syna, /obj/item/ammo_magazine/revolver/t500/med/rr, /obj/item/ammo_magazine/revolver/t500/med/md, /obj/item/ammo_magazine/revolver/t500/med/rye, /obj/item/ammo_magazine/revolver/t500/med/neu)
 	force = 20
 	actions_types = null
 	gun_skill_category = GUN_SKILL_DARTGUN
@@ -70,10 +70,11 @@
 	w_class = WEIGHT_CLASS_SMALL
 	used_casings = 1
 
-/obj/item/ammo_magazine/packet/t500/med/adrenaline
-	name = "packet of .500 Adrenaline EMB"
-	icon_state = "boxt500_adr"
-	default_ammo = /datum/ammo/bullet/revolver/t500/med/adrenaline
+/obj/item/ammo_magazine/packet/t500/med/syna
+	name = "packet of .500 Synaptizine EMB"
+	icon_state = "boxt500_syn"
+	max_rounds = 50
+	default_ammo = /datum/ammo/bullet/revolver/t500/med/syna
 
 /obj/item/ammo_magazine/packet/t500/med/rr
 	name = "packet of .500 Russian Red EMB"
@@ -90,6 +91,12 @@
 	icon_state = "boxt500_rye"
 	default_ammo = /datum/ammo/bullet/revolver/t500/med/rye
 
+/obj/item/ammo_magazine/packet/t500/med/neu
+	name = "packet of .500 Neuraline EMB"
+	icon_state = "boxt500_neu"
+	max_rounds = 15
+	default_ammo = /datum/ammo/bullet/revolver/t500/med/neu
+
 ///////// loaders ////////
 /////////////////////////
 /obj/item/ammo_magazine/revolver/t500/med
@@ -97,10 +104,10 @@
 	desc = "A R-500 'Albedo' revolver speed loader."
 	caliber = CALIBER_500_EMB
 
-/obj/item/ammo_magazine/revolver/t500/med/adrenaline
-	name = "R-312 Adrenaline EMB speed loader"
-	icon_state = "t500_adr"
-	default_ammo = /datum/ammo/bullet/revolver/t500/med/adrenaline
+/obj/item/ammo_magazine/revolver/t500/med/syna
+	name = "R-312 Synaptizine EMB speed loader"
+	icon_state = "t500_syn"
+	default_ammo = /datum/ammo/bullet/revolver/t500/med/syna
 
 /obj/item/ammo_magazine/revolver/t500/med/rr
 	name = "R-312 Russian Red EMB speed loader"
@@ -116,6 +123,11 @@
 	name = "R-312 Ryetalyn EMB speed loader"
 	icon_state = "t500_rye"
 	default_ammo = /datum/ammo/bullet/revolver/t500/med/rye
+
+/obj/item/ammo_magazine/revolver/t500/med/neu
+	name = "R-312 Neuraline EMB speed loader"
+	icon_state = "t500_neu"
+	default_ammo = /datum/ammo/bullet/revolver/t500/med/neu
 
 ///////// bullets ////////
 /////////////////////////
@@ -133,14 +145,14 @@
 /datum/ammo/bullet/revolver/t500/med/on_hit_mob(mob/M,obj/projectile/P)
 	staggerstun(M, P, stagger = 0, slowdown = 0, knockback = 0)
 
-/datum/ammo/bullet/revolver/t500/med/adrenaline
-	name = ".500 Adrenaline EMB"
-	handful_icon_state = "nigro_adr"
-	hud_state = "t312_adr"
+/datum/ammo/bullet/revolver/t500/med/syna
+	name = ".500 Synaptizin EMB"
+	handful_icon_state = "nigro_syn"
+	hud_state = "t312_syn"
 
-/datum/ammo/bullet/revolver/t500/med/adrenaline/on_hit_mob(mob/M,obj/projectile/P)
+/datum/ammo/bullet/revolver/t500/med/syna/on_hit_mob(mob/M,obj/projectile/P)
 	if(ishuman(M))
-		M.reagents.add_reagent(/datum/reagent/medicine/synaptizine/adrenaline, 2)
+		M.reagents.add_reagent(/datum/reagent/medicine/synaptizine, 2)
 		M.reagents.add_reagent(/datum/reagent/medicine/hyronalin, 3)
 		return
 
@@ -173,6 +185,16 @@
 	if(ishuman(M))
 		M.reagents.add_reagent(/datum/reagent/medicine/ryetalyn, 5)
 
+/datum/ammo/bullet/revolver/t500/med/neu
+	name = ".500 Neuraline EMB"
+	handful_icon_state = "nigro_neu"
+	hud_state = "t312_neu"
+
+/datum/ammo/bullet/revolver/t500/med/neu/on_hit_mob(mob/M,obj/projectile/P)
+	if(ishuman(M))
+		M.reagents.add_reagent(/datum/reagent/medicine/neuraline, 4)
+		M.reagents.add_reagent(/datum/reagent/medicine/hyronalin, 6)
+
 ///////// storage ////////
 /////////////////////////
 /obj/item/storage/box/t312case
@@ -185,14 +207,16 @@
 	storage_slots = 7
 	max_storage_space = 1
 	bypass_w_limit = list(
-		/obj/item/ammo_magazine/packet/t500/med/adrenaline,
+		/obj/item/ammo_magazine/packet/t500/med/syna,
 		/obj/item/ammo_magazine/packet/t500/med/rr,
 		/obj/item/ammo_magazine/packet/t500/med/md,
 		/obj/item/ammo_magazine/packet/t500/med/rye,
-		/obj/item/ammo_magazine/revolver/t500/med/adrenaline,
+		/obj/item/ammo_magazine/packet/t500/med/neu,
+		/obj/item/ammo_magazine/revolver/t500/med/syna,
 		/obj/item/ammo_magazine/revolver/t500/med/rr,
 		/obj/item/ammo_magazine/revolver/t500/med/md,
 		/obj/item/ammo_magazine/revolver/t500/med/rye,
+		/obj/item/ammo_magazine/revolver/t500/med/neu,
 		/obj/item/storage/pouch/medkit/t312,
 		/obj/item/attachable/lace/t500,
 		/obj/item/weapon/gun/revolver/t312,
@@ -200,11 +224,11 @@
 
 /obj/item/storage/box/t312case/Initialize()
 	. = ..()
-	new /obj/item/ammo_magazine/packet/t500/med/adrenaline(src)
+	new /obj/item/ammo_magazine/packet/t500/med/syna(src)
 	new /obj/item/ammo_magazine/packet/t500/med/rr(src)
 	new /obj/item/ammo_magazine/packet/t500/med/md(src)
 	new /obj/item/ammo_magazine/packet/t500/med/rye(src)
-	new /obj/item/ammo_magazine/revolver/t500/med/adrenaline(src)
+	new /obj/item/ammo_magazine/revolver/t500/med/syna(src)
 	new /obj/item/ammo_magazine/revolver/t500/med/rr(src)
 	new /obj/item/ammo_magazine/revolver/t500/med/md(src)
 	new /obj/item/ammo_magazine/revolver/t500/med/rye(src)
@@ -244,9 +268,9 @@
 	contains = list(/obj/item/attachable/lace/t500, /obj/item/weapon/gun/revolver/t312)
 	cost = 120
 
-/datum/supply_packs/medical/t312_adr
-	name = "R-312 packet of .500 Adrenaline EMB"
-	contains = list(/obj/item/ammo_magazine/packet/t500/med/adrenaline, /obj/item/ammo_magazine/revolver/t500/med/adrenaline)
+/datum/supply_packs/medical/t312_syn
+	name = "R-312 packet of .500 Synaptizin EMB"
+	contains = list(/obj/item/ammo_magazine/packet/t500/med/syna, /obj/item/ammo_magazine/revolver/t500/med/syna)
 	cost = 50
 
 /datum/supply_packs/medical/t312_rr
@@ -259,6 +283,11 @@
 	contains = list(/obj/item/ammo_magazine/packet/t500/med/md, /obj/item/ammo_magazine/revolver/t500/med/md)
 	cost = 90
 
+/datum/supply_packs/medical/t312_neu
+	name = "R-312 packet of .500 Neuraline EMB"
+	contains = list(/obj/item/ammo_magazine/packet/t500/med/neu, /obj/item/ammo_magazine/revolver/t500/med/neu)
+	cost = 90
+
 /datum/supply_packs/medical/t312_rye
 	name = "R-312 packet of .500 Ryetalyn EMB"
 	contains = list(/obj/item/ammo_magazine/packet/t500/med/rye, /obj/item/ammo_magazine/revolver/t500/med/rye)
@@ -269,8 +298,12 @@
 	contains = list(/obj/item/storage/pouch/medkit/t312)
 	cost = 10
 
-
-
+/obj/effect/vendor_bundle/neu_bullets
+	desc = "R-312 Neuraline EMB kit, has safe mixture of neuraline and hyronaline."
+	gear_to_spawn = list(
+		/obj/item/ammo_magazine/packet/t500/med/neu,
+		/obj/item/ammo_magazine/revolver/t500/med/neu,
+	)
 
 
 

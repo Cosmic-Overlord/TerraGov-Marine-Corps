@@ -26,7 +26,36 @@
 
 /mob/living/carbon/xenomorph/facehugger/ai/Initialize()
 	. = ..()
-	AddComponent(/datum/component/ai_controller, /datum/ai_behavior/xeno)
+	GLOB.hive_datums[hivenumber].facehuggers -= src
+	AddComponent(/datum/component/ai_controller, /datum/ai_behavior/xeno/facehugger)
+
+/mob/living/carbon/xenomorph/facehugger/clawed/ai
+
+/mob/living/carbon/xenomorph/facehugger/clawed/ai/Initialize()
+	. = ..()
+	GLOB.hive_datums[hivenumber].facehuggers -= src
+	AddComponent(/datum/component/ai_controller, /datum/ai_behavior/xeno/facehugger)
+
+/mob/living/carbon/xenomorph/facehugger/neuro/ai
+
+/mob/living/carbon/xenomorph/facehugger/neuro/ai/Initialize()
+	. = ..()
+	GLOB.hive_datums[hivenumber].facehuggers -= src
+	AddComponent(/datum/component/ai_controller, /datum/ai_behavior/xeno/facehugger)
+
+/mob/living/carbon/xenomorph/facehugger/acid/ai
+
+/mob/living/carbon/xenomorph/facehugger/acid/ai/Initialize()
+	. = ..()
+	GLOB.hive_datums[hivenumber].facehuggers -= src
+	AddComponent(/datum/component/ai_controller, /datum/ai_behavior/xeno/facehugger)
+
+/mob/living/carbon/xenomorph/facehugger/resin/ai
+
+/mob/living/carbon/xenomorph/facehugger/resin/ai/Initialize()
+	. = ..()
+	GLOB.hive_datums[hivenumber].facehuggers -= src
+	AddComponent(/datum/component/ai_controller, /datum/ai_behavior/xeno/facehugger)
 
 /mob/living/carbon/xenomorph/hivelord/ai
 

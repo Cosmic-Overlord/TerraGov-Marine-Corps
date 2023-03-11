@@ -167,7 +167,6 @@ GLOBAL_LIST_INIT(all_xeno_types, list(
 	/mob/living/carbon/xenomorph/scorpion,
 	/mob/living/carbon/xenomorph/spiderling,
 	/mob/living/carbon/xenomorph/facehugger,
-	/mob/living/carbon/xenomorph/facehugger/ai,
 	/mob/living/carbon/xenomorph/facehugger/clawed,
 	/mob/living/carbon/xenomorph/facehugger/neuro,
 	/mob/living/carbon/xenomorph/facehugger/acid,

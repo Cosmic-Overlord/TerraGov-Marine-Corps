@@ -97,3 +97,43 @@
 
 
 
+// ***************************************
+// *********** AI Section
+// ***************************************
+/datum/ai_behavior/xeno/facehugger
+	minimum_health = 0.1
+
+/datum/ai_behavior/xeno/facehugger/start_ai()
+	RegisterSignal(mob_parent, COMSIG_MOVABLE_POST_THROW, .proc/sidestep)
+	return ..()
+
+/datum/ai_behavior/xeno/facehugger/cleanup_signals()
+	. = ..()
+	UnregisterSignal(mob_parent, COMSIG_MOVABLE_POST_THROW)
+
+/datum/ai_behavior/xeno/facehugger/deal_with_obstacle(datum/source, direction)
+	var/turf/obstacle_turf = get_step(mob_parent, direction)
+	if(obstacle_turf.flags_atom & AI_BLOCKED)
+		return
+	for(var/thing in obstacle_turf.contents)
+		if(istype(thing, /obj/machinery/door/airlock))
+			var/obj/machinery/door/airlock/lock = thing
+			if(!lock.density) //Airlock is already open no need to force it open again
+				continue
+			if(lock.operating) //Airlock already doing something
+				continue
+			if(lock.welded || lock.locked) //It's welded or locked, can't force that open
+				continue
+			lock.attack_facehugger(mob_parent)
+			return COMSIG_OBSTACLE_DEALT_WITH
+	if(ISDIAGONALDIR(direction) && ((deal_with_obstacle(null, turn(direction, -45)) & COMSIG_OBSTACLE_DEALT_WITH) || (deal_with_obstacle(null, turn(direction, 45)) & COMSIG_OBSTACLE_DEALT_WITH)))
+		return COMSIG_OBSTACLE_DEALT_WITH
+
+/datum/ai_behavior/xeno/facehugger/proc/sidestep()
+	if(HAS_TRAIT(mob_parent, TRAIT_HANDS_BLOCKED))
+		return
+	var/step_dir = pick(CARDINAL_ALL_DIRS)
+	var/turf/next_turf = get_step(mob_parent, step_dir)
+	mob_parent.Move(next_turf, step_dir)
+
+

@@ -302,8 +302,8 @@
 		return FALSE
 	action_activate()
 	LAZYINCREMENT(owner.do_actions, target)
-	addtimer(CALLBACK(src, .proc/decrease_do_action, target), windup_time)
 	return TRUE
+
 
 // ***************************************
 // *********** Resin Jump
@@ -353,5 +353,5 @@
 		return FALSE
 	action_activate()
 	LAZYINCREMENT(owner.do_actions, target)
-	addtimer(CALLBACK(src, .proc/decrease_do_action, target), windup_time)
 	return TRUE
+

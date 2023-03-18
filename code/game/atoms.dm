@@ -300,7 +300,7 @@ directive is properly returned.
 		else if(CHECK_BITFIELD(reagents.reagent_flags, AMOUNT_SKILLCHECK))
 			if(isxeno(user))
 				return
-			if(user.skills.getRating("medical") >= SKILL_MEDICAL_NOVICE)
+			if(user.skills.getRating(SKILL_MEDICAL) >= SKILL_MEDICAL_NOVICE)
 				. += "It contains these reagents:"
 				if(length_char(reagents.reagent_list))
 					for(var/datum/reagent/R in reagents.reagent_list)
@@ -964,3 +964,12 @@ Proc for attack log creation, because really why not
 	for (var/atom/atom_orbiter AS in orbiters?.orbiters)
 		output += atom_orbiter.get_all_orbiters(processed, source = FALSE)
 	return output
+
+/**
+ * Function that determines if we can slip when we walk over this atom.
+ *
+ * Returns true if we can, false if we can't. Put your special checks here.
+ */
+
+/atom/proc/can_slip()
+	return TRUE

@@ -233,6 +233,9 @@
 	dir = 5
 	},
 /area/centcom/valhalla/bridge)
+"arZ" = (
+/turf/open/floor/prison/darkyellow,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "asl" = (
 /obj/item/storage/toolbox/mechanical,
 /obj/item/tool/wrench,
@@ -473,6 +476,11 @@
 /obj/structure/bed/chair/sofa,
 /turf/open/floor/tile/red/redblue/full,
 /area/tdome/tdomeobserve)
+"aDz" = (
+/turf/open/floor/prison/red{
+	dir = 5
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "aDS" = (
 /obj/effect/decal/cleanable/blood,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -995,13 +1003,24 @@
 	},
 /turf/open/floor/plating/scorched,
 /area/centcom/valhalla/port)
+"biT" = (
+/turf/open/floor/prison/green{
+	dir = 10
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "biW" = (
 /obj/structure/lattice,
 /turf/open/space,
 /area/space)
+"bjs" = (
+/obj/effect/turf_decal/trimline/dark_red/corner{
+	dir = 8
+	},
+/turf/open/floor/prison,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "bjQ" = (
-/obj/structure/sign/securearea/firingrange,
-/turf/closed/mineral/smooth,
+/obj/structure/window/framed/mainship/hull/canterbury/alt,
+/turf/open/floor/prison,
 /area/centcom/valhalla/security/brig/interiorcavern)
 "bka" = (
 /turf/closed/wall/r_wall,
@@ -1176,6 +1195,11 @@
 	dir = 5
 	},
 /area/centcom/valhalla/bridge)
+"bxM" = (
+/turf/open/floor/prison/darkyellow{
+	dir = 5
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "bxZ" = (
 /obj/structure/table,
 /obj/item/toy/deck/kotahi,
@@ -1856,6 +1880,11 @@
 	dir = 5
 	},
 /area/centcom/valhalla/bridge)
+"cwV" = (
+/turf/open/floor/prison/red{
+	dir = 6
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "cxi" = (
 /obj/structure/table,
 /obj/item/flashlight/lamp,
@@ -2335,6 +2364,11 @@
 /obj/effect/ai_node,
 /turf/open/floor/mainship/sterile/white,
 /area/centcom/valhalla/crew_quarters/heads/hop)
+"der" = (
+/turf/open/floor/prison/blue{
+	dir = 5
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "dfx" = (
 /obj/item/clothing/suit/space/rig,
 /obj/item/clothing/head/helmet/space/syndicate,
@@ -2347,6 +2381,9 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/grass,
 /area/centcom/valhalla/primary/aft)
+"dgG" = (
+/turf/open/floor/prison/blue,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "dgR" = (
 /obj/structure/sign/vacuum,
 /turf/closed/wall,
@@ -3197,6 +3234,11 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/valhalla/security/detectives_office)
+"dYH" = (
+/turf/open/floor/prison/red{
+	dir = 1
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "dZC" = (
 /obj/effect/ai_node,
 /turf/open/floor/tile/neutral{
@@ -3272,6 +3314,11 @@
 /obj/machinery/recharger/nopower,
 /turf/open/floor/wood/broken/two,
 /area/centcom/valhalla/crew_quarters/captain)
+"ega" = (
+/turf/open/floor/prison/darkred{
+	dir = 1
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "egz" = (
 /obj/effect/turf_decal/warning_stripes/thick/corner{
 	dir = 1
@@ -3349,6 +3396,11 @@
 /obj/item/taperecorder,
 /turf/open/floor/wood/broken/six,
 /area/centcom/valhalla/library)
+"eol" = (
+/turf/open/floor/prison/darkyellow{
+	dir = 1
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "eoT" = (
 /obj/machinery/status_display/ai{
 	pixel_x = 32
@@ -3364,6 +3416,13 @@
 	dir = 5
 	},
 /area/centcom/valhalla/crew_quarters/heads/hop)
+"eoY" = (
+/obj/effect/turf_decal/warning_stripes/medical,
+/obj/effect/turf_decal/warning_stripes/box/arrow{
+	dir = 1
+	},
+/turf/open/floor/prison/cellstripe,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "epz" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder/nopower{
@@ -3599,6 +3658,9 @@
 	},
 /turf/open/floor/tile/dark/gray,
 /area/centcom/valhalla/hydroponics)
+"eIE" = (
+/turf/open/floor/prison/red,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "eKo" = (
 /obj/structure/table,
 /obj/item/clothing/tie/medal/gold,
@@ -3814,6 +3876,16 @@
 "eXk" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/ground/mars/random,
+/area/centcom/valhalla/security/brig/interiorcavern)
+"eXw" = (
+/obj/effect/turf_decal/warning_stripes/thick{
+	dir = 1
+	},
+/obj/structure/window/full{
+	dir = 8
+	},
+/obj/machinery/vending/armor_supply/som,
+/turf/open/floor/prison/marked,
 /area/centcom/valhalla/security/brig/interiorcavern)
 "eYv" = (
 /obj/machinery/door/airlock/mainship/generic/bathroom{
@@ -4266,6 +4338,13 @@
 	},
 /turf/closed/wall/r_wall,
 /area/centcom/valhalla/crew_quarters/heads/hop)
+"fIO" = (
+/obj/effect/turf_decal/warning_stripes/thick{
+	dir = 6
+	},
+/obj/machinery/vending/tool/nopower,
+/turf/open/floor/prison/marked,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "fJY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/ai_node,
@@ -4557,6 +4636,18 @@
 	},
 /turf/open/floor/tile/dark/gray,
 /area/centcom/valhalla/storage/eva)
+"gau" = (
+/obj/item/clothing/glasses/hud/xenohud,
+/obj/item/clothing/glasses/hud/xenohud{
+	pixel_x = -5
+	},
+/obj/structure/rack,
+/obj/effect/spawner/random/melee,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/prison/darkred{
+	dir = 1
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "gaw" = (
 /obj/machinery/computer/atmoscontrol{
 	dir = 4
@@ -4876,6 +4967,13 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/centcom/valhalla/security/brig/interiorcavern)
+"gAp" = (
+/obj/effect/turf_decal/warning_stripes/smartgunner,
+/obj/effect/turf_decal/warning_stripes/box/arrow{
+	dir = 1
+	},
+/turf/open/floor/prison/cellstripe,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "gAA" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -5148,6 +5246,16 @@
 	},
 /turf/open/floor/tile/dark/gray,
 /area/centcom/valhalla/engine/engineering)
+"gXP" = (
+/obj/structure/sign/securearea/firingrange,
+/obj/structure/window/framed/mainship/hull/canterbury/alt,
+/turf/open/floor/prison,
+/area/centcom/valhalla/security/brig/interiorcavern)
+"gYo" = (
+/turf/open/floor/prison/blue{
+	dir = 1
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "gYp" = (
 /obj/structure/bookcase,
 /obj/item/book/manual/research_and_development,
@@ -5228,6 +5336,10 @@
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/centcom/valhalla/security/brig)
+"hdb" = (
+/obj/structure/window/framed/mainship/hull/canterbury/alt,
+/turf/open/floor/prison/plate,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "hdk" = (
 /obj/effect/turf_decal/warning_stripes/thick,
 /turf/open/floor/iron/dark/smooth_large,
@@ -5966,6 +6078,12 @@
 	dir = 5
 	},
 /area/centcom/valhalla/janitor)
+"iaA" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 2
+	},
+/turf/open/floor/prison/marked,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "iaL" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
@@ -6076,6 +6194,9 @@
 /obj/effect/ai_node,
 /turf/open/floor/tile/dark/gray,
 /area/centcom/valhalla/starboard_hallway)
+"ikT" = (
+/turf/open/floor/prison/darkred,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "ilh" = (
 /turf/open/floor/tile/brown{
 	dir = 8
@@ -6315,6 +6436,11 @@
 	dir = 6
 	},
 /area/centcom/valhalla/security/checkpoint)
+"iFT" = (
+/turf/open/floor/prison/green{
+	dir = 9
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "iHu" = (
 /obj/effect/ai_node,
 /turf/open/floor/tile/neutral/corner{
@@ -6446,6 +6572,11 @@
 	},
 /turf/open/floor/tile/dark,
 /area/centcom/valhalla/medical/morgue)
+"iUP" = (
+/turf/open/floor/prison/green{
+	dir = 6
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "iVt" = (
 /obj/effect/turf_decal/trimline/dark_red/arrow_cw{
 	dir = 10
@@ -6505,6 +6636,11 @@
 /obj/machinery/vending/medical/valhalla,
 /turf/open/floor/iron/dark/textured_half{
 	dir = 1
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
+"jbn" = (
+/turf/open/floor/prison/red{
+	dir = 10
 	},
 /area/centcom/valhalla/security/brig/interiorcavern)
 "jbp" = (
@@ -7409,6 +7545,11 @@
 	dir = 4
 	},
 /area/centcom/valhalla/medical/medbay)
+"kgq" = (
+/turf/open/floor/prison/darkyellow{
+	dir = 6
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "kgI" = (
 /obj/structure/sign/vacuum,
 /turf/closed/wall/r_wall/unmeltable,
@@ -7703,6 +7844,16 @@
 	dir = 8
 	},
 /area/centcom/valhalla/medical/medbay)
+"kEg" = (
+/obj/structure/window/full{
+	dir = 4
+	},
+/obj/structure/window/full{
+	dir = 8
+	},
+/obj/machinery/loadout_vendor/valhalla,
+/turf/open/floor/prison/marked,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "kEn" = (
 /obj/structure/sign/electricshock,
 /turf/open/floor/tile/dark/gray,
@@ -7963,6 +8114,19 @@
 /obj/item/ammo_magazine/revolver/mateba,
 /turf/open/floor/tile/dark,
 /area/centcom/valhalla/port)
+"kVn" = (
+/obj/effect/turf_decal/warning_stripes/thick{
+	dir = 1
+	},
+/obj/structure/window/full{
+	dir = 4
+	},
+/obj/machinery/vending/weaponsom,
+/obj/structure/window/full{
+	dir = 8
+	},
+/turf/open/floor/prison/marked,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "kWa" = (
 /obj/structure/table/reinforced,
 /obj/effect/spawner/random/gun/sidearms,
@@ -7982,6 +8146,11 @@
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/tile/dark/gray,
 /area/centcom/valhalla/hydroponics)
+"kXA" = (
+/turf/open/floor/prison/blue{
+	dir = 9
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "kYp" = (
 /obj/machinery/door_control/old/valhalla{
 	desc = "A remote control switch for the medbay foyer.";
@@ -8032,6 +8201,11 @@
 /obj/item/stack/rods,
 /turf/open/space/basic,
 /area/space)
+"lby" = (
+/turf/open/floor/prison/blue{
+	dir = 10
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "lce" = (
 /obj/effect/ai_node,
 /turf/open/floor/plating,
@@ -9058,6 +9232,19 @@
 /obj/machinery/door/poddoor/mainship/indestructible,
 /turf/open/floor/plating,
 /area/centcom/valhalla/quartermaster/storage)
+"mxS" = (
+/obj/effect/turf_decal/warning_stripes/thick{
+	dir = 6
+	},
+/obj/structure/window/full{
+	dir = 4
+	},
+/obj/structure/window/full{
+	dir = 8
+	},
+/obj/machinery/vending/weaponsom,
+/turf/open/floor/prison/marked,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "myT" = (
 /obj/structure/girder/reinforced,
 /turf/open/floor/plating,
@@ -9238,6 +9425,9 @@
 	dir = 8
 	},
 /area/centcom/valhalla/starboard_hallway)
+"mLg" = (
+/turf/open/space/basic,
+/area/centcom/valhalla/engine/engine_monitoring)
 "mLC" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/warning_stripes/thick{
@@ -9390,6 +9580,13 @@
 /obj/effect/ai_node,
 /turf/open/floor/tile/dark/gray,
 /area/centcom/valhalla/hydroponics)
+"mUV" = (
+/obj/effect/turf_decal/warning_stripes/box/arrow,
+/obj/effect/turf_decal/warning_stripes/leader,
+/turf/open/floor/prison/cellstripe{
+	dir = 1
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "mVh" = (
 /obj/effect/turf_decal/warning_stripes/box,
 /turf/open/floor/tile/lightred,
@@ -9453,6 +9650,11 @@
 	dir = 5
 	},
 /area/centcom/valhalla/teleporter)
+"mXu" = (
+/turf/open/floor/prison/green{
+	dir = 1
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "mXN" = (
 /obj/structure/sign/doors{
 	desc = "A sign that shows there are doors here. There are doors everywhere!";
@@ -9644,6 +9846,11 @@
 "nhm" = (
 /turf/closed/wall,
 /area/centcom/valhalla/primary/aft)
+"niY" = (
+/turf/open/floor/prison/green{
+	dir = 5
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "njt" = (
 /obj/structure/table,
 /obj/item/folder,
@@ -9656,9 +9863,9 @@
 /turf/open/floor/plating,
 /area/centcom/valhalla/quartermaster/storage)
 "njR" = (
-/obj/structure/sign/safety/high_radiation,
-/turf/closed/wall/r_wall/unmeltable,
-/area/centcom/valhalla/engine/engine_monitoring)
+/obj/effect/turf_decal/trimline/dark_red/arrow_cw,
+/turf/open/floor/prison,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "njU" = (
 /obj/machinery/newscaster{
 	dir = 8
@@ -9719,9 +9926,8 @@
 /turf/open/floor/tile/dark/gray,
 /area/centcom/valhalla/medical/medbay)
 "noL" = (
-/obj/item/ore/iron,
-/turf/open/floor/plating,
-/area/centcom/valhalla/engine/engine_monitoring)
+/turf/closed/wall/mainship/outer/canterbury/alt,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "nqf" = (
 /obj/structure/sign/nosmoking_1,
 /turf/closed/wall/r_wall,
@@ -9843,6 +10049,11 @@
 	},
 /turf/closed/wall,
 /area/centcom/valhalla/central)
+"nvD" = (
+/turf/open/floor/prison/darkyellow{
+	dir = 9
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "nvO" = (
 /obj/machinery/newscaster{
 	dir = 4
@@ -10660,10 +10871,8 @@
 /turf/open/floor/plating,
 /area/centcom/valhalla/primary/aft)
 "oCB" = (
-/turf/open/floor/tile/vault{
-	dir = 4
-	},
-/area/centcom/valhalla/engine/engine_monitoring)
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "oCR" = (
 /obj/effect/turf_decal/warning_stripes/thick,
 /obj/effect/decal/cleanable/dirt,
@@ -10699,18 +10908,17 @@
 /turf/open/floor/tile/dark/gray,
 /area/centcom/valhalla/storage/primary)
 "oHc" = (
-/turf/open/floor/tile/vault{
-	dir = 8
+/obj/machinery/vending/weaponsom,
+/turf/open/floor/prison/darkred{
+	dir = 1
 	},
-/area/centcom/valhalla/engine/engine_monitoring)
+/area/centcom/valhalla/security/brig/interiorcavern)
 "oHd" = (
 /turf/open/floor,
 /area/tdome)
 "oHK" = (
-/turf/open/floor/tile/vault{
-	dir = 1
-	},
-/area/centcom/valhalla/engine/engine_monitoring)
+/turf/open/floor/prison,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "oHV" = (
 /obj/machinery/door/firedoor{
 	dir = 2
@@ -10864,6 +11072,16 @@
 /obj/effect/turf_decal/sandytile/sandyplating,
 /turf/open/floor/plating/asteroidplating,
 /area/centcom/valhalla/exterior)
+"oSn" = (
+/obj/effect/turf_decal/warning_stripes/thick{
+	dir = 1
+	},
+/obj/structure/window/full{
+	dir = 4
+	},
+/obj/machinery/vending/weaponsom,
+/turf/open/floor/prison/marked,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "oTz" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
@@ -11427,6 +11645,11 @@
 	dir = 4
 	},
 /area/centcom/valhalla/primary/port)
+"pOW" = (
+/obj/effect/turf_decal/warning_stripes/thick,
+/obj/machinery/vending/medical/som,
+/turf/open/floor/prison/marked,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "pPo" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/warning_stripes/thick{
@@ -11844,6 +12067,16 @@
 "qsw" = (
 /turf/open/floor/wood/broken/six,
 /area/centcom/valhalla/crew_quarters/theatre)
+"qsJ" = (
+/obj/effect/turf_decal/warning_stripes/thick,
+/obj/structure/rack,
+/obj/item/clothing/suit/storage/marine/smartgunner/UPP,
+/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc,
+/obj/item/portable_vendor/marine/squadmarine/smartgunner,
+/obj/item/storage/box/m94,
+/obj/item/clothing/glasses/hud/xenohud,
+/turf/open/floor/prison/marked,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "qsK" = (
 /obj/structure/prop/mainship/toolboxforacause2020,
 /turf/open/floor/tile/red/redblue/full,
@@ -12059,6 +12292,19 @@
 	},
 /turf/open/floor/tile/dark/gray,
 /area/centcom/valhalla/engine/engine_monitoring)
+"qDC" = (
+/obj/item/clothing/glasses/hud/xenohud,
+/obj/item/clothing/glasses/hud/xenohud{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/structure/rack,
+/obj/effect/spawner/random/melee,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/prison/darkred{
+	dir = 1
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "qDL" = (
 /turf/open/floor/tile/neutral/corner{
 	dir = 8
@@ -13697,6 +13943,19 @@
 	dir = 1
 	},
 /area/centcom/valhalla/medical/medbay)
+"sEJ" = (
+/obj/effect/turf_decal/warning_stripes/thick{
+	dir = 1
+	},
+/obj/structure/window/full{
+	dir = 4
+	},
+/obj/machinery/vending/armor_supply/som,
+/obj/structure/window/full{
+	dir = 8
+	},
+/turf/open/floor/prison/marked,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "sEP" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/turf_decal/warning_stripes/thick{
@@ -13755,6 +14014,16 @@
 	},
 /turf/open/floor/tile/neutral/full,
 /area/centcom/valhalla/engine/atmos_monitoring)
+"sIN" = (
+/obj/effect/turf_decal/warning_stripes/thick{
+	dir = 6
+	},
+/obj/structure/window/full{
+	dir = 4
+	},
+/obj/machinery/vending/MarineMed/som,
+/turf/open/floor/prison/marked,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "sIO" = (
 /obj/effect/turf_decal/warning_stripes/thick/corner,
 /obj/machinery/flasher{
@@ -15414,6 +15683,9 @@
 	dir = 4
 	},
 /area/centcom/valhalla/chapel/main)
+"uKn" = (
+/turf/open/floor/prison/green,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "uKQ" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -15638,6 +15910,11 @@
 	},
 /turf/open/floor/engine,
 /area/centcom/valhalla/engine/engineering)
+"vey" = (
+/turf/open/floor/prison/darkyellow{
+	dir = 10
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "veH" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /obj/effect/turf_decal/tile/black,
@@ -16043,6 +16320,11 @@
 	},
 /turf/open/floor/tile/dark/gray,
 /area/centcom/valhalla/primary/central_one)
+"vEG" = (
+/obj/effect/turf_decal/warning_stripes/thick,
+/obj/machinery/vending/engivend/nopower,
+/turf/open/floor/prison/marked,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "vFf" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/tile/white,
@@ -16362,6 +16644,13 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
 /area/centcom/valhalla/port)
+"vTz" = (
+/obj/effect/turf_decal/warning_stripes/engineer,
+/obj/effect/turf_decal/warning_stripes/box/arrow{
+	dir = 1
+	},
+/turf/open/floor/prison/cellstripe,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "vTB" = (
 /obj/effect/turf_decal/warning_stripes/thick{
 	dir = 4
@@ -17508,6 +17797,11 @@
 /obj/item/tool/pickaxe,
 /turf/open/floor/plating,
 /area/space)
+"wYK" = (
+/turf/open/floor/prison/blue{
+	dir = 6
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "wZp" = (
 /turf/open/floor/tile/neutral/full,
 /area/centcom/valhalla/quartermaster/storage)
@@ -17684,6 +17978,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/dmg1,
 /area/centcom/valhalla/starboard)
+"xjV" = (
+/turf/open/floor/prison/red{
+	dir = 9
+	},
+/area/centcom/valhalla/security/brig/interiorcavern)
 "xkj" = (
 /obj/effect/ai_node,
 /turf/open/floor/tile/cafe,
@@ -17764,6 +18063,16 @@
 	},
 /turf/open/floor/plating,
 /area/centcom/valhalla/exterior)
+"xmW" = (
+/obj/effect/turf_decal/warning_stripes/thick{
+	dir = 1
+	},
+/obj/structure/window/full{
+	dir = 8
+	},
+/obj/machinery/vending/weaponsom,
+/turf/open/floor/prison/marked,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "xni" = (
 /obj/machinery/door/firedoor{
 	dir = 2
@@ -18030,6 +18339,13 @@
 	},
 /turf/open/floor/plating,
 /area/centcom/valhalla/exterior)
+"xFZ" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 2
+	},
+/turf/open/floor/prison/marked,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "xGq" = (
 /obj/machinery/vending/cola/nopower,
 /turf/open/floor/tile/black{
@@ -18670,6 +18986,16 @@
 "yfE" = (
 /turf/open/floor/tile/dark/gray,
 /area/centcom/valhalla/primary/fore)
+"yfZ" = (
+/obj/effect/turf_decal/warning_stripes/thick{
+	dir = 1
+	},
+/obj/structure/window/full{
+	dir = 4
+	},
+/obj/machinery/vending/armor_supply/som,
+/turf/open/floor/prison/marked,
+/area/centcom/valhalla/security/brig/interiorcavern)
 "ygo" = (
 /obj/effect/ai_node,
 /obj/effect/decal/cleanable/dirt,
@@ -19983,15 +20309,15 @@ xrI
 xrI
 xrI
 xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
+icW
+icW
+icW
+icW
+icW
+icW
+icW
+icW
+icW
 xrI
 xrI
 xrI
@@ -20121,15 +20447,15 @@ xrI
 xrI
 xrI
 xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
+icW
+knm
+llp
+eCf
+ouT
+jaW
+hDW
+ipO
+khV
 xrI
 xrI
 xrI
@@ -20259,15 +20585,15 @@ xrI
 xrI
 xrI
 xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
+icW
+fdy
+jYG
+duo
+tzf
+tzf
+fuL
+jYG
+khV
 xrI
 xrI
 xrI
@@ -20397,15 +20723,15 @@ xrI
 xrI
 xrI
 xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
+icW
+oYw
+jYG
+tzf
+sHO
+tzf
+tzf
+nUd
+khV
 xrI
 xrI
 xrI
@@ -20535,15 +20861,15 @@ xrI
 xrI
 xrI
 xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
+icW
+jWH
+jYG
+tzf
+epz
+tzf
+gCD
+jxN
+khV
 xrI
 xrI
 xrI
@@ -20673,15 +20999,15 @@ xrI
 xrI
 xrI
 xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
+icW
+cdt
+tWP
+duo
+tzf
+tzf
+duo
+jYG
+khV
 xrI
 xrI
 xrI
@@ -20811,15 +21137,15 @@ xrI
 xrI
 xrI
 xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
+icW
+uOI
+cre
+eCf
+eCf
+gpt
+dFm
+gNi
+khV
 xrI
 xrI
 xrI
@@ -20946,18 +21272,18 @@ xrI
 xrI
 xrI
 xrI
-wQi
 xrI
 xrI
 xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
+noL
+noL
+sJF
+sJF
+sJF
+khV
+khV
+khV
+khV
 xrI
 xrI
 xrI
@@ -21083,17 +21409,17 @@ xrI
 xrI
 xrI
 xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
+noL
+noL
+noL
+noL
+noL
+kEg
+njR
+oCB
+oHK
+noL
+noL
 xrI
 xrI
 xrI
@@ -21221,17 +21547,17 @@ xrI
 xrI
 xrI
 xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
+noL
+ega
+nvD
+vey
+hdb
+vEG
+njR
+oCB
+oHK
+yfZ
+noL
 xrI
 xrI
 xrI
@@ -21359,17 +21685,17 @@ xrI
 xrI
 xrI
 xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-wQi
-xrI
-xrI
-xrI
+noL
+gau
+eol
+arZ
+hdb
+fIO
+njR
+oCB
+oHK
+sEJ
+noL
 xrI
 xrI
 xrI
@@ -21497,17 +21823,17 @@ xrI
 xrI
 xrI
 xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
+noL
+ega
+bxM
+kgq
+iaA
+vTz
+njR
+oCB
+oHK
+eXw
+noL
 xrI
 xrI
 xrI
@@ -21635,17 +21961,17 @@ xrI
 xrI
 xrI
 xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
+noL
+noL
+noL
+noL
+noL
+tvG
+njR
+oCB
+oHK
+noL
+noL
 xrI
 xrI
 xrI
@@ -21773,17 +22099,17 @@ xrI
 xrI
 xrI
 wQi
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
-xrI
+noL
+ega
+iFT
+biT
+hdb
+pOW
+njR
+oCB
+oHK
+oSn
+noL
 xrI
 vQc
 vQc
@@ -21911,20 +22237,20 @@ xrI
 xrI
 xrI
 xrI
-xrI
-xrI
-xrI
-icW
-icW
-icW
-icW
-icW
-icW
-icW
-icW
-icW
-mAi
+noL
+qDC
+mXu
+uKn
+hdb
+sIN
 njR
+oCB
+oHK
+kVn
+noL
+xrI
+mLg
+mAi
 muO
 muO
 muO
@@ -22049,22 +22375,22 @@ xrI
 xrI
 xrI
 xrI
+noL
+ega
+niY
+iUP
+iaA
+eoY
+njR
+oCB
+oHK
+xmW
+noL
 xrI
-xrI
-xrI
-icW
-knm
-llp
-eCf
-ouT
-jaW
-hDW
-ipO
-khV
+mLg
 mAi
 nmD
 nXU
-oCB
 ptt
 qCX
 muO
@@ -22187,22 +22513,22 @@ xXc
 xXc
 vQc
 vQc
-vQc
-xXc
-vQc
-icW
-fdy
-jYG
-duo
-tzf
-tzf
-fuL
-jYG
-khV
-mAi
+noL
+noL
+noL
+noL
+noL
+kEg
+njR
+oCB
+oHK
+noL
+noL
+noL
+noL
+noL
 nmD
 nXU
-oHc
 pwb
 qEL
 muO
@@ -22325,22 +22651,22 @@ fmR
 vQc
 fmR
 fmR
-fmR
-vQc
-fmR
-icW
-oYw
-jYG
-tzf
-sHO
-tzf
-tzf
-nUd
-khV
-mAi
+noL
+ega
+xjV
+jbn
+hdb
+qsJ
+njR
+oCB
+oHK
+bjQ
+kXA
+lby
+ikT
+noL
 nmD
 nXU
-oHK
 pwb
 qFF
 rvV
@@ -22463,20 +22789,20 @@ fmR
 fmR
 fmR
 fmR
-vQc
-fmR
-fmR
-icW
-jWH
-jYG
-tzf
-epz
-tzf
-gCD
-jxN
-khV
-mAi
-muO
+noL
+oHc
+dYH
+eIE
+hdb
+mxS
+njR
+oCB
+oHK
+bjQ
+gYo
+dgG
+ikT
+noL
 muO
 oUq
 pwR
@@ -22601,19 +22927,19 @@ fWu
 fWu
 fWu
 fWu
-fWu
-fWu
-fWu
-icW
-cdt
-tWP
-duo
-tzf
-tzf
-duo
-jYG
-khV
-mAi
+noL
+ega
+aDz
+cwV
+xFZ
+gAp
+bjs
+oCB
+mUV
+xFZ
+der
+wYK
+ikT
 noL
 nYA
 oUK
@@ -22739,19 +23065,19 @@ fmR
 ics
 lgU
 fmR
-fmR
+noL
 bjQ
-icW
-icW
-uOI
-cre
-eCf
-eCf
-gpt
-dFm
-gNi
-khV
-mAi
+gXP
+noL
+noL
+oHK
+oHK
+oHK
+oHK
+noL
+noL
+noL
+noL
 noL
 nYA
 oVR

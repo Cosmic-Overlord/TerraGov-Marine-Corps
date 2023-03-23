@@ -27,13 +27,13 @@
 /datum/component/automatedfire/autofire/Initialize(_auto_fire_shot_delay = 0.3 SECONDS, _auto_burst_fire_shot_delay, _burstfire_shot_delay, _burst_shots_to_fire = 3, _fire_mode = GUN_FIREMODE_SEMIAUTO, datum/callback/_callback_bursting, datum/callback/_callback_reset_fire, datum/callback/_callback_fire)
 	. = ..()
 
-	RegisterSignal(parent, COMSIG_GUN_FIRE_MODE_TOGGLE, .proc/modify_fire_mode)
-	RegisterSignal(parent, list(COMSIG_GUN_AUTOFIREDELAY_MODIFIED, COMSIG_XENO_AUTOFIREDELAY_MODIFIED), .proc/modify_fire_shot_delay)
-	RegisterSignal(parent, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, .proc/modify_burst_shots_to_fire)
-	RegisterSignal(parent, COMSIG_GUN_BURST_SHOT_DELAY_MODIFIED, .proc/modify_burstfire_shot_delay)
-	RegisterSignal(parent, COMSIG_GUN_AUTO_BURST_SHOT_DELAY_MODIFIED, .proc/modify_autoburstfire_shot_delay)
-	RegisterSignal(parent, list(COMSIG_GUN_FIRE, COMSIG_XENO_FIRE, COMSIG_MECH_FIRE), .proc/initiate_shot)
-	RegisterSignal(parent, list(COMSIG_GUN_STOP_FIRE, COMSIG_XENO_STOP_FIRE, COMSIG_MECH_STOP_FIRE), .proc/stop_firing)
+	RegisterSignal(parent, COMSIG_GUN_FIRE_MODE_TOGGLE, PROC_REF(modify_fire_mode))
+	RegisterSignal(parent, list(COMSIG_GUN_AUTOFIREDELAY_MODIFIED, COMSIG_XENO_AUTOFIREDELAY_MODIFIED), PROC_REF(modify_fire_shot_delay))
+	RegisterSignal(parent, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, PROC_REF(modify_burst_shots_to_fire))
+	RegisterSignal(parent, COMSIG_GUN_BURST_SHOT_DELAY_MODIFIED, PROC_REF(modify_burstfire_shot_delay))
+	RegisterSignal(parent, COMSIG_GUN_AUTO_BURST_SHOT_DELAY_MODIFIED, PROC_REF(modify_autoburstfire_shot_delay))
+	RegisterSignal(parent, list(COMSIG_GUN_FIRE, COMSIG_XENO_FIRE, COMSIG_MECH_FIRE), PROC_REF(initiate_shot))
+	RegisterSignal(parent, list(COMSIG_GUN_STOP_FIRE, COMSIG_XENO_STOP_FIRE, COMSIG_MECH_STOP_FIRE), PROC_REF(stop_firing))
 
 	auto_fire_shot_delay = _auto_fire_shot_delay
 	burstfire_shot_delay = _burstfire_shot_delay
@@ -99,12 +99,12 @@
 
 ///Hard reset the autofire, happens when the shooter fall/is thrown, at the end of a burst or when it runs out of ammunition
 /datum/component/automatedfire/autofire/proc/hard_reset()
-	callback_reset_fire.Invoke() //resets the gun
+	callback_reset_fire?.Invoke() //resets the gun
 	shots_fired = 0
 	have_to_reset_at_burst_end = FALSE
 	if(bursting)
 		bursting = FALSE
-		callback_bursting.Invoke(FALSE)
+		callback_bursting?.Invoke(FALSE)
 	shooting = FALSE
 
 ///Ask the shooter to fire and schedule the next shot if need
@@ -113,21 +113,21 @@
 		return
 	if(next_fire > world.time)//This mean duplication somewhere, we abort now
 		return
-	if(!(callback_fire.Invoke() & AUTOFIRE_CONTINUE))//reset fire if we want to stop
+	if(callback_fire && !(callback_fire.Invoke() & AUTOFIRE_CONTINUE))//reset fire if we want to stop
 		hard_reset()
 		return
 	switch(fire_mode)
 		if(GUN_FIREMODE_BURSTFIRE)
 			shots_fired++
 			if(shots_fired == burst_shots_to_fire)
-				callback_bursting.Invoke(FALSE)
+				callback_bursting?.Invoke(FALSE)
 				bursting = FALSE
 				stop_firing()
 				if(have_to_reset_at_burst_end)//We failed to reset because we were bursting, we do it now
-					callback_reset_fire.Invoke()
+					callback_reset_fire?.Invoke()
 					have_to_reset_at_burst_end = FALSE
 				return
-			callback_bursting.Invoke(TRUE)
+			callback_bursting?.Invoke(TRUE)
 			bursting = TRUE
 			next_fire = world.time + burstfire_shot_delay
 		if(GUN_FIREMODE_AUTOBURST)
@@ -135,14 +135,14 @@
 			if(shots_fired == burst_shots_to_fire)
 				next_fire = world.time + auto_burst_fire_shot_delay
 				shots_fired = 0
-				callback_bursting.Invoke(FALSE)
+				callback_bursting?.Invoke(FALSE)
 				bursting = FALSE
 				if(have_to_reset_at_burst_end)//We failed to reset because we were bursting, we do it now
-					callback_reset_fire.Invoke()
+					callback_reset_fire?.Invoke()
 					stop_firing()
 					have_to_reset_at_burst_end = FALSE
 			else
-				callback_bursting.Invoke(TRUE)
+				callback_bursting?.Invoke(TRUE)
 				bursting = TRUE
 				next_fire = world.time + burstfire_shot_delay
 		if(GUN_FIREMODE_AUTOMATIC)

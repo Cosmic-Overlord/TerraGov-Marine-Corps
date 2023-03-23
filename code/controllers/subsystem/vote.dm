@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(vote)
 	wait = 10
 
 	flags = SS_KEEP_TIMING|SS_NO_INIT
-	
+
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 
 	/// Available choices in the vote
@@ -155,15 +155,15 @@ SUBSYSTEM_DEF(vote)
 					ground_change_required = TRUE
 				//we queue up the required votes and restarts
 				if(ship_change_required && ground_change_required)
-					addtimer(CALLBACK(src, .proc/initiate_vote, "shipmap", null, TRUE), 5 SECONDS)
-					addtimer(CALLBACK(src, .proc/initiate_vote, "groundmap", null, TRUE), CONFIG_GET(number/vote_period) + 5 SECONDS)
+					addtimer(CALLBACK(src, PROC_REF(initiate_vote), "shipmap", null, TRUE), 5 SECONDS)
+					addtimer(CALLBACK(src, PROC_REF(initiate_vote), "groundmap", null, TRUE), CONFIG_GET(number/vote_period) + 5 SECONDS)
 					SSticker.Reboot("Restarting server when valid ship and ground map selected", (CONFIG_GET(number/vote_period) * 2) + 15 SECONDS)
 					return
 				else if(ship_change_required)
-					addtimer(CALLBACK(src, .proc/initiate_vote, "shipmap", null, TRUE), 5 SECONDS)
+					addtimer(CALLBACK(src, PROC_REF(initiate_vote), "shipmap", null, TRUE), 5 SECONDS)
 					SSticker.Reboot("Restarting server when valid ship map selected", CONFIG_GET(number/vote_period) + 15 SECONDS)
 				else if(ground_change_required)
-					addtimer(CALLBACK(src, .proc/initiate_vote, "groundmap", null, TRUE), 5 SECONDS)
+					addtimer(CALLBACK(src, PROC_REF(initiate_vote), "groundmap", null, TRUE), 5 SECONDS)
 					SSticker.Reboot("Restarting server when valid ground map selected", CONFIG_GET(number/vote_period) + 15 SECONDS)
 			return
 		if("groundmap")
@@ -343,7 +343,9 @@ SUBSYSTEM_DEF(vote)
 			text += "<br>[question]"
 		log_vote(text)
 		var/vp = CONFIG_GET(number/vote_period)
-		SEND_SOUND(world, sound('sound/ambience/votestart.ogg', channel = CHANNEL_NOTIFY, volume = 50))
+		for(var/client/C in GLOB.clients)
+			if(C.prefs?.toggles_sound & SOUND_VOTE)
+				SEND_SOUND(C, sound('sound/ambience/votestart.ogg', channel = CHANNEL_NOTIFY, volume = 50))
 		to_chat(world, "<br><font color='purple'><b>[text]</b><br>Type <b>vote</b> or click on vote action (top left) to place your votes.<br>You have [DisplayTimeText(vp)] to vote.</font>")
 		time_remaining = round(vp/10)
 		vote_happening = TRUE
@@ -367,8 +369,8 @@ SUBSYSTEM_DEF(vote)
 ///Starts the automatic map vote at the end of each round
 /datum/controller/subsystem/vote/proc/automatic_vote()
 	initiate_vote("gamemode", null, TRUE, TRUE)
-	shipmap_timer_id = addtimer(CALLBACK(src, .proc/initiate_vote, "shipmap", null, TRUE, TRUE), CONFIG_GET(number/vote_period) + 3 SECONDS, TIMER_STOPPABLE)
-	addtimer(CALLBACK(src, .proc/initiate_vote, "groundmap", null, TRUE, TRUE), CONFIG_GET(number/vote_period) * 2 + 6 SECONDS)
+	shipmap_timer_id = addtimer(CALLBACK(src, PROC_REF(initiate_vote), "shipmap", null, TRUE, TRUE), CONFIG_GET(number/vote_period) + 3 SECONDS, TIMER_STOPPABLE)
+	addtimer(CALLBACK(src, PROC_REF(initiate_vote), "groundmap", null, TRUE, TRUE), CONFIG_GET(number/vote_period) * 2 + 6 SECONDS)
 
 /datum/controller/subsystem/vote/ui_state()
 	return GLOB.always_state
@@ -469,7 +471,7 @@ SUBSYSTEM_DEF(vote)
 
 /datum/action/innate/vote/give_action(mob/M)
 	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_REMOVE_VOTE_BUTTON, .proc/remove_vote_action)
+	RegisterSignal(SSdcs, COMSIG_GLOB_REMOVE_VOTE_BUTTON, PROC_REF(remove_vote_action))
 
 /datum/action/innate/vote/proc/remove_vote_action(datum/source)
 	SIGNAL_HANDLER

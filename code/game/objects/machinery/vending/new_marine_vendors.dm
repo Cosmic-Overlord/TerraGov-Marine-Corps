@@ -130,7 +130,7 @@
 			var/item_category = L[1]
 			var/cost = L[3]
 
-			if(SSticker.mode?.flags_round_type & MODE_HUMAN_ONLY && is_type_in_typecache(idx, GLOB.hvh_restricted_items_list))
+			if(faction != FACTION_VALHALLA && faction != FACTION_NEUTRAL && SSticker.mode?.flags_round_type & MODE_HUMAN_ONLY && is_type_in_typecache(idx, GLOB.hvh_restricted_items_list))
 				to_chat(usr, span_warning("This item is banned by the Space Geneva Convention."))
 				if(icon_deny)
 					flick(icon_deny, src)
@@ -437,6 +437,7 @@
 		/obj/item/belt_harness/marine = list(CAT_BEL, "Belt Harness", 0, "black"),
 		/obj/item/armor_module/module/welding = list(CAT_HEL, "Jaeger welding module", 0, "orange"),
 		/obj/item/armor_module/module/binoculars =  list(CAT_HEL, "Jaeger binoculars module", 0, "orange"),
+		/obj/item/armor_module/module/artemis =  list(CAT_HEL, "Jaeger Artemis module", 0, "orange"),
 		/obj/item/armor_module/module/antenna = list(CAT_HEL, "Jaeger Antenna module", 0, "orange"),
 		/obj/item/clothing/head/tgmcberet/fc = list(CAT_HEL, "FC Beret", 0, "black"),
 		/obj/item/armor_module/storage/medical = list(CAT_MOD, "Medical Storage Module", 0, "black"),

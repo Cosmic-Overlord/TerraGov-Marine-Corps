@@ -57,6 +57,7 @@
 			/obj/item/ammo_magazine/shotgun = -1,
 			/obj/item/ammo_magazine/shotgun/buckshot = -1,
 			/obj/item/ammo_magazine/shotgun/flechette = -1,
+			/obj/item/ammo_magazine/shotgun/tracker = -1,
 			/obj/item/weapon/gun/rifle/standard_autoshotgun = -1,
 			/obj/item/ammo_magazine/rifle/tx15_flechette = -1,
 			/obj/item/ammo_magazine/rifle/tx15_slug = -1,
@@ -267,6 +268,7 @@
 			/obj/item/ammo_magazine/shotgun = -1,
 			/obj/item/ammo_magazine/shotgun/buckshot = -1,
 			/obj/item/ammo_magazine/shotgun/flechette = -1,
+			/obj/item/ammo_magazine/shotgun/tracker = -1,
 			/obj/item/weapon/gun/rifle/standard_autoshotgun = -1,
 			/obj/item/ammo_magazine/rifle/tx15_flechette = -1,
 			/obj/item/ammo_magazine/rifle/tx15_slug = -1,
@@ -406,6 +408,7 @@
 /obj/machinery/vending/weapon/valhalla
 	resistance_flags = INDESTRUCTIBLE
 	use_power = NO_POWER_USE
+	faction = FACTION_VALHALLA
 	products = list(
 		"Rifles" = list(
 			/obj/item/weapon/gun/rifle/standard_assaultrifle = -1,
@@ -455,6 +458,7 @@
 			/obj/item/ammo_magazine/shotgun = -1,
 			/obj/item/ammo_magazine/shotgun/buckshot = -1,
 			/obj/item/ammo_magazine/shotgun/flechette = -1,
+			/obj/item/ammo_magazine/shotgun/tracker = -1,
 			/obj/item/weapon/gun/rifle/standard_autoshotgun = -1,
 			/obj/item/ammo_magazine/rifle/tx15_flechette = -1,
 			/obj/item/ammo_magazine/rifle/tx15_slug = -1,
@@ -644,6 +648,7 @@
 			/obj/item/ammo_magazine/shotgun = -1,
 			/obj/item/ammo_magazine/shotgun/buckshot = -1,
 			/obj/item/ammo_magazine/shotgun/flechette = -1,
+			/obj/item/ammo_magazine/shotgun/tracker = -1,
 			/obj/item/weapon/gun/rifle/standard_autoshotgun = -1,
 			/obj/item/ammo_magazine/rifle/tx15_flechette = -1,
 			/obj/item/ammo_magazine/rifle/tx15_slug = -1,
@@ -810,6 +815,7 @@
 
 /obj/machinery/vending/cigarette/nopower
 	use_power = NO_POWER_USE
+	faction = FACTION_VALHALLA
 
 /obj/machinery/vending/cargo_supply
 	name = "\improper Operational Supplies Vendor"
@@ -1069,6 +1075,7 @@
 		),
 		"Misc" = list(
 			/obj/item/defibrillator = 8,
+			/obj/item/healthanalyzer/gloves = 8,
 			/obj/item/healthanalyzer = 16,
 			/obj/item/bodybag/cryobag = 24,
 		),
@@ -1080,6 +1087,7 @@
 /obj/machinery/vending/MarineMed/valhalla
 	resistance_flags = INDESTRUCTIBLE
 	use_power = NO_POWER_USE
+	faction = FACTION_VALHALLA
 	products = list(
 		"Pill Packet" = list(
 			/obj/item/storage/pill_bottle/packet/bicaridine = -1,
@@ -1114,6 +1122,7 @@
 		),
 		"Misc" = list(
 			/obj/item/healthanalyzer = -1,
+			/obj/item/healthanalyzer/gloves = -1,
 			/obj/item/bodybag/cryobag = -1,
 		),
 		"Valhalla" = list(
@@ -1241,6 +1250,7 @@
 			/obj/item/armor_module/storage/grenade = -1,
 			/obj/item/armor_module/module/welding = -1,
 			/obj/item/armor_module/module/binoculars = -1,
+			/obj/item/armor_module/module/artemis = -1,
 			/obj/item/armor_module/module/tyr_head = -1,
 			/obj/item/armor_module/module/antenna = -1,
 			/obj/item/armor_module/module/mimir_environment_protection/mark1 = -1,
@@ -1265,6 +1275,7 @@
 /obj/machinery/vending/armor_supply/valhalla
 	resistance_flags = INDESTRUCTIBLE
 	use_power = NO_POWER_USE
+	faction = FACTION_VALHALLA
 
 /obj/machinery/vending/uniform_supply
 	name = "\improper Surplus Clothing Vendor"
@@ -1423,6 +1434,7 @@
 /obj/machinery/vending/uniform_supply/valhalla
 	resistance_flags = INDESTRUCTIBLE
 	use_power = NO_POWER_USE
+	faction = FACTION_VALHALLA
 
 /obj/machinery/vending/dress_supply
 	name = "\improper TerraGovTech dress uniform vendor"
@@ -1444,6 +1456,7 @@
 /obj/machinery/vending/dress_supply/valhalla
 	resistance_flags = INDESTRUCTIBLE
 	use_power = NO_POWER_USE
+	faction = FACTION_VALHALLA
 
 /obj/machinery/vending/valhalla_req
 	name = "\improper TerraGovTech requisition vendor"
@@ -1451,6 +1464,7 @@
 	icon_state = "requisitionop"
 	resistance_flags = INDESTRUCTIBLE
 	use_power = NO_POWER_USE
+	faction = FACTION_VALHALLA
 	products = list(
 		"Weapon" = list(
 			/obj/item/weapon/gun/energy/lasgun/lasrifle/tesla = -1,
@@ -1554,6 +1568,7 @@
 	icon_state = "requisitionop"
 	resistance_flags = INDESTRUCTIBLE
 	use_power = NO_POWER_USE
+	faction = FACTION_VALHALLA
 	products = list(
 		"Weapon" = list(
 			/obj/item/weapon/gun/revolver/small = -1,
@@ -1653,3 +1668,4 @@
 
 /obj/machinery/vending/tool/nopower
 	use_power = NO_POWER_USE
+	faction = FACTION_VALHALLA

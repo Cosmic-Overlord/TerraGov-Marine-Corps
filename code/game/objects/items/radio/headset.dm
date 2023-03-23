@@ -180,12 +180,13 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	if(slot == SLOT_EARS)
 		if(GLOB.faction_to_data_hud[user.faction] != hud_type && user.faction != FACTION_NEUTRAL)
 			safety_protocol(user)
+			return ..()
 		wearer = user
 		squadhud = GLOB.huds[hud_type]
 		enable_squadhud()
-		RegisterSignal(user, COMSIG_MOB_REVIVE, .proc/update_minimap_icon)
-		RegisterSignal(user, COMSIG_MOB_DEATH, .proc/set_dead_on_minimap)
-		RegisterSignal(user, COMSIG_HUMAN_SET_UNDEFIBBABLE, .proc/set_undefibbable_on_minimap)
+		RegisterSignal(user, COMSIG_MOB_REVIVE, PROC_REF(update_minimap_icon))
+		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(set_dead_on_minimap))
+		RegisterSignal(user, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(set_undefibbable_on_minimap))
 	if(camera)
 		camera.c_tag = user.name
 		if(user.assigned_squad)
@@ -257,7 +258,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	remove_minimap()
 	var/datum/action/minimap/mini = new minimap_type
 	mini.give_action(wearer)
-	INVOKE_NEXT_TICK(src, .proc/update_minimap_icon) //Mobs are spawned inside nullspace sometimes so this is to avoid that hijinks
+	INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon)) //Mobs are spawned inside nullspace sometimes so this is to avoid that hijinks
 
 /obj/item/radio/headset/mainship/proc/update_minimap_icon()
 	SIGNAL_HANDLER

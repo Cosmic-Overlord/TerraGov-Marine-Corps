@@ -266,7 +266,7 @@
 /obj/item/armor_module/module/chemsystem/on_attach(obj/item/attaching_to, mob/user)
 	. = ..()
 	var/datum/component/chem_booster/chemsystem = parent.AddComponent(/datum/component/chem_booster)
-	RegisterSignal(chemsystem, COMSIG_CHEMSYSTEM_TOGGLED, .proc/update_module_icon)
+	RegisterSignal(chemsystem, COMSIG_CHEMSYSTEM_TOGGLED, PROC_REF(update_module_icon))
 
 /obj/item/armor_module/module/chemsystem/on_detach(obj/item/detaching_from, mob/user)
 	var/datum/component/chem_booster/chemsystem = parent.GetComponent(/datum/component/chem_booster)
@@ -333,9 +333,9 @@
 
 /obj/item/armor_module/module/eshield/on_attach(obj/item/attaching_to, mob/user)
 	. = ..()
-	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/handle_equip)
-	RegisterSignal(parent, COMSIG_ITEM_UNEQUIPPED, .proc/handle_unequip)
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/parent_examine)
+	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(handle_equip))
+	RegisterSignal(parent, COMSIG_ITEM_UNEQUIPPED, PROC_REF(handle_unequip))
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(parent_examine))
 
 
 /obj/item/armor_module/module/eshield/on_detach(obj/item/detaching_from, mob/user)
@@ -359,7 +359,7 @@
 		START_PROCESSING(SSobj, src)
 		playsound(equipper, 'sound/items/eshield_recharge.ogg', 40)
 
-	RegisterSignal(equipper, COMSIG_LIVING_SHIELDCALL, .proc/handle_shield)
+	RegisterSignal(equipper, COMSIG_LIVING_SHIELDCALL, PROC_REF(handle_shield))
 
 ///Handles removing the shield when the parent is unequipped
 /obj/item/armor_module/module/eshield/proc/handle_unequip(datum/source, mob/unequipper, slot)
@@ -376,7 +376,7 @@
 	SIGNAL_HANDLER
 	if(!shield_health)
 		return
-	affecting_shields += CALLBACK(src, .proc/intercept_damage)
+	affecting_shields += CALLBACK(src, PROC_REF(intercept_damage))
 
 ///Handles the interception of damage.
 /obj/item/armor_module/module/eshield/proc/intercept_damage(attack_type, incoming_damage, damage_type, silent)
@@ -399,9 +399,9 @@
 		spark_system.start()
 	else
 		shield_health = 0
-		recharge_timer = addtimer(CALLBACK(src, .proc/begin_recharge), damaged_shield_cooldown + 1, TIMER_STOPPABLE) //Gives it a little extra time for the cooldown.
+		recharge_timer = addtimer(CALLBACK(src, PROC_REF(begin_recharge)), damaged_shield_cooldown + 1, TIMER_STOPPABLE) //Gives it a little extra time for the cooldown.
 		return -shield_left
-	recharge_timer = addtimer(CALLBACK(src, .proc/begin_recharge), damaged_shield_cooldown, TIMER_STOPPABLE)
+	recharge_timer = addtimer(CALLBACK(src, PROC_REF(begin_recharge)), damaged_shield_cooldown, TIMER_STOPPABLE)
 	return 0
 
 ///Starts the shield recharging after it has been broken.
@@ -529,7 +529,7 @@
 	parent.update_icon()
 	user.update_inv_head()
 	if(active)
-		RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, .proc/zoom_item_turnoff)
+		RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(zoom_item_turnoff))
 		return
 	UnregisterSignal(user, COMSIG_MOB_MOUSEDOWN)
 
@@ -539,6 +539,45 @@
 	else
 		activate(user)
 	return COMSIG_MOB_CLICK_CANCELED
+
+/obj/item/armor_module/module/binoculars/artemis_mark_two // a little cheating with subtypes
+	name = "\improper Mark 2 Artemis Helmet Module"
+	desc = "Designed for mounting on a modular helmet. The Artemis module is designed with an overlay visor that clarifies the user's vision, allowing them to see clearly even in the harshest of circumstances. This version is enhanced and allows the marine to peer through the visor, akin to binoculars."
+	icon_state = "artemis_head"
+	item_state = "artemis_head_mk2_a"
+	variants_by_parent_type = list(/obj/item/clothing/head/modular/marine/m10x = "artemis_head_mk2_xn", /obj/item/clothing/head/modular/marine/m10x/leader = "artemis_head_mk2_xn", /obj/item/clothing/head/modular/marine/m10x/heavy = "artemis_head_mk2", /obj/item/clothing/head/modular/marine/infantry = "artemis_head_mk2_xn")
+	var/eye_protection_mod = 1
+
+/obj/item/armor_module/module/binoculars/artemis_mark_two/on_attach(obj/item/attaching_to, mob/user)
+	. = ..()
+	parent.eye_protection += eye_protection_mod
+	parent.AddComponent(/datum/component/blur_protection)
+
+/obj/item/armor_module/module/binoculars/artemis_mark_two/on_detach(obj/item/detaching_from, mob/user)
+	parent.eye_protection -= eye_protection_mod
+	var/datum/component/blur_protection/blur_p = parent?.GetComponent(/datum/component/blur_protection)
+	blur_p?.RemoveComponent()
+	return ..()
+
+/obj/item/armor_module/module/artemis
+	name = "\improper Mark 1 Artemis Helmet Module"
+	desc = "Designed for mounting on a modular helmet. The Artemis module is designed with an overlay visor that clarifies the user's vision, allowing them to see clearly even in the harshest of circumstances."
+	icon = 'icons/mob/modular/modular_armor_modules.dmi'
+	icon_state = "artemis_head"
+	item_state = "artemis_head_a"
+	slot = ATTACHMENT_SLOT_HEAD_MODULE
+	variants_by_parent_type = list(/obj/item/clothing/head/modular/marine/m10x = "artemis_head_xn", /obj/item/clothing/head/modular/marine/m10x/leader = "artemis_head_xn", /obj/item/clothing/head/modular/marine/m10x/heavy = "artemis_head", /obj/item/clothing/head/modular/marine/infantry = "artemis_head_xn")
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_APPLY_ON_MOB
+	prefered_slot = SLOT_HEAD
+
+/obj/item/armor_module/module/artemis/on_attach(obj/item/attaching_to, mob/user)
+	. = ..()
+	parent.AddComponent(/datum/component/blur_protection)
+
+/obj/item/armor_module/module/artemis/on_detach(obj/item/detaching_from, mob/user)
+	var/datum/component/blur_protection/blur_p = parent?.GetComponent(/datum/component/blur_protection)
+	blur_p?.RemoveComponent()
+	return ..()
 
 /obj/item/armor_module/module/antenna
 	name = "Antenna helmet module"
@@ -563,7 +602,7 @@
 		to_chat(user, span_warning("You have to be on the planet to use this or it won't transmit."))
 		return FALSE
 	beacon_datum = new /datum/supply_beacon(user.name, user.loc, user.faction, 4 MINUTES)
-	RegisterSignal(beacon_datum, COMSIG_PARENT_QDELETING, .proc/clean_beacon_datum)
+	RegisterSignal(beacon_datum, COMSIG_PARENT_QDELETING, PROC_REF(clean_beacon_datum))
 	user.show_message(span_notice("The [src] beeps and states, \"Your current coordinates were registered by the supply console. LONGITUDE [location.x]. LATITUDE [location.y]. Area ID: [get_area(src)]\""), EMOTE_AUDIBLE, span_notice("The [src] vibrates but you can not hear it!"))
 
 /// Signal handler to nullify beacon datum

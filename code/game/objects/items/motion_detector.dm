@@ -73,8 +73,8 @@
 		clean_operator()
 		return
 	operator = user
-	RegisterSignal(operator, list(COMSIG_PARENT_QDELETING, COMSIG_GUN_USER_UNSET), .proc/clean_operator)
-	RegisterSignal(src, list(COMSIG_ITEM_EQUIPPED_TO_SLOT, COMSIG_ITEM_REMOVED_INVENTORY), .proc/clean_operator)
+	RegisterSignal(operator, list(COMSIG_PARENT_QDELETING, COMSIG_GUN_USER_UNSET), PROC_REF(clean_operator))
+	RegisterSignal(src, list(COMSIG_ITEM_EQUIPPED_TO_SLOT, COMSIG_ITEM_REMOVED_INVENTORY), PROC_REF(clean_operator))
 	UnregisterSignal(operator, COMSIG_GUN_USER_SET)
 	START_PROCESSING(SSobj, src)
 	update_icon()
@@ -119,7 +119,7 @@
 	clean_blips()
 	if(operator)
 		if(!QDELETED(operator))
-			RegisterSignal(operator, COMSIG_GUN_USER_SET, .proc/start_processing_again)
+			RegisterSignal(operator, COMSIG_GUN_USER_SET, PROC_REF(start_processing_again))
 		UnregisterSignal(operator, list(COMSIG_PARENT_QDELETING, COMSIG_GUN_USER_UNSET))
 		UnregisterSignal(src, list(COMSIG_ITEM_EQUIPPED_TO_SLOT, COMSIG_ITEM_REMOVED_INVENTORY))
 		operator = null
@@ -135,14 +135,14 @@
 			continue
 		if(nearby_human.last_move_time + move_sensitivity < world.time)
 			continue
-		prepare_blip(nearby_human, nearby_human.wear_id?.iff_signal & operator.wear_id.iff_signal ? MOTION_DETECTOR_FRIENDLY : MOTION_DETECTOR_HOSTILE)
+		prepare_blip(nearby_human, nearby_human.wear_id?.iff_signal & operator.wear_id?.iff_signal ? MOTION_DETECTOR_FRIENDLY : MOTION_DETECTOR_HOSTILE)
 	for (var/mob/living/carbon/xenomorph/nearby_xeno AS in cheap_get_xenos_near(operator, range))
 		if(nearby_xeno.last_move_time + move_sensitivity < world.time )
 			continue
 		prepare_blip(nearby_xeno, MOTION_DETECTOR_HOSTILE)
 	if(hostile_detected)
 		playsound(loc, 'sound/items/tick.ogg', 100, 0, 7, 2)
-	addtimer(CALLBACK(src, .proc/clean_blips), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(clean_blips)), 1 SECONDS)
 
 ///Clean all blips from operator screen
 /obj/item/attachable/motiondetector/proc/clean_blips()

@@ -10,36 +10,62 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	var/handful_icon_state = "bullet"
 	///how much of this ammo you can carry in a handful
 	var/handful_amount = 8
-	var/hud_state   = "unknown"  //Bullet type on the Ammo HUD
+	///Bullet type on the Ammo HUD
+	var/hud_state   = "unknown"
 	var/hud_state_empty = "unknown"
-	var/ping 		= "ping_b" //The icon that is displayed when the bullet bounces off something.
-	var/sound_hit //When it deals damage.
-	var/sound_armor //When it's blocked by human armor.
-	var/sound_miss //When it misses someone.
-	var/sound_bounce //When it bounces off something.
+	///The icon that is displayed when the bullet bounces off something.
+	var/ping 		= "ping_b"
+	///When it deals damage.
+	var/sound_hit
+	///When it's blocked by human armor.
+	var/sound_armor
+	///When it misses someone.
+	var/sound_miss
+	///When it bounces off something.
+	var/sound_bounce
 
-	var/accuracy 					= 0 		// This is added to the bullet's base accuracy
-	var/accuracy_var_low			= 1 		// How much the accuracy varies when fired
-	var/accuracy_var_high			= 1
-	var/accurate_range 				= 5 		// For most guns, this is where the bullet dramatically looses accuracy. Not for snipers though
-	var/accurate_range_min 			= 0			// Snipers use this to simulate poor accuracy at close ranges
-	var/point_blank_range			= 0			// Weapons will get a large accuracy buff at this short range
-	var/max_range 					= 20 		// This will de-increment a counter on the bullet
-	var/scatter  					= 0 		// How much the ammo scatters when burst fired, added to gun scatter, along with other mods
-	var/damage 						= 0 		// This is the base damage of the bullet as it is fired
-	var/damage_falloff 				= 1 		// How much damage the bullet loses per turf traveled
-	var/damage_type 				= BRUTE 	// BRUTE, BURN, TOX, OXY, CLONE are the only things that should be in here
-	var/penetration					= 0 		// How much armor it ignores before calculations take place
-	var/shrapnel_chance 			= 0 		// The % chance it will imbed in a human
-	var/shell_speed 				= 2 		// How fast the projectile moves
-	var/bonus_projectiles_type 					// Type path of the extra projectiles
-	var/bonus_projectiles_amount 	= 0 		// How many extra projectiles it shoots out. Works kind of like firing on burst, but all of the projectiles travel together
-	var/bonus_projectiles_scatter	= 8			// Degrees scattered per two projectiles, each in a different direction.
-	var/barricade_clear_distance	= 1			// How far the bullet can travel before incurring a chance of hitting barricades; normally 1.
-	var/armor_type					= "bullet"	// Does this have an override for the armor type the ammo should test? Bullet by default
-	var/sundering					= 0 		// How many stacks of sundering to apply to a mob on hit
+	///This is added to the bullet's base accuracy
+	var/accuracy = 0
+	///How much the accuracy varies when fired
+	var/accuracy_var_low = 1
+	var/accuracy_var_high = 1
+	///For most guns, this is where the bullet dramatically looses accuracy. Not for snipers though
+	var/accurate_range = 5
+	///Snipers use this to simulate poor accuracy at close ranges
+	var/accurate_range_min = 0
+	///Weapons will get a large accuracy buff at this short range
+	var/point_blank_range = 0
+	///This will de-increment a counter on the bullet
+	var/max_range = 20
+	///How much the ammo scatters when burst fired, added to gun scatter, along with other mods
+	var/scatter = 0
+	///This is the base damage of the bullet as it is fired
+	var/damage = 0
+	///How much damage the bullet loses per turf traveled
+	var/damage_falloff = 1
+	///BRUTE, BURN, TOX, OXY, CLONE are the only things that should be in here
+	var/damage_type = BRUTE
+	///How much armor it ignores before calculations take place
+	var/penetration = 0
+	///The % chance it will imbed in a human
+	var/shrapnel_chance = 0
+	///How fast the projectile moves
+	var/shell_speed = 2
+	///Type path of the extra projectiles
+	var/bonus_projectiles_type
+	///How many extra projectiles it shoots out. Works kind of like firing on burst, but all of the projectiles travel together
+	var/bonus_projectiles_amount = 0
+	///Degrees scattered per two projectiles, each in a different direction.
+	var/bonus_projectiles_scatter = 8
+	///How far the bullet can travel before incurring a chance of hitting barricades; normally 1.
+	var/barricade_clear_distance = 1
+	///Does this have an override for the armor type the ammo should test? Bullet by default
+	var/armor_type = "bullet"
+	///How many stacks of sundering to apply to a mob on hit
+	var/sundering = 0
 	///how much damage airbursts do to mobs around the target, multiplier of the bullet's damage
 	var/airburst_multiplier	= 0.1
+	///What kind of behavior the ammo has
 	var/flags_ammo_behavior = NONE
 	///Determines what color our bullet will be when it flies
 	var/bullet_color = COLOR_WHITE
@@ -65,16 +91,20 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 /datum/ammo/proc/do_at_max_range(turf/T, obj/projectile/proj)
 	return
 
-/datum/ammo/proc/on_shield_block(mob/M, obj/projectile/proj) //Does it do something special when shield blocked? Ie. a flare or grenade that still blows up.
+///Does it do something special when shield blocked? Ie. a flare or grenade that still blows up.
+/datum/ammo/proc/on_shield_block(mob/M, obj/projectile/proj)
 	return
 
-/datum/ammo/proc/on_hit_turf(turf/T, obj/projectile/proj) //Special effects when hitting dense turfs.
+///Special effects when hitting dense turfs.
+/datum/ammo/proc/on_hit_turf(turf/T, obj/projectile/proj)
 	return
 
-/datum/ammo/proc/on_hit_mob(mob/M, obj/projectile/proj) //Special effects when hitting mobs.
+///Special effects when hitting mobs.
+/datum/ammo/proc/on_hit_mob(mob/M, obj/projectile/proj)
 	return
 
-/datum/ammo/proc/on_hit_obj(obj/O, obj/projectile/proj) //Special effects when hitting objects.
+///Special effects when hitting objects.
+/datum/ammo/proc/on_hit_obj(obj/O, obj/projectile/proj)
 	return
 
 ///Special effects for leaving a turf. Only called if the projectile has AMMO_LEAVE_TURF enabled
@@ -225,7 +255,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 			new_angle -= 360
 		new_proj.fire_at(target, main_proj.firer, source, range, speed, new_angle, TRUE)
 
-/// A variant of Fire_bonus_projectiles without fixed scatter and no link between gun and bonus_projectile accuracy
+///A variant of Fire_bonus_projectiles without fixed scatter and no link between gun and bonus_projectile accuracy
 /datum/ammo/proc/fire_directionalburst(obj/projectile/main_proj, atom/shooter, atom/source, range, speed, angle, target)
 	var/effect_icon = ""
 	var/proj_type = /obj/projectile
@@ -2548,13 +2578,15 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 /datum/ammo/energy/lasgun/marine/autolaser
 	name = "machine laser bolt"
 	damage = 15
-	penetration = 15
+	penetration = 22.5
 
 /datum/ammo/energy/lasgun/marine/autolaser/efficiency
 	name = "efficient machine laser bolt"
 	hud_state = "laser_efficiency"
-	damage = 8.5
-	hitscan_effect_icon = "beam_particle"
+	damage = 12.5
+	penetration = 5
+	sundering = 0.5
+	hitscan_effect_icon = "u_laser_beam"
 
 /datum/ammo/energy/lasgun/marine/autolaser/swarm
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_SUNDERING
@@ -2569,11 +2601,11 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 /datum/ammo/energy/lasgun/marine/sniper
 	name = "sniper laser bolt"
 	hud_state = "laser_sniper"
-	damage = 60
-	penetration = 30
+	damage = 70
+	penetration = 45
 	accurate_range_min = 5
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_SUNDERING|AMMO_HITSCAN|AMMO_SNIPER
-	sundering = 4
+	sundering = 5
 	max_range = 40
 	damage_falloff = 0
 	hitscan_effect_icon = "beam_heavy"
@@ -2584,11 +2616,23 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	hud_state = "laser_heat"
 	shell_speed = 2.5
 	damage = 40
-	penetration = 0
+	penetration = 30
 	accurate_range_min = 5
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_INCENDIARY|AMMO_SUNDERING|AMMO_HITSCAN|AMMO_SNIPER
 	sundering = 1
-	hitscan_effect_icon = "u_laser_beam"
+	hitscan_effect_icon = "beam_incen"
+
+/datum/ammo/energy/lasgun/marine/sniper_overcharge
+	name = "sniper overcharge bolt"
+	icon_state = "overchargedlaser"
+	hud_state = "laser_sniper_overcharge"
+	shell_speed = 2.5
+	damage = 130
+	penetration = 80
+	accurate_range_min = 6
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_SUNDERING|AMMO_HITSCAN|AMMO_SNIPER
+	sundering = 10
+	hitscan_effect_icon = "beam_heavy_charge"
 
 /datum/ammo/energy/lasgun/marine/pistol
 	name = "pistol laser bolt"
@@ -2600,10 +2644,21 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	name = "disabler bolt"
 	icon_state = "disablershot"
 	hud_state = "laser_disabler"
-	damage = 70
+	sundering = 0
+	damage = 80
 	penetration = 0
 	damage_type = STAMINA
+	armor_type = "bio"
 	hitscan_effect_icon = "beam_particle"
+	var/drain_multiplier = 0.05
+	/// Flat plasma to drain, unaffected by caste plasma amount.
+	var/plasma_drain = 16
+
+/datum/ammo/energy/lasgun/marine/pistol/disabler/on_hit_mob(mob/living/victim, obj/projectile/proj)
+	if(isxeno(victim))
+		var/mob/living/carbon/xenomorph/X = victim
+		X.use_plasma(drain_multiplier * X.xeno_caste.plasma_max * X.xeno_caste.plasma_regen_limit)
+		X.use_plasma(plasma_drain)
 
 /datum/ammo/energy/lasgun/marine/pistol/heat
 	name = "microwave heat bolt"
@@ -3511,7 +3566,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	shrapnel_chance = 0
 	///percentage of xenos total plasma to drain when hit by a pepperball
 	var/drain_multiplier = 0.05
-	/// Flat plasma to drain, unaffected by caste plasma amount.
+	///Flat plasma to drain, unaffected by caste plasma amount.
 	var/plasma_drain = 25
 
 /datum/ammo/bullet/pepperball/on_hit_mob(mob/living/victim, obj/projectile/proj)

@@ -610,3 +610,147 @@
 	SIGNAL_HANDLER
 	beacon_datum = null
 
+
+
+/obj/item/armor_module/module/motion_detector
+	name = "Tactical sensor helmet module"
+	desc = "Help you to detect the xeno in the darkness."
+	icon = 'icons/mob/modular/modular_armor_modules.dmi'
+	icon_state = "mod_head_scanner"
+	item_state = "mod_head_scanner_a"
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_APPLY_ON_MOB
+	slot = ATTACHMENT_SLOT_HEAD_MODULE
+	prefered_slot = SLOT_HEAD
+
+	var/activate_scan = FALSE 			//активен ли сканер?
+	var/equiped_helmet = TRUE			//надет ли шлем?
+	var/helmet_type						//какой	шлем надет?
+
+	/// Who's using this item
+	var/mob/living/carbon/human/operator
+	///If a hostile was detected
+	var/hostile_detected = FALSE
+	///The time needed after the last move to not be detected by this motion detector
+	var/move_sensitivity = 1 SECONDS
+	///The range of this motion detector
+	var/range = 16
+	///The list of all the blips
+	var/list/obj/effect/blip/blips_list = list()
+
+
+/obj/item/armor_module/module/motion_detector/Destroy()
+	UnregisterSignal(helmet_type, list(COMSIG_ITEM_UNEQUIPPED, COMSIG_ITEM_EQUIPPED))
+	clean_operator()
+	return ..()
+
+/obj/item/armor_module/module/motion_detector/on_attach(obj/item/attaching_to, mob/user)
+	helmet_type = attaching_to
+	operator = user
+	RegisterSignal(helmet_type, COMSIG_ITEM_EQUIPPED, .proc/ifequipped)
+
+/obj/item/armor_module/module/motion_detector/on_detach(obj/item/detaching_from, mob/user)
+	UnregisterSignal(helmet_type, list(COMSIG_ITEM_UNEQUIPPED, COMSIG_ITEM_EQUIPPED))
+	clean_operator()
+	return ..()
+
+//убираем графическую хуйню и останавливает сканирование. По приколу обнуляем оператора
+/obj/item/armor_module/module/motion_detector/proc/clean_operator()
+	STOP_PROCESSING(SSobj, src)
+	clean_blips()
+	if(operator)
+		operator = null
+	//update_icon()
+
+//если шлем экипирован
+/obj/item/armor_module/module/motion_detector/proc/ifequipped(datum/source, mob/equipper, slot)
+	SIGNAL_HANDLER
+	if(helmet_type == source && slot == SLOT_HEAD)
+		equiped_helmet = TRUE
+		activate_scan = TRUE
+		to_chat(equipper, span_notice("Operator detected. Welcome, [equipper]. Green points - friendly signatures, red points - hostile signatures. Good Luck and dont shut in green point"))
+		RegisterSignal(helmet_type, COMSIG_ITEM_UNEQUIPPED, .proc/ifunequipped)
+		activate(equipper)
+
+//если шлем сняли
+/obj/item/armor_module/module/motion_detector/proc/ifunequipped(datum/source, mob/unequipper, slot)
+	SIGNAL_HANDLER
+	if (source == helmet_type && slot == SLOT_HEAD)
+		activate_scan = FALSE
+		equiped_helmet = FALSE
+		to_chat(unequipper, span_notice("Operator undetected. Shut down."))
+		UnregisterSignal(helmet_type, COMSIG_ITEM_UNEQUIPPED, .proc/ifunequipped)
+		activate(unequipper)
+
+//вкл-выкл модуль
+/obj/item/armor_module/module/motion_detector/activate(mob/living/user)
+	to_chat(user, span_notice("[activate_scan ? "Enabling" : "Disabling"] \the [src]."))
+	if(!activate_scan)
+		clean_operator()
+	if(!equiped_helmet)
+		return
+	if(!operator)
+		operator = user
+	if(operator && activate_scan)
+		START_PROCESSING(SSobj, src)
+	//update_icon()
+	activate_scan = !activate_scan
+
+//copypaste
+/obj/item/armor_module/module/motion_detector/process()
+	if(!operator?.client || operator.stat != CONSCIOUS)
+		activate_scan = FALSE
+		activate(operator)
+		return
+	hostile_detected = FALSE
+	for (var/mob/living/carbon/human/nearby_human AS in cheap_get_humans_near(operator, range))
+		if(nearby_human == operator)
+			continue
+		if(nearby_human.last_move_time + move_sensitivity < world.time)
+			continue
+		prepare_blip(nearby_human, nearby_human.wear_id?.iff_signal & operator.wear_id.iff_signal ? MOTION_DETECTOR_FRIENDLY : MOTION_DETECTOR_HOSTILE)
+	for (var/mob/living/carbon/xenomorph/nearby_xeno AS in cheap_get_xenos_near(operator, range))
+		if(nearby_xeno.last_move_time + move_sensitivity < world.time )
+			continue
+		prepare_blip(nearby_xeno, MOTION_DETECTOR_HOSTILE)
+	if(hostile_detected)
+		playsound(loc, 'sound/items/tick.ogg', 100, 0, 7, 2)
+	addtimer(CALLBACK(src, .proc/clean_blips), 1 SECONDS)
+
+///Clean all blips from operator screen
+/obj/item/armor_module/module/motion_detector/proc/clean_blips()
+	if(!operator)//We already cleaned
+		return
+	for(var/obj/effect/blip/blip AS in blips_list)
+		blip.remove_blip(operator)
+	blips_list.Cut()
+
+///Prepare the blip to be print on the operator screen
+/obj/item/armor_module/module/motion_detector/proc/prepare_blip(mob/target, status)
+	if(!operator.client)
+		return
+	if(status == MOTION_DETECTOR_HOSTILE)
+		hostile_detected = TRUE
+
+	var/list/actualview = getviewsize(operator.client.view)
+	var/viewX = actualview[1]
+	var/viewY = actualview[2]
+	var/turf/center_view = get_view_center(operator)
+	var/screen_pos_y = target.y - center_view.y + round(viewY * 0.5) + 1
+	var/dir
+	if(screen_pos_y < 1)
+		dir = SOUTH
+		screen_pos_y = 1
+	else if (screen_pos_y > viewY)
+		dir = NORTH
+		screen_pos_y = viewY
+	var/screen_pos_x = target.x - center_view.x + round(viewX * 0.5) + 1
+	if(screen_pos_x < 1)
+		dir = (dir ? dir == SOUTH ? SOUTHWEST : NORTHWEST : WEST)
+		screen_pos_x = 1
+	else if (screen_pos_x > viewX)
+		dir = (dir ? dir == SOUTH ? SOUTHEAST : NORTHEAST : EAST)
+		screen_pos_x = viewX
+	if(dir)
+		blips_list += new /obj/effect/blip/edge_blip(null, status, operator, screen_pos_x, screen_pos_y, dir)
+		return
+	blips_list += new /obj/effect/blip/close_blip(get_turf(target), status, operator)

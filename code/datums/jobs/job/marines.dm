@@ -21,15 +21,17 @@ Make your way to the cafeteria for some post-cryosleep chow, and then get equipp
 /datum/job/terragov/squad/proc/spawn_by_squads(datum/squad/assigned_squad)
 	if (!assigned_squad)
 		return
+	var/n = src.type
+	var/a = GLOB.start_by_alpha_landmarks_list.len
 	switch(assigned_squad.id)
 		if (ALPHA_SQUAD)
-			return pick(GLOB.start_alpha_landmarks_list)
+			return pick(GLOB.start_by_alpha_landmarks_list[src.type])
 		if (BRAVO_SQUAD)
-			return pick(GLOB.start_bravo_landmarks_list)
+			return pick(GLOB.start_by_bravo_landmarks_list[src.type])
 		if (CHARLIE_SQUAD)
-			return pick(GLOB.start_charlie_landmarks_list)
+			return pick(GLOB.start_by_charlie_landmarks_list[src.type])
 		if (DELTA_SQUAD)
-			return pick(GLOB.start_delta_landmarks_list)
+			return pick(GLOB.start_by_delta_landmarks_list[src.type])
 	return
 
 //Squad Marine

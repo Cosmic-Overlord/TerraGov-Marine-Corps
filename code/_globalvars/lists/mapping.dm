@@ -15,10 +15,10 @@ GLOBAL_LIST_EMPTY(latejoin_cryo)
 GLOBAL_LIST_EMPTY(landmarks_list)				//list of all landmarks created
 GLOBAL_LIST_EMPTY(start_landmarks_list)			//list of all spawn points created
 
-GLOBAL_LIST_EMPTY(start_alpha_landmarks_list)	//list of all alpha squad spawn points created
-GLOBAL_LIST_EMPTY(start_bravo_landmarks_list)	//list of all bravo squad spawn points created
-GLOBAL_LIST_EMPTY(start_charlie_landmarks_list)	//list of all charlie squad spawn points created
-GLOBAL_LIST_EMPTY(start_delta_landmarks_list)	//list of all delta squad spawn points created
+GLOBAL_LIST_EMPTY(start_by_alpha_landmarks_list)	//lit of alpha squad landmarks created
+GLOBAL_LIST_EMPTY(start_by_bravo_landmarks_list)	//lit of bravo squad landmarks created
+GLOBAL_LIST_EMPTY(start_by_charlie_landmarks_list)	//lit of charlie squad landmarks created
+GLOBAL_LIST_EMPTY(start_by_delta_landmarks_list)	//lit of delta squad landmarks created
 
 GLOBAL_LIST_EMPTY(corpse_landmarks_list)		//list of all corpse spawner
 GLOBAL_LIST_EMPTY(valhalla_button_spawn_landmark) //list of the landmarks used to spawn mobs for the valhalla buttons

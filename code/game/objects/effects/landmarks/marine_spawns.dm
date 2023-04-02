@@ -6,34 +6,190 @@
 	. = ..()
 	GLOB.spawns_by_job[job] += list(loc)
 
+/obj/effect/landmark/start/squad
+	var/job
+	var/squad
 
-/obj/effect/landmark/start/alpha
-	icon_state = "x"
+/obj/effect/landmark/start/squad/squadmarine
+	icon_state = "marine_spawn"
+	job = /datum/job/terragov/squad/standard
 
-/obj/effect/landmark/start/alpha/Initialize()
+/obj/effect/landmark/start/squad/squadmarine/alpha
+	squad = ALPHA_SQUAD
+	icon_state = "marine_spawn_alpha"
+
+/obj/effect/landmark/start/squad/squadmarine/alpha/Initialize()
 	. = ..()
-	GLOB.start_alpha_landmarks_list += loc
+	GLOB.start_by_alpha_landmarks_list[job] += list(loc)
 
-/obj/effect/landmark/start/bravo
-	icon_state = "x"
+/obj/effect/landmark/start/squad/squadmarine/bravo
+	squad = BRAVO_SQUAD
+	icon_state = "marine_spawn_bravo"
 
-/obj/effect/landmark/start/bravo/Initialize()
+/obj/effect/landmark/start/squad/squadmarine/bravo/Initialize()
 	. = ..()
-	GLOB.start_bravo_landmarks_list += loc
+	GLOB.start_by_bravo_landmarks_list[job] += list(loc)
 
-/obj/effect/landmark/start/charlie
-	icon_state = "x"
+/obj/effect/landmark/start/squad/squadmarine/charlie
+	squad = CHARLIE_SQUAD
+	icon_state = "marine_spawn_charlie"
 
-/obj/effect/landmark/start/charlie/Initialize()
+/obj/effect/landmark/start/squad/squadmarine/charlie/Initialize()
 	. = ..()
-	GLOB.start_charlie_landmarks_list += loc
+	GLOB.start_by_charlie_landmarks_list[job] += list(loc)
 
-/obj/effect/landmark/start/delta
-	icon_state = "x"
+/obj/effect/landmark/start/squad/squadmarine/delta
+	squad = DELTA_SQUAD
+	icon_state = "marine_spawn_delta"
 
-/obj/effect/landmark/start/delta/Initialize()
+/obj/effect/landmark/start/squad/squadmarine/delta/Initialize()
 	. = ..()
-	GLOB.start_delta_landmarks_list += loc
+	GLOB.start_by_delta_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadengineer
+	icon_state = "engi_spawn"
+	job = /datum/job/terragov/squad/engineer
+
+/obj/effect/landmark/start/squad/squadengineer/alpha
+	squad = ALPHA_SQUAD
+	icon_state = "engi_spawn_alpha"
+
+/obj/effect/landmark/start/squad/squadengineer/alpha/Initialize()
+	. = ..()
+	GLOB.start_by_alpha_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadengineer/bravo
+	squad = BRAVO_SQUAD
+	icon_state = "engi_spawn_bravo"
+
+/obj/effect/landmark/start/squad/squadengineer/bravo/Initialize()
+	. = ..()
+	GLOB.start_by_bravo_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadengineer/charlie
+	squad = CHARLIE_SQUAD
+	icon_state = "engi_spawn_charlie"
+
+/obj/effect/landmark/start/squad/squadengineer/charlie/Initialize()
+	. = ..()
+	GLOB.start_by_charlie_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadengineer/delta
+	squad = DELTA_SQUAD
+	icon_state = "engi_spawn_delta"
+
+/obj/effect/landmark/start/squad/squadengineer/delta/Initialize()
+	. = ..()
+	GLOB.start_by_delta_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadcorpsman
+	icon_state = "medic_spawn"
+	job = /datum/job/terragov/squad/corpsman
+
+/obj/effect/landmark/start/squad/squadcorpsman/alpha
+	squad = ALPHA_SQUAD
+	icon_state = "medic_spawn_alpha"
+
+/obj/effect/landmark/start/squad/squadcorpsman/alpha/Initialize()
+	. = ..()
+	GLOB.start_by_alpha_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadcorpsman/bravo
+	squad = BRAVO_SQUAD
+	icon_state = "medic_spawn_bravo"
+
+/obj/effect/landmark/start/squad/squadcorpsman/bravo/Initialize()
+	. = ..()
+	GLOB.start_by_bravo_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadcorpsman/charlie
+	squad = CHARLIE_SQUAD
+	icon_state = "medic_spawn_charlie"
+
+/obj/effect/landmark/start/squad/squadcorpsman/charlie/Initialize()
+	. = ..()
+	GLOB.start_by_charlie_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadcorpsman/delta
+	squad = DELTA_SQUAD
+	icon_state = "medic_spawn_delta"
+
+/obj/effect/landmark/start/squad/squadcorpsman/delta/Initialize()
+	. = ..()
+	GLOB.start_by_delta_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadsmartgunner
+	icon_state = "smartgunner_spawn"
+	job = /datum/job/terragov/squad/smartgunner
+
+/obj/effect/landmark/start/squad/squadsmartgunner/alpha
+	squad = ALPHA_SQUAD
+	icon_state = "smartgunner_spawn_alpha"
+
+/obj/effect/landmark/start/squad/squadsmartgunner/alpha/Initialize()
+	. = ..()
+	GLOB.start_by_alpha_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadsmartgunner/bravo
+	squad = BRAVO_SQUAD
+	icon_state = "smartgunner_spawn_bravo"
+
+/obj/effect/landmark/start/squad/squadsmartgunner/bravo/Initialize()
+	. = ..()
+	GLOB.start_by_bravo_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadsmartgunner/charlie
+	squad = CHARLIE_SQUAD
+	icon_state = "smartgunner_spawn_charlie"
+
+/obj/effect/landmark/start/squad/squadsmartgunner/charlie/Initialize()
+	. = ..()
+	GLOB.start_by_charlie_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadsmartgunner/delta
+	squad = DELTA_SQUAD
+	icon_state = "smartgunner_spawn_delta"
+
+/obj/effect/landmark/start/squad/squadsmartgunner/delta/Initialize()
+	. = ..()
+	GLOB.start_by_delta_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadleader
+	icon_state = "leader_spawn"
+	job = /datum/job/terragov/squad/leader
+
+/obj/effect/landmark/start/squad/squadleader/alpha
+	squad = ALPHA_SQUAD
+	icon_state = "leader_spawn_alpha"
+
+/obj/effect/landmark/start/squad/squadleader/alpha/Initialize()
+	. = ..()
+	GLOB.start_by_alpha_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadleader/bravo
+	squad = BRAVO_SQUAD
+	icon_state = "leader_spawn_bravo"
+
+/obj/effect/landmark/start/squad/squadleader/bravo/Initialize()
+	. = ..()
+	GLOB.start_by_bravo_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadleader/charlie
+	squad = CHARLIE_SQUAD
+	icon_state = "leader_spawn_charlie"
+
+/obj/effect/landmark/start/squad/squadleader/charlie/Initialize()
+	. = ..()
+	GLOB.start_by_charlie_landmarks_list[job] += list(loc)
+
+/obj/effect/landmark/start/squad/squadleader/delta
+	squad = DELTA_SQUAD
+	icon_state = "leader_spawn_delta"
+
+// /obj/effect/landmark/start/latejoin/squad/squadleader/delta
+/obj/effect/landmark/start/squad/squadleader/delta/Initialize()
+	. = ..()
+	GLOB.start_by_delta_landmarks_list[job] += list(loc)
 
 /obj/effect/landmark/start/job/captain
 	icon_state = "CAP"
@@ -87,29 +243,9 @@
 	icon_state = "Synth"
 	job = /datum/job/terragov/silicon/synthetic
 
-/obj/effect/landmark/start/job/squadmarine
-	icon_state = "PFC"
-	job = /datum/job/terragov/squad/standard
-
-/obj/effect/landmark/start/job/squadengineer
-	icon_state = "Eng"
-	job = /datum/job/terragov/squad/engineer
-
-/obj/effect/landmark/start/job/squadcorpsman
-	icon_state = "HM"
-	job = /datum/job/terragov/squad/corpsman
-
-/obj/effect/landmark/start/job/squadsmartgunner
-	icon_state = "SGnr"
-	job = /datum/job/terragov/squad/smartgunner
-
 /obj/effect/landmark/start/job/squadspecialist
 	icon_state = "Spec"
 	job = /datum/job/terragov/squad/specialist
-
-/obj/effect/landmark/start/job/squadleader
-	icon_state = "SL"
-	job = /datum/job/terragov/squad/leader
 
 /obj/effect/landmark/start/job/ai
 	icon_state = "AI"

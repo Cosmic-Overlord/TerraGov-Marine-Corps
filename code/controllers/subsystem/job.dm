@@ -273,7 +273,12 @@ SUBSYSTEM_DEF(job)
 	//If we joined at roundstart we should be positioned at our workstation
 	var/turf/spawn_turf
 	if(!joined_late || job.job_flags & JOB_FLAG_OVERRIDELATEJOINSPAWN)
-		spawn_turf = job.return_spawn_turf()
+		var/datum/job/terragov/squad/marine = job
+		var/mob/living/carbon/human/h = new_character
+		if(!marine || !h.assigned_squad)
+			spawn_turf = job.return_spawn_turf()
+		else
+			spawn_turf = marine.spawn_by_squads(h.assigned_squad)
 	if(spawn_turf)
 		SendToAtom(new_character, spawn_turf)
 	else

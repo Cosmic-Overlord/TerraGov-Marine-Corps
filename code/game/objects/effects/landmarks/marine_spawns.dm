@@ -6,6 +6,35 @@
 	. = ..()
 	GLOB.spawns_by_job[job] += list(loc)
 
+
+/obj/effect/landmark/start/alpha
+	icon_state = "x"
+
+/obj/effect/landmark/start/alpha/Initialize()
+	. = ..()
+	GLOB.start_alpha_landmarks_list += loc
+
+/obj/effect/landmark/start/bravo
+	icon_state = "x"
+
+/obj/effect/landmark/start/bravo/Initialize()
+	. = ..()
+	GLOB.start_bravo_landmarks_list += loc
+
+/obj/effect/landmark/start/charlie
+	icon_state = "x"
+
+/obj/effect/landmark/start/charlie/Initialize()
+	. = ..()
+	GLOB.start_charlie_landmarks_list += loc
+
+/obj/effect/landmark/start/delta
+	icon_state = "x"
+
+/obj/effect/landmark/start/delta/Initialize()
+	. = ..()
+	GLOB.start_delta_landmarks_list += loc
+
 /obj/effect/landmark/start/job/captain
 	icon_state = "CAP"
 	job = /datum/job/terragov/command/captain

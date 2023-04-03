@@ -667,7 +667,7 @@
 	if(helmet_type == source && slot == SLOT_HEAD)
 		equiped_helmet = TRUE
 		activate_scan = TRUE
-		to_chat(equipper, span_notice("Operator detected. Welcome, [equipper]. Green points - friendly signatures, red points - hostile signatures. Good Luck and dont shut in green point"))
+		to_chat(equipper, span_notice("The [src] beeps and states, \"Operator detected. Welcome, [equipper]. Green points - friendly signatures, red points - hostile signatures. Good Luck and dont shut in green point\""), EMOTE_AUDIBLE, span_notice("The [src] vibrates but you can not hear it!"))
 		RegisterSignal(helmet_type, COMSIG_ITEM_UNEQUIPPED, .proc/ifunequipped)
 		activate(equipper)
 
@@ -677,13 +677,13 @@
 	if (source == helmet_type && slot == SLOT_HEAD)
 		activate_scan = FALSE
 		equiped_helmet = FALSE
-		to_chat(unequipper, span_notice("Operator undetected. Shut down."))
+		to_chat(unequipper, span_notice("The [src] beeps and states, \"Operator undetected. Shut down.\""), EMOTE_AUDIBLE, span_notice("The [src] vibrates but you can not hear it!"))
 		UnregisterSignal(helmet_type, COMSIG_ITEM_UNEQUIPPED, .proc/ifunequipped)
 		activate(unequipper)
 
 //вкл-выкл модуль
 /obj/item/armor_module/module/motion_detector/activate(mob/living/user)
-	to_chat(user, span_notice("[activate_scan ? "Enabling" : "Disabling"] \the [src]."))
+	to_chat(user, span_notice("[activate_scan ? "Enabling" : "Disabling"] the [src]."))
 	if(!activate_scan)
 		clean_operator()
 	if(!equiped_helmet)

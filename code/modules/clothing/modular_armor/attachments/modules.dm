@@ -641,7 +641,6 @@
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(equip), TRUE)
 
 /obj/item/armor_module/module/motion_detector/on_detach(obj/item/detaching_from, mob/user)
-	. = ..()
 	UnregisterSignal(parent, list(COMSIG_ITEM_UNEQUIPPED, COMSIG_ITEM_EQUIPPED))
 	stop_and_clean()
 	return ..()
@@ -683,9 +682,6 @@
 
 //copypaste
 /obj/item/armor_module/module/motion_detector/process()
-	var/mob/living/owner = parent.loc
-	if(!owner)
-		return
 	if(!operator?.client || operator.stat != CONSCIOUS)
 		active_scan = FALSE
 		activate(operator)

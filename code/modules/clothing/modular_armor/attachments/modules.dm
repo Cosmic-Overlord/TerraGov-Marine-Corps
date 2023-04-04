@@ -622,16 +622,9 @@
 	slot = ATTACHMENT_SLOT_HEAD_MODULE
 	prefered_slot = SLOT_HEAD
 
-	var/activate_scan = FALSE 			//активен ли сканер?
-	var/equiped_helmet = TRUE			//надет ли шлем?
-	var/helmet_type						//какой	шлем надет?
-
+	var/active_scan = FALSE 			//активен ли сканер?
 	/// Who's using this item
 	var/mob/living/carbon/human/operator
-	///If a hostile was detected
-	var/hostile_detected = FALSE
-	///The time needed after the last move to not be detected by this motion detector
-	var/move_sensitivity = 1 SECONDS
 	///The range of this motion detector
 	var/range = 16
 	///The list of all the blips
@@ -639,78 +632,72 @@
 
 
 /obj/item/armor_module/module/motion_detector/Destroy()
-	UnregisterSignal(helmet_type, list(COMSIG_ITEM_UNEQUIPPED, COMSIG_ITEM_EQUIPPED))
-	clean_operator()
+	UnregisterSignal(parent, list(COMSIG_ITEM_UNEQUIPPED, COMSIG_ITEM_EQUIPPED))
+	stop_and_clean()
 	return ..()
 
 /obj/item/armor_module/module/motion_detector/on_attach(obj/item/attaching_to, mob/user)
-	helmet_type = attaching_to
-	operator = user
-	RegisterSignal(helmet_type, COMSIG_ITEM_EQUIPPED, .proc/ifequipped)
+	. = ..()
+	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(equip), TRUE)
 
 /obj/item/armor_module/module/motion_detector/on_detach(obj/item/detaching_from, mob/user)
-	UnregisterSignal(helmet_type, list(COMSIG_ITEM_UNEQUIPPED, COMSIG_ITEM_EQUIPPED))
-	clean_operator()
+	. = ..()
+	UnregisterSignal(parent, list(COMSIG_ITEM_UNEQUIPPED, COMSIG_ITEM_EQUIPPED))
+	stop_and_clean()
 	return ..()
 
 //убираем графическую хуйню и останавливает сканирование. По приколу обнуляем оператора
-/obj/item/armor_module/module/motion_detector/proc/clean_operator()
+/obj/item/armor_module/module/motion_detector/proc/stop_and_clean()
 	STOP_PROCESSING(SSobj, src)
 	clean_blips()
 	if(operator)
 		operator = null
-	//update_icon()
 
 //если шлем экипирован
-/obj/item/armor_module/module/motion_detector/proc/ifequipped(datum/source, mob/equipper, slot)
+/obj/item/armor_module/module/motion_detector/proc/equip(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
-	if(helmet_type == source && slot == SLOT_HEAD)
-		equiped_helmet = TRUE
-		activate_scan = TRUE
-		to_chat(equipper, span_notice("The [src] beeps and states, \"Operator detected. Welcome, [equipper]. Green points - friendly signatures, red points - hostile signatures. Good Luck and dont shut in green point\""), EMOTE_AUDIBLE, span_notice("The [src] vibrates but you can not hear it!"))
-		RegisterSignal(helmet_type, COMSIG_ITEM_UNEQUIPPED, .proc/ifunequipped)
-		activate(equipper)
+	if(slot == SLOT_HEAD)
+		active_scan = TRUE
+		to_chat(user, span_notice("The [src] beeps and states, \"Operator detected. Welcome, [user]. Green points - friendly signatures, red points - hostile signatures. Good Luck and dont shut in green point\""), EMOTE_AUDIBLE, span_notice("The [src] vibrates but you can not hear it!"))
+		RegisterSignal(parent, COMSIG_ITEM_UNEQUIPPED, PROC_REF(unequip))
+		activate(user)
 
 //если шлем сняли
-/obj/item/armor_module/module/motion_detector/proc/ifunequipped(datum/source, mob/unequipper, slot)
+/obj/item/armor_module/module/motion_detector/proc/unequip(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
-	if (source == helmet_type && slot == SLOT_HEAD)
-		activate_scan = FALSE
-		equiped_helmet = FALSE
-		to_chat(unequipper, span_notice("The [src] beeps and states, \"Operator undetected. Shut down.\""), EMOTE_AUDIBLE, span_notice("The [src] vibrates but you can not hear it!"))
-		UnregisterSignal(helmet_type, COMSIG_ITEM_UNEQUIPPED, .proc/ifunequipped)
-		activate(unequipper)
+	if (slot == SLOT_HEAD)
+		active_scan = FALSE
+		to_chat(user, span_notice("The [src] beeps and states, \"Operator undetected. Shut down.\""), EMOTE_AUDIBLE, span_notice("The [src] vibrates but you can not hear it!"))
+		UnregisterSignal(parent, COMSIG_ITEM_UNEQUIPPED)
+		activate(user)
 
 //вкл-выкл модуль
 /obj/item/armor_module/module/motion_detector/activate(mob/living/user)
-	to_chat(user, span_notice("[activate_scan ? "Enabling" : "Disabling"] the [src]."))
-	if(!activate_scan)
-		clean_operator()
-	if(!equiped_helmet)
-		return
+	to_chat(user, span_notice("[active_scan ? "Enabling" : "Disabling"] the [src]."))
 	if(!operator)
 		operator = user
-	if(operator && activate_scan)
+	if(active_scan)
 		START_PROCESSING(SSobj, src)
-	//update_icon()
-	activate_scan = !activate_scan
+	else
+		stop_and_clean()
 
 //copypaste
 /obj/item/armor_module/module/motion_detector/process()
+	var/mob/living/owner = parent.loc
+	if(!owner)
+		return
 	if(!operator?.client || operator.stat != CONSCIOUS)
-		activate_scan = FALSE
+		active_scan = FALSE
 		activate(operator)
 		return
-	hostile_detected = FALSE
+	var/hostile_detected = FALSE
 	for (var/mob/living/carbon/human/nearby_human AS in cheap_get_humans_near(operator, range))
 		if(nearby_human == operator)
 			continue
-		if(nearby_human.last_move_time + move_sensitivity < world.time)
-			continue
+		if(nearby_human.wear_id?.iff_signal & operator.wear_id.iff_signal == MOTION_DETECTOR_HOSTILE)
+			hostile_detected = TRUE
 		prepare_blip(nearby_human, nearby_human.wear_id?.iff_signal & operator.wear_id.iff_signal ? MOTION_DETECTOR_FRIENDLY : MOTION_DETECTOR_HOSTILE)
 	for (var/mob/living/carbon/xenomorph/nearby_xeno AS in cheap_get_xenos_near(operator, range))
-		if(nearby_xeno.last_move_time + move_sensitivity < world.time )
-			continue
 		prepare_blip(nearby_xeno, MOTION_DETECTOR_HOSTILE)
 	if(hostile_detected)
 		playsound(loc, 'sound/items/tick.ogg', 100, 0, 7, 2)
@@ -728,8 +715,6 @@
 /obj/item/armor_module/module/motion_detector/proc/prepare_blip(mob/target, status)
 	if(!operator.client)
 		return
-	if(status == MOTION_DETECTOR_HOSTILE)
-		hostile_detected = TRUE
 
 	var/list/actualview = getviewsize(operator.client.view)
 	var/viewX = actualview[1]

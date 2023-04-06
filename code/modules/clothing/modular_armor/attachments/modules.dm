@@ -611,7 +611,6 @@
 	beacon_datum = null
 
 
-
 /obj/item/armor_module/module/motion_detector
 	name = "Tactical sensor helmet module"
 	desc = "Help you to detect the xeno in the darkness."
@@ -638,10 +637,12 @@
 
 /obj/item/armor_module/module/motion_detector/on_attach(obj/item/attaching_to, mob/user)
 	. = ..()
-	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(equip), TRUE)
+//	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(equip), TRUE)
+	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(unequip), TRUE)
 
 /obj/item/armor_module/module/motion_detector/on_detach(obj/item/detaching_from, mob/user)
-	UnregisterSignal(parent, list(COMSIG_ITEM_UNEQUIPPED, COMSIG_ITEM_EQUIPPED))
+//	UnregisterSignal(parent, list(COMSIG_ITEM_UNEQUIPPED, COMSIG_ITEM_EQUIPPED))
+	UnregisterSignal(parent, COMSIG_ITEM_UNEQUIPPED)
 	stop_and_clean()
 	return ..()
 
@@ -653,32 +654,35 @@
 		operator = null
 
 //если шлем экипирован
-/obj/item/armor_module/module/motion_detector/proc/equip(datum/source, mob/user, slot)
-	SIGNAL_HANDLER
-	if(slot == SLOT_HEAD)
-		active_scan = TRUE
-		to_chat(user, span_notice("The [src] beeps and states, \"Operator detected. Welcome, [user]. Green points - friendly signatures, red points - hostile signatures. Good Luck and dont shut in green point\""), EMOTE_AUDIBLE, span_notice("The [src] vibrates but you can not hear it!"))
-		RegisterSignal(parent, COMSIG_ITEM_UNEQUIPPED, PROC_REF(unequip))
-		activate(user)
+///obj/item/armor_module/module/motion_detector/proc/equip(datum/source, mob/user, slot)
+//	SIGNAL_HANDLER
+//	if(slot == SLOT_HEAD)
+//		active_scan = TRUE
+//		to_chat(user, span_notice("The [src] beeps and states, \"Operator detected. Welcome, [user]. Green points - friendly signatures, red points - hostile signatures. Good Luck and dont shut in green point\""), EMOTE_AUDIBLE, span_notice("The [src] vibrates but you can not hear it!"))
+//		RegisterSignal(parent, COMSIG_ITEM_UNEQUIPPED, PROC_REF(unequip))
+//		activate(user)
 
 //если шлем сняли
 /obj/item/armor_module/module/motion_detector/proc/unequip(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
-	if (slot == SLOT_HEAD)
-		active_scan = FALSE
+	if (slot != SLOT_HEAD)
+//		active_scan = FALSE
 		to_chat(user, span_notice("The [src] beeps and states, \"Operator undetected. Shut down.\""), EMOTE_AUDIBLE, span_notice("The [src] vibrates but you can not hear it!"))
-		UnregisterSignal(parent, COMSIG_ITEM_UNEQUIPPED)
-		activate(user)
+//		UnregisterSignal(parent, COMSIG_ITEM_UNEQUIPPED)
+//		activate(user)
+		stop_and_clean()
 
 //вкл-выкл модуль
 /obj/item/armor_module/module/motion_detector/activate(mob/living/user)
-	to_chat(user, span_notice("[active_scan ? "Enabling" : "Disabling"] the [src]."))
+	active_scan = !active_scan
+	to_chat(user, span_notice("You toggle \the [src]. [active_scan ? "enabling" : "disabling"] it."))
 	if(!operator)
 		operator = user
 	if(active_scan)
 		START_PROCESSING(SSobj, src)
 	else
 		stop_and_clean()
+
 
 //copypaste
 /obj/item/armor_module/module/motion_detector/process()

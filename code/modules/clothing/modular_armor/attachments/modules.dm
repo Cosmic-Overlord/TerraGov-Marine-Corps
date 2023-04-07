@@ -587,7 +587,7 @@
 	item_state = "antenna_head_a"
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_APPLY_ON_MOB
 	slot = ATTACHMENT_SLOT_HEAD_MODULE
-	prefered_slot = SLOT_HEAD
+	//prefered_slot = SLOT_HEAD
 	/// Reference to the datum used by the supply drop console
 	var/datum/supply_beacon/beacon_datum
 
@@ -621,7 +621,6 @@
 	slot = ATTACHMENT_SLOT_HEAD_MODULE
 	prefered_slot = SLOT_HEAD
 
-	var/active_scan = FALSE 			//активен ли сканер?
 	/// Who's using this item
 	var/mob/living/carbon/human/operator
 	///The range of this motion detector
@@ -629,75 +628,53 @@
 	///The list of all the blips
 	var/list/obj/effect/blip/blips_list = list()
 
-
 /obj/item/armor_module/module/motion_detector/Destroy()
-	UnregisterSignal(parent, list(COMSIG_ITEM_UNEQUIPPED, COMSIG_ITEM_EQUIPPED))
 	stop_and_clean()
 	return ..()
 
 /obj/item/armor_module/module/motion_detector/on_attach(obj/item/attaching_to, mob/user)
 	. = ..()
-//	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(equip), TRUE)
-	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(unequip), TRUE)
+	RegisterSignal(parent, COMSIG_ITEM_UNEQUIPPED, PROC_REF(stop_and_clean))
 
 /obj/item/armor_module/module/motion_detector/on_detach(obj/item/detaching_from, mob/user)
-//	UnregisterSignal(parent, list(COMSIG_ITEM_UNEQUIPPED, COMSIG_ITEM_EQUIPPED))
-	UnregisterSignal(parent, COMSIG_ITEM_UNEQUIPPED)
+	UnregisterSignal(parent, COMSIG_ITEM_UNEQUIPPED, PROC_REF(stop_and_clean))
 	stop_and_clean()
 	return ..()
 
 //убираем графическую хуйню и останавливает сканирование. По приколу обнуляем оператора
 /obj/item/armor_module/module/motion_detector/proc/stop_and_clean()
+	SIGNAL_HANDLER
+
+	active = FALSE
 	STOP_PROCESSING(SSobj, src)
 	clean_blips()
-	if(operator)
-		operator = null
-
-//если шлем экипирован
-///obj/item/armor_module/module/motion_detector/proc/equip(datum/source, mob/user, slot)
-//	SIGNAL_HANDLER
-//	if(slot == SLOT_HEAD)
-//		active_scan = TRUE
-//		to_chat(user, span_notice("The [src] beeps and states, \"Operator detected. Welcome, [user]. Green points - friendly signatures, red points - hostile signatures. Good Luck and dont shut in green point\""), EMOTE_AUDIBLE, span_notice("The [src] vibrates but you can not hear it!"))
-//		RegisterSignal(parent, COMSIG_ITEM_UNEQUIPPED, PROC_REF(unequip))
-//		activate(user)
-
-//если шлем сняли
-/obj/item/armor_module/module/motion_detector/proc/unequip(datum/source, mob/user, slot)
-	SIGNAL_HANDLER
-	if (slot != SLOT_HEAD)
-//		active_scan = FALSE
-		to_chat(user, span_notice("The [src] beeps and states, \"Operator undetected. Shut down.\""), EMOTE_AUDIBLE, span_notice("The [src] vibrates but you can not hear it!"))
-//		UnregisterSignal(parent, COMSIG_ITEM_UNEQUIPPED)
-//		activate(user)
-		stop_and_clean()
+	operator = null
 
 //вкл-выкл модуль
 /obj/item/armor_module/module/motion_detector/activate(mob/living/user)
-	active_scan = !active_scan
-	to_chat(user, span_notice("You toggle \the [src]. [active_scan ? "enabling" : "disabling"] it."))
-	if(!operator)
+	active = !active
+	to_chat(user, span_notice("You toggle \the [src]. [active ? "enabling" : "disabling"] it."))
+	if(active)
 		operator = user
-	if(active_scan)
 		START_PROCESSING(SSobj, src)
 	else
 		stop_and_clean()
 
-
 //copypaste
 /obj/item/armor_module/module/motion_detector/process()
-	if(!operator?.client || operator.stat != CONSCIOUS)
-		active_scan = FALSE
-		activate(operator)
+	if(!operator.client || operator.stat != CONSCIOUS)
+		stop_and_clean()
 		return
 	var/hostile_detected = FALSE
 	for (var/mob/living/carbon/human/nearby_human AS in cheap_get_humans_near(operator, range))
 		if(nearby_human == operator)
 			continue
-		if(nearby_human.wear_id?.iff_signal & operator.wear_id.iff_signal == MOTION_DETECTOR_HOSTILE)
+		if(!hostile_detected && (!operator.wear_id || !nearby_human.wear_id || nearby_human.wear_id.iff_signal != operator.wear_id.iff_signal))
 			hostile_detected = TRUE
-		prepare_blip(nearby_human, nearby_human.wear_id?.iff_signal & operator.wear_id.iff_signal ? MOTION_DETECTOR_FRIENDLY : MOTION_DETECTOR_HOSTILE)
+		prepare_blip(nearby_human, nearby_human.wear_id?.iff_signal & operator.wear_id?.iff_signal ? MOTION_DETECTOR_FRIENDLY : MOTION_DETECTOR_HOSTILE)
 	for (var/mob/living/carbon/xenomorph/nearby_xeno AS in cheap_get_xenos_near(operator, range))
+		if(!hostile_detected)
+			hostile_detected = TRUE
 		prepare_blip(nearby_xeno, MOTION_DETECTOR_HOSTILE)
 	if(hostile_detected)
 		playsound(loc, 'sound/items/tick.ogg', 100, 0, 7, 2)

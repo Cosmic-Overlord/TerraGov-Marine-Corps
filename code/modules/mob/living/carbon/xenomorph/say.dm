@@ -69,3 +69,8 @@
 		return SSradio.saymodes["a"]
 	else
 		return SSradio.saymodes[talk_key]
+
+/mob/living/carbon/xenomorph/say()
+	. = ..()
+	if(speaking_noise)
+		playsound(loc, speaking_noise, 25, 1)

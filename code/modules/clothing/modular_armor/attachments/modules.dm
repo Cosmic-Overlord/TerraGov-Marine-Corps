@@ -273,7 +273,6 @@
 	UnregisterSignal(chemsystem, COMSIG_CHEMSYSTEM_TOGGLED)
 	chemsystem.Destroy()
 	chemsystem.RemoveComponent()
-	chemsystem.RemoveComponent()
 	return ..()
 
 ///Updates the module on the armor to glow or not

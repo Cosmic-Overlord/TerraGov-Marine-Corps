@@ -312,7 +312,7 @@
 
 	for (var/obj/O in get_turf(X))
 		if(!O.CanPass(target, get_turf(X)))
-			to_chat(X, span_xenowarning("We try to throws [target] away, but [target] cant pass throught it!"))
+			to_chat(X, span_xenowarning("We try to throw [target] away, but [target] cant pass throught it!"))
 			return fail_activate()
 
 	X.face_atom(A)

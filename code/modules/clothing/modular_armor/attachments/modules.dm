@@ -625,6 +625,8 @@
 	var/mob/living/carbon/human/operator
 	///The range of this motion detector
 	var/range = 16
+	var/motion_timer								//таймер для работы модуля
+	var/time_for_motion_timer = 4 SECONDS 			//время через которое будет срабатывать модуль
 	///The list of all the blips
 	var/list/obj/effect/blip/blips_list = list()
 
@@ -646,9 +648,12 @@
 	SIGNAL_HANDLER
 
 	active = FALSE
-	STOP_PROCESSING(SSobj, src)
+//	STOP_PROCESSING(SSobj, src)
 	clean_blips()
 	operator = null
+	if(motion_timer)
+		deltimer(motion_timer)	//поидее это можно удалить, если оставить TIMER_OVERRIDE
+		motion_timer = null
 
 //вкл-выкл модуль
 /obj/item/armor_module/module/motion_detector/activate(mob/living/user)
@@ -656,13 +661,19 @@
 	to_chat(user, span_notice("You toggle \the [src]. [active ? "enabling" : "disabling"] it."))
 	if(active)
 		operator = user
-		START_PROCESSING(SSobj, src)
+//		START_PROCESSING(SSobj, src)
+		if(!motion_timer)
+			motion_timer = addtimer(CALLBACK(src, PROC_REF(do_scan)), time_for_motion_timer, TIMER_LOOP|TIMER_UNIQUE|TIMER_OVERRIDE)
 	else
 		stop_and_clean()
 
-//copypaste
-/obj/item/armor_module/module/motion_detector/process()
-	if(!operator.client || operator.stat != CONSCIOUS)
+
+///obj/item/armor_module/module/motion_detector/process()
+
+
+/obj/item/armor_module/module/motion_detector/proc/do_scan()
+	if(!operator?.client || operator?.stat != CONSCIOUS)
+		to_chat(operator, span_notice("boop"))
 		stop_and_clean()
 		return
 	var/hostile_detected = FALSE
@@ -678,7 +689,7 @@
 		prepare_blip(nearby_xeno, MOTION_DETECTOR_HOSTILE)
 	if(hostile_detected)
 		playsound(loc, 'sound/items/tick.ogg', 100, 0, 7, 2)
-	addtimer(CALLBACK(src, .proc/clean_blips), 1 SECONDS)
+	addtimer(CALLBACK(src, .proc/clean_blips), time_for_motion_timer/2)
 
 ///Clean all blips from operator screen
 /obj/item/armor_module/module/motion_detector/proc/clean_blips()

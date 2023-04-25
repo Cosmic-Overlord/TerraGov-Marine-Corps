@@ -587,7 +587,7 @@
 	item_state = "antenna_head_a"
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_APPLY_ON_MOB
 	slot = ATTACHMENT_SLOT_HEAD_MODULE
-	prefered_slot = SLOT_HEAD
+	//prefered_slot = SLOT_HEAD
 	/// Reference to the datum used by the supply drop console
 	var/datum/supply_beacon/beacon_datum
 
@@ -628,7 +628,7 @@
 	//таймер для работы модуля
 	var/motion_timer = null
 	//время через которое будет срабатывать модуль
-	var/time_for_motion_timer = 4 SECONDS
+	var/time_for_motion_timer = 2 SECONDS
 	///The list of all the blips
 	var/list/obj/effect/blip/blips_list = list()
 
@@ -663,7 +663,6 @@
 	to_chat(user, span_notice("You toggle \the [src]. [active ? "enabling" : "disabling"] it."))
 	if(active)
 		operator = user
-		do_scan()
 		if(!motion_timer)
 			motion_timer = addtimer(CALLBACK(src, PROC_REF(do_scan)), time_for_motion_timer, TIMER_LOOP|TIMER_STOPPABLE)
 	else
@@ -672,7 +671,6 @@
 
 /obj/item/armor_module/module/motion_detector/proc/do_scan()
 	if(!operator?.client || operator?.stat != CONSCIOUS)
-		to_chat(operator, span_notice("boop"))
 		stop_and_clean()
 		return
 	var/hostile_detected = FALSE
@@ -687,7 +685,7 @@
 			hostile_detected = TRUE
 		prepare_blip(nearby_xeno, MOTION_DETECTOR_HOSTILE)
 	if(hostile_detected)
-		playsound(loc, 'sound/items/tick.ogg', 100, 0, 7, 2)
+		playsound(loc, 'sound/items/tick.ogg', 100, 0, 1)
 	addtimer(CALLBACK(src, .proc/clean_blips), time_for_motion_timer/2)
 
 
@@ -695,9 +693,9 @@
 /obj/item/armor_module/module/motion_detector/proc/clean_blips()
 	if(!operator)//We already cleaned
 		return
-	for(var/obj/effect/blip/blip AS in mod_blips_list)
+	for(var/obj/effect/blip/blip AS in blips_list)
 		blip.remove_blip(operator)
-	mod_blips_list.Cut()
+	blips_list.Cut()
 
 ///Prepare the blip to be print on the operator screen
 /obj/item/armor_module/module/motion_detector/proc/prepare_blip(mob/target, status)
@@ -724,6 +722,6 @@
 		dir = (dir ? dir == SOUTH ? SOUTHEAST : NORTHEAST : EAST)
 		screen_pos_x = viewX
 	if(dir)
-		mod_blips_list += new /obj/effect/blip/edge_blip(null, status, operator, screen_pos_x, screen_pos_y, dir)
+		blips_list += new /obj/effect/blip/edge_blip(null, status, operator, screen_pos_x, screen_pos_y, dir)
 		return
-	mod_blips_list += new /obj/effect/blip/close_blip(get_turf(target), status, operator)
+	blips_list += new /obj/effect/blip/close_blip(get_turf(target), status, operator)

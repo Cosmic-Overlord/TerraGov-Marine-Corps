@@ -625,8 +625,10 @@
 	var/mob/living/carbon/human/operator
 	///The range of this motion detector
 	var/range = 16
-	var/motion_timer								//таймер для работы модуля
-	var/time_for_motion_timer = 4 SECONDS 			//время через которое будет срабатывать модуль
+	//таймер для работы модуля
+	var/motion_timer = null
+	//время через которое будет срабатывать модуль
+	var/time_for_motion_timer = 4 SECONDS
 	///The list of all the blips
 	var/list/obj/effect/blip/blips_list = list()
 
@@ -643,17 +645,17 @@
 	stop_and_clean()
 	return ..()
 
-//убираем графическую хуйню и останавливает сканирование. По приколу обнуляем оператора
+//убираем графическую хуйню и останавливает сканирование.
 /obj/item/armor_module/module/motion_detector/proc/stop_and_clean()
 	SIGNAL_HANDLER
 
 	active = FALSE
-//	STOP_PROCESSING(SSobj, src)
 	clean_blips()
 	operator = null
 	if(motion_timer)
-		deltimer(motion_timer)	//поидее это можно удалить, если оставить TIMER_OVERRIDE
+		deltimer(motion_timer)
 		motion_timer = null
+
 
 //вкл-выкл модуль
 /obj/item/armor_module/module/motion_detector/activate(mob/living/user)
@@ -661,14 +663,11 @@
 	to_chat(user, span_notice("You toggle \the [src]. [active ? "enabling" : "disabling"] it."))
 	if(active)
 		operator = user
-//		START_PROCESSING(SSobj, src)
+		do_scan()
 		if(!motion_timer)
-			motion_timer = addtimer(CALLBACK(src, PROC_REF(do_scan)), time_for_motion_timer, TIMER_LOOP|TIMER_UNIQUE|TIMER_OVERRIDE)
+			motion_timer = addtimer(CALLBACK(src, PROC_REF(do_scan)), time_for_motion_timer, TIMER_LOOP|TIMER_STOPPABLE)
 	else
 		stop_and_clean()
-
-
-///obj/item/armor_module/module/motion_detector/process()
 
 
 /obj/item/armor_module/module/motion_detector/proc/do_scan()
@@ -691,13 +690,14 @@
 		playsound(loc, 'sound/items/tick.ogg', 100, 0, 7, 2)
 	addtimer(CALLBACK(src, .proc/clean_blips), time_for_motion_timer/2)
 
+
 ///Clean all blips from operator screen
 /obj/item/armor_module/module/motion_detector/proc/clean_blips()
 	if(!operator)//We already cleaned
 		return
-	for(var/obj/effect/blip/blip AS in blips_list)
+	for(var/obj/effect/blip/blip AS in mod_blips_list)
 		blip.remove_blip(operator)
-	blips_list.Cut()
+	mod_blips_list.Cut()
 
 ///Prepare the blip to be print on the operator screen
 /obj/item/armor_module/module/motion_detector/proc/prepare_blip(mob/target, status)
@@ -724,6 +724,6 @@
 		dir = (dir ? dir == SOUTH ? SOUTHEAST : NORTHEAST : EAST)
 		screen_pos_x = viewX
 	if(dir)
-		blips_list += new /obj/effect/blip/edge_blip(null, status, operator, screen_pos_x, screen_pos_y, dir)
+		mod_blips_list += new /obj/effect/blip/edge_blip(null, status, operator, screen_pos_x, screen_pos_y, dir)
 		return
-	blips_list += new /obj/effect/blip/close_blip(get_turf(target), status, operator)
+	mod_blips_list += new /obj/effect/blip/close_blip(get_turf(target), status, operator)

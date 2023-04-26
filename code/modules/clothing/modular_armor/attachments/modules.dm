@@ -628,7 +628,7 @@
 	//таймер для работы модуля
 	var/motion_timer = null
 	//время через которое будет срабатывать модуль
-	var/time_for_motion_timer = 2 SECONDS
+	var/scan_time = 2 SECONDS
 	///The list of all the blips
 	var/list/obj/effect/blip/blips_list = list()
 
@@ -664,7 +664,7 @@
 	if(active)
 		operator = user
 		if(!motion_timer)
-			motion_timer = addtimer(CALLBACK(src, PROC_REF(do_scan)), time_for_motion_timer, TIMER_LOOP|TIMER_STOPPABLE)
+			motion_timer = addtimer(CALLBACK(src, PROC_REF(do_scan)), scan_time, TIMER_LOOP|TIMER_STOPPABLE)
 	else
 		stop_and_clean()
 
@@ -686,7 +686,7 @@
 		prepare_blip(nearby_xeno, MOTION_DETECTOR_HOSTILE)
 	if(hostile_detected)
 		playsound(loc, 'sound/items/tick.ogg', 100, 0, 1)
-	addtimer(CALLBACK(src, .proc/clean_blips), time_for_motion_timer/2)
+	addtimer(CALLBACK(src, PROC_REF(clean_blips)), scan_time / 2)
 
 
 ///Clean all blips from operator screen

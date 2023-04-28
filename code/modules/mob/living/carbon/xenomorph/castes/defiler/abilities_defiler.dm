@@ -372,7 +372,7 @@
 	var/atom/A = X.selected_reagent
 	action_icon_state = initial(A.name)
 	if(X.selected_reagent == /datum/effect_system/smoke_spread/xeno/acid/light)
-		action_icon_state = "acid_glob"
+		action_icon_state = "light_acid"
 	return ..()
 
 /datum/action/xeno_action/select_reagent/action_activate()
@@ -402,7 +402,7 @@
 			DEFILER_HEMODILE = image('icons/mob/actions.dmi', icon_state = DEFILER_HEMODILE),
 			DEFILER_TRANSVITOX = image('icons/mob/actions.dmi', icon_state = DEFILER_TRANSVITOX),
 			DEFILER_OZELOMELYN = image('icons/mob/actions.dmi', icon_state = DEFILER_OZELOMELYN),
-			DEFILER_ACID = image('icons/mob/actions.dmi', icon_state = "acid_glob"),
+			DEFILER_ACID = image('icons/mob/actions.dmi', icon_state = "light_acid"),
 			)
 	var/toxin_choice = show_radial_menu(owner, owner, defiler_toxin_images_list, radius = 48)
 	if(!toxin_choice)

@@ -73,7 +73,7 @@
 		"Melee" = list(
 			/obj/item/weapon/combat_knife = -1,
 			/obj/item/attachable/bayonetknife = -1,
-			/obj/item/stack/throwing_knife = -1,
+			/obj/item/stack/throwing_knife = 20,
 			/obj/item/storage/belt/knifepouch = -1,
 			/obj/item/storage/holster/blade/machete/full = -1,
 			/obj/item/storage/holster/blade/machete/full_harvester = -1,

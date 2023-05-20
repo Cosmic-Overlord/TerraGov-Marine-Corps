@@ -95,6 +95,21 @@
 			X.visible_message(span_notice("\The [X] caresses \the [src] with its scythe-like arm."), \
 			span_notice("We caress \the [src] with our scythe-like arm."), null, 5)
 
+		if(INTENT_DISARM)
+			X.do_attack_animation(src, ATTACK_EFFECT_DISARM)
+			var/is_shover_queen = isxenoqueen(X)
+			var/can_resist_shove = X.hivenumber != src.hivenumber || ((isxenoqueen(src) || src.queen_chosen_lead) && !is_shover_queen)
+			var/can_mega_shove = is_shover_queen || (X.queen_chosen_lead || X.tier == XENO_TIER_FOUR)
+			if(can_mega_shove && !can_resist_shove)
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+				X.visible_message("\The [X] shoves \the [src] out of her way!", \
+					span_warning("You shove \the [src] out of your way!"), null, 5)
+				src.apply_effect(2, WEAKEN)
+			else
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+				X.visible_message("\The [X] shoves \the [src]!", \
+					span_warning("You shove \the [src]!"), null, 5)
+
 		if(INTENT_GRAB)
 			if(anchored)
 				return FALSE
@@ -104,7 +119,7 @@
 			span_warning("We grab \the [src]!"), null, 5)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
-		if(INTENT_HARM, INTENT_DISARM)//Can't slash other xenos for now. SORRY  // You can now! --spookydonut
+		if(INTENT_HARM)//Can't slash other xenos for now. SORRY  // You can now! --spookydonut
 			if(issamexenohive(X))
 				X.do_attack_animation(src)
 				X.visible_message(span_warning("\The [X] nibbles \the [src]."), \

@@ -97,18 +97,20 @@
 
 		if(INTENT_DISARM)
 			X.do_attack_animation(src, ATTACK_EFFECT_DISARM)
-			var/is_shover_queen = isxenoqueen(X)
-			var/can_resist_shove = X.hivenumber != src.hivenumber || ((isxenoqueen(src) || src.queen_chosen_lead) && !is_shover_queen)
-			var/can_mega_shove = is_shover_queen || (X.queen_chosen_lead || X.tier == XENO_TIER_FOUR)
-			if(can_mega_shove && !can_resist_shove)
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				X.visible_message("\The [X] shoves \the [src] out of her way!", \
-					span_warning("You shove \the [src] out of your way!"), null, 5)
-				src.apply_effect(2, WEAKEN)
-			else
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				X.visible_message("\The [X] shoves \the [src]!", \
-					span_warning("You shove \the [src]!"), null, 5)
+			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+			if(!issamexenohive(X))
+				return FALSE
+
+			if(X.tier != XENO_TIER_FOUR && !X.queen_chosen_lead)
+				return FALSE
+
+			if((isxenoqueen(src) || queen_chosen_lead) && !isxenoqueen(X))
+				return FALSE
+
+			X.visible_message("\The [X] shoves \the [src] out of her way!", \
+				span_warning("You shove \the [src] out of your way!"), null, 5)
+			apply_effect(2, WEAKEN)
+			return TRUE
 
 		if(INTENT_GRAB)
 			if(anchored)

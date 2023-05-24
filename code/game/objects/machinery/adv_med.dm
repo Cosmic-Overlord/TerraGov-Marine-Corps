@@ -210,7 +210,7 @@
 		return data
 
 	data["patient"] = connected.occupant.name
-	data["dead"] = connected.occupant.stat == DEAD || HAS_TRAIT(connected.occupant, TRAIT_FAKEDEATH)
+	data["dead"] = (connected.occupant.stat == DEAD || HAS_TRAIT(connected.occupant, TRAIT_FAKEDEATH))
 	data["health"] = connected.occupant.health
 	data["total_brute"] = round(connected.occupant.getBruteLoss())
 	data["total_burn"] = round(connected.occupant.getFireLoss())

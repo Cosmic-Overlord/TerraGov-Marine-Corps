@@ -291,8 +291,6 @@
 
 	var/hivenumber = XENO_HIVE_NORMAL
 
-	var/speaking_noise = "alien_talk"
-
 	var/datum/hive_status/hive
 
 	///State tracking of hive status toggles

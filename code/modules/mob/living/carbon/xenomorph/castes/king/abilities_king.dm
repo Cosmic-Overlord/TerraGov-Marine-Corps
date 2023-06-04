@@ -290,12 +290,13 @@
 #define ZEROFORM_BEAM_RANGE 10
 #define ZEROFORM_CHARGE_TIME 2 SECONDS
 #define ZEROFORM_TICK_RATE 0.3 SECONDS
+#define ZEROFORM_BEAM_PARALYZE_TIME 2 SECONDS
 /datum/action/xeno_action/zero_form_beam
 	name = "Zero-Form Energy Beam"
 	action_icon_state = "zero_form_beam"
 	desc = "After a windup, concentrates the hives energy into a forward-facing beam that pierces everything, but only hurts living beings."
 	ability_name = "zero form energy beam"
-	plasma_cost = 25
+	plasma_cost = 50
 	cooldown_timer = 10 SECONDS
 	keybind_flags = XACT_KEYBIND_USE_ABILITY
 	keybinding_signals = list(
@@ -395,6 +396,7 @@
 					continue
 				human_victim.take_overall_damage(15, BURN, updating_health = TRUE)
 				human_victim.flash_weak_pain()
+				human_victim.Paralyze(ZEROFORM_BEAM_PARALYZE_TIME)
 				animation_flash_color(human_victim)
 			else if(ismecha(victim))
 				var/obj/vehicle/sealed/mecha/mech_victim = victim

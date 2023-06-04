@@ -745,6 +745,9 @@ TUNNEL
 	COOLDOWN_DECLARE(silo_damage_alert_cooldown)
 	COOLDOWN_DECLARE(silo_proxy_alert_cooldown)
 
+/obj/structure/xeno/silo/crash
+	resistance_flags = UNACIDABLE | DROPSHIP_IMMUNE | PLASMACUTTER_IMMUNE | INDESTRUCTIBLE
+
 /obj/structure/xeno/silo/Initialize()
 	. = ..()
 	center_turf = get_step(src, NORTHEAST)
@@ -783,6 +786,8 @@ TUNNEL
 		var/obj/structure/xeno/tunnel/newt = new(tunnel_turf, hivenumber)
 		newt.tunnel_desc = "[AREACOORD_NO_Z(newt)]"
 		newt.name += " [name]"
+		if(resistance_flags & INDESTRUCTIBLE)
+			newt.resistance_flags |= INDESTRUCTIBLE
 
 /obj/structure/xeno/silo/obj_destruction(damage_amount, damage_type, damage_flag)
 	if(GLOB.hive_datums[hivenumber])
@@ -1161,6 +1166,7 @@ TUNNEL
 
 /obj/structure/xeno/evotower/Initialize(mapload)
 	. = ..()
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, "tower")
 	GLOB.hive_datums[hivenumber].evotowers += src
 	set_light(2, 2, LIGHT_COLOR_GREEN)
 
@@ -1192,6 +1198,7 @@ TUNNEL
 
 /obj/structure/xeno/maturitytower/Initialize(mapload)
 	. = ..()
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, "tower")
 	GLOB.hive_datums[hivenumber].maturitytowers += src
 	set_light(2, 2, LIGHT_COLOR_GREEN)
 
@@ -1268,6 +1275,14 @@ TUNNEL
 		if(AURA_XENO_FRENZY)
 			icon_state = "frenzytower"
 			set_light(2, 2, LIGHT_COLOR_RED)
+
+/obj/structure/xeno/pherotower/crash
+	name = "Recovery tower"
+	resistance_flags = UNACIDABLE | DROPSHIP_IMMUNE | PLASMACUTTER_IMMUNE | INDESTRUCTIBLE
+	xeno_structure_flags = IGNORE_WEED_REMOVAL | CRITICAL_STRUCTURE
+
+/obj/structure/xeno/pherotower/crash/attack_alien(isrightclick = FALSE)
+	return
 
 /obj/structure/xeno/spawner
 	name = "spawner"

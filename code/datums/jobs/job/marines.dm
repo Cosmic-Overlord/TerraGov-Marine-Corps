@@ -484,7 +484,7 @@ You can serve a variety of roles, so choose carefully."})
 	outfit = /datum/outfit/job/marine/leader
 	job_flags = JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE|JOB_FLAG_ALLOWS_PREFS_GEAR|JOB_FLAG_PROVIDES_BANK_ACCOUNT|JOB_FLAG_ADDTOMANIFEST|JOB_FLAG_BOLD_NAME_ON_SELECTION|JOB_FLAG_PROVIDES_SQUAD_HUD|JOB_FLAG_CAN_SEE_ORDERS
 	jobworth = list(
-		/datum/job/xenomorph = LARVA_POINTS_REGULAR,
+		/datum/job/xenomorph = LARVA_POINTS_STRONG,
 		/datum/job/terragov/squad/smartgunner = SMARTIE_POINTS_HIGH,
 		/datum/job/terragov/silicon/synthetic = SYNTH_POINTS_REGULAR,
 		/datum/job/terragov/command/mech_pilot = MECH_POINTS_REGULAR,

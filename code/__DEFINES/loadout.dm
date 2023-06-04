@@ -194,6 +194,15 @@ GLOBAL_LIST_INIT(loadout_linked_vendor, list(
 		/obj/machinery/vending/cigarette,
 		/obj/machinery/vending/tool,
 	),
+	FACTION_NEUTRAL_CRASH = list(
+		/obj/machinery/vending/weapon/crash,
+		/obj/machinery/vending/uniform_supply,
+		/obj/machinery/vending/armor_supply,
+		/obj/machinery/vending/marineFood,
+		/obj/machinery/vending/MarineMed,
+		/obj/machinery/vending/cigarette,
+		/obj/machinery/vending/tool,
+	),
 	FACTION_TERRAGOV = list(
 		/obj/machinery/vending/weapon/hvh/team_one,
 		/obj/machinery/vending/uniform_supply,
@@ -732,4 +741,4 @@ GLOBAL_LIST_INIT(bypass_storage_content_save, typecacheof(list(
 /// The current loadout version
 #define CURRENT_LOADOUT_VERSION 10
 
-GLOBAL_LIST_INIT(accepted_loadout_versions, list(5, 6, 7, 8, 9, 10))
+GLOBAL_LIST_INIT(accepted_loadout_versions, list(5, 6, 7, 8, 9, 10, 11))

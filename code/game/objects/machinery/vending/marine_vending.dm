@@ -1,5 +1,5 @@
 /obj/machinery/vending/weapon
-	name = "\improper Automated Weapons Rack"
+	name = "automated weapons rack"
 	desc = "A automated weapon rack hooked up to a colossal storage of standard-issue weapons."
 	icon_state = "marinearmory"
 	icon_vend = "marinearmory-vend"
@@ -51,8 +51,8 @@
 		),
 		"Shotgun" = list(
 			/obj/item/weapon/gun/shotgun/pump/t35 = -1,
-			/obj/item/weapon/gun/shotgun/combat/standardmarine = 5,
-			/obj/item/weapon/gun/shotgun/double/marine = 5,
+			/obj/item/weapon/gun/shotgun/combat/standardmarine = -1,
+			/obj/item/weapon/gun/shotgun/double/marine = -1,
 			/obj/item/storage/belt/gun/ts34/full = -1,
 			/obj/item/ammo_magazine/shotgun = -1,
 			/obj/item/ammo_magazine/shotgun/buckshot = -1,
@@ -1253,6 +1253,7 @@
 			/obj/item/armor_module/module/artemis = -1,
 			/obj/item/armor_module/module/tyr_head = -1,
 			/obj/item/armor_module/module/antenna = -1,
+			/obj/item/armor_module/module/motion_detector = -1,
 			/obj/item/armor_module/module/mimir_environment_protection/mark1 = -1,
 			/obj/item/armor_module/module/mimir_environment_protection/mimir_helmet/mark1 = -1,
 			/obj/item/armor_module/module/tyr_extra_armor/mark1 = -1,
@@ -1479,7 +1480,7 @@
 			/obj/item/weapon/gun/energy/lasgun/lasrifle/xray = -1,
 			/obj/item/weapon/gun/launcher/rocket/m57a4/t57 = -1,
 			/obj/item/ammo_magazine/rocket/m57a4 = -1,
-			/obj/item/weapon/gun/launcher/rocket/sadar = -1,
+			/obj/item/weapon/gun/launcher/rocket/sadar/valhalla = -1,
 			/obj/item/ammo_magazine/rocket/sadar = -1,
 			/obj/item/ammo_magazine/rocket/sadar/ap = -1,
 			/obj/item/ammo_magazine/rocket/sadar/wp = -1,
@@ -1490,7 +1491,7 @@
 			/obj/item/weapon/gun/rifle/sniper/antimaterial = -1,
 			/obj/item/ammo_magazine/sniper = -1,
 			/obj/item/ammo_magazine/rifle/autosniper = -1,
-			/obj/item/weapon/gun/minigun = -1,
+			/obj/item/weapon/gun/minigun/valhalla = -1,
 			/obj/item/ammo_magazine/minigun_powerpack = -1,
 			/obj/item/weapon/gun/standard_mmg = -1,
 			/obj/item/ammo_magazine/standard_mmg = -1,
@@ -1521,10 +1522,10 @@
 			/obj/item/clothing/mask/gas/swat = -1,
 			/obj/item/clothing/glasses/night/imager_goggles = -1,
 			/obj/item/clothing/head/helmet/riot = -1,
-			/obj/item/clothing/suit/storage/marine/specialist = -1,
+			/obj/item/clothing/suit/storage/marine/specialist/valhalla = -1,
 			/obj/item/clothing/head/helmet/marine/specialist = -1,
 			/obj/item/clothing/gloves/marine/specialist = -1,
-			/obj/item/clothing/suit/storage/marine/B17 = -1,
+			/obj/item/clothing/suit/storage/marine/B17/valhalla = -1,
 			/obj/item/clothing/head/helmet/marine/grenadier = -1,
 			/obj/item/storage/backpack/marine/satchel/scout_cloak/scout = -1,
 			/obj/item/storage/backpack/marine/satchel/scout_cloak/sniper = -1,

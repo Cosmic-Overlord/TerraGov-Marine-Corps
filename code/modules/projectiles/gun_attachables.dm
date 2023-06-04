@@ -95,10 +95,10 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	var/attach_shell_speed_mod = 0
 	///Modifies accuracy/scatter penalty when firing onehanded while moving.
 	var/movement_acc_penalty_mod = 0
-	///How long in deciseconds it takes to attach a weapon with level 1 firearms training. Default is 30 seconds.
-	var/attach_delay = 30
-	///How long in deciseconds it takes to detach a weapon with level 1 firearms training. Default is 30 seconds.
-	var/detach_delay = 30
+	///How long in deciseconds it takes to attach a weapon with level 1 firearms training. Default is 1.5 seconds.
+	var/attach_delay = 1.5 SECONDS
+	///How long in deciseconds it takes to detach a weapon with level 1 firearms training. Default is 1.5 seconds.
+	var/detach_delay = 1.5 SECONDS
 	///Changes aim mode movement delay multiplicatively
 	var/aim_mode_movement_mult = 0
 	///Modifies projectile damage by a % when a marine gets passed, but not hit
@@ -840,7 +840,7 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	user.see_in_dark = 2
 	return TRUE
 
-/obj/item/attachable/scope/unremovable/laser_sniper_scope
+/obj/item/attachable/scope/laser_sniper_scope
 	name = "Terra Experimental laser sniper rifle rail scope"
 	desc = "A marine standard mounted zoom sight scope made for the Terra Experimental laser sniper rifle otherwise known as TE-S abbreviated, allows zoom by activating the attachment. Use F12 if your HUD doesn't come back."
 	icon_state = "tes"
@@ -1349,6 +1349,7 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	icon_state = "build_a_sentry_attachment"
 	desc = "The Build-A-Sentry is the latest design in cheap, automated, defense. Simple attach it to the rail of a gun and deploy. Its that easy!"
 	slot = ATTACHMENT_SLOT_RAIL
+	size_mod = 1
 	pixel_shift_x = 10
 	pixel_shift_y = 18
 	///Deploy time for the build-a-sentry
@@ -1395,8 +1396,6 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	detaching_gun.ignored_terrains = null
 	detaching_gun.deployable_item = null
 	detaching_gun.turret_flags &= ~(TURRET_HAS_CAMERA|TURRET_SAFETY|TURRET_ALERTS)
-	detaching_gun.RemoveElement(/datum/element/deployable_item, master_gun.deployable_item, deploy_time, undeploy_time)
-
 
 /obj/item/attachable/shoulder_mount
 	name = "experimental shoulder attachment point"

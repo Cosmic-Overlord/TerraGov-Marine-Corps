@@ -11,7 +11,7 @@
 		)
 	max_integrity = 250
 	materials = list(/datum/material/metal = 100)
-	w_class 	= 3
+	w_class 	= WEIGHT_CLASS_NORMAL
 	throwforce 	= 5
 	throw_speed = 4
 	throw_range = 5
@@ -583,7 +583,7 @@
 	examine_ammo_count(user)
 	if(!CHECK_BITFIELD(flags_item, IS_DEPLOYED))
 		if(CHECK_BITFIELD(flags_item, IS_DEPLOYABLE))
-			. += span_notice("Use Ctrl-Click on a tile to deploy.")
+			. += span_notice("Use Right Click on a tile to deploy.")
 		return
 	if(!CHECK_BITFIELD(flags_item, DEPLOYED_NO_ROTATE))
 		. += span_notice("Left or Right Click on a nearby tile to aim towards it.")

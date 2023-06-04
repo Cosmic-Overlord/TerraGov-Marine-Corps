@@ -137,13 +137,6 @@ OPERATIONS
 	containertype = /obj/structure/closet/crate/secure/explosives
 	available_against_xeno_only = TRUE
 
-/datum/supply_packs/operations/cas_voucher
-	name = "150 dropship fabricator points"
-	contains = list(/obj/item/dropship_points_voucher)
-	cost = 400
-	containertype = null
-	available_against_xeno_only = TRUE
-
 /datum/supply_packs/operations/cash
 	name = "200 dollars"
 	contains = list(/obj/item/spacecash/c500)
@@ -407,11 +400,23 @@ WEAPONS
 	cost = 40
 	available_against_xeno_only = TRUE
 
+/datum/supply_packs/weapons/scout_impact_box
+	name = "BR-8 scout rifle impact ammo box"
+	contains = list(/obj/item/ammo_magazine/packet/scout_rifle_impact)
+	cost = 100
+	available_against_xeno_only = TRUE
+
 /datum/supply_packs/weapons/scout_incendiary
 	name = "Br-8 scout rifle incendiary magazine"
 	contains = list(/obj/item/ammo_magazine/rifle/tx8/incendiary)
 	cost = 40
 	available_against_xeno_only = TRUE
+
+/datum/supply_packs/weapons/scout_incendiary_box
+	name = "BR-8 scout rifle incendiary ammo box"
+	contains = list(/obj/item/ammo_magazine/packet/scout_rifle_incendiary)
+	cost = 100
+	available_against_xeno_only = TRUE	
 
 /datum/supply_packs/weapons/thermobaric
 	name = "RL-57 Thermobaric Launcher"
@@ -651,16 +656,6 @@ WEAPONS
 	name = "TX13 smartpistol ammo"
 	contains = list(/obj/item/ammo_magazine/pistol/standard_pistol/smart_pistol)
 	cost = 10
-
-/datum/supply_packs/weapons/BigAmmoBox
-	name = "Big Ammo Box (10x24mm)"
-	contains = list(/obj/item/big_ammo_box)
-	cost = 50
-
-/datum/supply_packs/weapons/BigAmmoBoxSMG
-	name = "Big Ammo Box (10x20mm)"
-	contains = list(/obj/item/big_ammo_box/smg)
-	cost = 50
 
 /*******************************************************************************
 EXPLOSIVES

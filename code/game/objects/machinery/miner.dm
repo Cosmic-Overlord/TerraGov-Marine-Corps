@@ -24,7 +24,7 @@
 	anchored = TRUE
 	coverage = 30
 	layer = ABOVE_MOB_LAYER
-	resistance_flags = INDESTRUCTIBLE | DROPSHIP_IMMUNE
+	resistance_flags = RESIST_ALL | DROPSHIP_IMMUNE
 	///How many sheets of material we have stored
 	var/stored_mineral = 0
 	///Current status of the miner
@@ -149,7 +149,6 @@
 				required_ticks = initial(required_ticks)
 			if(MINER_AUTOMATED)
 				upgrade = new /obj/item/minerupgrade/automatic
-				stop_processing()
 		upgrade.forceMove(user.loc)
 		miner_upgrade_type = null
 		update_icon()

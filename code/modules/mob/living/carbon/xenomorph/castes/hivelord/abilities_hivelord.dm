@@ -46,12 +46,27 @@
 	hivelord.face_atom(recycled_xeno) //Face towards the target so we don't look silly
 	hivelord.visible_message(span_warning("\The [hivelord] starts breaking apart \the [recycled_xeno]'s carcass."), \
 	span_danger("We slowly deconstruct upon \the [recycled_xeno]'s carcass!"), null, 20)
-	if(!do_after(owner, 7 SECONDS, FALSE, recycled_xeno, BUSY_ICON_GENERIC, extra_checks = CALLBACK(src, PROC_REF(can_use_ability), target, TRUE, XACT_USE_BUSY)))
+
+	var/recycle_delay = 7 SECONDS
+	switch(recycled_xeno.tier)
+		if(XENO_TIER_ONE)
+			recycle_delay = 10 SECONDS
+		if(XENO_TIER_TWO)
+			recycle_delay = 13 SECONDS
+		if(XENO_TIER_THREE)
+			recycle_delay = 16 SECONDS
+		if(XENO_TIER_FOUR)
+			recycle_delay = 22 SECONDS
+
+	var/channel = SSsounds.random_available_channel()
+	playsound(hivelord, 'sound/effects/alien_recycler.ogg', 40, channel = channel)
+
+	if(!do_after(owner, recycle_delay, FALSE, recycled_xeno, BUSY_ICON_GENERIC, extra_checks = CALLBACK(src, PROC_REF(can_use_ability), target, TRUE, XACT_USE_BUSY)))
+		hivelord.stop_sound_channel(channel)
 		return
 
 	recycled_xeno.gib()
 
-	playsound(hivelord, 'sound/effects/alien_recycler.ogg', 40)
 	hivelord.visible_message(span_xenowarning("\The [hivelord] brushes xenomorphs' bits off its claws."), \
 	span_danger("We brush xenomorphs' bits off of our claws."), null, 20)
 	return succeed_activate() //dew it

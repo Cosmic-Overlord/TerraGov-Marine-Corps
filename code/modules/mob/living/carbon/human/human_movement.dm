@@ -14,8 +14,6 @@
 		return
 	if(istype(back, /obj/item/storage/backpack/marine/satchel/scout_cloak/scout) )
 		Process_Cloaking_Scout(user)
-	else if(istype(back, /obj/item/storage/backpack/marine/satchel/scout_cloak/sniper) )
-		Process_Cloaking_Sniper(user)
 
 /mob/living/carbon/human/proc/Process_Cloaking_Scout(mob/living/carbon/human/user)
 	var/obj/item/storage/backpack/marine/satchel/scout_cloak/scout/S = back
@@ -23,24 +21,14 @@
 		return
 	if(S.camo_last_shimmer > world.time - SCOUT_CLOAK_STEALTH_DELAY) //Shimmer after taking aggressive actions
 		alpha = SCOUT_CLOAK_RUN_ALPHA //50% invisible
-		S.camo_adjust_energy(src, SCOUT_CLOAK_RUN_DRAIN)
 	else if(S.camo_last_stealth > world.time - SCOUT_CLOAK_STEALTH_DELAY) //We have an initial reprieve at max invisibility allowing us to reposition, albeit at a high drain rate
 		alpha = SCOUT_CLOAK_STILL_ALPHA //95% invisible
-		S.camo_adjust_energy(src, SCOUT_CLOAK_RUN_DRAIN)
 	//Walking stealth
 	else if(m_intent == MOVE_INTENT_WALK)
 		alpha = SCOUT_CLOAK_WALK_ALPHA //80% invisible
-		S.camo_adjust_energy(src, SCOUT_CLOAK_WALK_DRAIN)
 	//Running and post-attack stealth
 	else
 		alpha = SCOUT_CLOAK_RUN_ALPHA //50% invisible
-		S.camo_adjust_energy(src, SCOUT_CLOAK_RUN_DRAIN)
-
-/mob/living/carbon/human/proc/Process_Cloaking_Sniper(mob/living/carbon/human/user)
-	var/obj/item/storage/backpack/marine/satchel/scout_cloak/sniper/S = back
-	if(!S.camo_active)
-		return
-	alpha = initial(alpha) //Sniper variant has *no* mobility stealth, but no drain on movement either
 
 /mob/living/carbon/human/Process_Spacemove()
 	if(restrained())

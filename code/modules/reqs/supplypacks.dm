@@ -917,12 +917,7 @@ ARMOR
 /datum/supply_packs/armor/scout_cloak
 	name = "Scout Cloak"
 	contains = list(/obj/item/storage/backpack/marine/satchel/scout_cloak/scout)
-	cost = 500
-
-/datum/supply_packs/armor/sniper_cloak
-	name = "Sniper Cloak"
-	contains = list(/obj/item/storage/backpack/marine/satchel/scout_cloak/sniper)
-	cost = 500
+	cost = 300
 
 /datum/supply_packs/armor/grenade_belt
 	name = "High Capacity Grenade Belt"

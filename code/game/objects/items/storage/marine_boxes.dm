@@ -149,47 +149,6 @@
 	new /obj/item/detpack(src)
 	new /obj/item/assembly/signaler(src)
 
-
-
-/obj/item/storage/box/spec/sniper
-	name = "\improper Sniper equipment"
-	desc = "A large case containing your very own long-range sniper rifle. Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
-	icon = 'icons/Marine/marine-weapons.dmi'
-	icon_state = "sniper_case"
-	w_class = WEIGHT_CLASS_HUGE
-	storage_slots = 15
-	slowdown = 1
-	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
-	foldable = null
-	spec_set = "sniper"
-
-/obj/item/storage/box/spec/sniper/Initialize(mapload, ...)
-	. = ..()
-	new /obj/item/clothing/suit/storage/marine/sniper(src)
-	new /obj/item/clothing/head/helmet/marine/sniper(src)
-	new /obj/item/clothing/glasses/night/m42_night_goggles(src)
-	new /obj/item/ammo_magazine/sniper(src)
-	new /obj/item/ammo_magazine/sniper(src)
-	new /obj/item/ammo_magazine/sniper/incendiary(src)
-	new /obj/item/ammo_magazine/sniper/incendiary(src)
-	new /obj/item/ammo_magazine/sniper/flak(src)
-	new /obj/item/ammo_magazine/sniper/flak(src)
-	new /obj/item/binoculars/tactical(src)
-	new /obj/item/weapon/gun/pistol/vp70(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
-	new /obj/item/storage/backpack/marine/satchel/scout_cloak/sniper(src)
-	new /obj/item/weapon/gun/rifle/sniper/antimaterial(src)
-	new /obj/item/explosive/grenade/smokebomb/cloak(src)
-	new /obj/item/explosive/grenade/smokebomb/cloak(src)
-	new /obj/item/explosive/grenade/smokebomb/cloak(src)
-	new /obj/item/bodybag/tarp(src)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		new /obj/item/clothing/head/modular/marine/m10x(src)
-	else
-		new /obj/item/clothing/head/helmet/durag(src)
-		new /obj/item/facepaint/sniper(src)
-
 /obj/item/storage/box/spec/scout
 	name = "\improper Scout equipment"
 	desc = "A large case containing Scout equipment; this one features the BR-8 battle rifle. Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
@@ -382,8 +341,6 @@
 			S = /obj/item/storage/box/spec/heavy_grenadier
 		if("Heavy Armor (Minigun)")
 			S = /obj/item/storage/box/spec/heavy_gunner
-		if("Sniper")
-			S = /obj/item/storage/box/spec/sniper
 		if("Scout (Battle Rifle)")
 			S = /obj/item/storage/box/spec/scout
 		if("Demo")
@@ -404,8 +361,8 @@
 			new /obj/item/storage/box/spec/pyro (T)
 		if("Grenadier")
 			new /obj/item/storage/box/spec/heavy_grenadier (T)
-		if("Sniper")
-			new /obj/item/storage/box/spec/sniper (T)
+		// if("Sniper")
+		// 	new /obj/item/storage/box/spec/sniper (T) holy shit
 		if("Scout")
 			new /obj/item/storage/box/spec/scout (T)
 		if("Demo")
@@ -719,37 +676,6 @@
 	new /obj/item/ammo_magazine/smg/standard_smg(src)
 	new /obj/item/ammo_magazine/smg/standard_smg(src)
 	new /obj/item/ammo_magazine/smg/standard_smg(src)
-	new /obj/item/clothing/mask/rebreather/scarf(src)
-
-/obj/item/storage/box/squadmarine/sniper
-	name = "\improper Sniper equipment"
-	desc = "A large case containing your very own long-range sniper rifle. Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
-	icon_state = "sniper_case"
-	storage_slots = 22
-
-/obj/item/storage/box/squadmarine/sniper/Initialize(mapload, ...)
-	. = ..()
-	new /obj/item/clothing/suit/storage/marine/sniper(src)
-	new /obj/item/clothing/head/helmet/marine/sniper(src)
-	new /obj/item/reagent_containers/food/snacks/enrg_bar(src)
-	new /obj/item/reagent_containers/food/snacks/enrg_bar(src)
-	new /obj/item/clothing/glasses/night/m42_night_goggles(src)
-	new /obj/item/weapon/gun/rifle/sniper/antimaterial(src)
-	new /obj/item/storage/belt/marine/antimaterial(src)
-	new /obj/item/ammo_magazine/sniper(src)
-	new /obj/item/storage/pouch/pistol/vp70(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
-	new /obj/item/storage/backpack/marine/satchel/scout_cloak/sniper(src)
-	new /obj/item/bodybag/tarp(src)
-	new /obj/item/binoculars/tactical(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
-	new /obj/item/armor_module/storage/uniform/webbing(src)
-	new /obj/item/explosive/grenade/smokebomb/cloak(src)
-	new /obj/item/explosive/grenade/smokebomb/cloak(src)
-	new /obj/item/explosive/grenade/smokebomb/cloak(src)
 	new /obj/item/clothing/mask/rebreather/scarf(src)
 
 /obj/item/storage/box/squadmarine/scout

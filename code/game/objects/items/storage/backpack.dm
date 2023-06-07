@@ -450,7 +450,6 @@
 	var/camo_cooldown_timer = null
 	var/camo_last_stealth = null
 	var/camo_last_shimmer = null
-	var/camo_energy = 100
 	var/mob/living/carbon/human/wearer = null
 	var/shimmer_alpha = SCOUT_CLOAK_RUN_ALPHA
 	var/stealth_delay = null
@@ -476,32 +475,34 @@
 	camouflage()
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/camouflage()
-	if (usr.incapacitated(TRUE))
+	if(usr.incapacitated(TRUE))
 		return
 
 	var/mob/living/carbon/human/M = usr
-	if (!istype(M))
+	if(!istype(M))
 		return
 
-	if (M.back != src)
+	if(M.back != src)
 		to_chat(M, "<span class='warning'>You must be wearing the cloak to activate it!")
 		return
 
-	if (camo_active)
+	if(camo_active)
 		camo_off(usr)
+		REMOVE_TRAIT(M, TRAIT_INVISIBLE, TRAIT_GENERIC)
 		return
 
 	if(SEND_SIGNAL(M, COMSIG_MOB_ENABLE_STEALTH) & STEALTH_ALREADY_ACTIVE)
 		to_chat(M, span_warning("You are already cloaked!"))
 		return FALSE
 
-	if (camo_cooldown_timer)
+	if(camo_cooldown_timer)
 		to_chat(M, "<span class='warning'>Your thermal cloak is still recalibrating! It will be ready in [(camo_cooldown_timer - world.time) * 0.1] seconds.")
 		return
 
 	camo_active = TRUE
 	camo_last_stealth = world.time
 	wearer = M
+	ADD_TRAIT(M, TRAIT_INVISIBLE, TRAIT_GENERIC)
 
 	RegisterSignal(wearer, COMSIG_MOB_ENABLE_STEALTH, PROC_REF(on_other_activate))
 	M.visible_message("[M] fades into thin air!", span_notice("You activate your cloak's camouflage."))
@@ -509,11 +510,11 @@
 
 	stealth_delay = world.time - SCOUT_CLOAK_STEALTH_DELAY
 	if(camo_last_shimmer > stealth_delay) //Shimmer after taking aggressive actions
-		wearer.alpha = shimmer_alpha //50% invisible
+		wearer.alpha = shimmer_alpha
 	else
 		wearer.alpha = SCOUT_CLOAK_STILL_ALPHA
 
-	if (M.smokecloaked)
+	if(M.smokecloaked)
 		M.smokecloaked = FALSE
 	else
 		GLOB.huds[DATA_HUD_SECURITY_ADVANCED].remove_from_hud(M)
@@ -551,7 +552,7 @@
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/camo_off(mob/user)
 	UnregisterSignal(wearer, COMSIG_MOB_ENABLE_STEALTH)
-	if (!user)
+	if(!user)
 		camo_active = FALSE
 		wearer = null
 		STOP_PROCESSING(SSprocessing, src)
@@ -565,6 +566,7 @@
 	user.visible_message(span_warning("[user.name] shimmers into existence!"), span_danger("Your cloak's camouflage has deactivated!"))
 	playsound(user.loc,'sound/effects/cloak_scout_off.ogg', 15, 1)
 	user.alpha = initial(user.alpha)
+	REMOVE_TRAIT(user, TRAIT_INVISIBLE, TRAIT_GENERIC)
 
 	GLOB.huds[DATA_HUD_SECURITY_ADVANCED].add_to_hud(user)
 	GLOB.huds[DATA_HUD_BASIC].add_to_hud(user)
@@ -573,9 +575,9 @@
 
 	addtimer(CALLBACK(src, PROC_REF(on_decloak)), 1)
 
-	var/cooldown = round( (initial(camo_energy) - camo_energy) / SCOUT_CLOAK_INACTIVE_RECOVERY * 10) //Should be 20 seconds after a full depletion with inactive recovery at 5
+	var/cooldown = SCOUT_CLOAK_INACTIVE_RECOVERY
 	if(cooldown)
-		camo_cooldown_timer = world.time + cooldown //recalibration and recharge time scales inversely with charge remaining
+		camo_cooldown_timer = world.time + cooldown
 		to_chat(user, "<span class='warning'>Your thermal cloak is recalibrating! It will be ready in [(camo_cooldown_timer - world.time) * 0.1] seconds.")
 		process_camo_cooldown(user, cooldown)
 
@@ -596,7 +598,6 @@
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/cooldown_finished()
 	camo_cooldown_timer = null
-	camo_energy = initial(camo_energy)
 	playsound(loc,'sound/effects/EMPulse.ogg', 25, 0, 1)
 	if(wearer)
 		to_chat(wearer, span_danger("Your thermal cloak has recalibrated and is ready to cloak again."))
@@ -606,7 +607,6 @@
 	if(user != wearer) //Only the wearer can see these details.
 		return
 	var/list/details = list()
-	details +=("It has [camo_energy]/[initial(camo_energy)] charge. </br>")
 
 	if(camo_cooldown_timer)
 		details +=("It will be ready in [(camo_cooldown_timer - world.time) * 0.1] seconds. </br>")
@@ -628,13 +628,6 @@
 	. = ..()
 	camouflage()
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/camo_adjust_energy(mob/user, drain = SCOUT_CLOAK_WALK_DRAIN)
-	camo_energy = clamp(camo_energy - drain,0,initial(camo_energy))
-
-	if(!camo_energy) //Turn off the camo if we run out of energy.
-		to_chat(user, span_danger("Your thermal cloak lacks sufficient energy to remain active."))
-		camo_off(user)
-
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/damage_taken(datum/source, damage)
 	SIGNAL_HANDLER
 	var/mob/living/carbon/human/wearer = source
@@ -648,7 +641,7 @@
 	apply_shimmer()
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/apply_shimmer()
-	camo_last_shimmer = world.time //Reduces transparency to 50%
+	camo_last_shimmer = world.time
 	wearer.alpha = max(wearer.alpha,shimmer_alpha)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/process()
@@ -660,41 +653,15 @@
 		return
 
 	stealth_delay = world.time - SCOUT_CLOAK_STEALTH_DELAY
-	if(camo_last_shimmer > stealth_delay) //Shimmer after taking aggressive actions; no energy regeneration
-		wearer.alpha = shimmer_alpha //50% invisible
-	else if(camo_last_stealth > stealth_delay ) //We have an initial reprieve at max invisibility allowing us to reposition; no energy recovery during this time
+	if(camo_last_shimmer > stealth_delay) //Shimmer after taking aggressive actions
+		wearer.alpha = shimmer_alpha
+	else if(camo_last_stealth > stealth_delay ) //We have an initial reprieve at max invisibility allowing us to reposition
 		wearer.alpha = SCOUT_CLOAK_STILL_ALPHA
 		return
 	//Stationary stealth
 	else if( wearer.last_move_intent < stealth_delay ) //If we're standing still and haven't shimmed in the past 3 seconds we become almost completely invisible
-		wearer.alpha = SCOUT_CLOAK_STILL_ALPHA //95% invisible
-		camo_adjust_energy(wearer, SCOUT_CLOAK_ACTIVE_RECOVERY)
+		wearer.alpha = SCOUT_CLOAK_STILL_ALPHA
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/sniper
-	name = "\improper M68-B Thermal Cloak"
-	icon_state = "smock"
-	desc = "The M68-B thermal cloak is a variant custom-purposed for snipers, allowing for faster, superior, stationary concealment at the expense of mobile concealment. It is designed to be paired with the lightweight M3 recon battle armor. Serves as a satchel."
-	shimmer_alpha = SCOUT_CLOAK_RUN_ALPHA * 0.5 //Half the normal shimmer transparency.
-
-/obj/item/storage/backpack/marine/satchel/scout_cloak/sniper/equippedsniper/Initialize()
-	. = ..()
-	new /obj/item/detpack(src)
-
-/obj/item/storage/backpack/marine/satchel/scout_cloak/sniper/process()
-	if(!wearer)
-		camo_off()
-		return
-	else if(wearer.stat == DEAD)
-		camo_off(wearer)
-		return
-
-	stealth_delay = world.time - SCOUT_CLOAK_STEALTH_DELAY * 0.5
-	if(camo_last_shimmer > stealth_delay) //Shimmer after taking aggressive actions; no energy regeneration
-		wearer.alpha = max(wearer.alpha, shimmer_alpha) //50% invisible
-	//Stationary stealth
-	else if( wearer.last_move_intent < stealth_delay ) //If we're standing still and haven't shimmed in the past 2 seconds we become almost completely invisible
-		wearer.alpha = SCOUT_CLOAK_STILL_ALPHA //95% invisible
-		camo_adjust_energy(wearer, SCOUT_CLOAK_ACTIVE_RECOVERY)
 
 // Welder Backpacks //
 

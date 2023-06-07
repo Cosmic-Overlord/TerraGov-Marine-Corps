@@ -1625,6 +1625,9 @@
 	if(HAS_TRAIT(src, TRAIT_GUN_SAFETY))
 		to_chat(user, span_warning("The safety is on!"))
 		return FALSE
+	if(HAS_TRAIT(user, TRAIT_INVISIBLE))
+		to_chat(user, span_warning("You can't shoot in this state."))
+		return FALSE
 	if(CHECK_BITFIELD(flags_gun_features, GUN_WIELDED_FIRING_ONLY)) //If we're not holding the weapon with both hands when we should.
 		if(!master_gun && !CHECK_BITFIELD(flags_item, WIELDED))
 			to_chat(user, "<span class='warning'>You need a more secure grip to fire this weapon!")

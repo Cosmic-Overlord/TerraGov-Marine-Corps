@@ -379,7 +379,7 @@
 	///Current Target that knives are being thrown at. This is for aiming
 	var/current_target
 	///The person throwing knives
-	var/mob/living/living_user
+	var/mob/living/carbon/human/living_user
 
 /obj/item/stack/throwing_knife/Initialize(mapload, new_amount)
 	. = ..()
@@ -442,6 +442,7 @@
 	if(living_user.Adjacent(current_target))
 		return AUTOFIRE_CONTINUE
 	var/thrown_thing = src
+	var/obj/item/storage/backpack/marine/satchel/scout_cloak/scout/cloak = living_user.back
 	if(amount == 1)
 		living_user.temporarilyRemoveItemFromInventory(src)
 		forceMove(get_turf(src))
@@ -454,8 +455,9 @@
 		knife_to_throw.throw_at(current_target, throw_range, throw_speed, living_user, TRUE)
 		amount--
 		thrown_thing = knife_to_throw
+	cloak.apply_shimmer()
 	playsound(src, 'sound/effects/throw.ogg', 30, 1)
-	visible_message(span_warning("[living_user] expertly throws [thrown_thing]."), null, null, 5)
+	visible_message(span_warning("[usr] expertly throws [thrown_thing]."), null, null, 5)
 	update_icon()
 	return AUTOFIRE_CONTINUE
 

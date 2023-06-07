@@ -439,6 +439,8 @@
 	SIGNAL_HANDLER
 	if(living_user?.get_active_held_item() != src)
 		return
+	// if(HAS_TRAIT(living_user, TRAIT_INVISIBLE))
+	// 	return
 	if(living_user.Adjacent(current_target))
 		return AUTOFIRE_CONTINUE
 	var/thrown_thing = src

@@ -723,7 +723,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	sundering = 5
 
 /datum/ammo/bullet/rifle/tx8/impact/on_hit_mob(mob/M, obj/projectile/P)
-	staggerstun(M, P, max_range = 20, slowdown = 1, knockback = 1)
+	staggerstun(M, P, max_range = 20, slowdown = 1)
 
 /datum/ammo/bullet/rifle/mpi_km
 	name = "crude heavy rifle bullet"

@@ -31,18 +31,23 @@
 	if((severity == EXPLODE_DEVASTATE) && ((bomb_effective_armor * 100) <= XENO_EXPLOSION_GIB_THRESHOLD))
 		return gib() //Gibs unprotected benos
 
-	//Slowdown and stagger
+    //Slowdown and stagger
 	var/ex_slowdown = (2 + (4 - severity)) * bomb_slow_multiplier
 
-	add_slowdown(max(0, ex_slowdown)) //Slowdown 2 for sentiel from nade
-	adjust_stagger(max(0, ex_slowdown - 2)) //Stagger 2 less than slowdown
+	add_slowdown(max(0, ex_slowdown))			//Slowdown 2 for sentiel from nade
+	adjust_stagger(max(0, ex_slowdown - 2))		//Stagger 2 less than slowdown
 
-	//Sunder
+    //Sunder
 	adjust_sunder(max(0, 50 * (3 - severity) * bomb_sunder_multiplier))
 
-	//Damage
-	var/ex_damage = 40 + rand(0, 20) + 50*(4 - severity)  //changed so overall damage stays similar
-	apply_damages(ex_damage * 0.5, ex_damage * 0.5, blocked = BOMB, updating_health = TRUE)
+    //Damage
+	var/ex_damage = 40 + rand(0, 20) + 50*(4 - severity)	//changed so overall damage stays similar
+	if(severity == EXPLODE_DEVASTATE)
+		adjust_sunder(80)
+		apply_damages(130, 130, blocked = BOMB, updating_health = TRUE, penetration = 80)
+		return
+	else
+		apply_damages(ex_damage * 0.5, ex_damage * 0.5, blocked = BOMB, updating_health = TRUE)
 
 
 /mob/living/carbon/xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone, blocked = 0, sharp = FALSE, edge = FALSE, updating_health = FALSE, penetration)

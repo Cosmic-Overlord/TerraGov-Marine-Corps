@@ -419,7 +419,7 @@
 	action_icon_state = "snatch"
 	desc = "Take an item equipped by your target in your mouth, and carry it away."
 	plasma_cost = 75
-	cooldown_timer = 20 SECONDS
+	cooldown_timer = 35 SECONDS
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_SNATCH,
 	)

@@ -603,7 +603,7 @@ WEAPONS
 /datum/supply_packs/weapons/minigun_powerpack
 	name = "SG-85 Minigun Powerpack"
 	contains = list(/obj/item/ammo_magazine/minigun_powerpack/smartgun)
-	cost = 200
+	cost = 150
 
 /datum/supply_packs/weapons/smart_minigun_ammo
 	name = "SG-85 ammo bin"

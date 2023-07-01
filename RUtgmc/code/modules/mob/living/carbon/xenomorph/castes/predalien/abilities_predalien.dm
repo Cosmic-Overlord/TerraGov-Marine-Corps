@@ -187,7 +187,7 @@
 		carbon.spawn_gibs()
 		playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 75, 1)
 		carbon.apply_effect(0.5, WEAKEN)
-		carbon.apply_damage(base_damage + damage_scale * xeno.kills, ARMOR_MELEE, BRUTE, "chest", 20)
+		carbon.apply_damage(base_damage + damage_scale * xeno.kills, BRUTE, "chest", MELEE, FALSE, FALSE, TRUE, 20)
 
 		xeno.do_attack_animation(carbon, ATTACK_EFFECT_CLAW)
 		spawn()

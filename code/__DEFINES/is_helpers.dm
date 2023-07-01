@@ -52,11 +52,13 @@
 //Human sub-species
 #define isrobot(H) (is_species(H, /datum/species/robot))
 #define issynth(H) (is_species(H, /datum/species/synthetic) || is_species(H, /datum/species/early_synthetic))
+#define isresearcher(A) (ishuman(A) && A.job == "Researcher")
 #define isspeciessynthetic(H) (H.species.species_flags & IS_SYNTHETIC)
 #define ismoth(H) (is_species(H, /datum/species/moth))
 #define issectoid(H) (is_species(H, /datum/species/sectoid))
 #define ishumanbasic(H) (is_species(H, /datum/species/human))
 #define iszombie(H) (is_species(H, /datum/species/zombie))
+#define isyautja(H) (is_species(H, /datum/species/yautja))
 
 //Monkey species and subtypes
 #define ismonkey(H) (is_species(H, /datum/species/monkey))
@@ -101,6 +103,7 @@
 #define isxenospitter(A) (istype(A, /mob/living/carbon/xenomorph/spitter))
 #define isxenosentinel(A) (istype(A, /mob/living/carbon/xenomorph/sentinel))
 #define isxenowarrior(A) (istype(A, /mob/living/carbon/xenomorph/warrior))
+#define ispredalien(A) (istype(A, /mob/living/carbon/xenomorph/predalien))
 #define isxenolarva(A) (istype(A, /mob/living/carbon/xenomorph/larva))
 #define isxenoqueen(A) (istype(A, /mob/living/carbon/xenomorph/queen))
 #define isxenoshrike(A) (istype(A, /mob/living/carbon/xenomorph/shrike))
@@ -281,7 +284,8 @@
 
 // Xeno hives
 #define isnormalhive(hive) (istype(hive, /datum/hive_status/normal))
-#define isxenohive(A) ((A == XENO_HIVE_NONE) || (A == XENO_HIVE_NORMAL) || (A == XENO_HIVE_CORRUPTED) || (A == XENO_HIVE_ALPHA) || (A == XENO_HIVE_BETA) || (A == XENO_HIVE_ZETA) || (A == XENO_HIVE_ADMEME)) || (A == XENO_HIVE_FALLEN)
+// Why not using A in list(...)?
+#define isxenohive(A) ((A == XENO_HIVE_NONE) || (A == XENO_HIVE_NORMAL) || (A == XENO_HIVE_CORRUPTED) || (A == XENO_HIVE_ALPHA) || (A == XENO_HIVE_BETA) || (A == XENO_HIVE_ZETA) || (A == XENO_HIVE_ADMEME)) || (A == XENO_HIVE_FALLEN) || (A == XENO_HIVE_YAUTJA)
 
 // Slot helpers
 #define ishandslot(A) ((A == SLOT_L_HAND) || (A == SLOT_R_HAND))

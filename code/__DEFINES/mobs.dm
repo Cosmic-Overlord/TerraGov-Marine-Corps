@@ -146,6 +146,7 @@
 #define XENO_HIVE_ZETA "zeta_hive"
 #define XENO_HIVE_ADMEME "admeme_hive"
 #define XENO_HIVE_FALLEN "fallen_hive"
+#define XENO_HIVE_YAUTJA "xeno_hive_yautja"
 
 // =============================
 // xeno tiers
@@ -359,6 +360,7 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 #define IS_MOTH (1<<3)
 #define IS_SECTOID (1<<4)
 #define IS_MONKEY (1<<5)
+#define IS_YAUTJA (1<<6)
 //=================================================
 
 //AFK status
@@ -403,7 +405,8 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 
 
 // Human Overlay Indexes
-#define LASER_LAYER 28 //For sniper targeting laser
+#define LASER_LAYER 29 //For sniper targeting laser
+#define FLAY_LAYER 28
 #define MOTH_WINGS_LAYER 27
 #define MUTATIONS_LAYER 26
 #define DAMAGE_LAYER 25

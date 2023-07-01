@@ -24,6 +24,9 @@
 	var/list/obj/structure/xeno/pherotower/pherotowers = list()
 	///list of hivemind cores
 	var/list/obj/structure/xeno/hivemindcore/hivemindcores = list()
+	///list of thick resin nests
+	var/max_thick_nests = 0
+	var/list/obj/structure/xeno/hivemindcore/thick_nests = list()
 	var/tier3_xeno_limit
 	var/tier2_xeno_limit
 	///Queue of all observer wanting to join xeno side

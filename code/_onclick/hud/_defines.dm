@@ -125,3 +125,6 @@
 #define ui_ai_camera_light "SOUTH:6,WEST+3"
 #define ui_ai_multicam "SOUTH+1:6,WEST+13"
 #define ui_ai_add_multicam "SOUTH+1:6,WEST+14"
+
+//Upper-middle right (damage indicators)
+#define ui_predator_power "EAST-1:28,9:13"

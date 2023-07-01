@@ -21,6 +21,7 @@
 	var/atom/movable/screen/alien_plasma_display
 	var/atom/movable/screen/locate_leader
 	var/atom/movable/screen/SL_locator
+	var/atom/movable/screen/pred_power_icon
 
 	var/atom/movable/screen/module_store_icon
 
@@ -100,6 +101,7 @@
 	move_intent = null
 	alien_plasma_display = null
 	locate_leader = null
+	pred_power_icon = null
 
 	module_store_icon = null
 

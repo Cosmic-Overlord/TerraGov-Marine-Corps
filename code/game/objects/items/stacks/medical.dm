@@ -30,6 +30,10 @@
 	var/mob/living/carbon/human/H = M
 	var/datum/limb/affecting = user.client.prefs.toggles_gameplay & RADIAL_MEDICAL ? radial_medical(H, user) : H.get_limb(user.zone_selected)
 
+	if(HAS_TRAIT(H, TRAIT_FOREIGN_BIO))
+		to_chat(user, span_warning("\The [src] is incompatible with the biology of [H]!"))
+		return TRUE
+
 	if(!affecting)
 		return TRUE
 

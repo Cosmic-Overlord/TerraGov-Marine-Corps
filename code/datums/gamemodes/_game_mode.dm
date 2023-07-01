@@ -51,6 +51,16 @@ GLOBAL_VAR(common_report) //Contains common part of roundend report
 	/// Ponderation rate of silos output. 1 is normal, 2 is twice
 	var/silo_scaling = 1
 
+	var/list/predators = list()
+
+	var/pred_current_num = 0 //How many are there now?
+	var/pred_per_players = 20 //Preds per player
+	var/pred_start_count = 0 //The initial count of predators
+
+	var/pred_additional_max = 0
+	var/pred_leader_count = 0 //How many Leader preds are active
+	var/pred_leader_max = 1 //How many Leader preds are permitted. Currently fixed to 1. May add admin verb to adjust this later.
+
 	///If the gamemode has a whitelist of valid ship maps. Whitelist overrides the blacklist
 	var/list/whitelist_ship_maps
 	///If the gamemode has a blacklist of disallowed ship maps
@@ -915,3 +925,82 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 
 /proc/cmp_antag_category(datum/antagonist/A,datum/antagonist/B)
 	return sorttext(B.roundend_category,A.roundend_category)
+
+//===================================================\\
+
+				//PREDATOR INITIATLIZE\\
+
+//===================================================\\
+
+/datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, ignore_pred_num = FALSE)
+	predators[new_predator.ckey] = list("Name" = new_predator.real_name, "Status" = "Alive")
+	if(!ignore_pred_num)
+		pred_current_num++
+
+/datum/game_mode/proc/get_whitelisted_predators(readied = 1)
+	// Assemble a list of active players who are whitelisted.
+	var/players[] = new
+
+	var/mob/new_player/new_pred
+	for(var/mob/player in GLOB.player_list)
+		if(!player.client) continue //No client. DCed.
+		if(isyautja(player)) continue //Already a predator. Might be dead, who knows.
+		if(readied) //Ready check for new players.
+			new_pred = player
+			if(!istype(new_pred)) continue //Have to be a new player here.
+			if(!new_pred.ready) continue //Have to be ready.
+		else
+			if(!istype(player,/mob/dead)) continue //Otherwise we just want to grab the ghosts.
+
+		if(GLOB.roles_whitelist[player.ckey] & WHITELIST_PREDATOR)  //Are they whitelisted?
+			if(!player.client.prefs)
+				player.client.prefs = new /datum/preferences(player.client) //Somehow they don't have one.
+
+			if(player.client.prefs.job_preferences[JOB_PREDATOR] > 0) //Are their prefs turned on?
+				if(!player.mind) //They have to have a key if they have a client.
+					player.mind_initialize() //Will work on ghosts too, but won't add them to active minds.
+				players += player.mind
+	return players
+
+#define calculate_pred_max (round(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count)
+
+/datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = 1)
+
+	if(!pred_candidate.client)
+		return
+
+	var/datum/job/job = /datum/job/predator
+
+	if(!job)
+		if(show_warning)
+			to_chat(pred_candidate, span_warning("Something went wrong!"))
+		return
+
+	if(show_warning && alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(job.get_whitelist_status(GLOB.roles_whitelist, pred_candidate.client))] predator", "Confirm", "Yes", "No") != "Yes")
+		return
+
+	if(!(GLOB.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR))
+		if(show_warning)
+			to_chat(pred_candidate, span_warning("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
+		return
+
+	if(!(flags_round_type & MODE_PREDATOR))
+		if(show_warning)
+			to_chat(pred_candidate, span_warning("There is no Hunt this round! Maybe the next one."))
+		return
+
+	if(pred_candidate.ckey in predators)
+		if(show_warning)
+			to_chat(pred_candidate, span_warning("You already were a Yautja! Give someone else a chance."))
+		return
+
+	if(job.get_whitelist_status(GLOB.roles_whitelist, pred_candidate.client) == WHITELIST_NORMAL)
+		var/pred_max = calculate_pred_max
+		if(pred_current_num >= pred_max)
+			if(show_warning)
+				to_chat(pred_candidate, span_warning("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
+			return
+
+	return TRUE
+
+#undef calculate_pred_max

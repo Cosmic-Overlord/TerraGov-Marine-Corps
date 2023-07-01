@@ -622,3 +622,25 @@
 
 	log_admin("[key_name(usr)] [GLOB.ssd_posses_allowed ? "enabled" : "disabled"] taking over SSD mobs.")
 	message_admins("[ADMIN_TPMONTY(usr)] [GLOB.ssd_posses_allowed ? "enabled" : "disabled"] taking over SSD mobs.")
+
+/datum/admins/proc/force_predator_round()
+	set category = "Server"
+	set name = "Toggle Predator Round"
+	set desc = "Force-toggle a predator round for the round type. Only works on maps that support Predator spawns."
+
+	if(!check_rights(R_SERVER))
+		return
+
+	var/datum/game_mode/predator_round = SSticker.mode
+	if(alert("Are you sure you want to force-toggle a predator round? Predators currently: [(predator_round.flags_round_type & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") != "Yes")
+		return
+
+	if(!(predator_round.flags_round_type & MODE_PREDATOR))
+		var/datum/job/PJ = /datum/job/predator
+		PJ.set_job_positions(2)
+		predator_round.flags_round_type |= MODE_PREDATOR
+	else
+		predator_round.flags_round_type &= ~MODE_PREDATOR
+
+	message_admins("[key_name_admin(usr)] has [(predator_round.flags_round_type & MODE_PREDATOR) ? "allowed predators to spawn" : "prevented predators from spawning"].")
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_PREDATOR_ROUND_TOGGLED)

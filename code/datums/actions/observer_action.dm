@@ -157,3 +157,11 @@
 		return
 	var/mob/living/carbon/human/H = new_mob
 	H.fully_replace_character_name(H.real_name, H.species.random_name(H.gender))
+
+/datum/action/join_predator
+	name = "Join the Hunt"
+	action_icon_state = "join_pred"
+
+/datum/action/join_predator/action_activate()
+	var/mob/dead/observer/activator = owner
+	activator.join_as_yautja()

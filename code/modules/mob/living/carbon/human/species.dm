@@ -139,6 +139,9 @@
 	if(species_flags & GREYSCALE_BLOOD)
 		brute_damage_icon_state = "grayscale"
 
+/datum/species/proc/larva_impregnated(obj/item/alien_embryo/embryo)
+	return
+
 /datum/species/proc/create_organs(mob/living/carbon/human/organless_human) //Handles creation of mob organs and limbs.
 
 	organless_human.limbs = list()
@@ -259,6 +262,11 @@
 	add_inherent_verbs(H)
 
 /datum/species/proc/handle_death(mob/living/carbon/human/H) //Handles any species-specific death events.
+
+/datum/species/proc/handle_cryo(mob/living/carbon/human/H)
+
+/datum/species/proc/get_hairstyle(style)
+	return GLOB.hair_styles_list[style]
 
 //TODO KILL ME
 ///Snowflake proc for monkeys so they can call attackpaw

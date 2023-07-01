@@ -75,6 +75,8 @@
 #define MIN_FREE_FREQ 1201 // -------------------------------------------------
 // Frequencies are always odd numbers and range from 1201 to 1599.
 
+#define YAUT_FREQ 1205
+
 //SOM squads
 #define FREQ_COMMAND_SOM 1235
 #define FREQ_MEDICAL_SOM 1237

@@ -486,3 +486,7 @@ Contains most of the procs that are called when a mob is attacked by something
 				break
 	cut_overlay(GLOB.welding_sparks)
 	return TRUE
+
+/mob/living/carbon/human/ExtinguishMob()
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_HUMAN_EXTINGUISH)

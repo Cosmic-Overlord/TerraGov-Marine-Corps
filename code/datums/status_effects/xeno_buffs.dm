@@ -821,3 +821,39 @@
 	scale = 0.6
 	rotation = 0
 	spin = 0
+
+/datum/status_effect/xeno_buff
+	id = "buff"
+	duration = -1
+
+	var/bonus_damage = 0
+	var/bonus_speed = 0
+
+/datum/status_effect/xeno_buff/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest", ttl = 35, bonus_damage = 0, bonus_speed = 0)
+	. = ..(A, from, last_dmg_source, zone)
+
+	if(!isxeno(A))
+		qdel(src)
+
+	to_chat(A, span_xenonotice("You feel empowered"))
+
+	var/mob/living/carbon/xenomorph/X = A
+	X.melee_damage += bonus_damage
+
+	X.xeno_caste.speed -= bonus_speed
+
+	src.bonus_damage = bonus_damage
+	src.bonus_speed = bonus_speed
+
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), ttl)
+
+/datum/status_effect/xeno_buff/Destroy()
+
+	if(owner)
+		to_chat(owner, span_xenonotice("You no longer feel empowered"))
+		var/mob/living/carbon/xenomorph/X = owner
+		X.melee_damage -= bonus_damage
+
+		X.xeno_caste.speed += bonus_speed
+
+	. = ..()

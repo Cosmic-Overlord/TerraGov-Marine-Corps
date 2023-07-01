@@ -17,6 +17,7 @@
 	draw_mode = TRUE
 	can_hold = list(
 		/obj/item/weapon/combat_knife,
+		/obj/item/weapon/yautja/knife,
 		/obj/item/weapon/gun/pistol/standard_pocketpistol,
 		/obj/item/weapon/gun/shotgun/double/derringer,
 		/obj/item/attachable/bayonetknife,

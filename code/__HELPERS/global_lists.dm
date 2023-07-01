@@ -32,6 +32,10 @@ GLOBAL_LIST_EMPTY(randomized_pill_icons)
 		var/datum/sprite_accessory/facial_hair/H = new path()
 		GLOB.facial_hair_styles_list[H.name] = H
 
+	for(var/path in subtypesof(/datum/sprite_accessory/yautja_hair))
+		var/datum/sprite_accessory/yautja_hair/H = new path()
+		GLOB.yautja_hair_styles_list[H.name] = H
+
 	// Species specific
 	for(var/path in subtypesof(/datum/sprite_accessory/moth_wings)) //todo use init accesries
 		var/datum/sprite_accessory/moth_wings/wings = new path()

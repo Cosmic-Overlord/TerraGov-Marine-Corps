@@ -54,6 +54,8 @@ GLOBAL_PROTECT(exp_specialmap)
 	///list of outfit variants
 	var/list/datum/outfit/job/outfits = list()
 
+	var/list/datum/outfit/gear_preset_whitelist = list()//Gear preset name used for council snowflakes ;)
+
 	var/skills_type = /datum/skills
 
 	var/display_order = JOB_DISPLAY_ORDER_DEFAULT
@@ -74,6 +76,11 @@ GLOBAL_PROTECT(exp_specialmap)
 		else
 			outfit = new outfit //Can be improved to reference a singleton.
 
+/datum/job/proc/get_whitelist_status(list/roles_whitelist, client/player)
+	if(!roles_whitelist)
+		return FALSE
+
+	return WHITELIST_NORMAL
 
 /datum/job/proc/after_spawn(mob/living/L, mob/M, latejoin = FALSE) //do actions on L but send messages to M as the key may not have been transferred_yet
 	if(isnull(L))
@@ -300,14 +307,24 @@ GLOBAL_PROTECT(exp_specialmap)
 			QDEL_NULL(wear_id)
 		equip_to_slot_or_del(id_card, SLOT_WEAR_ID)
 		job.outfit.handle_id(src)
-		///if there is only one outfit, just equips it
-		if (!job.multiple_outfits)
-			job.outfit.equip(src)
-		///chooses an outfit from the list under the job
-		if (job.multiple_outfits)
-			var/datum/outfit/variant = pick(job.outfits)
-			variant = new variant
-			variant.equip(src)
+
+		var/job_whitelist = job.title
+		var/whitelist_status = job.get_whitelist_status(GLOB.roles_whitelist, client)
+
+		if(whitelist_status)
+			job_whitelist = "[job_whitelist][whitelist_status]"
+
+		if(job.gear_preset_whitelist[job_whitelist])
+			job.gear_preset_whitelist[job_whitelist].equip(src)
+		else
+			///if there is only one outfit, just equips it
+			if(!job.multiple_outfits)
+				job.outfit.equip(src)
+			///chooses an outfit from the list under the job
+			if(job.multiple_outfits)
+				var/datum/outfit/variant = pick(job.outfits)
+				variant = new variant
+				variant.equip(src)
 
 	if((job.job_flags & JOB_FLAG_ALLOWS_PREFS_GEAR) && player)
 		equip_preference_gear(player)
@@ -340,7 +357,7 @@ GLOBAL_PROTECT(exp_specialmap)
 /datum/job/proc/return_skills_type(datum/preferences/prefs)
 	return skills_type
 
-/datum/job/proc/return_spawn_turf()
+/datum/job/proc/return_spawn_turf(mob/living/new_character)
 	return pick(GLOB.spawns_by_job[type])
 
 /datum/job/proc/handle_special_preview(client/parent)

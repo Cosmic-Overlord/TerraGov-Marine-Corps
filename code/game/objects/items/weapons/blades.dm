@@ -108,6 +108,12 @@
 	. = ..()
 	toggle_item_bump_attack(user, FALSE)
 
+/obj/item/weapon/claymore/mercsword/ceremonial
+	name = "Ceremonial Sword"
+	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
+	icon_state = "ceremonial"
+	item_state = "machete"
+
 //FC's sword.
 
 /obj/item/weapon/claymore/mercsword/officersword

@@ -64,6 +64,8 @@
 	var/obj/item/clothing/under/U = H.w_uniform
 	if(!istype(U))
 		return FALSE
+	if(H.species && HAS_TRAIT(H, TRAIT_FOREIGN_BIO))
+		return FALSE
 	if(U.sensor_mode <= 2)
 		return FALSE
 	return TRUE

@@ -75,6 +75,17 @@
 #define span_xenowarning(str) ("<span class='xenowarning'>" + str + "</span>")
 #define span_yell(str) ("<span class='yell'>" + str + "</span>")
 #define span_deptradio(str) ("<span class='deptradio'>" + str + "</span>")
+#define span_yautjabold(X) "<span class='yautjabold'>[X]</span>"
+#define span_yautjaboldbig(X) "<span class='yautjaboldbig'>[X]</span>"
+
+// Colors
+#define span_blue(X) "<span class='blue'>[X]</span>"
+#define span_green(X) ("<span class='green'>" + X + "</span>")
+#define span_red(X) ("<span class='red'>" + X + "</span>")
+#define span_orange(X) ("<span class='orange'>" + X + "</span>")
+
+#define font_size_huge(X) "<span class='huge'>" + X + "</span>"
+#define font_size_xl(X) "<span class='extra_large'>" + X + "</span>"
 
 // Spans that use embedded tgui components:
 // Sorted alphabetically

@@ -287,6 +287,8 @@
 	user.forceMove(src)
 
 	occupant = user
+	if(user.species)
+		user.species.handle_cryo(user)
 	update_icon()
 	return TRUE
 

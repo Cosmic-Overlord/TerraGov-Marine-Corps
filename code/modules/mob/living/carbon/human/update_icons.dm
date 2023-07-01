@@ -334,7 +334,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			face_standing.Blend(facial_s, ICON_OVERLAY)
 
 	if(h_style && !(head?.flags_inv_hide & HIDETOPHAIR))
-		var/datum/sprite_accessory/hair_style = GLOB.hair_styles_list[h_style]
+		var/datum/sprite_accessory/hair_style = species.get_hairstyle(h_style)
 		if(hair_style && (species.name in hair_style.species_allowed))
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			if(hair_style.do_colouration)

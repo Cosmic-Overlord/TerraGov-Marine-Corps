@@ -497,6 +497,13 @@
 
 #define COMSIG_HUMAN_MARKSMAN_AURA_CHANGED "human_marksman_aura_changed"
 
+/// From /mob/living/carbon/human/ExtinguishMob()
+#define COMSIG_HUMAN_EXTINGUISH "human_extinguish"
+
+/// From /datum/flaying_datum
+#define COMSIG_HUMAN_FLAY_ATTEMPT "human_flay_attempt"
+	#define COMPONENT_CANCEL_ATTACK (1<<0)
+
 // shuttle signals
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
 
@@ -553,6 +560,8 @@
 
 #define COMSIG_XENOMORPH_FIRE_BURNING "xenomorph_fire_burning"
 #define COMSIG_XENOMORPH_TAKING_DAMAGE "xenomorph_taking_damage" // (target, damagetaken)
+
+#define COMSIG_XENOMORPH_INTERFERENCE "xenomorph_interference"
 
 #define COMSIG_XENOMORPH_BRUTE_DAMAGE "xenomorph_brute_damage" // (amount, amount_mod, passive)
 #define COMSIG_XENOMORPH_BURN_DAMAGE "xenomorph_burn_damage" // (amount, amount_mod, passive)
@@ -782,6 +791,10 @@
 #define COMSIG_XENOABILITY_EVASION "xenoability_evasion"
 #define COMSIG_XENOABILITY_SNATCH "xenoability_snatch"
 
+#define COMSIG_XENOABILITY_ROAR "xenoability_roar"
+#define COMSIG_XENOABILITY_SMASH "xenoability_smash"
+#define COMSIG_XENOABILITY_DEVASTATE "xenoability_devastate"
+
 #define COMSIG_XENOABILITY_VENTCRAWL "xenoability_vent_crawl"
 
 #define COMSIG_XENOABILITY_TOGGLE_AGILITY "xenoability_toggle_agility"
@@ -934,3 +947,6 @@
 
 // widow spiderling mark signals
 #define COMSIG_SPIDERLING_MARK "spiderling_mark"
+
+/// From /datum/admins/proc/force_predator_round()
+#define COMSIG_GLOB_PREDATOR_ROUND_TOGGLED "!predator_round_toglged"

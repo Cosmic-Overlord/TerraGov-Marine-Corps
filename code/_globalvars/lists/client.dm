@@ -27,3 +27,43 @@ GLOBAL_LIST_INIT(_kbMap, list(
 	"SHIFT" = "Shift",
 	"CONTROL" = "Ctrl"
 	))
+
+GLOBAL_VAR_INIT(roles_whitelist, load_role_whitelist())
+
+/proc/load_role_whitelist(filename = "config/role_whitelist.txt")
+	var/L[] = file2list(filename)
+	var/P[]
+	var/W[] = new //We want a temporary whitelist list, in case we need to reload.
+
+	var/i
+	var/r
+	var/ckey
+	var/role
+	for(i in L)
+		if(!i) continue
+		i = trim(i)
+		if(!length(i)) continue
+		else if(copytext(i, 1, 2) == "#") continue
+
+		P = splittext(i, "+")
+		if(!P.len) continue
+		ckey = ckey(P[1]) //Converting their key to canonical form. ckey() does this by stripping all spaces, underscores and converting to lower case.
+
+		role = NONE
+		r = 1
+		while(++r <= P.len)
+			switch(ckey(P[r]))
+				if("yautja")
+					role |= WHITELIST_YAUTJA
+				if("yautjalegacy")
+					role |= WHITELIST_YAUTJA_LEGACY
+				if("yautjacouncil")
+					role |= WHITELIST_YAUTJA_COUNCIL
+				if("yautjacouncillegacy")
+					role |= WHITELIST_YAUTJA_COUNCIL_LEGACY
+				if("yautjaleader")
+					role |= WHITELIST_YAUTJA_LEADER
+
+		W[ckey] = role
+
+	return W

@@ -46,6 +46,9 @@
 
 	set_stat(DEAD)
 
+	if(hunter_data && hunter_data.hunter)
+		INVOKE_ASYNC(hunter_data.hunter.client, TYPE_PROC_REF(/client, add_honor), max(life_kills_total, default_honor_value))
+
 	if(deathmessage && !silent && !gibbing)
 		visible_message("<b>\The [name]</b> [deathmessage]")
 

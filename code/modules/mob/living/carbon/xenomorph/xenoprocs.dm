@@ -3,6 +3,10 @@
 	set desc = "Check the status of your current hive."
 	set category = "Alien"
 
+	if(interference)
+		to_chat(src, span_warning("A headhunter temporarily cut off your psychic connection!"))
+		return
+
 	check_hive_status(src)
 
 /mob/living/carbon/xenomorph/verb/tunnel_list()

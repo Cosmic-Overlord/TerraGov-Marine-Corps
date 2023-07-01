@@ -55,6 +55,22 @@
 			data["synthetic_name"] = synthetic_name
 			data["synthetic_type"] = synthetic_type
 			data["robot_type"] = robot_type
+			data["predator_name"] = predator_name
+			data["predator_gender"] = predator_gender
+			data["predator_age"] = predator_age
+			data["predator_h_style"] = predator_h_style
+			data["predator_skin_color"] = predator_skin_color
+			data["predator_translator_type"] = predator_translator_type
+			data["predator_mask_type"] = predator_mask_type
+			data["predator_armor_type"] = predator_armor_type
+			data["predator_boot_type"] = predator_boot_type
+			data["predator_armor_material"] = predator_armor_material
+			data["predator_mask_material"] = predator_mask_material
+			data["predator_greave_material"] = predator_greave_material
+			data["predator_caster_material"] = predator_caster_material
+			data["predator_cape_type"] = predator_cape_type
+			data["predator_cape_color"] = predator_cape_color
+			data["predator_flavor_text"] = predator_flavor_text
 			data["random_name"] = random_name
 			data["ai_name"] = ai_name
 			data["age"] = age
@@ -251,6 +267,117 @@
 			var/choice = tgui_input_list(ui.user, "What kind of synthetic do you want to play with?", "Synthetic type choice", SYNTH_TYPES)
 			if(choice)
 				synthetic_type = choice
+
+		if("predator_name")
+			var/raw_name = input(user, "Choose your Predator's name:", "Character Preference")  as text|null
+			if(raw_name) // Check to ensure that the user entered text (rather than cancel.)
+				var/new_name = reject_bad_name(raw_name)
+				if(new_name) predator_name = new_name
+				else to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
+
+		if("predator_gender")
+			predator_gender = predator_gender == MALE ? FEMALE : MALE
+
+		if("predator_age")
+			var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(20 to 10000):", "Character Preference", 1234, 10000, 20)
+			if(new_predator_age) predator_age = max(min( round(text2num(new_predator_age)), 10000),20)
+
+		if("predator_translator_type")
+			var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", PRED_TRANSLATORS)
+			if(!new_translator_type)
+				return
+			predator_translator_type = new_translator_type
+
+		if("pred_mask_type")
+			var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-12)", "Mask Selection", 1, 12, 1)
+			if(new_predator_mask_type) predator_mask_type = round(text2num(new_predator_mask_type))
+
+		if("predator_armor_type")
+			var/new_predator_armor_type = tgui_input_number(user, "Choose your armor type:\n(1-7)", "Armor Selection", 1, 7, 1)
+			if(new_predator_armor_type) predator_armor_type = round(text2num(new_predator_armor_type))
+
+		if("predator_boot_type")
+			var/new_predator_boot_type = tgui_input_number(user, "Choose your greaves type:\n(1-4)", "Greave Selection", 1, 4, 1)
+			if(new_predator_boot_type) predator_boot_type = round(text2num(new_predator_boot_type))
+
+		if("predator_mask_material")
+			var/new_pred_mask_mat = tgui_input_list(user, "Choose your mask material:", "Mask Material", PRED_MATERIALS)
+			if(!new_pred_mask_mat)
+				return
+			predator_mask_material = new_pred_mask_mat
+
+		if("predator_armor_material")
+			var/new_pred_armor_mat = tgui_input_list(user, "Choose your armor material:", "Armor Material", PRED_MATERIALS)
+			if(!new_pred_armor_mat)
+				return
+			predator_armor_material = new_pred_armor_mat
+
+		if("predator_greave_material")
+			var/new_pred_greave_mat = tgui_input_list(user, "Choose your greave material:", "Greave Material", PRED_MATERIALS)
+			if(!new_pred_greave_mat)
+				return
+			predator_greave_material = new_pred_greave_mat
+
+		if("predator_caster_material")
+			var/new_pred_caster_mat = tgui_input_list(user, "Choose your caster material:", "Caster Material", PRED_MATERIALS + "retro")
+			if(!new_pred_caster_mat)
+				return
+			predator_caster_material = new_pred_caster_mat
+
+		if("predator_cape_type")
+			var/datum/job/J = /datum/job/predator
+			var/whitelist_status = clan_ranks_ordered[J.get_whitelist_status(GLOB.roles_whitelist, user)]
+
+			var/list/options = list("None")
+			for(var/cape_name in GLOB.all_yautja_capes)
+				var/obj/item/clothing/yautja_cape/cape = GLOB.all_yautja_capes[cape_name]
+				if(whitelist_status >= initial(cape.clan_rank_required) || (initial(cape.councillor_override) && (GLOB.roles_whitelist[user.ckey] & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY))))
+					options += cape_name
+
+			var/new_cape = tgui_input_list(user, "Choose your cape type:", "Cape Type", options)
+			if(!new_cape)
+				return
+			predator_cape_type = new_cape
+
+		if("predator_cape_color")
+			var/new_cape_color = input(user, "Choose your cape color:", "Cape Color", predator_cape_color) as color|null
+			if(!new_cape_color)
+				return
+			predator_cape_color = new_cape_color
+
+		if("predator_h_style")
+			var/new_h_style = input(user, "Choose your quill style:", "Quill Style") as null|anything in GLOB.yautja_hair_styles_list
+			if(!new_h_style)
+				return
+			predator_h_style = new_h_style
+
+		if("predator_skin_color")
+			var/new_skin_color = tgui_input_list(user, "Choose your skin color:", "Skin Color", PRED_SKIN_COLOR)
+			if(!new_skin_color)
+				return
+			predator_skin_color = new_skin_color
+
+		if("predator_flavor_text")
+			var/pred_flv_raw = input(user, "Choose your Predator's flavor text:", "Flavor Text", predator_flavor_text) as message
+			if(!pred_flv_raw)
+				predator_flavor_text = ""
+				return
+			predator_flavor_text = strip_html(pred_flv_raw, MAX_MESSAGE_LEN)
+
+		if("yautja_status")
+			var/list/options = list("Normal" = WHITELIST_NORMAL)
+
+			if(GLOB.roles_whitelist[user.ckey] & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY))
+				options += list("Council" = WHITELIST_COUNCIL)
+			if(GLOB.roles_whitelist[user.ckey] & WHITELIST_YAUTJA_LEADER)
+				options += list("Leader" = WHITELIST_LEADER)
+
+			var/new_yautja_status = tgui_input_list(user, "Choose your new Yautja Whitelist Status.", "Yautja Status", options)
+
+			if(!new_yautja_status)
+				return
+
+			yautja_status = options[new_yautja_status]
 
 		if("robot_type")
 			var/choice = tgui_input_list(ui.user, "What model of robot do you want to play with?", "Robot model choice", ROBOT_TYPES)

@@ -3056,6 +3056,164 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 
 /*
 //================================================
+					Yautja
+//================================================
+*/
+/datum/ammo/energy/yautja
+	accurate_range = 12
+	shell_speed = 3
+	damage_type = BURN
+	flags_ammo_behavior = AMMO_IGNORE_RESIST
+
+/datum/ammo/energy/yautja/pistol
+	name = "plasma pistol bolt"
+	icon_state = "ion"
+
+	damage = 40
+	shell_speed = 2
+
+/datum/ammo/energy/yautja/caster
+	name = "root caster bolt"
+	icon_state = "ion"
+
+/datum/ammo/energy/yautja/caster/stun
+	name = "low power stun bolt"
+
+	damage = 0
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+
+/datum/ammo/energy/yautja/caster/bolt
+	name = "plasma bolt"
+	icon_state = "pulse1"
+	flags_ammo_behavior = AMMO_IGNORE_RESIST
+	shell_speed = 6
+	damage = 35
+
+/datum/ammo/energy/yautja/caster/bolt/stun
+	name = "high power stun bolt"
+	var/stun_time = 2
+
+	damage = 0
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+
+/datum/ammo/energy/yautja/caster/bolt/stun/on_hit_mob(mob/M, obj/projectile/P)
+	var/mob/living/carbon/C = M
+	var/stun_time = src.stun_time
+	if(istype(C))
+		if(isyautja(C) || ispredalien(C))
+			return
+		to_chat(C, span_danger("An electric shock ripples through your body, freezing you in place!"))
+		log_attack("[key_name(C)] was stunned by a high power stun bolt from [key_name(P.firer)] at [get_area(P)]")
+
+		if(ishuman(C))
+			var/mob/living/carbon/human/H = C
+			stun_time++
+			H.apply_effect(stun_time, WEAKEN)
+		else
+			C.apply_effect(stun_time, WEAKEN)
+
+		C.apply_effect(stun_time, STUN)
+	..()
+
+/datum/ammo/energy/yautja/caster/sphere
+	name = "plasma eradicator"
+	icon_state = "bluespace"
+	flags_ammo_behavior = AMMO_EXPLOSIVE
+	shell_speed = 4
+	accuracy = 40
+
+	damage = 55
+
+	accurate_range = 8
+	max_range = 8
+
+/datum/ammo/energy/yautja/caster/sphere/on_hit_mob(mob/M, obj/projectile/P)
+	explosion(get_turf(M), 1, 2, 5, 3)
+
+/datum/ammo/energy/yautja/caster/sphere/on_hit_turf(turf/T, obj/projectile/P)
+	explosion(get_turf(T), 1, 2, 5, 3)
+
+/datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O, obj/projectile/P)
+	explosion(get_turf(O), 1, 2, 5, 3)
+
+/datum/ammo/energy/yautja/caster/sphere/do_at_max_range(obj/projectile/P)
+	explosion(get_turf(P), 1, 2, 5, 3)
+
+
+/datum/ammo/energy/yautja/caster/sphere/stun
+	name = "plasma immobilizer"
+	damage = 0
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+	accurate_range = 20
+	max_range = 20
+
+	var/stun_range = 4
+	var/stun_time = 6
+
+/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_mob(mob/M, obj/projectile/P)
+	do_area_stun(get_turf(M))
+
+/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_turf(turf/T, obj/projectile/P)
+	do_area_stun(get_turf(T))
+
+/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_obj(obj/O, obj/projectile/P)
+	do_area_stun(get_turf(O))
+
+/datum/ammo/energy/yautja/caster/sphere/stun/do_at_max_range(obj/projectile/P)
+	do_area_stun(get_turf(P))
+
+/datum/ammo/energy/yautja/caster/sphere/stun/proc/do_area_stun(obj/projectile/P)
+	playsound(P, 'sound/weapons/wave.ogg', 75, 1, 25)
+	for(var/mob/living/carbon/M in view(stun_range, get_turf(P)))
+		var/f_stun_time = stun_time
+		log_attack("[key_name(M)] was stunned by a plasma immobilizer from [key_name(P.firer)] at [get_area(P)]")
+		if(isyautja(M))
+			f_stun_time -= 2
+		if(ispredalien(M))
+			continue
+		to_chat(M, span_danger("A powerful electric shock ripples through your body, freezing you in place!"))
+		M.apply_effect(f_stun_time, STUN)
+
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			H.apply_effect(f_stun_time, WEAKEN)
+		else
+			M.apply_effect(f_stun_time, WEAKEN)
+
+/datum/ammo/energy/yautja/rifle/bolt
+	name = "plasma rifle bolt"
+	icon_state = "ion"
+	damage_type = BURN
+	flags_ammo_behavior = AMMO_IGNORE_RESIST
+
+	damage = 55
+
+/datum/ammo/energy/yautja/rifle/blast
+	name = "plasma shatterer"
+	icon_state = "bluespace"
+	damage_type = BURN
+
+	shell_speed = 4
+	damage = 40
+
+/datum/ammo/energy/yautja/rifle/blast/on_hit_mob(mob/M, obj/projectile/P)
+	explosion(get_turf(M), 0, 1, 2, 3)
+	..()
+
+/datum/ammo/energy/yautja/rifle/blast/on_hit_turf(turf/T, obj/projectile/P)
+	explosion(T, 0, 1, 2, 3)
+	..()
+
+/datum/ammo/energy/yautja/rifle/blast/on_hit_obj(obj/O, obj/projectile/P)
+	explosion(get_turf(O), 0, 1, 2, 3)
+	..()
+
+/datum/ammo/energy/yautja/rifle/blast/do_at_max_range(obj/projectile/P)
+	explosion(get_turf(P), 0, 1, 2, 3)
+	..()
+
+/*
+//================================================
 					Xeno Spits
 //================================================
 */

@@ -579,6 +579,8 @@
 			embryo.hivenumber = hivenumber
 			if(source?.mind && isxenofacehugger(source)) //If hugger sentient he will get an advantage for becoming a larva
 				embryo.source = source.ckey
+			if(target.species)
+				target.species.larva_impregnated(embryo)
 			GLOB.round_statistics.now_pregnant++
 			SSblackbox.record_feedback("tally", "round_statistics", 1, "now_pregnant")
 			sterile = TRUE

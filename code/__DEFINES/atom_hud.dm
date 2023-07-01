@@ -25,6 +25,8 @@
 #define HEART_STATUS_HUD "heart_status_hud" // display if revivable, along with blood level
 #define XENO_FIRE_HUD "xeno_fire_hud" // displays how many fire stacks a xeno has
 #define XENO_BANISHED_HUD "xeno_banished_hud" // indicates that the xeno is banished
+#define HUNTER_HUD "hunter_hud" //Displays various statuses on mobs for Hunters to identify targets
+#define HUNTER_CLAN "hunter_clan_hud" //Displays a colored icon to represent ingame Hunter Clans
 
 #define ADD_HUD_TO_COOLDOWN 20 //cooldown for being shown the images for any particular data hud
 
@@ -51,6 +53,8 @@
 #define DATA_HUD_SQUAD_SOM 15
 #define DATA_HUD_XENO_DEBUFF 16
 #define DATA_HUD_XENO_HEART 17
+#define DATA_HUD_HUNTER 16
+#define DATA_HUD_HUNTER_CLAN 17
 
 
 // Notification action types

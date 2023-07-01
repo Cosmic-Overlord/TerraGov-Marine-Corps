@@ -427,4 +427,6 @@
 	///Are we the roony version of this xeno
 	var/is_a_rouny = FALSE
 
+	var/interference = 0 // Stagger for predator weapons. Prevents hivemind usage, queen overwatching, etc.
+
 	COOLDOWN_DECLARE(xeno_health_alert_cooldown)

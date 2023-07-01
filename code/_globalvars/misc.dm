@@ -41,3 +41,19 @@ GLOBAL_PROTECT(key_to_time_of_death)
 
 ///List of ssd living mobs
 GLOBAL_LIST_EMPTY(ssd_living_mobs)
+
+GLOBAL_LIST_EMPTY(loose_yautja_gear)
+GLOBAL_LIST_EMPTY(tracked_yautja_gear) // list of pred gear with a tracking element attached
+
+GLOBAL_LIST_EMPTY(mainship_yautja_teleports)
+GLOBAL_LIST_EMPTY(mainship_yautja_desc)
+GLOBAL_LIST_EMPTY(yautja_teleports)
+GLOBAL_LIST_EMPTY(yautja_teleport_descs)
+
+GLOBAL_LIST_INIT_TYPED(all_yautja_capes, /obj/item/clothing/yautja_cape, setup_yautja_capes())
+
+/proc/setup_yautja_capes()
+	var/list/cape_list = list()
+	for(var/obj/item/clothing/yautja_cape/cape_type as anything in typesof(/obj/item/clothing/yautja_cape))
+		cape_list[initial(cape_type.name)] = cape_type
+	return cape_list

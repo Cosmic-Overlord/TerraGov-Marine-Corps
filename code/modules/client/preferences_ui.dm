@@ -55,6 +55,7 @@
 			data["synthetic_name"] = synthetic_name
 			data["synthetic_type"] = synthetic_type
 			data["robot_type"] = robot_type
+			data["has_wl"] = GLOB.roles_whitelist[user.ckey] & WHITELIST_PREDATOR
 			data["predator_name"] = predator_name
 			data["predator_gender"] = predator_gender
 			data["predator_age"] = predator_age

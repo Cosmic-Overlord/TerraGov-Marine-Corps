@@ -22,6 +22,7 @@ type CharacterCustomizationData = {
 };
 
 type YautjaCustomizationData = {
+  has_wl: number;
   predator_name: string;
   predator_gender: string;
   predator_age: number;

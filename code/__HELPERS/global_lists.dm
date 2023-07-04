@@ -46,6 +46,15 @@ GLOBAL_LIST_EMPTY(randomized_pill_icons)
 		var/datum/ethnicity/E = new path()
 		GLOB.ethnicities_list[E.name] = E
 
+	for(var/path in subtypesof(/datum/ethnicity/human))
+		var/datum/ethnicity/E = new path()
+		GLOB.human_ethnicities_list[E.name] = E
+
+	for(var/path in subtypesof(/datum/ethnicity/yautja))
+		var/datum/ethnicity/E = new path()
+		GLOB.yautja_ethnicities_list[E.name] = E
+
+
 	// Surgery Steps - Initialize all /datum/surgery_step into a list
 	for(var/T in subtypesof(/datum/surgery_step))
 		var/datum/surgery_step/S = new T

@@ -1,5 +1,7 @@
 //Preferences stuff
 GLOBAL_LIST_EMPTY(ethnicities_list)
+GLOBAL_LIST_EMPTY(human_ethnicities_list)
+GLOBAL_LIST_EMPTY(yautja_ethnicities_list)
 	//Hairstyles
 GLOBAL_LIST_EMPTY(hair_styles_list)			//stores /datum/sprite_accessory/hair indexed by name
 GLOBAL_LIST_EMPTY(hair_gradients_list)			//stores /datum/sprite_accessory/hair_gradient indexed by name

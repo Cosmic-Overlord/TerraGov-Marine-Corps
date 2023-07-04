@@ -1345,6 +1345,7 @@
 /turf/open/space/basic,
 /area/space)
 "eg" = (
+/turf/open/floor/grass,
 /area/yautja)
 "er" = (
 /obj/structure/stairs{
@@ -1505,6 +1506,12 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"ja" = (
+/obj/structure/barricade/metal{
+	dir = 8
+	},
+/turf/open/floor/grass,
+/area/yautja)
 "jP" = (
 /obj/structure/rack{
 	color = "#6b675e";
@@ -1572,6 +1579,13 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"lu" = (
+/obj/structure/barricade/metal{
+	dir = 8
+	},
+/obj/structure/barricade/metal,
+/turf/open/floor/grass,
+/area/yautja)
 "mv" = (
 /obj/structure/table/mainship{
 	color = "#6b675e"
@@ -1612,6 +1626,15 @@
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
 	},
+/area/yautja)
+"ny" = (
+/obj/structure/barricade/metal{
+	dir = 1
+	},
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/turf/open/floor/grass,
 /area/yautja)
 "nT" = (
 /obj/structure/table/mainship{
@@ -2123,6 +2146,12 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"GG" = (
+/obj/structure/barricade/metal{
+	dir = 1
+	},
+/turf/open/floor/grass,
+/area/yautja)
 "GP" = (
 /obj/structure/prop/brazier/torch{
 	pixel_y = -2
@@ -2178,6 +2207,15 @@
 	dir = 1;
 	icon_state = "squareswood"
 	},
+/area/yautja)
+"Hz" = (
+/obj/structure/barricade/metal{
+	dir = 1
+	},
+/obj/structure/barricade/metal{
+	dir = 8
+	},
+/turf/open/floor/grass,
 /area/yautja)
 "HN" = (
 /obj/structure/table/mainship{
@@ -2264,6 +2302,12 @@
 	dir = 1;
 	icon_state = "squareswood"
 	},
+/area/yautja)
+"Ku" = (
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/turf/open/floor/grass,
 /area/yautja)
 "KI" = (
 /obj/item/tool/kitchen/tray{
@@ -2419,6 +2463,13 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"Qx" = (
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/obj/structure/barricade/metal,
+/turf/open/floor/grass,
+/area/yautja)
 "QF" = (
 /obj/item/weapon/yautja/knife{
 	color = "#FFE55C";
@@ -2477,6 +2528,10 @@
 	pixel_y = -25
 	},
 /turf/open/shuttle/dropship/fourteen,
+/area/yautja)
+"UG" = (
+/obj/structure/barricade/metal,
+/turf/open/floor/grass,
 /area/yautja)
 "UR" = (
 /obj/structure/stairs{
@@ -5104,11 +5159,11 @@ cP
 bL
 bL
 cP
-eg
-eg
-eg
-eg
-eg
+Hz
+ja
+ja
+ja
+lu
 cP
 bL
 bL
@@ -5175,13 +5230,13 @@ Wg
 bL
 bL
 cP
+Hz
 eg
 eg
 eg
 eg
 eg
-eg
-eg
+lu
 cP
 bL
 bL
@@ -5247,13 +5302,13 @@ bj
 cK
 cP
 cP
+GG
 eg
 eg
 eg
 eg
 eg
-eg
-eg
+UG
 cP
 cP
 cP
@@ -5319,13 +5374,13 @@ Wg
 bL
 bL
 cP
+ny
 eg
 eg
 eg
 eg
 eg
-eg
-eg
+Qx
 cP
 bL
 bL
@@ -5392,11 +5447,11 @@ cP
 bL
 bL
 cP
-eg
-eg
-eg
-eg
-eg
+ny
+Ku
+Ku
+Ku
+Qx
 cP
 bL
 bL

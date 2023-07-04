@@ -734,6 +734,40 @@ TUNNEL
 	if(!(datum_flags & DF_ISPROCESSING) && (chargesleft < maxcharges))
 		START_PROCESSING(SSslowprocess, src)
 
+/obj/structure/xeno/thick_nest
+	name = "thick resin nest"
+	desc = "A very thick nest, oozing with a thick sticky substance."
+	pixel_x = -8
+	pixel_y = -8
+	max_integrity = 400
+	mouse_opacity = MOUSE_OPACITY_ICON
+
+	icon = 'icons/Xeno/nest.dmi'
+	icon_state = "reinforced_nest"
+
+	var/obj/structure/bed/nest/structure/pred_nest
+
+/obj/structure/xeno/thick_nest/examine(mob/user)
+	. = ..()
+	if((isxeno(user) || isobserver(user)) && hivenumber)
+		. += "Used to secure formidable hosts."
+
+/obj/structure/xeno/thick_nest/Initialize(mapload, datum/hive_status/hive_ref)
+	. = ..()
+	var/hive = 0
+	if(hive_ref)
+		hive = hive_ref.hivenumber
+
+	pred_nest = new /obj/structure/bed/nest/structure(loc, hive, src) // Nest cannot be destroyed unless the structure itself is destroyed
+
+
+/obj/structure/xeno/thick_nest/Destroy()
+	. = ..()
+
+	pred_nest?.linked_structure = null
+	QDEL_NULL(pred_nest)
+
+
 /obj/structure/xeno/silo
 	name = "Resin silo"
 	icon = 'icons/Xeno/resin_silo.dmi'

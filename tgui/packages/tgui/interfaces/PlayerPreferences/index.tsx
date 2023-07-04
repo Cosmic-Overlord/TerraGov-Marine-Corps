@@ -3,6 +3,7 @@ import { Button, Section, Flex, Tabs } from '../../components';
 import { Window } from '../../layouts';
 import { GearCustomization } from './GearCustomisation';
 import { CharacterCustomization } from './CharacterCustomization';
+import { YautjaCustomization } from './YautjaCustomization';
 import { JobPreferences } from './JobPreferences';
 import { GameSettings } from './GameSettings';
 import { KeybindSettings } from './KeybindSettings';
@@ -21,21 +22,25 @@ export const PlayerPreferences = (props, context) => {
       affectsSave = true;
       break;
     case 2:
-      CurrentTab = BackgroundInformation;
+      CurrentTab = YautjaCustomization;
       affectsSave = true;
       break;
     case 3:
-      CurrentTab = GearCustomization;
+      CurrentTab = BackgroundInformation;
       affectsSave = true;
       break;
     case 4:
-      CurrentTab = JobPreferences;
+      CurrentTab = GearCustomization;
       affectsSave = true;
       break;
     case 5:
-      CurrentTab = GameSettings;
+      CurrentTab = JobPreferences;
+      affectsSave = true;
       break;
     case 6:
+      CurrentTab = GameSettings;
+      break;
+    case 7:
       CurrentTab = KeybindSettings;
       break;
     default:

@@ -1937,6 +1937,83 @@
 /obj/structure/prop/computer/broken/nineteen
 	icon_state = "broken_computer19"
 
+/obj/structure/prop/brazier
+	name = "brazier"
+	desc = "The fire inside the brazier emits a relatively dim glow to flashlights and flares, but nothing can replace the feeling of sitting next to a fireplace with your friends."
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "brazier"
+	density = TRUE
+	light_range = 4
+	light_power = 0.6
+	light_color = "#b49a27"
+
+/obj/structure/prop/brazier/Destroy()
+	set_light_on(FALSE)
+	return ..()
+
+/obj/structure/prop/brazier/Initialize()
+	. = ..()
+	if(luminosity)
+		set_light_on(TRUE)
+
+/obj/structure/prop/brazier/frame
+	name = "empty brazier"
+	desc = "An empty brazier."
+	icon_state = "brazier_frame"
+	luminosity = 0
+
+/obj/structure/prop/brazier/frame/attackby(obj/item/hit_item, mob/user)
+	if(!istype(hit_item, /obj/item/stack/sheet/wood))
+		return ..()
+	var/obj/item/stack/wooden_boards = hit_item
+	if(wooden_boards.amount < 5)
+		to_chat(user, span_warning("Not enough wood!"))
+		return
+	wooden_boards.use(5)
+	user.visible_message(span_notice("[user] fills the brazier with wood."))
+	new /obj/structure/prop/brazier/frame_woodened(loc)
+	qdel(src)
+
+/obj/structure/prop/brazier/frame_woodened
+	name = "empty full brazier"
+	desc = "An empty brazier. Yet it's also full. What???  Use something hot to ignite it, like a welding tool."
+	icon_state = "brazier_frame_filled"
+	luminosity = 0
+
+/obj/structure/prop/brazier/frame_woodened/attackby(obj/item/hit_item, mob/user)
+	if(hit_item.damtype != BURN)
+		return ..()
+	user.visible_message(span_notice("[user] ignites the brazier with [hit_item]."))
+	new /obj/structure/prop/brazier(loc)
+	qdel(src)
+
+/obj/structure/prop/brazier/torch
+	name = "torch"
+	desc = "It's a torch."
+	icon_state = "torch"
+	density = FALSE
+	luminosity = 5
+
+/obj/structure/prop/brazier/torch/frame
+	name = "unlit torch"
+	desc = "It's a torch, but it's not lit.  Use something hot to ignite it, like a welding tool."
+	icon_state = "torch_frame"
+	luminosity = 0
+
+/obj/structure/prop/brazier/torch/frame/attackby(obj/item/hit_item, mob/user)
+	if(hit_item.damtype != BURN)
+		return ..()
+	user.visible_message(span_notice("[user] ignites the torch with [hit_item]."))
+	new /obj/structure/prop/brazier/torch(loc)
+	qdel(src)
+
+/obj/item/prop/torch_frame
+	name = "unlit torch"
+	icon = 'icons/obj/structures/structures.dmi'
+	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
+	icon_state = "torch_frame"
+	luminosity = 0
+
 /obj/machinery/computer/solars
 	name = "Port Quarter Solar Control"
 	desc = "A controller for solar panel arrays."

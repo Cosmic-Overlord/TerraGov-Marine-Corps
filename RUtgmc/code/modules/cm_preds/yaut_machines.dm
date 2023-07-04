@@ -1,22 +1,22 @@
-/obj/structure/machinery/prop/almayer/CICmap/yautja
+/obj/machinery/prop/almayer/CICmap/yautja
 	name = "hunter globe"
 	desc = "A globe designed by the hunters to show them the location of prey across the hunting grounds."
 	icon = 'icons/obj/machines/yautja_machines.dmi'
 	icon_state = "globe"
 
-/obj/structure/machinery/autolathe/yautja
+/obj/machinery/autolathe/yautja
 	name = "yautja autolathe"
 	desc = "It produces items using metal and glass."
 	icon = 'icons/obj/machines/yautja_machines.dmi'
 
-/obj/structure/machinery/prop/yautja/bubbler
+/obj/machinery/prop/yautja/bubbler
 	name = "yautja cauldron"
 	desc = "A large, black machine emitting an ominous hum with an attached pot of boiling fluid. Bits of what appears to be leftover lard and balls of hair can be seen floating inside of it."
 	icon = 'icons/obj/machines/yautja_machines.dmi'
 	icon_state = "vat"
 	density = TRUE
 
-/obj/structure/machinery/prop/yautja/bubbler/examine(mob/living/user)
+/obj/machinery/prop/yautja/bubbler/examine(mob/living/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		. += span_notice("You can use this machine to clean the skin off limbs, and turn them into bones for your armor.")
@@ -24,7 +24,7 @@
 		. += span_notice("After preparing the limb, you put it into the cauldron, removing the flesh, leaving you with a bone.")
 		. += span_notice("You will then clean and polish the resulting bones with a polishing rag, making it ready to be attached to your armor.")
 
-/obj/structure/machinery/prop/yautja/bubbler/attackby(obj/potential_limb, mob/living/user)
+/obj/machinery/prop/yautja/bubbler/attackby(obj/potential_limb, mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, span_notice("You have no idea what this does, and you figure it is not time to find out."))
 		return

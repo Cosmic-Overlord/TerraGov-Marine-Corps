@@ -61,6 +61,10 @@
 	initial_icon_state = "fabric_curtain"
 	alpha = 230
 
+/obj/structure/curtain/red
+	name = "red curtain"
+	color = "#7d1515"
+
 /obj/structure/curtain/open/shower
 	name = "shower curtain"
 	color = "#ACD1E9"

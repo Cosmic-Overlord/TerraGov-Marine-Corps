@@ -193,6 +193,14 @@
 	icon = 'icons/obj/doors/Doorsand.dmi'
 	mineral = "sandstone"
 
+/obj/machinery/door/airlock/sandstone/runed
+	name = "\improper Runed Sandstone Airlock"
+	icon = 'icons/obj/doors/doorrunedsand.dmi'
+	mineral = "runed sandstone"
+	openspeed = 4 SECONDS
+	resistance_flags = RESIST_ALL
+	color = "#b29082"
+
 /obj/machinery/door/airlock/science
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/doors/Doorsci.dmi'
@@ -1015,3 +1023,10 @@
 	name = "\improper Research Dome"
 	icon_state = "door_locked"
 	locked = TRUE
+
+/obj/machinery/door/airlock/strata
+	name = "\improper Airlock"
+	icon = 'icons/obj/doors/strata_doors.dmi' //Whoever made it so each door is it's own sheet and doesn't dynamically use overlays ought to be drawn and quartered.
+	openspeed = 5
+	req_access = null // Colony side airlocks should not have any sort of access.
+	req_one_access = null

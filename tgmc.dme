@@ -1862,4 +1862,5 @@
 #include "RUtgmc\code\reagents.dm"
 #include "RUtgmc\code\RU_items.dm"
 #include "RUtgmc\code\vendorcw.dm"
+#include "RUtgmc\code\datums\roman_number.dm"
 // END_INCLUDE

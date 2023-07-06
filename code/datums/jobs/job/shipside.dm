@@ -1150,7 +1150,7 @@ Use your office fax machine to communicate with corporate headquarters or to acq
 			new_human.wear_id.paygrade = "Mk.VIII"
 		if(21001 to 60000) // 350 to 1000 hrs
 			new_human.wear_id.paygrade = "Mk.IX"
-		if(60000 to INFINITY) // 1000 hrs and more
+		if(60001 to INFINITY) // 1000 hrs and more
 			new_human.wear_id.paygrade = "Mk.X"
 
 /datum/job/terragov/silicon/synthetic/radio_help_message(mob/M)

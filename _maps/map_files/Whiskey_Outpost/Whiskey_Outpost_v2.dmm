@@ -5676,6 +5676,10 @@
 /obj/structure/table/mainship,
 /turf/open/floor/mainship/sterile/corner,
 /area/whiskey_outpost)
+"Dm" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/dirt,
+/area/whiskey_outpost/outside/north)
 "Dp" = (
 /obj/structure/barricade/metal,
 /obj/effect/landmark/start/job/squadmarine,
@@ -6932,9 +6936,6 @@
 "MW" = (
 /obj/structure/barricade/sandbags{
 	pixel_y = -6
-	},
-/obj/item/weapon/gun/minigun_nest{
-	dir = 8
 	},
 /turf/open/floor/plating/warning{
 	dir = 10
@@ -10927,7 +10928,7 @@ dx
 dx
 NW
 NW
-um
+Dm
 um
 um
 um

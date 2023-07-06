@@ -96,26 +96,31 @@ const NavigationSelector = (props, context) => {
       <Tabs.Tab
         selected={tabIndex === 2}
         onClick={() => act('tab_change', { tabIndex: 2 })}>
-        Background Information
+        Predator Customization
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 3}
         onClick={() => act('tab_change', { tabIndex: 3 })}>
-        Gear Customization
+        Background Information
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 4}
         onClick={() => act('tab_change', { tabIndex: 4 })}>
-        Job Preferences
+        Gear Customization
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 5}
         onClick={() => act('tab_change', { tabIndex: 5 })}>
-        Game Settings
+        Job Preferences
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 6}
         onClick={() => act('tab_change', { tabIndex: 6 })}>
+        Game Settings
+      </Tabs.Tab>
+      <Tabs.Tab
+        selected={tabIndex === 7}
+        onClick={() => act('tab_change', { tabIndex: 7 })}>
         Keybindings
       </Tabs.Tab>
     </Tabs>

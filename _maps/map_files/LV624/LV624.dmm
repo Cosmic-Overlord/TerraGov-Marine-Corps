@@ -11791,6 +11791,10 @@
 	dir = 8
 	},
 /area/lv624/ground/jungle6)
+"luD" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/ground/grass,
+/area/lv624/ground/jungle3)
 "luJ" = (
 /obj/effect/spawner/random/melee,
 /turf/open/ground/coast,
@@ -17963,6 +17967,10 @@
 /obj/effect/spawner/random/melee,
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/ground/jungle6)
+"sMZ" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/ground/grass,
+/area/lv624/ground/jungle1)
 "sNh" = (
 /obj/structure/fence,
 /turf/open/floor/plating/ground/dirtgrassborder/corner2{
@@ -19361,6 +19369,11 @@
 	dir = 4
 	},
 /area/lv624/ground/jungle1)
+"uqj" = (
+/obj/structure/jungle/vines,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/dirt,
+/area/lv624/ground/jungle6)
 "uqJ" = (
 /turf/open/floor/plating/ground/dirtgrassborder{
 	dir = 4
@@ -20217,6 +20230,12 @@
 /obj/structure/fence,
 /turf/open/floor/plating/ground/dirtgrassborder,
 /area/lv624/ground/compound/sw)
+"vtJ" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/dirtgrassborder{
+	dir = 4
+	},
+/area/lv624/ground/jungle10)
 "vtY" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/structure/table/reinforced/flipped{
@@ -20694,6 +20713,10 @@
 	dir = 4
 	},
 /area/lv624/ground/sand3)
+"vYB" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/ground/grass,
+/area/lv624/ground/jungle5)
 "vYI" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/layer1{
 	dir = 8
@@ -24566,7 +24589,7 @@ mbF
 fez
 qpS
 liw
-lxu
+vtJ
 gTJ
 wnj
 bYr
@@ -34533,7 +34556,7 @@ xFL
 gRt
 bch
 bch
-bch
+luD
 bch
 mQx
 mOs
@@ -40491,7 +40514,7 @@ mOs
 mOs
 mOs
 utn
-qQz
+uqj
 pNZ
 mOs
 mOs
@@ -56833,7 +56856,7 @@ gCL
 bdh
 bdh
 bdh
-bdh
+sMZ
 gCL
 mOs
 mOs
@@ -60660,7 +60683,7 @@ mOs
 mOs
 cmI
 cmI
-wrP
+vYB
 wrP
 fmL
 xij

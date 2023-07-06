@@ -271,4 +271,5 @@
 	icon_state = "lantern"
 	desc = "A mining lantern."
 	light_range = 6			// luminosity when on
+	light_on = FALSE
 	raillight_compatible = FALSE

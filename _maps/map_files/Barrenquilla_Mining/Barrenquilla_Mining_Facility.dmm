@@ -2314,7 +2314,6 @@
 "lI" = (
 /obj/structure/closet/cabinet,
 /obj/effect/decal/cleanable/cobweb,
-/obj/item/clothing/under/marine/veteran/PMC/leader,
 /turf/open/floor/wood{
 	icon_state = "wood-broken4"
 	},
@@ -2359,9 +2358,6 @@
 "lT" = (
 /obj/structure/bed/alien,
 /obj/item/bedsheet,
-/obj/effect/decal/siding{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood{
 	icon_state = "wood-broken4"
@@ -2605,9 +2601,6 @@
 /turf/open/floor/tile/hydro,
 /area/barren/civilian/botany)
 "ni" = (
-/obj/effect/decal/siding{
-	dir = 1
-	},
 /obj/item/shard,
 /turf/open/floor/mainship/black/full,
 /area/barren/security)
@@ -2701,9 +2694,6 @@
 /turf/open/floor/tile/blue/whiteblue,
 /area/barren/medical/chemistry)
 "nH" = (
-/obj/effect/decal/siding{
-	dir = 6
-	},
 /turf/open/floor/plating/ground/dirtgrassborder{
 	dir = 1
 	},
@@ -2987,9 +2977,6 @@
 /turf/open/floor/prison/sterilewhite,
 /area/barren/medical/research)
 "pc" = (
-/obj/effect/decal/siding{
-	dir = 10
-	},
 /turf/open/ground/grass,
 /area/barren/civilian)
 "pd" = (
@@ -3916,9 +3903,6 @@
 /turf/open/floor,
 /area/barren/cave/lz1)
 "tU" = (
-/obj/effect/decal/siding{
-	dir = 4
-	},
 /turf/open/floor/plating/ground/dirt,
 /area/barren/civilian)
 "tV" = (
@@ -4905,11 +4889,11 @@
 /turf/closed/wall/r_wall,
 /area/bigredv2/outside/w)
 "zz" = (
-/obj/effect/decal/siding{
-	dir = 1
+/obj/effect/landmark/yautja_teleport,
+/turf/open/lavaland/basalt{
+	baseturfs = /turf/open/lavaland/basalt
 	},
-/turf/open/floor/plating/ground/dirt,
-/area/barren/civilian)
+/area/bigredv2/outside/w)
 "zB" = (
 /obj/item/storage/pill_bottle,
 /turf/open/floor/tile/blue/whitebluecorner{
@@ -5129,11 +5113,11 @@
 /turf/closed/brock,
 /area/bigredv2/caves/southwest)
 "AI" = (
-/obj/effect/decal/siding{
-	dir = 1
+/obj/effect/landmark/yautja_teleport,
+/turf/open/lavaland/basalt{
+	baseturfs = /turf/open/lavaland/basalt
 	},
-/turf/open/floor/mainship/black/full,
-/area/barren/security)
+/area/bigredv2/outside/e)
 "AK" = (
 /turf/closed/wall/r_wall,
 /area/barren/cave/lz1)
@@ -5212,11 +5196,11 @@
 	},
 /area/bigredv2/caves/southwest)
 "Ba" = (
-/obj/effect/decal/siding{
-	dir = 5
+/obj/effect/landmark/yautja_teleport,
+/turf/open/lavaland/basalt{
+	baseturfs = /turf/open/lavaland/basalt
 	},
-/turf/open/floor/plating/ground/dirt,
-/area/barren/civilian)
+/area/bigredv2/outside/ne)
 "Bb" = (
 /obj/structure/barricade/guardrail,
 /turf/open/lavaland/lava/side{
@@ -5469,13 +5453,6 @@
 	baseturfs = /turf/open/lavaland/basalt
 	},
 /area/bigredv2/outside/w)
-"Ci" = (
-/obj/effect/decal/siding{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
-/area/barren/civilian/workdorm)
 "Cj" = (
 /obj/item/tool/pickaxe,
 /obj/effect/decal/cleanable/blood,
@@ -5890,9 +5867,6 @@
 	},
 /area/barren/medical)
 "Ex" = (
-/obj/effect/decal/siding{
-	dir = 1
-	},
 /turf/open/floor/wood/broken,
 /area/barren/civilian/workdorm)
 "Ey" = (
@@ -6871,13 +6845,6 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/explosive/grenade/PMC,
-/obj/item/clothing/under/marine/veteran/PMC,
-/obj/item/clothing/under/marine/veteran/PMC,
-/obj/item/clothing/under/marine/veteran/PMC,
-/obj/item/clothing/mask/gas/PMC/damaged,
-/obj/item/clothing/mask/gas/PMC/damaged,
-/obj/item/clothing/mask/gas/PMC/damaged,
 /turf/open/floor/grimy,
 /area/barren/civilian/workdorm)
 "JC" = (
@@ -7393,14 +7360,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/barren/security)
-"Mn" = (
-/obj/structure/bed/alien,
-/obj/item/bedsheet,
-/obj/effect/decal/siding{
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/barren/civilian/workdorm)
 "Mo" = (
 /obj/docking_port/stationary/crashmode,
 /turf/open/lavaland/basalt{
@@ -7842,13 +7801,11 @@
 /turf/open/floor/wood,
 /area/barren/cave/lz1)
 "OY" = (
-/obj/effect/decal/siding{
-	dir = 8
+/obj/effect/landmark/yautja_teleport,
+/turf/open/lavaland/basalt{
+	baseturfs = /turf/open/lavaland/basalt
 	},
-/turf/open/floor/plating/ground/dirtgrassborder{
-	dir = 1
-	},
-/area/barren/civilian)
+/area/bigredv2/caves/south)
 "OZ" = (
 /obj/structure/table/woodentable,
 /obj/machinery/prop/mainship/computer,
@@ -8107,11 +8064,11 @@
 /turf/open/floor/prison/sterilewhite,
 /area/barren/medical/research)
 "Qz" = (
-/obj/effect/decal/siding{
-	dir = 9
+/obj/effect/landmark/yautja_teleport,
+/turf/open/lavaland/basalt{
+	baseturfs = /turf/open/lavaland/basalt
 	},
-/turf/open/floor/plating/ground/dirt,
-/area/barren/civilian)
+/area/bigredv2/outside/n)
 "QA" = (
 /turf/closed/mineral/smooth/indestructible,
 /area/bigredv2/caves/south)
@@ -9196,7 +9153,6 @@
 /turf/open/floor/tile/dark2,
 /area/barren/misc/refinery)
 "Wv" = (
-/obj/effect/decal/siding,
 /obj/structure/flora/tree/jungle/small,
 /turf/open/floor/plating/ground/dirtgrassborder/corner{
 	dir = 8
@@ -16163,7 +16119,7 @@ ZN
 ZN
 ZN
 ZN
-ZN
+zz
 ZN
 ZN
 ZN
@@ -23049,7 +23005,7 @@ Hr
 lQ
 su
 su
-AI
+Hv
 te
 YH
 KI
@@ -23306,7 +23262,7 @@ ue
 Xr
 JQ
 su
-AI
+Hv
 rD
 rD
 mi
@@ -24334,7 +24290,7 @@ su
 su
 su
 lQ
-AI
+Hv
 aW
 Zs
 re
@@ -28700,7 +28656,7 @@ CY
 CY
 gs
 gs
-gs
+Qz
 gs
 bj
 gs
@@ -34203,7 +34159,7 @@ Zg
 Zb
 Zg
 xN
-Zg
+OY
 Zg
 Zg
 Zd
@@ -36666,8 +36622,8 @@ rX
 yw
 eX
 lb
-Qz
-OY
+tU
+nH
 pc
 Gp
 wA
@@ -36923,7 +36879,7 @@ yT
 YM
 eX
 lb
-zz
+tU
 il
 Wv
 Gp
@@ -37180,7 +37136,7 @@ yw
 yw
 ie
 lb
-Ba
+tU
 tU
 nH
 Gp
@@ -43086,7 +43042,7 @@ OD
 er
 OD
 OD
-OD
+Ba
 OD
 OD
 er
@@ -49829,7 +49785,7 @@ Pv
 Pv
 Pv
 Pv
-Pv
+AI
 Pv
 Pv
 Pv
@@ -53943,7 +53899,7 @@ ez
 CU
 fV
 Zi
-Mn
+RC
 RC
 ml
 Cr
@@ -54457,7 +54413,7 @@ rS
 TZ
 CU
 fV
-Mn
+RC
 oO
 nd
 Cr
@@ -54714,7 +54670,7 @@ An
 yD
 sm
 CU
-Ci
+jU
 nw
 Oe
 Cr

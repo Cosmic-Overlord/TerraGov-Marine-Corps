@@ -1940,7 +1940,7 @@
 /obj/structure/prop/brazier
 	name = "brazier"
 	desc = "The fire inside the brazier emits a relatively dim glow to flashlights and flares, but nothing can replace the feeling of sitting next to a fireplace with your friends."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/torch.dmi'
 	icon_state = "brazier"
 	density = TRUE
 	light_range = 4
@@ -1990,6 +1990,7 @@
 /obj/structure/prop/brazier/torch
 	name = "torch"
 	desc = "It's a torch."
+	icon = 'icons/obj/structures/torch.dmi'
 	icon_state = "torch"
 	density = FALSE
 	luminosity = 5
@@ -2009,7 +2010,7 @@
 
 /obj/item/prop/torch_frame
 	name = "unlit torch"
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/torch.dmi'
 	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
 	icon_state = "torch_frame"
 	luminosity = 0

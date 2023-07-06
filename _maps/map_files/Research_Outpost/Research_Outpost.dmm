@@ -5479,6 +5479,10 @@
 	},
 /turf/open/floor/tile/dark,
 /area/outpost/hallway/central)
+"za" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/outpost/caves/south)
 "zd" = (
 /obj/effect/landmark/xeno_silo_spawn,
 /turf/open/floor/plating/ground/mars/random/cave,
@@ -6337,6 +6341,10 @@
 	dir = 1
 	},
 /area/outpost/arrivals)
+"Dj" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/outpost/caves/west)
 "Dk" = (
 /turf/closed/wall/r_wall,
 /area/outpost/lz2)
@@ -6922,6 +6930,10 @@
 	dir = 4
 	},
 /area/outpost/lz2)
+"FO" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/dirt,
+/area/outpost/caves/north)
 "FQ" = (
 /obj/effect/landmark/weed_node,
 /obj/effect/landmark/lv624/fog_blocker/xeno_spawn,
@@ -7598,6 +7610,10 @@
 	dir = 9
 	},
 /area/outpost/medbay/surgery)
+"Jj" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/dirt,
+/area/outpost/caves/east)
 "Jl" = (
 /obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor/plating/ground/mars/random/cave,
@@ -9052,9 +9068,7 @@
 	dir = 8
 	},
 /obj/structure/paper_bin,
-/obj/effect/spawner/random/plushie{
-
-	},
+/obj/effect/spawner/random/plushie,
 /turf/open/floor/tile/dark/brown2{
 	dir = 8
 	},
@@ -14800,7 +14814,7 @@ zh
 zh
 hV
 XX
-XX
+Dj
 XX
 yW
 yW
@@ -22426,7 +22440,7 @@ yW
 yW
 yW
 yW
-OR
+FO
 Uq
 pZ
 uU
@@ -23819,7 +23833,7 @@ hK
 hK
 hK
 hK
-hK
+za
 yW
 yW
 yW
@@ -27987,7 +28001,7 @@ yW
 yW
 yW
 LF
-LF
+Jj
 yW
 yW
 yW

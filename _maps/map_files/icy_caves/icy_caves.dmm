@@ -1193,6 +1193,10 @@
 /obj/machinery/door/airlock/mainship/maint,
 /turf/open/floor/plating/plating_catwalk,
 /area/icy_caves/caves/northwestmonorail)
+"gL" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/snow/layer2,
+/area/icy_caves/outpost/outside)
 "gM" = (
 /obj/effect/turf_decal/warning_stripes/thin{
 	dir = 1
@@ -5059,6 +5063,10 @@
 	dir = 8
 	},
 /area/icy_caves/outpost/garage)
+"Af" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/ice,
+/area/icy_caves/caves/northern)
 "Ah" = (
 /obj/effect/landmark/corpsespawner/security{
 	corpsebelt = /obj/item/weapon/gun/revolver/cmb;
@@ -8087,6 +8095,10 @@
 /obj/structure/sign/double/barsign/carp,
 /turf/closed/mineral/smooth/darkfrostwall,
 /area/icy_caves/caves/rock)
+"OV" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/snow/layer2,
+/area/icy_caves/outpost/outside/center)
 "OZ" = (
 /obj/structure/cargo_container/gorg,
 /turf/open/floor/plating,
@@ -9998,6 +10010,10 @@
 /obj/machinery/computer/intel_computer,
 /turf/open/floor/prison/kitchen,
 /area/icy_caves/outpost/kitchen)
+"YN" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/ice,
+/area/icy_caves/caves/west)
 "YO" = (
 /obj/effect/turf_decal/warning_stripes/thin,
 /obj/effect/turf_decal/warning_stripes/thin{
@@ -11450,7 +11466,7 @@ Wx
 Bb
 WI
 WI
-WI
+gL
 WI
 ZI
 ZP
@@ -15002,7 +15018,7 @@ ZI
 ZP
 ZP
 ZP
-ZU
+YN
 ZU
 ZU
 ZI
@@ -20806,7 +20822,7 @@ ZP
 ZP
 ZP
 ZP
-ow
+OV
 li
 li
 li
@@ -22137,7 +22153,7 @@ ZP
 ZI
 ZI
 ZI
-SR
+Af
 SR
 SR
 SR

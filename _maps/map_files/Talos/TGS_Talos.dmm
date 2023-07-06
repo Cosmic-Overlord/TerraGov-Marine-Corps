@@ -2455,6 +2455,10 @@
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden/layer1,
 /turf/open/floor/prison/sterilewhite,
 /area/mainship/medical/medical_science)
+"bRJ" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating,
+/area/mainship/hull/starboard_hull)
 "bRU" = (
 /obj/machinery/camera/autoname,
 /turf/open/floor/mainship/red{
@@ -18278,6 +18282,10 @@
 	dir = 9
 	},
 /area/mainship/medical/medical_science)
+"nVF" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating,
+/area/mainship/hull/port_hull)
 "nVJ" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/hidden{
 	dir = 4
@@ -18526,6 +18534,17 @@
 /obj/item/megaphone,
 /turf/open/floor/prison,
 /area/mainship/squads/req)
+"ohb" = (
+/obj/machinery/atmospherics/pipe/simple/yellow/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden/layer1{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating,
+/area/mainship/hull/starboard_hull)
 "ohi" = (
 /obj/structure/window/reinforced,
 /obj/structure/table/mainship,
@@ -49696,7 +49715,7 @@ gjM
 hMY
 lnf
 lhv
-cZa
+ohb
 rKD
 aRv
 dnv
@@ -56073,7 +56092,7 @@ dnv
 dnv
 dnv
 aRv
-cZa
+ohb
 lMI
 uBZ
 xLg
@@ -57941,7 +57960,7 @@ qwP
 qwP
 wnT
 wnT
-qwP
+nVF
 eFJ
 xFv
 xFv
@@ -66423,7 +66442,7 @@ hIQ
 aFB
 wnT
 wnT
-qwP
+nVF
 qwP
 qwP
 eFJ
@@ -72004,7 +72023,7 @@ dnv
 dnv
 dnv
 aRv
-cZa
+ohb
 xhq
 xhq
 xhq
@@ -73347,7 +73366,7 @@ opj
 chK
 chK
 wnT
-qwP
+nVF
 wnT
 wnT
 wnT
@@ -79738,7 +79757,7 @@ vdx
 vdx
 pwq
 mZD
-uwt
+bRJ
 pwq
 mZD
 ska

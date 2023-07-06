@@ -117,7 +117,7 @@
 /obj/item/weapon/claymore/mercsword/ceremonial
 	name = "Ceremonial Sword"
 	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
-	icon_state = "ceremonial"
+	icon_state = "officer_sword"
 	item_state = "machete"
 
 //FC's sword.

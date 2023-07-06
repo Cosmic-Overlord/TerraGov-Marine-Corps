@@ -33265,6 +33265,11 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
+"fBf" = (
+/obj/structure/cable,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/desertdam/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_cargo)
 "fBl" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -37262,6 +37267,7 @@
 /area/desert_dam/exterior/landing/landing_pad_three_external)
 "hNK" = (
 /obj/effect/ai_node,
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/plating/ground/desertdam/asphalt/edge/regular{
 	dir = 8
 	},
@@ -42476,6 +42482,12 @@
 	},
 /turf/open/floor/prison/bright_clean/two,
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
+"kIN" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/desertdam/asphalt/edge{
+	dir = 1
+	},
+/area/desert_dam/exterior/valley/valley_hydro)
 "kIU" = (
 /obj/effect/landmark/xeno_resin_door,
 /turf/open/floor/plating/ground/mars/dirttosand{
@@ -46368,6 +46380,10 @@
 	dir = 4
 	},
 /area/desert_dam/exterior/landing/landing_pad_three_external)
+"mVp" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/sand,
+/area/desert_dam/exterior/valley/valley_northwest)
 "mVs" = (
 /obj/effect/landmark/xeno_resin_wall,
 /turf/open/floor/plating/ground/mars/dirttosand,
@@ -52405,6 +52421,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
+"qgz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/desertdam/asphalt/edge{
+	dir = 8
+	},
+/area/desert_dam/exterior/valley/valley_mining)
 "qgN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/layer1{
@@ -54506,6 +54529,10 @@
 /obj/effect/ai_node,
 /turf/open/floor/prison/bright_clean,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
+"rrZ" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/sand,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "rse" = (
 /obj/structure/desertdam/decals/road/line,
 /obj/effect/decal/cleanable/dirt,
@@ -77585,7 +77612,7 @@ brB
 axZ
 vAr
 aiZ
-aiZ
+mVp
 aiZ
 aiZ
 mPH
@@ -85258,7 +85285,7 @@ daZ
 svo
 svo
 svo
-svo
+fBf
 svo
 svo
 svo
@@ -99303,7 +99330,7 @@ tLl
 wbh
 tLl
 lwm
-hqp
+kIN
 fKh
 hBr
 rrn
@@ -104517,7 +104544,7 @@ azp
 avG
 rCV
 rCV
-bRg
+rrZ
 bRg
 bRg
 bRg
@@ -118184,7 +118211,7 @@ bul
 bul
 bul
 kqJ
-vPu
+qgz
 xyg
 xyg
 iMh

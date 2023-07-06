@@ -455,6 +455,7 @@
 	},
 /area/yautja)
 "bd" = (
+/obj/effect/step_trigger/teleporter/yautja_ship,
 /turf/open/floor/light,
 /area/yautja)
 "be" = (
@@ -736,26 +737,26 @@
 /turf/closed/wall/huntership,
 /area/yautja)
 "bW" = (
-/obj/machinery/door/airlock/strata{
-	name = "\improper Prisoner Cell 1";
-	opacity = 0
-	},
 /obj/machinery/door/poddoor/shutters/mainship{
 	dir = 4;
 	id = "Cell Lockdown 1";
 	name = "\improper Cell Shutters"
 	},
+/obj/machinery/door/airlock/strata{
+	name = "\improper Prisoner Cell 1";
+	opacity = 0
+	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "bX" = (
-/obj/machinery/door/airlock/strata{
-	name = "\improper Prisoner Cell 4";
-	opacity = 0
-	},
 /obj/machinery/door/poddoor/shutters/mainship{
 	dir = 4;
 	id = "Cell Lockdown 4";
 	name = "\improper Cell Shutters"
+	},
+/obj/machinery/door/airlock/strata{
+	name = "\improper Prisoner Cell 4";
+	opacity = 0
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
@@ -780,26 +781,26 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "ce" = (
-/obj/machinery/door/airlock/strata{
-	name = "\improper Prisoner Cell 2";
-	opacity = 0
-	},
 /obj/machinery/door/poddoor/shutters/mainship{
 	dir = 4;
 	id = "Cell Lockdown 2";
 	name = "\improper Cell Shutters"
 	},
+/obj/machinery/door/airlock/strata{
+	name = "\improper Prisoner Cell 2";
+	opacity = 0
+	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "cf" = (
-/obj/machinery/door/airlock/strata{
-	name = "\improper Prisoner Cell 5";
-	opacity = 0
-	},
 /obj/machinery/door/poddoor/shutters/mainship{
 	dir = 4;
 	id = "Cell Lockdown 5";
 	name = "\improper Cell Shutters"
+	},
+/obj/machinery/door/airlock/strata{
+	name = "\improper Prisoner Cell 5";
+	opacity = 0
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
@@ -839,26 +840,26 @@
 	},
 /area/yautja)
 "cm" = (
-/obj/machinery/door/airlock/strata{
-	name = "\improper Prisoner Cell 3";
-	opacity = 0
-	},
 /obj/machinery/door/poddoor/shutters/mainship{
 	dir = 4;
 	id = "Cell Lockdown 3";
 	name = "\improper Cell Shutters"
 	},
+/obj/machinery/door/airlock/strata{
+	name = "\improper Prisoner Cell 3";
+	opacity = 0
+	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "cn" = (
-/obj/machinery/door/airlock/strata{
-	name = "\improper Prisoner Cell 6";
-	opacity = 0
-	},
 /obj/machinery/door/poddoor/shutters/mainship{
 	dir = 4;
 	id = "Cell Lockdown 6";
 	name = "\improper Cell Shutters"
+	},
+/obj/machinery/door/airlock/strata{
+	name = "\improper Prisoner Cell 6";
+	opacity = 0
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
@@ -1388,6 +1389,7 @@
 /obj/structure/window/framed/colony/reinforced/hull{
 	color = "#aba9a9"
 	},
+/turf/open/space/basic,
 /area/yautja)
 "fF" = (
 /obj/structure/rack{

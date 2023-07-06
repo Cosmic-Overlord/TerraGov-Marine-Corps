@@ -2788,9 +2788,9 @@
 /turf/open/floor,
 /area/oscar_outpost/village/central)
 "tF" = (
-/obj/machinery/floodlight/combat,
-/turf/open/floor/prison,
-/area/oscar_outpost/base)
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/dirt,
+/area/oscar_outpost/outside/underground)
 "tG" = (
 /obj/structure/desertdam/decals/road{
 	pixel_y = 16
@@ -9059,7 +9059,6 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/floodlight/combat,
 /turf/open/floor/prison,
 /area/oscar_outpost/base)
 "Wg" = (
@@ -23405,7 +23404,7 @@ bk
 Tx
 CE
 uq
-tF
+uq
 Wd
 cW
 uq
@@ -40048,7 +40047,7 @@ co
 rz
 rz
 rz
-rz
+tF
 WZ
 WZ
 WZ

@@ -4371,6 +4371,10 @@
 /obj/effect/ai_node,
 /turf/open/ground,
 /area/lv624/ground/compound/se)
+"BT" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/grass,
+/area/vapor_processing/south_compound)
 "BZ" = (
 /obj/effect/landmark/patrol_point{
 	id = "TGMC_24";
@@ -4813,6 +4817,10 @@
 	},
 /turf/open/ground,
 /area/lv624/ground/compound/sw)
+"IY" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/ground/grass/grass2,
+/area/lv624/ground/compound/se)
 "Je" = (
 /obj/machinery/door/airlock/mainship/generic,
 /turf/open/floor/plating,
@@ -5486,6 +5494,10 @@
 	},
 /turf/open/ground,
 /area/space)
+"Se" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/ground/grass/grass2,
+/area/lv624/ground/compound/n)
 "Sk" = (
 /obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor/tile/green/whitegreen,
@@ -5966,6 +5978,10 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/yellow,
 /area/lv624/lazarus/engineering)
+"XV" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/ground/grass/grass2,
+/area/vapor_processing/east_compound)
 "Yb" = (
 /obj/machinery/door/poddoor/mainship{
 	dir = 2;
@@ -8864,7 +8880,7 @@ PG
 (28,1,1) = {"
 PG
 ah
-ah
+Se
 ah
 ah
 ah
@@ -10592,7 +10608,7 @@ le
 le
 lf
 le
-le
+BT
 PG
 "}
 (45,1,1) = {"
@@ -14975,7 +14991,7 @@ ll
 ll
 ll
 ll
-ll
+IY
 ll
 ll
 PG
@@ -15041,7 +15057,7 @@ eN
 eU
 eU
 eN
-eM
+XV
 eM
 eU
 lm

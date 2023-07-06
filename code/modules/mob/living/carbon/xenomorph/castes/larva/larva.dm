@@ -94,3 +94,15 @@
 	if(!loc_weeds_type)
 		return 0
 	return 1
+
+/mob/living/carbon/xenomorph/larva/predalien
+	icon = 'icons/Xeno/predalien_larva.dmi'
+	icon_state = "Predalien Larva"
+	caste_base_type = /mob/living/carbon/xenomorph/larva/predalien
+
+/mob/living/carbon/xenomorph/larva/predalien/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
+	. = ..()
+	hunter_data.dishonored = TRUE
+	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
+	hunter_data.dishonored_set = src
+	hud_set_hunter()

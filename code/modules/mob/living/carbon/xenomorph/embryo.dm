@@ -155,7 +155,11 @@
 	//Spawn the larva.
 	var/mob/living/carbon/xenomorph/larva/new_xeno
 
-	new_xeno = new(affected_mob)
+	if(isyautja(affected_mob))
+		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
+		yautja_announcement(span_yautjaboldbig("WARNING!\n\nAn abomination has been detected at [get_area_name(new_xeno)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately"))
+	else
+		new_xeno = new(affected_mob)
 
 	new_xeno.transfer_to_hive(hivenumber)
 	new_xeno.update_icons()

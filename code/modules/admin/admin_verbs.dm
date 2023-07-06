@@ -1436,3 +1436,17 @@
 				to_chat(usr,"---------------------------------")
 				to_chat(usr,"[O.explanation_text] = [result]")
 				to_chat(usr,"----------------------------------")
+
+/client/proc/cmd_admin_create_predator_report()
+	set name = "Report: Yautja AI"
+	set category = "Admin"
+
+	if(!check_rights(R_ADMIN))
+		to_chat(src, "Only administrators may use this command.")
+		return
+	var/input = input(usr, "This is a message from the predator ship's AI. Check with online staff before you send this.", "What?", "") as message|null
+	if(!input)
+		return FALSE
+	yautja_announcement(span_yautjaboldbig(input))
+	message_admins("[key_name_admin(src)] has created a predator ship AI report")
+	log_admin("[key_name_admin(src)] predator ship AI report: [input]")

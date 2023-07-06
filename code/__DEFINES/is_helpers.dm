@@ -105,6 +105,7 @@
 #define isxenowarrior(A) (istype(A, /mob/living/carbon/xenomorph/warrior))
 #define ispredalien(A) (istype(A, /mob/living/carbon/xenomorph/predalien))
 #define isxenolarva(A) (istype(A, /mob/living/carbon/xenomorph/larva))
+#define isxenopredalienlarva(A) (istype(A, /mob/living/carbon/xenomorph/larva/predalien))
 #define isxenoqueen(A) (istype(A, /mob/living/carbon/xenomorph/queen))
 #define isxenoshrike(A) (istype(A, /mob/living/carbon/xenomorph/shrike))
 #define isxenodefiler(A) (istype(A, /mob/living/carbon/xenomorph/defiler))

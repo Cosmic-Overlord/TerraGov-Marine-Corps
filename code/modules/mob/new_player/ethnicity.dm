@@ -113,37 +113,37 @@
 	icon_name = "polynesian"
 	ethnic_category = "Oceania"
 
-/datum/ethnicity/yautja/polynesian
+/datum/ethnicity/yautja/tan
 	name = "Tan"
 	icon_name = "tan"
 	ethnic_category = "Tan"
 
-/datum/ethnicity/yautja/polynesian
+/datum/ethnicity/yautja/green
 	name = "Green"
 	icon_name = "green"
 	ethnic_category = "Green"
 
-/datum/ethnicity/yautja/polynesian
+/datum/ethnicity/yautja/purple
 	name = "Purple"
 	icon_name = "purple"
 	ethnic_category = "Purple"
 
-/datum/ethnicity/yautja/polynesian
+/datum/ethnicity/yautja/blue
 	name = "Blue"
 	icon_name = "blue"
 	ethnic_category = "Blue"
 
-/datum/ethnicity/yautja/polynesian
+/datum/ethnicity/yautja/purple
 	name = "Purple"
 	icon_name = "purple"
 	ethnic_category = "Purple"
 
-/datum/ethnicity/yautja/polynesian
+/datum/ethnicity/yautja/red
 	name = "Red"
 	icon_name = "red"
 	ethnic_category = "Red"
 
-/datum/ethnicity/yautja/polynesian
+/datum/ethnicity/yautja/black
 	name = "Black"
 	icon_name = "black"
 	ethnic_category = "Black"

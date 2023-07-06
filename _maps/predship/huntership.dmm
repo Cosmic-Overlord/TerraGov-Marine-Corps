@@ -311,7 +311,6 @@
 "aF" = (
 /obj/item/clothing/gloves/yautja/hunter{
 	anchored = 1;
-	can_block_movement = 1;
 	charge = 1;
 	charge_max = 1;
 	color = "#a8a7a5";

@@ -77,7 +77,9 @@
 /area/yautja)
 "ak" = (
 /obj/structure/table/mainship,
-/obj/machinery/door/window/right,
+/obj/machinery/door/window/right{
+	dir = 2
+	},
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
@@ -88,7 +90,9 @@
 /area/yautja)
 "al" = (
 /obj/structure/table/mainship,
-/obj/machinery/door/window/right,
+/obj/machinery/door/window/right{
+	dir = 2
+	},
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
@@ -102,7 +106,9 @@
 /area/yautja)
 "am" = (
 /obj/structure/table/mainship,
-/obj/machinery/door/window/right,
+/obj/machinery/door/window/right{
+	dir = 2
+	},
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
@@ -235,7 +241,9 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/door/window/right,
+/obj/machinery/door/window/right{
+	dir = 2
+	},
 /obj/item/clothing/suit/armor/yautja/thrall,
 /obj/item/clothing/mask/gas/yautja/thrall,
 /obj/item/clothing/shoes/marine/yautja/thrall,
@@ -254,7 +262,9 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/door/window/right,
+/obj/machinery/door/window/right{
+	dir = 2
+	},
 /obj/item/clothing/suit/armor/yautja/thrall,
 /obj/item/clothing/mask/gas/yautja/thrall,
 /obj/item/clothing/shoes/marine/yautja/thrall,
@@ -1631,7 +1641,9 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/door/window/right,
+/obj/machinery/door/window/right{
+	dir = 2
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

@@ -84,13 +84,14 @@
 	var/default_cape_type = "None"
 
 /datum/outfit/job/yautja/pre_equip(mob/living/carbon/human/H, client/mob_client)
-	H.set_species("Yautja")
-	H.ethnicity = "tan"
+	H.ethnicity = "Tan"
 	if(!mob_client)
 		mob_client = H.client
 	if(mob_client?.prefs)
 		H.h_style = mob_client.prefs.predator_h_style
 		H.ethnicity = mob_client.prefs.predator_skin_color
+
+	H.set_species("Yautja")
 
 	var/armor_number = 1
 	var/boot_number = 1

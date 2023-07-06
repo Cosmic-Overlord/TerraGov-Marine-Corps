@@ -55,7 +55,7 @@
 
 /client/verb/view_clan_info()
 	set name = "View Clan Info"
-	set category = "OOC.Records"
+	set category = "OOC"
 
 	var/clan_to_get
 

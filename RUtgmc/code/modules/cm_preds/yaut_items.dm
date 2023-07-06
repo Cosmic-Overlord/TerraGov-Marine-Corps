@@ -47,7 +47,7 @@
 		/obj/item/weapon/twohanded/yautja,
 	)
 	resistance_flags = UNACIDABLE
-	item_state_slots = list(SLOT_WEAR_SUIT = "halfarmor1")
+	item_state_slots = list(slot_wear_suit_str = "halfarmor1")
 	attachments_by_slot = list(
 		ACCESSORY_SLOT_ARMOR_A,
 		ACCESSORY_SLOT_ARMOR_L,
@@ -65,29 +65,29 @@
 			if(1341)
 				name = "\improper 'Armor of the Dragon'"
 				icon_state = "halfarmor_elder_tr"
-				LAZYSET(item_state_slots, SLOT_WEAR_SUIT, "halfarmor_elder_tr")
+				LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor_elder_tr")
 			if(7128)
 				name = "\improper 'Armor of the Swamp Horror'"
 				icon_state = "halfarmor_elder_joshuu"
-				LAZYSET(item_state_slots, SLOT_WEAR_SUIT, "halfarmor_elder_joshuu")
+				LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor_elder_joshuu")
 			if(9867)
 				name = "\improper 'Armor of the Enforcer'"
 				icon_state = "halfarmor_elder_feweh"
-				LAZYSET(item_state_slots, SLOT_WEAR_SUIT, "halfarmor_elder_feweh")
+				LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor_elder_feweh")
 			if(4879)
 				name = "\improper 'Armor of the Ambivalent Collector'"
 				icon_state = "halfarmor_elder_n"
-				LAZYSET(item_state_slots, SLOT_WEAR_SUIT, "halfarmor_elder_n")
+				LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor_elder_n")
 			else
 				name = "clan elder's armor"
 				icon_state = "halfarmor_elder"
-				LAZYSET(item_state_slots, SLOT_WEAR_SUIT, "halfarmor_elder")
+				LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor_elder")
 	else
 		if(armor_number > 7)
 			armor_number = 1
 		if(armor_number) //Don't change full armor number
 			icon_state = "halfarmor[armor_number]_[armor_material]"
-			LAZYSET(item_state_slots, SLOT_WEAR_SUIT, "halfarmor[armor_number]_[armor_material]")
+			LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor[armor_number]_[armor_material]")
 
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
@@ -109,7 +109,7 @@
 	soft_armor = list(MELEE = 30, BULLET = 25, LASER = 30, ENERGY = 30, BOMB = 35, BIO = 30, FIRE = 30, ACID = 30)
 	slowdown = 1
 	var/speed_timer = 0
-	item_state_slots = list(SLOT_WEAR_SUIT = "fullarmor")
+	item_state_slots = list(slot_wear_suit_str = "fullarmor")
 	allowed = list(
 		/obj/item/weapon/harpoon,
 		/obj/item/weapon/gun/launcher/spike,
@@ -122,7 +122,7 @@
 /obj/item/clothing/suit/armor/yautja/hunter/full/Initialize(mapload, armor_number, armor_material = "ebony")
 	. = ..(mapload, 0)
 	icon_state = "fullarmor_[armor_material]"
-	LAZYSET(item_state_slots, SLOT_WEAR_SUIT, "fullarmor_[armor_material]")
+	LAZYSET(item_state_slots, slot_wear_suit_str, "fullarmor_[armor_material]")
 
 
 /obj/item/clothing/yautja_cape
@@ -187,7 +187,7 @@
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
-		SLOT_SHOES = 'icons/mob/hunter/pred_gear.dmi'
+		slot_shoes_str = 'icons/mob/hunter/pred_gear.dmi'
 	)
 	icon_state = "y-boots1_ebony"
 
@@ -304,7 +304,7 @@
 	icon_state = "beltbag"
 	item_state = "beltbag_w"
 	item_icons = list(
-		WEAR_WAIST = 'icons/mob/hunter/pred_gear.dmi'
+		slot_back_str = 'icons/mob/hunter/pred_gear.dmi'
 	)
 
 	flags_equip_slot = ITEM_SLOT_BELT
@@ -784,7 +784,7 @@
 		/obj/item/weapon/twohanded/yautja,
 	)
 	resistance_flags = UNACIDABLE
-	item_state_slots = list(SLOT_WEAR_SUIT = "fullarmor_ebony")
+	item_state_slots = list(slot_wear_suit_str = "fullarmor_ebony")
 
 /obj/item/clothing/shoes/yautja_flavor
 	name = "alien stone greaves"
@@ -792,7 +792,7 @@
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
-		SLOT_SHOES = 'icons/mob/hunter/pred_gear.dmi'
+		slot_shoes_str = 'icons/mob/hunter/pred_gear.dmi'
 	)
 	icon_state = "y-boots2_ebony"
 

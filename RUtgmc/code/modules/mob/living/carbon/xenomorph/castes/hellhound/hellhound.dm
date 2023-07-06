@@ -3,6 +3,8 @@
 	display_name = "Hellhound"
 	caste_type_path = /mob/living/carbon/xenomorph/hellhound
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
+	tier = XENO_TIER_ZERO
+	upgrade = XENO_UPGRADE_BASETYPE
 
 	// *** Melee Attacks *** //
 	melee_damage = 35
@@ -93,3 +95,23 @@
 	GLOB.hellhound_list -= src
 	GLOB.alive_xeno_list -= src
 	return ..()
+
+/datum/xeno_caste/hellhound/young
+	upgrade_name = "Young"
+	upgrade = XENO_UPGRADE_ZERO
+
+/datum/xeno_caste/hellhound/mature
+	upgrade_name = "Mature"
+	upgrade = XENO_UPGRADE_ONE
+
+/datum/xeno_caste/hellhound/elder
+	upgrade_name = "Elder"
+	upgrade = XENO_UPGRADE_TWO
+
+/datum/xeno_caste/hellhound/ancient
+	upgrade_name = "Ancient"
+	upgrade = XENO_UPGRADE_THREE
+
+/datum/xeno_caste/hellhound/primordial
+	upgrade_name = "Primordial"
+	upgrade = XENO_UPGRADE_FOUR

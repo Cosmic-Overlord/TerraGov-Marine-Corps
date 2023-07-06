@@ -21,7 +21,7 @@
 		armor_number = 1
 	if(armor_number)
 		icon_state = "[armor_area][armor_number]_[armor_material]"
-		LAZYSET(item_state_slots, SLOT_WEAR_SUIT, "[armor_area][armor_number]_[armor_material]")
+		LAZYSET(item_state_slots, slot_wear_suit_str, "[armor_area][armor_number]_[armor_material]")
 	..()
 
 /obj/item/clothing/shoes/marine/yautja/thrall
@@ -31,7 +31,7 @@
 	icon = 'icons/obj/items/hunter/thrall_gear.dmi'
 	icon_state = "greaves1_cloth"
 	item_icons = list(
-		SLOT_SHOES = 'icons/mob/hunter/thrall_gear.dmi'
+		slot_shoes_str = 'icons/mob/hunter/thrall_gear.dmi'
 	)
 	thrall = TRUE
 
@@ -40,7 +40,7 @@
 		greaves_number = 1
 	if(greaves_number)
 		icon_state = "greaves[greaves_number]_[armor_material]"
-		LAZYSET(item_state_slots, SLOT_WEAR_SUIT, "greaves[greaves_number]_[armor_material]")
+		LAZYSET(item_state_slots, slot_wear_suit_str, "greaves[greaves_number]_[armor_material]")
 	..()
 
 /obj/item/clothing/under/chainshirt/thrall

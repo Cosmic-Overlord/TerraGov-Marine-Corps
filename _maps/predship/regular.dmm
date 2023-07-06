@@ -170,8 +170,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /obj/machinery/door/window{
 	dir = 1;
@@ -265,8 +264,7 @@
 	},
 /obj/machinery/door/window,
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 8
@@ -372,8 +370,7 @@
 "bs" = (
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -395,8 +392,7 @@
 "bu" = (
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /obj/machinery/door/window/northright{
 	dir = 2;
@@ -437,8 +433,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/weapon/twohanded/dualsaber,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -456,8 +451,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /turf/open/floor/holofloor{
@@ -471,8 +465,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /obj/item/clothing/mask/gas/voice/space_ninja{
@@ -487,8 +480,7 @@
 "bP" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -508,8 +500,7 @@
 	},
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /obj/machinery/door/window/northright{
 	dir = 2;
@@ -813,8 +804,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /obj/machinery/door/window{
 	dir = 8;
@@ -858,8 +848,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/effect/decal/warning_stripes,
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /obj/machinery/door/window{
 	dir = 1;

@@ -5,7 +5,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "bracer"
 	item_icons = list(
-		SLOT_GLOVES = 'icons/mob/hunter/pred_gear.dmi'
+		slot_gloves_str = 'icons/mob/hunter/pred_gear.dmi'
 	)
 
 	siemens_coefficient = 0

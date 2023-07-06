@@ -929,7 +929,7 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
 	icon_state = "[initial_icon_state]_[caster_material]"
 	item_state = "[initial_icon_state]_[caster_material]"
-	item_state_slots[SLOT_BACK] = "[base_item_state]_off_[caster_material]"
+	item_state_slots[slot_back_str] = "[base_item_state]_off_[caster_material]"
 	item_state_slots[slot_wear_suit_str] = "[base_item_state]_off_[caster_material]"
 	. = ..()
 	source = loc

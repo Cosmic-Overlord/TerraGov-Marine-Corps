@@ -46,8 +46,7 @@
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
@@ -58,12 +57,10 @@
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
@@ -74,8 +71,7 @@
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
@@ -86,8 +82,7 @@
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
@@ -98,12 +93,10 @@
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
@@ -114,8 +107,7 @@
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
@@ -214,12 +206,10 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 1;
-	health = 80;
 	pixel_y = 16
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -243,8 +233,7 @@
 "ay" = (
 /obj/structure/table/mainship,
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /obj/machinery/door/window/right,
 /obj/item/clothing/suit/armor/yautja/thrall,
@@ -263,8 +252,7 @@
 "aA" = (
 /obj/structure/table/mainship,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /obj/machinery/door/window/right,
 /obj/item/clothing/suit/armor/yautja/thrall,
@@ -616,12 +604,10 @@
 	color = "#6b675e"
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -629,9 +615,7 @@
 	},
 /area/yautja)
 "bA" = (
-/obj/machinery/chem_dispenser{
-	req_skill_level = 2
-	},
+/obj/machinery/chem_dispenser,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1641,12 +1625,10 @@
 	color = "#6b675e"
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /obj/machinery/door/window/right,
 /turf/open/floor/corsat{
@@ -1912,12 +1894,10 @@
 	color = "#6b675e"
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1960,12 +1940,10 @@
 	color = "#6b675e"
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1;
-	health = 80;
 	pixel_y = 16
 	},
 /turf/open/floor/corsat{
@@ -2050,7 +2028,6 @@
 /area/yautja)
 "Dr" = (
 /obj/machinery/door/airlock/strata{
-	indestructible = 1;
 	locked = 1;
 	name = "\improper External Airlock"
 	},
@@ -2223,7 +2200,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 1;
-	health = 80;
 	pixel_y = 16
 	},
 /turf/open/floor/corsat{
@@ -2455,9 +2431,7 @@
 	},
 /area/yautja)
 "Qs" = (
-/obj/machinery/chem_master{
-	req_skill_level = 2
-	},
+/obj/machinery/chem_master,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2511,12 +2485,10 @@
 	color = "#6b675e"
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
+	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+	dir = 4
 	},
 /turf/open/floor/corsat{
 	dir = 1;

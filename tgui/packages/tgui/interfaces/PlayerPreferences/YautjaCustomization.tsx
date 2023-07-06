@@ -1,5 +1,5 @@
 import { useBackend } from '../../backend';
-import { Section, Flex, LabeledList } from '../../components';
+import { Section, Flex, LabeledList, Box } from '../../components';
 import { TextFieldPreference } from './FieldPreferences';
 import { ProfilePicture } from './ProfilePicture';
 
@@ -142,6 +142,6 @@ export const YautjaCustomization = (props, context) => {
       </Section>
     </>
   ) : (
-    "You don't have WL"
+    <Box>WL requered</Box>
   );
 };

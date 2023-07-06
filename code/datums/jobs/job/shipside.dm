@@ -1129,15 +1129,14 @@ Use your office fax machine to communicate with corporate headquarters or to acq
 		return
 	var/mob/living/carbon/human/new_human = new_mob
 	var/playtime_mins = user?.client?.get_exp(title)
+	var/synth_rank
 	if(!playtime_mins || playtime_mins < 1 )
 		return
-	switch(playtime_mins)
-		if(0 to 600) //up to 10 hours
-			new_human.wear_id.paygrade = "Mk.I"
-		if(601 to 3000) // 10 to 50 hrs
-			new_human.wear_id.paygrade = "Mk.II"
-		if(3001 to INFINITY) // more than 50 hrs
-			new_human.wear_id.paygrade = "Mk.III"
+	if(playtime_mins <= 600)
+		new_human.wear_id.paygrade = "Mk.I"
+		return
+	synth_rank = playtime_mins %% 50
+	new_human.wear_id.paygrade = "Mk.[GLOBAL_PROC_REF(arabic_num_in_roman(synth_rank))]"
 
 /datum/job/terragov/silicon/synthetic/radio_help_message(mob/M)
 	. = ..()

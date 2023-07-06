@@ -1147,7 +1147,7 @@ Use your office fax machine to communicate with corporate headquarters or to acq
 		if(15001 to 18000) // 250 to 300 hrs
 			new_human.wear_id.paygrade = "Mk.VII"
 		if(18001 to 21000) // 300 to 350 hrs
-			new_human.wear_id.paygrade = "Mk.VII"
+			new_human.wear_id.paygrade = "Mk.VIII"
 		if(21001 to 60000) // 350 to 1000 hrs
 			new_human.wear_id.paygrade = "Mk.IX"
 		if(60000 to INFINITY) // 1000 hrs and more

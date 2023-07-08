@@ -35,6 +35,11 @@
 	var/thralled_reason //The Reason the target was Thralled.
 	var/mob/living/carbon/thrall //The Thrall the Hunter marked.
 
+/datum/huntdata/New(mob/mob_ref)
+	name = "[mob_ref.real_name]'s Hunter Data"
+	owner = mob_ref
+	SShunting.hunter_datas += src
+
 /datum/huntdata/proc/clean_data()
 	if(dishonored)
 		if(dishonored_set)
@@ -89,3 +94,5 @@
 
 	if(owner)
 		owner = null
+
+	SShunting.hunter_datas -= src

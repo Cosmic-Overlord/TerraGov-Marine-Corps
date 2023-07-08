@@ -20,6 +20,7 @@
 		var/datum/action/action_to_remove = a
 		action_to_remove.remove_action(src)
 	set_focus(null)
+	hunter_data.clean_data()
 	return ..()
 
 /mob/Initialize()
@@ -40,9 +41,7 @@
 	log_mob_tag("\[[tag]\] CREATED: [key_name(src)]")
 	become_hearing_sensitive()
 
-	hunter_data = new /datum/huntdata
-	hunter_data.name = "[src.real_name]'s Hunter Data"
-	hunter_data.owner = src
+	hunter_data = new /datum/huntdata(src)
 
 
 /mob/Stat()

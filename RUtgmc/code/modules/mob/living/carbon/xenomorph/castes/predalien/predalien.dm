@@ -2,7 +2,7 @@
 	caste_name = "Predalien"
 	display_name = "Abomination"
 	caste_type_path = /mob/living/carbon/xenomorph/predalien
-	tier = XENO_TIER_THREE
+	tier = XENO_TIER_ZERO
 	upgrade = XENO_UPGRADE_BASETYPE
 
 	// *** Melee Attacks *** //
@@ -47,8 +47,8 @@
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
-	tier = 1
 
+	tier = XENO_TIER_ZERO
 	upgrade = XENO_UPGRADE_ZERO
 
 	var/butcher_time = 6 SECONDS

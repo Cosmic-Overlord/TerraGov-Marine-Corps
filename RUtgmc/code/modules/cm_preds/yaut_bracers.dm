@@ -1051,7 +1051,7 @@
 		to_chat(H, span_warning("Something is obstructing the deployment of your ID chip!"))
 	else
 		to_chat(H, span_notice("You expose your ID chip."))
-		if(!H.equip_to_slot_if_possible(embedded_id, SLOT_WEAR_ID))
+		if(!H.equip_to_slot_if_possible(embedded_id, SLOT_WEAR_ID, permanent = TRUE, override_nodrop = TRUE))
 			to_chat(H, span_warning("Something went wrong during your chip's deployment! (Make a Bug Report about this)"))
 			move_chip_to_bracer()
 

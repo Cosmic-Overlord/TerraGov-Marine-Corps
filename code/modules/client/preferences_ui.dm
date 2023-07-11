@@ -326,7 +326,7 @@
 			predator_caster_material = new_pred_caster_mat
 
 		if("predator_cape_type")
-			var/datum/job/J = /datum/job/predator
+			var/datum/job/J = SSjob.GetJobType(/datum/job/predator)
 			var/whitelist_status = clan_ranks_ordered[J.get_whitelist_status(GLOB.roles_whitelist, user)]
 
 			var/list/options = list("None")

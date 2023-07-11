@@ -636,7 +636,7 @@
 		return
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))
-		var/datum/job/PJ = /datum/job/predator
+		var/datum/job/PJ = SSjob.GetJobType(/datum/job/predator)
 		PJ.set_job_positions(2)
 		predator_round.flags_round_type |= MODE_PREDATOR
 	else

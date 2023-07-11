@@ -65,7 +65,7 @@
 	var/resistable = FALSE
 	var/resist_time = 15 SECONDS
 
-/datum/status_effect/tethered/on_creation(atom/A, resistable)
+/datum/status_effect/tethered/on_creation(atom/new_owner, resistable)
 	. = ..()
 	src.resistable = resistable
 

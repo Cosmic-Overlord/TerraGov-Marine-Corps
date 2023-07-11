@@ -18,7 +18,7 @@
 /obj/item/falcon_drone/verb/control_falcon_drone()
 	set name = "Control Falcon Drone"
 	set desc = "Activates your falcon drone."
-	set category = "Yautja.Misc"
+	set category = "Yautja"
 	set src in usr
 
 	var/mob/living/mob = usr

@@ -113,13 +113,13 @@
 /obj/item/clothing/mask/gas/yautja/proc/add_vision(mob/living/carbon/human/user) //applies current_goggles
 	switch(current_goggles)
 		if(VISION_MODE_NVG)
-			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/yautja(user), ITEM_SLOT_EYES)
+			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/yautja(user), ITEM_SLOT_EYES, TRUE, TRUE)
 			to_chat(user, span_notice("Low-light vision module: activated."))
 		if(VISION_MODE_THERMAL)
-			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/yautja(user), ITEM_SLOT_EYES)
+			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/yautja(user), ITEM_SLOT_EYES, TRUE, TRUE)
 			to_chat(user, span_notice("Thermal vision module: activated."))
 		if(VISION_MODE_MESON)
-			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson/yautja(user), ITEM_SLOT_EYES)
+			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson/yautja(user), ITEM_SLOT_EYES, TRUE, TRUE)
 			to_chat(user, span_notice("Material vision module: activated."))
 		if(VISION_MODE_OFF)
 			to_chat(user, span_notice("You deactivate your visor."))
@@ -163,10 +163,10 @@
 	thrall = TRUE
 
 /obj/item/clothing/mask/gas/yautja/thrall/toggle_zoom()
-	set category = "Thrall.Utility"
+	set category = "Thrall"
 	..()
 /obj/item/clothing/mask/gas/yautja/thrall/togglesight()
-	set category = "Thrall.Utility"
+	set category = "Thrall"
 	..()
 
 /obj/item/clothing/mask/gas/yautja/hunter
@@ -178,10 +178,10 @@
 	anti_hug = 100
 
 /obj/item/clothing/mask/gas/yautja/hunter/toggle_zoom()
-	set category = "Yautja.Utility"
+	set category = "Yautja"
 	..()
 /obj/item/clothing/mask/gas/yautja/hunter/togglesight()
-	set category = "Yautja.Utility"
+	set category = "Yautja"
 	if(!isyautja(usr))
 		to_chat(usr, span_warning("You have no idea how to work this thing!"))
 		return

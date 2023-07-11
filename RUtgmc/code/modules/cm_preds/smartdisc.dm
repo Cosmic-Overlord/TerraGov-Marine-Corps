@@ -159,6 +159,15 @@
 	apply_damage(proj.damage, BRUTE)
 	return 1
 
+/mob/living/simple_animal/hostile/smartdisc/Life()
+	. = ..()
+	lifetime--
+	if(lifetime <= 0 || time_idle > 3)
+		visible_message("\The [src] stops whirring and spins out onto the floor.")
+		new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
+		qdel(src)
+		return
+
 /mob/living/simple_animal/hostile/smartdisc/death()
 	visible_message("\The [src] stops whirring and spins out onto the floor.")
 	new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
@@ -196,6 +205,7 @@
 				if(!L.stat)
 					T = L
 					break
+	GiveTarget(T)
 	return T
 
 /mob/living/simple_animal/hostile/smartdisc/ListTargets(dist = 7)

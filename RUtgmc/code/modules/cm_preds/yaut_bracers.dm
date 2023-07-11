@@ -251,7 +251,7 @@
 		return
 
 /obj/item/clothing/gloves/yautja/hunter/toggle_notification_sound()
-	set category = "Yautja.Misc"
+	set category = "Yautja"
 	..()
 
 /obj/item/clothing/gloves/yautja/hunter/Destroy()
@@ -333,13 +333,13 @@
 
 // Toggle the notification sound
 /obj/item/clothing/gloves/yautja/hunter/toggle_notification_sound()
-	set category = "Yautja.Misc"
+	set category = "Yautja"
 
 //Should put a cool menu here, like ninjas.
 /obj/item/clothing/gloves/yautja/hunter/verb/wristblades()
 	set name = "Use Wrist Blades"
 	set desc = "Extend your wrist blades. They cannot be dropped, but can be retracted."
-	set category = "Yautja.Weapons"
+	set category = "Yautja"
 	set src in usr
 	. = wristblades_internal(usr, FALSE)
 
@@ -388,10 +388,30 @@
 
 	return TRUE
 
+/obj/item/clothing/gloves/yautja/hunter/verb/check_auto_targets()
+	set name = "Track Yautja Targets"
+	set desc = "Find Yauja Targets."
+	set category = "Yautja"
+	set src in usr
+	. = check_auto_targets_text(usr, FALSE)
+
+/obj/item/clothing/gloves/yautja/hunter/proc/check_auto_targets_text(mob/caller, forced = FALSE)
+	. = check_random_function(caller, forced)
+	if(.)
+		return
+
+	var/msg = span_info("Current priority targets:")
+	if(length(caller.hunter_data.targets))
+		for(var/datum/huntdata/data in caller.hunter_data.targets)
+			msg += span_warning("[data.owner.real_name] located in [get_area_name(data.owner)] and have [data.owner.life_kills_total + data.owner.life_value + 3] honor")
+	else
+		msg += span_notice("NONE")
+	to_chat(caller, msg)
+
 /obj/item/clothing/gloves/yautja/hunter/verb/track_gear()
 	set name = "Track Yautja Gear"
 	set desc = "Find Yauja Gear."
-	set category = "Yautja.Tracker"
+	set category = "Yautja"
 	set src in usr
 	. = track_gear_internal(usr, FALSE)
 
@@ -471,7 +491,7 @@
 /obj/item/clothing/gloves/yautja/hunter/verb/cloaker()
 	set name = "Toggle Cloaking Device"
 	set desc = "Activate your suit's cloaking device. It will malfunction if the suit takes damage or gets excessively wet."
-	set category = "Yautja.Utility"
+	set category = "Yautja"
 	set src in usr
 	. = cloaker_internal(usr, FALSE)
 
@@ -575,7 +595,7 @@
 /obj/item/clothing/gloves/yautja/hunter/verb/caster()
 	set name = "Use Plasma Caster"
 	set desc = "Activate your plasma caster. If it is dropped it will retract back into your armor."
-	set category = "Yautja.Weapons"
+	set category = "Yautja"
 	set src in usr
 	. = caster_internal(usr, FALSE)
 
@@ -638,7 +658,7 @@
 /obj/item/clothing/gloves/yautja/hunter/verb/change_explosion_type()
 	set name = "Change Explosion Type"
 	set desc = "Changes your bracer explosion to either only gib you or be a big explosion."
-	set category = "Yautja.Misc"
+	set category = "Yautja"
 	set src in usr
 
 	if(explosion_type == SD_TYPE_SMALL && exploding)
@@ -656,7 +676,7 @@
 /obj/item/clothing/gloves/yautja/hunter/verb/activate_suicide()
 	set name = "Final Countdown (!)"
 	set desc = "Activate the explosive device implanted into your bracers. You have failed! Show some honor!"
-	set category = "Yautja.Misc"
+	set category = "Yautja"
 	set src in usr
 	. = activate_suicide_internal(usr, FALSE)
 
@@ -748,7 +768,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/verb/injectors()
 	set name = "Create Stabilising Crystal"
-	set category = "Yautja.Utility"
+	set category = "Yautja"
 	set desc = "Create a focus crystal to energize your natural healing processes."
 	set src in usr
 	. = injectors_internal(usr, FALSE)
@@ -789,7 +809,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/verb/healing_capsule()
 	set name = "Create Healing Capsule"
-	set category = "Yautja.Utility"
+	set category = "Yautja"
 	set desc = "Create a healing capsule for your healing gun."
 	set src in usr
 	. = healing_capsule_internal(usr, FALSE)
@@ -830,7 +850,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/verb/call_disc()
 	set name = "Call Smart-Disc"
-	set category = "Yautja.Weapons"
+	set category = "Yautja"
 	set desc = "Call back your smart-disc, if it's in range. If not you'll have to go retrieve it."
 	set src in usr
 	. = call_disc_internal(usr, FALSE)
@@ -868,7 +888,7 @@
 /obj/item/clothing/gloves/yautja/hunter/verb/remove_tracked_item()
 	set name = "Remove Item from Tracker"
 	set desc = "Remove an item from the Yautja tracker."
-	set category = "Yautja.Tracker"
+	set category = "Yautja"
 	set src in usr
 	. = remove_tracked_item_internal(usr, FALSE)
 
@@ -895,7 +915,7 @@
 /obj/item/clothing/gloves/yautja/hunter/verb/add_tracked_item()
 	set name = "Add Item to Tracker"
 	set desc = "Add an item to the Yautja tracker."
-	set category = "Yautja.Tracker"
+	set category = "Yautja"
 	set src in usr
 	. = add_tracked_item_internal(usr, FALSE)
 
@@ -920,7 +940,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/verb/call_combi()
 	set name = "Yank combi-stick"
-	set category = "Yautja.Weapons"
+	set category = "Yautja"
 	set desc = "Yank on your combi-stick's chain, if it's in range. Otherwise... recover it yourself."
 	set src in usr
 	. = call_combi_internal(usr, FALSE)
@@ -950,7 +970,7 @@
 /obj/item/clothing/gloves/yautja/hunter/verb/translate()
 	set name = "Translator"
 	set desc = "Emit a message from your bracer to those nearby."
-	set category = "Yautja.Utility"
+	set category = "Yautja"
 	set src in usr
 	. = translate_internal(usr, FALSE)
 
@@ -999,7 +1019,7 @@
 /obj/item/clothing/gloves/yautja/hunter/verb/bracername()
 	set name = "Toggle Bracer Name"
 	set desc = "Toggle whether fellow Yautja that examine you will be able to see your name."
-	set category = "Yautja.Misc"
+	set category = "Yautja"
 	set src in usr
 
 	var/mob/living/mob = usr
@@ -1012,7 +1032,7 @@
 /obj/item/clothing/gloves/yautja/hunter/verb/idchip()
 	set name = "Toggle ID Chip"
 	set desc = "Reveal/Hide your embedded bracer ID chip."
-	set category = "Yautja.Misc"
+	set category = "Yautja"
 	set src in usr
 
 	var/mob/living/mob = usr

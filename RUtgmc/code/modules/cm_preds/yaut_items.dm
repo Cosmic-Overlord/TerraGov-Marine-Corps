@@ -398,7 +398,7 @@
 /obj/item/yautja_teleporter/verb/add_tele_loc()
 	set name = "Add Teleporter Destination"
 	set desc = "Adds this location to the teleporter."
-	set category = "Yautja.Utility"
+	set category = "Yautja"
 	set src in usr
 	if(!usr || usr.stat || !is_ground_level(usr.z))
 		return FALSE
@@ -719,12 +719,12 @@
 				var/mob/living/carbon/H = AM
 				if(isyautja(H))
 					to_chat(H, span_notice("You carefully avoid stepping on the trap."))
-					return
-				trapMob(H)
-				for(var/mob/O in viewers(H, null))
-					if(O == H)
-						continue
-					O.show_message(span_warning("[icon2html(src, O)] <B>[H] gets caught in \the [src].</B>"), EMOTE_VISIBLE)
+				else
+					trapMob(H)
+					for(var/mob/O in viewers(H, null))
+						if(O == H)
+							continue
+						O.show_message(span_warning("[icon2html(src, O)] <B>[H] gets caught in \the [src].</B>"), EMOTE_VISIBLE)
 			else if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot))
 				armed = FALSE
 				var/mob/living/simple_animal/SA = AM

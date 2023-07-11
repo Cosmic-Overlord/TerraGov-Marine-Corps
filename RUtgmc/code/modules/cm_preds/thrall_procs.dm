@@ -2,7 +2,7 @@
 /obj/item/clothing/gloves/yautja/proc/buy_thrall_gear()
 	set name = "Claim Equipment"
 	set desc = "When you're on the Predator ship, claim some gear. You can only do this ONCE."
-	set category = "Thrall.Misc"
+	set category = "Thrall"
 	set src in usr
 
 	var/mob/living/carbon/human/wearer = usr
@@ -88,7 +88,7 @@
 /obj/item/clothing/gloves/yautja/hunter/verb/link_bracer()
 	set name = "Link Thrall Bracer"
 	set desc = "Link your bracer to that of your thrall."
-	set category = "Yautja.Thrall"
+	set category = "Yautja"
 	set src in usr
 
 	var/mob/living/carbon/human/user = usr
@@ -183,7 +183,7 @@
 	log_game("HUNTER: [key_name(messenger)] has sent [key_name(receiver)] the message '[message]' via bracer")
 
 /obj/item/clothing/gloves/yautja/hunter/bracer_message()
-	set category = "Yautja.Thrall"
+	set category = "Yautja"
 	. = ..()
 
 /obj/item/clothing/gloves/yautja/thrall/bracer_message()

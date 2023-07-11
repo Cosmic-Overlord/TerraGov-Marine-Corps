@@ -20,7 +20,8 @@
 		var/datum/action/action_to_remove = a
 		action_to_remove.remove_action(src)
 	set_focus(null)
-	hunter_data.clean_data()
+	if(hunter_data)
+		hunter_data.clean_data()
 	return ..()
 
 /mob/Initialize()

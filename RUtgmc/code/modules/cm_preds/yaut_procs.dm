@@ -44,7 +44,7 @@
 				hud_used.pred_power_icon.icon_state = "powerbar10"
 
 /mob/living/carbon/human/proc/butcher()
-	set category = "Yautja.Misc"
+	set category = "Yautja"
 	set name = "Butcher"
 	set desc = "Butcher a corpse you're standing on for its tasty meats."
 
@@ -225,7 +225,7 @@
 	luminosity = TRUE
 
 /mob/living/carbon/human/proc/pred_buy()
-	set category = "Yautja.Misc"
+	set category = "Yautja"
 	set name = "Claim Equipment"
 	set desc = "When you're on the Predator ship, claim some gear. You can only do this ONCE."
 

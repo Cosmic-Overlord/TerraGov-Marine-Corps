@@ -678,6 +678,7 @@
 	)
 
 	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash_color = COLOR_MAGENTA
 
 	resistance_flags = UNACIDABLE
 	fire_sound = 'sound/effects/woodhit.ogg' // TODO: Decent THWOK noise.
@@ -756,13 +757,14 @@
 	fire_sound = 'sound/weapons/pred_plasma_shot.ogg'
 	ammo_datum_type = /datum/ammo/energy/yautja/rifle/bolt
 	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash_color = COLOR_MAGENTA
 	zoomdevicename = "scope"
 	flags_equip_slot = SLOT_BACK
 	w_class = WEIGHT_CLASS_GIGANTIC
 	var/charge_time = 0
 	var/last_regen = 0
 	flags_gun_features = GUN_UNUSUAL_DESIGN
-	flags_item = ITEM_PREDATOR
+	flags_item = ITEM_PREDATOR|TWOHANDED
 
 	fire_delay = 10
 	accuracy_mult = 1.5
@@ -831,6 +833,7 @@
 	flags_equip_slot = ITEM_SLOT_BELT
 	ammo_datum_type = /datum/ammo/energy/yautja/pistol
 	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash_color = COLOR_MAGENTA
 	w_class = WEIGHT_CLASS_BULKY
 	var/charge_time = 40
 	flags_gun_features = GUN_UNUSUAL_DESIGN
@@ -907,6 +910,7 @@
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo_datum_type = /datum/ammo/energy/yautja/caster/stun
 	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash_color = COLOR_VIOLET
 	w_class = WEIGHT_CLASS_GIGANTIC
 	force = 0
 	fire_delay = 3

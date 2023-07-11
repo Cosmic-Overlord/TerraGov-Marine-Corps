@@ -32,14 +32,6 @@
 /datum/action/xeno_action/activable/predalien_roar/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/predalien/xeno = owner
 
-	if(!action_cooldown_check())
-		return
-
-	if(!xeno.check_state())
-		return
-
-	succeed_activate()
-
 	playsound(xeno.loc, pick(predalien_roar), 75, 0)
 	xeno.visible_message(span_xenohighdanger("[xeno] emits a guttural roar!"))
 	xeno.create_shriekwave(color = "#FF0000")
@@ -60,13 +52,12 @@
 				continue
 			new /datum/status_effect/xeno_buff(carbon, xeno, ttl = (0.25 SECONDS * xeno.life_kills_total + 3 SECONDS), bonus_damage = bonus_damage_scale * xeno.life_kills_total, bonus_speed = (bonus_speed_scale * xeno.life_kills_total))
 
-
 	for(var/mob/M in view(xeno))
 		if(M && M.client)
 			shake_camera(M, 10, 1)
 
 	add_cooldown()
-	return ..()
+	succeed_activate()
 
 // ***************************************
 // *********** Smash
@@ -90,15 +81,6 @@
 /datum/action/xeno_action/activable/smash/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/predalien/xeno = owner
 
-	if(!action_cooldown_check())
-		return
-
-	if(!xeno.check_state())
-		return
-
-	if(!xeno.plasma_stored < plasma_cost)
-		return
-
 	if(!do_after(xeno, activation_delay, TRUE, target, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
 		to_chat(xeno, "Keep still whilst trying to smash into the ground")
 
@@ -108,8 +90,6 @@
 		add_cooldown()
 		cooldown_timer = real_cooldown
 		return
-
-	succeed_activate()
 
 	playsound(xeno.loc, pick(smash_sounds), 50, 0)
 	xeno.visible_message(span_xenohighdanger("[xeno] smashes into the ground!"))
@@ -125,7 +105,7 @@
 			shake_camera(M, 0.2 SECONDS, 1)
 
 	add_cooldown()
-	return ..()
+	succeed_activate()
 
 // ***************************************
 // *********** Devastate
@@ -146,35 +126,31 @@
 	var/base_damage = 25
 	var/damage_scale = 10 // How much it scales by every kill
 
-/datum/action/xeno_action/activable/devastate/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/predalien/xeno = owner
-
-	if(!action_cooldown_check())
-		return
-
-	if(!xeno.check_state())
+/datum/action/xeno_action/activable/devastate/can_use_ability(atom/target, silent = FALSE, override_flags)
+	. = ..()
+	if(!.)
 		return
 
 	if(!ishuman(target) && !isdroid(target))
 		to_chat(xeno, span_xenowarning("You must target a hostile!"))
-		return
+		return FALSE
 
 	if(get_dist(target, xeno) > 2)
 		to_chat(xeno, span_xenowarning("[target] is too far away!"))
-		return
+		return FALSE
 
 	var/mob/living/carbon/carbon = target
-
 	if(carbon.stat == DEAD)
 		to_chat(xeno, span_xenowarning("[carbon] is dead, why would you want to touch them?"))
-		return
+		return FALSE
 
-	succeed_activate()
+	return TRUE
+
+/datum/action/xeno_action/activable/devastate/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/predalien/xeno = owner
+	var/mob/living/carbon/carbon = target
 
 	carbon.SetImmobilized(30 SECONDS)
-
-	add_cooldown()
-
 	xeno.anchored = TRUE
 	xeno.SetImmobilized(30 SECONDS)
 
@@ -201,4 +177,5 @@
 
 	xeno.visible_message(span_xenodanger("[xeno] rapidly slices into [carbon]!"))
 
-	return ..()
+	add_cooldown()
+	succeed_activate()

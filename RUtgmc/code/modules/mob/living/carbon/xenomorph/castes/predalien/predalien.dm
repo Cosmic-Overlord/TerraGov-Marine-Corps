@@ -2,7 +2,7 @@
 	caste_name = "Predalien"
 	display_name = "Abomination"
 	caste_type_path = /mob/living/carbon/xenomorph/predalien
-	tier = XENO_TIER_ZERO
+	tier = XENO_TIER_THREE
 	upgrade = XENO_UPGRADE_BASETYPE
 
 	// *** Melee Attacks *** //
@@ -48,7 +48,7 @@
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 
-	tier = XENO_TIER_ZERO
+	tier = XENO_TIER_THREE
 	upgrade = XENO_UPGRADE_ZERO
 
 	var/butcher_time = 6 SECONDS
@@ -81,18 +81,28 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	upgrade_name = "Young"
 	upgrade = XENO_UPGRADE_ZERO
 
+	melee_damage = 45
+
 /datum/xeno_caste/predalien/mature
 	upgrade_name = "Mature"
 	upgrade = XENO_UPGRADE_ONE
+
+	melee_damage = 50
 
 /datum/xeno_caste/predalien/elder
 	upgrade_name = "Elder"
 	upgrade = XENO_UPGRADE_TWO
 
+	melee_damage = 55
+
 /datum/xeno_caste/predalien/ancient
 	upgrade_name = "Ancient"
 	upgrade = XENO_UPGRADE_THREE
 
+	melee_damage = 60
+
 /datum/xeno_caste/predalien/primordial
 	upgrade_name = "Primordial"
 	upgrade = XENO_UPGRADE_FOUR
+
+	melee_damage = 80

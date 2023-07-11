@@ -3,7 +3,7 @@
 	display_name = "Hellhound"
 	caste_type_path = /mob/living/carbon/xenomorph/hellhound
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
-	tier = XENO_TIER_ZERO
+	tier = XENO_TIER_MINION
 	upgrade = XENO_UPGRADE_BASETYPE
 
 	// *** Melee Attacks *** //
@@ -45,7 +45,7 @@
 	health = 290
 	maxHealth = 290
 	plasma_stored = 50
-	tier = XENO_TIER_ZERO
+	tier = XENO_TIER_MINION
 	upgrade = XENO_UPGRADE_ZERO
 	bubble_icon = "alien"
 

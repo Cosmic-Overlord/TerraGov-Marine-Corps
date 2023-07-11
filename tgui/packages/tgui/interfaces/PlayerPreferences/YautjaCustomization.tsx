@@ -1,6 +1,6 @@
 import { useBackend } from '../../backend';
 import { Section, Flex, LabeledList, Box } from '../../components';
-import { TextFieldPreference } from './FieldPreferences';
+import { SelectFieldPreference } from './FieldPreferences';
 import { ProfilePicture } from './ProfilePicture';
 
 export const YautjaCustomization = (props, context) => {
@@ -32,37 +32,37 @@ export const YautjaCustomization = (props, context) => {
         <Flex>
           <Flex.Item>
             <LabeledList>
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Yautja Name'}
                 value={predator_name}
                 action={'predator_name'}
               />
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Yautja Gender'}
                 value={predator_gender}
                 action={'predator_gender'}
               />
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Yautja Age'}
                 value={predator_age}
                 action={'predator_age'}
               />
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Yautja Quill Style'}
                 value={predator_h_style}
                 action={'predator_h_style'}
               />
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Yautja Skin Color'}
                 value={predator_skin_color}
                 action={'predator_skin_color'}
               />
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Yautja Flavor Text'}
                 value={predator_flavor_text}
                 action={'predator_flavor_text'}
               />
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Yautja Whitelist Status'}
                 value={yautja_status}
                 action={'yautja_status'}
@@ -78,42 +78,42 @@ export const YautjaCustomization = (props, context) => {
         <Flex>
           <Flex.Item>
             <LabeledList>
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Translator Type'}
                 value={predator_translator_type}
                 action={'predator_translator_type'}
               />
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Mask Style'}
                 value={predator_mask_type}
                 action={'predator_mask_type'}
               />
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Armor Style'}
                 value={predator_armor_type}
                 action={'predator_armor_type'}
               />
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Greave Style'}
                 value={predator_boot_type}
                 action={'predator_boot_type'}
               />
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Mask Material'}
                 value={predator_mask_material}
                 action={'predator_mask_material'}
               />
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Armor Material'}
                 value={predator_armor_material}
                 action={'predator_armor_material'}
               />
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Greave Material'}
                 value={predator_greave_material}
                 action={'predator_greave_material'}
               />
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Caster Material'}
                 value={predator_caster_material}
                 action={'predator_caster_material'}
@@ -126,12 +126,12 @@ export const YautjaCustomization = (props, context) => {
         <Flex>
           <Flex.Item>
             <LabeledList>
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Cape Type'}
                 value={predator_cape_type}
                 action={'predator_cape_type'}
               />
-              <TextFieldPreference
+              <SelectFieldPreference
                 label={'Cape Color'}
                 value={predator_cape_color}
                 action={'predator_cape_color'}

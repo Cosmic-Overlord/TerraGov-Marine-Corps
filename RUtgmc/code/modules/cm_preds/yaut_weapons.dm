@@ -677,7 +677,7 @@
 		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
 	)
 
-	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash = "muzzle_flash_laser"
 	muzzle_flash_color = COLOR_MAGENTA
 
 	resistance_flags = UNACIDABLE
@@ -756,7 +756,7 @@
 	resistance_flags = UNACIDABLE
 	fire_sound = 'sound/weapons/pred_plasma_shot.ogg'
 	ammo_datum_type = /datum/ammo/energy/yautja/rifle/bolt
-	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash = "muzzle_flash_laser"
 	muzzle_flash_color = COLOR_MAGENTA
 	zoomdevicename = "scope"
 	flags_equip_slot = SLOT_BACK
@@ -832,7 +832,7 @@
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	flags_equip_slot = ITEM_SLOT_BELT
 	ammo_datum_type = /datum/ammo/energy/yautja/pistol
-	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash = "muzzle_flash_laser"
 	muzzle_flash_color = COLOR_MAGENTA
 	w_class = WEIGHT_CLASS_BULKY
 	var/charge_time = 40
@@ -909,7 +909,7 @@
 	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo_datum_type = /datum/ammo/energy/yautja/caster/stun
-	muzzle_flash = null // TO DO, add a decent one.
+	muzzle_flash = "muzzle_flash_laser"
 	muzzle_flash_color = COLOR_VIOLET
 	w_class = WEIGHT_CLASS_GIGANTIC
 	force = 0

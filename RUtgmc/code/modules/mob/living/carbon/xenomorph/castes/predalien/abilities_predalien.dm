@@ -78,6 +78,26 @@
 	var/activation_delay = 1 SECONDS
 	var/smash_sounds = list('sound/effects/alien_footstep_charge1.ogg', 'sound/effects/alien_footstep_charge2.ogg', 'sound/effects/alien_footstep_charge3.ogg')
 
+/datum/action/xeno_action/activable/smash/can_use_ability(atom/target, silent = FALSE, override_flags)
+	. = ..()
+	if(!.)
+		return
+
+	if(!ishuman(target) && !isdroid(target))
+		to_chat(owner, span_xenowarning("You must target a hostile!"))
+		return FALSE
+
+	if(get_dist(target, owner) > 1)
+		to_chat(owner, span_xenowarning("[target] is too far away!"))
+		return FALSE
+
+	var/mob/living/carbon/carbon = target
+	if(carbon.stat == DEAD)
+		to_chat(owner, span_xenowarning("[carbon] is dead, why would you want to touch them?"))
+		return FALSE
+
+	return TRUE
+
 /datum/action/xeno_action/activable/smash/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/predalien/xeno = owner
 
@@ -132,16 +152,16 @@
 		return
 
 	if(!ishuman(target) && !isdroid(target))
-		to_chat(xeno, span_xenowarning("You must target a hostile!"))
+		to_chat(owner, span_xenowarning("You must target a hostile!"))
 		return FALSE
 
-	if(get_dist(target, xeno) > 2)
-		to_chat(xeno, span_xenowarning("[target] is too far away!"))
+	if(get_dist(target, owner) > 2)
+		to_chat(owner, span_xenowarning("[target] is too far away!"))
 		return FALSE
 
 	var/mob/living/carbon/carbon = target
 	if(carbon.stat == DEAD)
-		to_chat(xeno, span_xenowarning("[carbon] is dead, why would you want to touch them?"))
+		to_chat(owner, span_xenowarning("[carbon] is dead, why would you want to touch them?"))
 		return FALSE
 
 	return TRUE

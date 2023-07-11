@@ -105,6 +105,14 @@
 	hud_icons = list(PAIN_HUD)
 
 
+/datum/atom_hud/hunter_clan
+	hud_icons = list(HUNTER_CLAN)
+
+
+/datum/atom_hud/hunter_hud
+	hud_icons = list(HUNTER_HUD)
+
+
 /mob/proc/med_hud_set_health()
 	return
 
@@ -430,7 +438,7 @@
 
 //Xeno status hud, for xenos
 /datum/atom_hud/xeno
-	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_SUNDER_HUD, XENO_FIRE_HUD, XENO_BANISHED_HUD)
+	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_SUNDER_HUD, XENO_FIRE_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
 
 /datum/atom_hud/xeno_heart
 	hud_icons = list(HEART_STATUS_HUD)

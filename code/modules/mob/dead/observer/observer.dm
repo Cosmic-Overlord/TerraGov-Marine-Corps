@@ -388,7 +388,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	set name = "Join the Hunt"
 	set desc = "If you are whitelisted, and it is the right type of round, join in."
 
-	if (!client)
+	if(!client)
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)

@@ -51,7 +51,7 @@
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 
-	tier = XENO_TIER_THREE
+	tier = XENO_TIER_FOUR
 	upgrade = XENO_UPGRADE_ZERO
 
 	var/butcher_time = 6 SECONDS

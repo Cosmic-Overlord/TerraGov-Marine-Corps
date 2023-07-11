@@ -63,7 +63,7 @@
 	flags_equip_slot = NONE
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6
-	force = 20
+	force = 40
 	pry_capable = IS_PRY_CAPABLE_FORCE
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 

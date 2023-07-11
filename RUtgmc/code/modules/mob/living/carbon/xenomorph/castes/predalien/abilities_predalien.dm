@@ -5,7 +5,6 @@
 	name = "Leap"
 
 	range = 5
-	victim_paralyze_time = FALSE // Do we slash upon reception?
 	freeze_on_hit_time = FALSE // Should we freeze ourselves after the lunge?
 
 /datum/action/xeno_action/activable/pounce/predalien/prepare_to_pounce()
@@ -39,8 +38,7 @@
 	if(!xeno.check_state())
 		return
 
-	if(!succeed_activate())
-		return
+	succeed_activate()
 
 	playsound(xeno.loc, pick(predalien_roar), 75, 0)
 	xeno.visible_message(span_xenohighdanger("[xeno] emits a guttural roar!"))
@@ -111,8 +109,7 @@
 		cooldown_timer = real_cooldown
 		return
 
-	if(!succeed_activate())
-		return
+	succeed_activate()
 
 	playsound(xeno.loc, pick(smash_sounds), 50, 0)
 	xeno.visible_message(span_xenohighdanger("[xeno] smashes into the ground!"))
@@ -172,8 +169,7 @@
 		to_chat(xeno, span_xenowarning("[carbon] is dead, why would you want to touch them?"))
 		return
 
-	if(!succeed_activate())
-		return
+	succeed_activate()
 
 	carbon.SetImmobilized(30 SECONDS)
 

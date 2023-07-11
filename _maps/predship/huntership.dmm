@@ -1400,7 +1400,7 @@
 /obj/structure/window/framed/colony/reinforced/hull{
 	color = "#aba9a9"
 	},
-/turf/open/space/basic,
+/turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "fF" = (
 /obj/structure/rack{
@@ -1826,17 +1826,6 @@
 	color = "#6b675e"
 	},
 /obj/item/flashlight/lamp,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"tt" = (
-/obj/structure/stairs{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "staircornersdark"
-	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2395,6 +2384,17 @@
 "MI" = (
 /obj/machinery/door/airlock/strata{
 	name = "\improper Blooded Teleporter"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
+"Nh" = (
+/obj/structure/stairs{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "staircornersdark"
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -4076,7 +4076,7 @@ Qs
 bL
 bL
 VY
-tt
+Nh
 JH
 JH
 JH

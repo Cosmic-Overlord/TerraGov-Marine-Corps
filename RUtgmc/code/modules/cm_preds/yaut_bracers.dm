@@ -10,7 +10,7 @@
 
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
-	flags_item = ITEM_PREDATOR|NODROP
+	flags_item = ITEM_PREDATOR
 	flags_cold_protection = HANDS
 	flags_heat_protection = HANDS
 	flags_armor_protection = HANDS

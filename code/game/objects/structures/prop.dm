@@ -1943,24 +1943,16 @@
 	icon = 'icons/obj/structures/torch.dmi'
 	icon_state = "brazier"
 	density = TRUE
+	light_on = TRUE
 	light_range = 4
 	light_power = 0.6
 	light_color = "#b49a27"
-
-/obj/structure/prop/brazier/Destroy()
-	set_light_on(FALSE)
-	return ..()
-
-/obj/structure/prop/brazier/Initialize()
-	. = ..()
-	if(luminosity)
-		set_light_on(TRUE)
 
 /obj/structure/prop/brazier/frame
 	name = "empty brazier"
 	desc = "An empty brazier."
 	icon_state = "brazier_frame"
-	luminosity = 0
+	light_on = FALSE
 
 /obj/structure/prop/brazier/frame/attackby(obj/item/hit_item, mob/user)
 	if(!istype(hit_item, /obj/item/stack/sheet/wood))
@@ -1978,7 +1970,7 @@
 	name = "empty full brazier"
 	desc = "An empty brazier. Yet it's also full. What???  Use something hot to ignite it, like a welding tool."
 	icon_state = "brazier_frame_filled"
-	luminosity = 0
+	light_on = FALSE
 
 /obj/structure/prop/brazier/frame_woodened/attackby(obj/item/hit_item, mob/user)
 	if(hit_item.damtype != BURN)
@@ -1993,13 +1985,13 @@
 	icon = 'icons/obj/structures/torch.dmi'
 	icon_state = "torch"
 	density = FALSE
-	luminosity = 5
+	light_range = 7
 
 /obj/structure/prop/brazier/torch/frame
 	name = "unlit torch"
 	desc = "It's a torch, but it's not lit.  Use something hot to ignite it, like a welding tool."
 	icon_state = "torch_frame"
-	luminosity = 0
+	light_on = FALSE
 
 /obj/structure/prop/brazier/torch/frame/attackby(obj/item/hit_item, mob/user)
 	if(hit_item.damtype != BURN)
@@ -2013,7 +2005,7 @@
 	icon = 'icons/obj/structures/torch.dmi'
 	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
 	icon_state = "torch_frame"
-	luminosity = 0
+	light_on = FALSE
 
 /obj/machinery/computer/solars
 	name = "Port Quarter Solar Control"

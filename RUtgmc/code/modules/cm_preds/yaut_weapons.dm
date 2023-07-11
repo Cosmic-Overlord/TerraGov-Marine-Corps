@@ -693,8 +693,8 @@
 	fire_delay = 5
 	accuracy_mult = 1.25
 	accuracy_mult_unwielded = 1
-	scatter = 3
-	scatter_unwielded = 5
+	scatter = 1
+	scatter_unwielded = 2
 	damage_mult = 1
 
 /obj/item/weapon/gun/launcher/spike/process()
@@ -767,8 +767,8 @@
 	fire_delay = 10
 	accuracy_mult = 1.5
 	accuracy_mult_unwielded = 1.5
-	scatter = 5
-	scatter_unwielded = 5
+	scatter = 2
+	scatter_unwielded = 4
 	damage_mult = 1
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/Initialize(mapload, spawn_empty)
@@ -839,8 +839,8 @@
 	fire_delay = 4
 	accuracy_mult = 1.5
 	accuracy_mult_unwielded = 1.35
-	scatter = 3
-	scatter_unwielded = 5
+	scatter = 1
+	scatter_unwielded = 3
 	damage_mult = 1
 
 
@@ -917,8 +917,8 @@
 	fire_delay = 5
 	accuracy_mult = 1
 	accuracy_mult_unwielded = 6
-	scatter = 5
-	scatter_unwielded = 5
+	scatter = 2
+	scatter_unwielded = 4
 	damage_mult = 1
 
 	var/obj/item/clothing/gloves/yautja/hunter/source = null

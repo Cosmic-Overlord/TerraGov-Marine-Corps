@@ -3151,16 +3151,16 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	var/stun_time = 6
 
 /datum/ammo/energy/yautja/caster/sphere/stun/on_hit_mob(mob/M, obj/projectile/P)
-	do_area_stun(get_turf(M))
+	do_area_stun(P)
 
 /datum/ammo/energy/yautja/caster/sphere/stun/on_hit_turf(turf/T, obj/projectile/P)
-	do_area_stun(get_turf(T))
+	do_area_stun(P)
 
 /datum/ammo/energy/yautja/caster/sphere/stun/on_hit_obj(obj/O, obj/projectile/P)
-	do_area_stun(get_turf(O))
+	do_area_stun(P)
 
 /datum/ammo/energy/yautja/caster/sphere/stun/do_at_max_range(obj/projectile/P)
-	do_area_stun(get_turf(P))
+	do_area_stun(P)
 
 /datum/ammo/energy/yautja/caster/sphere/stun/proc/do_area_stun(obj/projectile/P)
 	playsound(P, 'sound/weapons/wave.ogg', 75, 1, 25)

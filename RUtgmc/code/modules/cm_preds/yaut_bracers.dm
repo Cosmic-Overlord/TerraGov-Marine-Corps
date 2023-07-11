@@ -353,9 +353,9 @@
 
 	if(wristblades_deployed)
 		if(left_wristblades.loc == caller)
-			caller.transferItemToLoc(left_wristblades, src, FALSE, TRUE)
+			caller.transferItemToLoc(left_wristblades, src, TRUE)
 		if(right_wristblades.loc == caller)
-			caller.transferItemToLoc(right_wristblades, src, FALSE, TRUE)
+			caller.transferItemToLoc(right_wristblades, src, TRUE)
 		wristblades_deployed = FALSE
 		to_chat(caller, span_notice("You retract your [left_wristblades.name]."))
 		playsound(caller, 'sound/weapons/wristblades_off.ogg', 15, TRUE)
@@ -589,7 +589,7 @@
 
 	if(caster_deployed)
 		if(caster.loc == caller)
-			caller.transferItemToLoc(caster, src, FALSE, TRUE)
+			caller.transferItemToLoc(caster, src, TRUE)
 		caster_deployed = FALSE
 	else
 		if(!drain_power(caller, 50))

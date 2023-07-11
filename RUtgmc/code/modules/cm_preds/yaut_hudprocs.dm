@@ -95,6 +95,9 @@
 	if(M.hunter_data.hunter)
 		to_chat(src, span_yautjabold("[M] is already being hunted by [M.hunter_data.hunter.real_name]!"))
 		return
+	if(M.hunter_data.automatic_target && M.hunter_data.targeted != src)
+		to_chat(src, span_yautjabold("[M] is autamaticly selected for hunt for other hunter!"))
+		return
 	hunter_data.prey = M
 	M.hunter_data.hunter = src
 	M.hunter_data.hunted = TRUE

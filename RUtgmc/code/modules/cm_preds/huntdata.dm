@@ -51,6 +51,22 @@
 	INVOKE_ASYNC(user.client, TYPE_PROC_REF(/client, add_honor), owner.life_kills_total + owner.life_value + 3)
 
 /datum/huntdata/proc/clean_data()
+	if(length(targets))
+		for(var/datum/huntdata/data in targets)
+			data.targeted = null
+			automatic_target = FALSE
+			if(!target_complited)
+				SShunting.hunter_datas += data
+			else
+				target_complited = FALSE
+			targets -= data
+
+	if(targeted)
+		automatic_target = FALSE
+		target_complited = FALSE
+		targeted.hunter_data.targets -= src
+		targeted = null
+
 	if(dishonored)
 		if(dishonored_set)
 			dishonored_set.hunter_data.dishonored_targets -= owner

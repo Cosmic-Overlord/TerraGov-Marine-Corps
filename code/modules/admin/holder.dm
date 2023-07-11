@@ -446,6 +446,8 @@ GLOBAL_PROTECT(admin_verbs_fun)
 	/datum/admins/proc/change_ship_map,
 	/datum/admins/proc/panic_bunker,
 	/datum/admins/proc/mode_check,
+	/datum/admins/proc/toggle_valhalla,
+	/datum/admins/proc/toggle_sdd_possesion,
 	/datum/admins/proc/force_predator_round,
 	/client/proc/toggle_cdn
 	)

@@ -1949,6 +1949,10 @@
 	light_system = STATIC_LIGHT
 	light_color = "#b49a27"
 
+/obj/structure/prop/brazier/Initialize(...)
+	set_light_on(light_on)
+	. = ..()
+
 /obj/structure/prop/brazier/frame
 	name = "empty brazier"
 	desc = "An empty brazier."

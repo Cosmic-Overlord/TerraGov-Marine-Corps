@@ -34,37 +34,37 @@ export const YautjaCustomization = (props, context) => {
             <LabeledList>
               <SelectFieldPreference
                 label={'Yautja Name'}
-                value={predator_name}
+                value={'predator_name'}
                 action={'predator_name'}
               />
               <SelectFieldPreference
                 label={'Yautja Gender'}
-                value={predator_gender}
+                value={'predator_gender'}
                 action={'predator_gender'}
               />
               <SelectFieldPreference
                 label={'Yautja Age'}
-                value={predator_age}
+                value={'predator_age'}
                 action={'predator_age'}
               />
               <SelectFieldPreference
                 label={'Yautja Quill Style'}
-                value={predator_h_style}
+                value={'predator_h_style'}
                 action={'predator_h_style'}
               />
               <SelectFieldPreference
                 label={'Yautja Skin Color'}
-                value={predator_skin_color}
+                value={'predator_skin_color'}
                 action={'predator_skin_color'}
               />
               <SelectFieldPreference
                 label={'Yautja Flavor Text'}
-                value={predator_flavor_text}
+                value={'predator_flavor_text'}
                 action={'predator_flavor_text'}
               />
               <SelectFieldPreference
                 label={'Yautja Whitelist Status'}
-                value={yautja_status}
+                value={'yautja_status'}
                 action={'yautja_status'}
               />
             </LabeledList>
@@ -80,42 +80,42 @@ export const YautjaCustomization = (props, context) => {
             <LabeledList>
               <SelectFieldPreference
                 label={'Translator Type'}
-                value={predator_translator_type}
+                value={'predator_translator_type'}
                 action={'predator_translator_type'}
               />
               <SelectFieldPreference
                 label={'Mask Style'}
-                value={predator_mask_type}
+                value={'predator_mask_type'}
                 action={'predator_mask_type'}
               />
               <SelectFieldPreference
                 label={'Armor Style'}
-                value={predator_armor_type}
+                value={'predator_armor_type'}
                 action={'predator_armor_type'}
               />
               <SelectFieldPreference
                 label={'Greave Style'}
-                value={predator_boot_type}
+                value={'predator_boot_type'}
                 action={'predator_boot_type'}
               />
               <SelectFieldPreference
                 label={'Mask Material'}
-                value={predator_mask_material}
+                value={'predator_mask_material'}
                 action={'predator_mask_material'}
               />
               <SelectFieldPreference
                 label={'Armor Material'}
-                value={predator_armor_material}
+                value={'predator_armor_material'}
                 action={'predator_armor_material'}
               />
               <SelectFieldPreference
                 label={'Greave Material'}
-                value={predator_greave_material}
+                value={'predator_greave_material'}
                 action={'predator_greave_material'}
               />
               <SelectFieldPreference
                 label={'Caster Material'}
-                value={predator_caster_material}
+                value={'predator_caster_material'}
                 action={'predator_caster_material'}
               />
             </LabeledList>
@@ -128,12 +128,12 @@ export const YautjaCustomization = (props, context) => {
             <LabeledList>
               <SelectFieldPreference
                 label={'Cape Type'}
-                value={predator_cape_type}
+                value={'predator_cape_type'}
                 action={'predator_cape_type'}
               />
               <SelectFieldPreference
                 label={'Cape Color'}
-                value={predator_cape_color}
+                value={'predator_cape_color'}
                 action={'predator_cape_color'}
               />
             </LabeledList>

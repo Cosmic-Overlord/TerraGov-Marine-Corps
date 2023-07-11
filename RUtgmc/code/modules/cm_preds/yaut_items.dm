@@ -717,7 +717,7 @@
 		X.interference = 100 // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
 	message_all_yautja("A hunting trap has caught something in [get_area_name(loc)]!")
 
-/obj/item/hunting_trap/proc/on_cross(atom/movable/AM)
+/obj/item/hunting_trap/proc/on_cross(turf/passed, atom/movable/AM)
 	if(!isliving(AM))
 		return
 	if(CHECK_MULTIPLE_BITFIELDS(AM.flags_pass, HOVERING))
@@ -776,8 +776,6 @@
 	if(user)
 		to_chat(user, span_notice("[src] is now disarmed."))
 		log_attack("[key_name(user)] has disarmed \a [src] at [ADMIN_JMP_USER(user)].")
-	if(trapped_mob)
-		trapped_mob = null
 	cleanup_tether()
 
 /obj/item/hunting_trap/verb/configure_trap()

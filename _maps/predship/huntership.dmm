@@ -41,18 +41,19 @@
 /area/yautja)
 "ah" = (
 /obj/structure/table/mainship,
-/obj/machinery/door/window,
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/machinery/door/window/right{
+	dir = 2
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
 "ai" = (
 /obj/structure/table/mainship,
-/obj/machinery/door/window,
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
@@ -62,16 +63,21 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/machinery/door/window/right{
+	dir = 2
+	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
 "aj" = (
 /obj/structure/table/mainship,
-/obj/machinery/door/window,
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
 	dir = 8
+	},
+/obj/machinery/door/window/right{
+	dir = 2
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
@@ -655,7 +661,7 @@
 "bE" = (
 /obj/structure/stairs{
 	color = "#6b675e";
-	icon_state = "p_stair_full"
+	dir = 5
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -678,8 +684,7 @@
 "bI" = (
 /obj/structure/stairs{
 	color = "#6b675e";
-	dir = 1;
-	icon_state = "p_stair_full"
+	dir = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1018,8 +1023,8 @@
 "cG" = (
 /obj/structure/stairs{
 	color = "#6b675e";
-	dir = 9;
-	icon_state = "p_stair_full"
+	dir = 8;
+	icon_state = "staircornersdark"
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1285,8 +1290,7 @@
 /area/yautja)
 "df" = (
 /obj/structure/stairs{
-	color = "#6b675e";
-	icon_state = "p_stair_full"
+	color = "#6b675e"
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1307,8 +1311,7 @@
 "dk" = (
 /obj/structure/stairs{
 	color = "#6b675e";
-	dir = 10;
-	icon_state = "p_stair_full"
+	dir = 10
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1318,8 +1321,7 @@
 "dl" = (
 /obj/structure/stairs{
 	color = "#6b675e";
-	dir = 6;
-	icon_state = "p_stair_full"
+	dir = 6
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1344,8 +1346,8 @@
 "er" = (
 /obj/structure/stairs{
 	color = "#6b675e";
-	dir = 9;
-	icon_state = "p_stair_full"
+	dir = 8;
+	icon_state = "staircornersdark"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1363,8 +1365,7 @@
 "eT" = (
 /obj/structure/stairs{
 	color = "#6b675e";
-	dir = 4;
-	icon_state = "p_stair_full"
+	dir = 4
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1547,8 +1548,8 @@
 "jU" = (
 /obj/structure/stairs{
 	color = "#6b675e";
-	dir = 6;
-	icon_state = "p_stair_full"
+	dir = 4;
+	icon_state = "staircornersdark"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1830,6 +1831,17 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
+"tt" = (
+/obj/structure/stairs{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "staircornersdark"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "tD" = (
 /obj/structure/rack{
 	color = "#6b675e";
@@ -1935,12 +1947,23 @@
 "xQ" = (
 /obj/structure/stairs{
 	color = "#6b675e";
-	dir = 10;
-	icon_state = "p_stair_full"
+	dir = 1;
+	icon_state = "staircornersdark"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
+	},
+/area/yautja)
+"xY" = (
+/obj/structure/stairs{
+	color = "#6b675e";
+	dir = 1;
+	icon_state = "staircornersdark"
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
 	},
 /area/yautja)
 "zA" = (
@@ -2362,8 +2385,7 @@
 "ME" = (
 /obj/structure/stairs{
 	color = "#6b675e";
-	dir = 8;
-	icon_state = "p_stair_full"
+	dir = 8
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -2521,8 +2543,8 @@
 "UR" = (
 /obj/structure/stairs{
 	color = "#6b675e";
-	dir = 5;
-	icon_state = "p_stair_full"
+	dir = 2;
+	icon_state = "staircornersdark"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2695,8 +2717,7 @@
 "ZD" = (
 /obj/structure/stairs{
 	color = "#6b675e";
-	dir = 8;
-	icon_state = "p_stair_full"
+	dir = 8
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -3911,7 +3932,7 @@ bL
 bL
 bL
 sx
-dk
+xY
 JH
 bj
 bj
@@ -4055,7 +4076,7 @@ Qs
 bL
 bL
 VY
-dl
+tt
 JH
 JH
 JH
@@ -6708,7 +6729,7 @@ cG
 ME
 ME
 ME
-dk
+xY
 bj
 cP
 cP

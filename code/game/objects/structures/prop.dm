@@ -1946,6 +1946,7 @@
 	light_on = TRUE
 	light_range = 4
 	light_power = 0.6
+	light_system = STATIC_LIGHT
 	light_color = "#b49a27"
 
 /obj/structure/prop/brazier/frame

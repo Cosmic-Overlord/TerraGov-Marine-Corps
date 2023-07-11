@@ -639,7 +639,7 @@
 	desc = "A bizarre Yautja device used for trapping and killing prey."
 	var/armed = 0
 	var/resist_time = 15 SECONDS
-	var/obj/effect/ebeam/beam = list()
+	var/obj/effect/ebeam/beam
 	var/tether_range = 5
 	var/mob/trapped_mob
 	layer = LOWER_ITEM_LAYER
@@ -699,7 +699,7 @@
 	anchored = TRUE
 
 	trapped_mob = C
-	beam = beam(C, "beam_web", 'icons/effects/beam.dmi', INFINITY, INFINITY)
+	beam = beam(C, "chain", 'icons/effects/beam.dmi', INFINITY, INFINITY)
 	RegisterSignal(C, COMSIG_LIVING_DO_RESIST, PROC_REF(resist_callback))
 	RegisterSignal(C, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_dist))
 

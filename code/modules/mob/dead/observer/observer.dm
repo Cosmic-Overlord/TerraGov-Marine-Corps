@@ -403,7 +403,6 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 		NP.assigned_role = SSjob.GetJobType(/datum/job/predator)
 		NP.create_character()
 		SSjob.spawn_character(NP, TRUE)
-		mind.transfer_to(NP.new_character)
 		var/datum/job/job = NP.assigned_role
 		job.after_spawn(NP.new_character)
 		qdel(NP)

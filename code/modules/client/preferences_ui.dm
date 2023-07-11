@@ -361,7 +361,7 @@
 		if("predator_flavor_text")
 			var/pred_flv_raw = input(user, "Choose your Predator's flavor text:", "Flavor Text", predator_flavor_text) as message
 			if(!pred_flv_raw)
-				predator_flavor_text = ""
+				predator_flavor_text = "None"
 				return
 			predator_flavor_text = strip_html(pred_flv_raw, MAX_MESSAGE_LEN)
 

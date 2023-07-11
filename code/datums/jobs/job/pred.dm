@@ -25,7 +25,7 @@
 /datum/job/predator/config_check(count)
 	current_positions = max((round(count * PREDATOR_TO_TOTAL_SPAWN_RATIO)), max_positions)
 	total_positions = current_positions
-	..()
+	return TRUE
 
 /datum/job/predator/return_spawn_type(datum/preferences/prefs)
 	return /mob/living/carbon/human/yautja
@@ -139,7 +139,6 @@
 	if(!job)
 		job = H.job
 
-	H.job = job.title
 	H.faction = GLOB.faction_to_iff[job.faction]
 
 	var/final_name = "Le'pro"

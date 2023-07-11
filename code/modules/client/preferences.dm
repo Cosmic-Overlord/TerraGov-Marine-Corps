@@ -74,7 +74,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/predator_caster_material = "ebony"
 	var/predator_cape_type = "None"
 	var/predator_cape_color = "#654321"
-	var/predator_flavor_text = ""
+	var/predator_flavor_text = "None"
 	var/yautja_status = WHITELIST_NORMAL
 
 	//Robot specific preferences

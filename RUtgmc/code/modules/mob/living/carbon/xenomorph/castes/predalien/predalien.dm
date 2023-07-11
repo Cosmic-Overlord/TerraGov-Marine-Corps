@@ -19,10 +19,13 @@
 	plasma_max = 300
 	plasma_gain = 5
 
-	soft_armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 100, BIO = 55, FIRE = 55, ACID = 55)
+	soft_armor = list(MELEE = 80, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 100, BIO = 80, FIRE = 40, ACID = 80)
 
 	// *** Health *** //
 	max_health = 650
+
+	// *** Evolution *** //
+	upgrade_threshold = TIER_THREE_YOUNG_THRESHOLD
 
 	// *** Minimap Icon *** //
 	minimap_icon = "predalien"
@@ -81,28 +84,42 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	upgrade_name = "Young"
 	upgrade = XENO_UPGRADE_ZERO
 
+	// *** Melee Attacks *** //
 	melee_damage = 45
 
 /datum/xeno_caste/predalien/mature
 	upgrade_name = "Mature"
 	upgrade = XENO_UPGRADE_ONE
 
+	// *** Melee Attacks *** //
 	melee_damage = 50
+
+	// *** Evolution *** //
+	upgrade_threshold = TIER_THREE_MATURE_THRESHOLD
 
 /datum/xeno_caste/predalien/elder
 	upgrade_name = "Elder"
 	upgrade = XENO_UPGRADE_TWO
 
+	// *** Melee Attacks *** //
 	melee_damage = 55
+
+	// *** Evolution *** //
+	upgrade_threshold = TIER_THREE_ELDER_THRESHOLD
 
 /datum/xeno_caste/predalien/ancient
 	upgrade_name = "Ancient"
 	upgrade = XENO_UPGRADE_THREE
 
+	// *** Melee Attacks *** //
 	melee_damage = 60
+
+	// *** Evolution *** //
+	upgrade_threshold = TIER_THREE_ANCIENT_THRESHOLD
 
 /datum/xeno_caste/predalien/primordial
 	upgrade_name = "Primordial"
 	upgrade = XENO_UPGRADE_FOUR
 
+	// *** Melee Attacks *** //
 	melee_damage = 80

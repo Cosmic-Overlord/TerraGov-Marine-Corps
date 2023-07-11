@@ -899,13 +899,13 @@
 	var/base_item_state = "plasma_wear"
 	item_icons = list(
 		slot_back_str = 'icons/mob/hunter/pred_gear.dmi',
-		slot_wear_suit_str = 'icons/mob/hunter/pred_gear.dmi',
+		slot_s_store_str = 'icons/mob/hunter/pred_gear.dmi',
 		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
 		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
 	)
 	item_state_slots = list(
 		slot_back_str = "plasma_wear_off",
-		slot_wear_suit_str = "plasma_wear_off"
+		slot_s_store_str = "plasma_wear_off"
 	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo_datum_type = /datum/ammo/energy/yautja/caster/stun
@@ -934,7 +934,7 @@
 	icon_state = "[initial_icon_state]_[caster_material]"
 	item_state = "[initial_icon_state]_[caster_material]"
 	item_state_slots[slot_back_str] = "[base_item_state]_off_[caster_material]"
-	item_state_slots[slot_wear_suit_str] = "[base_item_state]_off_[caster_material]"
+	item_state_slots[slot_s_store_str] = "[base_item_state]_off_[caster_material]"
 	. = ..()
 	source = loc
 	verbs -= /obj/item/weapon/gun/verb/toggle_burstfire

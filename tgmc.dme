@@ -1871,7 +1871,6 @@
 #include "RUtgmc\code\RU_items.dm"
 #include "RUtgmc\code\vendorcw.dm"
 #include "RUtgmc\code\_onclick\hud\yautja.dm"
-#include "RUtgmc\code\datums\effects\tether.dm"
 #include "RUtgmc\code\datums\elements\yautja_tracked_item.dm"
 #include "RUtgmc\code\modules\hologram.dm"
 #include "RUtgmc\code\modules\animations\animation_library.dm"

@@ -638,14 +638,21 @@
 	icon_state = "yauttrap0"
 	desc = "A bizarre Yautja device used for trapping and killing prey."
 	var/armed = 0
-	var/datum/status_effect/tethering/tether_effect
+	var/resist_time = 15 SECONDS
+	var/obj/effect/ebeam/beam = list()
 	var/tether_range = 5
 	var/mob/trapped_mob
 	layer = LOWER_ITEM_LAYER
 
+/obj/item/hunting_trap/Initialize()
+	. = ..()
+	var/static/list/connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_cross),
+	)
+	AddElement(/datum/element/connect_loc, connections)
+
 /obj/item/hunting_trap/Destroy()
 	cleanup_tether()
-	trapped_mob = null
 	. = ..()
 
 /obj/item/hunting_trap/dropped(mob/living/carbon/human/mob) //Changes to "camouflaged" icons based on where it was dropped.
@@ -691,11 +698,10 @@
 	armed = FALSE
 	anchored = TRUE
 
-	var/list/tether_effects = apply_tether(src, C, range = tether_range, resistable = TRUE)
-	tether_effect = tether_effects["tetherer_tether"]
-	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(disarm))
-
 	trapped_mob = C
+	beam = beam(C, "beam_web", 'icons/effects/beam.dmi', INFINITY, INFINITY)
+	RegisterSignal(C, COMSIG_LIVING_DO_RESIST, PROC_REF(resist_callback))
+	RegisterSignal(C, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_dist))
 
 	icon_state = "yauttrap0"
 	playsound(C,'sound/weapons/tablehit1.ogg', 25, 1)
@@ -711,31 +717,56 @@
 		X.interference = 100 // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
 	message_all_yautja("A hunting trap has caught something in [get_area_name(loc)]!")
 
-/obj/item/hunting_trap/Cross(atom/movable/AM)
-	if(armed && ismob(AM))
-		var/mob/M = AM
-		if(!M.buckled)
-			if(iscarbon(AM) && isturf(src.loc))
-				var/mob/living/carbon/H = AM
-				if(isyautja(H))
-					to_chat(H, span_notice("You carefully avoid stepping on the trap."))
-				else
-					trapMob(H)
-					for(var/mob/O in viewers(H, null))
-						if(O == H)
-							continue
-						O.show_message(span_warning("[icon2html(src, O)] <B>[H] gets caught in \the [src].</B>"), EMOTE_VISIBLE)
-			else if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot))
-				armed = FALSE
-				var/mob/living/simple_animal/SA = AM
-				SA.health -= 20
-	..()
+/obj/item/hunting_trap/proc/on_cross(atom/movable/AM)
+	if(!isliving(AM))
+		return
+	if(CHECK_MULTIPLE_BITFIELDS(AM.flags_pass, HOVERING))
+		return
+	var/mob/living/L = AM
+	if(L.lying_angle || L.buckled) ///so dragged corpses don't trigger mines.
+		return
+
+	if(armed)
+		if(isturf(src.loc))
+			var/mob/living/carbon/H = L
+			if(isyautja(H))
+				to_chat(H, span_notice("You carefully avoid stepping on the trap."))
+			else
+				trapMob(H)
+				for(var/mob/O in viewers(H, null))
+					if(O == H)
+						continue
+					O.show_message(span_warning("[icon2html(src, O)] <B>[H] gets caught in \the [src].</B>"), EMOTE_VISIBLE)
+		else if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot))
+			armed = FALSE
+			var/mob/living/simple_animal/SA = AM
+			SA.health -= 20
+
+/obj/item/hunting_trap/proc/check_dist(datum/victim, atom/newloc)
+	SIGNAL_HANDLER
+	if(get_dist(newloc, src) >= tether_range)
+		return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
+
+/obj/item/hunting_trap/proc/resist_callback()
+	SIGNAL_HANDLER
+
+	if(isnull(beam))
+		return
+
+	INVOKE_ASYNC(src, PROC_REF(resisted))
+
+/obj/item/hunting_trap/proc/resisted()
+	to_chat(trapped_mob, span_danger("You attempt to break out of your tether to [src]. (This will take around [resist_time/10] seconds and you need to stand still)"))
+	if(!do_after(trapped_mob, resist_time, FALSE, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
+		return
+	to_chat(trapped_mob, span_warning("You have broken out of your tether to [src]!"))
+	cleanup_tether()
 
 /obj/item/hunting_trap/proc/cleanup_tether()
-	if (tether_effect)
-		UnregisterSignal(tether_effect, COMSIG_PARENT_QDELETING)
-		qdel(tether_effect)
-		tether_effect = null
+	if(trapped_mob)
+		UnregisterSignal(trapped_mob, COMSIG_MOVABLE_PRE_MOVE)
+		trapped_mob = null
+		QDEL_NULL(beam)
 
 /obj/item/hunting_trap/proc/disarm(mob/user)
 	SIGNAL_HANDLER

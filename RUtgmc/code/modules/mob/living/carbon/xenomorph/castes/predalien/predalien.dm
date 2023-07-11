@@ -19,7 +19,7 @@
 	plasma_max = 300
 	plasma_gain = 5
 
-	soft_armor = list(MELEE = 80, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 100, BIO = 80, FIRE = 40, ACID = 80)
+	soft_armor = list(MELEE = 60, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 60, FIRE = 30, ACID = 60)
 
 	// *** Health *** //
 	max_health = 650
@@ -122,4 +122,4 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	upgrade = XENO_UPGRADE_FOUR
 
 	// *** Melee Attacks *** //
-	melee_damage = 80
+	melee_damage = 65

@@ -46,8 +46,12 @@
 
 	set_stat(DEAD)
 
-	if(hunter_data && hunter_data.hunter)
-		INVOKE_ASYNC(hunter_data.hunter.client, TYPE_PROC_REF(/client, add_honor), max(life_kills_total, default_honor_value))
+	var/mob/living/living = last_damage_source
+	if(istype(living))
+		if(hunter_data && hunter_data.hunter == living)
+			INVOKE_ASYNC(hunter_data.hunter.client, TYPE_PROC_REF(/client, add_honor), max(life_kills_total + life_value, default_honor_value))
+		else
+			living.life_kills_total += life_kills_total + life_value
 
 	if(deathmessage && !silent && !gibbing)
 		visible_message("<b>\The [name]</b> [deathmessage]")

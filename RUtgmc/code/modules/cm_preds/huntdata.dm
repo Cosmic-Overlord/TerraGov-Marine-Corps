@@ -1,4 +1,5 @@
 /mob/var/datum/huntdata/hunter_data //Stores all information relating to Hunters for use with their HUD and other systems.
+/mob/var/atom/last_damage_source = null
 /mob/var/life_value = 1
 /mob/var/default_honor_value = 1
 /mob/var/life_kills_total = 0
@@ -8,6 +9,11 @@
 	var/name = "Hunter Data"
 
 	var/claimed_equipment = FALSE
+
+	var/list/targets = list()
+	var/mob/living/carbon/targeted
+	var/automatic_target = FALSE
+	var/target_complited = FALSE
 
 	//vars for Hunters targeting prey.
 	var/hunted = FALSE
@@ -39,6 +45,10 @@
 	name = "[mob_ref.real_name]'s Hunter Data"
 	owner = mob_ref
 	SShunting.hunter_datas += src
+
+/datum/huntdata/proc/complite_target(mob/user)
+	target_complited = TRUE
+	INVOKE_ASYNC(user.client, TYPE_PROC_REF(/client, add_honor), owner.life_kills_total + owner.life_value + 3)
 
 /datum/huntdata/proc/clean_data()
 	if(dishonored)

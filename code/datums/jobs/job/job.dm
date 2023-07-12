@@ -309,7 +309,7 @@ GLOBAL_PROTECT(exp_specialmap)
 		job.outfit.handle_id(src)
 
 		var/job_whitelist = job.title
-		var/whitelist_status = job.get_whitelist_status(GLOB.roles_whitelist, client)
+		var/whitelist_status = job.get_whitelist_status(GLOB.roles_whitelist, player)
 
 		if(whitelist_status)
 			job_whitelist = "[job_whitelist][whitelist_status]"

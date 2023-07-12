@@ -327,7 +327,7 @@
 
 		if("predator_cape_type")
 			var/datum/job/J = SSjob.GetJobType(/datum/job/predator)
-			var/whitelist_status = clan_ranks_ordered[J.get_whitelist_status(GLOB.roles_whitelist, user)]
+			var/whitelist_status = clan_ranks_ordered[J.get_whitelist_status(GLOB.roles_whitelist, current_client)]
 
 			var/list/options = list("None")
 			for(var/cape_name in GLOB.all_yautja_capes)

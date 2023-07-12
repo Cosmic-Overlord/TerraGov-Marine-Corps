@@ -396,17 +396,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 		return
 
 	if(SSticker.mode.check_predator_late_join(src))
-		var/mob/new_player/NP = new()
-		client.screen.Cut()
-		NP.name = key
-		NP.key = key
-		NP.assigned_role = SSjob.GetJobType(/datum/job/predator)
-		NP.create_character()
-		SSjob.spawn_character(NP, TRUE)
-		var/datum/job/job = NP.assigned_role
-		job.after_spawn(NP.new_character)
-		qdel(NP)
-		qdel(src)
+		SSticker.mode.join_predator(src)
 
 /mob/dead/observer/verb/reenter_corpse()
 	set category = "Ghost"

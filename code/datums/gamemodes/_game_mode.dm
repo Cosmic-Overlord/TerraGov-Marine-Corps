@@ -1006,3 +1006,15 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 	return TRUE
 
 #undef calculate_pred_max
+
+/datum/game_mode/proc/join_predator(mob/pred_candidate)
+	var/mob/new_player/NP = new()
+	NP.name = pred_candidate.key
+	NP.key = pred_candidate.key
+	qdel(pred_candidate)
+	NP.assigned_role = SSjob.GetJobType(/datum/job/predator)
+	NP.create_character()
+	SSjob.spawn_character(NP, TRUE)
+	var/datum/job/job = NP.assigned_role
+	job.after_spawn(NP.new_character)
+	NP.mind.transfer_to(NP.new_character)

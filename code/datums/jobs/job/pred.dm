@@ -14,12 +14,12 @@
 /datum/job/predator/New()
 	. = ..()
 	gear_preset_whitelist = list(
-		"[JOB_PREDATOR][CLAN_RANK_YOUNG]" = /datum/outfit/job/yautja/youngblood,
-		"[JOB_PREDATOR][CLAN_RANK_BLOODED]" = /datum/outfit/job/yautja/blooded,
-		"[JOB_PREDATOR][CLAN_RANK_ELITE]" = /datum/outfit/job/yautja/elite,
-		"[JOB_PREDATOR][CLAN_RANK_ELDER]" = /datum/outfit/job/yautja/elder,
-		"[JOB_PREDATOR][CLAN_RANK_LEADER]" = /datum/outfit/job/yautja/leader,
-		"[JOB_PREDATOR][CLAN_RANK_ADMIN]" = /datum/outfit/job/yautja/ancient
+		"[JOB_PREDATOR][CLAN_RANK_YOUNG]" = new /datum/outfit/job/yautja/youngblood,
+		"[JOB_PREDATOR][CLAN_RANK_BLOODED]" = new /datum/outfit/job/yautja/blooded,
+		"[JOB_PREDATOR][CLAN_RANK_ELITE]" = new /datum/outfit/job/yautja/elite,
+		"[JOB_PREDATOR][CLAN_RANK_ELDER]" = new /datum/outfit/job/yautja/elder,
+		"[JOB_PREDATOR][CLAN_RANK_LEADER]" = new /datum/outfit/job/yautja/leader,
+		"[JOB_PREDATOR][CLAN_RANK_ADMIN]" = new /datum/outfit/job/yautja/ancient
 	)
 
 /datum/job/predator/config_check(count)

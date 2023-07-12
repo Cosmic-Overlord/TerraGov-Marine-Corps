@@ -357,7 +357,7 @@ GLOBAL_PROTECT(exp_specialmap)
 /datum/job/proc/return_skills_type(datum/preferences/prefs)
 	return skills_type
 
-/datum/job/proc/return_spawn_turf(mob/living/new_character)
+/datum/job/proc/return_spawn_turf(mob/living/new_character, client/player)
 	return pick(GLOB.spawns_by_job[type])
 
 /datum/job/proc/handle_special_preview(client/parent)

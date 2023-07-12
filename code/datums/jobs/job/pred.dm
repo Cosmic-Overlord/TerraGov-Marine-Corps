@@ -30,20 +30,22 @@
 /datum/job/predator/return_spawn_type(datum/preferences/prefs)
 	return /mob/living/carbon/human/yautja
 
-/datum/job/predator/return_spawn_turf(mob/living/carbon/human/new_predator)
+/datum/job/predator/return_spawn_turf(mob/living/carbon/human/new_predator, client/player)
 	var/clan_id = CLAN_SHIP_PUBLIC
-	if(new_predator.client.clan_info)
-		clan_id = new_predator.client.clan_info.item[1]
+	var/clan_rank = CLAN_RANK_BLOODED
+	if(player.clan_info)
+		clan_id = player.clan_info.item[1]
+		clan_rank = player.clan_info.item[2]
 
 	SSpredships.load_new(clan_id)
 	var/turf/spawn_point = SAFEPICK(SSpredships.get_clan_spawnpoints(clan_id))
 	if(!isturf(spawn_point))
 		log_debug("Failed to find spawn point for new_predator ship in transform_predator - clan_id=[clan_id]")
-		to_chat(new_predator, span_warning("Unable to setup spawn location - you might want to tell someone about this."))
+		to_chat(player, span_warning("Unable to setup spawn location - you might want to tell someone about this."))
 		return
 
 	if(SSticker.mode)
-		SSticker.mode.initialize_predator(new_predator, new_predator.client.clan_info.item[2] == CLAN_RANK_ADMIN)
+		SSticker.mode.initialize_predator(new_predator, clan_rank == CLAN_RANK_ADMIN)
 
 	return spawn_point
 
@@ -79,7 +81,9 @@
 
 /datum/outfit/job/yautja
 	name = "Yautja"
+
 	id = null //No IDs for Yautja!
+	back = null
 
 	var/default_cape_type = "None"
 

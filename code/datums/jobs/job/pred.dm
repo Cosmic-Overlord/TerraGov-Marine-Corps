@@ -87,11 +87,10 @@
 
 	var/default_cape_type = "None"
 
-/datum/outfit/job/yautja/pre_equip(mob/living/carbon/human/H, client/mob_client)
+/datum/outfit/job/yautja/pre_equip(mob/living/carbon/human/H, visualsOnly)
+	var/client/mob_client = H.client
 	H.ethnicity = "Tan"
-	if(!mob_client)
-		mob_client = H.client
-	if(mob_client?.prefs)
+	if(mob_client)
 		H.h_style = mob_client.prefs.predator_h_style
 		H.ethnicity = mob_client.prefs.predator_skin_color
 
@@ -108,9 +107,7 @@
 	var/cape_type = default_cape_type
 	var/cape_color = "#654321"
 
-	if(!mob_client)
-		mob_client = H.client
-	if(mob_client?.prefs)
+	if(mob_client)
 		armor_number = mob_client.prefs.predator_armor_type
 		boot_number = mob_client.prefs.predator_boot_type
 		mask_number = mob_client.prefs.predator_mask_type

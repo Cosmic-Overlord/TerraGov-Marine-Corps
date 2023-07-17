@@ -65,3 +65,10 @@
 #define ATTACHMENT_SLOT_BADGE "badge"
 #define ATTACHMENT_SLOT_CAPE "cape"
 #define ATTACHMENT_SLOT_CAPE_HIGHLIGHT "cape_highlight"
+
+#define ACCESSORY_SLOT_ARMOR_Y_C "chest_bones"
+#define ACCESSORY_SLOT_ARMOR_Y_H "head_bones"
+#define ACCESSORY_SLOT_ARMOR_Y_RL "right_leg_bones"
+#define ACCESSORY_SLOT_ARMOR_Y_LL "left_leg_bones"
+#define ACCESSORY_SLOT_ARMOR_Y_RH "right_hand_bones"
+#define ACCESSORY_SLOT_ARMOR_Y_LH "left_hand_bones"

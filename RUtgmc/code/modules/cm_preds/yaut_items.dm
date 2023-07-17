@@ -30,6 +30,28 @@
 		slot_wear_suit_str = 'icons/mob/hunter/pred_gear.dmi'
 	)
 
+	attachments_by_slot = list(
+		ACCESSORY_SLOT_ARMOR_Y_C,
+		ACCESSORY_SLOT_ARMOR_Y_H,
+		ACCESSORY_SLOT_ARMOR_Y_RL,
+		ACCESSORY_SLOT_ARMOR_Y_LL,
+		ACCESSORY_SLOT_ARMOR_Y_RH,
+		ACCESSORY_SLOT_ARMOR_Y_LH,
+	)
+	attachments_allowed = list(
+		/obj/item/armor_module/limb/skeleton/l_arm,
+		/obj/item/armor_module/limb/skeleton/l_foot,
+		/obj/item/armor_module/limb/skeleton/l_hand,
+		/obj/item/armor_module/limb/skeleton/l_leg,
+		/obj/item/armor_module/limb/skeleton/r_arm,
+		/obj/item/armor_module/limb/skeleton/r_foot,
+		/obj/item/armor_module/limb/skeleton/r_hand,
+		/obj/item/armor_module/limb/skeleton/r_leg,
+		/obj/item/armor_module/limb/skeleton/head,
+		/obj/item/armor_module/limb/skeleton/head/spine,
+		/obj/item/armor_module/limb/skeleton/torso,
+		)
+
 	soft_armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 25, BIO = 20, FIRE = 20, ACID = 20)
 
 	flags_armor_protection = CHEST|GROIN|ARMS
@@ -48,12 +70,6 @@
 	)
 	resistance_flags = UNACIDABLE
 	item_state_slots = list(slot_wear_suit_str = "halfarmor1")
-	attachments_by_slot = list(
-		ACCESSORY_SLOT_ARMOR_A,
-		ACCESSORY_SLOT_ARMOR_L,
-		ACCESSORY_SLOT_ARMOR_S,
-		ACCESSORY_SLOT_ARMOR_M,
-	)
 	var/thrall = FALSE//Used to affect icon generation.
 
 /obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", elder_restricted = 0)
@@ -848,7 +864,7 @@
 	use_sound = "toolbox"
 	w_class = WEIGHT_CLASS_SMALL
 	flags_item = ITEM_PREDATOR
-	storage_slots = 12
+	storage_slots = 16
 	can_hold = list(
 		/obj/item/tool/surgery/stabilizer_gel,
 		/obj/item/tool/surgery/healing_gun,
@@ -919,6 +935,8 @@
 	attach_icon = 'icons/obj/items/skeleton.dmi'
 	mob_overlay_icon = 'icons/mob/hunter/pred_gear.dmi'
 
+	slot = ACCESSORY_SLOT_ARMOR_M
+
 	icon_state = null
 
 	///Has it been cleaned by a polishing rag?
@@ -927,45 +945,56 @@
 /obj/item/armor_module/limb/skeleton/l_arm
 	name = "arm bone"
 	icon_state = "l_arm"
+	slot = ACCESSORY_SLOT_ARMOR_Y_LH
 
 /obj/item/armor_module/limb/skeleton/l_foot
 	name = "foot bone"
 	icon_state = "l_foot"
+	slot = ACCESSORY_SLOT_ARMOR_Y_LL
 
 /obj/item/armor_module/limb/skeleton/l_hand
 	name = "hand bone"
 	icon_state = "l_hand"
+	slot = ACCESSORY_SLOT_ARMOR_Y_LH
 
 /obj/item/armor_module/limb/skeleton/l_leg
 	name = "leg bone"
 	icon_state = "l_leg"
+	slot = ACCESSORY_SLOT_ARMOR_Y_LL
 
 /obj/item/armor_module/limb/skeleton/r_arm
 	name = "arm bone"
 	icon_state = "r_arm"
+	slot = ACCESSORY_SLOT_ARMOR_Y_RH
 
 /obj/item/armor_module/limb/skeleton/r_foot
 	name = "foot bone"
 	icon_state = "r_foot"
+	slot = ACCESSORY_SLOT_ARMOR_Y_RL
 
 /obj/item/armor_module/limb/skeleton/r_hand
 	name = "hand bone"
 	icon_state = "r_hand"
+	slot = ACCESSORY_SLOT_ARMOR_Y_RH
 
 /obj/item/armor_module/limb/skeleton/r_leg
 	name = "leg bone"
 	icon_state = "r_leg"
+	slot = ACCESSORY_SLOT_ARMOR_Y_RL
 
 /obj/item/armor_module/limb/skeleton/head
 	name = "skull"
 	icon_state = "skull"
+	slot = ACCESSORY_SLOT_ARMOR_Y_H
 
 /obj/item/armor_module/limb/skeleton/head/spine
 	icon_state = "spine"
+	slot = ACCESSORY_SLOT_ARMOR_Y_H
 
 /obj/item/armor_module/limb/skeleton/torso
 	name = "ribcage"
 	icon_state = "torso"
+	slot = ACCESSORY_SLOT_ARMOR_Y_C
 
 /obj/item/armor_module/limb/skeleton/examine(mob/living/user)
 	. = ..()

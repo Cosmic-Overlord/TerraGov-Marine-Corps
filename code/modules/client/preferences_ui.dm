@@ -55,6 +55,19 @@
 			data["synthetic_name"] = synthetic_name
 			data["synthetic_type"] = synthetic_type
 			data["robot_type"] = robot_type
+			data["random_name"] = random_name
+			data["ai_name"] = ai_name
+			data["age"] = age
+			data["gender"] = gender
+			data["ethnicity"] = ethnicity
+			data["species"] = species || "Human"
+			data["good_eyesight"] = good_eyesight
+			data["citizenship"] = citizenship
+			data["religion"] = religion
+			data["h_style"] = h_style
+			data["grad_style"] = grad_style
+			data["f_style"] = f_style
+		if(PRED_CHARACTER_CUSTOMIZATION)
 			data["has_wl"] = GLOB.roles_whitelist[user.ckey] & WHITELIST_PREDATOR
 			data["predator_name"] = predator_name
 			data["predator_gender"] = predator_gender
@@ -72,18 +85,6 @@
 			data["predator_cape_type"] = predator_cape_type
 			data["predator_cape_color"] = predator_cape_color
 			data["predator_flavor_text"] = predator_flavor_text
-			data["random_name"] = random_name
-			data["ai_name"] = ai_name
-			data["age"] = age
-			data["gender"] = gender
-			data["ethnicity"] = ethnicity
-			data["species"] = species || "Human"
-			data["good_eyesight"] = good_eyesight
-			data["citizenship"] = citizenship
-			data["religion"] = religion
-			data["h_style"] = h_style
-			data["grad_style"] = grad_style
-			data["f_style"] = f_style
 		if(BACKGROUND_INFORMATION)
 			data["slot"] = default_slot
 			data["flavor_text"] = flavor_text
@@ -164,6 +165,9 @@
 	switch(tab_index)
 		if(CHARACTER_CUSTOMIZATION)
 			update_preview_icon()
+			.["mapRef"] = "player_pref_map"
+		if(PRED_CHARACTER_CUSTOMIZATION)
+			update_preview_icon(SSjob.GetJobType(/datum/job/predator))
 			.["mapRef"] = "player_pref_map"
 		if(GEAR_CUSTOMIZATION)
 			.["clothing"] = list(
@@ -890,7 +894,11 @@
 	save_preferences()
 	save_character()
 	save_keybinds()
-	update_preview_icon()
+	switch(tab_index)
+		if(CHARACTER_CUSTOMIZATION)
+			update_preview_icon()
+		if(PRED_CHARACTER_CUSTOMIZATION)
+			update_preview_icon(SSjob.GetJobType(/datum/job/predator))
 	ui_interact(user, ui)
 	SEND_SIGNAL(current_client, COMSIG_CLIENT_PREFERENCES_UIACTED)
 	return TRUE

@@ -80,12 +80,15 @@
 	if(stat || (lying_angle && !resting && !IsSleeping()) || (IsParalyzed() || IsUnconscious()) || lying_angle || buckled)
 		return
 
-	if(issynth(T))
-		to_chat(src, span_warning("You would break your tools if you did this!"))
-		return
-
 	if(isxeno(T))
 		xeno_victim = T
+
+	else if(ishuman(T))
+		victim = T
+
+		if(issynth(T) || isrobot(T) || victim.species.species_flags & ROBOTIC_LIMBS)
+			to_chat(src, span_warning("You would break your tools if you did this!"))
+			return
 
 	var/static/list/procedure_choices = list(
 		"Skin" = null,
@@ -101,8 +104,6 @@
 	)
 
 	var/procedure = ""
-	if(ishuman(T))
-		victim = T
 
 	if(victim)
 		procedure = tgui_input_list(src, "Which slice would you like to take?", "Take Slice", procedure_choices)
@@ -222,6 +223,8 @@
 	icon_state = "teleporter"
 	ceiling = CEILING_METAL
 	requires_power = FALSE
+	luminosity = 1
+	area_has_base_lighting = TRUE
 
 /mob/living/carbon/human/proc/pred_buy()
 	set category = "Yautja"

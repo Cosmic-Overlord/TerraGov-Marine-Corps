@@ -928,7 +928,11 @@ Proc for attack log creation, because really why not
 /atom/proc/prepare_huds()
 	hud_list = new
 	for(var/hud in hud_possible) //Providing huds.
-		hud_list[hud] = image('icons/mob/hud.dmi', src, "")
+		var/image/I = image('icons/mob/hud.dmi', src, "")
+		switch(hud)
+			if(HUNTER_CLAN,HUNTER_HUD)
+				I = image('icons/mob/hud_yautja.dmi', src, "")
+		hud_list[hud] = I
 
 /**
  * If this object has lights, turn it on/off.

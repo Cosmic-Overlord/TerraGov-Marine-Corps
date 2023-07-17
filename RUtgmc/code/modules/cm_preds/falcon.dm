@@ -41,7 +41,7 @@
 	name = "falcon drone"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "falcon_drone_active"
-	hud_possible = list(DATA_HUD_HUNTER)
+	hud_possible = list(HUNTER_HUD)
 	flags_pass = HOVERING
 	var/obj/item/falcon_drone/parent_drone
 	var/obj/item/clothing/gloves/yautja/owned_bracers
@@ -67,7 +67,7 @@
 	if(!hud_list)
 		return
 
-	var/image/holder = hud_list[DATA_HUD_HUNTER]
+	var/image/holder = hud_list[HUNTER_HUD]
 	holder?.icon_state = "falcon_drone_active"
 
 /mob/hologram/falcon/Destroy()

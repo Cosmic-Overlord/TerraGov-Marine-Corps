@@ -418,9 +418,9 @@
 		to_chat(user, span_highdanger("ARE YOU OUT OF YOUR MIND!?"))
 		return
 
-	if(isspeciessynthetic(victim))
+	if(issynth(victim) || isrobot(victim) || victim.species.species_flags & ROBOTIC_LIMBS)
 		to_chat(user, span_warning("You can't flay metal...")) //look at this dumbass
-		return TRUE
+		return
 
 	if(SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src) & COMPONENT_CANCEL_ATTACK)
 		return TRUE

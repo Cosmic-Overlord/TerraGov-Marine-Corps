@@ -149,7 +149,7 @@
 	item_icons = list(
 		slot_back_str = 'icons/mob/hunter/pred_gear.dmi'
 	)
-	flags_equip_slot = SLOT_BACK
+	flags_equip_slot = ITEM_SLOT_BACK
 	flags_item = ITEM_PREDATOR
 	resistance_flags = UNACIDABLE
 	var/clan_rank_required = CLAN_RANK_ELDER_INT

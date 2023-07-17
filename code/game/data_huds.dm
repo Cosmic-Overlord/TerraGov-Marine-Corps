@@ -53,6 +53,10 @@
 /datum/atom_hud/medical
 	hud_icons = list(HEALTH_HUD, STATUS_HUD)
 
+/datum/atom_hud/medical/add_to_single_hud(mob/user, mob/target)
+	if(HAS_TRAIT(user, TRAIT_FOREIGN_BIO))
+		return FALSE
+	return ..()
 
 //med hud used by silicons, only shows humans with a uniform with sensor mode activated.
 /datum/atom_hud/medical/basic
@@ -63,8 +67,6 @@
 		return FALSE
 	var/obj/item/clothing/under/U = H.w_uniform
 	if(!istype(U))
-		return FALSE
-	if(H.species && HAS_TRAIT(H, TRAIT_FOREIGN_BIO))
 		return FALSE
 	if(U.sensor_mode <= 2)
 		return FALSE

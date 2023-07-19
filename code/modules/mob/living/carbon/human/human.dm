@@ -75,8 +75,6 @@
 	hud_to_add.add_hud_to(src)
 	hud_to_add = GLOB.huds[DATA_HUD_XENO_HEART]
 	hud_to_add.add_hud_to(src)
-	hud_to_add = GLOB.huds[DATA_HUD_HUNTER]
-	hud_to_add.add_to_hud(src)
 
 
 

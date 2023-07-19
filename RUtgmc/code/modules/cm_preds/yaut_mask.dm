@@ -142,7 +142,7 @@
 	..()
 
 /obj/item/clothing/mask/gas/yautja/equipped(mob/living/carbon/human/user, slot)
-	if(slot == slot_wear_mask_str)
+	if(slot == SLOT_WEAR_MASK)
 		for(var/listed_hud in mask_huds)
 			var/datum/atom_hud/H = GLOB.huds[listed_hud]
 			H.add_hud_to(user)

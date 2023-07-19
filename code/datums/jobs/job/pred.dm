@@ -87,8 +87,11 @@
 
 	var/default_cape_type = "None"
 
-/datum/outfit/job/yautja/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/yautja/pre_equip(mob/living/carbon/human/H, visualsOnly, client/override_client)
 	var/client/mob_client = H.client
+	if(override_client)
+		mob_client = override_client
+
 	H.ethnicity = "Tan"
 	if(mob_client)
 		H.h_style = mob_client.prefs.predator_h_style

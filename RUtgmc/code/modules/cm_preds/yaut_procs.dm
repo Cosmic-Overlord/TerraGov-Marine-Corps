@@ -223,8 +223,8 @@
 	icon_state = "teleporter"
 	ceiling = CEILING_METAL
 	requires_power = FALSE
-	luminosity = 1
-	area_has_base_lighting = TRUE
+	static_lighting = FALSE
+	base_lighting_alpha = 255
 
 /mob/living/carbon/human/proc/pred_buy()
 	set category = "Yautja"

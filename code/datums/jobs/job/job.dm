@@ -118,7 +118,7 @@ GLOBAL_PROTECT(exp_specialmap)
 	if(!mannequin)
 		CRASH("equip_dummy called without a mannequin")
 
-	mannequin.equipOutfit(outfit_override || outfit, TRUE)
+	mannequin.equipOutfit(outfit_override || outfit, TRUE, preference_source)
 
 
 /datum/job/proc/get_access()

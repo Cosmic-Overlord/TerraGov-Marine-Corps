@@ -65,6 +65,8 @@
 /datum/atom_hud/medical/basic/proc/check_sensors(mob/living/carbon/human/H)
 	if(!istype(H))
 		return FALSE
+	if(HAS_TRAIT(H, TRAIT_FOREIGN_BIO))
+		return FALSE
 	var/obj/item/clothing/under/U = H.w_uniform
 	if(!istype(U))
 		return FALSE

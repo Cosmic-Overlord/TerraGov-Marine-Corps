@@ -107,6 +107,11 @@
 		else
 			GM.predators[H.key] = list("Name" = H.real_name, "Status" = status)
 
+/datum/species/yautja/on_species_gain(mob/living/carbon/human/H, datum/species/old_species)
+	. = ..()
+	var/datum/atom_hud/medical/advanced/A = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
+	A.remove_hud_from(H)
+
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	..()
 	var/datum/atom_hud/medical/advanced/A = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]

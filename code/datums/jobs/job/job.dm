@@ -315,7 +315,7 @@ GLOBAL_PROTECT(exp_specialmap)
 			job_whitelist = "[job_whitelist][whitelist_status]"
 
 		if(job.gear_preset_whitelist[job_whitelist])
-			job.gear_preset_whitelist[job_whitelist].equip(src)
+			job.gear_preset_whitelist[job_whitelist].equip(src, override_client = player)
 		else
 			///if there is only one outfit, just equips it
 			if(!job.multiple_outfits)

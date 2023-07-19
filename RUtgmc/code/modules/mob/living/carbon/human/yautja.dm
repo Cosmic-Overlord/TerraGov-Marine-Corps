@@ -175,7 +175,7 @@ var/global/image/hud_icon_hunter_thralled
 	hud_list[HUNTER_HUD] = holder
 
 /mob/living/carbon/xenomorph/hud_set_hunter()
-	var/image/holder = hud_list[DATA_HUD_HUNTER]
+	var/image/holder = hud_list[HUNTER_HUD]
 	holder.icon_state = "hudblank"
 	holder.overlays.Cut()
 	holder.pixel_x = -18
@@ -193,4 +193,4 @@ var/global/image/hud_icon_hunter_thralled
 			hud_icon_hunter_honored = image('icons/mob/screen/yautja.dmi', src, "hunter_honored")
 		holder.overlays += hud_icon_hunter_honored
 
-	hud_list[DATA_HUD_HUNTER] = holder
+	hud_list[HUNTER_HUD] = holder

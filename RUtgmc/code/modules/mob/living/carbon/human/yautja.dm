@@ -139,7 +139,7 @@
 /mob/living/carbon/human/yautja/hud_set_hunter()
 	. = ..()
 
-	set waitfor = FALSE
+	GLOB.huds[DATA_HUD_HUNTER_CLAN].add_to_hud(src)
 
 	var/image/holder = hud_list[HUNTER_CLAN]
 

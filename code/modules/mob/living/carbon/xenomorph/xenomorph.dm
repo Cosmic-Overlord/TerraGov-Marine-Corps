@@ -338,7 +338,7 @@
 	hud_to_add = GLOB.huds[DATA_HUD_XENO_DEBUFF]
 	hud_to_add.add_hud_to(src)
 	hud_to_add = GLOB.huds[DATA_HUD_HUNTER]
-	hud_to_add.add_hud_to(src)
+	hud_to_add.add_to_hud(src)
 
 /mob/living/carbon/xenomorph/get_permeability_protection()
 	return XENO_PERM_COEFF

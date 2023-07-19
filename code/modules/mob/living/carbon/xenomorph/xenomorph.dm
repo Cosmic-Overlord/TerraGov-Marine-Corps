@@ -327,10 +327,8 @@
 
 	var/datum/atom_hud/hud_to_add = GLOB.huds[DATA_HUD_XENO_INFECTION]
 	hud_to_add.add_hud_to(src)
-
 	hud_to_add = GLOB.huds[DATA_HUD_BASIC]
 	hud_to_add.add_hud_to(src)
-
 	hud_to_add = GLOB.huds[DATA_HUD_XENO_REAGENTS]
 	hud_to_add.add_hud_to(src)
 	hud_to_add = GLOB.huds[DATA_HUD_XENO_TACTICAL] //Allows us to see xeno tactical elements clearly via HUD elements
@@ -338,6 +336,8 @@
 	hud_to_add = GLOB.huds[DATA_HUD_MEDICAL_PAIN]
 	hud_to_add.add_hud_to(src)
 	hud_to_add = GLOB.huds[DATA_HUD_XENO_DEBUFF]
+	hud_to_add.add_hud_to(src)
+	hud_to_add = GLOB.huds[DATA_HUD_HUNTER]
 	hud_to_add.add_hud_to(src)
 
 /mob/living/carbon/xenomorph/get_permeability_protection()

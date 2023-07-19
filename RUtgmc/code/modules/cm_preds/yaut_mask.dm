@@ -145,7 +145,7 @@
 	if(slot == slot_wear_mask_str)
 		for(var/listed_hud in mask_huds)
 			var/datum/atom_hud/H = GLOB.huds[listed_hud]
-			H.add_to_hud(user)
+			H.add_hud_to(user)
 		if(current_goggles)
 			add_vision(user)
 	..()

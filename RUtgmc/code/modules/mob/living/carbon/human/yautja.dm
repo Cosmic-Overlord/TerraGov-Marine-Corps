@@ -136,6 +136,23 @@
 /datum/species/yautja/get_hairstyle(style)
 	return GLOB.yautja_hair_styles_list[style]
 
+/mob/living/carbon/human/yautja/hud_set_hunter()
+	. = ..()
+
+	set waitfor = FALSE
+
+	var/image/holder = hud_list[HUNTER_CLAN]
+
+	holder.icon_state = "predhud"
+
+	if(client?.clan_info?.item?[4])
+		var/datum/db_query/player_clan = SSdbcore.NewQuery("SELECT id, name, description, honor, color FROM [format_table_name("clan")] WHERE id = :clan_id", list("clan_id" = client.clan_info.item[4]))
+		player_clan.Execute()
+		if(player_clan.NextRow())
+			holder.color = player_clan.item[5]
+
+	hud_list[HUNTER_CLAN] = holder
+
 /mob/proc/hud_set_hunter()
 	return
 

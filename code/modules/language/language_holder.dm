@@ -111,7 +111,6 @@
 /datum/language_holder/xeno
 	languages = list(/datum/language/xenocommon)
 
-
 /datum/language_holder/universal/New()
 	. = ..()
 	grant_all_languages(omnitongue = TRUE)
@@ -131,6 +130,15 @@
 
 /datum/language_holder/zombie
 	languages = list(/datum/language/zombie)
+
+/datum/language_holder/yautja
+	languages = list(/datum/language/yautja)
+	only_speaks_language = /datum/language/yautja
+
+/datum/language_holder/yautja/New()
+	. = ..()
+	for(var/la in GLOB.all_languages - /datum/language/yautja)
+		grant_language(la, TRUE)
 
 
 /mob/living/verb/language_menu()

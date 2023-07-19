@@ -23,6 +23,8 @@
 	slowdown = -0.5
 	total_health = 175 //more health than regular humans
 
+	default_language_holder = /datum/language_holder/yautja
+
 	heat_level_1 = 500
 	heat_level_2 = 700
 	heat_level_3 = 1000
@@ -129,8 +131,6 @@
 	GLOB.yautja_mob_list += H
 	#endif
 
-	H.language_holder.grant_all_languages()
-	H.language_holder.only_speaks_language = /datum/language/yautja
 	return ..()
 
 /datum/species/yautja/get_hairstyle(style)

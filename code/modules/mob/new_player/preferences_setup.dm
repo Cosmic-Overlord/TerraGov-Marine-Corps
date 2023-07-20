@@ -195,16 +195,16 @@
 	character.g_hair = g_hair
 	character.b_hair = b_hair
 
-	character.r_grad	= r_grad
-	character.g_grad	= g_grad
-	character.b_grad	= b_grad
+	character.r_grad = r_grad
+	character.g_grad = g_grad
+	character.b_grad = b_grad
 
 	character.r_facial = r_facial
 	character.g_facial = g_facial
 	character.b_facial = b_facial
 
 	character.h_style = h_style
-	character.grad_style= grad_style
+	character.grad_style = grad_style
 	character.f_style = f_style
 
 	character.citizenship = citizenship
@@ -213,15 +213,6 @@
 	character.moth_wings = moth_wings
 	character.underwear = underwear
 	character.undershirt = undershirt
-
-	if(backpack > BACK_NOTHING)
-		var/obj/item/storage/backpack/new_backpack
-		switch(backpack)
-			if(BACK_BACKPACK)
-				new_backpack = new /obj/item/storage/backpack/marine(character)
-			if(BACK_SATCHEL)
-				new_backpack = new /obj/item/storage/backpack/marine/satchel(character)
-		character.equip_to_slot_or_del(new_backpack, SLOT_BACK)
 
 	character.update_body()
 	character.update_hair()

@@ -443,11 +443,11 @@
 	},
 /obj/structure/showcase{
 	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
-	dir = 4;
+	dir = 8;
 	icon = 'icons/obj/machines/computer.dmi';
 	icon_state = "terminal";
 	name = "Radar Console";
-	pixel_x = -7
+	pixel_x = 7
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -537,9 +537,7 @@
 	},
 /area/yautja)
 "bo" = (
-/obj/machinery/body_scanconsole{
-	dir = 1
-	},
+/obj/machinery/body_scanconsole,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -660,8 +658,7 @@
 /area/yautja)
 "bE" = (
 /obj/structure/stairs{
-	color = "#6b675e";
-	dir = 5
+	color = "#6b675e"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1141,11 +1138,11 @@
 	},
 /obj/structure/showcase{
 	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
-	dir = 8;
+	dir = 4;
 	icon = 'icons/obj/machines/computer.dmi';
 	icon_state = "terminal";
 	name = "Radar Console";
-	pixel_x = 7
+	pixel_x = -7
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -4130,7 +4127,7 @@ bL
 bL
 bL
 bj
-bo
+bs
 cP
 cP
 cP
@@ -4202,7 +4199,7 @@ aE
 aW
 aQ
 bj
-bs
+bo
 bL
 cP
 cP

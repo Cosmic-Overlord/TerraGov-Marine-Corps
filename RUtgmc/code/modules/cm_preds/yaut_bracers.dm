@@ -531,6 +531,7 @@
 
 		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
 		RegisterSignal(M, COMSIG_ATOM_BULLET_ACT, PROC_REF(bullet_act_sim))
+		RegisterSignal(M, COMSIG_MOB_TELEPORT, PROC_REF(decloak))
 
 		cloak_timer = world.time + 1.5 SECONDS
 		if(true_cloak)
@@ -570,6 +571,7 @@
 
 	UnregisterSignal(user, COMSIG_HUMAN_EXTINGUISH)
 	UnregisterSignal(user, COMSIG_ATOM_BULLET_ACT)
+	UnregisterSignal(user, COMSIG_MOB_TELEPORT)
 
 	if(forced)
 		cloak_malfunction = world.time + 10 SECONDS

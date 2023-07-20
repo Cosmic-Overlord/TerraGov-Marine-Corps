@@ -117,6 +117,8 @@
 
 	if(teleport_x && teleport_y && teleport_z)
 
+		SEND_SIGNAL(A, COMSIG_MOB_TELEPORT, src)
+
 		switch(teleportation_type)
 			if(1)
 				sleep(animation_teleport_quick_out(A)) //Sleep for the duration of the animation.

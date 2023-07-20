@@ -353,12 +353,12 @@
 	if(!ishuman(user))
 		return
 
-	var/mob/living/carbon/human/H = user
-	var/ship_to_tele = list("Public" = -1, "Human Ship" = "Human")
-
-	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || is_centcom_level(H.z))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH) || is_centcom_level(user.z))
 		to_chat(user, span_warning("You fiddle with it, but nothing happens!"))
 		return
+
+	var/mob/living/carbon/human/H = user
+	var/ship_to_tele = list("Public" = -1, "Human Ship" = "Human")
 
 	if(H.client && H.client.clan_info)
 		if(H.client.clan_info.item[3] & CLAN_PERMISSION_ADMIN_VIEW)
@@ -387,7 +387,7 @@
 		return
 
 	// Let's go
-	playsound(src,'sound/ambience/signal.ogg', 25, 1, sound_range = 6)
+	playsound(src, 'sound/ambience/signal.ogg', 25, 1, sound_range = 6)
 	timer = 1
 	user.visible_message(span_info("[user] starts becoming shimmery and indistinct..."))
 
@@ -396,6 +396,8 @@
 		user.visible_message(span_warning("[icon2html(user, viewers(src))][user] disappears!"))
 		var/tele_time = animation_teleport_quick_out(user)
 		var/mob/living/M = user.pulling
+		SEND_SIGNAL(H, COMSIG_MOB_TELEPORT, src)
+		SEND_SIGNAL(M, COMSIG_MOB_TELEPORT, src)
 		if(istype(M)) // Pulled person
 			M.visible_message(span_warning("[icon2html(M, viewers(src))][M] disappears!"))
 			animation_teleport_quick_out(M)

@@ -144,6 +144,9 @@
 #define COMSIG_DBLCLICK_CTRL "dblclick_ctrl"
 
 
+#define COMSIG_MOB_TELEPORT "mob_teleport"
+
+
 // /client signals
 #define COMSIG_CLIENT_MOUSEDOWN "client_mousedown"			//from base of client/MouseDown(): (/client, object, location, control, params)
 #define COMSIG_CLIENT_MOUSEUP "client_mouseup"				//from base of client/MouseUp(): (/client, object, location, control, params)

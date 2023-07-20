@@ -721,11 +721,14 @@ engineer, construction, leadership, medical, surgery, pilot, police, powerloader
 /datum/skills/yautja/warrior
 	name = "Yautja Warrior"
 
-	cqc = SKILL_CQC_MASTER
-	melee_weapons = SKILL_MELEE_SUPER
 	engineer = SKILL_ENGINEER_ENGI
-	construction = SKILL_CONSTRUCTION_PLASTEEL
-	medical = SKILL_MEDICAL_MASTER
-	surgery = SKILL_SURGERY_MASTER
-	police = SKILL_POLICE_MP
+	construction = SKILL_CONSTRUCTION_MASTER
 	firearms = SKILL_FIREARMS_TRAINED
+	medical = SKILL_MEDICAL_MASTER
+	cqc = SKILL_CQC_MASTER
+	surgery = SKILL_SURGERY_EXPERT
+	melee_weapons = SKILL_MELEE_SUPER
+	pistols = SKILL_PISTOLS_TRAINED
+	rifles = SKILL_RIFLES_TRAINED
+	police = SKILL_POLICE_MP
+	swordplay = SKILL_SWORDPLAY_TRAINED

@@ -3,7 +3,7 @@
 	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound)
 	var/predalien_sound
 
-/datum/emote/living/carbon/xeno/get_sound(mob/living/user)
+/datum/emote/living/carbon/xenomorph/get_sound(mob/living/user)
 	. = ..()
 
 	if(ispredalien(user) && predalien_sound)

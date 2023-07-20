@@ -616,11 +616,6 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
 
-	var/common_weight = 60
-	var/uncommon_weight = 15
-	var/rare_weight = 5
-	var/ultra_rare_weight = 1
-
 /obj/item/weapon/twohanded/yautja/glaive
 	name = "war glaive"
 	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."

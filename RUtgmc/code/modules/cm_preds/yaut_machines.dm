@@ -1,9 +1,3 @@
-/obj/machinery/prop/almayer/CICmap/yautja
-	name = "hunter globe"
-	desc = "A globe designed by the hunters to show them the location of prey across the hunting grounds."
-	icon = 'icons/obj/machines/yautja_machines.dmi'
-	icon_state = "globe"
-
 /obj/machinery/autolathe/yautja
 	name = "yautja autolathe"
 	desc = "It produces items using metal and glass."

@@ -1003,13 +1003,6 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
-"cE" = (
-/obj/machinery/prop/almayer/CICmap/yautja,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "cF" = (
 /obj/machinery/door/airlock/strata{
 	dir = 1;
@@ -1237,14 +1230,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"cZ" = (
-/obj/machinery/prop/almayer/CICmap/yautja,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	dir = 10;
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
@@ -2485,13 +2470,6 @@
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
-	},
-/area/yautja)
-"Rq" = (
-/obj/machinery/prop/almayer/CICmap/yautja,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
 	},
 /area/yautja)
 "RE" = (
@@ -5275,7 +5253,7 @@ bL
 ti
 cP
 Fh
-cZ
+Fh
 Fh
 cP
 ti
@@ -5317,13 +5295,13 @@ cP
 cP
 ti
 JH
-Rq
+JH
 JH
 ti
 cP
 bL
 bj
-cE
+bj
 cP
 cP
 cP

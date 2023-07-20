@@ -122,6 +122,10 @@
 	H.h_style = "Bald"
 	GLOB.yautja_mob_list -= H
 
+	if(H.actions_by_path[/datum/action/minimap/observer])
+		var/datum/action/minimap/observer/mini = H.actions_by_path[/datum/action/minimap/observer]
+		mini.remove_action(src)
+
 /datum/species/yautja/handle_post_spawn(mob/living/carbon/human/H)
 	GLOB.alive_human_list -= H
 
@@ -130,6 +134,10 @@
 	#ifndef UNIT_TESTS // Since this is a hard ref, we shouldn't confuse create_and_destroy
 	GLOB.yautja_mob_list += H
 	#endif
+
+	if(!H.actions_by_path[/datum/action/minimap/observer])
+		var/datum/action/minimap/observer/mini = new
+		mini.give_action(H)
 
 	return ..()
 

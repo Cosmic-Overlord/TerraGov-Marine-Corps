@@ -48,11 +48,6 @@
 	knock_down_reduction = 4
 	stun_reduction = 4
 
-	screams = list(MALE = "male_scream", FEMALE = "female_scream")
-	paincries = list(MALE = "male_pain", FEMALE = "female_pain")
-	goredcries = list(MALE = "male_gored", FEMALE = "female_gored")
-	warcries = list(MALE = "male_warcry", FEMALE = "female_warcry")
-
 	icobase = 'icons/mob/hunter/r_predator.dmi'
 
 /datum/species/yautja/larva_impregnated(obj/item/alien_embryo/embryo)

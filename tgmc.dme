@@ -1893,6 +1893,7 @@
 #include "RUtgmc\code\modules\cm_preds\yaut_procs.dm"
 #include "RUtgmc\code\modules\cm_preds\yaut_shield.dm"
 #include "RUtgmc\code\modules\cm_preds\yaut_weapons.dm"
+#include "RUtgmc\code\modules\mob\living\carbon\human\emote-yautja.dm"
 #include "RUtgmc\code\modules\mob\living\carbon\human\yautja.dm"
 #include "RUtgmc\code\modules\mob\living\carbon\xenomorph\castes\hellhound\hellhound.dm"
 #include "RUtgmc\code\modules\mob\living\carbon\xenomorph\castes\predalien\abilities_predalien.dm"

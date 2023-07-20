@@ -1382,3 +1382,9 @@
 		PROPERTY_FOCUSING = 6,
 		PROPERTY_CURING = 4,
 	)*/
+
+/datum/reagent/medicine/thwei/on_mob_add(mob/living/L, metabolism)
+
+/datum/reagent/medicine/thwei/on_mob_life(mob/living/L, metabolism)
+
+/datum/reagent/medicine/thwei/on_mob_delete(mob/living/L, metabolism)

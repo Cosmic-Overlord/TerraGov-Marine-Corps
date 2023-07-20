@@ -5,6 +5,8 @@
 	tier = XENO_TIER_THREE
 	upgrade = XENO_UPGRADE_BASETYPE
 
+	charge_type = CHARGE_TYPE_LARGE
+
 	// *** Melee Attacks *** //
 	melee_damage = 40
 

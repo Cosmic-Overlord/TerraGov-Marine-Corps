@@ -9,10 +9,6 @@
 	// *** Melee Attacks *** //
 	melee_damage = 35
 
-	// *** Tackle *** //
-	tacklemin = 4
-	tacklemax = 5
-
 	// *** Speed *** //
 	speed = -1
 

@@ -8,10 +8,6 @@
 	// *** Melee Attacks *** //
 	melee_damage = 40
 
-	// *** Tackle *** //
-	tacklemin = 3
-	tacklemax = 6
-
 	// *** Speed *** //
 	speed = -0.8
 
@@ -33,6 +29,8 @@
 	// *** Abilities *** ///
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/psydrain,
 		/datum/action/xeno_action/activable/pounce/predalien,
 		/datum/action/xeno_action/activable/predalien_roar,
 		/datum/action/xeno_action/activable/smash,
@@ -73,7 +71,7 @@
 <span class='role_body'>|______________________|</span>
 <span class='role_header'>You are a predator-alien hybrid!</span>
 <span class='role_body'>You are a very powerful xenomorph creature that was born of a Yautja warrior body.
-You are stronger, faster, and smarter than a regular xenomorph, but you must still listen to the queen.
+You are stronger, faster, and smarter than a regular xenomorph, but you must still listen to the hive ruler.
 You have a degree of freedom to where you can hunt and claim the heads of the hive's enemies, so check your verbs.
 Your health meter will not regenerate normally, so kill and die for the hive!</span>
 <span class='role_body'>|______________________|</span>

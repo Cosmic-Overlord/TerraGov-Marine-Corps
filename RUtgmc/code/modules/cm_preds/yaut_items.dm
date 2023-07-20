@@ -1006,6 +1006,6 @@
 
 /obj/item/armor_module/limb/skeleton/can_attach(obj/item/attaching_to, mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH)) //Only Yautja can wear bones on their clothing
-		to_chat(attacher, span_notice("Why would you try attaching this to your clothing?"))
+		to_chat(user, span_notice("Why would you try attaching this to your clothing?"))
 		return FALSE
 	return TRUE

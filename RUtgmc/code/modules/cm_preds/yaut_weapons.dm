@@ -799,7 +799,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/update_icon()
 	if(last_regen < charge_time + 20 || last_regen > charge_time || charge_time > 95)
-		var/new_icon_state = charge_time <=15 ? null : icon_state + "[round(charge_time/33, 1)]"
+		var/new_icon_state = charge_time <= 15 ? null : icon_state + "[round(charge_time/33, 1)]"
 		update_special_overlay(new_icon_state)
 		last_regen = charge_time
 
@@ -811,6 +811,9 @@
 	return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/cycle()
+	if(charge_time < 10)
+		return
+
 	if(charge_time >= 80)
 		ammo_datum_type = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/blast]
 		charge_time = 0
@@ -861,7 +864,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/process()
 	if(charge_time < 40)
-		charge_time++
+		charge_time += 0.25
 		if(charge_time == 39)
 			if(ismob(loc)) to_chat(loc, span_notice("[src] hums as it achieves maximum charge."))
 

@@ -44,7 +44,7 @@
 	xeno.create_shriekwave(color = "#FF0000")
 
 	for(var/mob/living/carbon/carbon in view(7, xeno))
-		if(ishuman(target) || isdroid(target))
+		if(ishuman(carbon) || isdroid(carbon))
 			var/mob/living/carbon/human/human = carbon
 			human.disable_special_items()
 

@@ -117,7 +117,7 @@
 
 	if(teleport_x && teleport_y && teleport_z)
 
-		SEND_SIGNAL(A, COMSIG_MOB_TELEPORT, src)
+		SEND_SIGNAL(A, COMSIG_ATOM_TELEPORT, src)
 
 		switch(teleportation_type)
 			if(1)

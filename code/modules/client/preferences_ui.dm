@@ -293,7 +293,7 @@
 				return
 			predator_translator_type = new_translator_type
 
-		if("pred_mask_type")
+		if("predator_mask_type")
 			var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-12)", "Mask Selection", 1, 12, 1)
 			if(new_predator_mask_type) predator_mask_type = round(text2num(new_predator_mask_type))
 

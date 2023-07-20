@@ -396,9 +396,9 @@
 		user.visible_message(span_warning("[icon2html(user, viewers(src))][user] disappears!"))
 		var/tele_time = animation_teleport_quick_out(user)
 		var/mob/living/M = user.pulling
-		SEND_SIGNAL(H, COMSIG_MOB_TELEPORT, src)
-		SEND_SIGNAL(M, COMSIG_MOB_TELEPORT, src)
+		SEND_SIGNAL(H, COMSIG_ATOM_TELEPORT, src)
 		if(istype(M)) // Pulled person
+			SEND_SIGNAL(M, COMSIG_ATOM_TELEPORT, src)
 			M.visible_message(span_warning("[icon2html(M, viewers(src))][M] disappears!"))
 			animation_teleport_quick_out(M)
 

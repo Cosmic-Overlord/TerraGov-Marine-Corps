@@ -308,7 +308,7 @@ GLOBAL_PROTECT(exp_specialmap)
 			equip_to_slot_or_del(id_card, SLOT_WEAR_ID)
 
 		///Handle pref backpack niggas, no shitcode please in christian TGMC, or I kill you...
-		if(!job.outfit.back && player.prefs.backpack > BACK_NOTHING)
+		if(isnull(job.outfit.back) && player.prefs.backpack > BACK_NOTHING)
 			var/obj/item/storage/backpack/new_backpack
 			switch(player.prefs.backpack)
 				if(BACK_BACKPACK)

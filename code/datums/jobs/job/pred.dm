@@ -83,7 +83,7 @@
 	name = "Yautja"
 
 	id = null //No IDs for Yautja!
-	back = null
+	back = 0 //Null hecks, no null here
 
 	var/default_cape_type = "None"
 

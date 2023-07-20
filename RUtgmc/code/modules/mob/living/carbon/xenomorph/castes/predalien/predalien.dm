@@ -49,6 +49,7 @@
 	wall_smash = TRUE
 	pixel_x = -16
 	old_x = -16
+	bubble_icon = "alienroyal"
 	mob_size = MOB_SIZE_BIG
 
 	tier = XENO_TIER_FOUR

@@ -103,6 +103,7 @@
 	name = "cutter"
 	desc = "Cut, cut, and once more cut."
 	icon_state = "predator_scalpel"
+	force = 20.0
 
 /*
 * Researchable Scalpels
@@ -156,6 +157,7 @@
 	desc = "For heavy-duty cutting."
 	icon_state = "predator_bonesaw"
 	flags_item = ITEM_PREDATOR
+	force = 20.0
 
 //misc, formerly from code/defines/weapons.dm
 /obj/item/tool/surgery/bonegel
@@ -175,7 +177,6 @@
 	force = 0
 	throwforce = 1.0
 	w_class = WEIGHT_CLASS_SMALL
-	var/usage_amount = 10
 
 /obj/item/tool/surgery/FixOVein/predatorFixOVein
 	name = "vein fixer"

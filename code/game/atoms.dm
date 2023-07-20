@@ -930,7 +930,7 @@ Proc for attack log creation, because really why not
 	for(var/hud in hud_possible) //Providing huds.
 		var/image/I = image('icons/mob/hud.dmi', src, "")
 		switch(hud)
-			if(HUNTER_CLAN,HUNTER_HUD)
+			if(HUNTER_CLAN, HUNTER_HUD)
 				I = image('icons/mob/hud_yautja.dmi', src, "")
 		hud_list[hud] = I
 

@@ -5,18 +5,13 @@
 	name = "Leap"
 
 	range = 5
-	freeze_on_hit_time = FALSE // Should we freeze ourselves after the lunge?
 
-	var/stun_duration = 1.5 SECONDS
 	var/base_damage = 25
 	var/damage_scale = 10 // How much it scales by every kill
 
 /datum/action/xeno_action/activable/pounce/predalien/mob_hit(datum/source, mob/living/M)
 	. = ..()
 	var/mob/living/carbon/xenomorph/predalien/xeno = owner
-
-	M.Stun(stun_duration * xeno.life_kills_total)
-	M.Paralyze(stun_duration * xeno.life_kills_total)
 	M.apply_damage(base_damage + damage_scale * xeno.life_kills_total, BRUTE, "chest", MELEE, FALSE, FALSE, TRUE, 20)
 
 /datum/action/xeno_action/activable/pounce/predalien/prepare_to_pounce()

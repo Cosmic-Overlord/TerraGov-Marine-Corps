@@ -3094,14 +3094,13 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 
 /datum/ammo/energy/yautja/caster/bolt/stun
 	name = "high power stun bolt"
-	var/stun_time = 2
+	var/stun_time = 20
 
 	damage = 0
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
 
 /datum/ammo/energy/yautja/caster/bolt/stun/on_hit_mob(mob/M, obj/projectile/P)
 	var/mob/living/carbon/C = M
-	var/stun_time = src.stun_time
 	if(istype(C))
 		if(isyautja(C) || ispredalien(C))
 			return
@@ -3110,8 +3109,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
-			stun_time++
-			H.apply_effect(stun_time, WEAKEN)
+			H.apply_effect(stun_time + 10, WEAKEN)
 		else
 			C.apply_effect(stun_time, WEAKEN)
 

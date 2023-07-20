@@ -299,7 +299,7 @@
 /mob/living/carbon/xenomorph/pull_response(mob/puller)
 	if(stat != CONSCIOUS) // If the Xeno is unconscious, don't fight back against a grab/pull
 		return TRUE
-	if(!ishuman(puller))
+	if(!ishuman(puller) || HAS_TRAIT(puller, TRAIT_YAUTJA_TECH))
 		return TRUE
 	var/mob/living/carbon/human/H = puller
 	H.Paralyze(rand(xeno_caste.tacklemin,xeno_caste.tacklemax) * 20)

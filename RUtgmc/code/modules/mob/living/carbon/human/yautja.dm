@@ -4,7 +4,7 @@
 	brute_mod = 0.28 //Beefy!
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
-	species_flags = HAS_SKIN_COLOR|NO_POISON|NO_OVERDOSE|USES_ALIEN_WEAPONS
+	species_flags = HAS_SKIN_COLOR|NO_POISON|NO_OVERDOSE|USES_ALIEN_WEAPONS|GREYSCALE_BLOOD
 	inherent_traits = list(
 		TRAIT_YAUTJA_TECH,
 		TRAIT_SUPER_STRONG,
@@ -47,6 +47,11 @@
 
 	knock_down_reduction = 4
 	stun_reduction = 4
+
+	screams = list(MALE = "male_scream", FEMALE = "female_scream")
+	paincries = list(MALE = "male_pain", FEMALE = "female_pain")
+	goredcries = list(MALE = "male_gored", FEMALE = "female_gored")
+	warcries = list(MALE = "male_warcry", FEMALE = "female_warcry")
 
 	icobase = 'icons/mob/hunter/r_predator.dmi'
 

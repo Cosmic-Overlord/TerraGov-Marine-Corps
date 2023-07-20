@@ -999,11 +999,16 @@
 
 	log_say("[caller.name != "Unknown" ? caller.name : "([caller.real_name])"] \[Yautja Translator\]: [msg] (CKEY: [caller.key])")
 
-	var/overhead_color = "#ff0505"
+	var/list/heard = list()
+	for(var/CHM in get_hearers_in_view(7, caller))
+		if(ismob(CHM))
+			heard += CHM
+
+	var/bubble_type = "alienroyal"
 	var/span_class = "yautja_translator"
 	if(translator_type != "Modern")
 		if(translator_type == "Retro")
-			overhead_color = "#FFFFFF"
+			bubble_type = "robot"
 			span_class = "retro_translator"
 		msg = replacetext(msg, "a", "@")
 		msg = replacetext(msg, "e", "3")
@@ -1012,11 +1017,16 @@
 		msg = replacetext(msg, "s", "5")
 		msg = replacetext(msg, "l", "1")
 
+	caller.send_speech(msg, 7, caller, bubble_type, null, caller.get_default_language())
+
 	var/voice_name = "A strange voice"
 	if(caller.name == caller.real_name && caller.alpha == initial(caller.alpha))
 		voice_name = "<b>[caller.name]</b>"
 
-	caller.visible_message("<a color='[overhead_color]'>[span_info("[voice_name] says,")] <span class='[span_class]'>'[msg]'</span></a>", msg)
+	for(var/mob/Q as anything in heard)
+		if(Q.stat && !isobserver(Q))
+			continue //Unconscious
+		to_chat(Q, "[span_info("[voice_name] says,")] <span class='[span_class]'>'[msg]'</span>")
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracername()
 	set name = "Toggle Bracer Name"

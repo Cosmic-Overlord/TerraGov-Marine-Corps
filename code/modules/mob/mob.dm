@@ -43,6 +43,7 @@
 	become_hearing_sensitive()
 
 	hunter_data = new /datum/huntdata(src)
+	hud_set_hunter()
 
 
 /mob/Stat()

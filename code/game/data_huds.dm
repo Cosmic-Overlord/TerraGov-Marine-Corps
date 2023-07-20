@@ -400,6 +400,9 @@
 	if(species?.species_flags & ROBOTIC_LIMBS)
 		return FALSE
 
+	if(isyautja(src))
+		return FALSE
+
 	var/image/holder = hud_list[PAIN_HUD]
 	if(stat == DEAD)
 		holder.icon_state = "hudhealth-100"

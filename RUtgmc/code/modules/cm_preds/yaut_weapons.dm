@@ -247,11 +247,17 @@
 	var/force_unwielded = 10
 	var/force_storage = 5
 
+/obj/item/weapon/yautja/combistick/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_MOVABLE_PRE_THROW, PROC_REF(try_to_throw))
+
 /obj/item/weapon/yautja/combistick/proc/try_to_throw(mob/living/user)
 	SIGNAL_HANDLER
 
 	if(!charged)
 		to_chat(user, span_warning("Your combistick refuses to leave your hand. You must charge it with blood from prey before throwing it."))
+		unwield(user)
+		user.put_in_hands(src)
 		return COMPONENT_MOVABLE_BLOCK_PRE_THROW
 
 	charged = FALSE
@@ -281,7 +287,6 @@
 	if(!.)
 		return
 	force = force_wielded
-	RegisterSignal(src, COMSIG_MOVABLE_PRE_THROW, PROC_REF(try_to_throw))
 	update_icon()
 
 /obj/item/weapon/yautja/combistick/unwield(mob/user)

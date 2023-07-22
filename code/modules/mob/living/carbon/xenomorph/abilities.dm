@@ -769,6 +769,7 @@
 	update_button_icon()
 
 /datum/action/xeno_action/activable/xeno_spit/deselect()
+	stop_fire()
 	UnregisterSignal(owner, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDRAG, COMSIG_MOB_MOUSEDOWN))
 	return ..()
 
@@ -1049,7 +1050,7 @@
 	owner.visible_message(span_xenonotice("[owner] starts planting an egg."), \
 		span_xenonotice("We start planting an egg."), null, 5)
 
-	if(!do_after(owner, 2.5 SECONDS, TRUE, current_turf, BUSY_ICON_BUILD, extra_checks = CALLBACK(current_turf, /turf/proc/check_alien_construction, owner)))
+	if(!do_after(owner, 2.5 SECONDS, TRUE, current_turf, BUSY_ICON_BUILD, extra_checks = CALLBACK(current_turf, TYPE_PROC_REF(/turf, check_alien_construction), owner)))
 		return fail_activate()
 
 	if(!xeno.loc_weeds_type)

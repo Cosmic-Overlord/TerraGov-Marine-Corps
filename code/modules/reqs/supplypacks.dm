@@ -600,6 +600,11 @@ WEAPONS
 	contains = list(/obj/item/weapon/gun/minigun/smart_minigun)
 	cost = 400
 
+/datum/supply_packs/weapons/minigun_powerpack
+	name = "SG-85 Minigun Powerpack"
+	contains = list(/obj/item/ammo_magazine/minigun_powerpack/smartgun)
+	cost = 150
+
 /datum/supply_packs/weapons/smart_minigun_ammo
 	name = "SG-85 ammo bin"
 	contains = list(/obj/item/ammo_magazine/packet/smart_minigun)
@@ -1134,8 +1139,6 @@ MEDICAL
 		/obj/item/storage/surgical_tray,
 		/obj/item/clothing/mask/breath/medical,
 		/obj/item/tank/anesthetic,
-		/obj/item/reagent_containers/hypospray/autoinjector/sleeptoxin,
-		/obj/item/reagent_containers/hypospray/autoinjector/sleeptoxin,
 	)
 	cost = 100
 	access = ACCESS_MARINE_MEDBAY

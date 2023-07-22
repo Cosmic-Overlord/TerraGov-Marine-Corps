@@ -101,6 +101,9 @@
 	if(reagents.get_reagent_amount(/datum/reagent/medicine/quickclot)) //Quickclot stops bleeding, magic!
 		return
 
+	if(reagents.get_reagent_amount(/datum/reagent/thwei)) //thwei stops bleeding, magic!
+		return
+
 	if(blood_volume)
 		blood_volume = max(blood_volume - amt, 0)
 		if(isturf(src.loc)) //Blood loss still happens in locker, floor stays clean

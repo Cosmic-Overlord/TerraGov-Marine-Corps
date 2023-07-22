@@ -1886,6 +1886,7 @@
 #include "RUtgmc\code\modules\cm_preds\thrall_items.dm"
 #include "RUtgmc\code\modules\cm_preds\thrall_procs.dm"
 #include "RUtgmc\code\modules\cm_preds\yaut_bracers.dm"
+#include "RUtgmc\code\modules\cm_preds\yaut_chems.dm"
 #include "RUtgmc\code\modules\cm_preds\yaut_hudprocs.dm"
 #include "RUtgmc\code\modules\cm_preds\yaut_items.dm"
 #include "RUtgmc\code\modules\cm_preds\yaut_machines.dm"

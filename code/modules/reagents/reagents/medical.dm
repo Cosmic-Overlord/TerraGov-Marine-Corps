@@ -1364,27 +1364,3 @@
 			L.jitter(5)
 	return ..()
 
-/datum/reagent/medicine/thwei //OP yautja chem
-	name = "Thwei"
-	description = "A strange, alien liquid."
-	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
-/*
-	properties = list(
-		PROPERTY_CROSSMETABOLIZING = 1,
-		PROPERTY_ANTITOXIC = 1,
-		PROPERTY_YAUTJA_HEMOGENIC = 9,
-		PROPERTY_OXYGENATING = 6,
-		PROPERTY_ANTICARCINOGENIC = 6,
-		PROPERTY_BONEMENDING = 6,
-		PROPERTY_AIDING = 1,
-		PROPERTY_ANTIHALLUCINOGENIC = 2,
-		PROPERTY_FOCUSING = 6,
-		PROPERTY_CURING = 4,
-	)*/
-
-/datum/reagent/medicine/thwei/on_mob_add(mob/living/L, metabolism)
-
-/datum/reagent/medicine/thwei/on_mob_life(mob/living/L, metabolism)
-
-/datum/reagent/medicine/thwei/on_mob_delete(mob/living/L, metabolism)

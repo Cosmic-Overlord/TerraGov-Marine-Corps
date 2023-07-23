@@ -52,7 +52,7 @@
 //Human sub-species
 #define isrobot(H) (is_species(H, /datum/species/robot))
 #define issynth(H) (is_species(H, /datum/species/synthetic) || is_species(H, /datum/species/early_synthetic))
-#define isresearcher(A) (ishuman(A) && A.job == "Researcher")
+#define isresearcher(A) (ishuman(A) && A.job.title == "Medical Researcher")
 #define isspeciessynthetic(H) (H.species.species_flags & IS_SYNTHETIC)
 #define ismoth(H) (is_species(H, /datum/species/moth))
 #define issectoid(H) (is_species(H, /datum/species/sectoid))

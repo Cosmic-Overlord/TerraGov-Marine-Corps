@@ -137,11 +137,11 @@
 	var/workingProbability = 20
 	var/randomProbability = 10
 	if(issynth(user)) // Synths are smart, they can figure this out pretty well
-		workingProbability = 40
-		randomProbability = 4
-	else if(isresearcher(user)) // Researchers are sort of smart, they can sort of figure this out
 		workingProbability = 25
 		randomProbability = 7
+	else if(isresearcher(user)) // Researchers are smart as well, they can figure this out
+		workingProbability = 40
+		randomProbability = 4
 
 	to_chat(user, span_notice("You press a few buttons..."))
 	//Add a little delay so the user wouldn't be just spamming all the buttons

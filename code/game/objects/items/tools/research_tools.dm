@@ -11,7 +11,7 @@
 	name = "xenomorph analyzer"
 	desc = "A tool for analyzing xenomorphs for research material. Just click on a xenomorph. Can be used to befriend Newt."
 	icon = 'icons/obj/items/surgery_tools.dmi'
-	icon_state = "predator_bonesaw"
+	icon_state = "research_saw"
 	///List of rewards for each xeno tier
 	var/static/list/xeno_tier_rewards = list(
 		XENO_TIER_ZERO = list(

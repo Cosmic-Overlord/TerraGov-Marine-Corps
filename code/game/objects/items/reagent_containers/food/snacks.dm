@@ -2571,7 +2571,7 @@
 
 /obj/item/reagent_containers/food/snacks/meat/xenomeat/Initialize()
 	. = ..()
-	reagents.add_reagent("xenoblood", 3)
+	reagents.add_reagent("Sulphuric acid", 3)
 	src.bitesize = 6
 
 /obj/item/reagent_containers/food/snacks/rawcutlet

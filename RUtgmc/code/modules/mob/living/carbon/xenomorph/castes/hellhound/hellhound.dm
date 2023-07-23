@@ -68,8 +68,8 @@
 	..()
 	var/image/health_holder = hud_list[HEALTH_HUD_XENO]
 	health_holder.pixel_x = -12
-	var/image/health_holder = hud_list[PLASMA_HUD]
-	health_holder.pixel_x = -12
+	var/image/plasma_holder = hud_list[PLASMA_HUD]
+	plasma_holder.pixel_x = -12
 	var/image/banished_holder = hud_list[XENO_BANISHED_HUD]
 	banished_holder.pixel_x = -12
 	banished_holder.pixel_y = -6

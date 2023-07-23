@@ -1,3 +1,11 @@
+/obj/machinery/cic_maptable/yautja
+	name = "hunter globe"
+	desc = "A globe designed by the hunters to show them the location of prey across the hunting grounds."
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	icon_state = "globe"
+
+	allowed_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_MARINE|MINIMAP_FLAG_MARINE_REBEL|MINIMAP_FLAG_MARINE_SOM|MINIMAP_FLAG_EXCAVATION_ZONE
+
 /obj/machinery/autolathe/yautja
 	name = "yautja autolathe"
 	desc = "It produces items using metal and glass."

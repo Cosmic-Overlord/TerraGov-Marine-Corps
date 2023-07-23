@@ -688,8 +688,7 @@
 	fire_delay = 5
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	message_to_user = "will now fire low power stun bolts"
-	radial_icon = 'icons/mob/radial.dmi'
-	radial_icon_state = "laser"
+	radial_icon_state = "plasma_weak"
 
 /datum/yautja_energy_weapon_modes/stun_heavy_bolts
 	rounds_per_shot = 100
@@ -697,8 +696,7 @@
 	fire_delay = 15
 	fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 	message_to_user = "will now fire high power stun bolts"
-	radial_icon = 'icons/mob/radial.dmi'
-	radial_icon_state = "laser"
+	radial_icon_state = "plasma_strong"
 
 /datum/yautja_energy_weapon_modes/stun_spheres
 	rounds_per_shot = 300
@@ -706,8 +704,7 @@
 	fire_delay = 100
 	fire_sound = 'sound/weapons/pulse.ogg'
 	message_to_user = "will now fire plasma immobilizers"
-	radial_icon = 'icons/mob/radial.dmi'
-	radial_icon_state = "laser"
+	radial_icon_state = "laser_sniper_overcharge"
 
 /datum/yautja_energy_weapon_modes/lethal_bolts
 	rounds_per_shot = 300
@@ -715,8 +712,7 @@
 	fire_delay = 15
 	fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 	message_to_user = "will now fire plasma bolts"
-	radial_icon = 'icons/mob/radial.dmi'
-	radial_icon_state = "laser"
+	radial_icon_state = "plasma_strong"
 
 /datum/yautja_energy_weapon_modes/lethal_spheres
 	rounds_per_shot = 1200
@@ -724,8 +720,7 @@
 	fire_delay = 100
 	fire_sound = 'sound/weapons/pulse.ogg'
 	message_to_user = "will now fire plasma spheres"
-	radial_icon = 'icons/mob/radial.dmi'
-	radial_icon_state = "laser"
+	radial_icon_state = "laser_sniper_overcharge"
 
 /obj/item/weapon/gun/energy/yautja
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -1034,7 +1029,7 @@
 	var/mode = "stun"//fire mode (stun/lethal)
 	var/strength = "low power stun bolts"//what it's shooting
 
-	var/list/modes = list("stun" = "stun_mode", "lethal" = "lethal_mode")
+	var/list/modes = list("stun" = "pred_mode_stun", "lethal" = "pred_mode_lethal")
 	var/list/mode_by_mode_list = list(
 		"stun" = list("low power stun bolts", "high power stun bolts", "plasma immobilizers"),
 		"lethal" = list("plasma bolts", "plasma spheres")
@@ -1070,14 +1065,14 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/change_ammo_type(mob/user)
 	var/list/available_modes = list()
 	for(var/mode in modes)
-		available_modes += list("[mode]" = image(icon = icon, icon_state = modes[mode]))
+		available_modes += list("[mode]" = image(icon = 'icons/mob/radial.dmi', icon_state = modes[mode]))
 
 	var/selected_mode = modes[show_radial_menu(user, user, modes, null, 64, tooltips = TRUE)]
-	if(!selected_mode)
-		return
+	if(selected_mode)
+		mode = selected_mode
 
 	available_modes = list()
-	for(var/mode in mode_by_mode_list[selected_mode])
+	for(var/mode in mode_by_mode_list[mode])
 		available_modes += list("[mode]" = image(icon = mode_list[mode].radial_icon, icon_state = mode_list[mode].radial_icon_state))
 
 	var/datum/yautja_energy_weapon_modes/choice = mode_list[show_radial_menu(user, user, available_modes, null, 64, tooltips = TRUE)]
@@ -1086,7 +1081,6 @@
 
 	playsound(user, 'sound/weapons/emitter.ogg', 5, FALSE, 2)
 
-	mode = selected_mode
 	strength = mode_list[choice]
 	ammo_datum_type = GLOB.ammo_list[choice.ammo_datum_type]
 	fire_delay = choice.fire_delay

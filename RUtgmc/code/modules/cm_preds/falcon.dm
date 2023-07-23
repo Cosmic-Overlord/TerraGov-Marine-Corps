@@ -52,6 +52,8 @@
 	parent_drone = drone
 	owned_bracers = bracers
 	RegisterSignal(owned_bracers, COMSIG_ITEM_DROPPED, PROC_REF(handle_bracer_drop))
+	M.client.eye = src
+	M.client.perspective = EYE_PERSPECTIVE
 	med_hud_set_status()
 	add_to_all_mob_huds()
 
@@ -74,6 +76,8 @@
 	if(parent_drone)
 		if(!linked_mob.equip_to_slot_if_possible(parent_drone, slot_ear_str, TRUE, FALSE, TRUE, TRUE, FALSE))
 			linked_mob.put_in_hands(parent_drone)
+		linked_mob.client.eye = linked_mob
+		linked_mob.client.perspective = MOB_PERSPECTIVE
 		parent_drone = null
 	if(owned_bracers)
 		UnregisterSignal(owned_bracers, COMSIG_ITEM_DROPPED)

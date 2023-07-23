@@ -30,6 +30,7 @@
 	L.blood_volume += 3
 	L.hallucination = 0
 	L.dizziness = 0
+	L.adjustStaminaLoss(-15)
 	L.adjustToxLoss(-3)
 	L.adjustOxyLoss(-3)
 	L.adjustCloneLoss(-3)

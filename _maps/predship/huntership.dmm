@@ -3,11 +3,11 @@
 /turf/open/space,
 /area/space)
 "ab" = (
-/obj/structure/table/mainship{
+/obj/item/stack/sheet/animalhide/xeno/kinghide,
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
-/obj/item/stack/sheet/animalhide/xeno/kinghide,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -38,10 +38,9 @@
 /turf/closed/wall/cult,
 /area/yautja)
 "ag" = (
-/turf/closed/wall/mineral/sandstone/runed,
+/turf/open/floor/plating/ground/dirtgrassborder,
 /area/yautja)
 "ah" = (
-/obj/structure/table/mainship,
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
@@ -53,10 +52,10 @@
 	dir = 2;
 	resistance_flags = 1
 	},
+/obj/structure/table/reinforced/prison,
 /turf/open/floor/sandstone/runed,
 /area/yautja)
 "ai" = (
-/obj/structure/table/mainship,
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
@@ -72,10 +71,10 @@
 	dir = 2;
 	resistance_flags = 1
 	},
+/obj/structure/table/reinforced/prison,
 /turf/open/floor/sandstone/runed,
 /area/yautja)
 "aj" = (
-/obj/structure/table/mainship,
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
@@ -87,10 +86,10 @@
 	dir = 2;
 	resistance_flags = 1
 	},
+/obj/structure/table/reinforced/prison,
 /turf/open/floor/sandstone/runed,
 /area/yautja)
 "ak" = (
-/obj/structure/table/mainship,
 /obj/machinery/door/window/right{
 	dir = 2;
 	resistance_flags = 1
@@ -102,10 +101,10 @@
 	dir = 4;
 	resistance_flags = 1
 	},
+/obj/structure/table/reinforced/prison,
 /turf/open/floor/sandstone/runed,
 /area/yautja)
 "al" = (
-/obj/structure/table/mainship,
 /obj/machinery/door/window/right{
 	dir = 2;
 	resistance_flags = 1
@@ -121,10 +120,10 @@
 	dir = 4;
 	resistance_flags = 1
 	},
+/obj/structure/table/reinforced/prison,
 /turf/open/floor/sandstone/runed,
 /area/yautja)
 "am" = (
-/obj/structure/table/mainship,
 /obj/machinery/door/window/right{
 	dir = 2;
 	resistance_flags = 1
@@ -136,6 +135,7 @@
 	dir = 8;
 	resistance_flags = 1
 	},
+/obj/structure/table/reinforced/prison,
 /turf/open/floor/sandstone/runed,
 /area/yautja)
 "an" = (
@@ -228,12 +228,12 @@
 	},
 /area/yautja)
 "au" = (
-/obj/structure/table/mainship{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
 /obj/structure/window/full{
 	dir = 4;
+	resistance_flags = 1
+	},
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
 	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
@@ -253,11 +253,10 @@
 	},
 /area/yautja)
 "aw" = (
-/obj/structure/curtain/red,
+/obj/structure/curtain/temple,
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "ay" = (
-/obj/structure/table/mainship,
 /obj/structure/window/full{
 	dir = 4;
 	resistance_flags = 1
@@ -270,6 +269,7 @@
 /obj/item/clothing/mask/gas/yautja/thrall,
 /obj/item/clothing/shoes/marine/yautja/thrall,
 /obj/item/clothing/under/chainshirt/thrall,
+/obj/structure/table/reinforced/prison,
 /turf/open/floor/sandstone/runed,
 /area/yautja)
 "az" = (
@@ -281,7 +281,6 @@
 /turf/open/floor/light,
 /area/yautja)
 "aA" = (
-/obj/structure/table/mainship,
 /obj/structure/window/full{
 	dir = 8;
 	resistance_flags = 1
@@ -294,6 +293,7 @@
 /obj/item/clothing/mask/gas/yautja/thrall,
 /obj/item/clothing/shoes/marine/yautja/thrall,
 /obj/item/clothing/under/chainshirt/thrall,
+/obj/structure/table/reinforced/prison,
 /turf/open/floor/sandstone/runed,
 /area/yautja)
 "aB" = (
@@ -643,16 +643,16 @@
 	},
 /area/yautja)
 "bz" = (
-/obj/structure/table/mainship{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
 /obj/structure/window/full{
 	dir = 4;
 	resistance_flags = 1
 	},
 /obj/structure/window/full{
 	dir = 2;
+	resistance_flags = 1
+	},
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
 	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
@@ -807,7 +807,7 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "bY" = (
-/obj/structure/table/mainship{
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
@@ -877,7 +877,7 @@
 	},
 /area/yautja)
 "cl" = (
-/obj/structure/table/mainship{
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
@@ -1010,14 +1010,14 @@
 	},
 /area/yautja)
 "cz" = (
-/obj/structure/table/mainship{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
 /obj/item/stack/sheet/animalhide/xeno{
 	color = "#7899ab";
 	desc = "A strange hide from an enigmatic creature.";
 	name = "deacon hide"
+	},
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1066,12 +1066,12 @@
 	},
 /area/yautja)
 "cI" = (
-/obj/structure/table/mainship{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
 /obj/item/weapon/twohanded/sledgehammer{
 	anchored = 1
+	},
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1374,7 +1374,9 @@
 /turf/open/space/basic,
 /area/space)
 "eg" = (
-/turf/open/floor/grass,
+/obj/effect/turf_decal/lvsanddecal/full,
+/obj/effect/turf_decal/lvsanddecal/full,
+/turf/open/beach/sand,
 /area/yautja)
 "er" = (
 /obj/structure/stairs{
@@ -1435,6 +1437,16 @@
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
+"fv" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "fF" = (
 /obj/structure/rack{
 	color = "#6b675e";
@@ -1493,7 +1505,7 @@
 	},
 /area/yautja)
 "gG" = (
-/obj/structure/table/mainship{
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
@@ -1541,7 +1553,23 @@
 /obj/structure/barricade/metal{
 	dir = 8
 	},
-/turf/open/floor/grass,
+/turf/open/floor/plating/ground/dirtgrassborder{
+	dir = 4
+	},
+/area/yautja)
+"jl" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/structure/window/full{
+	dir = 2;
+	resistance_flags = 1
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
 /area/yautja)
 "jP" = (
 /obj/structure/rack{
@@ -1592,12 +1620,12 @@
 	},
 /area/yautja)
 "kA" = (
-/obj/structure/table/mainship{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
 /obj/item/weapon/twohanded/dualsaber{
 	force_wielded = 35
+	},
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1616,14 +1644,33 @@
 	dir = 8
 	},
 /obj/structure/barricade/metal,
-/turf/open/floor/grass,
+/turf/open/floor/plating/ground/dirtgrassborder/corner{
+	dir = 8
+	},
 /area/yautja)
-"mv" = (
-/obj/structure/table/mainship{
+"ly" = (
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
+"mj" = (
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/obj/structure/barricade/metal,
+/turf/open/ground/grass,
+/area/yautja)
+"mv" = (
 /obj/item/weapon/katana,
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1667,7 +1714,7 @@
 /obj/structure/barricade/metal{
 	dir = 4
 	},
-/turf/open/floor/grass,
+/turf/open/ground/grass,
 /area/yautja)
 "nT" = (
 /obj/structure/table/mainship{
@@ -1703,6 +1750,10 @@
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
 	},
+/area/yautja)
+"ol" = (
+/obj/effect/turf_decal/lvsanddecal/full,
+/turf/open/beach/sand,
 /area/yautja)
 "ov" = (
 /obj/item/storage/belt/utility/full{
@@ -1750,6 +1801,15 @@
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
 	},
+/area/yautja)
+"pJ" = (
+/obj/structure/barricade/metal{
+	dir = 1
+	},
+/obj/structure/barricade/metal{
+	dir = 8
+	},
+/turf/open/floor/plating/ground/dirtgrassborder/corner,
 /area/yautja)
 "qj" = (
 /obj/structure/rack{
@@ -1911,11 +1971,11 @@
 	},
 /area/yautja)
 "uZ" = (
-/obj/structure/table/mainship{
+/obj/item/weapon/claymore/mercsword/ceremonial,
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
-/obj/item/weapon/claymore/mercsword/ceremonial,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1950,10 +2010,6 @@
 	},
 /area/yautja)
 "wQ" = (
-/obj/structure/table/mainship{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
 /obj/structure/window/full{
 	dir = 4;
 	resistance_flags = 1
@@ -1962,21 +2018,25 @@
 	dir = 8;
 	resistance_flags = 1
 	},
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
 	},
 /area/yautja)
 "xO" = (
-/obj/structure/table/mainship{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
 /obj/item/stack/sheet/animalhide/xeno{
 	anchored = 1;
 	color = "#524e4e";
 	desc = "An old hide from a fearsome creature.";
 	name = "hunter hide"
+	},
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2011,7 +2071,7 @@
 	},
 /area/yautja)
 "zZ" = (
-/obj/structure/table/mainship{
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
@@ -2043,7 +2103,7 @@
 	},
 /area/yautja)
 "BK" = (
-/obj/structure/table/mainship{
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
@@ -2090,12 +2150,12 @@
 	},
 /area/yautja)
 "Dk" = (
-/obj/structure/table/mainship{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
 /obj/item/flashlight/slime{
 	anchored = 1
+	},
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2193,11 +2253,11 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "Gk" = (
-/obj/structure/table/mainship{
+/obj/item/explosive/grenade/spawnergrenade/spesscarp,
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
-/obj/item/explosive/grenade/spawnergrenade/spesscarp,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2207,13 +2267,13 @@
 /obj/structure/barricade/metal{
 	dir = 1
 	},
-/turf/open/floor/grass,
+/turf/open/ground/grass,
 /area/yautja)
 "GP" = (
 /obj/structure/prop/brazier/torch{
 	pixel_y = -2
 	},
-/turf/closed/wall/mineral/sandstone/runed,
+/turf/closed/wall/cult,
 /area/yautja)
 "GY" = (
 /obj/structure/table/mainship{
@@ -2273,15 +2333,15 @@
 /obj/structure/barricade/metal{
 	dir = 8
 	},
-/turf/open/floor/grass,
+/turf/open/ground/grass,
 /area/yautja)
 "HN" = (
-/obj/structure/table/mainship{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
 /obj/structure/window/full{
 	dir = 2;
+	resistance_flags = 1
+	},
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
 	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
@@ -2365,7 +2425,9 @@
 /obj/structure/barricade/metal{
 	dir = 4
 	},
-/turf/open/floor/grass,
+/turf/open/floor/plating/ground/dirtgrassborder{
+	dir = 8
+	},
 /area/yautja)
 "KI" = (
 /obj/item/tool/kitchen/tray{
@@ -2415,15 +2477,15 @@
 	},
 /area/yautja)
 "Mb" = (
-/obj/structure/table/mainship{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
 /obj/item/stack/sheet/animalhide/xeno{
 	anchored = 1;
 	color = "green";
 	desc = "The skin of a nightmare long thought lost to time.";
 	name = "corroder hide"
+	},
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2474,6 +2536,13 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"Pb" = (
+/obj/structure/barricade/metal{
+	dir = 8
+	},
+/obj/structure/barricade/metal,
+/turf/open/ground/grass,
+/area/yautja)
 "Pm" = (
 /obj/item/stack/sheet/glass{
 	amount = 50
@@ -2500,6 +2569,17 @@
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
+	},
+/area/yautja)
+"PJ" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/flashlight/lamp,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
 	},
 /area/yautja)
 "PN" = (
@@ -2536,7 +2616,9 @@
 	dir = 4
 	},
 /obj/structure/barricade/metal,
-/turf/open/floor/grass,
+/turf/open/floor/plating/ground/dirtgrassborder/corner{
+	dir = 4
+	},
 /area/yautja)
 "QF" = (
 /obj/item/weapon/yautja/knife{
@@ -2555,6 +2637,14 @@
 	icon_state = "darkred2"
 	},
 /area/yautja)
+"Sh" = (
+/obj/machinery/cic_maptable,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "Sx" = (
 /turf/open/floor{
 	dir = 8;
@@ -2568,7 +2658,7 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "Ut" = (
-/obj/structure/table/mainship{
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
@@ -2593,7 +2683,7 @@
 /area/yautja)
 "UG" = (
 /obj/structure/barricade/metal,
-/turf/open/floor/grass,
+/turf/open/ground/grass,
 /area/yautja)
 "UR" = (
 /obj/structure/stairs{
@@ -2695,6 +2785,22 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"Xk" = (
+/turf/open/floor/plating/ground/dirtgrassborder{
+	dir = 1
+	},
+/area/yautja)
+"Xn" = (
+/obj/structure/barricade/metal{
+	dir = 1
+	},
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/turf/open/floor/plating/ground/dirtgrassborder/corner{
+	dir = 1
+	},
+/area/yautja)
 "Xp" = (
 /obj/structure/rack{
 	color = "#6b675e";
@@ -2765,7 +2871,7 @@
 	},
 /area/yautja)
 "Zu" = (
-/obj/structure/table/mainship{
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
@@ -3988,7 +4094,7 @@ bj
 cP
 cP
 bj
-ZM
+ly
 bL
 bL
 bL
@@ -4068,8 +4174,8 @@ cP
 dc
 df
 JH
-Et
-Et
+fv
+fv
 bj
 bj
 bj
@@ -4142,7 +4248,7 @@ Nh
 JH
 JH
 JH
-Et
+fv
 bj
 bj
 aa
@@ -4204,8 +4310,8 @@ bx
 cP
 cP
 bj
-ZM
-ZM
+ly
+ly
 bA
 aD
 te
@@ -4629,7 +4735,7 @@ wQ
 cP
 cP
 bz
-ZM
+ly
 nh
 HN
 au
@@ -4689,12 +4795,12 @@ ZR
 aV
 bn
 bj
-av
-ZM
+PJ
+ly
 bO
 bj
-av
-ZM
+PJ
+ly
 bO
 bj
 wQ
@@ -4828,7 +4934,7 @@ aa
 aa
 ad
 bj
-ag
+af
 GP
 cP
 bL
@@ -5044,7 +5150,7 @@ aa
 aa
 ad
 bj
-ag
+af
 ap
 cP
 bL
@@ -5130,7 +5236,7 @@ aw
 bj
 bj
 JH
-ZM
+ly
 cP
 cP
 cP
@@ -5227,7 +5333,7 @@ cP
 bL
 bL
 cP
-Hz
+pJ
 ja
 ja
 ja
@@ -5299,12 +5405,12 @@ bL
 bL
 cP
 Hz
+ag
 eg
 eg
-eg
-eg
-eg
-lu
+ol
+Xk
+Pb
 cP
 bL
 bL
@@ -5340,7 +5446,7 @@ bL
 ti
 cP
 Fh
-Fh
+Sh
 Fh
 cP
 ti
@@ -5371,11 +5477,11 @@ cK
 cP
 cP
 GG
+ag
 eg
 eg
-eg
-eg
-eg
+ol
+Xk
 UG
 cP
 cP
@@ -5443,12 +5549,12 @@ bL
 bL
 cP
 ny
-eg
-eg
-eg
-eg
-eg
-Qx
+ag
+ol
+ol
+ol
+Xk
+mj
 cP
 bL
 bL
@@ -5515,7 +5621,7 @@ cP
 bL
 bL
 cP
-ny
+Xn
 Ku
 Ku
 Ku
@@ -5562,7 +5668,7 @@ aw
 bj
 bj
 JH
-ZM
+ly
 cP
 cP
 cP
@@ -5620,7 +5726,7 @@ aa
 aa
 ac
 bj
-ag
+af
 ap
 cP
 bL
@@ -5836,7 +5942,7 @@ aa
 aa
 ac
 bj
-ag
+af
 GP
 cP
 bL
@@ -5989,8 +6095,8 @@ av
 ZM
 bO
 bj
-av
-ZM
+PJ
+ly
 bO
 bj
 tD
@@ -6071,7 +6177,7 @@ cP
 Pm
 ov
 nh
-HN
+jl
 zZ
 cP
 cP
@@ -6590,7 +6696,7 @@ dk
 JH
 JH
 JH
-Et
+fv
 bj
 bj
 aa

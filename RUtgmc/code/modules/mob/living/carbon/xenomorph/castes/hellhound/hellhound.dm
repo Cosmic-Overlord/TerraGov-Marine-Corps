@@ -68,6 +68,8 @@
 	..()
 	var/image/health_holder = hud_list[HEALTH_HUD_XENO]
 	health_holder.pixel_x = -12
+	var/image/health_holder = hud_list[PLASMA_HUD]
+	health_holder.pixel_x = -12
 	var/image/banished_holder = hud_list[XENO_BANISHED_HUD]
 	banished_holder.pixel_x = -12
 	banished_holder.pixel_y = -6
@@ -96,21 +98,4 @@
 	return ..()
 
 /datum/xeno_caste/hellhound/young
-	upgrade_name = "Young"
-	upgrade = XENO_UPGRADE_ZERO
-
-/datum/xeno_caste/hellhound/mature
-	upgrade_name = "Mature"
-	upgrade = XENO_UPGRADE_ONE
-
-/datum/xeno_caste/hellhound/elder
-	upgrade_name = "Elder"
-	upgrade = XENO_UPGRADE_TWO
-
-/datum/xeno_caste/hellhound/ancient
-	upgrade_name = "Ancient"
-	upgrade = XENO_UPGRADE_THREE
-
-/datum/xeno_caste/hellhound/primordial
-	upgrade_name = "Primordial"
-	upgrade = XENO_UPGRADE_FOUR
+	upgrade = XENO_UPGRADE_INVALID

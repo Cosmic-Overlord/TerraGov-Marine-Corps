@@ -329,7 +329,7 @@
 
 	list_reagents = list(/datum/reagent/thwei = REAGENTS_OVERDOSE)
 
-/obj/item/reagent_containers/hypospray/autoinjector/yautja/attack(mob/M as mob, mob/user as mob)
+/obj/item/reagent_containers/hypospray/autoinjector/yautja/attack(mob/M, mob/user)
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		..()
 	else

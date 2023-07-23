@@ -730,6 +730,7 @@
 		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
 		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
 	)
+	rounds_per_shot = 1
 	muzzle_flash = "muzzle_flash_laser"
 	muzzle_flash_color = COLOR_MAGENTA
 	default_ammo_type = null
@@ -777,7 +778,7 @@
 	rounds_per_shot = choice.rounds_per_shot
 
 	to_chat(user, choice.message_to_user)
-	user?.hud_used.update_ammo_hud(src, get_ammo_list(), get_display_ammo_count())
+	update_ammo_count()
 
 //Spike launcher
 /obj/item/weapon/gun/energy/yautja/spike
@@ -1064,16 +1065,16 @@
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/change_ammo_type(mob/user)
 	var/list/available_modes = list()
-	for(var/mode in modes)
-		available_modes += list("[mode]" = image(icon = 'icons/mob/radial.dmi', icon_state = modes[mode]))
+	for(var/proj_mode in modes)
+		available_modes += list("[proj_mode]" = image(icon = 'icons/mob/radial.dmi', icon_state = modes[proj_mode]))
 
-	var/selected_mode = modes[show_radial_menu(user, user, modes, null, 64, tooltips = TRUE)]
+	var/selected_mode = show_radial_menu(user, user, modes, null, 64, tooltips = TRUE)
 	if(selected_mode)
 		mode = selected_mode
 
 	available_modes = list()
-	for(var/mode in mode_by_mode_list[mode])
-		available_modes += list("[mode]" = image(icon = mode_list[mode].radial_icon, icon_state = mode_list[mode].radial_icon_state))
+	for(var/proj_mode in mode_by_mode_list[mode])
+		available_modes += list("[proj_mode]" = image(icon = mode_list[proj_mode].radial_icon, icon_state = mode_list[proj_mode].radial_icon_state))
 
 	var/datum/yautja_energy_weapon_modes/choice = mode_list[show_radial_menu(user, user, available_modes, null, 64, tooltips = TRUE)]
 	if(!choice)

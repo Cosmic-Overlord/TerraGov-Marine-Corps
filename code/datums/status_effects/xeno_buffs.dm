@@ -824,6 +824,7 @@
 
 /datum/status_effect/xeno_buff
 	id = "buff"
+	duration = INFINITYY
 
 	var/bonus_damage = 0
 	var/bonus_speed = 0
@@ -847,9 +848,9 @@
 
 	X.add_filter("overbonus_vis", 1, outline_filter(4 * (bonus_damage / 50), "#cf0b0b60")); \
 
-	duration = ttl
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(end_bonuses), src), ttl)
 
-/datum/status_effect/xeno_buff/on_remove()
+/datum/status_effect/xeno_buff/proc/end_bonuses()
 	if(owner)
 		to_chat(owner, span_xenonotice("You no longer feel empowered"))
 		var/mob/living/carbon/xenomorph/X = owner
@@ -859,4 +860,4 @@
 
 		X.remove_filter("overbonus_vis");
 
-	return ..()
+	qdel(src)

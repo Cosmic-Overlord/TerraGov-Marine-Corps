@@ -87,7 +87,6 @@
 	var/gen_record = ""
 	var/exploit_record = ""
 
-
 	//Life variables
 
 	///How long the human is dead, in life ticks, which is 2 seconds

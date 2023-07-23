@@ -43,6 +43,8 @@
 	var/next_move = 0
 	///Amount added during the next movement_delay(), then is reset.
 	var/next_move_slowdown = 0
+	///Slowdown from readying shields
+	var/shield_slowdown = 0
 	///Amount to adjust action/click delays by, + or -
 	var/next_move_adjust = 0
 	//Value to multiply action/click delays by

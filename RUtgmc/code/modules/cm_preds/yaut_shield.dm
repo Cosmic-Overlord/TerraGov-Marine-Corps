@@ -12,11 +12,74 @@
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = ITEM_SLOT_BACK
 
+	var/base_icon_state = "shield"
+
+	var/passive_block = 15
+	var/readied_block = 30
+
+	var/readied_slowdown = 0.20 // Walking around in a readied shield stance slows you! The armor defs are a useful existing reference point.
+	var/shield_readied = FALSE
+
 	max_integrity = 400
 	integrity_failure = 0
 
 	var/last_attack = 0
 	var/cooldown_time = 25 SECONDS
+
+/obj/item/weapon/shield/riot/yautja/proc/raise_shield(mob/user as mob) // Prepare for an attack. Slows you down slightly, but increases chance to block.
+	user.visible_message(span_blue("\The [user] raises \the [src]."))
+	shield_readied = TRUE
+	icon_state = "[base_icon_state]_ready"
+	item_state = "[base_icon_state]_ready"
+	user.shield_slowdown = max(readied_slowdown, user.shield_slowdown)
+
+	if(user.r_hand == src)
+		user.update_inv_r_hand()
+	if(user.l_hand == src)
+		user.update_inv_l_hand()
+
+/obj/item/weapon/shield/riot/yautja/proc/lower_shield(mob/user as mob)
+	user.visible_message(span_blue("\The [user] lowers \the [src]."))
+	shield_readied = FALSE
+	icon_state = base_icon_state
+	item_state = base_icon_state
+
+	var/mob/living/carbon/human/H = user
+	var/set_shield_slowdown = 0
+	var/obj/item/weapon/shield/riot/yautja/offhand_shield
+	if(H.l_hand == src && istype(H.r_hand, /obj/item/weapon/shield/riot/yautja))
+		offhand_shield = H.r_hand
+	else if(H.r_hand == src && istype(H.l_hand, /obj/item/weapon/shield/riot/yautja))
+		offhand_shield = H.l_hand
+	if(offhand_shield?.shield_readied)
+		set_shield_slowdown = offhand_shield.readied_slowdown
+	H.shield_slowdown = set_shield_slowdown
+
+	if(user.r_hand == src)
+		user.update_inv_r_hand()
+	if(user.l_hand == src)
+		user.update_inv_l_hand()
+
+/obj/item/weapon/shield/riot/yautja/proc/toggle_shield(mob/user as mob)
+	if(shield_readied)
+		lower_shield(user)
+	else
+		raise_shield(user)
+
+// Making sure that debuffs don't stay
+/obj/item/weapon/shield/riot/yautja/dropped(mob/user as mob)
+	if(shield_readied)
+		lower_shield(user)
+	..()
+
+/obj/item/weapon/shield/riot/yautja/equipped(mob/user, slot)
+	if(shield_readied)
+		lower_shield(user)
+	..()
+
+/obj/item/weapon/shield/riot/yautja/attack_self(mob/user)
+	..()
+	toggle_shield(user)
 
 /obj/item/weapon/shield/riot/yautja/attack(mob/living/M, mob/living/user)
 	. = ..()

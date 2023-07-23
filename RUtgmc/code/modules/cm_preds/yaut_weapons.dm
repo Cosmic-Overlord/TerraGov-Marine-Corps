@@ -1091,7 +1091,6 @@
 	. = ..()
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/process()
-	var/obj/item/attachable/scope = LAZYACCESS(attachments_by_slot, ATTACHMENT_SLOT_RAIL)
 	var/mob/living/user = loc
 	if(!istype(user))
 		laser_off()

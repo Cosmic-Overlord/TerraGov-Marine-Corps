@@ -872,6 +872,8 @@
 		/obj/item/reagent_containers/hypospray/autoinjector/yautja,
 		/obj/item/healthanalyzer/alien,
 		/obj/item/tool/surgery/healing_gel,
+		/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
+		/obj/item/stack/medical/heal_pack/ointment/predator,
 	)
 
 /obj/item/storage/medicomp/full/Initialize(mapload, ...)

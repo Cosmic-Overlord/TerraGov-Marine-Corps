@@ -764,7 +764,7 @@
 /obj/item/weapon/gun/energy/yautja/proc/change_ammo_type(mob/user)
 	var/list/available_modes = list()
 	for(var/mode in mode_list)
-		available_modes += list("[mode]" = image(icon = mode_list[mode].radial_icon, icon_state = mode_list[mode].radial_icon_state))
+		available_modes += list("[mode]" = image(icon = initial(mode_list[mode].radial_icon), icon_state = initial(mode_list[mode].radial_icon_state)))
 
 	var/datum/lasrifle/base/choice = mode_list[show_radial_menu(user, user, available_modes, null, 64, tooltips = TRUE)]
 	if(!choice)
@@ -772,12 +772,12 @@
 
 	playsound(user, 'sound/weapons/emitter.ogg', 5, FALSE, 2)
 
-	ammo_datum_type = GLOB.ammo_list[choice.ammo_datum_type]
-	fire_delay = choice.fire_delay
-	fire_sound = choice.fire_sound
-	rounds_per_shot = choice.rounds_per_shot
+	ammo_datum_type = GLOB.ammo_list[initial(choice.ammo_datum_type)]
+	fire_delay = initial(choice.fire_delay)
+	fire_sound = initial(choice.fire_sound)
+	rounds_per_shot = initial(choice.rounds_per_shot)
 
-	to_chat(user, choice.message_to_user)
+	to_chat(user, initial(choice.message_to_user))
 	update_ammo_count()
 
 //Spike launcher
@@ -1074,7 +1074,7 @@
 
 	available_modes = list()
 	for(var/proj_mode in mode_by_mode_list[mode])
-		available_modes += list("[proj_mode]" = image(icon = mode_list[proj_mode].radial_icon, icon_state = mode_list[proj_mode].radial_icon_state))
+		available_modes += list("[proj_mode]" = image(icon = initial(mode_list[proj_mode].radial_icon), icon_state = initial(mode_list[proj_mode].radial_icon_state)))
 
 	var/datum/yautja_energy_weapon_modes/choice = mode_list[show_radial_menu(user, user, available_modes, null, 64, tooltips = TRUE)]
 	if(!choice)
@@ -1083,13 +1083,13 @@
 	playsound(user, 'sound/weapons/emitter.ogg', 5, FALSE, 2)
 
 	strength = mode_list[choice]
-	ammo_datum_type = GLOB.ammo_list[choice.ammo_datum_type]
-	fire_delay = choice.fire_delay
-	fire_sound = choice.fire_sound
-	rounds_per_shot = choice.rounds_per_shot
+	ammo_datum_type = GLOB.ammo_list[initial(choice.ammo_datum_type)]
+	fire_delay = initial(choice.fire_delay)
+	fire_sound = initial(choice.fire_sound)
+	rounds_per_shot = initial(choice.rounds_per_shot)
 
-	to_chat(user, choice.message_to_user)
-	user?.hud_used.update_ammo_hud(src, get_ammo_list(), get_display_ammo_count())
+	to_chat(user, initial(choice.message_to_user))
+	update_ammo_count()
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/examine(mob/user)
 	. = ..()

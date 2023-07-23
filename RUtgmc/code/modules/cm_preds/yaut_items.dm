@@ -285,6 +285,7 @@
 	name = "\improper Communicator"
 	desc = "A strange Yautja device used for projecting the Yautja's voice to the others in its pack. Similar in function to a standard human radio."
 	icon_state = "communicator"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_state = "headset"
 	frequency = YAUT_FREQ
 	resistance_flags = UNACIDABLE

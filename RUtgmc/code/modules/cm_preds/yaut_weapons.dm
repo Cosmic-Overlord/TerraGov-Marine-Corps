@@ -11,7 +11,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/weapon/gun/launcher/spike/Destroy()
+/obj/item/weapon/gun/energy/yautja/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -234,7 +234,7 @@
 	throw_range = 4
 	resistance_flags = UNACIDABLE
 	force = 30
-	throwforce = 30
+	throwforce = 45
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -251,18 +251,23 @@
 	. = ..()
 	RegisterSignal(src, COMSIG_MOVABLE_PRE_THROW, PROC_REF(try_to_throw))
 
-/obj/item/weapon/yautja/combistick/proc/try_to_throw(mob/living/user)
+/obj/item/weapon/yautja/combistick/proc/try_to_throw()
 	SIGNAL_HANDLER
 
+	var/mob/handler = usr
+	if(!istype(handler))
+		return
+
 	if(!charged)
-		to_chat(user, span_warning("Your combistick refuses to leave your hand. You must charge it with blood from prey before throwing it."))
-		unwield(user)
-		user.put_in_hands(src)
+		to_chat(handler, span_warning("Your combistick refuses to leave your hand. You must charge it with blood from prey before throwing it."))
+		unwield(handler)
+		handler.put_in_hands(src)
+		wield(handler)
 		return COMPONENT_MOVABLE_BLOCK_PRE_THROW
 
 	charged = FALSE
 	remove_filter("combistick_charge")
-	unwield(user) //Otherwise stays wielded even when thrown
+	unwield(handler) //Otherwise stays wielded even when thrown
 
 /obj/item/weapon/yautja/combistick/verb/use_unique_action()
 	set category = "Weapons"
@@ -661,9 +666,18 @@
 ############## Ranged Weapons #############
 #########################################*/
 
+/obj/item/weapon/gun/energy/yautja
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = null
+	item_icons = list(
+		slot_back_str = 'icons/mob/hunter/pred_gear.dmi',
+		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
+	)
+	default_ammo_type = null
 
 //Spike launcher
-/obj/item/weapon/gun/launcher/spike
+/obj/item/weapon/gun/energy/yautja/spike
 	name = "spike launcher"
 	desc = "A compact Yautja device in the shape of a crescent. It can rapidly fire damaging spikes and automatically recharges."
 
@@ -697,13 +711,13 @@
 	scatter_unwielded = 2
 	damage_mult = 1
 
-/obj/item/weapon/gun/launcher/spike/process()
+/obj/item/weapon/gun/energy/yautja/spike/process()
 	if(spikes < max_spikes && world.time > last_regen + 100 && prob(70))
 		spikes++
 		last_regen = world.time
 		update_icon()
 
-/obj/item/weapon/gun/launcher/spike/Initialize(mapload, spawn_empty)
+/obj/item/weapon/gun/energy/yautja/spike/Initialize(mapload, spawn_empty)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	last_regen = world.time
@@ -712,7 +726,7 @@
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 	verbs -= /obj/item/weapon/gun/verb/use_unique_action
 
-/obj/item/weapon/gun/launcher/spike/examine(mob/user)
+/obj/item/weapon/gun/energy/yautja/spike/examine(mob/user)
 	if(isyautja(user))
 		. = ..()
 		. += span_notice("It currently has <b>[spikes]/[max_spikes]</b> spikes.")
@@ -720,32 +734,23 @@
 		. = list()
 		. += span_notice("Looks like some kind of...mechanical donut.")
 
-/obj/item/weapon/gun/launcher/spike/update_icon()
+/obj/item/weapon/gun/energy/yautja/spike/update_icon()
 	..()
 	var/new_icon_state = spikes <=1 ? null : icon_state + "[round(spikes/4, 1)]"
 	update_special_overlay(new_icon_state)
 
-/obj/item/weapon/gun/launcher/spike/able_to_fire(mob/user)
+/obj/item/weapon/gun/energy/yautja/spike/able_to_fire(mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, span_warning("You have no idea how this thing works!"))
 		return
 
 	return ..()
 
-/obj/item/weapon/gun/launcher/spike/cycle()
+/obj/item/weapon/gun/energy/yautja/spike/cycle()
 	if(spikes > 0)
 		in_chamber = get_ammo_object()
 		spikes--
 		return in_chamber
-
-/obj/item/weapon/gun/energy/yautja
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = null
-	item_icons = list(
-		slot_back_str = 'icons/mob/hunter/pred_gear.dmi',
-		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
-	)
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
 	name = "plasma rifle"
@@ -941,6 +946,7 @@
 	source = loc
 	verbs -= /obj/item/weapon/gun/verb/toggle_burstfire
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
+	RegisterSignal(src, COMSIG_ITEM_MIDDLECLICKON, PROC_REF(target_action))
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Destroy()
 	. = ..()
@@ -1041,6 +1047,9 @@
 	if(source.drain_power(user, charge_cost))
 		in_chamber = get_ammo_object()
 		return in_chamber
+
+/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/target_action(datum/source, atom/A)
+
 
 #undef FLAY_STAGE_SCALP
 #undef FLAY_STAGE_STRIP

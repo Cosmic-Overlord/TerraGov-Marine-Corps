@@ -3829,9 +3829,10 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	name = "alloy spike"
 	ping = "ping_s"
 	icon_state = "MSpearFlight"
-	sound_hit 	 	= "alloy_hit"
-	sound_armor	 	= "alloy_armor"
-	sound_bounce	= "alloy_bounce"
+	sound_hit = "alloy_hit"
+	sound_armor = "alloy_armor"
+	sound_bounce = "alloy_bounce"
+	bullet_color = COLOR_MAGENTA
 	armor_type = BULLET
 	accuracy = 20
 	accurate_range = 15

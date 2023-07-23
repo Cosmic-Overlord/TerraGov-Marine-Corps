@@ -44,7 +44,7 @@
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 4
 	},
 /obj/machinery/door/window/right{
@@ -57,10 +57,10 @@
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 8
 	},
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 4
 	},
 /obj/machinery/door/window/right{
@@ -73,7 +73,7 @@
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 8
 	},
 /obj/machinery/door/window/right{
@@ -89,7 +89,7 @@
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
@@ -102,10 +102,10 @@
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 8
 	},
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
@@ -118,7 +118,7 @@
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
@@ -216,11 +216,7 @@
 /obj/structure/table/mainship{
 	color = "#6b675e"
 	},
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 16
-	},
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 4
 	},
 /turf/open/floor/corsat{
@@ -244,7 +240,7 @@
 /area/yautja)
 "ay" = (
 /obj/structure/table/mainship,
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 4
 	},
 /obj/machinery/door/window/right{
@@ -265,7 +261,7 @@
 /area/yautja)
 "aA" = (
 /obj/structure/table/mainship,
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 8
 	},
 /obj/machinery/door/window/right{
@@ -617,12 +613,10 @@
 /obj/structure/table/mainship{
 	color = "#6b675e"
 	},
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/structure/window/full,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1618,10 +1612,10 @@
 /obj/structure/table/mainship{
 	color = "#6b675e"
 	},
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 8
 	},
 /obj/machinery/door/window/right{
@@ -1889,10 +1883,10 @@
 /obj/structure/table/mainship{
 	color = "#6b675e"
 	},
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 8
 	},
 /turf/open/floor/corsat{
@@ -1946,12 +1940,8 @@
 /obj/structure/table/mainship{
 	color = "#6b675e"
 	},
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 16
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2205,10 +2195,7 @@
 /obj/structure/table/mainship{
 	color = "#6b675e"
 	},
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 16
-	},
+/obj/structure/window/full,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2494,10 +2481,10 @@
 /obj/structure/table/mainship{
 	color = "#6b675e"
 	},
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 8
 	},
-/obj/structure/window/reinforced{
+/obj/structure/window/full{
 	dir = 4
 	},
 /turf/open/floor/corsat{
@@ -4542,9 +4529,9 @@ wQ
 cP
 cP
 bz
-HN
-nh
 ZM
+nh
+HN
 au
 cP
 cP
@@ -5984,7 +5971,7 @@ cP
 Pm
 ov
 nh
-ZM
+HN
 zZ
 cP
 cP

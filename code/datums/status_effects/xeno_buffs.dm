@@ -824,7 +824,7 @@
 
 /datum/status_effect/xeno_buff
 	id = "buff"
-	duration = INFINITYY
+	duration = INFINITY
 
 	var/bonus_damage = 0
 	var/bonus_speed = 0

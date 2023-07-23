@@ -1981,6 +1981,13 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"vE" = (
+/obj/machinery/cic_maptable/yautja,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "vO" = (
 /obj/machinery/shower{
 	dir = 4
@@ -1990,6 +1997,10 @@
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
 	},
+/area/yautja)
+"wu" = (
+/obj/machinery/cic_maptable/yautja,
+/turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "ww" = (
 /obj/item/stack/sheet/animalhide/xeno{
@@ -2638,7 +2649,7 @@
 	},
 /area/yautja)
 "Sh" = (
-/obj/machinery/cic_maptable,
+/obj/machinery/cic_maptable/yautja,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	dir = 10;
@@ -5488,13 +5499,13 @@ cP
 cP
 ti
 JH
-JH
+vE
 JH
 ti
 cP
 bL
 bj
-bj
+wu
 cP
 cP
 cP

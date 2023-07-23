@@ -3085,10 +3085,28 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 
 /datum/ammo/energy/yautja/caster/stun
 	name = "low power stun bolt"
+	var/stun_time = 5
 
 	bullet_color = COLOR_VIOLET
 	damage = 0
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+
+/datum/ammo/energy/yautja/caster/stun/on_hit_mob(mob/M, obj/projectile/P)
+	var/mob/living/carbon/C = M
+	if(istype(C))
+		if(isyautja(C) || ispredalien(C))
+			return
+		to_chat(C, span_danger("An electric shock ripples through your body, freezing you in place!"))
+		log_attack("[key_name(C)] was stunned by a high power stun bolt from [key_name(P.firer)] at [get_area(P)]")
+
+		if(ishuman(C))
+			var/mob/living/carbon/human/H = C
+			H.apply_effect(stun_time + 10, WEAKEN)
+		else
+			C.apply_effect(stun_time, WEAKEN)
+
+		C.apply_effect(stun_time, STUN)
+	..()
 
 /datum/ammo/energy/yautja/caster/bolt
 	name = "plasma bolt"

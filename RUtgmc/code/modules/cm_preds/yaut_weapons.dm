@@ -749,7 +749,7 @@
 		CRASH("switch_modes called with no user.")
 
 	if(length(mode_list))
-		change_ammo_type()
+		change_ammo_type(user)
 
 /obj/item/weapon/gun/energy/yautja/update_icon_state()
 	return

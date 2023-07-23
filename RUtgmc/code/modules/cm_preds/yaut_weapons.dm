@@ -678,11 +678,20 @@
 
 	flags_gun_features = GUN_AMMO_COUNTER|GUN_NO_PITCH_SHIFT_NEAR_EMPTY|GUN_ENERGY|GUN_AMMO_COUNT_BY_PERCENTAGE
 
+/obj/item/weapon/gun/energy/yautja/Initialize(mapload, spawn_empty)
+	. = ..()
+	verbs -= /obj/item/weapon/gun/verb/toggle_burstfire
+	verbs -= /obj/item/weapon/gun/verb/empty_mag
+	verbs -= /obj/item/weapon/gun/verb/use_unique_action
+
 /obj/item/weapon/gun/energy/yautja/update_icon_state()
 	return
 
 /obj/item/weapon/gun/energy/yautja/update_ammo_count()
 	gun_user?.hud_used.update_ammo_hud(src, get_ammo_list(), get_display_ammo_count())
+
+/obj/item/weapon/gun/energy/yautja/unload()
+	return
 
 //Spike launcher
 /obj/item/weapon/gun/energy/yautja/spike
@@ -719,20 +728,17 @@
 	scatter_unwielded = 2
 	damage_mult = 1
 
-/obj/item/weapon/gun/energy/yautja/spike/process()
-	if(rounds < max_rounds && world.time > last_regen + 100 && prob(70))
-		rounds++
-		last_regen = world.time
-		update_icon()
-
 /obj/item/weapon/gun/energy/yautja/spike/Initialize(mapload, spawn_empty)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	last_regen = world.time
 	update_icon()
-	verbs -= /obj/item/weapon/gun/verb/toggle_burstfire
-	verbs -= /obj/item/weapon/gun/verb/empty_mag
-	verbs -= /obj/item/weapon/gun/verb/use_unique_action
+
+/obj/item/weapon/gun/energy/yautja/spike/process()
+	if(rounds < max_rounds && world.time > last_regen + 100 && prob(70))
+		rounds++
+		last_regen = world.time
+		update_icon()
 
 /obj/item/weapon/gun/energy/yautja/spike/examine(mob/user)
 	if(isyautja(user))
@@ -792,10 +798,6 @@
 	START_PROCESSING(SSobj, src)
 	last_regen = world.time
 	update_icon()
-
-	verbs -= /obj/item/weapon/gun/verb/toggle_burstfire
-	verbs -= /obj/item/weapon/gun/verb/empty_mag
-	verbs -= /obj/item/weapon/gun/verb/use_unique_action
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/process()
 	if(rounds < max_rounds)
@@ -1013,7 +1015,7 @@
 					to_chat(user, span_notice("[src] will now fire [strength]."))
 					ammo_datum_type = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt]
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/use_unique_action()
+/obj/item/weapon/gun/energy/yautja/plasma_caster/unique_action()
 	switch(mode)
 		if("stun")
 			mode = "lethal"

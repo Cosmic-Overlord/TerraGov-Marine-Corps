@@ -674,6 +674,8 @@
 		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
 		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
 	)
+	muzzle_flash = "muzzle_flash_laser"
+	muzzle_flash_color = COLOR_MAGENTA
 	default_ammo_type = null
 
 	flags_gun_features = GUN_AMMO_COUNTER|GUN_NO_PITCH_SHIFT_NEAR_EMPTY|GUN_ENERGY|GUN_AMMO_COUNT_BY_PERCENTAGE
@@ -706,9 +708,6 @@
 		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
 		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
 	)
-
-	muzzle_flash = "muzzle_flash_laser"
-	muzzle_flash_color = COLOR_MAGENTA
 
 	resistance_flags = UNACIDABLE
 	fire_sound = 'sound/effects/woodhit.ogg' // TODO: Decent THWOK noise.
@@ -774,8 +773,6 @@
 	resistance_flags = UNACIDABLE
 	fire_sound = 'sound/weapons/pred_plasma_shot.ogg'
 	ammo_datum_type = /datum/ammo/energy/yautja/rifle/bolt
-	muzzle_flash = "muzzle_flash_laser"
-	muzzle_flash_color = COLOR_MAGENTA
 	zoomdevicename = "scope"
 	flags_equip_slot = SLOT_BACK
 	w_class = WEIGHT_CLASS_GIGANTIC
@@ -851,8 +848,6 @@
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	flags_equip_slot = ITEM_SLOT_BELT
 	ammo_datum_type = /datum/ammo/energy/yautja/pistol
-	muzzle_flash = "muzzle_flash_laser"
-	muzzle_flash_color = COLOR_MAGENTA
 	w_class = WEIGHT_CLASS_BULKY
 	rounds = 40
 	max_rounds = 40
@@ -930,7 +925,6 @@
 	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo_datum_type = /datum/ammo/energy/yautja/caster/stun
-	muzzle_flash = "muzzle_flash_laser"
 	muzzle_flash_color = COLOR_VIOLET
 	w_class = WEIGHT_CLASS_GIGANTIC
 	force = 0

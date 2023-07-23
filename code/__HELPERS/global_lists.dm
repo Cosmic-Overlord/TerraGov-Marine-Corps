@@ -42,7 +42,7 @@ GLOBAL_LIST_EMPTY(randomized_pill_icons)
 		GLOB.moth_wings_list[wings.name] = wings
 
 	// Ethnicity - Initialise all /datum/ethnicity into a list indexed by ethnicity name
-	for(var/path in subtypesof(/datum/ethnicity))
+	for(var/path in subtypesof(/datum/ethnicity) - /datum/ethnicity/human - /datum/ethnicity/yautja)
 		var/datum/ethnicity/E = new path()
 		GLOB.ethnicities_list[E.name] = E
 

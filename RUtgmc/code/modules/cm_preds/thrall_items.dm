@@ -11,7 +11,7 @@
 	thrall = TRUE
 
 	allowed = list(
-		/obj/item/weapon/gun/launcher/spike,
+		/obj/item/weapon/gun/energy/yautja/spike,
 		/obj/item/weapon/gun/energy/yautja,
 		/obj/item/weapon,
 	)

@@ -320,7 +320,7 @@
 	for(var/choice in secondaries)
 		switch(choice)
 			if(YAUTJA_GEAR_LAUNCHER)
-				equip_to_slot_if_possible(new /obj/item/weapon/gun/launcher/spike(src.loc), SLOT_IN_BELT, warning = TRUE)
+				equip_to_slot_if_possible(new /obj/item/weapon/gun/energy/yautja/spike(src.loc), SLOT_IN_BELT, warning = TRUE)
 			if(YAUTJA_GEAR_PISTOL)
 				equip_to_slot_if_possible(new /obj/item/weapon/gun/energy/yautja/plasmapistol(src.loc), SLOT_IN_BELT, warning = TRUE)
 			if(YAUTJA_GEAR_DISC)

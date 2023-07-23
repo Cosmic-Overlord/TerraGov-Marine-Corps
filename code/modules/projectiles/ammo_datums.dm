@@ -3066,9 +3066,14 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_IGNORE_RESIST
 
+	hud_state = "plasma"
+	hud_state_empty = "electrothermal_empty"
+
 /datum/ammo/energy/yautja/pistol
 	name = "plasma pistol bolt"
 	icon_state = "ion"
+
+	hud_state = "plasma_pistol"
 
 	bullet_color = COLOR_MAGENTA
 	damage = 40
@@ -3095,6 +3100,8 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 /datum/ammo/energy/yautja/caster/bolt/stun
 	name = "high power stun bolt"
 	var/stun_time = 20
+
+	hud_state = "plasma_blast"
 
 	damage = 0
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
@@ -3123,6 +3130,8 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	flags_ammo_behavior = AMMO_EXPLOSIVE
 	shell_speed = 2
 	accuracy = 40
+
+	hud_state = "plasma_sphere"
 
 	damage = 55
 
@@ -3188,12 +3197,16 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_IGNORE_RESIST
 
+	hud_state = "plasma_rifle"
+
 	damage = 55
 
 /datum/ammo/energy/yautja/rifle/blast
 	name = "plasma shatterer"
 	icon_state = "bluespace"
 	damage_type = BURN
+
+	hud_state = "plasma_rifle_blast"
 
 	shell_speed = 2
 	damage = 40

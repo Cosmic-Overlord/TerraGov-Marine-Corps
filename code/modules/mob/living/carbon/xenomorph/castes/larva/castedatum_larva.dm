@@ -88,7 +88,7 @@
 	crit_health = -25
 
 	// *** Evolution *** //
-	evolution_threshold = 0
+	evolution_threshold = 50
 	evolves_to = list(
 		/mob/living/carbon/xenomorph/predalien,
 	)

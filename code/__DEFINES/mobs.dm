@@ -436,7 +436,7 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 #define TARGETED_LAYER 2 //for target sprites when held at gun point, and holo cards.
 #define FIRE_LAYER 1 //If you're on fire
 
-#define TOTAL_LAYERS 28
+#define TOTAL_LAYERS 30
 
 #define MOTH_WINGS_BEHIND_LAYER 1
 

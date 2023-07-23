@@ -227,6 +227,9 @@ h1.alert, h2.alert		{color: #000000;}
 .connectionClosed.restored {background: green;}
 .internal.boldnshit {color: blue; font-weight: bold;}
 
+.retro_translator {font-weight: bold;}
+.yautja_translator {color: #aa0000; font-weight: bold;}
+
 .text-normal {font-weight: normal; font-style: normal;}
 .hidden {display: none; visibility: hidden;}
 </style>"}

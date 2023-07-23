@@ -1115,14 +1115,12 @@
 	return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/target_action(datum/source, atom/A)
-	if(!istype(A, /mob/living/carbon))
-		deactivate_laser_target()
-	else if(A == laser_target)
-		deactivate_laser_target()
+	if(!istype(A, /mob/living/carbon) || A == laser_target)
+		laser_off()
 	else
-		activate_laser_target(A, usr)
+		laser_on(A, gun_user)
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/activate_laser_target(atom/target, mob/living/user)
+/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/activate_laser_target(atom/target, mob/user)
 	target.apply_pred_laser()
 	laser_target = target
 	to_chat(user, span_danger("You focus your target marker on [target]!"))
@@ -1139,16 +1137,18 @@
 	return COMPONENT_PROJ_SCANTURF_TURFCLEAR
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/deactivate_laser_target()
-	UnregisterSignal(src, COMSIG_PROJ_SCANTURF)
-	laser_target.remove_pred_laser()
-	laser_target = null
+	if(laser_target)
+		UnregisterSignal(src, COMSIG_PROJ_SCANTURF)
+		laser_target.remove_pred_laser()
+		laser_target = null
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/laser_on(mob/user)
+/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/laser_on(atom/target, mob/user)
 	RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(laser_off))
 	if(user?.client)
 		user.client.click_intercept = src
 		to_chat(user, span_notice("<b>You activate your target marker and take careful aim.</b>"))
 		playsound(user,'sound/machines/click.ogg', 25, 1)
+	activate_laser_target(target, user)
 	return TRUE
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/laser_off(datum/source, mob/user)

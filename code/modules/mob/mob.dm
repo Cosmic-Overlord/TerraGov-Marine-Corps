@@ -148,6 +148,18 @@
 		return
 	to_chat(src, msg, avoid_highlighting = avoid_highlight)
 
+// Shows three different messages depending on who does it to who and how does it look like to outsiders
+// message_mob: "You do something to X!"
+// message_affected: "Y does something to you!"
+// message_viewer: "X does something to Y!"
+/mob/proc/affected_message(mob/affected, message_mob, message_affected, message_viewer)
+	src.show_message(message_mob, EMOTE_VISIBLE)
+	if(src != affected)
+		affected.show_message(message_affected, EMOTE_VISIBLE)
+	for(var/mob/V in viewers(7, src))
+		if(V != src && V != affected)
+			V.show_message(message_viewer, EMOTE_VISIBLE)
+
 // Show a message to all player mobs who sees this atom
 // Show a message to the src mob (if the src is a mob)
 // Use for atoms performing visible actions

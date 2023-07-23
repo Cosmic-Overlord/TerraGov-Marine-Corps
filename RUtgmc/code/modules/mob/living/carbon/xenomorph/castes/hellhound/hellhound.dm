@@ -15,8 +15,8 @@
 	speed = -1
 
 	// *** Plasma *** //
-	plasma_max = 0
-	plasma_gain = 2.5
+	plasma_max = 100
+	plasma_gain = 10
 
 	soft_armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 40, BIO = 55, FIRE = 55, ACID = 55)
 
@@ -41,7 +41,7 @@
 	icon_state = "Hellhound Walking"
 	health = 290
 	maxHealth = 290
-	plasma_stored = 50
+	plasma_stored = 100
 	tier = XENO_TIER_MINION
 	upgrade = XENO_UPGRADE_ZERO
 	bubble_icon = "alien"

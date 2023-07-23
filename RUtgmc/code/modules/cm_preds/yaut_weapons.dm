@@ -735,7 +735,7 @@
 	muzzle_flash_color = COLOR_MAGENTA
 	default_ammo_type = null
 
-	flags_gun_features = GUN_AMMO_COUNTER|GUN_NO_PITCH_SHIFT_NEAR_EMPTY|GUN_ENERGY|GUN_AMMO_COUNT_BY_PERCENTAGE
+	flags_gun_features = GUN_AMMO_COUNTER|GUN_NO_PITCH_SHIFT_NEAR_EMPTY|GUN_ENERGY|GUN_AMMO_COUNT_BY_PERCENTAGE|GUN_UNUSUAL_DESIGN
 
 	var/list/datum/yautja_energy_weapon_modes/mode_list = list()
 
@@ -802,7 +802,6 @@
 	rounds = 12
 	max_rounds = 12
 	var/last_regen
-	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
 
 	fire_delay = 5
@@ -865,7 +864,6 @@
 	max_rounds = 100
 	charge_cost = 10
 	var/last_regen = 0
-	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
 
 	fire_delay = 10
@@ -937,7 +935,6 @@
 	rounds = 40
 	max_rounds = 40
 	charge_cost = 1
-	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
 
 	fire_delay = 4
@@ -1016,7 +1013,6 @@
 	fire_delay = 3
 	flags_atom = CONDUCT
 	flags_item = NOBLUDGEON|DELONDROP //Can't bludgeon with this.
-	flags_gun_features = GUN_UNUSUAL_DESIGN
 
 	fire_delay = 5
 	accuracy_mult = 1

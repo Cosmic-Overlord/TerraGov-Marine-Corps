@@ -4,7 +4,8 @@
 /area/space)
 "ab" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/stack/sheet/animalhide/xeno/kinghide,
 /turf/open/floor/corsat{
@@ -45,10 +46,12 @@
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/full{
-	dir = 4
+	dir = 4;
+	resistance_flags = 1
 	},
 /obj/machinery/door/window/right{
-	dir = 2
+	dir = 2;
+	resistance_flags = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
@@ -58,13 +61,16 @@
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/full{
-	dir = 8
+	dir = 8;
+	resistance_flags = 1
 	},
 /obj/structure/window/full{
-	dir = 4
+	dir = 4;
+	resistance_flags = 1
 	},
 /obj/machinery/door/window/right{
-	dir = 2
+	dir = 2;
+	resistance_flags = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
@@ -74,52 +80,61 @@
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/full{
-	dir = 8
+	dir = 8;
+	resistance_flags = 1
 	},
 /obj/machinery/door/window/right{
-	dir = 2
+	dir = 2;
+	resistance_flags = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
 "ak" = (
 /obj/structure/table/mainship,
 /obj/machinery/door/window/right{
-	dir = 2
+	dir = 2;
+	resistance_flags = 1
 	},
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/full{
-	dir = 4
+	dir = 4;
+	resistance_flags = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
 "al" = (
 /obj/structure/table/mainship,
 /obj/machinery/door/window/right{
-	dir = 2
+	dir = 2;
+	resistance_flags = 1
 	},
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/full{
-	dir = 8
+	dir = 8;
+	resistance_flags = 1
 	},
 /obj/structure/window/full{
-	dir = 4
+	dir = 4;
+	resistance_flags = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
 "am" = (
 /obj/structure/table/mainship,
 /obj/machinery/door/window/right{
-	dir = 2
+	dir = 2;
+	resistance_flags = 1
 	},
 /obj/item/clothing/shoes/marine/yautja/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter,
 /obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/full{
-	dir = 8
+	dir = 8;
+	resistance_flags = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja)
@@ -214,10 +229,12 @@
 /area/yautja)
 "au" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/structure/window/full{
-	dir = 4
+	dir = 4;
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -226,7 +243,8 @@
 /area/yautja)
 "av" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/flashlight/lamp,
 /turf/open/floor/corsat{
@@ -241,10 +259,12 @@
 "ay" = (
 /obj/structure/table/mainship,
 /obj/structure/window/full{
-	dir = 4
+	dir = 4;
+	resistance_flags = 1
 	},
 /obj/machinery/door/window/right{
-	dir = 2
+	dir = 2;
+	resistance_flags = 1
 	},
 /obj/item/clothing/suit/armor/yautja/thrall,
 /obj/item/clothing/mask/gas/yautja/thrall,
@@ -255,17 +275,20 @@
 "az" = (
 /obj/structure/window/phoronreinforced{
 	dir = 10;
-	icon_state = "phoronrwindow"
+	icon_state = "phoronrwindow";
+	resistance_flags = 1
 	},
 /turf/open/floor/light,
 /area/yautja)
 "aA" = (
 /obj/structure/table/mainship,
 /obj/structure/window/full{
-	dir = 8
+	dir = 8;
+	resistance_flags = 1
 	},
 /obj/machinery/door/window/right{
-	dir = 2
+	dir = 2;
+	resistance_flags = 1
 	},
 /obj/item/clothing/suit/armor/yautja/thrall,
 /obj/item/clothing/mask/gas/yautja/thrall,
@@ -308,7 +331,8 @@
 /area/yautja)
 "aE" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/tool/surgery/cautery/predatorcautery,
 /obj/item/tool/surgery/circular_saw/predatorbonesaw,
@@ -352,10 +376,13 @@
 	dir = 1
 	},
 /obj/item/flashlight/slime,
-/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	resistance_flags = 1
+	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	icon_state = "phoronrwindow"
+	icon_state = "phoronrwindow";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -367,10 +394,13 @@
 	dir = 1
 	},
 /obj/item/flashlight/slime,
-/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	resistance_flags = 1
+	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	icon_state = "phoronrwindow"
+	icon_state = "phoronrwindow";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -395,7 +425,8 @@
 /area/yautja)
 "aQ" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/tool/surgery/FixOVein/predatorFixOVein,
 /obj/item/tool/surgery/bonegel/predatorbonegel,
@@ -432,7 +463,8 @@
 /area/yautja)
 "aX" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/effect/decal/remains/xeno{
 	pixel_x = -31
@@ -548,7 +580,8 @@
 /area/yautja)
 "bq" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/weapon/gun/energy/yautja/plasma_caster{
 	anchored = 1;
@@ -611,12 +644,17 @@
 /area/yautja)
 "bz" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/structure/window/full{
-	dir = 4
+	dir = 4;
+	resistance_flags = 1
 	},
-/obj/structure/window/full,
+/obj/structure/window/full{
+	dir = 2;
+	resistance_flags = 1
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -631,7 +669,8 @@
 /area/yautja)
 "bC" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/weapon/claymore/mercsword/machete/arnold{
 	desc = "Won by an Elder during their youthful hunting days. None are allowed to touch it.";
@@ -690,7 +729,8 @@
 /area/yautja)
 "bM" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/machinery/processor,
 /turf/open/shuttle/dropship/fourteen,
@@ -768,7 +808,8 @@
 /area/yautja)
 "bY" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/stack/sheet/xenochitin,
 /obj/item/stack/sheet/xenochitin,
@@ -837,7 +878,8 @@
 /area/yautja)
 "cl" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/alienjar,
 /turf/open/floor/corsat{
@@ -872,11 +914,13 @@
 "co" = (
 /obj/machinery/gravity_generator,
 /obj/structure/window/phoronreinforced{
-	icon_state = "phoronrwindow"
+	icon_state = "phoronrwindow";
+	resistance_flags = 1
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	icon_state = "phoronrwindow"
+	icon_state = "phoronrwindow";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -894,7 +938,8 @@
 /area/yautja)
 "cr" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/machinery/chem_dispenser/soda,
 /turf/open/shuttle/dropship/fourteen,
@@ -917,7 +962,8 @@
 /area/yautja)
 "cv" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/tool/kitchen/rollingpin{
 	pixel_y = 10
@@ -929,7 +975,8 @@
 /area/yautja)
 "cw" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/clothing/mask/muzzle,
 /obj/item/clothing/mask/muzzle,
@@ -949,11 +996,13 @@
 "cy" = (
 /obj/machinery/gravity_generator,
 /obj/structure/window/phoronreinforced{
-	icon_state = "phoronrwindow"
+	icon_state = "phoronrwindow";
+	resistance_flags = 1
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	icon_state = "phoronrwindow"
+	icon_state = "phoronrwindow";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -962,7 +1011,8 @@
 /area/yautja)
 "cz" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/stack/sheet/animalhide/xeno{
 	color = "#7899ab";
@@ -1017,7 +1067,8 @@
 /area/yautja)
 "cI" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/weapon/twohanded/sledgehammer{
 	anchored = 1
@@ -1029,7 +1080,8 @@
 /area/yautja)
 "cJ" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
@@ -1118,7 +1170,8 @@
 /area/yautja)
 "cR" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/effect/decal/remains/xeno{
 	pixel_x = 33
@@ -1138,7 +1191,8 @@
 /area/yautja)
 "cS" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/clothing/shoes/combat,
 /obj/item/clothing/under/chainshirt/hunter,
@@ -1173,7 +1227,8 @@
 /area/yautja)
 "cV" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/tool/weldingtool/hugetank,
 /turf/open/floor/corsat{
@@ -1183,7 +1238,8 @@
 /area/yautja)
 "cW" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/stack/cable_coil,
 /obj/item/tool/screwdriver{
@@ -1229,7 +1285,8 @@
 /area/yautja)
 "da" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/machinery/microwave{
 	pixel_y = 4
@@ -1437,7 +1494,8 @@
 /area/yautja)
 "gG" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/tool/surgery/FixOVein/predatorFixOVein,
 /obj/item/tool/surgery/bonegel/predatorbonegel,
@@ -1466,7 +1524,8 @@
 /area/yautja)
 "iV" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/trash/tray,
 /obj/item/tool/kitchen/utensil/fork{
@@ -1534,7 +1593,8 @@
 /area/yautja)
 "kA" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/weapon/twohanded/dualsaber{
 	force_wielded = 35
@@ -1560,7 +1620,8 @@
 /area/yautja)
 "mv" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/weapon/katana,
 /turf/open/floor/corsat{
@@ -1610,16 +1671,20 @@
 /area/yautja)
 "nT" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/structure/window/full{
-	dir = 4
+	dir = 4;
+	resistance_flags = 1
 	},
 /obj/structure/window/full{
-	dir = 8
+	dir = 8;
+	resistance_flags = 1
 	},
 /obj/machinery/door/window/right{
-	dir = 2
+	dir = 2;
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1628,7 +1693,8 @@
 /area/yautja)
 "ob" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/effect/decal/remains/human{
 	pixel_y = -25
@@ -1698,7 +1764,8 @@
 /area/yautja)
 "qS" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/tool/kitchen/utensil/fork{
 	pixel_x = 10;
@@ -1711,7 +1778,8 @@
 /area/yautja)
 "rt" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/storage/medicomp/full,
 /turf/open/floor/corsat{
@@ -1799,7 +1867,8 @@
 /area/yautja)
 "tn" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/flashlight/lamp,
 /turf/open/floor/strata{
@@ -1843,7 +1912,8 @@
 /area/yautja)
 "uZ" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/weapon/claymore/mercsword/ceremonial,
 /turf/open/floor/corsat{
@@ -1881,13 +1951,16 @@
 /area/yautja)
 "wQ" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/structure/window/full{
-	dir = 4
+	dir = 4;
+	resistance_flags = 1
 	},
 /obj/structure/window/full{
-	dir = 8
+	dir = 8;
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1896,7 +1969,8 @@
 /area/yautja)
 "xO" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/stack/sheet/animalhide/xeno{
 	anchored = 1;
@@ -1938,10 +2012,12 @@
 /area/yautja)
 "zZ" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/structure/window/full{
-	dir = 8
+	dir = 8;
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1968,7 +2044,8 @@
 /area/yautja)
 "BK" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/tool/surgery/cautery/predatorcautery,
 /obj/item/tool/surgery/circular_saw/predatorbonesaw,
@@ -2000,7 +2077,8 @@
 /area/yautja)
 "CK" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/tool/kitchen/tray{
 	color = "#FFE55C";
@@ -2013,7 +2091,8 @@
 /area/yautja)
 "Dk" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/flashlight/slime{
 	anchored = 1
@@ -2055,7 +2134,8 @@
 /area/yautja)
 "Et" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -2071,14 +2151,16 @@
 /area/yautja)
 "Ft" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/storage/medicomp/full,
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "Fx" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/bedsheet{
 	anchored = 1;
@@ -2112,7 +2194,8 @@
 /area/yautja)
 "Gk" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/explosive/grenade/spawnergrenade/spesscarp,
 /turf/open/floor/corsat{
@@ -2134,7 +2217,8 @@
 /area/yautja)
 "GY" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/weapon/chainofcommand,
 /turf/open/floor/corsat{
@@ -2193,9 +2277,13 @@
 /area/yautja)
 "HN" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
-/obj/structure/window/full,
+/obj/structure/window/full{
+	dir = 2;
+	resistance_flags = 1
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2297,7 +2385,8 @@
 /area/yautja)
 "KV" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/trash/plate,
 /turf/open/floor/corsat{
@@ -2327,7 +2416,8 @@
 /area/yautja)
 "Mb" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/stack/sheet/animalhide/xeno{
 	anchored = 1;
@@ -2479,13 +2569,16 @@
 /area/yautja)
 "Ut" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/structure/window/full{
-	dir = 8
+	dir = 8;
+	resistance_flags = 1
 	},
 /obj/structure/window/full{
-	dir = 4
+	dir = 4;
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2515,7 +2608,8 @@
 /area/yautja)
 "UT" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/restraints/handcuffs,
 /obj/item/restraints/handcuffs,
@@ -2529,7 +2623,8 @@
 /area/yautja)
 "VT" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/bedsheet{
 	anchored = 1;
@@ -2556,7 +2651,8 @@
 /area/yautja)
 "We" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/weapon/baton/cattleprod,
 /obj/item/weapon/baton/cattleprod,
@@ -2575,7 +2671,8 @@
 /area/yautja)
 "Ww" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/tool/kitchen/utensil/spoon,
 /turf/open/floor/corsat{
@@ -2585,7 +2682,8 @@
 /area/yautja)
 "Xg" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/tool/kitchen/tray,
 /obj/item/tool/kitchen/utensil/fork{
@@ -2668,7 +2766,8 @@
 /area/yautja)
 "Zu" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /obj/item/alien_embryo,
 /turf/open/floor/corsat{
@@ -2688,7 +2787,8 @@
 /area/yautja)
 "ZM" = (
 /obj/structure/table/mainship{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;

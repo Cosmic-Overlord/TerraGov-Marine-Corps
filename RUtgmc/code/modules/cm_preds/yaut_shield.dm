@@ -19,6 +19,7 @@
 
 	var/readied_slowdown = 0.20 // Walking around in a readied shield stance slows you! The armor defs are a useful existing reference point.
 	var/shield_readied = FALSE
+	var/blocks_on_back = FALSE
 
 	max_integrity = 400
 	integrity_failure = 0

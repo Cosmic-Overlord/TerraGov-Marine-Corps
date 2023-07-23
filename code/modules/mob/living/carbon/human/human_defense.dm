@@ -80,7 +80,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/list/body_parts = list(head, wear_mask, wear_suit ) /* w_uniform, gloves, shoes*/ //We don't need to check these for heads.
 	for(var/bp in body_parts)
 		if(!bp)	continue
-		if(bp && istype(bp ,/obj/item/clothing))
+		if(bp && istype(bp , /obj/item/clothing))
 			var/obj/item/clothing/C = bp
 			if(C.flags_armor_protection & HEAD)
 				return 1
@@ -140,6 +140,9 @@ Contains most of the procs that are called when a mob is attacked by something
 		log_combat(user, src, "attacked", I, "(FAILED: target limb missing) (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(I.damtype)])")
 		return FALSE
 	var/hit_area = affecting.display_name
+
+	if((user != src) && check_pred_shields(I.force, "the [I.name]"))
+		return FALSE
 
 	var/damage = I.force + round(I.force * 0.3 * user.skills.getRating(SKILL_MELEE_WEAPONS)) //30% bonus per melee level
 	if(user != src)
@@ -243,6 +246,63 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	return TRUE
 
+/mob/living/carbon/human/proc/check_pred_shields(damage = 0, attack_text = "the attack", combistick=0)
+	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
+		if(combistick && istype(l_hand, /obj/item/weapon/yautja/combistick) && prob(66))
+			var/obj/item/weapon/yautja/combistick/C = l_hand
+			if(C.on)
+				return TRUE
+
+		if(istype(l_hand, /obj/item/weapon/shield/riot/yautja)) // Activable shields
+			var/obj/item/weapon/shield/riot/yautja/S = l_hand
+			var/shield_blocked_l = FALSE
+			if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
+				S.lower_shield(src)
+				shield_blocked_l = TRUE
+			else if(prob(S.passive_block))
+				shield_blocked_l = TRUE
+
+			if(shield_blocked_l)
+				visible_message(span_danger("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
+				return TRUE
+			// We cannot return FALSE on fail here, because we haven't checked r_hand yet. Dual-wielding shields perhaps!
+
+		var/obj/item/weapon/I = l_hand
+		if(!istype(I, /obj/item/weapon/shield/riot/yautja) && (prob(50 - round(damage / 3)))) // 'other' shields, like predweapons. Make sure that item/weapon/shield does not apply here, no double-rolls.
+			visible_message(span_danger("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
+			return TRUE
+
+	if(r_hand && istype(r_hand, /obj/item/weapon))
+		if(combistick && istype(r_hand, /obj/item/weapon/yautja/combistick) && prob(66))
+			var/obj/item/weapon/yautja/combistick/C = r_hand
+			if(C.on)
+				return TRUE
+
+		if(istype(r_hand, /obj/item/weapon/shield/riot/yautja)) // Activable shields
+			var/obj/item/weapon/shield/riot/yautja/S = r_hand
+			var/shield_blocked_r = FALSE
+			if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
+				shield_blocked_r = TRUE
+				S.lower_shield(src)
+			else if(prob(S.passive_block))
+				shield_blocked_r = TRUE
+
+			if(shield_blocked_r)
+				visible_message(span_danger("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
+				return TRUE
+
+		var/obj/item/weapon/I = r_hand
+		if(!istype(I, /obj/item/weapon/shield/riot/yautja) && (prob(50 - round(damage / 3)))) // other shields. Don't doublecheck activable here.
+			visible_message(span_danger("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
+			return TRUE
+
+	if(back && istype(back, /obj/item/weapon/shield/riot/yautja) && prob(20))
+		var/obj/item/weapon/shield/riot/yautja/shield = back
+		if(shield.blocks_on_back)
+			visible_message(span_danger("<B>The [back] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
+			return TRUE
+
+	return FALSE
 
 //this proc handles being hit by a thrown item
 /mob/living/carbon/human/hitby(atom/movable/AM, speed = 5)
@@ -292,6 +352,9 @@ Contains most of the procs that are called when a mob is attacked by something
 			if(living_thrower)
 				log_combat(living_thrower, src, "thrown at", thrown_item, "(FAILED: shield blocked)")
 			return
+
+	if((living_thrower != src) && check_pred_shields(throw_damage, "[thrown_item]"))
+		return
 
 	var/datum/limb/affecting = get_limb(zone)
 

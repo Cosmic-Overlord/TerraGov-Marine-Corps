@@ -33,7 +33,7 @@ export const Sleeper = () => {
 
 const SleeperContent = (props, context) => {
   const { act, data } = useBackend(context);
-  const { hasOccupant, occupant, chemicals, amounts, stasis, filter} = data;
+  const { hasOccupant, occupant, chemicals, amounts, stasis, filter } = data;
   return (
     <>
       <Section title="Occupant">
@@ -92,8 +92,7 @@ const SleeperContent = (props, context) => {
         <Section title="Chemicals">
           <LabeledList>
             {chemicals.map((chemical) => (
-              <>
-                <LabeledList.Item label={chemical.title}>
+              <LabeledList.Item label={chemical.title}>
                   <Box>
                     <ProgressBar
                       value={chemical.amount / 20}
@@ -108,13 +107,12 @@ const SleeperContent = (props, context) => {
                         content={a + "u"}
                         onClick={() => act('inject', {
                           chempath: chemical.path,
-                          amount: a
+                          amount: a,
                         })}
                       />
                     ))}
                   </Box>
-                </LabeledList.Item>
-              </>
+              </LabeledList.Item>
             ))}
           </LabeledList>
         </Section>

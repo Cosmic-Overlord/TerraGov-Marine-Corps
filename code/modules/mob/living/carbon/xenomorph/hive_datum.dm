@@ -1557,6 +1557,15 @@ to_chat will check for valid clients itself already so no need to double check f
 /mob/living/carbon/xenomorph/king/Corrupted/fallen
 	hivenumber = XENO_HIVE_FALLEN
 
+/datum/hive_status/yautja
+	name = "Yautja"
+	hivenumber = XENO_HIVE_YAUTJA
+	prefix = "Yautja "
+	color = "#248c28"
+
+/datum/hive_status/yautja/can_xeno_message()
+	return FALSE
+
 // ***************************************
 // *********** Xeno hive compare helpers
 // ***************************************

@@ -845,6 +845,9 @@
 	src.bonus_damage = bonus_damage
 	src.bonus_speed = bonus_speed
 
+
+	X.add_filter("overbonus_vis", 1, outline_filter(4 * (bonus_damage / 50), "#cf0b0b60")); \
+
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), ttl)
 
 /datum/status_effect/xeno_buff/Destroy()
@@ -855,5 +858,7 @@
 		X.melee_damage -= bonus_damage
 
 		X.xeno_caste.speed += bonus_speed
+
+		X.remove_filter("overbonus_vis");
 
 	. = ..()

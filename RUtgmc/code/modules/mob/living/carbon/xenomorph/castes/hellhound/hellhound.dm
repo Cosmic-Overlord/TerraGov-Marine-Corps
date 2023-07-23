@@ -29,7 +29,6 @@
 	// *** Abilities *** ///
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/activable/psydrain,
 		/datum/action/xeno_action/xenohide,
 		/datum/action/xeno_action/activable/pounce/predalien,
 	)
@@ -51,6 +50,8 @@
 	pull_speed = -0.5
 
 	mob_size = MOB_SIZE_XENO
+
+	hivenumber = XENO_HIVE_YAUTJA
 
 /mob/living/carbon/xenomorph/hellhound/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
 	. = ..(mapload, oldXeno, h_number || XENO_HIVE_YAUTJA)

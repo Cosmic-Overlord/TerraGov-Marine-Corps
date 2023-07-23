@@ -676,6 +676,11 @@
 	)
 	default_ammo_type = null
 
+	flags_gun_features = GUN_AMMO_COUNTER|GUN_NO_PITCH_SHIFT_NEAR_EMPTY|GUN_ENERGY|GUN_AMMO_COUNT_BY_PERCENTAGE
+
+/obj/item/weapon/gun/energy/yautja/update_ammo_count()
+	gun_user?.hud_used.update_ammo_hud(src, get_ammo_list(), get_display_ammo_count())
+
 //Spike launcher
 /obj/item/weapon/gun/energy/yautja/spike
 	name = "spike launcher"
@@ -941,6 +946,9 @@
 	var/mode = "stun"//fire mode (stun/lethal)
 	var/strength = "low power stun bolts"//what it's shooting
 
+	var/mob/living/carbon/laser_target = null
+	var/image/LT = null
+
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
 	icon_state = "[initial_icon_state]_[caster_material]"
 	item_state = "[initial_icon_state]_[caster_material]"
@@ -951,6 +959,8 @@
 	verbs -= /obj/item/weapon/gun/verb/toggle_burstfire
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 	RegisterSignal(src, COMSIG_ITEM_MIDDLECLICKON, PROC_REF(target_action))
+
+	LT = image("icon" = 'icons/obj/items/projectiles.dmi', "icon_state" = "sniper_laser", "layer" =- PRED_LASER_LAYER)
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Destroy()
 	. = ..()
@@ -1052,7 +1062,104 @@
 		in_chamber = get_ammo_object()
 		return in_chamber
 
+/atom/proc/apply_pred_laser()
+	return FALSE
+
+/mob/living/carbon/human/apply_pred_laser()
+	overlays_standing[PRED_LASER_LAYER] = image("icon" = 'icons/obj/items/projectiles.dmi',"icon_state" = "sniper_laser", "layer" =- PRED_LASER_LAYER)
+	apply_overlay(PRED_LASER_LAYER)
+	return TRUE
+
+/mob/living/carbon/xenomorph/apply_pred_laser()
+	overlays_standing[X_PRED_LASER_LAYER] = image("icon" = 'icons/obj/items/projectiles.dmi',"icon_state" = "sniper_laser", "layer" =- X_PRED_LASER_LAYER)
+	apply_overlay(X_PRED_LASER_LAYER)
+	return TRUE
+
+/mob/living/carbon/proc/remove_pred_laser()
+	return FALSE
+
+/mob/living/carbon/human/remove_pred_laser()
+	remove_overlay(PRED_LASER_LAYER)
+	return TRUE
+
+/mob/living/carbon/xenomorph/remove_pred_laser()
+	remove_overlay(X_PRED_LASER_LAYER)
+	return TRUE
+
+/obj/item/weapon/gun/energy/yautja/plasma_caster/dropped()
+	laser_off()
+	. = ..()
+
+/obj/item/weapon/gun/energy/yautja/plasma_caster/process()
+	var/obj/item/attachable/scope = LAZYACCESS(attachments_by_slot, ATTACHMENT_SLOT_RAIL)
+	var/mob/living/user = loc
+	if(!istype(user))
+		laser_off()
+		return
+	if(!laser_target)
+		laser_off(user)
+		playsound(user,'sound/machines/click.ogg', 25, 1)
+		return
+	if(!line_of_sight(user, laser_target, 24))
+		laser_off()
+		to_chat(user, span_danger("You lose sight of your target!"))
+		playsound(user,'sound/machines/click.ogg', 25, 1)
+
+/obj/item/weapon/gun/energy/yautja/plasma_caster/do_fire(obj/object_to_fire)
+	if(!QDELETED(laser_target))
+		target = laser_target
+	return ..()
+
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/target_action(datum/source, atom/A)
+	if(!istype(A, /mob/living/carbon))
+		deactivate_laser_target()
+	else if(A == laser_target)
+		deactivate_laser_target()
+	else
+		activate_laser_target(A, usr)
+
+/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/activate_laser_target(atom/target, mob/living/user)
+	target.apply_laser()
+	laser_target = target
+	to_chat(user, span_danger("You focus your target marker on [target]!"))
+	RegisterSignal(src, COMSIG_PROJ_SCANTURF, PROC_REF(scan_turf_for_target))
+	START_PROCESSING(SSobj, src)
+	accuracy_mult += 0.50 //We get a big accuracy bonus vs the lasered target
+
+/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/scan_turf_for_target(datum/source, turf/target_turf)
+	SIGNAL_HANDLER
+	if(QDELETED(laser_target) || !isturf(laser_target.loc))
+		return NONE
+	if(get_turf(laser_target) == target_turf)
+		return COMPONENT_PROJ_SCANTURF_TARGETFOUND
+	return COMPONENT_PROJ_SCANTURF_TURFCLEAR
+
+/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/deactivate_laser_target()
+	UnregisterSignal(src, COMSIG_PROJ_SCANTURF)
+	laser_target.remove_pred_laser()
+	laser_target = null
+
+/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/laser_on(mob/user)
+	RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(laser_off))
+	if(user?.client)
+		user.client.click_intercept = src
+		to_chat(user, span_notice("<b>You activate your target marker and take careful aim.</b>"))
+		playsound(user,'sound/machines/click.ogg', 25, 1)
+	return TRUE
+
+/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/laser_off(datum/source, mob/user)
+	SIGNAL_HANDLER
+	if(laser_target)
+		deactivate_laser_target()
+		accuracy_mult -= 0.50 //We lose a big accuracy bonus vs the now unlasered target
+		STOP_PROCESSING(SSobj, src)
+	if(user)
+		UnregisterSignal(src, COMSIG_ITEM_UNEQUIPPED)
+	if(user?.client)
+		user.client.click_intercept = null
+		to_chat(user, span_notice("<b>You deactivate your target marker.</b>"))
+		playsound(user,'sound/machines/click.ogg', 25, 1)
+	return TRUE
 
 
 #undef FLAY_STAGE_SCALP

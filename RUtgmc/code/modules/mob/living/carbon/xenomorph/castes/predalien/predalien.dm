@@ -37,7 +37,6 @@
 		/datum/action/xeno_action/activable/predalien_roar,
 		/datum/action/xeno_action/activable/smash,
 		/datum/action/xeno_action/activable/devastate,
-
 	)
 
 /mob/living/carbon/xenomorph/predalien

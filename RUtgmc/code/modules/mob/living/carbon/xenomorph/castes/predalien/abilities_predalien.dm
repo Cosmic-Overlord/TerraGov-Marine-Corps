@@ -5,6 +5,7 @@
 	name = "Leap"
 
 	range = 5
+	mob_hit_sound = 'sound/voice/predalien_pounce.ogg'
 
 	var/base_damage = 25
 	var/damage_scale = 10 // How much it scales by every kill
@@ -13,10 +14,6 @@
 	. = ..()
 	var/mob/living/carbon/xenomorph/predalien/xeno = owner
 	M.apply_damage(base_damage + damage_scale * xeno.life_kills_total, BRUTE, "chest", MELEE, FALSE, FALSE, TRUE, 20)
-
-/datum/action/xeno_action/activable/pounce/predalien/prepare_to_pounce()
-	. = ..()
-	playsound(owner, 'sound/voice/predalien_pounce.ogg', 75, 0)
 
 // ***************************************
 // *********** Roar
@@ -58,7 +55,6 @@
 			var/mob/living/carbon/xenomorph/xeno_target = carbon
 			if(xeno_target.stat == DEAD)
 				continue
-			adjustOverheal(xeno_target, 25 * xeno.life_kills_total)
 			new /datum/status_effect/xeno_buff(xeno_target, xeno, ttl = (0.25 SECONDS * xeno.life_kills_total + 3 SECONDS), bonus_damage = bonus_damage_scale * xeno.life_kills_total, bonus_speed = (bonus_speed_scale * xeno.life_kills_total))
 
 	for(var/mob/M in view(xeno))
@@ -83,8 +79,6 @@
 	plasma_cost = 80
 
 	var/freeze_duration = 1.5 SECONDS
-
-	var/activation_delay = 1 SECONDS
 	var/smash_sounds = list('sound/effects/alien_footstep_charge1.ogg', 'sound/effects/alien_footstep_charge2.ogg', 'sound/effects/alien_footstep_charge3.ogg')
 
 /datum/action/xeno_action/activable/smash/can_use_ability(atom/target, silent = FALSE, override_flags)
@@ -109,16 +103,6 @@
 
 /datum/action/xeno_action/activable/smash/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/predalien/xeno = owner
-
-	if(!do_after(xeno, activation_delay, TRUE, target, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
-		to_chat(xeno, "Keep still whilst trying to smash into the ground")
-
-		var/real_cooldown = cooldown_timer
-
-		cooldown_timer = 3 SECONDS
-		add_cooldown()
-		cooldown_timer = real_cooldown
-		return
 
 	playsound(xeno.loc, pick(smash_sounds), 50, 0)
 	xeno.visible_message(span_xenohighdanger("[xeno] smashes into the ground!"))

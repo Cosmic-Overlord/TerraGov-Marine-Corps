@@ -405,6 +405,7 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 
 
 // Human Overlay Indexes
+#define PRED_LASER_LAYER 30
 #define LASER_LAYER 29 //For sniper targeting laser
 #define FLAY_LAYER 28
 #define MOTH_WINGS_LAYER 27

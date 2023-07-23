@@ -698,8 +698,8 @@
 	ammo_datum_type = /datum/ammo/alloy_spike
 	flags_equip_slot = ITEM_SLOT_BELT|ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY //Fits in yautja bags.
-	var/spikes = 12
-	var/max_spikes = 12
+	rounds = 12
+	max_rounds = 12
 	var/last_regen
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
@@ -712,8 +712,8 @@
 	damage_mult = 1
 
 /obj/item/weapon/gun/energy/yautja/spike/process()
-	if(spikes < max_spikes && world.time > last_regen + 100 && prob(70))
-		spikes++
+	if(rounds < max_rounds && world.time > last_regen + 100 && prob(70))
+		rounds++
 		last_regen = world.time
 		update_icon()
 
@@ -729,14 +729,14 @@
 /obj/item/weapon/gun/energy/yautja/spike/examine(mob/user)
 	if(isyautja(user))
 		. = ..()
-		. += span_notice("It currently has <b>[spikes]/[max_spikes]</b> spikes.")
+		. += span_notice("It currently has <b>[rounds]/[max_rounds]</b> spikes.")
 	else
 		. = list()
 		. += span_notice("Looks like some kind of...mechanical donut.")
 
 /obj/item/weapon/gun/energy/yautja/spike/update_icon()
 	..()
-	var/new_icon_state = spikes <=1 ? null : icon_state + "[round(spikes/4, 1)]"
+	var/new_icon_state = rounds <= 1 ? null : icon_state + "[round(rounds / (max_rounds / 3), 1)]"
 	update_special_overlay(new_icon_state)
 
 /obj/item/weapon/gun/energy/yautja/spike/able_to_fire(mob/user)
@@ -747,9 +747,9 @@
 	return ..()
 
 /obj/item/weapon/gun/energy/yautja/spike/cycle()
-	if(spikes > 0)
+	if(rounds > 0)
 		in_chamber = get_ammo_object()
-		spikes--
+		rounds--
 		return in_chamber
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
@@ -765,7 +765,9 @@
 	zoomdevicename = "scope"
 	flags_equip_slot = SLOT_BACK
 	w_class = WEIGHT_CLASS_GIGANTIC
-	var/charge_time = 0
+	rounds = 100
+	max_rounds = 100
+	charge_cost = 10
 	var/last_regen = 0
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
@@ -788,25 +790,25 @@
 	verbs -= /obj/item/weapon/gun/verb/use_unique_action
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/process()
-	if(charge_time < 100)
-		charge_time++
-		if(charge_time == 99)
+	if(rounds < max_rounds)
+		rounds++
+		if(rounds == max_rounds)
 			if(ismob(loc)) to_chat(loc, span_notice("[src] hums as it achieves maximum charge."))
 		update_icon()
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/examine(mob/user)
 	if(isyautja(user))
 		. = ..()
-		. += span_notice("It currently has <b>[charge_time]/100</b> charge.")
+		. += span_notice("It currently has <b>[rounds]/[max_rounds]</b> charge.")
 	else
 		. = list()
 		. += span_notice("This thing looks like an alien rifle of some kind. Strange.")
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/update_icon()
-	if(last_regen < charge_time + 20 || last_regen > charge_time || charge_time > 95)
-		var/new_icon_state = charge_time <= 15 ? null : icon_state + "[round(charge_time/33, 1)]"
+	if(last_regen < rounds + max_rounds / 5 || last_regen > rounds || rounds > max_rounds / 1.05)
+		var/new_icon_state = rounds <= 15 ? null : icon_state + "[round(rounds/(max_rounds / 3), 1)]"
 		update_special_overlay(new_icon_state)
-		last_regen = charge_time
+		last_regen = rounds
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/able_to_fire(mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
@@ -816,15 +818,15 @@
 	return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/cycle()
-	if(charge_time < 10)
+	if(rounds < charge_cost)
 		return
 
-	if(charge_time >= 80)
+	if(rounds >= charge_cost * 8)
 		ammo_datum_type = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/blast]
-		charge_time = 0
+		rounds -= charge_cost * 8
 	else
 		ammo_datum_type = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
-		charge_time -= 10
+		rounds -= charge_cost
 	var/obj/projectile/proj = get_ammo_object()
 	in_chamber = proj
 	return in_chamber
@@ -842,7 +844,9 @@
 	muzzle_flash = "muzzle_flash_laser"
 	muzzle_flash_color = COLOR_MAGENTA
 	w_class = WEIGHT_CLASS_BULKY
-	var/charge_time = 40
+	rounds = 40
+	max_rounds = 40
+	charge_cost = 1
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|TWOHANDED
 
@@ -868,16 +872,16 @@
 
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/process()
-	if(charge_time < 40)
-		charge_time += 0.25
-		if(charge_time == 39)
+	if(rounds < max_rounds)
+		rounds += 0.25
+		if(rounds == max_rounds)
 			if(ismob(loc)) to_chat(loc, span_notice("[src] hums as it achieves maximum charge."))
 
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/examine(mob/user)
 	if(isyautja(user))
 		. = ..()
-		. += span_notice("It currently has <b>[charge_time]/40</b> charge.")
+		. += span_notice("It currently has <b>[rounds]/[max_rounds]</b> charge.")
 	else
 		. = list()
 		. += span_notice("This thing looks like an alien rifle of some kind. Strange.")
@@ -891,11 +895,11 @@
 		return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/cycle()
-	if(charge_time < 1)
+	if(rounds < charge_cost)
 		return
 	var/obj/projectile/proj = get_ammo_object()
 	in_chamber = proj
-	charge_time--
+	rounds -= charge_cost
 	return in_chamber
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster

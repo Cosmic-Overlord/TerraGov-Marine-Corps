@@ -63,7 +63,6 @@
 	siemens_coefficient = 0.1
 	allowed = list(
 		/obj/item/weapon/harpoon,
-		/obj/item/weapon/gun/energy/yautja/spike,
 		/obj/item/weapon/gun/energy/yautja,
 		/obj/item/weapon/yautja,
 		/obj/item/weapon/twohanded/yautja,
@@ -128,7 +127,6 @@
 	item_state_slots = list(slot_wear_suit_str = "fullarmor")
 	allowed = list(
 		/obj/item/weapon/harpoon,
-		/obj/item/weapon/gun/energy/yautja/spike,
 		/obj/item/weapon/gun/energy/yautja,
 		/obj/item/weapon/yautja,
 		/obj/item/storage/backpack/yautja,
@@ -829,7 +827,6 @@
 	siemens_coefficient = 0.1
 	allowed = list(
 		/obj/item/weapon/harpoon,
-		/obj/item/weapon/gun/energy/yautja/spike,
 		/obj/item/weapon/gun/energy/yautja,
 		/obj/item/weapon/yautja,
 		/obj/item/weapon/twohanded/yautja,

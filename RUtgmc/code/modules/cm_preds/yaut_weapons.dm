@@ -690,7 +690,7 @@
 /obj/item/weapon/gun/energy/yautja/update_ammo_count()
 	gun_user?.hud_used.update_ammo_hud(src, get_ammo_list(), get_display_ammo_count())
 
-/obj/item/weapon/gun/energy/yautja/unload()
+/obj/item/weapon/gun/energy/yautja/unload(mob/living/user, drop = TRUE, after_fire = FALSE)
 	return
 
 //Spike launcher

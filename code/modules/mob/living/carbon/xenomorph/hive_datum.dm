@@ -1561,7 +1561,6 @@ to_chat will check for valid clients itself already so no need to double check f
 	name = "Yautja"
 	hivenumber = XENO_HIVE_YAUTJA
 	prefix = "Yautja "
-	color = "#248c28"
 
 /datum/hive_status/yautja/can_xeno_message()
 	return FALSE

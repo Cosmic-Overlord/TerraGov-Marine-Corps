@@ -6,21 +6,10 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	purge_list = list(/datum/reagent/medicine, /datum/reagent/toxin, /datum/reagent/zombium)
 	trait_flags = TACHYCARDIC
-/*
-	properties = list(
-		PROPERTY_CROSSMETABOLIZING = 1,
-		PROPERTY_ANTITOXIC = 1,
-		PROPERTY_YAUTJA_HEMOGENIC = 9,
-		PROPERTY_OXYGENATING = 6,
-		PROPERTY_ANTICARCINOGENIC = 6,
-		PROPERTY_BONEMENDING = 6,
-		PROPERTY_AIDING = 1,
-		PROPERTY_ANTIHALLUCINOGENIC = 2,
-		PROPERTY_FOCUSING = 6,
-		PROPERTY_CURING = 4,
-	)*/
 
 /datum/reagent/thwei/on_mob_add(mob/living/L, metabolism)
+	if(!isyautja(L))
+		return
 	to_chat(L, span_userdanger("You feel revitalized!"))
 
 /datum/reagent/thwei/on_mob_life(mob/living/L, metabolism)
@@ -48,4 +37,6 @@
 	return ..()
 
 /datum/reagent/thwei/on_mob_delete(mob/living/L, metabolism)
+	if(!isyautja(L))
+		return
 	to_chat(L, span_userdanger("You feel thwei powers wearing off!"))

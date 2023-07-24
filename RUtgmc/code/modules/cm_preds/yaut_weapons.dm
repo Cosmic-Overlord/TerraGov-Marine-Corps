@@ -1060,6 +1060,9 @@
 	. = ..()
 	source = null
 
+/obj/item/weapon/gun/energy/yautja/plasma_caster/get_display_ammo_count()
+	return source.charge / source.charge_max * 100
+
 /obj/item/weapon/gun/energy/yautja/plasma_caster/change_ammo_type(mob/user)
 	var/list/available_modes = list()
 	for(var/proj_mode in modes)

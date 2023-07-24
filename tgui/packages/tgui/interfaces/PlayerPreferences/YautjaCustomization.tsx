@@ -142,6 +142,6 @@ export const YautjaCustomization = (props, context) => {
       </Section>
     </>
   ) : (
-    <Box>WL requered</Box>
+    <Box>WL required</Box>
   );
 };

@@ -3069,6 +3069,23 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	hud_state = "plasma"
 	hud_state_empty = "electrothermal_empty"
 
+/datum/ammo/energy/yautja/alloy_spike
+	name = "alloy spike"
+	ping = "ping_s"
+	icon_state = "MSpearFlight"
+	hud_state = "alloy_spike"
+	sound_hit = "alloy_hit"
+	sound_armor = "alloy_armor"
+	sound_bounce = "alloy_bounce"
+	bullet_color = COLOR_MAGENTA
+	armor_type = BULLET
+	accuracy = 20
+	accurate_range = 15
+	max_range = 15
+	damage = 40
+	penetration = 50
+	shrapnel_chance = 75
+
 /datum/ammo/energy/yautja/pistol
 	name = "plasma pistol bolt"
 	icon_state = "ion"
@@ -3855,22 +3872,6 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	damage = 40
 	drain_multiplier = 0.03
 	plasma_drain = 15
-
-/datum/ammo/alloy_spike
-	name = "alloy spike"
-	ping = "ping_s"
-	icon_state = "MSpearFlight"
-	sound_hit = "alloy_hit"
-	sound_armor = "alloy_armor"
-	sound_bounce = "alloy_bounce"
-	bullet_color = COLOR_MAGENTA
-	armor_type = BULLET
-	accuracy = 20
-	accurate_range = 15
-	max_range = 15
-	damage = 40
-	penetration = 50
-	shrapnel_chance = 75
 
 /datum/ammo/flamethrower
 	name = "flame"

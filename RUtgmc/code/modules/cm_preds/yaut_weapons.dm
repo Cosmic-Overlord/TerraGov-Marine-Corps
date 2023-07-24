@@ -59,24 +59,38 @@
 	w_class = WEIGHT_CLASS_GIGANTIC
 	edge = TRUE
 	sharp = IS_SHARP_ITEM_ACCURATE
-	flags_item = NODROP|ITEM_PREDATOR
+	flags_item = ITEM_PREDATOR
 	flags_equip_slot = NONE
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6
-	force = 40
+	force = 30
 	pry_capable = IS_PRY_CAPABLE_FORCE
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 
+	var/obj/item/clothing/gloves/yautja/hunter/source
 	var/has_speed_bonus = TRUE
+
+/obj/item/weapon/wristblades/Initialize(mapload)
+	. = ..()
+	source = loc
+	if(!istype(source))
+		qdel(src)
 
 /obj/item/weapon/wristblades/equipped(mob/user, slot)
 	. = ..()
-	if(has_speed_bonus && (slot == slot_l_store_str || slot == slot_r_store_str) && istype(user.get_inactive_held_item(), /obj/item/weapon/wristblades))
-		attack_speed = initial(attack_speed) - 2
+	if(slot == SLOT_L_HAND || slot == SLOT_R_HAND)
+		if(has_speed_bonus && istype(user.get_inactive_held_item(), /obj/item/weapon/wristblades))
+			attack_speed = initial(attack_speed) - 2
+	else
+		forceMove(source)
+		attack_speed = initial(attack_speed)
 
 /obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
-	. = ..()
-	attack_speed = initial(attack_speed)
+	if(source)
+		forceMove(source)
+		attack_speed = initial(attack_speed)
+		return
+	..()
 
 /obj/item/weapon/wristblades/afterattack(atom/attacked_target, mob/user, proximity)
 	if(!proximity || !user)
@@ -123,7 +137,7 @@
 	item_state = "scim"
 	attack_speed = 5
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
-	force = 25
+	force = 40
 
 /*#########################################
 ########### One Handed Weapons ############
@@ -1059,6 +1073,8 @@
 	item_state_slots[slot_s_store_str] = "[base_item_state]_off_[caster_material]"
 	. = ..()
 	source = loc
+	if(!istype(source))
+		qdel(src)
 	verbs -= /obj/item/weapon/gun/verb/toggle_burstfire
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 	RegisterSignal(src, COMSIG_ITEM_MIDDLECLICKON, PROC_REF(target_action))

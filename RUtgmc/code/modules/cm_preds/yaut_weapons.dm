@@ -759,6 +759,9 @@
 /obj/item/weapon/gun/energy/yautja/update_ammo_count()
 	gun_user?.hud_used.update_ammo_hud(src, get_ammo_list(), get_display_ammo_count())
 
+/obj/item/weapon/gun/energy/yautja/get_display_ammo_count()
+	return round(rounds / rounds_per_shot, 1)
+
 /obj/item/weapon/gun/energy/yautja/unload(mob/living/user, drop = TRUE, after_fire = FALSE)
 	return
 
@@ -817,6 +820,9 @@
 	START_PROCESSING(SSobj, src)
 	last_regen = world.time
 	update_icon()
+
+/obj/item/weapon/gun/energy/yautja/spike/get_display_ammo_count()
+	return rounds
 
 /obj/item/weapon/gun/energy/yautja/spike/process()
 	if(rounds < max_rounds && world.time > last_regen + 100 && prob(70))
@@ -1061,7 +1067,7 @@
 	source = null
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/get_display_ammo_count()
-	return source.charge / source.charge_max * 100
+	return round(source.charge / source.charge_max * 100, 1)
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/change_ammo_type(mob/user)
 	var/list/available_modes = list()
@@ -1125,12 +1131,12 @@
 	return FALSE
 
 /mob/living/carbon/human/apply_pred_laser()
-	overlays_standing[PRED_LASER_LAYER] = image("icon" = 'icons/obj/items/projectiles.dmi',"icon_state" = "sniper_laser", "layer" =-PRED_LASER_LAYER)
+	overlays_standing[PRED_LASER_LAYER] = image("icon" = 'icons/obj/items/projectiles.dmi',"icon_state" = "sniper_laser", "layer" = PRED_LASER_LAYER)
 	apply_overlay(PRED_LASER_LAYER)
 	return TRUE
 
 /mob/living/carbon/xenomorph/apply_pred_laser()
-	overlays_standing[X_PRED_LASER_LAYER] = image("icon" = 'icons/obj/items/projectiles.dmi',"icon_state" = "sniper_laser", "layer" =-X_PRED_LASER_LAYER)
+	overlays_standing[X_PRED_LASER_LAYER] = image("icon" = 'icons/obj/items/projectiles.dmi',"icon_state" = "sniper_laser", "layer" = X_PRED_LASER_LAYER)
 	apply_overlay(X_PRED_LASER_LAYER)
 	return TRUE
 

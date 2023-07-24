@@ -408,8 +408,11 @@
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	actions_types = list(/datum/action/item_action)
 	resistance_flags = UNACIDABLE
+
+/obj/item/weapon/yautja/combistick/Initialize()
+	. = ..()
+	AddElement(/datum/element/shrapnel_removal, 4 SECONDS, TRUE)
 
 /obj/item/weapon/yautja/knife/attack(mob/living/target, mob/living/carbon/human/user)
 	if(target.stat != DEAD)

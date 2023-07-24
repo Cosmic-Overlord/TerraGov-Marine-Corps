@@ -822,10 +822,18 @@
 	rotation = 0
 	spin = 0
 
+// ***************************************
+// *********** Buff
+// ***************************************
+/atom/movable/screen/alert/status_effect/xeno_buff
+	name = "Empowered"
+	desc = "Your damage ands speed boosted for short time period."
+
 /datum/status_effect/xeno_buff
 	id = "buff"
 	duration = -1
 	status_type = STATUS_EFFECT_MULTIPLE
+	alert_type = /atom/movable/screen/alert/status_effect/xeno_buff
 
 	var/bonus_damage = 0
 	var/bonus_speed = 0

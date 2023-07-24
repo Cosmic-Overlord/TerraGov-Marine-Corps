@@ -1,12 +1,14 @@
 /datum/element/shrapnel_removal
 	element_flags = ELEMENT_BESPOKE
 	argument_hash_start_idx = 2
+	var/self_use
 	var/do_after_time
 
-/datum/element/shrapnel_removal/Attach(datum/target, duration)
+/datum/element/shrapnel_removal/Attach(datum/target, duration, only_self = FALSE)
 	. = ..()
 	if(!isitem(target) || (duration < 1))
 		return ELEMENT_INCOMPATIBLE
+	self_use = only_self
 	do_after_time = duration
 	RegisterSignal(target, COMSIG_ITEM_ATTACK, PROC_REF(on_attack))
 
@@ -20,6 +22,8 @@
 	return COMPONENT_ITEM_NO_ATTACK
 
 /datum/element/shrapnel_removal/proc/attempt_remove(obj/item/removaltool, mob/living/M, mob/living/user)
+	if(self_use && M != user)
+		return
 	if(!ishuman(M))
 		M.balloon_alert(user, "You only know how to remove shrapnel from humans!")
 		return

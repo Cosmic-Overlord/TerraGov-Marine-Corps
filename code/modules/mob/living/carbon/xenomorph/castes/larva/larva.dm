@@ -106,3 +106,35 @@
 	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
 	hunter_data.dishonored_set = src
 	hud_set_hunter()
+
+// ***************************************
+// *********** Name
+// ***************************************
+/mob/living/carbon/xenomorph/larva/predalien/generate_name()
+	name = "[hive.prefix] Predalien Larva ([nicknumber])"
+
+	//Update linked data so they show up properly
+	real_name = name
+	if(mind)
+		mind.name = name //This gives them the proper name in deadchat if they explode on death. It's always the small things
+
+// ***************************************
+// *********** Icon
+// ***************************************
+/mob/living/carbon/xenomorph/larva/predalien/update_icons()
+	generate_name()
+
+	color = hive.color
+
+	if(stat == DEAD)
+		icon_state = "[base_icon_state] Dead"
+	else if(handcuffed)
+		icon_state = "[base_icon_state] Cuff"
+
+	else if(lying_angle)
+		if((resting || IsSleeping()) && (!IsParalyzed() && !IsUnconscious() && health > 0))
+			icon_state = "[base_icon_state] Sleeping"
+		else
+			icon_state = "[base_icon_state] Stunned"
+	else
+		icon_state = "[base_icon_state]"

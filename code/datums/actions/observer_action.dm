@@ -160,7 +160,7 @@
 
 /datum/action/join_predator
 	name = "Join the Hunt"
-	action_icon_state = "join_pred"
+	action_icon_state = "pred_ghost"
 
 /datum/action/join_predator/action_activate()
 	var/mob/dead/observer/activator = owner

@@ -128,11 +128,12 @@
 	H.equip_to_slot_or_del(new /obj/item/flashlight/lantern(H), SLOT_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/yautja_teleporter(H), SLOT_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(H), SLOT_BELT)
-	H.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(H), SLOT_IN_BELT)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/yautja/hunter/knife(H, boot_number, greave_material), SLOT_SHOES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter(H, armor_number, armor_material), SLOT_WEAR_SUIT)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(H, mask_number, mask_material), SLOT_WEAR_MASK)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(H), SLOT_IN_BELT)
 
 	var/cape_path = GLOB.all_yautja_capes[cape_type]
 	if(ispath(cape_path))

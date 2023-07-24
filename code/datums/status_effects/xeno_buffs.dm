@@ -825,15 +825,17 @@
 /datum/status_effect/xeno_buff
 	id = "buff"
 	duration = -1
+	status_type = STATUS_EFFECT_MULTIPLE
 
 	var/bonus_damage = 0
 	var/bonus_speed = 0
 
-/datum/status_effect/xeno_buff/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest", ttl = 35, bonus_damage = 0, bonus_speed = 0)
-	. = ..(A, from, last_dmg_source, zone)
-
+/datum/status_effect/xeno_buff/on_creation(atom/A, mob/from = null, ttl = 35, bonus_damage = 0, bonus_speed = 0)
 	if(!isxeno(A))
 		qdel(src)
+		return
+
+	. = ..()
 
 	to_chat(A, span_xenonotice("You feel empowered"))
 

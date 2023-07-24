@@ -98,6 +98,7 @@
 /mob/living/carbon/xenomorph/larva/predalien
 	icon = 'icons/Xeno/predalien_larva.dmi'
 	icon_state = "Predalien Larva"
+	base_icon_state = "Predalien Larva"
 	caste_base_type = /mob/living/carbon/xenomorph/larva/predalien
 
 /mob/living/carbon/xenomorph/larva/predalien/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)

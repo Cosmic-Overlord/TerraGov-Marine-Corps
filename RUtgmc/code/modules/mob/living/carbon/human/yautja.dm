@@ -1,4 +1,5 @@
-/mob/living/carbon/human/yautja/chat_color = "#aa0000"
+/mob/living/carbon/human/yautja
+	chat_color = "#aa0000"
 
 /datum/species/yautja
 	name = "Yautja"

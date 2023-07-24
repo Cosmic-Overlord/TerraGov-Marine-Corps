@@ -424,7 +424,7 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	resistance_flags = UNACIDABLE
 
-/obj/item/weapon/yautja/knife /Initialize()
+/obj/item/weapon/yautja/knife/Initialize()
 	. = ..()
 	AddElement(/datum/element/shrapnel_removal, 4 SECONDS, TRUE)
 

@@ -115,6 +115,7 @@
 		return
 	var/obj/item/tool/surgery/healing_gun/gun = tool
 	gun.loaded = FALSE
+	gun.update_icon()
 
 /datum/surgery_step/mcomp_wounds/mtend_wounds/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	return FALSE

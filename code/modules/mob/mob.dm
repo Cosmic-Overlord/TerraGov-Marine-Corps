@@ -464,6 +464,9 @@
 			to_chat(src, span_warning("Cannot grab, lacking free hands to do so!"))
 		return FALSE
 
+	if(SEND_SIGNAL(AM, COMSIG_ATTEMPT_MOB_PULL) & COMPONENT_CANCEL_MOB_PULL)
+		return FALSE
+
 	AM.add_fingerprint(src, "pull")
 
 	changeNext_move(CLICK_CD_GRABBING)

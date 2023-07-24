@@ -450,7 +450,7 @@
 		to_chat(user, span_warning("You can't flay metal...")) //look at this dumbass
 		return
 
-	if(SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src) & COMPONENT_CANCEL_ATTACK)
+	if(SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src) & COMPONENT_ITEM_NO_ATTACK)
 		return TRUE
 
 	if(victim.overlays_standing[FLAY_LAYER]) //Already fully flayed. Possibly the user wants to cut them down?
@@ -463,7 +463,7 @@
 		span_danger("<B>You start flaying [victim] with your [src.name]...</B>"))
 	playsound(loc, 'sound/weapons/pierce.ogg', 25)
 	if(do_after(user, 4 SECONDS, FALSE, victim, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
-		if(SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src) & COMPONENT_CANCEL_ATTACK) //In case two preds try to flay the same person at once.
+		if(SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src) & COMPONENT_ITEM_NO_ATTACK) //In case two preds try to flay the same person at once.
 			return TRUE
 		user.visible_message(span_danger("<B>[user] makes a series of cuts in [victim]'s skin.</B>"),
 			span_danger("<B>You prepare the skin, cutting the flesh off in vital places.</B>"))
@@ -504,7 +504,7 @@
 			user.visible_message(span_danger("<B>[user] resumes the flaying of [victim] with \a [tool]...</B>"),
 				span_danger("<B>You resume the flaying of [victim] with your [tool.name]...</B>"))
 		INVOKE_ASYNC(src, PROC_REF(flay), target, user, tool) //do_after sleeps.
-	return COMPONENT_CANCEL_ATTACK
+	return COMPONENT_ITEM_NO_ATTACK
 
 /datum/flaying_datum/proc/flay(mob/living/carbon/human/target, mob/living/carbon/human/user, obj/item/tool)
 	if(!do_after(user, 4 SECONDS, TRUE, victim, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))

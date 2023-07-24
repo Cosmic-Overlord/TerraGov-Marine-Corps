@@ -851,6 +851,7 @@
 	if(AM.pulledby)
 		log_combat(AM, AM.pulledby, "pulled from", src)
 		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
+
 	pulling = AM
 	AM.pulledby = src
 	AM.glide_modifier_flags |= GLIDE_MOD_PULLED

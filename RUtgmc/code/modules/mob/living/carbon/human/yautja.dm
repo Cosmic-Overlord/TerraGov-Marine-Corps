@@ -6,7 +6,7 @@
 	brute_mod = 0.28 //Beefy!
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
-	species_flags = HAS_SKIN_COLOR|NO_POISON|NO_PAIN|USES_ALIEN_WEAPONS|GREYSCALE_BLOOD
+	species_flags = HAS_SKIN_COLOR|NO_POISON|NO_PAIN|USES_ALIEN_WEAPONS
 	inherent_traits = list(
 		TRAIT_YAUTJA_TECH,
 		TRAIT_SUPER_STRONG,
@@ -21,6 +21,10 @@
 	speech_sounds = list('sound/voice/pred_click1.ogg', 'sound/voice/pred_click2.ogg')
 	speech_chance = 100
 	death_message = "clicks in agony and falls still, motionless and completely lifeless..."
+
+	brute_damage_icon_state = "pred_brute"
+	burn_damage_icon_state = "pred_burn"
+
 	darksight = 5
 	slowdown = -0.5
 	total_health = 175 //more health than regular humans

@@ -328,6 +328,10 @@
 	storage_slots = 12
 	max_storage_space = 30
 
+/obj/item/storage/backpack/yautja/Initialize(mapload, ...)
+	. = ..()
+	new /obj/item/storage/medicomp/full(src)
+
 
 /obj/item/yautja_teleporter
 	name = "relay beacon"

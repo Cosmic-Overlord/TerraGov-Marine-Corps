@@ -66,7 +66,8 @@ GLOBAL_LIST_EMPTY(hologram_list)
 
 /datum/action/leave_hologram
 	name = "Leave"
-	action_icon_state = "hologram_exit"
+	action_icon_state = "drone_return"
+	background_icon_state = ""
 
 	var/mob/hologram/linked_hologram
 

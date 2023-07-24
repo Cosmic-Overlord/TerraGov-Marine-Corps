@@ -797,7 +797,7 @@
 
 	resistance_flags = UNACIDABLE
 	fire_sound = 'sound/effects/woodhit.ogg' // TODO: Decent THWOK noise.
-	ammo_datum_type = /datum/ammo/alloy_spike
+	ammo_datum_type = /datum/ammo/energy/yautja/alloy_spike
 	flags_equip_slot = ITEM_SLOT_BELT|ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY //Fits in yautja bags.
 	rounds = 12

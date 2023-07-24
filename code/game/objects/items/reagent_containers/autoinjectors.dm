@@ -334,3 +334,6 @@
 		..()
 	else
 		to_chat(user, span_danger("You have no idea where to inject [src]."))
+
+/obj/item/reagent_containers/hypospray/autoinjector/yautja/interact(mob/user)
+	return

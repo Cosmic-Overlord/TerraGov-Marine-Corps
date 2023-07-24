@@ -21,7 +21,7 @@
 	max_duration = 5 SECONDS
 
 	blood_level = 1
-	depth_op = 1
+	depth_op = 0
 
 /datum/surgery_step/mcomp_wounds/mstabilize_wounds/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	if(user == target)
@@ -41,7 +41,7 @@
 	else
 		target.emote("pain")
 
-	affected.surgery_open_stage = 1.5
+	affected.surgery_open_stage = 0.25
 	if(user == target)
 		user.visible_message(span_notice("[user] finishes stabilizing the wounds on their body with [tool]."),
 			span_notice("You finish stabilizing your wounds with [tool]."))
@@ -62,7 +62,7 @@
 	max_duration = 15 SECONDS
 
 	blood_level = 1
-	depth_op = 1.5
+	depth_op = 0.25
 
 /datum/surgery_step/mcomp_wounds/mtend_wounds/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected, checks_only)
 	. = ..()
@@ -96,7 +96,7 @@
 	for(var/datum/internal_organ/organ in target.internal_organs) //Fixes all organs
 		organ.heal_organ_damage(100)
 
-	affected.surgery_open_stage = 2
+	affected.surgery_open_stage = 0.75
 	if(isyautja(target))
 		target.emote("click")
 	else
@@ -127,7 +127,7 @@
 	min_duration = 2 SECONDS
 	max_duration = 10 SECONDS
 
-	depth_op = 2
+	depth_op = 0.75
 
 /datum/surgery_step/mcomp_wounds/mclamp_wound/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	if(user == target)

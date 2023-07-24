@@ -127,7 +127,7 @@
 	H.equip_to_slot_or_del(new /obj/item/radio/headset/yautja(H), SLOT_EARS)
 	H.equip_to_slot_or_del(new /obj/item/flashlight/lantern(H), SLOT_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/yautja_teleporter(H), SLOT_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(H), SLOT_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(H), SLOT_BELT)
 	H.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(H), SLOT_IN_BELT)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/yautja/hunter/knife(H, boot_number, greave_material), SLOT_SHOES)

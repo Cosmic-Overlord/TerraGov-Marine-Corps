@@ -643,7 +643,7 @@
 		playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17)
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17)
-	message_admins(font_size_xl("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
+	message_admins(font_size_xl("<a href='?_src_=holder;[HrefToken(TRUE)];admincancelpredsd=1;bracer=[REF(src)];victim=[REF(victim)]'>CLICK TO CANCEL THIS PRED SD</a>"))
 	do_after(victim, rand(72, 80), FALSE, null, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE)
 
 	T = get_turf(src)

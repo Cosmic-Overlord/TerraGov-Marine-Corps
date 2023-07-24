@@ -55,7 +55,7 @@
 			var/mob/living/carbon/xenomorph/xeno_target = carbon
 			if(xeno_target.stat == DEAD)
 				continue
-			new /datum/status_effect/xeno_buff(xeno_target, xeno, 0.25 SECONDS * xeno.life_kills_total + 3 SECONDS, bonus_damage_scale * xeno.life_kills_total, (bonus_speed_scale * xeno.life_kills_total))
+			new /datum/status_effect/xeno_buff(list(xeno_target, xeno, 0.25 SECONDS * xeno.life_kills_total + 3 SECONDS, bonus_damage_scale * xeno.life_kills_total, (bonus_speed_scale * xeno.life_kills_total)))
 
 	for(var/mob/M in view(xeno))
 		if(M && M.client)

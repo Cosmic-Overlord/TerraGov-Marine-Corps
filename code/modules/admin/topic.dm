@@ -1130,6 +1130,17 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 				log_admin("[key_name(src)] has [SSevacuation.flags_scuttle & FLAGS_SELF_DESTRUCT_DENY ? "forbidden" : "allowed"] the self-destruct system.")
 				message_admins("[ADMIN_TPMONTY(usr)] has [SSevacuation.flags_scuttle & FLAGS_SELF_DESTRUCT_DENY ? "forbidden" : "allowed"] the self-destruct system.")
 
+	else if(href_list["admincancelpredsd"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/obj/item/clothing/gloves/yautja/hunter/bracer = locate(href_list["bracer"])
+		var/mob/living/carbon/victim = locate(href_list["victim"])
+		if (!istype(bracer))
+			return
+		if (alert("Are you sure you want to cancel this pred SD?",,"Yes","No") != "Yes")
+			return
+		bracer.exploding = FALSE
+		message_admins("[src.owner] has cancelled the predator self-destruct sequence [victim ? "of [victim] ([victim.key])":""].")
 
 	else if(href_list["object_list"])
 		if(!check_rights(R_SPAWN))

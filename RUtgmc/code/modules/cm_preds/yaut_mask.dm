@@ -132,6 +132,7 @@
 		for(var/listed_hud in mask_huds)
 			var/datum/atom_hud/H = GLOB.huds[listed_hud]
 			H.remove_hud_from(user)
+		playsound(src, 'sound/items/air_release.ogg', 15, 1)
 		var/obj/item/G = user.glasses
 		if(G) //make your hud fuck off
 			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))

@@ -23,7 +23,7 @@
 	)
 
 /datum/job/predator/config_check(count)
-	max_positions = round(GLOB.clients * PREDATOR_TO_TOTAL_SPAWN_RATIO)
+	max_positions = round(length(GLOB.clients) * PREDATOR_TO_TOTAL_SPAWN_RATIO)
 	return TRUE
 
 /datum/job/predator/return_spawn_type(datum/preferences/prefs)

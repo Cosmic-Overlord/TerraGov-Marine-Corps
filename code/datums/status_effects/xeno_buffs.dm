@@ -848,7 +848,7 @@
 
 	X.add_filter("overbonus_vis", 1, outline_filter(4 * (bonus_damage / 50), "#cf0b0b60")); \
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(end_bonuses), src), ttl)
+	addtimer(CALLBACK(src, PROC_REF(end_bonuses), src), ttl)
 
 /datum/status_effect/xeno_buff/proc/end_bonuses()
 	if(owner)

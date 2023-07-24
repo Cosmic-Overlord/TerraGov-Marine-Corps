@@ -328,7 +328,7 @@
 	storage_slots = 12
 	max_storage_space = 30
 
-/obj/item/storage/backpack/yautja/Initialize(mapload, ...)
+/obj/item/storage/backpack/yautja/full/Initialize(mapload, ...)
 	. = ..()
 	new /obj/item/storage/medicomp/full(src)
 

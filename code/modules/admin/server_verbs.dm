@@ -641,7 +641,7 @@
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))
 		var/datum/job/PJ = SSjob.GetJobType(/datum/job/predator)
-		PJ.set_job_positions(2)
+		PJ.set_job_positions(min(max(round(length(GLOB.clients) * PREDATOR_TO_TOTAL_SPAWN_RATIO), 1), 4))
 		predator_round.flags_round_type |= MODE_PREDATOR
 	else
 		predator_round.flags_round_type &= ~MODE_PREDATOR

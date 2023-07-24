@@ -9,7 +9,7 @@
 	skills_type = /datum/skills/yautja/warrior
 	faction = FACTION_YAUTJA
 
-	max_positions = 0
+	max_positions = 4
 
 /datum/job/predator/New()
 	. = ..()
@@ -21,10 +21,6 @@
 		"[JOB_PREDATOR][CLAN_RANK_LEADER]" = new /datum/outfit/job/yautja/leader,
 		"[JOB_PREDATOR][CLAN_RANK_ADMIN]" = new /datum/outfit/job/yautja/ancient
 	)
-
-/datum/job/predator/config_check(count)
-	max_positions = round(length(GLOB.clients) * PREDATOR_TO_TOTAL_SPAWN_RATIO)
-	return TRUE
 
 /datum/job/predator/return_spawn_type(datum/preferences/prefs)
 	return /mob/living/carbon/human/yautja

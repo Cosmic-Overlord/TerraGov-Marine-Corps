@@ -976,8 +976,6 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 			to_chat(pred_candidate, span_warning("Something went wrong!"))
 		return
 
-	job.config_check()
-
 	if(show_warning && alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(job.get_whitelist_status(GLOB.roles_whitelist, pred_candidate.client))] predator", "Confirm", "Yes", "No") != "Yes")
 		return
 

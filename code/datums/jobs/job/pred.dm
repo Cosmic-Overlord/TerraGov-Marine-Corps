@@ -1,4 +1,4 @@
-#define PREDATOR_TO_TOTAL_SPAWN_RATIO 1/20
+#define PREDATOR_TO_TOTAL_SPAWN_RATIO 1/40
 
 /datum/job/predator
 	title = JOB_PREDATOR
@@ -9,7 +9,7 @@
 	skills_type = /datum/skills/yautja/warrior
 	faction = FACTION_YAUTJA
 
-	max_positions = 4
+	max_positions = 0
 
 /datum/job/predator/New()
 	. = ..()
@@ -23,8 +23,7 @@
 	)
 
 /datum/job/predator/config_check(count)
-	current_positions = max((round(count * PREDATOR_TO_TOTAL_SPAWN_RATIO)), max_positions)
-	total_positions = current_positions
+	max_positions = round(GLOB.clients * PREDATOR_TO_TOTAL_SPAWN_RATIO)
 	return TRUE
 
 /datum/job/predator/return_spawn_type(datum/preferences/prefs)

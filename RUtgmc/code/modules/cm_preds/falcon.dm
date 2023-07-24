@@ -8,7 +8,7 @@
 		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
 		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
 	)
-	flags_equip_slot = ITEM_SLOT_EARS
+	flags_equip_slot = ITEM_SLOT_HEAD
 	flags_item = ITEM_PREDATOR
 
 /obj/item/falcon_drone/attack_self(mob/user)

@@ -3,8 +3,8 @@
 	name = "strange rope"
 	singular_name = "rope meter"
 	desc = "This unassuming rope seems to be covered in markings depicting strange humanoid forms."
-	icon = 'icons/obj/power.dmi'
-	icon_state = "coil"
+	icon = 'icons/obj/stack_objects.dmi'
+	icon_state = "brutepack"
 	item_state = "coil"
 	force = 2
 	w_class = WEIGHT_CLASS_SMALL

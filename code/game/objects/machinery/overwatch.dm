@@ -55,6 +55,7 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 	send_defend_order = new
 	send_retreat_order = new
 	send_rally_order = new
+	GLOB.main_overwatch_consoles += src
 
 /obj/machinery/computer/camera_advanced/overwatch/give_actions(mob/living/user)
 	. = ..()
@@ -385,7 +386,7 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 		if("shootrailgun")
 			var/mob/living/user = usr
 			if(user.interactee)
-				to_chat(usr, "[icon2html(src, usr)] [span_warning("Your busy doing something else, and press the wrong button!")]")
+				to_chat(usr, "[icon2html(src, usr)] [span_warning("You're busy doing something else, and press the wrong button!")]")
 				return
 			if((GLOB.marine_main_ship?.rail_gun?.last_firing + 600) > world.time)
 				to_chat(usr, "[icon2html(src, usr)] [span_warning("The Rail Gun hasn't cooled down yet!")]")
@@ -399,8 +400,13 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 			selected_target = locate(href_list["selected_target"])
 			if(!isAI(usr))
 				var/atom/cam_target = locate(href_list["cam_target"])
+				if(!cam_target)
+					return
+				var/turf/cam_target_turf = get_turf(cam_target)
+				if(!cam_target_turf)
+					return
 				open_prompt(usr)
-				eyeobj.setLoc(get_turf(cam_target))
+				eyeobj.setLoc(cam_target_turf)
 				if(isliving(cam_target))
 					var/mob/living/L = cam_target
 					track(L)
@@ -530,6 +536,9 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 		to_chat(usr, "[icon2html(src, usr)] [span_warning("The target's signal is too weak.")]")
 		return
 	var/turf/T = get_turf(selected_target)
+	if(!isturf(T)) //Huh?
+		to_chat(usr, "[icon2html(src, usr)] [span_warning("Invalid target.")]")
+		return
 	if(isspaceturf(T))
 		to_chat(usr, "[icon2html(src, usr)] [span_warning("The target's landing zone appears to be out of bounds.")]")
 		return

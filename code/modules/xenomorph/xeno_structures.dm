@@ -170,7 +170,7 @@
 	if(iscarbon(AM))
 		var/mob/living/carbon/crosser = AM
 		crosser.visible_message(span_warning("[crosser] trips on [src]!"), span_danger("You trip on [src]!"))
-		crosser.Paralyze(4 SECONDS)
+		crosser.ParalyzeNoChain(4 SECONDS)
 	switch(trap_type)
 		if(TRAP_HUGGER)
 			if(!AM)
@@ -614,39 +614,47 @@ TUNNEL
 		HasProximity(A)
 
 /obj/structure/xeno/acidwell/HasProximity(atom/movable/AM)
+	if(!charges)
+		return
 	if(!isliving(AM))
 		return
 	var/mob/living/stepper = AM
 	if(stepper.stat == DEAD)
 		return
-	if(!charges)
+
+	var/charges_used = 0
+
+	for(var/obj/item/explosive/grenade/sticky/sticky_bomb in stepper.contents)
+		if(charges_used >= charges)
+			break
+		if(sticky_bomb.stuck_to == stepper)
+			sticky_bomb.clean_refs()
+			sticky_bomb.forceMove(loc)
+			charges_used ++
+
+	if(stepper.on_fire && (charges_used < charges))
+		stepper.ExtinguishMob()
+		charges_used ++
+
+	if(!isxeno(stepper))
+		stepper.next_move_slowdown += charges * 2 //Acid spray has slow down so this should too; scales with charges, Min 2 slowdown, Max 10
+		stepper.apply_damage(charges * 10, BURN, BODY_ZONE_PRECISE_L_FOOT, ACID,  penetration = 33)
+		stepper.apply_damage(charges * 10, BURN, BODY_ZONE_PRECISE_R_FOOT, ACID,  penetration = 33)
+		stepper.visible_message(span_danger("[stepper] is immersed in [src]'s acid!") , \
+		span_danger("We are immersed in [src]'s acid!") , null, 5)
+		playsound(stepper, "sound/bullets/acid_impact1.ogg", 10 * charges)
+		new /obj/effect/temp_visual/acid_bath(get_turf(stepper))
+		charges_used = charges //humans stepping on it empties it out
+
+	if(!charges_used)
 		return
 
 	var/datum/effect_system/smoke_spread/xeno/acid/acid_smoke
-
-	if(isxeno(stepper))
-		if(!(stepper.on_fire))
-			return
-		acid_smoke = new(get_turf(stepper)) //spawn acid smoke when charges are actually used
-		acid_smoke.set_up(0, src) //acid smoke in the immediate vicinity
-		acid_smoke.start()
-		stepper.ExtinguishMob()
-		charges--
-		update_icon()
-		return
-
-	stepper.next_move_slowdown += charges * 2 //Acid spray has slow down so this should too; scales with charges, Min 2 slowdown, Max 10
-	stepper.apply_damage(charges * 10, BURN, BODY_ZONE_PRECISE_L_FOOT, ACID,  penetration = 33)
-	stepper.apply_damage(charges * 10, BURN, BODY_ZONE_PRECISE_R_FOOT, ACID,  penetration = 33)
-	stepper.ExtinguishMob()
-	stepper.visible_message(span_danger("[stepper] is immersed in [src]'s acid!") , \
-	span_danger("We are immersed in [src]'s acid!") , null, 5)
-	playsound(stepper, "sound/bullets/acid_impact1.ogg", 10 * charges)
-	new /obj/effect/temp_visual/acid_bath(get_turf(stepper))
 	acid_smoke = new(get_turf(stepper)) //spawn acid smoke when charges are actually used
 	acid_smoke.set_up(0, src) //acid smoke in the immediate vicinity
 	acid_smoke.start()
-	charges = 0
+
+	charges -= charges_used
 	update_icon()
 
 /obj/structure/xeno/resin_jelly_pod
@@ -745,6 +753,9 @@ TUNNEL
 	COOLDOWN_DECLARE(silo_damage_alert_cooldown)
 	COOLDOWN_DECLARE(silo_proxy_alert_cooldown)
 
+/obj/structure/xeno/silo/crash
+	resistance_flags = UNACIDABLE | DROPSHIP_IMMUNE | PLASMACUTTER_IMMUNE | INDESTRUCTIBLE
+
 /obj/structure/xeno/silo/Initialize()
 	. = ..()
 	center_turf = get_step(src, NORTHEAST)
@@ -783,6 +794,8 @@ TUNNEL
 		var/obj/structure/xeno/tunnel/newt = new(tunnel_turf, hivenumber)
 		newt.tunnel_desc = "[AREACOORD_NO_Z(newt)]"
 		newt.name += " [name]"
+		if(resistance_flags & INDESTRUCTIBLE)
+			newt.resistance_flags |= INDESTRUCTIBLE
 
 /obj/structure/xeno/silo/obj_destruction(damage_amount, damage_type, damage_flag)
 	if(GLOB.hive_datums[hivenumber])
@@ -894,7 +907,7 @@ TUNNEL
 	max_integrity = 1500
 	layer =  ABOVE_MOB_LAYER
 	density = TRUE
-	resistance_flags = UNACIDABLE | DROPSHIP_IMMUNE
+	resistance_flags = UNACIDABLE | DROPSHIP_IMMUNE |PORTAL_IMMUNE
 	xeno_structure_flags = IGNORE_WEED_REMOVAL|HAS_OVERLAY
 	flags_pass = PASSAIR|PASSTHROW
 	///What kind of spit it uses
@@ -1124,6 +1137,7 @@ TUNNEL
 	if(istype(ammo, /datum/ammo/xeno/hugger))
 		var/datum/ammo/xeno/hugger/hugger_ammo = ammo
 		newshot.color = initial(hugger_ammo.hugger_type.color)
+		hugger_ammo.hugger_hivenumber = hivenumber
 	firing = TRUE
 	update_minimap_icon()
 
@@ -1161,6 +1175,7 @@ TUNNEL
 
 /obj/structure/xeno/evotower/Initialize(mapload)
 	. = ..()
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, "tower")
 	GLOB.hive_datums[hivenumber].evotowers += src
 	set_light(2, 2, LIGHT_COLOR_GREEN)
 
@@ -1192,6 +1207,7 @@ TUNNEL
 
 /obj/structure/xeno/maturitytower/Initialize(mapload)
 	. = ..()
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, "tower")
 	GLOB.hive_datums[hivenumber].maturitytowers += src
 	set_light(2, 2, LIGHT_COLOR_GREEN)
 
@@ -1219,7 +1235,7 @@ TUNNEL
 	///The type of pheromone currently being emitted.
 	var/datum/aura_bearer/current_aura
 	///Strength of pheromones given by this tower.
-	var/aura_strength = 8
+	var/aura_strength = 6
 	///Radius (in tiles) of the pheromones given by this tower.
 	var/aura_radius = 32
 
@@ -1268,6 +1284,14 @@ TUNNEL
 		if(AURA_XENO_FRENZY)
 			icon_state = "frenzytower"
 			set_light(2, 2, LIGHT_COLOR_RED)
+
+/obj/structure/xeno/pherotower/crash
+	name = "Recovery tower"
+	resistance_flags = UNACIDABLE | DROPSHIP_IMMUNE | PLASMACUTTER_IMMUNE | INDESTRUCTIBLE
+	xeno_structure_flags = IGNORE_WEED_REMOVAL | CRITICAL_STRUCTURE
+
+/obj/structure/xeno/pherotower/crash/attack_alien(isrightclick = FALSE)
+	return
 
 /obj/structure/xeno/spawner
 	name = "spawner"

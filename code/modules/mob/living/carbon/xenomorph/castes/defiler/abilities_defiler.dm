@@ -222,11 +222,12 @@
 	toggle_particles(FALSE)
 	return ..()
 
-/datum/action/xeno_action/emit_neurogas/proc/dispense_gas(count = 3)
+/datum/action/xeno_action/emit_neurogas/proc/dispense_gas(time_left = 3)
+	if(time_left <= 0)
+		return
 	var/mob/living/carbon/xenomorph/defiler/X = owner
-	set waitfor = FALSE
-	var/smoke_range = 2
 	var/datum/effect_system/smoke_spread/xeno/gas
+	var/smoke_range = 2
 
 	switch(X.selected_reagent)
 		if(/datum/reagent/toxin/xeno_neurotoxin)
@@ -237,28 +238,27 @@
 			gas = new /datum/effect_system/smoke_spread/xeno/transvitox(X)
 		if(/datum/reagent/toxin/xeno_ozelomelyn)
 			gas = new /datum/effect_system/smoke_spread/xeno/ozelomelyn(X)
+		if(/datum/effect_system/smoke_spread/xeno/acid/light)
+			gas = new /datum/effect_system/smoke_spread/xeno/acid/light(X)
 
-	while(count)
-		if(X.stagger) //If we got staggered, return
-			to_chat(X, span_xenowarning("We try to emit toxins but are staggered!"))
-			toggle_particles(FALSE)
-			return
-		if(X.IsStun() || X.IsParalyzed())
-			to_chat(X, span_xenowarning("We try to emit toxins but are disabled!"))
-			toggle_particles(FALSE)
-			return
-		var/turf/T = get_turf(X)
-		playsound(T, 'sound/effects/smoke.ogg', 25)
-		if(count > 1)
-			gas.set_up(smoke_range, T)
-		else //last emission is larger
-			gas.set_up(CEILING(smoke_range*1.3,1), T)
-		gas.start()
-		T.visible_message(span_danger("Noxious smoke billows from the hulking xenomorph!"))
-		count = max(0,count - 1)
-		sleep(DEFILER_GAS_DELAY)
-
+	if(X.stagger) //If we got staggered, return
+		to_chat(X, span_xenowarning("We try to emit toxins but are staggered!"))
+		toggle_particles(FALSE)
+		return
+	if(X.IsStun() || X.IsParalyzed())
+		to_chat(X, span_xenowarning("We try to emit toxins but are disabled!"))
+		toggle_particles(FALSE)
+		return
+	var/turf/T = get_turf(X)
+	playsound(T, 'sound/effects/smoke.ogg', 25)
+	if(time_left > 1)
+		gas.set_up(smoke_range, T)
+	else //last emission is larger
+		gas.set_up(CEILING(smoke_range*1.3,1), T)
+	gas.start()
+	T.visible_message(span_danger("Noxious smoke billows from the hulking xenomorph!"))
 	toggle_particles(FALSE)
+	addtimer(CALLBACK(src, PROC_REF(dispense_gas), time_left - 1), DEFILER_GAS_DELAY)
 
 // Toggles particles on or off, depending on the defined var.
 /datum/action/xeno_action/emit_neurogas/proc/toggle_particles(activate)
@@ -277,6 +277,8 @@
 			particle_holder = new(owner, /particles/xeno_smoke/transvitox)
 		if(/datum/reagent/toxin/xeno_ozelomelyn)
 			particle_holder = new(owner, /particles/xeno_smoke/ozelomelyn)
+		if(/datum/effect_system/smoke_spread/xeno/acid/light)
+			particle_holder = new(owner, /particles/xeno_smoke/transvitox)
 	particle_holder.pixel_x = 16
 	particle_holder.pixel_y = 16
 
@@ -337,6 +339,8 @@
 			newegg.gas_type = /datum/effect_system/smoke_spread/xeno/hemodile
 		if(/datum/reagent/toxin/xeno_transvitox)
 			newegg.gas_type = /datum/effect_system/smoke_spread/xeno/transvitox
+		if(/datum/effect_system/smoke_spread/xeno/acid/light)
+			newegg.gas_type = /datum/effect_system/smoke_spread/xeno/acid/light
 	qdel(alien_egg)
 
 	GLOB.round_statistics.defiler_inject_egg_neurogas++
@@ -365,6 +369,8 @@
 	var/mob/living/carbon/xenomorph/X = owner
 	var/atom/A = X.selected_reagent
 	action_icon_state = initial(A.name)
+	if(X.selected_reagent == /datum/effect_system/smoke_spread/xeno/acid/light)
+		action_icon_state = "light_acid"
 	return ..()
 
 /datum/action/xeno_action/select_reagent/action_activate()
@@ -376,7 +382,10 @@
 		X.selected_reagent = GLOB.defiler_toxin_type_list[i+1]
 
 	var/atom/A = X.selected_reagent
-	X.balloon_alert(X, "[initial(A.name)]")
+	if(X.selected_reagent == /datum/effect_system/smoke_spread/xeno/acid/light)
+		X.balloon_alert(X, "Acid")
+	else
+		X.balloon_alert(X, "[initial(A.name)]")
 	update_button_icon()
 	return succeed_activate()
 
@@ -391,6 +400,7 @@
 			DEFILER_HEMODILE = image('icons/mob/actions.dmi', icon_state = DEFILER_HEMODILE),
 			DEFILER_TRANSVITOX = image('icons/mob/actions.dmi', icon_state = DEFILER_TRANSVITOX),
 			DEFILER_OZELOMELYN = image('icons/mob/actions.dmi', icon_state = DEFILER_OZELOMELYN),
+			DEFILER_ACID = image('icons/mob/actions.dmi', icon_state = "light_acid"),
 			)
 	var/toxin_choice = show_radial_menu(owner, owner, defiler_toxin_images_list, radius = 48)
 	if(!toxin_choice)
@@ -400,6 +410,9 @@
 		var/datum/reagent/R = GLOB.chemical_reagents_list[toxin]
 		if(R.name == toxin_choice)
 			X.selected_reagent = R.type
+			break
+		if(toxin_choice == DEFILER_ACID)
+			X.selected_reagent = /datum/effect_system/smoke_spread/xeno/acid/light
 			break
 	X.balloon_alert(X, "[toxin_choice]")
 	update_button_icon()
@@ -444,6 +457,9 @@
 	toggle_particles(TRUE)
 	succeed_activate()
 	add_cooldown()
+	if(X.selected_reagent == /datum/effect_system/smoke_spread/xeno/acid/light) //Deactivate
+		to_chat(owner, span_xenodanger("Acid cannot be injected."))
+		reagent_slash_deactivate(X)
 
 ///Called when the duration of reagent slash lapses
 /datum/action/xeno_action/reagent_slash/proc/reagent_slash_deactivate(mob/living/carbon/xenomorph/X)
@@ -460,7 +476,7 @@
 
 
 ///Called when we slash while reagent slash is active
-/datum/action/xeno_action/reagent_slash/proc/reagent_slash(datum/source, mob/living/target, damage, list/damage_mod, armor_pen)
+/datum/action/xeno_action/reagent_slash/proc/reagent_slash(datum/source, mob/living/target, damage, list/damage_mod, list/armor_mod)
 	SIGNAL_HANDLER
 
 	if(!target?.can_sting()) //We only care about targets that we can actually sting
@@ -504,6 +520,8 @@
 			particle_holder = new(owner, /particles/xeno_slash/transvitox)
 		if(/datum/reagent/toxin/xeno_ozelomelyn)
 			particle_holder = new(owner, /particles/xeno_slash/ozelomelyn)
+		if(/datum/effect_system/smoke_spread/xeno/acid/light)
+			particle_holder = new(owner, /particles/xeno_slash/transvitox)
 	particle_holder.pixel_x = 16
 	particle_holder.pixel_y = 12
 

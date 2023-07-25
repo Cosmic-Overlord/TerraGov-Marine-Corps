@@ -89,7 +89,6 @@ What you lack alone, you gain standing shoulder to shoulder with the men and wom
 	jobtype = /datum/job/terragov/squad/standard
 
 	id = /obj/item/card/id/dogtag
-	back = /obj/item/storage/backpack/marine/satchel
 
 /datum/outfit/job/marine/standard/rebel
 	jobtype = /datum/job/terragov/squad/standard/rebel
@@ -172,7 +171,6 @@ Your squaddies will look to you when it comes to construction in the field of ba
 	jobtype = /datum/job/terragov/squad/engineer
 
 	id = /obj/item/card/id/dogtag/engineer
-	back = /obj/item/storage/backpack/marine/satchel
 
 /datum/outfit/job/marine/engineer/rebel
 	jobtype = /datum/job/terragov/squad/engineer/rebel
@@ -274,7 +272,6 @@ You may not be a fully-fledged doctor, but you stand between life and death when
 	jobtype = /datum/job/terragov/squad/corpsman
 
 	id = /obj/item/card/id/dogtag/corpsman
-	back = /obj/item/storage/backpack/marine/corpsman
 
 /datum/outfit/job/marine/corpsman/rebel
 	jobtype = /datum/job/terragov/squad/corpsman/rebel
@@ -392,7 +389,6 @@ You may not be a fully-fledged doctor, but you stand between life and death when
 	jobtype = /datum/job/terragov/squad/smartgunner
 
 	id = /obj/item/card/id/dogtag/smartgun
-	back = /obj/item/storage/backpack/marine/satchel
 
 /datum/outfit/job/marine/smartgunner/rebel
 	jobtype = /datum/job/terragov/squad/smartgunner/rebel
@@ -462,7 +458,6 @@ You can serve a variety of roles, so choose carefully."})
 	jobtype = /datum/job/terragov/squad/specialist
 
 	id = /obj/item/card/id/dogtag
-	back = /obj/item/storage/backpack/marine/satchel
 	head = /obj/item/clothing/head/helmet/specrag
 
 //Squad Leader
@@ -484,7 +479,7 @@ You can serve a variety of roles, so choose carefully."})
 	outfit = /datum/outfit/job/marine/leader
 	job_flags = JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE|JOB_FLAG_ALLOWS_PREFS_GEAR|JOB_FLAG_PROVIDES_BANK_ACCOUNT|JOB_FLAG_ADDTOMANIFEST|JOB_FLAG_BOLD_NAME_ON_SELECTION|JOB_FLAG_PROVIDES_SQUAD_HUD|JOB_FLAG_CAN_SEE_ORDERS
 	jobworth = list(
-		/datum/job/xenomorph = LARVA_POINTS_REGULAR,
+		/datum/job/xenomorph = LARVA_POINTS_STRONG,
 		/datum/job/terragov/squad/smartgunner = SMARTIE_POINTS_HIGH,
 		/datum/job/terragov/silicon/synthetic = SYNTH_POINTS_REGULAR,
 		/datum/job/terragov/command/mech_pilot = MECH_POINTS_REGULAR,
@@ -522,7 +517,6 @@ You are also in charge of communicating with command and letting them know about
 	jobtype = /datum/job/terragov/squad/leader
 
 	id = /obj/item/card/id/dogtag/leader
-	back = /obj/item/storage/backpack/marine/satchel
 
 /datum/outfit/job/marine/leader/rebel
 	jobtype = /datum/job/terragov/squad/leader/rebel

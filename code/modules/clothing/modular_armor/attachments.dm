@@ -27,9 +27,9 @@
 	///Bitfield flags of various features.
 	var/flags_attach_features = ATTACH_REMOVABLE|ATTACH_APPLY_ON_MOB
 	///Time it takes to attach.
-	var/attach_delay = 2 SECONDS
+	var/attach_delay = 1.5 SECONDS
 	///Time it takes to detach.
-	var/detach_delay = 2 SECONDS
+	var/detach_delay = 1.5 SECONDS
 	///Used for when the mob attach overlay icon is different than icon.
 	var/mob_overlay_icon
 	///Pixel shift for the mob overlay on the X axis.
@@ -246,7 +246,7 @@
 ///Colors the armor when the parent is right clicked with facepaint.
 /obj/item/armor_module/armor/proc/handle_color(datum/source, obj/I, mob/user)
 	SIGNAL_HANDLER
-	INVOKE_ASYNC(src, /atom/proc/attackby, I, user)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attackby), I, user)
 	return COMPONENT_NO_AFTERATTACK
 
 ///Relays the extra controls to the user when the parent is examined.

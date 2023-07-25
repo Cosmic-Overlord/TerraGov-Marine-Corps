@@ -147,8 +147,6 @@
 	var/bomb_strength = 0
 	///Delay between firing the bombard ability for boilers
 	var/bomb_delay = 0
-	///Used to reduce cooldown for the boiler
-	var/ammo_multiplier = 0
 
 	// *** Carrier Abilities *** //
 	///maximum amount of huggers a carrier can carry at one time.
@@ -282,7 +280,7 @@
 	appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
 	see_infrared = TRUE
 	hud_type = /datum/hud/alien
-	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_SUNDER_HUD, XENO_DEBUFF_HUD, XENO_FIRE_HUD)
+	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_SUNDER_HUD, XENO_DEBUFF_HUD, XENO_FIRE_HUD, XENO_BANISHED_HUD)
 	buckle_flags = NONE
 	faction = FACTION_XENO
 	initial_language_holder = /datum/language_holder/xeno
@@ -290,6 +288,7 @@
 	light_system = MOVABLE_LIGHT
 
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/banished = FALSE
 
 	var/datum/hive_status/hive
 
@@ -406,8 +405,6 @@
 	var/savage_used = FALSE
 
 	// *** Ravager vars *** //
-	/// when true the rav will not go into crit or take crit damage.
-	var/endure = FALSE
 	///when true the rav leeches healing off of hitting marines
 	var/vampirism
 

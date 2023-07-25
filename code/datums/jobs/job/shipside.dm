@@ -75,7 +75,6 @@ Godspeed, captain! And remember, you are not above the law."})
 	head = /obj/item/clothing/head/tgmcberet/tan
 	r_store = /obj/item/storage/pouch/general/large/command
 	l_store = /obj/item/hud_tablet/leadership
-	back = /obj/item/storage/backpack/marine/satchel
 
 /datum/outfit/job/command/captain/rebel
 	jobtype = /datum/job/terragov/command/captain/rebel
@@ -116,7 +115,7 @@ Godspeed, captain! And remember, you are not above the law."})
 	outfit = /datum/outfit/job/command/fieldcommander
 	job_flags = JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE|JOB_FLAG_ALLOWS_PREFS_GEAR|JOB_FLAG_PROVIDES_BANK_ACCOUNT|JOB_FLAG_ADDTOMANIFEST|JOB_FLAG_ISCOMMAND|JOB_FLAG_BOLD_NAME_ON_SELECTION|JOB_FLAG_PROVIDES_SQUAD_HUD|JOB_FLAG_CAN_SEE_ORDERS|JOB_FLAG_ALWAYS_VISIBLE_ON_MINIMAP
 	jobworth = list(
-		/datum/job/xenomorph = LARVA_POINTS_SHIPSIDE,
+		/datum/job/xenomorph = LARVA_POINTS_STRONG,
 		/datum/job/terragov/squad/smartgunner = SMARTIE_POINTS_REGULAR,
 		/datum/job/terragov/silicon/synthetic = SYNTH_POINTS_REGULAR,
 		/datum/job/terragov/command/mech_pilot = MECH_POINTS_REGULAR,
@@ -137,7 +136,7 @@ Godspeed, captain! And remember, you are not above the law."})
 	minimal_access = ALL_MARINE_REBEL_ACCESS
 	outfit = /datum/outfit/job/command/fieldcommander/rebel
 	jobworth = list(
-		/datum/job/xenomorph = LARVA_POINTS_SHIPSIDE,
+		/datum/job/xenomorph = LARVA_POINTS_STRONG,
 		/datum/job/terragov/squad/smartgunner/rebel = SMARTIE_POINTS_REGULAR,
 		/datum/job/terragov/silicon/synthetic/rebel = SYNTH_POINTS_REGULAR,
 	)
@@ -175,7 +174,7 @@ Make the TGMC proud!"})
 	name = FIELD_COMMANDER
 	jobtype = /datum/job/terragov/command/fieldcommander
 
-	id = /obj/item/card/id/dogtag
+	id = /obj/item/card/id/dogtag/fc
 	belt = /obj/item/storage/holster/blade/officer/full
 	ears = /obj/item/radio/headset/mainship/mcom
 	w_uniform = /obj/item/clothing/under/marine/officer/exec
@@ -185,7 +184,6 @@ Make the TGMC proud!"})
 	head = /obj/item/clothing/head/tgmcberet/fc
 	r_store = /obj/item/storage/pouch/general/large/command
 	l_store = /obj/item/hud_tablet/fieldcommand
-	back = /obj/item/storage/backpack/marine/satchel
 	suit_store = /obj/item/storage/belt/gun/pistol/m4a3/fieldcommander
 
 /datum/outfit/job/command/fieldcommander/rebel
@@ -268,7 +266,6 @@ You are in charge of logistics and the overwatch system. You are also in line to
 	head = /obj/item/clothing/head/tgmccap/ro
 	r_store = /obj/item/storage/pouch/general/large
 	l_store = /obj/item/binoculars/tactical
-	back = /obj/item/storage/backpack/marine/satchel
 
 /datum/outfit/job/command/staffofficer/rebel
 	jobtype = /datum/job/terragov/command/staffofficer/rebel
@@ -358,7 +355,6 @@ Though you are a warrant officer, your authority is limited to the dropship and 
 	head = /obj/item/clothing/head/helmet/marine/pilot
 	r_store = /obj/item/storage/pouch/general/large
 	l_store = /obj/item/hud_tablet/pilot
-	back = /obj/item/storage/backpack/marine/satchel
 
 /datum/outfit/job/command/pilot/rebel
 	jobtype = /datum/job/terragov/command/pilot/rebel
@@ -428,7 +424,6 @@ You can serve your Division in a variety of roles, so choose carefully."})
 	head = /obj/item/clothing/head/helmet/marine/mech_pilot
 	shoes = /obj/item/clothing/shoes/marine/full
 	gloves = /obj/item/clothing/gloves/marine
-	back = /obj/item/storage/backpack/marine/satchel
 
 /datum/job/terragov/engineering
 	job_category = JOB_CAT_ENGINEERING
@@ -710,7 +705,6 @@ A happy ship is a well-functioning ship."})
 	gloves = /obj/item/clothing/gloves/yellow
 	head = /obj/item/clothing/head/tgmccap/req
 	r_store = /obj/item/storage/pouch/general/large
-	back = /obj/item/storage/backpack/marine/satchel
 
 /datum/outfit/job/requisitions/officer/rebel
 	jobtype = /datum/job/terragov/requisitions/officer/rebel
@@ -804,7 +798,6 @@ Make sure that the doctors and nurses are doing their jobs and keeping the marin
 	head = /obj/item/clothing/head/cmo
 	r_store = /obj/item/storage/pouch/medkit/medic
 	l_store = /obj/item/storage/pouch/surgery
-	back = /obj/item/storage/backpack/marine/satchel
 
 /datum/outfit/job/medical/professor/rebel
 	jobtype = /datum/job/terragov/medical/professor/rebel
@@ -894,7 +887,6 @@ You are also an expert when it comes to medication and treatment. If you do not 
 	glasses = /obj/item/clothing/glasses/hud/health
 	mask = /obj/item/clothing/mask/surgical
 	head = /obj/item/clothing/head/surgery/purple
-	back = /obj/item/storage/backpack/marine/satchel
 
 /datum/outfit/job/medical/medicalofficer/rebel
 	jobtype = /datum/job/terragov/medical/medicalofficer/rebel
@@ -986,7 +978,6 @@ It is also recommended that you gear up like a regular marine, or your 'internsh
 	gloves = /obj/item/clothing/gloves/latex
 	glasses = /obj/item/clothing/glasses/hud/health
 	mask = /obj/item/clothing/mask/surgical
-	back = /obj/item/storage/backpack/marine/satchel
 
 /datum/outfit/job/medical/researcher/rebel
 	jobtype = /datum/job/terragov/medical/researcher/rebel
@@ -1070,7 +1061,6 @@ Use your office fax machine to communicate with corporate headquarters or to acq
 	ears = /obj/item/radio/headset/mainship/mcom
 	w_uniform = /obj/item/clothing/under/liaison_suit
 	shoes = /obj/item/clothing/shoes/laceup
-	back = /obj/item/storage/backpack/marine/satchel
 
 
 /datum/job/terragov/silicon
@@ -1098,7 +1088,7 @@ Use your office fax machine to communicate with corporate headquarters or to acq
 	job_flags = JOB_FLAG_SPECIALNAME|JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE|JOB_FLAG_ADDTOMANIFEST|JOB_FLAG_ISCOMMAND|JOB_FLAG_BOLD_NAME_ON_SELECTION|JOB_FLAG_PROVIDES_SQUAD_HUD|JOB_FLAG_CAN_SEE_ORDERS|JOB_FLAG_ALWAYS_VISIBLE_ON_MINIMAP
 	job_points_needed = 40
 	jobworth = list(
-		/datum/job/xenomorph = LARVA_POINTS_SHIPSIDE_STRONG,
+		/datum/job/xenomorph = LARVA_POINTS_STRONG,
 		/datum/job/terragov/squad/smartgunner = SMARTIE_POINTS_REGULAR,
 		/datum/job/terragov/command/mech_pilot = MECH_POINTS_REGULAR,
 	)
@@ -1116,10 +1106,9 @@ Use your office fax machine to communicate with corporate headquarters or to acq
 	faction = FACTION_TERRAGOV_REBEL
 	outfit = /datum/outfit/job/civilian/synthetic/rebel
 	jobworth = list(
-		/datum/job/xenomorph = LARVA_POINTS_SHIPSIDE_STRONG,
+		/datum/job/xenomorph = LARVA_POINTS_STRONG,
 		/datum/job/terragov/squad/smartgunner/rebel = SMARTIE_POINTS_REGULAR,
 	)
-
 
 /datum/job/terragov/silicon/synthetic/get_special_name(client/preference_source)
 	return preference_source.prefs.synthetic_name
@@ -1147,8 +1136,22 @@ Use your office fax machine to communicate with corporate headquarters or to acq
 			new_human.wear_id.paygrade = "Mk.I"
 		if(601 to 3000) // 10 to 50 hrs
 			new_human.wear_id.paygrade = "Mk.II"
-		if(3001 to INFINITY) // more than 50 hrs
+		if(3001 to 6000) // 50 to 100 hrs
 			new_human.wear_id.paygrade = "Mk.III"
+		if(6001 to 9000) // 100 to 150 hrs
+			new_human.wear_id.paygrade = "Mk.IV"
+		if(9001 to 12000) // 150 to 200 hrs
+			new_human.wear_id.paygrade = "Mk.V"
+		if(12001 to 15000) // 200 to 250 hrs
+			new_human.wear_id.paygrade = "Mk.VI"
+		if(15001 to 18000) // 250 to 300 hrs
+			new_human.wear_id.paygrade = "Mk.VII"
+		if(18001 to 21000) // 300 to 350 hrs
+			new_human.wear_id.paygrade = "Mk.VIII"
+		if(21001 to 60000) // 350 to 1000 hrs
+			new_human.wear_id.paygrade = "Mk.IX"
+		if(60001 to INFINITY) // 1000 hrs and more
+			new_human.wear_id.paygrade = "Mk.X"
 
 /datum/job/terragov/silicon/synthetic/radio_help_message(mob/M)
 	. = ..()
@@ -1168,7 +1171,6 @@ In addition, being a Synthetic gives you knowledge in every field and specializa
 	gloves = /obj/item/clothing/gloves/yellow
 	r_store = /obj/item/storage/pouch/general/medium
 	l_store = /obj/item/storage/pouch/general/medium
-	back = /obj/item/storage/backpack/marine/satchel
 
 /datum/outfit/job/civilian/synthetic/rebel
 	jobtype = /datum/job/terragov/silicon/synthetic/rebel
@@ -1230,7 +1232,7 @@ If you require any help, use <b>mentorhelp</b> to ask mentors about what you're 
 
 /datum/job/terragov/silicon/ai/announce(mob/living/announced_mob)
 	. = ..()
-	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, PROC_REF(minor_announce), "[announced_mob] has been downloaded to an empty bluespace-networked AI core at [AREACOORD(announced_mob)]."))
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce), "[announced_mob] has been downloaded to an empty bluespace-networked AI core at [AREACOORD(announced_mob)]."))
 
 
 /datum/job/terragov/silicon/ai/config_check()

@@ -73,8 +73,10 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	var/recoil_mod 		= 0
 	///If positive, adds recoil, if negative, lowers it. but for onehanded firing. Recoil can't go below 0.
 	var/recoil_unwielded_mod = 0
-	///Modifier to scatter from wielded burst fire, works off a multiplier.
+	///Additive to burst scatter modifier from burst fire, works off a multiplier.
 	var/burst_scatter_mod = 0
+	///additive modifier to burst fire accuracy.
+	var/burst_accuracy_mod = 0
 	///Adds silenced to weapon. changing its fire sound, muzzle flash, and volume. TRUE or FALSE
 	var/silence_mod 	= FALSE
 	///Adds an x-brightness flashlight to the weapon, which can be toggled on and off.
@@ -95,10 +97,10 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	var/attach_shell_speed_mod = 0
 	///Modifies accuracy/scatter penalty when firing onehanded while moving.
 	var/movement_acc_penalty_mod = 0
-	///How long in deciseconds it takes to attach a weapon with level 1 firearms training. Default is 30 seconds.
-	var/attach_delay = 30
-	///How long in deciseconds it takes to detach a weapon with level 1 firearms training. Default is 30 seconds.
-	var/detach_delay = 30
+	///How long in deciseconds it takes to attach a weapon with level 1 firearms training. Default is 1.5 seconds.
+	var/attach_delay = 1.5 SECONDS
+	///How long in deciseconds it takes to detach a weapon with level 1 firearms training. Default is 1.5 seconds.
+	var/detach_delay = 1.5 SECONDS
 	///Changes aim mode movement delay multiplicatively
 	var/aim_mode_movement_mult = 0
 	///Modifies projectile damage by a % when a marine gets passed, but not hit
@@ -237,6 +239,7 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 		master_gun.aim_slowdown					+= aim_speed_mod
 		master_gun.wield_delay					+= wield_delay_mod
 		master_gun.burst_scatter_mult			+= burst_scatter_mod
+		master_gun.burst_accuracy_bonus			+= burst_accuracy_mod
 		master_gun.movement_acc_penalty_mult	+= movement_acc_penalty_mod
 		master_gun.shell_speed_mod				+= attach_shell_speed_mod
 		master_gun.scope_zoom					+= scope_zoom_mod
@@ -287,6 +290,7 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 		master_gun.aim_slowdown					-= aim_speed_mod
 		master_gun.wield_delay					-= wield_delay_mod
 		master_gun.burst_scatter_mult			-= burst_scatter_mod
+		master_gun.burst_accuracy_bonus			-= burst_accuracy_mod
 		master_gun.movement_acc_penalty_mult	-= movement_acc_penalty_mod
 		master_gun.shell_speed_mod				-= attach_shell_speed_mod
 		master_gun.scope_zoom					-= scope_zoom_mod
@@ -565,10 +569,10 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	attachment_action_type = /datum/action/item_action/toggle
 	activation_sound = 'sound/items/flashlight.ogg'
 
-/obj/item/attachable/flashlight/activate(mob/living/user)
-	turn_light(user, !light_on)
+/obj/item/attachable/flashlight/activate(mob/living/user, turn_off)
+	turn_light(user, turn_off ? !turn_off : !light_on)
 
-/obj/item/attachable/flashlight/turn_light(mob/user, toggle_on)
+/obj/item/attachable/flashlight/turn_light(mob/user, toggle_on, cooldown, sparks, forced, light_again)
 	. = ..()
 
 	if(. != CHECKS_PASSED)
@@ -840,7 +844,7 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	user.see_in_dark = 2
 	return TRUE
 
-/obj/item/attachable/scope/unremovable/laser_sniper_scope
+/obj/item/attachable/scope/laser_sniper_scope
 	name = "Terra Experimental laser sniper rifle rail scope"
 	desc = "A marine standard mounted zoom sight scope made for the Terra Experimental laser sniper rifle otherwise known as TE-S abbreviated, allows zoom by activating the attachment. Use F12 if your HUD doesn't come back."
 	icon_state = "tes"
@@ -999,10 +1003,16 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 
 /obj/item/attachable/stock/t39stock
 	name = "\improper SH-39 stock"
-	desc = "A specialized stock for the SH-35."
+	desc = "A specialized stock for the SH-39."
 	icon_state = "t39stock"
 	pixel_shift_x = 32
 	pixel_shift_y = 13
+	size_mod = 1
+	flags_attach_features = ATTACH_REMOVABLE
+	wield_delay_mod = 0.2 SECONDS
+	accuracy_mod = 0.15
+	recoil_mod = -2
+	scatter_mod = -2
 
 /obj/item/attachable/stock/t60stock
 	name = "MG-60 stock"
@@ -1113,7 +1123,6 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	scatter_unwielded_mod = -2
 	recoil_unwielded_mod = -1
 	aim_mode_movement_mult = -0.5
-	shot_marine_damage_falloff = -0.1
 
 /obj/item/attachable/lasersight
 	name = "laser sight"
@@ -1168,11 +1177,9 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	desc = "A mechanism re-assembly kit that allows for automatic fire, or more shots per burst if the weapon already has the ability. \nIncreases scatter and decreases accuracy."
 	icon_state = "rapidfire"
 	slot = ATTACHMENT_SLOT_UNDER
-	accuracy_mod = -0.10
 	burst_mod = 2
-	scatter_mod = 3
-	accuracy_unwielded_mod = -0.20
-	scatter_unwielded_mod = 5
+	burst_scatter_mod = 1
+	burst_accuracy_mod = -0.1
 
 
 //Foldable/deployable attachments
@@ -1349,6 +1356,7 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	icon_state = "build_a_sentry_attachment"
 	desc = "The Build-A-Sentry is the latest design in cheap, automated, defense. Simple attach it to the rail of a gun and deploy. Its that easy!"
 	slot = ATTACHMENT_SLOT_RAIL
+	size_mod = 1
 	pixel_shift_x = 10
 	pixel_shift_y = 18
 	///Deploy time for the build-a-sentry
@@ -1395,8 +1403,6 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	detaching_gun.ignored_terrains = null
 	detaching_gun.deployable_item = null
 	detaching_gun.turret_flags &= ~(TURRET_HAS_CAMERA|TURRET_SAFETY|TURRET_ALERTS)
-	detaching_gun.RemoveElement(/datum/element/deployable_item, master_gun.deployable_item, deploy_time, undeploy_time)
-
 
 /obj/item/attachable/shoulder_mount
 	name = "experimental shoulder attachment point"
@@ -1704,8 +1710,8 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	return TRUE
 
 ///Called when an attachment is attached to this gun (src).
-/obj/item/weapon/gun/proc/on_attachment_attach(/obj/item/attaching_here, mob/attacher)
+/obj/item/weapon/gun/proc/on_attachment_attach(obj/item/attaching_here, mob/attacher)
 	return
 ///Called when an attachment is detached from this gun (src).
-/obj/item/weapon/gun/proc/on_attachment_detach(/obj/item/detaching_here, mob/attacher)
+/obj/item/weapon/gun/proc/on_attachment_detach(obj/item/detaching_here, mob/attacher)
 	return

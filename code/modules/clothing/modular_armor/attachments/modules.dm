@@ -71,7 +71,7 @@
 	desc = "Designed for mounting on modular armor. Providing a near immunity to being bathed in flames, and amazing flame retardant qualities, this is every pyromaniacs' first stop to survival. Will impact mobility."
 	icon_state = "mod_fire"
 	item_state = "mod_fire_a"
-	hard_armor = list("fire" = 200)
+	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 200, ACID = 0)
 	slowdown = 0.4
 	slot = ATTACHMENT_SLOT_MODULE
 	variants_by_parent_type = list(/obj/item/clothing/suit/modular/xenonauten = "mod_fire_xn", /obj/item/clothing/suit/modular/xenonauten/light = "mod_fire_xn", /obj/item/clothing/suit/modular/xenonauten/heavy = "mod_fire_xn")
@@ -163,7 +163,7 @@
 	icon = 'icons/mob/modular/modular_armor_modules.dmi'
 	icon_state = "mod_biohazard"
 	item_state = "mod_biohazard_a"
-	soft_armor = list("bio" = 40, ACID = 30)
+	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 40, FIRE = 0, ACID = 30)
 	slowdown = 0.2
 	slot = ATTACHMENT_SLOT_MODULE
 	variants_by_parent_type = list(/obj/item/clothing/suit/modular/xenonauten = "mod_biohazard_xn", /obj/item/clothing/suit/modular/xenonauten/light = "mod_biohazard_xn", /obj/item/clothing/suit/modular/xenonauten/heavy = "mod_biohazard_xn")
@@ -191,7 +191,7 @@
 	desc = "Designed for mounting on modular armor. This older model provides minor resistance to acid, biological, and radiological attacks. Pairing this with a Mimir helmet module and mask will make the user impervious to xeno gas clouds. Will impact mobility."
 	icon_state = "mod_biohazard"
 	item_state = "mod_biohazard_a"
-	soft_armor = list("bio" = 15, ACID = 15)
+	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 15, FIRE = 0, ACID = 15)
 	slowdown = 0.2
 
 //SOM version
@@ -200,7 +200,7 @@
 	desc = "Designed for mounting on modular SOM armor. This module appears to be designed to protect the user from the effects of radiological attacks, although also provides improved resistance against other environmental threats such as acid and gas. Pairing this with a Mithridatius helmet module and mask will make the user impervious to gas clouds. Will impact mobility."
 	icon_state = "mithridatius"
 	item_state = "mithridatius_a"
-	soft_armor = list(BIO = 25, ACID = 20)
+	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 25, FIRE = 0, ACID = 20)
 	variants_by_parent_type = list()
 
 /obj/item/armor_module/module/mimir_environment_protection/mimir_helmet
@@ -208,7 +208,7 @@
 	desc = "Designed for mounting on a modular helmet. This newer model provides great resistance to acid, biological, and even radiological attacks. Pairing this with a Mimir suit module and mask will make the user impervious to xeno gas clouds."
 	icon_state = "mimir_head"
 	item_state = "mimir_head_a"
-	soft_armor = list("bio" = 40, ACID = 30)
+	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 40, FIRE = 0, ACID = 30)
 	slowdown = 0
 	slot = ATTACHMENT_SLOT_HEAD_MODULE
 	variants_by_parent_type = list(/obj/item/clothing/head/modular/marine/m10x = "mimir_head_xn", /obj/item/clothing/head/modular/marine/m10x/leader = "mimir_head_xn")
@@ -216,7 +216,7 @@
 /obj/item/armor_module/module/mimir_environment_protection/mimir_helmet/mark1 //gas protection
 	name = "Mark 1 Mimir Environmental Helmet System"
 	desc = "Designed for mounting on a modular helmet. This older model provides minor resistance to acid and biological attacks. Pairing this with a Mimir suit module and mask will make the user impervious to xeno gas clouds."
-	soft_armor = list("bio" = 15, ACID = 15)
+	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 15, FIRE = 0, ACID = 15)
 
 //SOM version
 /obj/item/armor_module/module/mimir_environment_protection/mimir_helmet/som
@@ -234,7 +234,7 @@
 	icon = 'icons/mob/modular/modular_armor_modules.dmi'
 	icon_state = "mod_boomimmune"
 	item_state = "mod_boomimmune_a"
-	soft_armor = list("bomb" = 40)
+	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 40, BIO = 0, FIRE = 0, ACID = 0)
 	slowdown = 0.2
 	slot = ATTACHMENT_SLOT_MODULE
 	variants_by_parent_type = list(/obj/item/clothing/suit/modular/xenonauten = "mod_bombimmune_xn", /obj/item/clothing/suit/modular/xenonauten/light = "mod_bombimmune_xn", /obj/item/clothing/suit/modular/xenonauten/heavy = "mod_bombimmune_xn")
@@ -271,6 +271,7 @@
 /obj/item/armor_module/module/chemsystem/on_detach(obj/item/detaching_from, mob/user)
 	var/datum/component/chem_booster/chemsystem = parent.GetComponent(/datum/component/chem_booster)
 	UnregisterSignal(chemsystem, COMSIG_CHEMSYSTEM_TOGGLED)
+	chemsystem.Destroy()
 	chemsystem.RemoveComponent()
 	return ..()
 
@@ -591,6 +592,12 @@
 	/// Reference to the datum used by the supply drop console
 	var/datum/supply_beacon/beacon_datum
 
+/obj/item/armor_module/module/antenna/Destroy()
+	if(beacon_datum)
+		UnregisterSignal(beacon_datum, COMSIG_PARENT_QDELETING)
+		QDEL_NULL(beacon_datum)
+	return ..()
+
 /obj/item/armor_module/module/antenna/activate(mob/living/user)
 	var/turf/location = get_turf(src)
 	if(beacon_datum)
@@ -610,3 +617,118 @@
 	SIGNAL_HANDLER
 	beacon_datum = null
 
+
+/obj/item/armor_module/module/motion_detector
+	name = "Tactical sensor helmet module"
+	desc = "Help you to detect the xeno in the darkness."
+	icon = 'icons/mob/modular/modular_armor_modules.dmi'
+	icon_state = "mod_head_scanner"
+	item_state = "mod_head_scanner_a"
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_APPLY_ON_MOB
+	slot = ATTACHMENT_SLOT_HEAD_MODULE
+	prefered_slot = SLOT_HEAD
+
+	/// Who's using this item
+	var/mob/living/carbon/human/operator
+	///The range of this motion detector
+	var/range = 16
+	//таймер для работы модуля
+	var/motion_timer = null
+	//время через которое будет срабатывать модуль
+	var/scan_time = 2 SECONDS
+	///The list of all the blips
+	var/list/obj/effect/blip/blips_list = list()
+
+/obj/item/armor_module/module/motion_detector/Destroy()
+	stop_and_clean()
+	return ..()
+
+/obj/item/armor_module/module/motion_detector/on_attach(obj/item/attaching_to, mob/user)
+	. = ..()
+	RegisterSignal(parent, COMSIG_ITEM_UNEQUIPPED, PROC_REF(stop_and_clean))
+
+/obj/item/armor_module/module/motion_detector/on_detach(obj/item/detaching_from, mob/user)
+	UnregisterSignal(parent, COMSIG_ITEM_UNEQUIPPED, PROC_REF(stop_and_clean))
+	stop_and_clean()
+	return ..()
+
+//убираем графическую хуйню и останавливает сканирование.
+/obj/item/armor_module/module/motion_detector/proc/stop_and_clean()
+	SIGNAL_HANDLER
+
+	active = FALSE
+	clean_blips()
+	operator = null
+	if(motion_timer)
+		deltimer(motion_timer)
+		motion_timer = null
+
+
+//вкл-выкл модуль
+/obj/item/armor_module/module/motion_detector/activate(mob/living/user)
+	active = !active
+	to_chat(user, span_notice("You toggle \the [src]. [active ? "enabling" : "disabling"] it."))
+	if(active)
+		operator = user
+		if(!motion_timer)
+			motion_timer = addtimer(CALLBACK(src, PROC_REF(do_scan)), scan_time, TIMER_LOOP|TIMER_STOPPABLE)
+	else
+		stop_and_clean()
+
+
+/obj/item/armor_module/module/motion_detector/proc/do_scan()
+	if(!operator?.client || operator?.stat != CONSCIOUS)
+		stop_and_clean()
+		return
+	var/hostile_detected = FALSE
+	for (var/mob/living/carbon/human/nearby_human AS in cheap_get_humans_near(operator, range))
+		if(nearby_human == operator)
+			continue
+		if(!hostile_detected && (!operator.wear_id || !nearby_human.wear_id || nearby_human.wear_id.iff_signal != operator.wear_id.iff_signal))
+			hostile_detected = TRUE
+		prepare_blip(nearby_human, nearby_human.wear_id?.iff_signal & operator.wear_id?.iff_signal ? MOTION_DETECTOR_FRIENDLY : MOTION_DETECTOR_HOSTILE)
+	for (var/mob/living/carbon/xenomorph/nearby_xeno AS in cheap_get_xenos_near(operator, range))
+		if(!hostile_detected)
+			hostile_detected = TRUE
+		prepare_blip(nearby_xeno, MOTION_DETECTOR_HOSTILE)
+	if(hostile_detected)
+		playsound(loc, 'sound/items/tick.ogg', 100, 0, 1)
+	addtimer(CALLBACK(src, PROC_REF(clean_blips)), scan_time / 2)
+
+
+///Clean all blips from operator screen
+/obj/item/armor_module/module/motion_detector/proc/clean_blips()
+	if(!operator)//We already cleaned
+		return
+	for(var/obj/effect/blip/blip AS in blips_list)
+		blip.remove_blip(operator)
+	blips_list.Cut()
+
+///Prepare the blip to be print on the operator screen
+/obj/item/armor_module/module/motion_detector/proc/prepare_blip(mob/target, status)
+	if(!operator.client)
+		return
+
+	var/list/actualview = getviewsize(operator.client.view)
+	var/viewX = actualview[1]
+	var/viewY = actualview[2]
+	var/turf/center_view = get_view_center(operator)
+	var/screen_pos_y = target.y - center_view.y + round(viewY * 0.5) + 1
+	var/dir
+	if(screen_pos_y < 1)
+		dir = SOUTH
+		screen_pos_y = 1
+	else if (screen_pos_y > viewY)
+		dir = NORTH
+		screen_pos_y = viewY
+	var/screen_pos_x = target.x - center_view.x + round(viewX * 0.5) + 1
+	if(screen_pos_x < 1)
+		dir = (dir ? dir == SOUTH ? SOUTHWEST : NORTHWEST : WEST)
+		screen_pos_x = 1
+	else if (screen_pos_x > viewX)
+		dir = (dir ? dir == SOUTH ? SOUTHEAST : NORTHEAST : EAST)
+		screen_pos_x = viewX
+	if(dir)
+		blips_list += new /obj/effect/blip/edge_blip(null, status, operator, screen_pos_x, screen_pos_y, dir)
+		return
+	blips_list += new /obj/effect/blip/close_blip(get_turf(target), status, operator)

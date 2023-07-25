@@ -59,10 +59,11 @@
 	// TODO: attack_alien() overrides are a mess and need a lot of work to make them require parentcalling
 	RegisterSignal(owner, list(
 		COMSIG_XENOMORPH_GRAB,
-		COMSIG_XENOMORPH_ATTACK_OBJ,
 		COMSIG_XENOMORPH_THROW_HIT,
 		COMSIG_XENOMORPH_FIRE_BURNING,
 		COMSIG_LIVING_ADD_VENTCRAWL), PROC_REF(cancel_stealth))
+
+	RegisterSignal(owner, COMSIG_XENOMORPH_ATTACK_OBJ, PROC_REF(on_obj_attack))
 
 	RegisterSignal(owner, list(SIGNAL_ADDTRAIT(TRAIT_KNOCKEDOUT), SIGNAL_ADDTRAIT(TRAIT_FLOORED)), PROC_REF(cancel_stealth))
 
@@ -101,6 +102,12 @@
 	REMOVE_TRAIT(owner, TRAIT_TURRET_HIDDEN, STEALTH_TRAIT)
 	owner.alpha = 255 //no transparency/translucency
 
+///Signal wrapper to verify that an object is damageable before breaking stealth
+/datum/action/xeno_action/stealth/proc/on_obj_attack(datum/source, obj/attacked)
+	SIGNAL_HANDLER
+	if(attacked.resistance_flags & XENO_DAMAGEABLE)
+		cancel_stealth()
+
 /datum/action/xeno_action/stealth/proc/sneak_attack_cooldown()
 	if(!stealth || can_sneak_attack)
 		return
@@ -122,27 +129,27 @@
 		return
 	//Stationary stealth
 	else if(owner.last_move_intent < world.time - HUNTER_STEALTH_STEALTH_DELAY) //If we're standing still for 4 seconds we become almost completely invisible
-		owner.alpha = HUNTER_STEALTH_ALPHA * stealth_alpha_multiplier
+		owner.alpha = HUNTER_STEALTH_STILL_ALPHA * stealth_alpha_multiplier
 	//Walking stealth
 	else if(owner.m_intent == MOVE_INTENT_WALK)
 		xenoowner.use_plasma(HUNTER_STEALTH_WALK_PLASMADRAIN)
-		owner.alpha = HUNTER_STEALTH_ALPHA * stealth_alpha_multiplier
+		owner.alpha = HUNTER_STEALTH_WALK_ALPHA * stealth_alpha_multiplier
 	//Running stealth
 	else
 		xenoowner.use_plasma(HUNTER_STEALTH_RUN_PLASMADRAIN)
-		owner.alpha = HUNTER_STEALTH_ALPHA * stealth_alpha_multiplier
+		owner.alpha = HUNTER_STEALTH_RUN_ALPHA * stealth_alpha_multiplier
 	//If we have 0 plasma after expending stealth's upkeep plasma, end stealth.
 	if(!xenoowner.plasma_stored)
 		to_chat(xenoowner, span_xenodanger("We lack sufficient plasma to remain camouflaged."))
 		cancel_stealth()
 	//Held facehuggers change alpha for balance reason
 	if(istype(owner.r_hand, /obj/item/clothing/mask/facehugger))
-		owner.alpha = HUNTER_STEALTH_WALK_ALPHA * stealth_alpha_multiplier
+		owner.alpha = HUNTER_STEALTH_BUSY_ALPHA * stealth_alpha_multiplier
 	if(istype(owner.l_hand, /obj/item/clothing/mask/facehugger))
-		owner.alpha = HUNTER_STEALTH_WALK_ALPHA * stealth_alpha_multiplier
+		owner.alpha = HUNTER_STEALTH_BUSY_ALPHA * stealth_alpha_multiplier
     //Actions change alpha for balance reason (Pu-pu-pu)
 	if(owner.do_actions)
-		owner.alpha = HUNTER_STEALTH_RUN_ALPHA * stealth_alpha_multiplier
+		owner.alpha = HUNTER_STEALTH_BUSY_ALPHA * stealth_alpha_multiplier
 
 /// Callback listening for a xeno using the pounce ability
 /datum/action/xeno_action/stealth/proc/sneak_attack_pounce()
@@ -165,7 +172,7 @@
 		M.add_slowdown(1)
 		to_chat(owner, span_xenodanger("Pouncing from the shadows, we stagger our victim."))
 
-/datum/action/xeno_action/stealth/proc/sneak_attack_slash(datum/source, mob/living/target, damage, list/damage_mod, armor_pen)
+/datum/action/xeno_action/stealth/proc/sneak_attack_slash(datum/source, mob/living/target, damage, list/damage_mod, list/armor_mod)
 	SIGNAL_HANDLER
 	if(!can_sneak_attack)
 		return
@@ -175,12 +182,13 @@
 	if(owner.m_intent == MOVE_INTENT_RUN && ( owner.last_move_intent > (world.time - HUNTER_SNEAK_ATTACK_RUN_DELAY) ) ) //Allows us to slash while running... but only if we've been stationary for awhile
 		flavour = "vicious"
 	else
-		armor_pen = HUNTER_SNEAK_SLASH_ARMOR_PEN
+		armor_mod += HUNTER_SNEAK_SLASH_ARMOR_PEN
 		staggerslow_stacks *= 2
 		flavour = "deadly"
 
 	owner.visible_message(span_danger("\The [owner] strikes [target] with [flavour] precision!"), \
 	span_danger("We strike [target] with [flavour] precision!"))
+	target.apply_damage(damage)
 	target.adjust_stagger(staggerslow_stacks)
 	target.add_slowdown(staggerslow_stacks)
 	target.ParalyzeNoChain(1 SECONDS)

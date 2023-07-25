@@ -10,6 +10,7 @@
 	idle_power_usage = 20
 	icon = 'icons/obj/machines/drone_fab.dmi'
 	icon_state = "drone_fab_idle"
+	resistance_flags = RESIST_ALL
 	/// List of everything in queue
 	var/list/queue = list()
 	/// Whether the fabricator is currently printing something or not
@@ -142,12 +143,3 @@
 
 		build_dropship_part(build_type)
 		return
-
-/obj/machinery/dropship_part_fabricator/attackby(obj/item/H, mob/user, params)
-	. = ..()
-	if(!istype(H, /obj/item/dropship_points_voucher))
-		return
-	var/obj/item/dropship_points_voucher/voucher = H
-	to_chat(user, span_notice("You add [voucher.extra_points] dropship points to \the [src]."))
-	SSpoints.dropship_points += voucher.extra_points
-	qdel(H)

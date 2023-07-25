@@ -157,7 +157,7 @@
 
 	new_xeno = new(affected_mob)
 
-	new_xeno.hivenumber = hivenumber
+	new_xeno.transfer_to_hive(hivenumber)
 	new_xeno.update_icons()
 
 	//If we have a candidate, transfer it over.
@@ -183,6 +183,18 @@
 	victim.jitter(300)
 
 	victim.emote_burstscream()
+
+	var/nestburst_message = pick("You feel hive's psychic power getting stronger, after host [victim.name] gave birth on a nest!", "You feel hive's psychic power getting stronger, after breeding host [victim.name] on a nest!")
+	if(CHECK_BITFIELD(victim.restrained_flags, RESTRAINED_XENO_NEST))
+		if(victim.job == null)
+			SSpoints.add_psy_points(src.hivenumber, 10)
+			xeno_message(nestburst_message, "xenoannounce", 5, src.hivenumber)
+		else if(victim.job.type == /datum/job/survivor/rambo)
+			SSpoints.add_psy_points(src.hivenumber, 50)
+			xeno_message(nestburst_message, "xenoannounce", 5, src.hivenumber)
+		else
+			SSpoints.add_psy_points(src.hivenumber, 200)
+			xeno_message(nestburst_message, "xenoannounce", 5, src.hivenumber)
 
 	addtimer(CALLBACK(src, PROC_REF(burst), victim), 3 SECONDS)
 

@@ -1,5 +1,5 @@
 /obj/machinery/loadout_vendor
-	name = "automated vendor"
+	name = "automated loadout vendor"
 	desc = "An advanced vendor used by the TGMC to rapidly equip their soldiers"
 	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "specialist"
@@ -10,6 +10,9 @@
 	req_one_access = null
 	///The faction of this loadout vendor
 	var/faction = FACTION_NEUTRAL
+
+/obj/machinery/loadout_vendor/crash
+	faction = FACTION_NEUTRAL_CRASH
 
 /obj/machinery/loadout_vendor/can_interact(mob/user)
 	. = ..()

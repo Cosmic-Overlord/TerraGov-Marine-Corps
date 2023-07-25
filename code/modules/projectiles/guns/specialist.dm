@@ -421,16 +421,23 @@ Note that this means that snipers will have a slowdown of 3, due to the scope
 	damage_falloff_mult = 0.5
 	movement_acc_penalty_mult = 4
 
+	obj_flags = AUTOBALANCE_CHECK
+
 /obj/item/weapon/gun/minigun/Initialize()
 	. = ..()
-	SSmonitor.stats.miniguns_in_use += src
+	if(obj_flags & AUTOBALANCE_CHECK)
+		SSmonitor.stats.miniguns_in_use += src
 
 /obj/item/weapon/gun/minigun/Destroy()
-	SSmonitor.stats.miniguns_in_use -= src
+	if(obj_flags & AUTOBALANCE_CHECK)
+		SSmonitor.stats.miniguns_in_use -= src
 	return ..()
 
 /obj/item/weapon/gun/minigun/magharness
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness)
+
+/obj/item/weapon/gun/minigun/valhalla
+	obj_flags = NONE
 
 // SG minigun
 
@@ -440,7 +447,7 @@ Note that this means that snipers will have a slowdown of 3, due to the scope
 	icon_state = "minigun_sg"
 	item_state = "minigun_sg"
 	fire_animation = "minigun_sg_fire"
-	max_shells = 1000 //codex
+	max_shells = 2000 //codex
 	caliber = CALIBER_10x26_CASELESS //codex
 	allowed_ammo_types = list(/obj/item/ammo_magazine/minigun_powerpack/smartgun)
 	wield_delay = 1.5 SECONDS
@@ -456,6 +463,8 @@ Note that this means that snipers will have a slowdown of 3, due to the scope
 	scatter = -5
 	recoil = 0
 	recoil_unwielded = 4
+
+	obj_flags = NONE
 
 /obj/item/weapon/gun/minigun/smart_minigun/motion_detector
 	starting_attachment_types = list(/obj/item/attachable/motiondetector)
@@ -534,8 +543,8 @@ Note that this means that snipers will have a slowdown of 3, due to the scope
 	lifespan = 0.7 SECONDS
 	fade = 8 SECONDS
 	grow = 0.1
-	drift = generator(GEN_CIRCLE, 0, 10)
-	scale = 0.5
+	drift = generator(GEN_CIRCLE, 0, 5)
+	scale = 0.3
 	spin = generator(GEN_NUM, -20, 20)
 	velocity = list(50, 0)
 	friction = generator(GEN_NUM, 0.1, 0.5)
@@ -579,8 +588,6 @@ Note that this means that snipers will have a slowdown of 3, due to the scope
 	scatter = -100
 	placed_overlay_iconstate = "sadar"
 	windup_delay = 0.4 SECONDS
-	///the smoke effect after firing
-	var/obj/effect/abstract/particle_holder/backblast
 	///removes backblast damage if false
 	var/backblastdamage = TRUE
 
@@ -593,9 +600,10 @@ Note that this means that snipers will have a slowdown of 3, due to the scope
 	var/angle = Get_Angle(loc, target)
 	var/x_component = sin(angle) * -30
 	var/y_component = cos(angle) * -30
-	backblast = new(blast_source, /particles/backblast)
+	var/obj/effect/abstract/particle_holder/backblast = new(blast_source, /particles/backblast)
 	backblast.particles.velocity = list(x_component, y_component)
-	QDEL_NULL_IN(src, backblast, 0.7 SECONDS)
+	addtimer(VARSET_CALLBACK(backblast.particles, count, 0), 5)
+	QDEL_IN(backblast, 0.7 SECONDS)
 
 	if(!backblastdamage)
 		return
@@ -661,13 +669,20 @@ Note that this means that snipers will have a slowdown of 3, due to the scope
 	recoil = 3
 	scatter = -100
 
+	obj_flags = AUTOBALANCE_CHECK
+
 /obj/item/weapon/gun/launcher/rocket/sadar/Initialize(mapload, spawn_empty)
 	. = ..()
-	SSmonitor.stats.sadar_in_use += src
+	if(obj_flags & AUTOBALANCE_CHECK)
+		SSmonitor.stats.sadar_in_use += src
 
 /obj/item/weapon/gun/launcher/rocket/sadar/Destroy()
-	SSmonitor.stats.sadar_in_use -= src
+	if(obj_flags & AUTOBALANCE_CHECK)
+		SSmonitor.stats.sadar_in_use -= src
 	return ..()
+
+/obj/item/weapon/gun/launcher/rocket/sadar/valhalla
+	obj_flags = NONE
 
 //-------------------------------------------------------
 //M5 RPG'S MEAN FUCKING COUSIN

@@ -24,6 +24,7 @@
 #define XENO_DEBUFF_HUD "xeno_debuff_hud" // displays xeno debuffs; part of /datum/atom_hud/xeno_debuff
 #define HEART_STATUS_HUD "heart_status_hud" // display if revivable, along with blood level
 #define XENO_FIRE_HUD "xeno_fire_hud" // displays how many fire stacks a xeno has
+#define XENO_BANISHED_HUD "xeno_banished_hud" // indicates that the xeno is banished
 
 #define ADD_HUD_TO_COOLDOWN 20 //cooldown for being shown the images for any particular data hud
 
@@ -57,3 +58,6 @@
 #define NOTIFY_ATTACK "attack"
 #define NOTIFY_ORBIT "orbit"
 #define NOTIFY_JOIN_AS_LARVA "join_as_larva"
+
+// AI notify action types
+#define NOTIFY_AI_ALERT "aijump"

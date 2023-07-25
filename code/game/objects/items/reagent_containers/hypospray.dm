@@ -48,21 +48,22 @@
 
 /obj/item/reagent_containers/hypospray/afterattack(atom/A, mob/living/user)
 	if(istype(A, /obj/item/storage/pill_bottle) && is_open_container()) //this should only run if its a pillbottle
+		var/obj/item/storage/pill_bottle/bottle = A
 		if(reagents.total_volume >= volume)
 			to_chat(user, span_warning("[src] is full."))
 			return  //early returning if its full
 
-		if(!A.contents.len)
+		if(!length_char(bottle.contents))
 			return //early returning if its empty
-		var/obj/item/pill = A.contents[1]
+		var/obj/item/pill = bottle.contents[1]
 
 		if((pill.reagents.total_volume + reagents.total_volume) > volume)
 			to_chat(user, span_warning("[src] cannot hold that much more."))
 			return // so it doesnt let people have hypos more filled than their volume
 		pill.reagents.trans_to(src, pill.reagents.total_volume)
 
-		to_chat(user, span_notice("You dissolve [pill] from [A] in [src]."))
-		A.contents -= pill
+		to_chat(user, span_notice("You dissolve [pill] from [bottle] in [src]."))
+		bottle.remove_from_storage(pill,null,user)
 		qdel(pill)
 		return
 
@@ -151,8 +152,9 @@
 
 	if(ismob(A))
 		var/mob/M = A
-		to_chat(user, "[span_notice("You inject [M] with [src]")].")
-		to_chat(M, span_warning("You feel a tiny prick!"))
+		user.visible_message(span_warning("[user] injects [M] with [src]!"))
+		to_chat(user, span_notice("You inject [M] with [src]."))
+		to_chat(M, span_notice("[user] injects you with [src]!"))
 
 	// /mob/living/carbon/human/attack_hand causes
 	// changeNext_move(7) which creates a delay
@@ -175,6 +177,10 @@
 	. = ..()
 	if(.)
 		return
+	update_icon()
+
+/obj/item/reagent_containers/hypospray/on_enter_storage(mob/user, slot)
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_containers/hypospray/pickup(mob/user)
@@ -465,6 +471,25 @@
 		/datum/reagent/medicine/nanoblood = 60,
 	)
 	description_overlay = "Na"
+
+/obj/item/reagent_containers/hypospray/advanced/peridaxonplus
+	name = "Peridaxon+ hypospray"
+	desc = "A hypospray loaded with Peridaxon Plus, a chemical that heals organs while causing a buildup of toxins. Use with antitoxin. !DO NOT USE IN ACTIVE COMBAT!"
+	amount_per_transfer_from_this = 3
+	list_reagents = list(
+		/datum/reagent/medicine/peridaxon_plus = 20,
+		/datum/reagent/medicine/hyronalin = 40,
+	)
+	description_overlay = "Pe+"
+
+/obj/item/reagent_containers/hypospray/advanced/quickclotplus
+	name = "Quickclot+ hypospray"
+	desc = "A hypospray loaded with quick-clot plus, a chemical designed to remove internal bleeding. Use with antitoxin. !DO NOT USE IN ACTIVE COMBAT!"
+	amount_per_transfer_from_this = 5
+	list_reagents = list(
+		/datum/reagent/medicine/quickclotplus = 60,
+	)
+	description_overlay = "Qk+"
 
 /obj/item/reagent_containers/hypospray/advanced/big
 	name = "big hypospray"

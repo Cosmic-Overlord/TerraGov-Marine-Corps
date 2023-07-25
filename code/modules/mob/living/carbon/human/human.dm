@@ -40,13 +40,12 @@
 	randomize_appearance()
 
 	RegisterSignal(src, COMSIG_ATOM_ACIDSPRAY_ACT, PROC_REF(acid_spray_entered))
-	RegisterSignal(src, list(COMSIG_KB_QUICKEQUIP, COMSIG_CLICK_QUICKEQUIP), PROC_REF(async_do_quick_equip))
-	RegisterSignal(src, COMSIG_KB_QUICKEQUIPALT, PROC_REF(async_do_quick_equip_alt))
+	RegisterSignal(src, COMSIG_KB_QUICKEQUIP, PROC_REF(async_do_quick_equip))
 	RegisterSignal(src, COMSIG_KB_UNIQUEACTION, PROC_REF(do_unique_action))
 	RegisterSignal(src, COMSIG_GRAB_SELF_ATTACK, PROC_REF(fireman_carry_grabbed)) // Fireman carry
 	RegisterSignal(src, COMSIG_KB_GIVE, PROC_REF(give_signal_handler))
-	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN)
 	AddComponent(/datum/component/bump_attack, FALSE, FALSE)
+	AddElement(/datum/element/footstep, isrobot(src) ? FOOTSTEP_MOB_SHOE : FOOTSTEP_MOB_HUMAN, 1)
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/human)
 
 /mob/living/carbon/human/proc/human_z_changed(datum/source, old_z, new_z)

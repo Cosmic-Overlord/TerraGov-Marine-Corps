@@ -44,10 +44,10 @@
 
 ///Adds an outline around the ability button
 /datum/action/xeno_action/proc/add_empowered_frame()
-	button.cut_overlay(visual_references[VREF_MUTABLE_EMPOWERED_FRAME])
+	button.add_overlay(visual_references[VREF_MUTABLE_EMPOWERED_FRAME])
 
 /datum/action/xeno_action/proc/remove_empowered_frame()
-	button.add_overlay(visual_references[VREF_MUTABLE_EMPOWERED_FRAME])
+	button.cut_overlay(visual_references[VREF_MUTABLE_EMPOWERED_FRAME])
 
 /datum/action/xeno_action/can_use_action(silent = FALSE, override_flags)
 	var/mob/living/carbon/xenomorph/X = owner
@@ -88,6 +88,11 @@
 	if(!(flags_to_check & XACT_USE_CRESTED) && X.crest_defense)
 		if(!silent)
 			X.balloon_alert(X, "Cannot while in crest defense")
+		return FALSE
+
+	if(!(flags_to_check & XACT_USE_ROOTED) && HAS_TRAIT_FROM(X, TRAIT_IMMOBILE, BOILER_ROOTED_TRAIT))
+		if(!silent)
+			X.balloon_alert(X, "Cannot while rooted")
 		return FALSE
 
 	if(!(flags_to_check & XACT_USE_NOTTURF) && !isturf(X.loc))

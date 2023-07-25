@@ -57,7 +57,7 @@
 /mob/living/carbon/xenomorph/proc/do_evolve(caste_type, forced_caste_name, regression = FALSE)
 	if(!generic_evolution_checks())
 		return
-	
+
 	if(caste_type == /mob/living/carbon/xenomorph/hivemind && tgui_alert(src, "You are about to evolve into a hivemind, which places its core on the tile you're on when evolving. This core cannot be moved and you cannot regress. Are you sure you would like to place your core here?", "Evolving to hivemind", list("Yes", "No"), FALSE) == "No")
 		return
 
@@ -199,6 +199,10 @@
 		balloon_alert(src, "Nuh-uh")
 		return FALSE
 
+	if(banished)
+		balloon_alert(src, span_warning("You are banished and cannot reach the hivemind."))
+		return FALSE
+
 	if(is_banned_from(ckey, ROLE_XENOMORPH))
 		log_admin_private("[key_name(src)] has tried to evolve as a xenomorph while being banned from the role.")
 		message_admins("[ADMIN_TPMONTY(src)] has tried to evolve as a xenomorph while being banned. They shouldn't be playing the role.")
@@ -231,6 +235,10 @@
 
 	if(eaten_mob)
 		balloon_alert(src, "We cannot evolve with a belly full")
+		return FALSE
+
+	if(HAS_TRAIT_FROM(src, TRAIT_IMMOBILE, BOILER_ROOTED_TRAIT))
+		balloon_alert(src, "We cannot evolve while rooted to the ground")
 		return FALSE
 
 	if(xeno_caste.hardcore)

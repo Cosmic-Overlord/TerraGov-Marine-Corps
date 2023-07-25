@@ -7,6 +7,7 @@ export const GearCustomization = (props, context) => {
   const { gearsets, gear, clothing, underwear, undershirt, backpack, gender } =
     data;
 
+  // These correspond to the gear slot and you need to update them if the defines change
   const slotMapping = {
     11: 'Head',
     9: 'Eyewear',

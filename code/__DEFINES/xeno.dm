@@ -33,6 +33,8 @@
 #define DEFILER_OZELOMELYN "Ozelomelyn"
 #define DEFILER_SANGUINAL "Sanguinal"
 
+#define DEFILER_ACID "Acid"
+
 #define PANTHER_NEUROTOXIN "Neurotoxin"
 #define PANTHER_HEMODILE "Hemodile"
 #define PANTHER_TRANSVITOX "Transvitox"
@@ -45,6 +47,11 @@
 #define TRAP_ACID_WEAK "weak acid"
 #define TRAP_ACID_NORMAL "acid"
 #define TRAP_ACID_STRONG "strong acid"
+
+//Xeno acid strength defines
+#define WEAK_ACID_STRENGTH 0.016
+#define REGULAR_ACID_STRENGTH 0.04
+#define STRONG_ACID_STRENGTH 0.1
 
 //List of weed types
 GLOBAL_LIST_INIT(weed_type_list, typecacheof(list(
@@ -81,6 +88,7 @@ GLOBAL_LIST_INIT(defiler_toxin_type_list, list(
 		/datum/reagent/toxin/xeno_hemodile,
 		/datum/reagent/toxin/xeno_transvitox,
 		/datum/reagent/toxin/xeno_neurotoxin,
+		/datum/effect_system/smoke_spread/xeno/acid/light
 		))
 
 //List of toxins improving defile's damage

@@ -161,7 +161,7 @@
 	flags_equip_slot = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = UNACIDABLE
-	force = 30
+	force = 37
 	throwforce = 25
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
@@ -183,7 +183,7 @@
 	flags_atom = CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
-	force = 35
+	force = 40
 	throwforce = 25
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = TRUE
@@ -207,7 +207,7 @@
 	flags_atom = CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = ITEM_SLOT_BELT
-	force = 30
+	force = 35
 	throwforce = 25
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
@@ -248,7 +248,7 @@
 	throw_range = 4
 	resistance_flags = UNACIDABLE
 	force = 30
-	throwforce = 45
+	throwforce = 70
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -639,8 +639,9 @@
 	icon_state = "spearhunter"
 	item_state = "spearhunter"
 	flags_item = TWOHANDED
-	force = 15
-	force_wielded = 35
+	force = 20
+	force_wielded = 45
+	throwforce = 35
 	sharp = IS_SHARP_ITEM_SIMPLE
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
 
@@ -649,9 +650,9 @@
 	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
 	icon_state = "glaive"
 	item_state = "glaive"
-	force = 15
-	force_wielded = 45
-	throwforce = 15
+	force = 20
+	force_wielded = 50
+	throwforce = 20
 	sharp = IS_SHARP_ITEM_BIG
 	flags_atom = CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")

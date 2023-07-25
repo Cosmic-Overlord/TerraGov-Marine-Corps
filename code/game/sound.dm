@@ -336,4 +336,18 @@ A good representation is: 'byond applies a volume reduction to the sound every X
 			S = pick('sound/voice/robot/robot_pain1.ogg', 'sound/voice/robot/robot_pain2.ogg', 'sound/voice/robot/robot_pain3.ogg')
 		if("robot_warcry")
 			S = pick('sound/voice/robot/robot_warcry1.ogg', 'sound/voice/robot/robot_warcry2.ogg', 'sound/voice/robot/robot_warcry3.ogg')
+
+		//yautja race
+		if("pred_scream")
+			S = pick('sound/voice/pred_roar1.ogg','sound/voice/pred_roar2.ogg','sound/voice/pred_roar3.ogg','sound/voice/pred_roar4.ogg','sound/voice/pred_roar5.ogg')
+		if("pred_pain")
+			S = pick('sound/voice/pred_pain1.ogg','sound/voice/pred_pain2.ogg','sound/voice/pred_pain3.ogg','sound/voice/pred_pain4.ogg','sound/voice/pred_pain5.ogg')
+		if("pred_hugged")
+			S = pick("sound/voice/pred_facehugged.ogg")
+		if("pred_preburst")
+			S = pick("sound/voice/pred_pain_rare1.ogg")
+
+		//pred items
+		if("clan_sword_hit")
+			S = pick('sound/weapons/clan_sword_hit_1.ogg', 'sound/weapons/clan_sword_hit_2.ogg')
 	return S

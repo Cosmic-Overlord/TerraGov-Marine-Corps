@@ -3094,7 +3094,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 
 	bullet_color = COLOR_MAGENTA
 	damage = 40
-	shell_speed = 1
+	shell_speed = 1.5
 
 /datum/ammo/energy/yautja/caster
 	name = "root caster bolt"

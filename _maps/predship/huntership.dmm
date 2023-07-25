@@ -801,6 +801,10 @@
 /area/yautja)
 "bV" = (
 /obj/effect/turf_decal/lvsanddecal/full,
+/obj/effect/turf_decal/lvsanddecal/full,
+/obj/effect/turf_decal/lvsanddecal/full{
+	icon_state = "desert"
+	},
 /obj/effect/turf_decal/lvsanddecal/full{
 	icon_state = "desert1"
 	},
@@ -878,21 +882,19 @@
 /area/yautja)
 "cg" = (
 /obj/machinery/door_control{
-	id = "Cell Lockdown 3";
-	name = "Cell Lockdown 3";
+	id = "Cell Lockdown 6";
+	name = "Cell Lockdown 6";
+	pixel_x = -7;
 	pixel_y = 9;
-	pixel_x = 7;
-	dir = 4
+	dir = 8
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "ch" = (
 /obj/effect/turf_decal/lvsanddecal/full,
+/obj/effect/turf_decal/lvsanddecal/full,
 /obj/effect/turf_decal/lvsanddecal/full{
-	icon_state = "desert2"
+	icon_state = "desert_dug"
 	},
 /turf/open/beach/sand,
 /area/yautja)
@@ -1358,19 +1360,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
-"dd" = (
-/obj/machinery/door_control{
-	id = "Cell Lockdown 6";
-	name = "Cell Lockdown 6";
-	pixel_x = -7;
-	pixel_y = 9;
-	dir = 8
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "de" = (
 /obj/structure/kitchenspike,
 /obj/item/reagent_containers/food/snacks/meat/xenomeat{
@@ -1434,17 +1423,12 @@
 	},
 /area/yautja)
 "dm" = (
-/obj/machinery/door_control{
-	id = "Cell Lockdown 2";
-	name = "Cell Lockdown 2";
-	pixel_y = 9;
-	pixel_x = 7;
-	dir = 4
+/obj/effect/turf_decal/lvsanddecal/full,
+/obj/effect/turf_decal/lvsanddecal/full,
+/obj/effect/turf_decal/lvsanddecal/full{
+	icon_state = "desert3"
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
+/turf/open/beach/sand,
 /area/yautja)
 "dI" = (
 /turf/open/space/basic,
@@ -1453,19 +1437,6 @@
 /obj/effect/turf_decal/lvsanddecal/full,
 /obj/effect/turf_decal/lvsanddecal/full,
 /turf/open/beach/sand,
-/area/yautja)
-"em" = (
-/obj/machinery/door_control{
-	id = "Cell Lockdown 5";
-	name = "Cell Lockdown 5";
-	pixel_x = -7;
-	pixel_y = 9;
-	dir = 8
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
 /area/yautja)
 "er" = (
 /obj/structure/stairs/seamless{
@@ -1586,6 +1557,16 @@
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
 	},
+/area/yautja)
+"ge" = (
+/obj/machinery/door_control{
+	id = "Cell Lockdown 4";
+	name = "Cell Lockdown 4";
+	pixel_x = -7;
+	pixel_y = 9;
+	dir = 8
+	},
+/turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "gp" = (
 /obj/structure/bed/chair/comfy/black,
@@ -1784,15 +1765,14 @@
 	},
 /area/yautja)
 "mb" = (
-/obj/effect/turf_decal/lvsanddecal/full,
-/obj/effect/turf_decal/lvsanddecal/full,
-/obj/effect/turf_decal/lvsanddecal/full{
-	icon_state = "desert"
+/obj/machinery/door_control{
+	id = "Cell Lockdown 3";
+	name = "Cell Lockdown 3";
+	pixel_y = 9;
+	pixel_x = 7;
+	dir = 4
 	},
-/obj/effect/turf_decal/lvsanddecal/full{
-	icon_state = "desert1"
-	},
-/turf/open/beach/sand,
+/turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "mj" = (
 /obj/structure/barricade/metal{
@@ -1896,7 +1876,7 @@
 "ol" = (
 /obj/effect/turf_decal/lvsanddecal/full,
 /obj/effect/turf_decal/lvsanddecal/full{
-	icon_state = "desert0"
+	icon_state = "desert2"
 	},
 /turf/open/beach/sand,
 /area/yautja)
@@ -1936,19 +1916,6 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
-"oM" = (
-/obj/machinery/door_control{
-	id = "Cell Lockdown 1";
-	name = "Cell Lockdown 1";
-	pixel_y = 9;
-	pixel_x = 7;
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "oO" = (
 /obj/item/weapon/yautja/chain{
 	anchored = 1;
@@ -1960,6 +1927,16 @@
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
 	},
+/area/yautja)
+"pA" = (
+/obj/machinery/door_control{
+	id = "Cell Lockdown 1";
+	name = "Cell Lockdown 1";
+	pixel_y = 9;
+	pixel_x = 7;
+	dir = 4
+	},
+/turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "pJ" = (
 /obj/structure/barricade/metal{
@@ -2076,12 +2053,14 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "tc" = (
-/obj/effect/turf_decal/lvsanddecal/full,
-/obj/effect/turf_decal/lvsanddecal/full,
-/obj/effect/turf_decal/lvsanddecal/full{
-	icon_state = "desert3"
+/obj/machinery/door_control{
+	id = "Cell Lockdown 2";
+	name = "Cell Lockdown 2";
+	pixel_y = 9;
+	pixel_x = 7;
+	dir = 4
 	},
-/turf/open/beach/sand,
+/turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "te" = (
 /obj/structure/xenoautopsy/tank/alien,
@@ -2285,6 +2264,16 @@
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
+"yY" = (
+/obj/machinery/door_control{
+	id = "Cell Lockdown 5";
+	name = "Cell Lockdown 5";
+	pixel_x = -7;
+	pixel_y = 9;
+	dir = 8
+	},
+/turf/open/shuttle/dropship/fourteen,
+/area/yautja)
 "zr" = (
 /turf/closed/wall/huntership{
 	smoothing_behavior = 0;
@@ -2478,14 +2467,6 @@
 	dir = 1;
 	icon_state = "squareswood"
 	},
-/area/yautja)
-"Fz" = (
-/obj/effect/turf_decal/lvsanddecal/full,
-/obj/effect/turf_decal/lvsanddecal/full,
-/obj/effect/turf_decal/lvsanddecal/full{
-	icon_state = "desert_dug"
-	},
-/turf/open/beach/sand,
 /area/yautja)
 "FG" = (
 /obj/effect/landmark/clan_spawn,
@@ -2802,6 +2783,13 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
+"Nn" = (
+/obj/effect/turf_decal/lvsanddecal/full,
+/obj/effect/turf_decal/lvsanddecal/full{
+	icon_state = "desert0"
+	},
+/turf/open/beach/sand,
+/area/yautja)
 "Nq" = (
 /obj/structure/rack{
 	color = "#6b675e";
@@ -2954,19 +2942,6 @@
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
-"TX" = (
-/obj/machinery/door_control{
-	id = "Cell Lockdown 4";
-	name = "Cell Lockdown 4";
-	pixel_x = -7;
-	pixel_y = 9;
-	dir = 8
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "Ut" = (
 /obj/structure/table/reinforced/prison{
 	color = "#6b675e";
@@ -3036,13 +3011,6 @@
 	dir = 1;
 	icon_state = "squareswood"
 	},
-/area/yautja)
-"VR" = (
-/obj/effect/turf_decal/lvsanddecal/full,
-/obj/effect/turf_decal/lvsanddecal/full{
-	icon_state = "desert3"
-	},
-/turf/open/beach/sand,
 /area/yautja)
 "VT" = (
 /obj/structure/table/reinforced/prison{
@@ -3188,6 +3156,13 @@
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
+"YT" = (
+/obj/effect/turf_decal/lvsanddecal/full,
+/obj/effect/turf_decal/lvsanddecal/full{
+	icon_state = "desert3"
+	},
+/turf/open/beach/sand,
+/area/yautja)
 "Za" = (
 /obj/structure/table/mainship{
 	color = "#6b675e";
@@ -3242,6 +3217,13 @@
 	dir = 1;
 	icon_state = "squareswood"
 	},
+/area/yautja)
+"ZE" = (
+/obj/effect/turf_decal/lvsanddecal/full,
+/obj/effect/turf_decal/lvsanddecal/full{
+	icon_state = "desert1"
+	},
+/turf/open/beach/sand,
 /area/yautja)
 "ZM" = (
 /obj/structure/table/mainship{
@@ -5470,13 +5452,13 @@ aw
 bj
 cP
 cP
+pA
 cP
 cP
+tc
 cP
 cP
-cP
-cP
-cP
+mb
 Ha
 bj
 Cz
@@ -5542,13 +5524,13 @@ cP
 cP
 bL
 bL
-oM
 bL
 bL
-dm
 bL
 bL
-cg
+bL
+bL
+bL
 jP
 bj
 aq
@@ -5759,9 +5741,9 @@ bL
 cP
 Hz
 ag
-mb
-tc
-ch
+bV
+dm
+ol
 Xk
 Pb
 cP
@@ -5832,8 +5814,8 @@ cP
 GG
 ag
 eg
-Fz
-bV
+ch
+ZE
 Xk
 UG
 cP
@@ -5903,9 +5885,9 @@ bL
 cP
 ny
 ag
+Nn
 ol
-ch
-VR
+YT
 Xk
 mj
 cP
@@ -6118,13 +6100,13 @@ cP
 cP
 bL
 bL
-TX
 bL
 bL
-em
 bL
 bL
-dd
+bL
+bL
+bL
 fF
 bj
 ao
@@ -6190,13 +6172,13 @@ aw
 bj
 cP
 cP
+ge
 cP
 cP
+yY
 cP
 cP
-cP
-cP
-cP
+cg
 rY
 bj
 Cz

@@ -244,6 +244,7 @@
 /area/yautja)
 "at" = (
 /obj/machinery/atmospherics/components/unary/cryo_cell,
+/obj/effect/mapping_helpers/simple_pipes/dark/hidden,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -358,7 +359,7 @@
 	},
 /area/yautja)
 "aE" = (
-/obj/structure/table/mainship{
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
@@ -452,7 +453,7 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "aQ" = (
-/obj/structure/table/mainship{
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
@@ -791,7 +792,9 @@
 	},
 /area/yautja)
 "bU" = (
-/obj/structure/closet/secure_closet/freezer/kitchen,
+/obj/structure/closet/secure_closet/freezer/kitchen{
+	req_access = null
+	},
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkred2"
@@ -991,9 +994,7 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "cu" = (
-/obj/structure/closet/secure_closet/freezer/fridge{
-	locked = 0
-	},
+/obj/structure/closet/secure_closet/freezer/meat,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "darkred2"
@@ -1911,36 +1912,18 @@
 /turf/open/beach/sand,
 /area/yautja)
 "ov" = (
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
 /obj/structure/rack{
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope{
+	pixel_y = 10
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2013,7 +1996,7 @@
 	},
 /area/yautja)
 "rt" = (
-/obj/structure/table/mainship{
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
@@ -2510,7 +2493,7 @@
 	},
 /area/yautja)
 "Ft" = (
-/obj/structure/table/mainship{
+/obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
 	},
@@ -2720,6 +2703,21 @@
 /obj/item/stack/sheet/metal{
 	amount = 50
 	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
+"JE" = (
+/obj/structure/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -3009,6 +3007,10 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"Rq" = (
+/obj/effect/mapping_helpers/simple_pipes/dark/visible,
+/turf/open/shuttle/dropship/fourteen,
+/area/yautja)
 "RE" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor{
@@ -3104,6 +3106,14 @@
 	pixel_y = 9;
 	pixel_x = 18
 	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
+"VN" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer,
+/obj/effect/mapping_helpers/simple_pipes/dark/hidden,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -3337,10 +3347,7 @@
 /turf/open/beach/sand,
 /area/yautja)
 "ZM" = (
-/obj/structure/table/mainship{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
+/obj/effect/mapping_helpers/simple_pipes/dark/visible,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -4452,10 +4459,10 @@ aa
 ac
 bj
 bj
-bL
-bL
-aY
 ZM
+VN
+aY
+ly
 cj
 bL
 an
@@ -4524,7 +4531,7 @@ aa
 ae
 bj
 bj
-bL
+ZM
 cP
 cP
 bL
@@ -4596,7 +4603,7 @@ aa
 ae
 af
 at
-cP
+Rq
 cP
 cP
 cP
@@ -4668,7 +4675,7 @@ aa
 ae
 af
 at
-cP
+Rq
 cP
 cP
 cP
@@ -4966,7 +4973,7 @@ cP
 cP
 bj
 cX
-ZR
+JE
 cX
 bj
 cP

@@ -4,6 +4,7 @@
 	caste_type_path = /mob/living/carbon/xenomorph/predalien
 	tier = XENO_TIER_THREE
 	upgrade = XENO_UPGRADE_BASETYPE
+	wound_type = "Predalien"
 
 	charge_type = CHARGE_TYPE_LARGE
 

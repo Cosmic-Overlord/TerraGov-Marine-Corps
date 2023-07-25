@@ -2549,6 +2549,25 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"LB" = (
+/obj/structure/window/full{
+	dir = 4;
+	resistance_flags = 1
+	},
+/obj/structure/window/full{
+	dir = 8;
+	resistance_flags = 1
+	},
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/stack/yautja_rope,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "LX" = (
 /obj/item/moneybag{
 	anchored = 1;
@@ -4759,7 +4778,7 @@ aa
 aa
 aa
 bj
-wQ
+LB
 cP
 cP
 cP
@@ -4831,7 +4850,7 @@ bj
 bj
 bj
 bj
-wQ
+LB
 cP
 cP
 bz
@@ -4903,7 +4922,7 @@ PJ
 jy
 bO
 bj
-wQ
+LB
 cP
 cP
 wQ
@@ -4975,7 +4994,7 @@ bL
 SB
 bL
 bj
-wQ
+LB
 cP
 bL
 wQ
@@ -5047,7 +5066,7 @@ bL
 cP
 bL
 bj
-wQ
+LB
 bL
 JH
 JH

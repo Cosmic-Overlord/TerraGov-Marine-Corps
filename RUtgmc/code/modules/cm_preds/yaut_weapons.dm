@@ -1080,7 +1080,7 @@
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 	RegisterSignal(src, COMSIG_ITEM_MIDDLECLICKON, PROC_REF(target_action))
 
-	LT = image("icon" = 'icons/obj/items/projectiles.dmi', "icon_state" = "sniper_laser", "layer" =- PRED_LASER_LAYER)
+	LT = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked-y", "layer" =- PRED_LASER_LAYER)
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Destroy()
 	. = ..()

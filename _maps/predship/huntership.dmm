@@ -719,7 +719,8 @@
 /area/yautja)
 "bE" = (
 /obj/structure/stairs/seamless{
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -742,7 +743,8 @@
 "bI" = (
 /obj/structure/stairs/seamless{
 	dir = 1;
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -761,7 +763,10 @@
 	resistance_flags = 1
 	},
 /obj/machinery/processor,
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "bN" = (
 /obj/structure/kitchenspike{
@@ -854,7 +859,10 @@
 /obj/item/storage/box/drinkingglasses{
 	pixel_y = 6
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "ce" = (
 /obj/machinery/door/poddoor/shutters/mainship{
@@ -888,7 +896,10 @@
 	pixel_y = 9;
 	dir = 8
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "ch" = (
 /obj/effect/turf_decal/lvsanddecal/full,
@@ -974,7 +985,10 @@
 	dir = 8;
 	pixel_y = 7
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "ct" = (
 /obj/machinery/door/airlock/strata{
@@ -1008,7 +1022,10 @@
 	pixel_y = 11;
 	pixel_x = 9
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "cw" = (
 /obj/structure/table/reinforced/prison{
@@ -1099,7 +1116,8 @@
 /obj/structure/stairs/seamless{
 	icon_state = "staircorners_seamless";
 	color = "#6b675e";
-	dir = 8
+	dir = 8;
+	resistance_flags = 1
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1127,7 +1145,10 @@
 /obj/machinery/reagentgrinder{
 	pixel_y = 6
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "cK" = (
 /obj/structure/rack{
@@ -1337,7 +1358,10 @@
 /obj/machinery/microwave{
 	pixel_y = 4
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "db" = (
 /obj/structure/rack{
@@ -1442,7 +1466,8 @@
 /obj/structure/stairs/seamless{
 	icon_state = "staircorners_seamless";
 	color = "#6b675e";
-	dir = 8
+	dir = 8;
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1460,7 +1485,8 @@
 "eT" = (
 /obj/structure/stairs/seamless{
 	dir = 4;
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1480,11 +1506,10 @@
 	},
 /area/yautja)
 "fg" = (
-/obj/item/flashlight/lantern,
-/obj/structure/closet,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
 	},
 /area/yautja)
 "fj" = (
@@ -1536,7 +1561,10 @@
 	pixel_x = 6;
 	pixel_y = 7
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "gb" = (
 /obj/item/reagent_containers/blood/OMinus,
@@ -1566,7 +1594,10 @@
 	pixel_y = 9;
 	dir = 8
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "gp" = (
 /obj/structure/bed/chair/comfy/black,
@@ -1704,7 +1735,10 @@
 	name = "duelling claymore";
 	pixel_x = 10
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "jR" = (
 /obj/machinery/sleep_console,
@@ -1717,7 +1751,8 @@
 /obj/structure/stairs/seamless{
 	icon_state = "staircorners_seamless";
 	color = "#6b675e";
-	dir = 4
+	dir = 4;
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1772,7 +1807,10 @@
 	pixel_x = 7;
 	dir = 4
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "mj" = (
 /obj/structure/barricade/metal{
@@ -1936,7 +1974,10 @@
 	pixel_x = 7;
 	dir = 4
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "pJ" = (
 /obj/structure/barricade/metal{
@@ -2034,7 +2075,10 @@
 /obj/item/stack/medical/splint{
 	name = "splints"
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "sx" = (
 /obj/structure/window/framed/colony/reinforced/hull{
@@ -2060,7 +2104,10 @@
 	pixel_x = 7;
 	dir = 4
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "te" = (
 /obj/structure/xenoautopsy/tank/alien,
@@ -2143,8 +2190,18 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"vs" = (
+/obj/effect/decal/remains/human,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "vE" = (
-/obj/machinery/cic_maptable/yautja,
+/obj/machinery/cic_maptable/yautja{
+	resistance_flags = 1
+	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2171,7 +2228,9 @@
 	},
 /area/yautja)
 "wu" = (
-/obj/machinery/cic_maptable/yautja,
+/obj/structure/prop/brazier/torch{
+	pixel_y = 33
+	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "ww" = (
@@ -2246,7 +2305,8 @@
 /obj/structure/stairs/seamless{
 	icon_state = "staircorners_seamless";
 	color = "#6b675e";
-	dir = 1
+	dir = 1;
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2272,7 +2332,10 @@
 	pixel_y = 9;
 	dir = 8
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "zr" = (
 /turf/closed/wall/huntership{
@@ -2310,6 +2373,14 @@
 "Be" = (
 /obj/machinery/cryopod/right,
 /turf/open/shuttle/dropship/fourteen,
+/area/yautja)
+"BA" = (
+/obj/effect/decal/remains/xeno,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "BB" = (
 /obj/machinery/iv_drip,
@@ -2527,7 +2598,10 @@
 /obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
 /obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
 /obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "Hp" = (
 /obj/structure/bed/chair/hunter{
@@ -2601,7 +2675,10 @@
 /obj/item/stack/medical/heal_pack/gauze,
 /obj/item/stack/medical/heal_pack/gauze,
 /obj/item/stack/medical/heal_pack/gauze,
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "Iw" = (
 /obj/machinery/door/airlock/strata{
@@ -2653,7 +2730,8 @@
 /obj/item/weapon/yautja/knife{
 	color = "#FFE55C";
 	name = "sacred ceremonial dagger";
-	pixel_x = 25
+	pixel_x = 25;
+	anchored = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2756,7 +2834,8 @@
 "ME" = (
 /obj/structure/stairs/seamless{
 	dir = 8;
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -2776,7 +2855,8 @@
 /obj/structure/stairs/seamless{
 	icon_state = "staircorners_seamless";
 	color = "#6b675e";
-	dir = 4
+	dir = 4;
+	resistance_flags = 1
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -2908,7 +2988,8 @@
 /obj/item/weapon/yautja/knife{
 	color = "#FFE55C";
 	name = "sacred ceremonial dagger";
-	pixel_x = -25
+	pixel_x = -25;
+	anchored = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2923,7 +3004,9 @@
 	},
 /area/yautja)
 "Sh" = (
-/obj/machinery/cic_maptable/yautja,
+/obj/machinery/cic_maptable/yautja{
+	resistance_flags = 1
+	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	dir = 10;
@@ -2941,6 +3024,16 @@
 	dir = 8
 	},
 /turf/open/shuttle/dropship/fourteen,
+/area/yautja)
+"SL" = (
+/obj/structure/stairs/seamless{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "Ut" = (
 /obj/structure/table/reinforced/prison{
@@ -2973,7 +3066,8 @@
 "UR" = (
 /obj/structure/stairs/seamless{
 	icon_state = "staircorners_seamless";
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -3010,6 +3104,18 @@
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
+	},
+/area/yautja)
+"Vz" = (
+/obj/structure/stairs/seamless{
+	icon_state = "staircorners_seamless";
+	color = "#6b675e";
+	dir = 1;
+	resistance_flags = 1
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
 	},
 /area/yautja)
 "VT" = (
@@ -3133,7 +3239,10 @@
 	pixel_x = -7;
 	pixel_y = 6
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "XP" = (
 /obj/machinery/cryopod,
@@ -3211,7 +3320,8 @@
 "ZD" = (
 /obj/structure/stairs/seamless{
 	dir = 8;
-	color = "#6b675e"
+	color = "#6b675e";
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -4354,8 +4464,8 @@ cT
 bL
 db
 bj
-cP
-cP
+JH
+JH
 bj
 bY
 cl
@@ -4426,7 +4536,7 @@ cU
 cP
 qj
 bj
-cP
+wu
 cP
 bj
 ly
@@ -4435,7 +4545,7 @@ bL
 bL
 bL
 sx
-dk
+Vz
 JH
 bj
 bj
@@ -4507,7 +4617,7 @@ cP
 cP
 cP
 dc
-dl
+SL
 JH
 fv
 fv
@@ -4797,9 +4907,9 @@ aa
 bj
 bj
 bj
-JH
-JH
-JH
+fg
+vs
+fg
 bj
 bj
 bj
@@ -4869,9 +4979,9 @@ aa
 aa
 bj
 bj
-JH
-JH
-JH
+vs
+BA
+fg
 bj
 bj
 bj
@@ -5440,7 +5550,7 @@ JH
 bL
 bj
 cv
-cP
+JH
 bj
 bj
 bG
@@ -5450,14 +5560,14 @@ bj
 bj
 aw
 bj
-cP
-cP
+JH
+JH
 pA
-cP
-cP
+JH
+JH
 tc
-cP
-cP
+JH
+JH
 mb
 Ha
 bj
@@ -5511,14 +5621,14 @@ xO
 JH
 bL
 bj
+JH
+JH
 cP
 cP
 cP
 cP
-cP
-cP
-cP
-cP
+JH
+JH
 bj
 cP
 cP
@@ -5583,16 +5693,16 @@ Dk
 JH
 bL
 bj
-cP
+JH
 cP
 bL
 bL
 bL
 bL
 cP
-cP
+JH
 bj
-cP
+wu
 cP
 bL
 cP
@@ -5605,7 +5715,7 @@ cP
 bL
 Xp
 bj
-fg
+bH
 cP
 cP
 fj
@@ -5829,9 +5939,9 @@ ti
 cP
 bL
 bj
-wu
-cP
-cP
+vE
+JH
+JH
 cP
 cP
 cP
@@ -6015,16 +6125,16 @@ Gk
 JH
 bL
 bj
-cP
+JH
 cP
 bL
 bL
 bL
 bL
 cP
-cP
+JH
 bj
-cP
+wu
 cP
 bL
 cP
@@ -6037,7 +6147,7 @@ cP
 bL
 Im
 bj
-fg
+bH
 cP
 cP
 Be
@@ -6087,14 +6197,14 @@ Mb
 JH
 bL
 bj
+JH
+JH
 cP
 cP
 cP
 cP
-cP
-cP
-cP
-cP
+JH
+JH
 bj
 cP
 cP
@@ -6160,7 +6270,7 @@ JH
 bL
 bj
 cb
-cP
+JH
 bj
 bj
 bG
@@ -6170,14 +6280,14 @@ bj
 bj
 aw
 bj
-cP
-cP
+JH
+JH
 ge
-cP
-cP
+JH
+JH
 yY
-cP
-cP
+JH
+JH
 cg
 rY
 bj
@@ -7018,7 +7128,7 @@ bc
 bc
 cP
 bj
-cP
+wu
 cP
 bj
 bL
@@ -7232,10 +7342,10 @@ cG
 ME
 ME
 ME
-dk
+Vz
 bj
-cP
-cP
+JH
+JH
 bj
 by
 bj

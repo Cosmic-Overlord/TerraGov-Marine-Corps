@@ -656,18 +656,11 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "by" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	name = "alien sarcophagus"
-	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	anchored = 1;
-	pixel_y = 20
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+/obj/effect/decal/remains/human,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
 	},
 /area/yautja)
 "bz" = (
@@ -1506,11 +1499,10 @@
 	},
 /area/yautja)
 "fg" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
+/obj/structure/prop/brazier/torch{
+	pixel_y = 33
 	},
+/turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "fj" = (
 /obj/machinery/cryopod,
@@ -2116,6 +2108,22 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"tf" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	name = "alien sarcophagus";
+	dir = 4
+	},
+/obj/item/clothing/mask/gas/yautja/hunter{
+	anchored = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "ti" = (
 /obj/structure/shuttle/window{
 	color = "#6b675e"
@@ -2168,6 +2176,13 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"ua" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "uO" = (
 /obj/structure/bed/chair/hunter{
 	dir = 4
@@ -2190,16 +2205,11 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
-"vs" = (
-/obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
 "vE" = (
-/obj/machinery/cic_maptable/yautja{
+/obj/structure/stairs/seamless{
+	icon_state = "staircorners_seamless";
+	color = "#6b675e";
+	dir = 1;
 	resistance_flags = 1
 	},
 /turf/open/floor/strata{
@@ -2228,10 +2238,13 @@
 	},
 /area/yautja)
 "wu" = (
-/obj/structure/prop/brazier/torch{
-	pixel_y = 33
+/obj/machinery/cic_maptable/yautja{
+	resistance_flags = 1
 	},
-/turf/open/shuttle/dropship/fourteen,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/yautja)
 "ww" = (
 /obj/item/stack/sheet/animalhide/xeno{
@@ -2373,14 +2386,6 @@
 "Be" = (
 /obj/machinery/cryopod/right,
 /turf/open/shuttle/dropship/fourteen,
-/area/yautja)
-"BA" = (
-/obj/effect/decal/remains/xeno,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
 /area/yautja)
 "BB" = (
 /obj/machinery/iv_drip,
@@ -2738,6 +2743,14 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"Kp" = (
+/obj/effect/decal/remains/xeno,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "Ku" = (
 /obj/structure/barricade/metal{
 	dir = 4
@@ -3025,16 +3038,6 @@
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
-"SL" = (
-/obj/structure/stairs/seamless{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
 "Ut" = (
 /obj/structure/table/reinforced/prison{
 	color = "#6b675e";
@@ -3104,18 +3107,6 @@
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
-	},
-/area/yautja)
-"Vz" = (
-/obj/structure/stairs/seamless{
-	icon_state = "staircorners_seamless";
-	color = "#6b675e";
-	dir = 1;
-	resistance_flags = 1
-	},
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
 	},
 /area/yautja)
 "VT" = (
@@ -3195,6 +3186,16 @@
 "Xk" = (
 /turf/open/floor/plating/ground/dirtgrassborder{
 	dir = 1
+	},
+/area/yautja)
+"Xl" = (
+/obj/structure/stairs/seamless{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
 	},
 /area/yautja)
 "Xn" = (
@@ -4536,7 +4537,7 @@ cU
 cP
 qj
 bj
-wu
+fg
 cP
 bj
 ly
@@ -4545,7 +4546,7 @@ bL
 bL
 bL
 sx
-Vz
+vE
 JH
 bj
 bj
@@ -4617,7 +4618,7 @@ cP
 cP
 cP
 dc
-SL
+Xl
 JH
 fv
 fv
@@ -4907,9 +4908,9 @@ aa
 bj
 bj
 bj
-fg
-vs
-fg
+ua
+by
+ua
 bj
 bj
 bj
@@ -4979,9 +4980,9 @@ aa
 aa
 bj
 bj
-vs
-BA
-fg
+by
+Kp
+ua
 bj
 bj
 bj
@@ -5702,7 +5703,7 @@ bL
 cP
 JH
 bj
-wu
+fg
 cP
 bL
 cP
@@ -5933,13 +5934,13 @@ cP
 cP
 ti
 JH
-vE
+wu
 JH
 ti
 cP
 bL
 bj
-vE
+wu
 JH
 JH
 cP
@@ -6134,7 +6135,7 @@ bL
 cP
 JH
 bj
-wu
+fg
 cP
 bL
 cP
@@ -7059,11 +7060,11 @@ bj
 cP
 cP
 bj
-bv
-bv
-bv
-bv
-bv
+tf
+bj
+tf
+bj
+tf
 bj
 gb
 JH
@@ -7128,7 +7129,7 @@ bc
 bc
 cP
 bj
-wu
+fg
 cP
 bj
 bL
@@ -7342,16 +7343,16 @@ cG
 ME
 ME
 ME
-Vz
+vE
 bj
 JH
 JH
 bj
-by
-bj
-by
-bj
-by
+bv
+bv
+bv
+bv
+bv
 bj
 bj
 bj
@@ -7635,11 +7636,11 @@ bj
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+dI
+dI
+dI
+dI
+dI
 aa
 aa
 aa

@@ -63,7 +63,7 @@
 	flags_equip_slot = NONE
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6
-	force = 30
+	force = 25
 	pry_capable = IS_PRY_CAPABLE_FORCE
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 
@@ -101,7 +101,7 @@
 		if(!door.density || door.locked)
 			return FALSE
 		user.visible_message(span_danger("[user] jams their [name] into [door] and strains to rip it open..."), span_danger("You jam your [name] into [door] and strain to rip it open..."))
-		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, TRUE)
+		playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
 		if(do_after(user, 3 SECONDS, TRUE, door, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE) && door.density)
 			user.visible_message(span_danger("[user] forces [door] open with the [name]!"), span_danger("You force [door] open with the [name]."))
 			door.open(TRUE)
@@ -112,13 +112,13 @@
 			return
 		if(door.density)
 			user.visible_message(span_danger("[user] jams their [name] into [door] and strains to rip it open..."), span_danger("You jam your [name] into [door] and strain to rip it open..."))
-			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
+			playsound(loc, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 1.5 SECONDS, TRUE, door, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE) && door.density)
 				user.visible_message(span_danger("[user] forces [door] open using the [name]!"), span_danger("You force [door] open with your [name]."))
 				door.Open()
 		else
 			user.visible_message(span_danger("[user] pushes [door] with their [name] to force it closed..."), span_danger("You push [door] with your [name] to force it closed..."))
-			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
+			playsound(loc, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 2 SECONDS, TRUE, door, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE) && !door.density)
 				user.visible_message(span_danger("[user] forces [door] closed using the [name]!"), span_danger("You force [door] closed with your [name]."))
 				door.Close()

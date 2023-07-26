@@ -129,7 +129,7 @@
 		/obj/item/weapon/harpoon,
 		/obj/item/weapon/gun/energy/yautja,
 		/obj/item/weapon/yautja,
-		/obj/item/storage/backpack/yautja,
+		/obj/item/storage/belt/yautja,
 		/obj/item/weapon/twohanded/yautja,
 	)
 
@@ -311,7 +311,7 @@
 	channels = list(RADIO_CHANNEL_YAUTJA = 1)
 
 //Yes, it's a backpack that goes on the belt. I want the backpack noises. Deal with it (tm)
-/obj/item/storage/backpack/yautja
+/obj/item/storage/belt/yautja
 	name = "hunting pouch"
 	desc = "A Yautja hunting pouch worn around the waist, made from a thick tanned hide. Capable of holding various devices and tools and used for the transport of trophies."
 
@@ -322,16 +322,11 @@
 		slot_back_str = 'icons/mob/hunter/pred_gear.dmi'
 	)
 
-	flags_equip_slot = ITEM_SLOT_BELT
+	can_hold = list()
 	max_w_class = WEIGHT_CLASS_BULKY
 	flags_item = ITEM_PREDATOR
 	storage_slots = 12
 	max_storage_space = 30
-
-/obj/item/storage/backpack/yautja/full/Initialize(mapload, ...)
-	. = ..()
-	new /obj/item/storage/medicomp/full(src)
-
 
 /obj/item/yautja_teleporter
 	name = "relay beacon"

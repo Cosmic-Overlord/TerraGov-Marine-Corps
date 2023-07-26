@@ -1151,12 +1151,12 @@
 	return FALSE
 
 /mob/living/carbon/human/apply_pred_laser()
-	overlays_standing[PRED_LASER_LAYER] = image("icon" = 'icons/obj/items/projectiles.dmi',"icon_state" = "sniper_laser", "layer" = PRED_LASER_LAYER)
+	overlays_standing[PRED_LASER_LAYER] = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked-y", "layer" = PRED_LASER_LAYER)
 	apply_overlay(PRED_LASER_LAYER)
 	return TRUE
 
 /mob/living/carbon/xenomorph/apply_pred_laser()
-	overlays_standing[X_PRED_LASER_LAYER] = image("icon" = 'icons/obj/items/projectiles.dmi',"icon_state" = "sniper_laser", "layer" = X_PRED_LASER_LAYER)
+	overlays_standing[X_PRED_LASER_LAYER] = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked-y", "layer" = X_PRED_LASER_LAYER)
 	apply_overlay(X_PRED_LASER_LAYER)
 	return TRUE
 

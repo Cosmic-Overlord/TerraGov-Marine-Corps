@@ -869,6 +869,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	flags_item = ITEM_PREDATOR
 	storage_slots = 16
+	max_storage_space = 17
 	can_hold = list(
 		/obj/item/tool/surgery/stabilizer_gel,
 		/obj/item/tool/surgery/healing_gun,

@@ -3103,6 +3103,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 /datum/ammo/energy/yautja/caster/stun
 	name = "low power stun bolt"
 	var/stun_time = 5
+	hud_state = "plasma_pistol"
 
 	bullet_color = COLOR_VIOLET
 	damage = 0
@@ -3129,14 +3130,17 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	name = "plasma bolt"
 	icon_state = "pulse1"
 	flags_ammo_behavior = AMMO_IGNORE_RESIST
+	bullet_color = COLOR_BRIGHT_BLUE
 	shell_speed = 3
 	damage = 35
 
 /datum/ammo/energy/yautja/caster/bolt/stun
 	name = "high power stun bolt"
+	icon_state = "pred_stun"
 	var/stun_time = 20
+	bullet_color = COLOR_MAGENTA
 
-	hud_state = "plasma_blast"
+	hud_state = "plasma_rifle"
 
 	damage = 0
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
@@ -3161,7 +3165,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 /datum/ammo/energy/yautja/caster/sphere
 	name = "plasma eradicator"
 	icon_state = "bluespace"
-	bullet_color = COLOR_NAVY
+	bullet_color = COLOR_BRIGHT_BLUE
 	flags_ammo_behavior = AMMO_EXPLOSIVE
 	shell_speed = 2
 	accuracy = 40
@@ -3188,8 +3192,10 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 
 /datum/ammo/energy/yautja/caster/sphere/stun
 	name = "plasma immobilizer"
+	bullet_color = COLOR_MAGENTA
 	damage = 0
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+	hud_state = "plasma_rifle_blast"
 	accurate_range = 20
 	max_range = 20
 

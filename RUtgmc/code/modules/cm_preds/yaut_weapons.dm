@@ -700,6 +700,8 @@
 	var/radial_icon = 'icons/mob/radial.dmi'
 	///The icon state the radial menu will use.
 	var/radial_icon_state = "laser"
+	///The muzzleflash color of the weapon we use.
+	var/muzzle_flash_color = COLOR_MAGENTA
 
 /datum/yautja_energy_weapon_modes/stun_bolts
 	rounds_per_shot = 30
@@ -708,6 +710,7 @@
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	message_to_user = "will now fire low power stun bolts"
 	radial_icon_state = "plasma_weak"
+	muzzle_flash_color = COLOR_MAGENTA
 
 /datum/yautja_energy_weapon_modes/stun_heavy_bolts
 	rounds_per_shot = 100
@@ -716,6 +719,7 @@
 	fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 	message_to_user = "will now fire high power stun bolts"
 	radial_icon_state = "plasma_strong"
+	muzzle_flash_color = COLOR_MAGENTA
 
 /datum/yautja_energy_weapon_modes/stun_spheres
 	rounds_per_shot = 300
@@ -724,6 +728,7 @@
 	fire_sound = 'sound/weapons/pulse.ogg'
 	message_to_user = "will now fire plasma immobilizers"
 	radial_icon_state = "laser_sniper_overcharge"
+	muzzle_flash_color = COLOR_MAGENTA
 
 /datum/yautja_energy_weapon_modes/lethal_bolts
 	rounds_per_shot = 300
@@ -731,7 +736,8 @@
 	fire_delay = 15
 	fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 	message_to_user = "will now fire plasma bolts"
-	radial_icon_state = "plasma_strong"
+	radial_icon_state = "laser_disabler"
+	muzzle_flash_color = COLOR_BRIGHT_BLUE
 
 /datum/yautja_energy_weapon_modes/lethal_spheres
 	rounds_per_shot = 1200
@@ -739,7 +745,8 @@
 	fire_delay = 100
 	fire_sound = 'sound/weapons/pulse.ogg'
 	message_to_user = "will now fire plasma spheres"
-	radial_icon_state = "laser_sniper_overcharge"
+	radial_icon_state = "laser_swarm"
+	muzzle_flash_color = COLOR_BRIGHT_BLUE
 
 /obj/item/weapon/gun/energy/yautja
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -1113,6 +1120,7 @@
 	fire_delay = initial(choice.fire_delay)
 	fire_sound = initial(choice.fire_sound)
 	rounds_per_shot = initial(choice.rounds_per_shot)
+	muzzle_flash_color = initial(choice.muzzle_flash_color)
 
 	to_chat(user, initial(choice.message_to_user))
 	update_ammo_count()

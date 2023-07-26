@@ -310,7 +310,6 @@
 	icon_state = "cypherkey"
 	channels = list(RADIO_CHANNEL_YAUTJA = 1)
 
-//Yes, it's a backpack that goes on the belt. I want the backpack noises. Deal with it (tm)
 /obj/item/storage/belt/yautja
 	name = "hunting pouch"
 	desc = "A Yautja hunting pouch worn around the waist, made from a thick tanned hide. Capable of holding various devices and tools and used for the transport of trophies."

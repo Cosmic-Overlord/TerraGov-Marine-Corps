@@ -7,7 +7,7 @@
 	brute_mod = 0.28 //Beefy!
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
-	species_flags = HAS_SKIN_COLOR|NO_POISON|NO_PAIN|USES_ALIEN_WEAPONS
+	species_flags = HAS_SKIN_COLOR|NO_POISON|NO_PAIN|USES_ALIEN_WEAPONS|PARALYSE_RESISTANT
 	inherent_traits = list(
 		TRAIT_YAUTJA_TECH,
 		TRAIT_SUPER_STRONG,

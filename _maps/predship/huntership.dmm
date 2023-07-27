@@ -244,7 +244,6 @@
 /area/yautja)
 "at" = (
 /obj/machinery/atmospherics/components/unary/cryo_cell,
-/obj/effect/mapping_helpers/simple_pipes/dark/hidden,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1312,11 +1311,6 @@
 	},
 /area/yautja)
 "cX" = (
-/obj/item/storage/backpack/yautja,
-/obj/item/storage/backpack/yautja,
-/obj/item/storage/backpack/yautja,
-/obj/item/storage/backpack/yautja,
-/obj/item/storage/backpack/yautja,
 /obj/item/flashlight/lantern,
 /obj/item/flashlight/lantern,
 /obj/item/flashlight/lantern,
@@ -1329,6 +1323,10 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
+/obj/item/storage/belt/yautja,
+/obj/item/storage/belt/yautja,
+/obj/item/storage/belt/yautja,
+/obj/item/storage/belt/yautja,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -3007,10 +3005,6 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
-"Rq" = (
-/obj/effect/mapping_helpers/simple_pipes/dark/visible,
-/turf/open/shuttle/dropship/fourteen,
-/area/yautja)
 "RE" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor{
@@ -3113,7 +3107,6 @@
 /area/yautja)
 "VN" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer,
-/obj/effect/mapping_helpers/simple_pipes/dark/hidden,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -3345,13 +3338,6 @@
 	icon_state = "desert1"
 	},
 /turf/open/beach/sand,
-/area/yautja)
-"ZM" = (
-/obj/effect/mapping_helpers/simple_pipes/dark/visible,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
 /area/yautja)
 "ZR" = (
 /obj/structure/rack{
@@ -4459,7 +4445,7 @@ aa
 ac
 bj
 bj
-ZM
+bL
 VN
 aY
 ly
@@ -4531,7 +4517,7 @@ aa
 ae
 bj
 bj
-ZM
+bL
 cP
 cP
 bL
@@ -4603,7 +4589,7 @@ aa
 ae
 af
 at
-Rq
+cP
 cP
 cP
 cP
@@ -4675,7 +4661,7 @@ aa
 ae
 af
 at
-Rq
+cP
 cP
 cP
 cP

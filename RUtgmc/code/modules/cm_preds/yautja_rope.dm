@@ -1,3 +1,4 @@
+/mob/living/carbon/human/var/initial_transform // fuck that shit, niggas
 
 /obj/item/stack/yautja_rope
 	name = "strange rope"
@@ -62,6 +63,7 @@
 	setDir(SOUTH)
 	var/matrix/A = matrix()
 	A.Turn(180)
+	initial_transform = transform
 	transform = A
 	var/rand_swing = rand(6, 3)
 	//-6, -3
@@ -102,6 +104,7 @@
 	var/matrix/A = matrix()
 	A.Turn(90)
 	transform = A
+	transform = initial_transform
 	pixel_x = 0
 	pixel_y = 0
 	return COMPONENT_ITEM_NO_ATTACK

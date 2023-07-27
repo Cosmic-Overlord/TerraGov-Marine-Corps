@@ -355,7 +355,7 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	var/ship_to_tele = list("Public" = -1, "Human Ship" = "Human")
+	var/ship_to_tele = list("Yautja Ship" = -1, "Human Ship" = "Human")
 
 	if(H.client && H.client.clan_info)
 		if(H.client.clan_info.item[3] & CLAN_PERMISSION_ADMIN_VIEW)

@@ -398,10 +398,10 @@ SUBSYSTEM_DEF(predships)
 				to_chat(user, span_warning("This player doesn't belong to a clan!"))
 				return
 
-			var/list/datum/rank/ranks = clan_ranks.Copy()
+			var/list/datum/yautja_rank/ranks = clan_ranks.Copy()
 			ranks -= CLAN_RANK_ADMIN // Admin rank should not and cannot be obtained from here
 
-			var/datum/rank/chosen_rank
+			var/datum/yautja_rank/chosen_rank
 			if(user.client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY, warn = FALSE))
 				var/input = tgui_input_list(user, "Select the rank to change this user to.", "Select Rank", ranks)
 

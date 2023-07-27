@@ -43,7 +43,7 @@
 	maxHealth = 290
 	plasma_stored = 100
 	tier = XENO_TIER_MINION
-	upgrade = XENO_UPGRADE_ZERO
+	upgrade = XENO_UPGRADE_BASETYPE
 	bubble_icon = "alien"
 
 	layer = MOB_LAYER
@@ -96,6 +96,3 @@
 	GLOB.hellhound_list -= src
 	GLOB.alive_xeno_list -= src
 	return ..()
-
-/datum/xeno_caste/hellhound/young
-	upgrade = XENO_UPGRADE_INVALID

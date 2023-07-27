@@ -84,11 +84,17 @@
 	else
 		forceMove(source)
 		attack_speed = initial(attack_speed)
+		playsound(user, 'sound/weapons/wristblades_off.ogg', 15, TRUE)
+		if(source.left_wristblades.loc == source && source.right_wristblades.loc == source)
+			source.wristblades_deployed = FALSE
 
-/obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
+/obj/item/weapon/wristblades/dropped(mob/user)
 	if(source)
 		forceMove(source)
 		attack_speed = initial(attack_speed)
+		playsound(user, 'sound/weapons/wristblades_off.ogg', 15, TRUE)
+		if(source.left_wristblades.loc == source && source.right_wristblades.loc == source)
+			source.wristblades_deployed = FALSE
 		return
 	..()
 
@@ -1109,13 +1115,13 @@
 	for(var/proj_mode in mode_by_mode_list[mode])
 		available_modes += list("[proj_mode]" = image(icon = initial(mode_list[proj_mode].radial_icon), icon_state = initial(mode_list[proj_mode].radial_icon_state)))
 
-	var/datum/yautja_energy_weapon_modes/choice = mode_list[show_radial_menu(user, user, available_modes, null, 64, tooltips = TRUE)]
+	strength = show_radial_menu(user, user, available_modes, null, 64, tooltips = TRUE)
+	var/datum/yautja_energy_weapon_modes/choice = mode_list[strength]
 	if(!choice)
 		return
 
 	playsound(user, 'sound/weapons/emitter.ogg', 5, FALSE, 2)
 
-	strength = mode_list[choice]
 	ammo_datum_type = GLOB.ammo_list[initial(choice.ammo_datum_type)]
 	fire_delay = initial(choice.fire_delay)
 	fire_sound = initial(choice.fire_sound)

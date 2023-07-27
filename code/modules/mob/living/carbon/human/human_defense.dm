@@ -231,6 +231,9 @@ Contains most of the procs that are called when a mob is attacked by something
 	return TRUE
 
 /mob/living/carbon/human/proc/check_pred_shields(damage = 0, attack_text = "the attack", combistick=0)
+	if(!isyautja(src) && skills.getRating("swordplay") < SKILL_SWORDPLAY_TRAINED)
+		return FALSE
+
 	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
 		if(combistick && istype(l_hand, /obj/item/weapon/yautja/combistick) && prob(66))
 			var/obj/item/weapon/yautja/combistick/C = l_hand

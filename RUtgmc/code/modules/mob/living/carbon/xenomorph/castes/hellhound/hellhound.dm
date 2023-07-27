@@ -56,6 +56,7 @@
 /mob/living/carbon/xenomorph/hellhound/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
 	. = ..(mapload, oldXeno, h_number || XENO_HIVE_YAUTJA)
 
+	language_holder = get_language_holder()
 	language_holder.grant_language(/datum/language/hellhound)
 	language_holder.only_speaks_language = /datum/language/hellhound
 	language_holder.grant_language(/datum/language/yautja)

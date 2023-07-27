@@ -355,7 +355,6 @@
 			caller.transferItemToLoc(right_wristblades, src, TRUE)
 		wristblades_deployed = FALSE
 		to_chat(caller, span_notice("You retract your [left_wristblades.name]."))
-		playsound(caller, 'sound/weapons/wristblades_off.ogg', 15, TRUE)
 	else
 		if(!drain_power(caller, 50))
 			return

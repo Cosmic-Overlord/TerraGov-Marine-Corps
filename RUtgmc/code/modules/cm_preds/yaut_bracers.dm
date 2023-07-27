@@ -1082,7 +1082,7 @@
 /obj/item/clothing/gloves/yautja/hunter/verb/toggle_lock()
 	set name = "Toggle Bracer Lock"
 	set desc = "Toggle the lock on your bracers, allowing them to be removed."
-	set category = "Yautja.Misc"
+	set category = "Yautja"
 	set src in usr
 
 	if(usr.stat)

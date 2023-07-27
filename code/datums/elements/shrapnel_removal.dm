@@ -19,7 +19,7 @@
 /datum/element/shrapnel_removal/proc/on_attack(datum/source, mob/living/M, mob/living/user)
 	SIGNAL_HANDLER
 	INVOKE_ASYNC(src, PROC_REF(attempt_remove), source, M, user)
-	if(M != user || !self_use)
+	if(M == user || !self_use)
 		return COMPONENT_ITEM_NO_ATTACK
 
 /datum/element/shrapnel_removal/proc/attempt_remove(obj/item/removaltool, mob/living/M, mob/living/user)

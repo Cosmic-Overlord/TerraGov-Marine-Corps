@@ -1,4 +1,4 @@
-/datum/rank
+/datum/yautja_rank
 	var/name
 
 	var/limit_type

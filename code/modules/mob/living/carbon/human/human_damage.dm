@@ -23,7 +23,7 @@
 
 	var/health_deficiency = max((maxHealth - health), staminaloss)
 
-	if(health_deficiency >= 50)
+	if(health_deficiency >= 50 && !(species?.species_flags & PARALYSE_RESISTANT))
 		add_movespeed_modifier(MOVESPEED_ID_DAMAGE_SLOWDOWN, TRUE, 0, NONE, TRUE, health_deficiency / 50)
 	else
 		remove_movespeed_modifier(MOVESPEED_ID_DAMAGE_SLOWDOWN)

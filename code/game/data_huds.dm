@@ -54,8 +54,6 @@
 	hud_icons = list(HEALTH_HUD, STATUS_HUD)
 
 /datum/atom_hud/medical/add_to_single_hud(mob/user, mob/target)
-	if(HAS_TRAIT(user, TRAIT_FOREIGN_BIO))
-		return FALSE
 	return ..()
 
 //med hud used by silicons, only shows humans with a uniform with sensor mode activated.
@@ -64,8 +62,6 @@
 
 /datum/atom_hud/medical/basic/proc/check_sensors(mob/living/carbon/human/H)
 	if(!istype(H))
-		return FALSE
-	if(HAS_TRAIT(H, TRAIT_FOREIGN_BIO))
 		return FALSE
 	var/obj/item/clothing/under/U = H.w_uniform
 	if(!istype(U))
@@ -121,8 +117,8 @@
 	return
 
 
-/mob/living/carbon/xenomorph/med_hud_set_health()
-	var/image/holder = hud_list[HEALTH_HUD_XENO]
+/mob/living/carbon/xenomorph/med_hud_set_health(hud_holder = HEALTH_HUD_XENO)
+	var/image/holder = hud_list[hud_holder]
 	if(!holder)
 		return
 	if(stat == DEAD)
@@ -135,8 +131,8 @@
 	holder.icon_state = "xenohealth[amount]"
 
 
-/mob/living/carbon/human/med_hud_set_health()
-	var/image/holder = hud_list[HEALTH_HUD]
+/mob/living/carbon/human/med_hud_set_health(hud_holder = HEALTH_HUD)
+	var/image/holder = hud_list[hud_holder]
 	if(stat == DEAD)
 		holder.icon_state = "hudhealth-100"
 		return
@@ -182,6 +178,7 @@
 		else
 			holder.icon_state = "hudhealth-100"
 
+/mob/living/carbon/human/yautja/med_hud_set_health(hud_holder = HUNTER_HUD)
 
 /mob/proc/med_hud_set_status() //called when mob stat changes, or get a virus/xeno host, etc
 	return

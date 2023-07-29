@@ -48,7 +48,7 @@
 	var/obj/item/clothing/gloves/yautja/owned_bracers
 	desc = "An agile drone used by Yautja to survey the hunting grounds."
 
-/mob/hologram/falcon/Initialize(mapload, mob/M, obj/item/falcon_drone/drone, obj/item/clothing/gloves/yautja/bracers)
+/mob/hologram/falcon/Initialize(mapload, mob/M, obj/item/clothing/falcon_drone/drone, obj/item/clothing/gloves/yautja/bracers)
 	. = ..()
 	parent_drone = drone
 	owned_bracers = bracers

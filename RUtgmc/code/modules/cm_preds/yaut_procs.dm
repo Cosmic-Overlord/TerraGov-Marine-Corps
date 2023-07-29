@@ -332,6 +332,6 @@
 			if(YAUTJA_GEAR_SHIELD)
 				equip_to_slot_if_possible(new /obj/item/weapon/shield/riot/yautja(src.loc), SLOT_BACK, warning = TRUE)
 			if(YAUTJA_GEAR_DRONE)
-				equip_to_slot_if_possible(new /obj/item/falcon_drone(src.loc), SLOT_HEAD, warning = TRUE)
+				equip_to_slot_if_possible(new /obj/item/clothing/falcon_drone(src.loc), SLOT_HEAD, warning = TRUE)
 
 	verbs -= /mob/living/carbon/human/proc/pred_buy

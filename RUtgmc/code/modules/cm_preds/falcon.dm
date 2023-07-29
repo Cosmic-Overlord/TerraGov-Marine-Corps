@@ -1,4 +1,4 @@
-/obj/item/falcon_drone
+/obj/item/clothing/falcon_drone
 	name = "falcon drone"
 	desc = "An agile drone used by Yautja to survey the hunting grounds."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -12,11 +12,11 @@
 	flags_equip_slot = ITEM_SLOT_HEAD|ITEM_SLOT_EARS
 	flags_item = ITEM_PREDATOR
 
-/obj/item/falcon_drone/attack_self(mob/user)
+/obj/item/clothing/falcon_drone/attack_self(mob/user)
 	..()
 	control_falcon_drone()
 
-/obj/item/falcon_drone/verb/control_falcon_drone()
+/obj/item/clothing/falcon_drone/verb/control_falcon_drone()
 	set name = "Control Falcon Drone"
 	set desc = "Activates your falcon drone."
 	set category = "Yautja"
@@ -44,7 +44,7 @@
 	icon_state = "falcon_drone_active"
 	hud_possible = list(HUNTER_HUD)
 	flags_pass = HOVERING
-	var/obj/item/falcon_drone/parent_drone
+	var/obj/item/clothing/falcon_drone/parent_drone
 	var/obj/item/clothing/gloves/yautja/owned_bracers
 	desc = "An agile drone used by Yautja to survey the hunting grounds."
 

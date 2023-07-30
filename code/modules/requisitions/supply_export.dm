@@ -42,6 +42,8 @@
 			. = 800
 		if(JOB_CAT_COMMAND)
 			. = 1000
+		if(JOB_PREDATOR)
+			. = 3000
 	SSpoints.supply_points[faction_selling] += .
 	return new /datum/export_report(., name, faction_selling)
 

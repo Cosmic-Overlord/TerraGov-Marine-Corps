@@ -158,10 +158,15 @@
 	var/mob/living/carbon/human/H = new_mob
 	H.fully_replace_character_name(H.real_name, H.species.random_name(H.gender))
 
-/datum/action/join_predator
+/datum/action/observer_action/join_predator
 	name = "Join the Hunt"
 	action_icon_state = "pred_ghost"
 
-/datum/action/join_predator/action_activate()
+/datum/action/observer_action/join_predator/action_activate()
 	var/mob/dead/observer/activator = owner
-	activator.join_as_yautja()
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(activator, span_warning("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_predator_late_join(activator))
+		SSticker.mode.join_predator(activator)

@@ -141,7 +141,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		return FALSE
 	var/hit_area = affecting.display_name
 
-	if((user != src) && check_pred_shields(I.force, "the [I.name]"))
+	if((user != src) && check_pred_shields(I.force, "the [I.name]", backside_attack = dir == get_dir(get_turf(user), get_turf(src))))
 		return FALSE
 
 	var/damage = I.force + round(I.force * 0.3 * user.skills.getRating(SKILL_MELEE_WEAPONS)) //30% bonus per melee level
@@ -230,7 +230,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	return TRUE
 
-/mob/living/carbon/human/proc/check_pred_shields(damage = 0, attack_text = "the attack", combistick=0)
+/mob/living/carbon/human/proc/check_pred_shields(damage = 0, attack_text = "the attack", combistick = FALSE, backside_attack = FALSE)
 	var/block_effect = /obj/effect/temp_visual/block
 	var/owner_turf = get_turf(src)
 	if(skills.getRating("swordplay") < SKILL_SWORDPLAY_TRAINED)
@@ -299,7 +299,7 @@ Contains most of the procs that are called when a mob is attacked by something
 			visible_message(span_danger("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
 			return TRUE
 
-	if(back && istype(back, /obj/item/weapon/shield/riot/yautja) && prob(20))
+	if(back && istype(back, /obj/item/weapon/shield/riot/yautja) && backside_attack && prob(20))
 		var/obj/item/weapon/shield/riot/yautja/shield = back
 		if(shield.blocks_on_back)
 			playsound(src, 'sound/items/block_shield.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
@@ -357,7 +357,7 @@ Contains most of the procs that are called when a mob is attacked by something
 				log_combat(living_thrower, src, "thrown at", thrown_item, "(FAILED: shield blocked)")
 			return
 
-	if((living_thrower != src) && check_pred_shields(throw_damage, "[thrown_item]"))
+	if((living_thrower != src) && check_pred_shields(throw_damage, "[thrown_item]", backside_attack = dir == get_dir(get_turf(AM), get_turf(src))))
 		return
 
 	var/datum/limb/affecting = get_limb(zone)

@@ -1209,7 +1209,7 @@
 	return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/target_action(datum/source, atom/A)
-	if(!istype(A, /mob/living/carbon) || A == laser_target)
+	if((!istype(A, /mob/living/carbon) && laser_target) || A == laser_target)
 		laser_off()
 	else if(!laser_target)
 		laser_on(A, gun_user)

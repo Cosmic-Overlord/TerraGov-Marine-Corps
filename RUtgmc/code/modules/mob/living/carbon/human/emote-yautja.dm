@@ -142,6 +142,3 @@
 	key = "uglyfreak"
 	sound = 'sound/voice/pred_ugly_freak.ogg'
 	emote_type = EMOTE_AUDIBLE
-
-/datum/emote/living/carbon/human/yautja/laugh/get_sound(mob/living/user)
-	return 'sound/voice/pred_laugh1.ogg'

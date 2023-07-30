@@ -27,6 +27,22 @@
 	var/last_attack = 0
 	var/cooldown_time = 25 SECONDS
 
+/obj/item/weapon/shield/riot/yautja/set_shield()
+	return
+
+/obj/item/weapon/shield/riot/yautja/AltClick(mob/user)
+	if(!can_interact(user))
+		return ..()
+	if(!ishuman(user))
+		return ..()
+	if(!(user.l_hand == src || user.r_hand == src))
+		return ..()
+	TOGGLE_BITFIELD(flags_item, NODROP)
+	if(CHECK_BITFIELD(flags_item, NODROP))
+		to_chat(user, span_warning("You tighten the strap of [src] around your hand!"))
+	else
+		to_chat(user, span_notice("You loosen the strap of [src] around your hand!"))
+
 /obj/item/weapon/shield/riot/yautja/proc/raise_shield(mob/user as mob) // Prepare for an attack. Slows you down slightly, but increases chance to block.
 	user.visible_message(span_blue("\The [user] raises \the [src]."))
 	shield_readied = TRUE

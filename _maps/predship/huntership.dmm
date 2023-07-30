@@ -1620,6 +1620,25 @@
 	icon_state = "dark2"
 	},
 /area/yautja)
+"ie" = (
+/obj/structure/window/full{
+	dir = 4;
+	resistance_flags = 1
+	},
+/obj/structure/window/full{
+	dir = 8;
+	resistance_flags = 1
+	},
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/reagent_containers/glass/rag/polishing_rag,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "is" = (
 /obj/structure/kitchenspike,
 /obj/item/reagent_containers/food/snacks/bearmeat{
@@ -5098,7 +5117,7 @@ aa
 aa
 aa
 bj
-wQ
+ie
 cP
 cP
 cP
@@ -5170,7 +5189,7 @@ bj
 bj
 bj
 bj
-wQ
+ie
 cP
 cP
 bz
@@ -5242,7 +5261,7 @@ PJ
 jy
 bO
 bj
-wQ
+ie
 cP
 cP
 wQ
@@ -5314,7 +5333,7 @@ bL
 SB
 bL
 bj
-wQ
+ie
 cP
 bL
 wQ
@@ -5386,7 +5405,7 @@ bL
 cP
 bL
 bj
-wQ
+ie
 bL
 JH
 JH

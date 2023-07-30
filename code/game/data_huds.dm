@@ -98,7 +98,7 @@
 
 //medical hud used by ghosts
 /datum/atom_hud/medical/observer
-	hud_icons = list(HEALTH_HUD, XENO_EMBRYO_HUD, XENO_REAGENT_HUD, XENO_DEBUFF_HUD, STATUS_HUD, MACHINE_HEALTH_HUD, MACHINE_AMMO_HUD, XENO_BANISHED_HUD, HUNTER_CLAN, HUNTER_HUD)
+	hud_icons = list(HEALTH_HUD, XENO_EMBRYO_HUD, XENO_REAGENT_HUD, XENO_DEBUFF_HUD, STATUS_HUD, MACHINE_HEALTH_HUD, MACHINE_AMMO_HUD, XENO_BANISHED_HUD, HUNTER_CLAN, HUNTER_HUD, HUNTER_HEALTH_HUD)
 
 
 /datum/atom_hud/medical/pain
@@ -110,7 +110,7 @@
 
 
 /datum/atom_hud/hunter_hud
-	hud_icons = list(HUNTER_HUD)
+	hud_icons = list(HUNTER_HUD, HUNTER_HEALTH_HUD)
 
 
 /mob/proc/med_hud_set_health()
@@ -178,7 +178,8 @@
 		else
 			holder.icon_state = "hudhealth-100"
 
-/mob/living/carbon/human/yautja/med_hud_set_health(hud_holder = HUNTER_HUD)
+/mob/living/carbon/human/yautja/med_hud_set_health(hud_holder = HUNTER_HEALTH_HUD)
+	. = ..()
 
 /mob/proc/med_hud_set_status() //called when mob stat changes, or get a virus/xeno host, etc
 	return

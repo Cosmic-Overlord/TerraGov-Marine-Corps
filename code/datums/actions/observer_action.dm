@@ -162,6 +162,24 @@
 	name = "Join the Hunt"
 	action_icon_state = "pred_ghost"
 
+/datum/action/observer_action/join_predator/give_action(mob/M)
+	var/owner_ckey = M.client?.ckey
+	if(!owner_ckey)
+		return
+
+	if(!(GLOB.roles_whitelist[owner_ckey] & WHITELIST_PREDATOR))
+		return
+
+	if(!SSticker.mode || !(SSticker.mode.flags_round_type & MODE_PREDATOR))
+		RegisterSignal(SSdcs, COMSIG_GLOB_PREDATOR_ROUND_TOGGLED, PROC_REF(handle_button_status_visuals))
+
+	. = ..()
+
+/datum/action/observer_action/join_predator/can_use_action()
+	if(!SSticker.mode || !(SSticker.mode.flags_round_type & MODE_PREDATOR))
+		return FALSE
+	return TRUE
+
 /datum/action/observer_action/join_predator/action_activate()
 	var/mob/dead/observer/activator = owner
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)

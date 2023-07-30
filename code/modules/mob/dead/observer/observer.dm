@@ -104,8 +104,6 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(observer_z_changed))
 	LAZYADD(GLOB.observers_by_zlevel["[z]"], src)
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_PREDATOR_ROUND_TOGGLED, PROC_REF(toggle_predator_action))
-
 	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
 
@@ -113,8 +111,6 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 /mob/dead/observer/Login()
 	..()
-
-	toggle_predator_action()
 
 /mob/dead/observer/Destroy()
 	GLOB.ghost_images_default -= ghostimage_default
@@ -990,32 +986,3 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 			return
 
 	return ..()
-
-/// This proc is called when a predator round is toggled by the admin verb, as well as when a ghost logs in
-/mob/dead/observer/proc/toggle_predator_action()
-	SIGNAL_HANDLER
-
-	var/key_to_use = ckey
-
-	if(!key_to_use)
-		return
-
-	if(!(GLOB.roles_whitelist[key_to_use] & WHITELIST_PREDATOR))
-		return
-
-	if(!SSticker.mode)
-		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(toggle_predator_action)))
-		return
-
-	if(SSticker.mode.flags_round_type & MODE_PREDATOR)
-		if(locate(/datum/action/join_predator) in actions)
-			return
-
-		var/datum/action/join_predator/new_action = new()
-		new_action.give_action(src)
-		return
-
-	var/datum/action/join_predator/old_action = locate() in actions
-	if(old_action)
-		qdel(old_action)
-

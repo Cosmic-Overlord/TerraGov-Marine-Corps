@@ -259,7 +259,7 @@ Contains most of the procs that are called when a mob is attacked by something
 			// We cannot return FALSE on fail here, because we haven't checked r_hand yet. Dual-wielding shields perhaps!
 
 		var/obj/item/weapon/I = l_hand
-		if(!istype(I, /obj/item/weapon/shield/riot/yautja) && (prob(20 - round(damage / 3)))) // 'other' shields, like predweapons. Make sure that item/weapon/shield does not apply here, no double-rolls.
+		if(!istype(I, /obj/item/weapon/shield/riot/yautja) && (prob(30 - round(damage / 3)))) // 'other' shields, like predweapons. Make sure that item/weapon/shield does not apply here, no double-rolls.
 			new block_effect(owner_turf, COLOR_YELLOW)
 			if(istype(I, /obj/item/weapon/shield))
 				playsound(src, 'sound/items/block_shield.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
@@ -290,7 +290,7 @@ Contains most of the procs that are called when a mob is attacked by something
 				return TRUE
 
 		var/obj/item/weapon/I = r_hand
-		if(!istype(I, /obj/item/weapon/shield/riot/yautja) && (prob(20 - round(damage / 3)))) // other shields. Don't doublecheck activable here.
+		if(!istype(I, /obj/item/weapon/shield/riot/yautja) && (prob(30 - round(damage / 3)))) // other shields. Don't doublecheck activable here.
 			new block_effect(owner_turf, COLOR_YELLOW)
 			if(istype(I, /obj/item/weapon/shield))
 				playsound(src, 'sound/items/block_shield.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)

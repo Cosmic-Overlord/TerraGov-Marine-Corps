@@ -20,3 +20,6 @@
 
 ///Frequency stuff only works with 45kbps oggs.
 #define GET_RAND_FREQUENCY (rand(32000, 55000))
+
+///Sound volume defines
+#define BLOCK_SOUND_VOLUME 70

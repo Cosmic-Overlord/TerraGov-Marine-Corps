@@ -231,6 +231,8 @@ Contains most of the procs that are called when a mob is attacked by something
 	return TRUE
 
 /mob/living/carbon/human/proc/check_pred_shields(damage = 0, attack_text = "the attack", combistick=0)
+	var/block_effect = /obj/effect/temp_visual/block
+	var/owner_turf = get_turf(src)
 	if(skills.getRating("swordplay") < SKILL_SWORDPLAY_TRAINED)
 		return FALSE
 
@@ -250,12 +252,19 @@ Contains most of the procs that are called when a mob is attacked by something
 				shield_blocked_l = TRUE
 
 			if(shield_blocked_l)
+				new block_effect(owner_turf, COLOR_YELLOW)
+				playsound(src, 'sound/items/block_shield.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
 				visible_message(span_danger("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
 				return TRUE
 			// We cannot return FALSE on fail here, because we haven't checked r_hand yet. Dual-wielding shields perhaps!
 
 		var/obj/item/weapon/I = l_hand
 		if(!istype(I, /obj/item/weapon/shield/riot/yautja) && (prob(50 - round(damage / 3)))) // 'other' shields, like predweapons. Make sure that item/weapon/shield does not apply here, no double-rolls.
+			new block_effect(owner_turf, COLOR_YELLOW)
+			if(istype(I, /obj/item/weapon/shield))
+				playsound(src, 'sound/items/block_shield.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
+			else
+				playsound(src, 'sound/items/parry.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
 			visible_message(span_danger("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
 			return TRUE
 
@@ -275,17 +284,25 @@ Contains most of the procs that are called when a mob is attacked by something
 				shield_blocked_r = TRUE
 
 			if(shield_blocked_r)
+				new block_effect(owner_turf, COLOR_YELLOW)
+				playsound(src, 'sound/items/block_shield.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
 				visible_message(span_danger("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
 				return TRUE
 
 		var/obj/item/weapon/I = r_hand
-		if(!istype(I, /obj/item/weapon/shield/riot/yautja) && (prob(50 - round(damage / 3)))) // other shields. Don't doublecheck activable here.
+		if(!istype(I, /obj/item/weapon/shield/riot/yautja) && (prob(50 - round(damage / 3)))) // other shields/weapons. Don't doublecheck activable here.
+			new block_effect(owner_turf, COLOR_YELLOW)
+			if(istype(I, /obj/item/weapon/shield))
+				playsound(src, 'sound/items/block_shield.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
+			else
+				playsound(src, 'sound/items/parry.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
 			visible_message(span_danger("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
 			return TRUE
 
 	if(back && istype(back, /obj/item/weapon/shield/riot/yautja) && prob(20))
 		var/obj/item/weapon/shield/riot/yautja/shield = back
 		if(shield.blocks_on_back)
+			playsound(src, 'sound/items/block_shield.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
 			visible_message(span_danger("<B>The [back] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
 			return TRUE
 

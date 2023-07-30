@@ -1211,7 +1211,7 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/target_action(datum/source, atom/A)
 	if(!istype(A, /mob/living/carbon) || A == laser_target)
 		laser_off()
-	else
+	else if(!laser_target)
 		laser_on(A, gun_user)
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/activate_laser_target(atom/target, mob/user)

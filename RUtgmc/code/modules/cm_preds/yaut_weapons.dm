@@ -896,7 +896,7 @@
 	fire_sound = 'sound/weapons/pred_plasma_shot.ogg'
 	ammo_datum_type = /datum/ammo/energy/yautja/rifle/bolt
 	zoomdevicename = "scope"
-	flags_equip_slot = SLOT_BACK
+	flags_equip_slot = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_GIGANTIC
 	rounds = 100
 	max_rounds = 100

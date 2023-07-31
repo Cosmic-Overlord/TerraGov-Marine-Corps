@@ -20,6 +20,8 @@
 	force = 15
 	throwforce = 25
 
+	var/mob/living/simple_animal/hostile/smartdisc/spawned_item
+
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/throw_at(atom/target, range, speed, thrower, spin, flying)
 	..()
 	var/mob/user = usr
@@ -95,10 +97,10 @@
 	if(spawner_type && deliveryamt)
 		// Make a quick flash
 		var/turf/T = get_turf(src)
-		var/atom/movable/x = new spawner_type
+		var/mob/living/simple_animal/hostile/smartdisc/x = new spawner_type
 		x.forceMove(T)
-
-	qdel(src)
+		spawned_item = x
+		x.spawner_item = src
 	return
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/throw_impact(atom/hit_atom)
@@ -139,6 +141,8 @@
 
 	faction = FACTION_YAUTJA
 
+	var/obj/item/explosive/grenade/spawnergrenade/smartdisc/spawner_item
+
 	var/lifetime = 8 //About 15 seconds.
 	var/time_idle = 0
 
@@ -164,17 +168,23 @@
 	lifetime--
 	if(lifetime <= 0 || time_idle > 3)
 		visible_message("\The [src] stops whirring and spins out onto the floor.")
-		new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
+		drop_real_disc()
 		qdel(src)
 		return
 
 /mob/living/simple_animal/hostile/smartdisc/death()
 	visible_message("\The [src] stops whirring and spins out onto the floor.")
-	new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
+	drop_real_disc()
 	..()
 	spawn(1)
 		if(src)
 			qdel(src)
+
+/mob/living/simple_animal/hostile/smartdisc/proc/drop_real_disc()
+	spawner_item.forceMove(loc)
+	// don't make GC cry
+	spawner_item.spawned_item = null
+	spawner_item = null
 
 /mob/living/simple_animal/hostile/smartdisc/gib()
 	visible_message("\The [src] explodes!")

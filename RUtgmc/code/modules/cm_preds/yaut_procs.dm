@@ -247,8 +247,8 @@
 		to_chat(src, span_warning("Not here. Only on the ship."))
 		return
 
-	var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
-	if(!istype(bracers))
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+	if(!istype(bracer))
 		to_chat(src, span_warning("You need to be wearing your bracers to do this."))
 		return
 
@@ -283,11 +283,6 @@
 		if(secondary in restricted)
 			other -= secondary
 
-	bracers = gloves
-	if(!istype(bracers))
-		to_chat(src, span_warning("You need to be wearing your bracers to do this."))
-		return
-
 	if(hunter_data.claimed_equipment)
 		to_chat(src, span_warning("You've already claimed your equipment."))
 		return
@@ -310,12 +305,12 @@
 		if(YAUTJA_GEAR_STICK)
 			equip_to_slot_if_possible(new /obj/item/weapon/yautja/combistick(src.loc), SLOT_S_STORE, warning = TRUE)
 		if(YAUTJA_GEAR_SCIMS)
-			if(bracers.wristblades_deployed)
-				bracers.wristblades_internal(usr, TRUE)
-			qdel(bracers.left_wristblades)
-			qdel(bracers.right_wristblades)
-			bracers.left_wristblades = new /obj/item/weapon/wristblades/scimitar(bracers)
-			bracers.right_wristblades = new /obj/item/weapon/wristblades/scimitar(bracers)
+			if(bracer.wristblades_deployed)
+				bracer.wristblades_internal(usr, TRUE)
+			qdel(bracer.left_wristblades)
+			qdel(bracer.right_wristblades)
+			bracer.left_wristblades = new /obj/item/weapon/wristblades/scimitar(bracer)
+			bracer.right_wristblades = new /obj/item/weapon/wristblades/scimitar(bracer)
 
 	for(var/choice in secondaries)
 		switch(choice)

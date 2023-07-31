@@ -31,6 +31,10 @@
 	resistance_flags = UNACIDABLE
 	time_to_unequip = 20
 	anti_hug = 5
+	var/list/actions_to_add = list(
+		/datum/action/predator_action/mask/zoom,
+		/datum/action/predator_action/mask/togglesight
+	)
 	var/list/mask_huds = list(DATA_HUD_MEDICAL_OBSERVER, DATA_HUD_XENO_STATUS, DATA_HUD_HUNTER, DATA_HUD_HUNTER_CLAN)
 	var/thrall = FALSE //Used to affect icon generation.
 
@@ -59,24 +63,7 @@
 	remove_from_missing_pred_gear(src)
 	return ..()
 
-/obj/item/clothing/mask/gas/yautja/verb/toggle_zoom()
-	set name = "Toggle Mask Zoom"
-	set desc = "Toggle your mask's zoom function."
-	set src in usr
-	if(!usr || usr.stat)
-		return
-
-	zoom(usr, 11, 12)
-
-/obj/item/clothing/mask/gas/yautja/verb/togglesight()
-	set name = "Toggle Mask Visors"
-	set desc = "Toggle your mask visor sights. You must only be wearing a type of Yautja visor for this to work."
-	set src in usr
-	if(!usr || usr.stat)
-		return
-	var/mob/living/carbon/human/M = usr
-	if(!istype(M))
-		return
+/obj/item/clothing/mask/gas/yautja/proc/togglesight(mob/living/carbon/human/M)
 	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH) && !M.hunter_data.thralled)
 		to_chat(M, span_warning("You have no idea how to work this thing!"))
 		return
@@ -133,6 +120,8 @@
 			var/datum/atom_hud/H = GLOB.huds[listed_hud]
 			H.remove_hud_from(user)
 		playsound(src, 'sound/items/air_release.ogg', 15, 1)
+		user.actions -= actions_to_add
+		user.update_action_buttons(TRUE)
 		var/obj/item/G = user.glasses
 		if(G) //make your hud fuck off
 			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
@@ -149,6 +138,8 @@
 			H.add_hud_to(user)
 		if(current_goggles)
 			add_vision(user)
+		user.actions += actions_to_add
+		user.update_action_buttons(TRUE)
 	..()
 
 /obj/item/clothing/mask/gas/yautja/unequipped(mob/living/carbon/human/user, slot)
@@ -157,6 +148,8 @@
 			var/datum/atom_hud/H = GLOB.huds[listed_hud]
 			H.remove_hud_from(user)
 		playsound(src, 'sound/items/air_release.ogg', 15, 1)
+		user.actions -= actions_to_add
+		user.update_action_buttons(TRUE)
 		var/obj/item/G = user.glasses
 		if(G) //make your hud fuck off
 			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
@@ -178,9 +171,6 @@
 	item_state_slots = list(slot_wear_mask_str = "thrall_mask")
 	thrall = TRUE
 
-/obj/item/clothing/mask/gas/yautja/thrall/toggle_zoom()
-	set category = "Thrall"
-	..()
 /obj/item/clothing/mask/gas/yautja/thrall/togglesight()
 	set category = "Thrall"
 	..()
@@ -193,9 +183,6 @@
 	eye_protection = 2
 	anti_hug = 100
 
-/obj/item/clothing/mask/gas/yautja/hunter/toggle_zoom()
-	set category = "Yautja"
-	..()
 /obj/item/clothing/mask/gas/yautja/hunter/togglesight()
 	set category = "Yautja"
 	if(!isyautja(usr))

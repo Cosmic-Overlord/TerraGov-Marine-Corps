@@ -13,6 +13,17 @@
 		return FALSE
 	return TRUE
 
+/datum/action/predator_action/pred_buy
+	name = "Claim Equipment"
+	action_icon_state = "equipment_selection"
+
+/datum/action/predator_action/pred_buy/action_activate()
+	if(!can_use_action())
+		return FALSE
+
+	var/mob/living/carbon/human/human = owner
+	human.pred_buy()
+
 /datum/action/predator_action/mask/can_use_action()
 	. = ..()
 	if(!.)
@@ -84,6 +95,27 @@
 	if(bracer?.charge < power_to_drain)
 		return FALSE
 	return TRUE
+
+/datum/action/predator_action/bracer/buy_thrall_gear
+	name = "Claim Equipment"
+	action_icon_state = "equipment_selection"
+
+/datum/action/predator_action/bracer/buy_thrall_gear/can_use_action()
+	. = ..()
+	if(.)
+		var/mob/living/carbon/human/human = owner
+		var/obj/item/clothing/gloves/yautja/bracer = human.gloves
+		if(bracer?.combistick)
+			return TRUE
+	return FALSE
+
+/datum/action/predator_action/bracer/buy_thrall_gear/action_activate()
+	if(!can_use_action())
+		return FALSE
+
+	var/mob/living/carbon/human/human = owner
+	var/obj/item/clothing/gloves/yautja/bracer = human.gloves
+	bracer.call_combi_internal(owner)
 
 /datum/action/predator_action/bracer/yank_combistick
 	name = "Yank combi-stick"
@@ -227,6 +259,4 @@
 	var/mob/living/carbon/human/human = owner
 	var/obj/item/clothing/gloves/yautja/bracer = human.gloves
 
-	//Syka blyat, fuck da checker for should not sleep...
-	spawn()
-		bracer.change_explosion_type(owner)
+	INVOKE_ASYNC(bracer, TYPE_PROC_REF(/obj/item/clothing/gloves/yautja, change_explosion_type), owner)

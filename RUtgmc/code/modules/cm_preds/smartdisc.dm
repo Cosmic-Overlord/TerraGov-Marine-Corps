@@ -22,6 +22,24 @@
 
 	var/mob/living/simple_animal/hostile/smartdisc/spawned_item
 
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/afterattack(atom/A, mob/user, proximity, params)
+	if(istype(A, /obj/item/clothing/gloves/yautja))
+		var/obj/item/clothing/gloves/yautja/bracer = A
+		if(length(bracer.discs) < bracer.max_disc_cap)
+			if(src in bracer.discs)
+				to_chat(user, span_warning("You unlink [bracer] and [src]."))
+				bracer.discs -= src
+			else
+				bracer.discs += src
+				to_chat(user, span_warning("You link [src] to [bracer]."))
+		else
+			if(src in bracer.discs)
+				to_chat(user, span_warning("You unlink [bracer] and [src]."))
+				bracer.discs -= src
+			else
+				to_chat(user, span_warning("Your limit is [bracer.max_disc_cap], unlink before disc, to add another one."))
+	..()
+
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/throw_at(atom/target, range, speed, thrower, spin, flying)
 	..()
 	var/mob/user = usr

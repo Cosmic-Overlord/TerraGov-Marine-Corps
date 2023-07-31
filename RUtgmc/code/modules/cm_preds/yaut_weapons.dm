@@ -271,6 +271,20 @@
 	. = ..()
 	RegisterSignal(src, COMSIG_MOVABLE_PRE_THROW, PROC_REF(try_to_throw))
 
+/obj/item/weapon/yautja/combistick/afterattack(atom/A, mob/user, proximity, params)
+	if(istype(A, /obj/item/clothing/gloves/yautja))
+		var/obj/item/clothing/gloves/yautja/bracer = A
+		if(bracer.combistick)
+			if(src == bracer.combistick)
+				to_chat(user, span_warning("You unlink [bracer] and [src]."))
+				bracer.combistick = null
+			else
+				to_chat(user, span_warning("Before that you need unlink your [bracer] that before linked."))
+		else
+			bracer.combistick = src
+			to_chat(user, span_warning("You link [src] to [bracer]."))
+	..()
+
 /obj/item/weapon/yautja/combistick/proc/try_to_throw()
 	SIGNAL_HANDLER
 

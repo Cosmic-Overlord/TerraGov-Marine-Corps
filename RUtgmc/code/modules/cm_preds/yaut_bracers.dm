@@ -55,6 +55,8 @@
 	var/obj/item/clothing/gloves/yautja/linked_bracer //Bracer linked to this one (thrall or mentor).
 	var/obj/item/card/id/bracer_chip/embedded_id
 
+	var/datum/action/predator_action/bracer/buy_thrall_gear/claim_equipment = new
+
 	var/list/actions_to_add = list()
 
 /obj/item/clothing/gloves/yautja/Destroy()
@@ -175,33 +177,6 @@
 			. = call_combi_internal(caller, TRUE)
 		else
 			. = delimb_user(caller)
-
-/obj/item/clothing/gloves/yautja/afterattack(atom/A, mob/user, proximity, params)
-	if(istype(A, /obj/item/weapon/yautja/combistick))
-		if(combistick)
-			if(A == combistick)
-				to_chat(user, span_warning("You unlink [src] and [combistick]."))
-				combistick = null
-			else
-				to_chat(user, span_warning("Before that you need unlink your [combistick] that before linked."))
-		else
-			combistick = A
-			to_chat(user, span_warning("You link [combistick] to [src]."))
-
-	else if(istype(A, /obj/item/explosive/grenade/spawnergrenade/smartdisc))
-		if(length(discs) < max_disc_cap)
-			if(A in discs)
-				to_chat(user, span_warning("You unlink [src] and [A]."))
-				discs -= A
-			else
-				discs += A
-				to_chat(user, span_warning("You link [A] to [src]."))
-		else
-			if(A in discs)
-				to_chat(user, span_warning("You unlink [src] and [A]."))
-				discs -= A
-			else
-				to_chat(user, span_warning("Your limit is [max_disc_cap], unlink before disc, to add another one."))
 
 /obj/item/clothing/gloves/yautja/proc/call_combi_internal(mob/living/caller, forced = FALSE)
 	. = check_random_function(caller, forced)

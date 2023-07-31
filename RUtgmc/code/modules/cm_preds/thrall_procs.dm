@@ -1,10 +1,5 @@
 //Claim gear, same as the Hunter's get.
 /obj/item/clothing/gloves/yautja/proc/buy_thrall_gear()
-	set name = "Claim Equipment"
-	set desc = "When you're on the Predator ship, claim some gear. You can only do this ONCE."
-	set category = "Thrall"
-	set src in usr
-
 	var/mob/living/carbon/human/wearer = usr
 	if(wearer.gloves != src)
 		to_chat(wearer, span_warning("You need to be wearing your thrall bracers to do this."))
@@ -77,7 +72,7 @@
 
 		wearer.hunter_data.claimed_equipment = TRUE
 
-		verbs -= /obj/item/clothing/gloves/yautja/proc/buy_thrall_gear
+		claim_equipment.remove_action(wearer)
 		new /obj/item/clothing/suit/armor/yautja/thrall(wearer.loc)
 		new /obj/item/clothing/shoes/marine/yautja/thrall(wearer.loc)
 		new /obj/item/clothing/under/chainshirt/thrall(wearer.loc)
@@ -122,7 +117,8 @@
 		linked_bracer = thrall_gloves
 		thrall_gloves.linked_bracer = src
 		thrall_gloves.owner = T
-		thrall_gloves.verbs += /obj/item/clothing/gloves/yautja/proc/buy_thrall_gear
+		if(!T.hunter_data.claimed_equipment)
+			thrall_gloves.claim_equipment.give_action(T)
 
 		to_chat(user, span_yautjabold("[icon2html(src)] \The <b>[src]</b> beeps: Your bracer is now linked to your thrall."))
 		if(notification_sound)

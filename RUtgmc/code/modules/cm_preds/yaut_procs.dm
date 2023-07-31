@@ -227,10 +227,6 @@
 	base_lighting_alpha = 255
 
 /mob/living/carbon/human/proc/pred_buy()
-	set category = "Yautja"
-	set name = "Claim Equipment"
-	set desc = "When you're on the Predator ship, claim some gear. You can only do this ONCE."
-
 	if(hunter_data.claimed_equipment)
 		to_chat(src, span_warning("You've already claimed your equipment."))
 		return
@@ -329,4 +325,5 @@
 			if(YAUTJA_GEAR_DRONE)
 				equip_to_slot_if_possible(new /obj/item/clothing/falcon_drone(src.loc), SLOT_HEAD, warning = TRUE)
 
-	verbs -= /mob/living/carbon/human/proc/pred_buy
+	var/datum/species/yautja/owner_species = species
+	owner_species.pred_buy.remove_action(src)

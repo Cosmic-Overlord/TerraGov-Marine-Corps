@@ -4,10 +4,14 @@
 /datum/emote/living/carbon/human/yautja/anytime
 	key = "anytime"
 	sound = 'sound/voice/pred_anytime.ogg'
+	key_third_person = "anytime"
+	message = "any time"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/click
 	key = "click"
+	key_third_person = "click"
+	message = "clicks"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/click/get_sound(mob/living/user)
@@ -19,73 +23,83 @@
 /datum/emote/living/carbon/human/yautja/helpme
 	key = "helpme"
 	sound = 'sound/voice/pred_helpme.ogg'
+	key_third_person = "helpme"
+	message = "help me!"
 	emote_type = EMOTE_AUDIBLE
-
-/datum/emote/living/carbon/human/yautja/scream
-	key = "scream"
-	key_third_person = "screams"
-	message = "screams!"
-	emote_type = EMOTE_AUDIBLE
-
-/datum/emote/living/carbon/human/yautja/scream/get_sound(mob/living/carbon/human/yautja/user)
-	return user.gender == MALE ? "male_scream" : "female_scream"
-
-/datum/emote/living/carbon/human/yautja/scream/run_emote(mob/user, params, type_override, intentional = FALSE, prefix)
-	. = ..()
-	if(!.)
-		return
-	var/image/scream = image('icons/mob/talk.dmi', user, icon_state = "scream")
-	user.add_emote_overlay(scream)
 
 /datum/emote/living/carbon/human/yautja/iseeyou
 	key = "iseeyou"
 	sound = 'sound/hallucinations/i_see_you2.ogg'
+	key_third_person = "iseeyou"
+	message = "i see you!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/itsatrap
 	key = "itsatrap"
 	sound = 'sound/voice/pred_itsatrap.ogg'
+	key_third_person = "itsatrap"
+	message = "it's a trap!"
 	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/human/yautja/laugh
+	key = "laugh"
+	key_third_person = "laugh"
+	message = "laughs"
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/human/yautja/laugh/get_sound(mob/living/user)
+	return pick('sound/voice/pred_laugh1.ogg', 'sound/voice/pred_laugh2.ogg', 'sound/voice/pred_laugh3.ogg')
 
 /datum/emote/living/carbon/human/yautja/laugh1
 	key = "laugh1"
 	sound = 'sound/voice/pred_laugh1.ogg'
+	key_third_person = "laugh1"
+	message = "laughs"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/laugh2
 	key = "laugh2"
 	sound = 'sound/voice/pred_laugh2.ogg'
+	key_third_person = "laugh2"
+	message = "laughs"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/laugh3
 	key = "laugh3"
 	sound = 'sound/voice/pred_laugh3.ogg'
+	key_third_person = "laugh3"
+	message = "laughs"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/overhere
 	key = "overhere"
 	sound = 'sound/voice/pred_overhere.ogg'
+	key_third_person = "overhere"
+	message = "over here!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/roar
 	key = "roar"
+	key_third_person = "roar"
 	message = "roars!"
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/roar/get_sound(mob/living/user)
 	return pick('sound/voice/pred_roar1.ogg', 'sound/voice/pred_roar2.ogg')
 
 /datum/emote/living/carbon/human/yautja/roar2
 	key = "roar2"
+	key_third_person = "roar2"
 	sound = 'sound/voice/pred_roar3.ogg'
 	message = "roars!"
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/loudroar
 	key = "loudroar"
+	key_third_person = "loudroar"
 	message = "roars loudly!"
 	cooldown = 120 SECONDS
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/loudroar/get_sound(mob/living/user)
 	return pick('sound/voice/pred_roar4.ogg', 'sound/voice/pred_roar5.ogg')
@@ -104,11 +118,15 @@
 
 /datum/emote/living/carbon/human/yautja/turnaround
 	key = "turnaround"
+	key_third_person = "turnaround"
+	message = "turn around!"
 	sound = 'sound/voice/pred_turnaround.ogg'
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/click2
 	key = "click2"
+	key_third_person = "click2"
+	message = "clicks"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/click2/get_sound(mob/living/user)
@@ -116,6 +134,8 @@
 
 /datum/emote/living/carbon/human/yautja/aliengrowl
 	key = "aliengrowl"
+	key_third_person = "aliengrowl"
+	message = "growls!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/aliengrowl/get_sound(mob/living/user)
@@ -123,6 +143,8 @@
 
 /datum/emote/living/carbon/human/yautja/alienhelp
 	key = "alienhelp"
+	key_third_person = "alienhelp"
+	message = "needs help!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/alienhelp/get_sound(mob/living/user)
@@ -130,15 +152,21 @@
 
 /datum/emote/living/carbon/human/yautja/comeonout
 	key = "comeonout"
+	key_third_person = "comeonout"
+	message = "come on out!"
 	sound = 'sound/voice/pred_come_on_out.ogg'
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/overthere
 	key = "overthere"
+	key_third_person = "overthere"
+	message = "over there!"
 	sound = 'sound/voice/pred_over_there.ogg'
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/uglyfreak
 	key = "uglyfreak"
+	key_third_person = "uglyfreak"
+	message = "ugly freak!"
 	sound = 'sound/voice/pred_ugly_freak.ogg'
 	emote_type = EMOTE_AUDIBLE

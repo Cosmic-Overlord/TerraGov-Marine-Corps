@@ -14,6 +14,11 @@
 		TRAIT_FOREIGN_BIO,
 	)
 
+	screams = list(MALE = "pred_scream", FEMALE = "pred_scream")
+	paincries = list(MALE = "pred_pain", FEMALE = "pred_pain")
+	goredcries = list(MALE = "pred_pain", FEMALE = "pred_pain")
+	burstscreams = list(MALE = "pred_preburst", FEMALE = "pred_preburst")
+
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
 	max_stamina = 200

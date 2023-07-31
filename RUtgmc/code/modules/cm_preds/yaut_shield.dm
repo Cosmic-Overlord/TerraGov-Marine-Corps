@@ -25,6 +25,7 @@
 	integrity_failure = 0
 
 	var/last_attack = 0
+	var/last_lowered = 0
 	var/cooldown_time = 25 SECONDS
 
 /obj/item/weapon/shield/riot/yautja/set_shield()
@@ -44,6 +45,10 @@
 		to_chat(user, span_notice("You loosen the strap of [src] around your hand!"))
 
 /obj/item/weapon/shield/riot/yautja/proc/raise_shield(mob/user as mob) // Prepare for an attack. Slows you down slightly, but increases chance to block.
+	if(world.time < last_lowered + cooldown_time)
+		to_chat(user, span_warning("You need wait a little bit more before raise shield again!"))
+		return
+
 	user.visible_message(span_blue("\The [user] raises \the [src]."))
 	shield_readied = TRUE
 	icon_state = "[base_icon_state]_ready"
@@ -71,6 +76,8 @@
 	if(offhand_shield?.shield_readied)
 		set_shield_slowdown = offhand_shield.readied_slowdown
 	H.shield_slowdown = set_shield_slowdown
+
+	last_lowered = world.time
 
 	if(user.r_hand == src)
 		user.update_inv_r_hand()

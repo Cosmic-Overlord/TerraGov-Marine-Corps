@@ -1,8 +1,4 @@
 /mob/living/carbon/human/proc/mark_panel()
-	set name = "Mark Panel"
-	set category = "Yautja"
-	set desc = "Allows you to mark your prey."
-
 	if(stat || (lying_angle && !resting && !IsSleeping()) || (IsParalyzed() || IsUnconscious()))
 		to_chat(src, span_danger("You're not able to do that right now."))
 		return
@@ -65,14 +61,6 @@
 // Mark for Hunt verbs
 // Add prey for hunt
 /mob/living/carbon/human/proc/mark_for_hunt()
-	set category = "Yautja"
-	set name = "Mark for Hunt"
-	set desc = "Mark a target for the hunt."
-
-	if(stat || (lying_angle && !resting && !IsSleeping()) || (IsParalyzed() || IsUnconscious()))
-		to_chat(src, span_danger("You're not able to do that right now."))
-		return
-
 	// Only one prey per pred
 	if(hunter_data.prey)
 		to_chat(src, span_danger("You're already hunting something."))

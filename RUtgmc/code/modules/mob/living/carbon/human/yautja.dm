@@ -43,7 +43,6 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/butcher,
-		/mob/living/carbon/human/proc/mark_for_hunt,
 		/mob/living/carbon/human/proc/remove_from_hunt,
 		/mob/living/carbon/human/proc/mark_gear,
 		/mob/living/carbon/human/proc/unmark_gear,
@@ -53,7 +52,6 @@
 		/mob/living/carbon/human/proc/unmark_dishonored,
 		/mob/living/carbon/human/proc/mark_thralled,
 		/mob/living/carbon/human/proc/unmark_thralled,
-		/mob/living/carbon/human/proc/mark_panel,
 	)
 
 	knock_down_reduction = 4
@@ -61,7 +59,9 @@
 
 	icobase = 'icons/mob/hunter/r_predator.dmi'
 
-	var/datum/action/predator_action/pred_buy = new
+	var/datum/action/predator_action/pred_buy/pred_buy = new
+	var/datum/action/predator_action/mark_for_hunt/mark_for_hunt = new
+	var/datum/action/predator_action/mark_panel/mark_panel = new
 
 /datum/species/yautja/larva_impregnated(obj/item/alien_embryo/embryo)
 	var/datum/hive_status/hive = GLOB.hive_datums[embryo.hivenumber]
@@ -127,12 +127,16 @@
 	var/datum/atom_hud/medical/advanced/A = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	A.remove_hud_from(H)
 	pred_buy.give_action(H)
+	mark_for_hunt.give_action(H)
+	mark_panel.give_action(H)
 
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	..()
 	var/datum/atom_hud/medical/advanced/A = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	A.add_to_hud(H)
 	pred_buy.remove_action(H)
+	mark_for_hunt.remove_action(H)
+	mark_panel.remove_action(H)
 	H.blood_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")
 	H.h_style = "Bald"
 	GLOB.yautja_mob_list -= H

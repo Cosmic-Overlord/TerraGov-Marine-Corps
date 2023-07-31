@@ -24,6 +24,28 @@
 	var/mob/living/carbon/human/human = owner
 	human.pred_buy()
 
+/datum/action/predator_action/mark_for_hunt
+	name = "Mark for Hunt"
+	action_icon_state = "prey_choice"
+
+/datum/action/predator_action/mark_for_hunt/action_activate()
+	if(!can_use_action())
+		return FALSE
+
+	var/mob/living/carbon/human/human = owner
+	human.mark_for_hunt()
+
+/datum/action/predator_action/mark_panel
+	name = "Mark Panel"
+	action_icon_state = "prey_hunt"
+
+/datum/action/predator_action/mark_panel/action_activate()
+	if(!can_use_action())
+		return FALSE
+
+	var/mob/living/carbon/human/human = owner
+	human.mark_panel()
+
 /datum/action/predator_action/mask/can_use_action()
 	. = ..()
 	if(!.)

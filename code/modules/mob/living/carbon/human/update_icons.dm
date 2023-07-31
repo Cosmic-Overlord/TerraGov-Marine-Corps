@@ -676,9 +676,15 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	remove_overlay(BURST_LAYER)
 	var/mutable_appearance/standing
 	if(chestburst == 1)
-		standing = mutable_appearance('icons/Xeno/Effects.dmi', "burst_stand", -BURST_LAYER)
+		if(isyautja(src))
+			standing = mutable_appearance('icons/Xeno/Effects.dmi', "predburst_stand", -BURST_LAYER)
+		else
+			standing = mutable_appearance('icons/Xeno/Effects.dmi', "burst_stand", -BURST_LAYER)
 	else if(chestburst == 2)
-		standing = mutable_appearance('icons/Xeno/Effects.dmi', "bursted_stand", -BURST_LAYER)
+		if(isyautja(src))
+			standing = mutable_appearance('icons/Xeno/Effects.dmi', "predbursted_stand", -BURST_LAYER)
+		else
+			standing = mutable_appearance('icons/Xeno/Effects.dmi', "bursted_stand", -BURST_LAYER)
 
 	overlays_standing[BURST_LAYER]	= standing
 	apply_overlay(BURST_LAYER)

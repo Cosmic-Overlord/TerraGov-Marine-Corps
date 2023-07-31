@@ -1255,7 +1255,7 @@
 	if(user?.client)
 		user.client.click_intercept = src
 		to_chat(user, span_notice("<b>You activate your target marker and take careful aim.</b>"))
-		playsound(user,'sound/machines/click.ogg', 25, 1)
+		playsound(user,'sound/effects/nightvision.ogg', 25, 1)
 	activate_laser_target(target, user)
 	return TRUE
 

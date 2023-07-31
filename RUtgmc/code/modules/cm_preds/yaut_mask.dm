@@ -32,8 +32,8 @@
 	time_to_unequip = 20
 	anti_hug = 5
 	var/list/actions_to_add = list(
-		/datum/action/predator_action/mask/zoom,
-		/datum/action/predator_action/mask/togglesight
+		new /datum/action/predator_action/mask/zoom,
+		new /datum/action/predator_action/mask/togglesight
 	)
 	var/list/mask_huds = list(DATA_HUD_MEDICAL_OBSERVER, DATA_HUD_XENO_STATUS, DATA_HUD_HUNTER, DATA_HUD_HUNTER_CLAN)
 	var/thrall = FALSE //Used to affect icon generation.

@@ -55,8 +55,7 @@
 	var/obj/item/clothing/gloves/yautja/linked_bracer //Bracer linked to this one (thrall or mentor).
 	var/obj/item/card/id/bracer_chip/embedded_id
 
-	var/list/actions_to_add = list(
-	)
+	var/list/actions_to_add = list()
 
 /obj/item/clothing/gloves/yautja/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -801,15 +800,15 @@
 	cloak_alpha = 10
 
 	actions_to_add = list(
-		/datum/action/predator_action/bracer/cloaker,
-		/datum/action/predator_action/bracer/caster,
-		/datum/action/predator_action/bracer/wristblades,
-		/datum/action/predator_action/bracer/translate,
-		/datum/action/predator_action/bracer/injectors,
-		/datum/action/predator_action/bracer/healing_capsule,
-		/datum/action/predator_action/bracer/call_disc,
-		/datum/action/predator_action/bracer/yank_combistick,
-		/datum/action/predator_action/bracer/activate_suicide
+		new /datum/action/predator_action/bracer/cloaker,
+		new /datum/action/predator_action/bracer/caster,
+		new /datum/action/predator_action/bracer/wristblades,
+		new /datum/action/predator_action/bracer/translate,
+		new /datum/action/predator_action/bracer/injectors,
+		new /datum/action/predator_action/bracer/healing_capsule,
+		new /datum/action/predator_action/bracer/call_disc,
+		new /datum/action/predator_action/bracer/yank_combistick,
+		new /datum/action/predator_action/bracer/activate_suicide
 	)
 
 	var/name_active = TRUE

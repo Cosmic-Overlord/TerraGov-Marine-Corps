@@ -120,8 +120,9 @@
 			var/datum/atom_hud/H = GLOB.huds[listed_hud]
 			H.remove_hud_from(user)
 		playsound(src, 'sound/items/air_release.ogg', 15, 1)
-		user.actions -= actions_to_add
-		user.update_action_buttons(TRUE)
+		for(var/datum/action/action in actions_to_add)
+			action.target = null
+			action.remove_action(user)
 		var/obj/item/G = user.glasses
 		if(G) //make your hud fuck off
 			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
@@ -138,8 +139,9 @@
 			H.add_hud_to(user)
 		if(current_goggles)
 			add_vision(user)
-		user.actions += actions_to_add
-		user.update_action_buttons(TRUE)
+		for(var/datum/action/action in actions_to_add)
+			action.target = user
+			action.give_action(user)
 	..()
 
 /obj/item/clothing/mask/gas/yautja/unequipped(mob/living/carbon/human/user, slot)
@@ -148,8 +150,9 @@
 			var/datum/atom_hud/H = GLOB.huds[listed_hud]
 			H.remove_hud_from(user)
 		playsound(src, 'sound/items/air_release.ogg', 15, 1)
-		user.actions -= actions_to_add
-		user.update_action_buttons(TRUE)
+		for(var/datum/action/action in actions_to_add)
+			action.target = null
+			action.remove_action(user)
 		var/obj/item/G = user.glasses
 		if(G) //make your hud fuck off
 			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))

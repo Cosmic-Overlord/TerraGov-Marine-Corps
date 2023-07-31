@@ -71,8 +71,9 @@
 		move_chip_to_bracer()
 		if(cloaked)
 			decloak(user)
-		user.actions -= actions_to_add
-		user.update_action_buttons(TRUE)
+		for(var/datum/action/action in actions_to_add)
+			action.target = null
+			action.remove_action(user)
 	..()
 
 /obj/item/clothing/gloves/yautja/equipped(mob/living/carbon/human/user, slot)
@@ -82,8 +83,9 @@
 			owner = user
 
 		toggle_lock_internal(user, TRUE)
-		user.actions += actions_to_add
-		user.update_action_buttons(TRUE)
+		for(var/datum/action/action in actions_to_add)
+			action.target = user
+			action.give_action(user)
 	..()
 
 /obj/item/clothing/gloves/yautja/unequipped(mob/living/carbon/human/user, slot)
@@ -91,8 +93,9 @@
 		move_chip_to_bracer()
 		if(cloaked)
 			decloak(user)
-		user.actions -= actions_to_add
-		user.update_action_buttons(TRUE)
+		for(var/datum/action/action in actions_to_add)
+			action.target = null
+			action.remove_action(user)
 	..()
 
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)

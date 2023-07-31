@@ -318,7 +318,7 @@
 	icon_state = "beltbag"
 	item_state = "beltbag_w"
 	item_icons = list(
-		slot_back_str = 'icons/mob/hunter/pred_gear.dmi'
+		slot_belt_str = 'icons/mob/hunter/pred_gear.dmi'
 	)
 
 	can_hold = list()

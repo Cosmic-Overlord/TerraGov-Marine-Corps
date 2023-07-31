@@ -3,6 +3,7 @@
 // ***************************************
 /datum/action/xeno_action/activable/pounce/predalien
 	name = "Leap"
+	action_icon_state = "powerful_pounce"
 
 	range = 5
 	mob_hit_sound = 'sound/voice/predalien_pounce.ogg'
@@ -21,7 +22,7 @@
 
 /datum/action/xeno_action/activable/predalien_roar
 	name = "Roar"
-	action_icon_state = "screech"
+	action_icon_state = "rage_screech"
 	ability_name = "roar"
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_ROAR,
@@ -70,7 +71,7 @@
 
 /datum/action/xeno_action/activable/smash
 	name = "Smash"
-	action_icon_state = "stomp"
+	action_icon_state = "super_stomp"
 	ability_name = "smash"
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_SMASH,
@@ -130,7 +131,7 @@
 
 /datum/action/xeno_action/activable/devastate
 	name = "Devastate"
-	action_icon_state = "gut"
+	action_icon_state = "butchering"
 	ability_name = "devastate"
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_DEVASTATE,

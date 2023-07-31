@@ -72,7 +72,6 @@
 		if(cloaked)
 			decloak(user)
 		for(var/datum/action/action in actions_to_add)
-			action.target = null
 			action.remove_action(user)
 	..()
 
@@ -84,7 +83,6 @@
 
 		toggle_lock_internal(user, TRUE)
 		for(var/datum/action/action in actions_to_add)
-			action.target = user
 			action.give_action(user)
 	..()
 
@@ -94,7 +92,6 @@
 		if(cloaked)
 			decloak(user)
 		for(var/datum/action/action in actions_to_add)
-			action.target = null
 			action.remove_action(user)
 	..()
 

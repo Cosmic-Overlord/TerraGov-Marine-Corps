@@ -121,7 +121,6 @@
 			H.remove_hud_from(user)
 		playsound(src, 'sound/items/air_release.ogg', 15, 1)
 		for(var/datum/action/action in actions_to_add)
-			action.target = null
 			action.remove_action(user)
 		var/obj/item/G = user.glasses
 		if(G) //make your hud fuck off
@@ -140,7 +139,6 @@
 		if(current_goggles)
 			add_vision(user)
 		for(var/datum/action/action in actions_to_add)
-			action.target = user
 			action.give_action(user)
 	..()
 
@@ -151,7 +149,6 @@
 			H.remove_hud_from(user)
 		playsound(src, 'sound/items/air_release.ogg', 15, 1)
 		for(var/datum/action/action in actions_to_add)
-			action.target = null
 			action.remove_action(user)
 		var/obj/item/G = user.glasses
 		if(G) //make your hud fuck off

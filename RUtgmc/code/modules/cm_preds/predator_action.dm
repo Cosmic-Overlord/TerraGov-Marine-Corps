@@ -100,22 +100,13 @@
 	name = "Claim Equipment"
 	action_icon_state = "equipment_selection"
 
-/datum/action/predator_action/bracer/buy_thrall_gear/can_use_action()
-	. = ..()
-	if(.)
-		var/mob/living/carbon/human/human = owner
-		var/obj/item/clothing/gloves/yautja/bracer = human.gloves
-		if(bracer?.combistick)
-			return TRUE
-	return FALSE
-
 /datum/action/predator_action/bracer/buy_thrall_gear/action_activate()
 	if(!can_use_action())
 		return FALSE
 
 	var/mob/living/carbon/human/human = owner
 	var/obj/item/clothing/gloves/yautja/bracer = human.gloves
-	bracer.call_combi_internal(owner)
+	bracer.buy_thrall_gear(owner)
 
 /datum/action/predator_action/bracer/yank_combistick
 	name = "Yank combi-stick"

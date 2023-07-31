@@ -38,6 +38,7 @@
 				bracer.discs -= src
 			else
 				to_chat(user, span_warning("Your limit is [bracer.max_disc_cap], unlink before disc, to add another one."))
+		bracer.owner.update_action_buttons()
 	..()
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/throw_at(atom/target, range, speed, thrower, spin, flying)
@@ -117,6 +118,7 @@
 		var/turf/T = get_turf(src)
 		var/mob/living/simple_animal/hostile/smartdisc/x = new spawner_type
 		x.forceMove(T)
+		forceMove(x)
 		spawned_item = x
 		x.spawner_item = src
 	return

@@ -189,6 +189,15 @@
 	action_icon_state = "crystal"
 	power_to_drain = 1000
 
+/datum/action/predator_action/bracer/injectors/can_use_action()
+	. = ..()
+	if(.)
+		var/mob/living/carbon/human/human = owner
+		var/obj/item/clothing/gloves/yautja/bracer = human.gloves
+		if(!bracer?.inject_timer)
+			return TRUE
+	return FALSE
+
 /datum/action/predator_action/bracer/injectors/action_activate()
 	if(!can_use_action())
 		return FALSE
@@ -201,6 +210,15 @@
 	name = "Create Healing Capsule"
 	action_icon_state = "crystal"
 	power_to_drain = 800
+
+/datum/action/predator_action/bracer/healing_capsule/can_use_action()
+	. = ..()
+	if(.)
+		var/mob/living/carbon/human/human = owner
+		var/obj/item/clothing/gloves/yautja/bracer = human.gloves
+		if(!bracer?.healing_capsule_timer)
+			return TRUE
+	return FALSE
 
 /datum/action/predator_action/bracer/healing_capsule/action_activate()
 	if(!can_use_action())

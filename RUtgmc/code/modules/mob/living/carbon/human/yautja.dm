@@ -104,9 +104,6 @@
 		H.message_thrall("Your master has fallen!")
 		H.hunter_data.thrall = null
 
-/datum/species/yautja/handle_death(mob/living/carbon/human/H, gibbed)
-	set_predator_status(H, gibbed ? "Gibbed" : "Dead")
-
 /datum/species/yautja/handle_cryo(mob/living/carbon/human/H)
 	set_predator_status(H, "Cryo")
 	qdel(H)
@@ -130,6 +127,8 @@
 	mark_for_hunt.give_action(H)
 	mark_panel.give_action(H)
 
+	set_predator_status(H, "Alive")
+
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	..()
 	var/datum/atom_hud/medical/advanced/A = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
@@ -140,6 +139,8 @@
 	H.blood_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")
 	H.h_style = "Bald"
 	GLOB.yautja_mob_list -= H
+
+	set_predator_status(H, "Demoted")
 
 	if(H.actions_by_path[/datum/action/minimap/observer])
 		var/datum/action/minimap/observer/mini = H.actions_by_path[/datum/action/minimap/observer]

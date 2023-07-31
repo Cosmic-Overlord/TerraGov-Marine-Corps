@@ -283,6 +283,7 @@
 		else
 			bracer.combistick = src
 			to_chat(user, span_warning("You link [src] to [bracer]."))
+		bracer.owner.update_action_buttons()
 	..()
 
 /obj/item/weapon/yautja/combistick/proc/try_to_throw()

@@ -291,6 +291,7 @@
 		return FALSE
 
 	inject_timer = TRUE
+	owner.update_action_buttons()
 	addtimer(CALLBACK(src, PROC_REF(injectors_ready)), 2 MINUTES)
 
 	to_chat(caller, span_notice("You feel a faint hiss and a crystalline injector drops into your hand."))
@@ -303,6 +304,7 @@
 	if(ismob(loc))
 		to_chat(loc, span_notice("Your bracers beep faintly and inform you that a new stabilising crystal is ready to be created."))
 	inject_timer = FALSE
+	owner.update_action_buttons()
 
 /obj/item/clothing/gloves/yautja/proc/healing_capsule_internal(mob/living/caller, forced = FALSE, power_to_drain = 800)
 	. = check_random_function(caller, forced)
@@ -321,6 +323,7 @@
 		return FALSE
 
 	healing_capsule_timer = TRUE
+	owner.update_action_buttons()
 	addtimer(CALLBACK(src, PROC_REF(healing_capsule_ready)), 4 MINUTES)
 
 	to_chat(caller, span_notice("You feel your bracer churn as it pops out a healing capsule."))
@@ -332,6 +335,7 @@
 /obj/item/clothing/gloves/yautja/proc/healing_capsule_ready()
 	if(ismob(loc))
 		to_chat(loc, span_notice("Your bracers beep faintly and inform you that a new healing capsule is ready to be created."))
+	owner.update_action_buttons()
 	healing_capsule_timer = FALSE
 
 /obj/item/clothing/gloves/yautja/proc/wristblades_internal(mob/living/carbon/human/caller, forced = FALSE, power_to_drain = 50)

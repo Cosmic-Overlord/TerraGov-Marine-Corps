@@ -84,7 +84,7 @@
 		if(!istype(G,/obj/item/clothing/glasses/night/yautja) && !istype(G,/obj/item/clothing/glasses/meson/yautja) && !istype(G,/obj/item/clothing/glasses/thermal/yautja))
 			to_chat(M, span_warning("You need to remove your glasses first. Why are you even wearing these?"))
 			return
-		M.temporarilyRemoveItemFromInventory(G) //Get rid of ye existing maicerinho goggles
+		M.temporarilyRemoveItemFromInventory(G, TRUE) //Get rid of ye existing maicerinho goggles
 		G.forceMove(src)
 		M.update_inv_glasses()
 		M.update_sight()
@@ -130,7 +130,7 @@
 		var/obj/item/G = user.glasses
 		if(G) //make your hud fuck off
 			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
-				user.temporarilyRemoveItemFromInventory(G)
+				user.temporarilyRemoveItemFromInventory(G, TRUE)
 				G.forceMove(src)
 				user.update_inv_glasses()
 				user.update_sight()
@@ -158,7 +158,7 @@
 		var/obj/item/G = user.glasses
 		if(G) //make your hud fuck off
 			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
-				user.temporarilyRemoveItemFromInventory(G)
+				user.temporarilyRemoveItemFromInventory(G, TRUE)
 				G.forceMove(src)
 				user.update_inv_glasses()
 				user.update_sight()

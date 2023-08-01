@@ -57,8 +57,6 @@
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/clear_boomerang()
 	icon_state = initial(icon_state)
-	overlays.Cut()
-	update_icon()
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/find_target(mob/user)
 	var/atom/T = null
@@ -119,6 +117,9 @@
 		// Make a quick flash
 		var/turf/T = get_turf(src)
 		var/mob/living/simple_animal/hostile/smartdisc/x = new spawner_type
+		if(istype(loc, /mob))
+			var/mob/handler = loc
+			handler.temporarilyRemoveItemFromInventory(src, TRUE)
 		x.forceMove(T)
 		forceMove(x)
 		spawned_item = x
@@ -204,7 +205,8 @@
 
 /mob/living/simple_animal/hostile/smartdisc/proc/drop_real_disc()
 	spawner_item.forceMove(loc)
-	spawner_item.clear_boomerang()
+	spawner_item.icon_state = initial(spawner_item.icon_state)
+	spawner_item.overlays.Cut()
 	spawner_item.active = FALSE
 	// don't make GC cry
 	spawner_item.spawned_item = null

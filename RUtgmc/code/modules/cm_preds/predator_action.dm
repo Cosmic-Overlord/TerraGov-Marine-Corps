@@ -27,6 +27,9 @@
 /datum/action/predator_action/mark_for_hunt
 	name = "Mark for Hunt"
 	action_icon_state = "prey_choice"
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_PRED_MARK_HUNT,
+	)
 
 /datum/action/predator_action/mark_for_hunt/action_activate()
 	if(!can_use_action())
@@ -38,6 +41,9 @@
 /datum/action/predator_action/mark_panel
 	name = "Mark Panel"
 	action_icon_state = "prey_hunt"
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_PRED_MARK_PANEL,
+	)
 
 /datum/action/predator_action/mark_panel/action_activate()
 	if(!can_use_action())
@@ -59,6 +65,9 @@
 /datum/action/predator_action/mask/zoom
 	name = "Toggle Mask Zoom"
 	action_icon_state = "zoom"
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_PRED_ZOOM,
+	)
 
 /datum/action/predator_action/mask/zoom/action_activate()
 	if(!can_use_action())
@@ -71,6 +80,9 @@
 /datum/action/predator_action/mask/togglesight
 	name = "Toggle Mask Visors"
 	action_icon_state = "eye"
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_PRED_TOGGLESIGHT,
+	)
 
 	var/current_mode = 0
 
@@ -133,6 +145,9 @@
 /datum/action/predator_action/bracer/yank_combistick
 	name = "Yank combi-stick"
 	action_icon_state = "combistick"
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_PRED_COMBISTICK,
+	)
 
 /datum/action/predator_action/bracer/yank_combistick/can_use_action()
 	. = ..()
@@ -154,6 +169,9 @@
 /datum/action/predator_action/bracer/call_disc
 	name = "Call Smart-Disc"
 	action_icon_state = "disc"
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_PRED_SMART_DISC,
+	)
 
 /datum/action/predator_action/bracer/call_disc/can_use_action()
 	. = ..()
@@ -175,6 +193,9 @@
 /datum/action/predator_action/bracer/translate
 	name = "Translator"
 	action_icon_state = "translator"
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_PRED_TRANSLATOR,
+	)
 
 /datum/action/predator_action/bracer/translate/action_activate()
 	if(!can_use_action())
@@ -188,6 +209,9 @@
 	name = "Create Stabilising Crystal"
 	action_icon_state = "crystal"
 	power_to_drain = 1000
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_PRED_CRYSTAL,
+	)
 
 /datum/action/predator_action/bracer/injectors/can_use_action()
 	. = ..()
@@ -210,8 +234,11 @@
 	name = "Create Healing Capsule"
 	action_icon_state = "crystal"
 	power_to_drain = 800
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_PRED_CAPSULE,
+	)
 
-/datum/action/predator_action/bracer/healing_capsule/can_use_action()
+/datum/action/predator_action/bracer/healing_capsulecode/can_use_action()
 	. = ..()
 	if(.)
 		var/mob/living/carbon/human/human = owner
@@ -233,6 +260,9 @@
 	action_icon_state = "blades"
 	action_type = ACTION_TOGGLE
 	power_to_drain = 50
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_PRED_WRISTBLADES,
+	)
 
 /datum/action/predator_action/bracer/wristblades/action_activate()
 	if(!can_use_action())
@@ -247,6 +277,9 @@
 	action_icon_state = "plasmacannon"
 	action_type = ACTION_TOGGLE
 	power_to_drain = 50
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_PRED_CASTER,
+	)
 
 /datum/action/predator_action/bracer/caster/action_activate()
 	if(!can_use_action())
@@ -260,6 +293,9 @@
 	name = "Toggle Cloaking Device"
 	action_icon_state = "cloack"
 	action_type = ACTION_TOGGLE
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_PRED_CLOACK,
+	)
 
 /datum/action/predator_action/bracer/cloaker/action_activate()
 	if(!can_use_action())
@@ -272,6 +308,10 @@
 /datum/action/predator_action/bracer/activate_suicide
 	name = "Final Countdown (!)"
 	action_icon_state = "selfdestruct"
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_PRED_SD,
+		KEYBINDING_ALTERNATE = COMSIG_PRED_SD_MODE,
+	)
 
 /datum/action/predator_action/bracer/activate_suicide/action_activate()
 	if(!can_use_action())

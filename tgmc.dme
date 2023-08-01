@@ -1882,6 +1882,7 @@
 #include "RUtgmc\code\modules\cm_preds\_yaut_defines.dm"
 #include "RUtgmc\code\modules\cm_preds\falcon.dm"
 #include "RUtgmc\code\modules\cm_preds\huntdata.dm"
+#include "RUtgmc\code\modules\cm_preds\keybinds.dm"
 #include "RUtgmc\code\modules\cm_preds\landmakrs.dm"
 #include "RUtgmc\code\modules\cm_preds\predator_action.dm"
 #include "RUtgmc\code\modules\cm_preds\smartdisc.dm"

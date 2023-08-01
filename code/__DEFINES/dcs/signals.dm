@@ -881,6 +881,23 @@
 #define COMSIG_KB_VALI_CONNECT "keybiding_vali_connect"
 #define COMSIG_KB_SUITANALYZER "keybinding_suitanalyzer"
 
+// yautja abilities for keybindings
+
+#define COMSIG_PRED_MARK_HUNT "pred_mark_hunt"
+#define COMSIG_PRED_MARK_PANEL "pred_mark_panel"
+#define COMSIG_PRED_ZOOM "pred_zoom"
+#define COMSIG_PRED_TOGGLESIGHT "pred_togglesight"
+#define COMSIG_PRED_COMBISTICK "pred_combistick"
+#define COMSIG_PRED_SMART_DISC "pred_smart_disc"
+#define COMSIG_PRED_TRANSLATOR "pred_translator"
+#define COMSIG_PRED_CRYSTAL "pred_crystal"
+#define COMSIG_PRED_CAPSULE "pred_capsule"
+#define COMSIG_PRED_WRISTBLADES "pred_wristblades"
+#define COMSIG_PRED_CASTER "pred_caster"
+#define COMSIG_PRED_CLOACK "pred_cloack"
+#define COMSIG_PRED_SD "pred_sd"
+#define COMSIG_PRED_SD_MODE "pred_sd_mode"
+
 // Ability adding/removing signals
 #define ACTION_GIVEN "gave_an_action"		//from base of /datum/action/proc/give_action(): (datum/action)
 #define ACTION_REMOVED "removed_an_action"	//from base of /datum/action/proc/remove_action(): (datum/action)

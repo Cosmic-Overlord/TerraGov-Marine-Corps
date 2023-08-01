@@ -244,10 +244,7 @@
 /area/yautja)
 "at" = (
 /obj/machinery/atmospherics/components/unary/cryo_cell,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/corsat,
 /area/yautja)
 "au" = (
 /obj/structure/window/full{
@@ -796,7 +793,8 @@
 /area/yautja)
 "bU" = (
 /obj/structure/closet/secure_closet/freezer/kitchen{
-	req_access = null
+	req_access = null;
+	locked = 0
 	},
 /turf/open/floor{
 	dir = 4;
@@ -997,7 +995,13 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "cu" = (
-/obj/structure/closet/secure_closet/freezer/meat,
+/obj/structure/closet/secure_closet/freezer/meat{
+	locked = 0
+	},
+/obj/item/reagent_containers/food/snacks/rawmeatball,
+/obj/item/reagent_containers/food/snacks/rawmeatball,
+/obj/item/reagent_containers/food/snacks/rawmeatball,
+/obj/item/reagent_containers/food/snacks/rawmeatball,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "darkred2"
@@ -1568,6 +1572,13 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
+"fG" = (
+/obj/machinery/grill,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "gb" = (
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
@@ -1812,6 +1823,13 @@
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
+	},
+/area/yautja)
+"lt" = (
+/obj/machinery/griddle,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
 	},
 /area/yautja)
 "lu" = (
@@ -2248,7 +2266,9 @@
 	},
 /area/yautja)
 "vI" = (
-/obj/structure/closet/secure_closet/freezer/meat,
+/obj/structure/closet/secure_closet/freezer/meat{
+	locked = 0
+	},
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkred2"
@@ -2470,6 +2490,19 @@
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
+	},
+/area/yautja)
+"De" = (
+/obj/structure/table/mainship{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/machinery/chem_dispenser/beer{
+	pixel_y = 9
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
 	},
 /area/yautja)
 "Dk" = (
@@ -3069,7 +3102,9 @@
 	},
 /area/yautja)
 "RE" = (
-/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/structure/closet/secure_closet/freezer/fridge{
+	locked = 0
+	},
 /turf/open/floor{
 	dir = 6;
 	icon_state = "darkred2"
@@ -5693,7 +5728,7 @@ xO
 JH
 bL
 bj
-JH
+fG
 JH
 cP
 cP
@@ -5765,7 +5800,7 @@ Dk
 JH
 bL
 bj
-JH
+lt
 cP
 bL
 bL
@@ -6269,7 +6304,7 @@ Mb
 JH
 bL
 bj
-JH
+De
 JH
 cP
 cP

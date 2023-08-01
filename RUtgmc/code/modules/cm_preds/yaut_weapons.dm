@@ -153,8 +153,10 @@
 	item_icons = list(
 		slot_back_str = 'icons/mob/hunter/pred_gear.dmi',
 		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
+		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi',
+		slot_s_store_str = 'icons/mob/hunter/pred_gear.dmi'
 	)
+
 	var/human_adapted = FALSE
 
 /obj/item/weapon/yautja/chain
@@ -188,7 +190,7 @@
 	icon_state = "clansword"
 	flags_atom = CONDUCT
 	flags_item = ITEM_PREDATOR
-	flags_equip_slot = SLOT_BACK
+	flags_equip_slot = ITEM_SLOT_BACK
 	force = 40
 	throwforce = 25
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -247,7 +249,7 @@
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
 	icon_state = "combistick"
 	flags_atom = CONDUCT
-	flags_equip_slot = SLOT_BACK
+	flags_equip_slot = ITEM_SLOT_BACK
 	flags_item = TWOHANDED|ITEM_PREDATOR
 	w_class = WEIGHT_CLASS_HUGE
 	throw_speed = 10
@@ -646,12 +648,13 @@
 	item_icons = list(
 		slot_back_str = 'icons/mob/hunter/pred_gear.dmi',
 		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
+		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi',
+		slot_s_store_str = 'icons/mob/hunter/pred_gear.dmi'
 	)
 
 	flags_item = TWOHANDED|ITEM_PREDATOR
 	resistance_flags = UNACIDABLE
-	flags_equip_slot = SLOT_BACK
+	flags_equip_slot = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_HUGE
 	throw_speed = 10
 	edge = TRUE
@@ -779,8 +782,10 @@
 	item_icons = list(
 		slot_back_str = 'icons/mob/hunter/pred_gear.dmi',
 		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
+		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi',
+		slot_s_store_str = 'icons/mob/hunter/pred_gear.dmi'
 	)
+
 	rounds_per_shot = 1
 	muzzle_flash = "muzzle_flash_laser"
 	muzzle_flash_color = COLOR_MAGENTA
@@ -842,12 +847,6 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "spikelauncher"
 	item_state = "spikelauncher"
-	item_icons = list(
-		slot_back_str = 'icons/mob/hunter/pred_gear.dmi',
-		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
-	)
-
 	resistance_flags = UNACIDABLE
 	fire_sound = 'sound/effects/woodhit.ogg' // TODO: Decent THWOK noise.
 	ammo_datum_type = /datum/ammo/energy/yautja/alloy_spike
@@ -1052,12 +1051,6 @@
 	icon_state = "plasma_ebony"
 	var/initial_icon_state = "plasma"
 	var/base_item_state = "plasma_wear"
-	item_icons = list(
-		slot_back_str = 'icons/mob/hunter/pred_gear.dmi',
-		slot_s_store_str = 'icons/mob/hunter/pred_gear.dmi',
-		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
-	)
 	item_state_slots = list(
 		slot_back_str = "plasma_wear_off",
 		slot_s_store_str = "plasma_wear_off"

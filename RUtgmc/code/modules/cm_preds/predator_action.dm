@@ -307,7 +307,6 @@
 	var/mob/living/carbon/human/human = owner
 	var/obj/item/clothing/gloves/yautja/bracer = human.gloves
 	bracer.cloaker_internal(owner)
-	set_toggle(bracer.cloaked)
 
 /datum/action/predator_action/bracer/activate_suicide
 	name = "Final Countdown (!)"

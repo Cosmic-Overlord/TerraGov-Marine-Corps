@@ -87,6 +87,7 @@
 		playsound(user, 'sound/weapons/wristblades_off.ogg', 15, TRUE)
 		if(source.left_wristblades.loc == source && source.right_wristblades.loc == source)
 			source.wristblades_deployed = FALSE
+			source.action_wristblades.set_toggle(FALSE)
 
 /obj/item/weapon/wristblades/dropped(mob/user)
 	if(source)
@@ -95,6 +96,7 @@
 		playsound(user, 'sound/weapons/wristblades_off.ogg', 15, TRUE)
 		if(source.left_wristblades.loc == source && source.right_wristblades.loc == source)
 			source.wristblades_deployed = FALSE
+			source.action_wristblades.set_toggle(FALSE)
 		return
 	..()
 
@@ -1157,6 +1159,7 @@
 	if(source)
 		forceMove(source)
 		source.caster_deployed = FALSE
+		source.action_caster.set_toggle(FALSE)
 		return
 	..()
 

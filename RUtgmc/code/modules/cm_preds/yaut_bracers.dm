@@ -57,6 +57,10 @@
 
 	var/datum/action/predator_action/bracer/buy_thrall_gear/claim_equipment = new
 
+	var/datum/action/predator_action/bracer/cloaker/action_cloaker
+	var/datum/action/predator_action/bracer/caster/action_caster
+	var/datum/action/predator_action/bracer/wristblades/action_wristblades
+
 	var/list/actions_to_add = list()
 
 /obj/item/clothing/gloves/yautja/Destroy()
@@ -73,7 +77,7 @@
 		move_chip_to_bracer()
 		if(cloaked)
 			decloak(user)
-		for(var/datum/action/action in actions_to_add)
+		for(var/datum/action/action in actions_to_add + action_cloaker + action_caster + action_wristblades)
 			action.remove_action(user)
 	..()
 
@@ -84,7 +88,7 @@
 			owner = user
 
 		toggle_lock_internal(user, TRUE)
-		for(var/datum/action/action in actions_to_add)
+		for(var/datum/action/action in actions_to_add + action_cloaker + action_caster + action_wristblades)
 			action.give_action(user)
 	..()
 
@@ -93,7 +97,7 @@
 		move_chip_to_bracer()
 		if(cloaked)
 			decloak(user)
-		for(var/datum/action/action in actions_to_add)
+		for(var/datum/action/action in actions_to_add + action_cloaker + action_caster + action_wristblades)
 			action.remove_action(user)
 	..()
 
@@ -434,6 +438,8 @@
 			return FALSE
 
 		cloaked = TRUE
+
+		action_cloaker.set_toggle(TRUE)
 
 		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
 		RegisterSignal(M, COMSIG_ATOM_BULLET_ACT, PROC_REF(bullet_act_sim))
@@ -776,10 +782,11 @@
 
 	cloak_alpha = 10
 
+	action_cloaker = new
+	action_caster = new
+	action_wristblades = new
+
 	actions_to_add = list(
-		new /datum/action/predator_action/bracer/cloaker,
-		new /datum/action/predator_action/bracer/caster,
-		new /datum/action/predator_action/bracer/wristblades,
 		new /datum/action/predator_action/bracer/translate,
 		new /datum/action/predator_action/bracer/injectors,
 		new /datum/action/predator_action/bracer/healing_capsule,
@@ -913,6 +920,8 @@
 	SA.add_to_hud(user)
 	var/datum/atom_hud/xeno_infection/XI = GLOB.huds[DATA_HUD_XENO_INFECTION]
 	XI.add_to_hud(user)
+
+	action_cloaker.set_toggle(FALSE)
 
 	anim(user.loc, user, 'icons/mob/mob.dmi', null, "uncloak", null, user.dir)
 

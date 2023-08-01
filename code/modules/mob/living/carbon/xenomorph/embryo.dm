@@ -260,7 +260,7 @@
 
 
 /mob/living/carbon/human/emote_burstscream()
-	if(species.species_flags & NO_PAIN)
+	if(species.species_flags & NO_PAIN & !isyautja(src))
 		return
 	emote("burstscream")
 

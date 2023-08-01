@@ -4,6 +4,7 @@
 	speech_verb = "rumbles"
 	ask_verb = "rumbles"
 	exclaim_verb = "roars"
+	icon_state = "pred"
 	key = "s"
 	space_chance = 20
 	default_priority = 90

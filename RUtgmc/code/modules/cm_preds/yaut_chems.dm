@@ -32,7 +32,7 @@
 		L.AdjustUnconscious(-40)
 		L.AdjustStun(-40)
 		L.AdjustParalyzed(-40)
-		var/mob/living/carbon/human/yautja/Y = L
+		var/mob/living/carbon/human/species/yautja/Y = L
 		for(var/datum/limb/X in Y.limbs)
 			for(var/datum/wound/internal_bleeding/W in X.wounds)
 				W.damage = max(0, W.damage - (effect_str))

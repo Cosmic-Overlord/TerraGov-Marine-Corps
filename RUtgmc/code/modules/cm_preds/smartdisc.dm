@@ -57,6 +57,8 @@
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/clear_boomerang()
 	icon_state = initial(icon_state)
+	overlays.Cut()
+	update_icon()
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/find_target(mob/user)
 	var/atom/T = null

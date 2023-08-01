@@ -1,4 +1,4 @@
-/mob/living/carbon/human/yautja
+/mob/living/carbon/human/species/yautja
 	chat_color = "#aa0000"
 
 /datum/species/yautja
@@ -223,7 +223,7 @@ var/global/image/hud_icon_hunter_thralled
 
 	hud_list[HUNTER_HUD] = holder
 
-/mob/living/carbon/human/yautja/hud_set_hunter()
+/mob/living/carbon/human/species/yautja/hud_set_hunter()
 	. = ..()
 
 	var/image/holder = hud_list[HUNTER_CLAN]
@@ -238,6 +238,6 @@ var/global/image/hud_icon_hunter_thralled
 
 	hud_list[HUNTER_CLAN] = holder
 
-/mob/living/carbon/human/yautja/send_speech(message, range = 7, obj/source = src, bubble_type, list/spans, datum/language/message_language, list/message_mods = list())
+/mob/living/carbon/human/species/yautja/send_speech(message, range = 7, obj/source = src, bubble_type, list/spans, datum/language/message_language, list/message_mods = list())
 	. = ..()
 	playsound(loc, pick('sound/voice/pred_click1.ogg', 'sound/voice/pred_click2.ogg'), 25, 1)

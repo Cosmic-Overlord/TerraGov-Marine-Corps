@@ -68,6 +68,9 @@
 	var/static/next_mob_id = 0
 	var/immune_to_ssd = FALSE
 
+	///Color matrices to be applied to the client window. Assoc. list.
+	var/list/client_color_matrices
+
 	//HUD and overlays
 	var/hud_type = /datum/hud
 	var/datum/hud/hud_used

@@ -23,7 +23,7 @@
 	)
 
 /datum/job/predator/return_spawn_type(datum/preferences/prefs)
-	return /mob/living/carbon/human/yautja
+	return /mob/living/carbon/human/species/yautja
 
 /datum/job/predator/return_spawn_turf(mob/living/carbon/human/new_predator, client/player)
 	var/clan_id = CLAN_SHIP_PUBLIC

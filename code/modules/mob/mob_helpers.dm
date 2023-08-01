@@ -336,7 +336,7 @@ GLOBAL_LIST_INIT(organ_rel_size, list(
 /mob/living/carbon/xenomorph/can_be_operated_on()
 	return FALSE
 
-/mob/living/carbon/human/yautja/can_be_operated_on()
+/mob/living/carbon/human/species/yautja/can_be_operated_on()
 	return TRUE
 
 /mob/proc/restrained(ignore_checks)

@@ -36,6 +36,21 @@
 	flags_item = NODROP|DELONDROP
 	toggleable = FALSE
 
+/obj/item/clothing/glasses/thermal/yautja/dropped(mob/living/carbon/human/user)
+	if(istype(user) && user.glasses == src)
+		user.remove_client_color_matrix("thermal", 1 SECONDS)
+	..()
+
+/obj/item/clothing/glasses/thermal/yautja/equipped(mob/living/carbon/human/user, slot)
+	if(slot == SLOT_GLASSES)
+		user.add_client_color_matrix("thermal", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#ff7a7a")))
+	..()
+
+/obj/item/clothing/glasses/thermal/yautja/unequipped(mob/living/carbon/human/user, slot)
+	if(slot == SLOT_GLASSES)
+		user.remove_client_color_matrix("thermal", 1 SECONDS)
+	..()
+
 
 /obj/item/clothing/glasses/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete
 	name = "Optical Meson Scanner"

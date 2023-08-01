@@ -178,7 +178,7 @@
 		else
 			holder.icon_state = "hudhealth-100"
 
-/mob/living/carbon/human/yautja/med_hud_set_health(hud_holder = HUNTER_HEALTH_HUD)
+/mob/living/carbon/human/species/yautja/med_hud_set_health(hud_holder = HUNTER_HEALTH_HUD)
 	. = ..()
 
 /mob/proc/med_hud_set_status() //called when mob stat changes, or get a virus/xeno host, etc

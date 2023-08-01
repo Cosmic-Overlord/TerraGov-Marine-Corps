@@ -1075,6 +1075,7 @@
 
 	var/obj/item/clothing/gloves/yautja/hunter/source = null
 	charge_cost = 100 //How much energy is needed to fire.
+	var/last_time_targeted = 0
 	var/mode = "stun"//fire mode (stun/lethal)
 	var/strength = "low power stun bolts"//what it's shooting
 
@@ -1180,13 +1181,15 @@
 	return FALSE
 
 /mob/living/carbon/human/apply_pred_laser()
-	overlays_standing[PRED_LASER_LAYER] = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked-y", "layer" = PRED_LASER_LAYER)
+	overlays_standing[PRED_LASER_LAYER] = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked-y", "layer" = X_PRED_LASER_LAYER)
 	apply_overlay(PRED_LASER_LAYER)
+	flick("locked", overlays_standing[X_PRED_LASER_LAYER])
 	return TRUE
 
 /mob/living/carbon/xenomorph/apply_pred_laser()
 	overlays_standing[X_PRED_LASER_LAYER] = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked-y", "layer" = X_PRED_LASER_LAYER)
 	apply_overlay(X_PRED_LASER_LAYER)
+	flick("locked", overlays_standing[X_PRED_LASER_LAYER])
 	return TRUE
 
 /mob/living/carbon/proc/remove_pred_laser()
@@ -1227,6 +1230,9 @@
 	if((!istype(A, /mob/living/carbon) && laser_target) || A == laser_target)
 		laser_off()
 	else if(!laser_target)
+		if(last_time_targeted + 3 SECONDS > world.time)
+			to_chat(gun_user, span_danger("You did it too recently!"))
+			return
 		laser_on(A, gun_user)
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/activate_laser_target(atom/target, mob/user)
@@ -1258,6 +1264,7 @@
 		to_chat(user, span_notice("<b>You activate your target marker and take careful aim.</b>"))
 		playsound(user,'sound/effects/nightvision.ogg', 25, 1)
 	activate_laser_target(target, user)
+	last_time_targeted = world.time
 	return TRUE
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/laser_off(datum/source, mob/user)

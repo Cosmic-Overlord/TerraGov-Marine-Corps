@@ -35,6 +35,11 @@
 		new /datum/action/predator_action/mask/zoom,
 		new /datum/action/predator_action/mask/togglesight
 	)
+	var/list/obj/item/clothing/glasses/glasses = list(
+		"nvg" = new /obj/item/clothing/glasses/night/yautja,
+		"thermal" = new /obj/item/clothing/glasses/thermal/yautja,
+		"meson" = new /obj/item/clothing/glasses/meson/yautja,
+	)
 	var/list/mask_huds = list(DATA_HUD_MEDICAL_OBSERVER, DATA_HUD_XENO_STATUS, DATA_HUD_HUNTER, DATA_HUD_HUNTER_CLAN)
 	var/thrall = FALSE //Used to affect icon generation.
 
@@ -80,7 +85,7 @@
 			to_chat(M, span_warning("You need to remove your glasses first. Why are you even wearing these?"))
 			return
 		M.temporarilyRemoveItemFromInventory(G) //Get rid of ye existing maicerinho goggles
-		qdel(G)
+		G.forceMove(src)
 		M.update_inv_glasses()
 		M.update_sight()
 	switch_vision_mode()
@@ -100,13 +105,13 @@
 /obj/item/clothing/mask/gas/yautja/proc/add_vision(mob/living/carbon/human/user) //applies current_goggles
 	switch(current_goggles)
 		if(VISION_MODE_NVG)
-			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/yautja(user), SLOT_GLASSES, TRUE, TRUE)
+			user.equip_to_slot_or_del(glasses["nvg"], SLOT_GLASSES, TRUE, TRUE)
 			to_chat(user, span_notice("Low-light vision module: activated."))
 		if(VISION_MODE_THERMAL)
-			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/yautja(user), SLOT_GLASSES, TRUE, TRUE)
+			user.equip_to_slot_or_del(glasses["thermal"], SLOT_GLASSES, TRUE, TRUE)
 			to_chat(user, span_notice("Thermal vision module: activated."))
 		if(VISION_MODE_MESON)
-			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson/yautja(user), SLOT_GLASSES, TRUE, TRUE)
+			user.equip_to_slot_or_del(glasses["meson"], SLOT_GLASSES, TRUE, TRUE)
 			to_chat(user, span_notice("Material vision module: activated."))
 		if(VISION_MODE_OFF)
 			to_chat(user, span_notice("You deactivate your visor."))
@@ -126,7 +131,7 @@
 		if(G) //make your hud fuck off
 			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
 				user.temporarilyRemoveItemFromInventory(G)
-				qdel(G)
+				G.forceMove(src)
 				user.update_inv_glasses()
 				user.update_sight()
 	..()
@@ -154,7 +159,7 @@
 		if(G) //make your hud fuck off
 			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
 				user.temporarilyRemoveItemFromInventory(G)
-				qdel(G)
+				G.forceMove(src)
 				user.update_inv_glasses()
 				user.update_sight()
 	..()
@@ -204,7 +209,7 @@
 /obj/item/clothing/mask/gas/yautja/damaged/add_vision(mob/living/carbon/human/user)
 	switch(current_goggles)
 		if(VISION_MODE_NVG)
-			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/yautja(user), ITEM_SLOT_EYES)
+			user.equip_to_slot_or_del(glasses["nvg"], ITEM_SLOT_EYES)
 			to_chat(user, span_notice("You activate your visor."))
 		if(VISION_MODE_OFF)
 			to_chat(user, span_notice("You deactivate your visor."))

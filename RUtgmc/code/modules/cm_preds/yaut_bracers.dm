@@ -183,7 +183,7 @@
 	if(.)
 		return
 
-	if(line_of_sight(combistick, src, 7))
+	if(get_dist(combistick, src) <= 7)
 		if(combistick in caller.contents) //Can't yank if they are wearing it
 			return FALSE
 		if(caller.put_in_active_hand(combistick))//Try putting it in our active hand, or, if it's full...
@@ -214,15 +214,14 @@
 
 	for(var/obj/item/explosive/grenade/spawnergrenade/smartdisc/disc in discs)
 		if(disc.spawned_item)
-			if(line_of_sight(disc.spawned_item, src, 7))
+			if(get_dist(spawned_item, src) <= 7)
 				to_chat(caller, span_warning("The [disc.spawned_item] skips back towards you!"))
 				disc.spawned_item.drop_real_disc()
 				qdel(disc.spawned_item)
 		else
-			if(line_of_sight(disc, src, 10))
+			if(get_dist(disc, src) <= 10)
 				if(isturf(disc.loc))
 					disc.boomerang(caller)
-
 	return TRUE
 
 /obj/item/clothing/gloves/yautja/proc/translate_internal(mob/caller, forced = FALSE)
@@ -610,9 +609,8 @@
 		to_chat(M, span_warning("Not while you're unconcious..."))
 		return
 
-	var/obj/item/grab/G = M.get_active_held_item()
-	if(istype(G))
-		var/mob/living/carbon/human/victim = G.grabbed_thing
+	var/mob/living/carbon/human/victim = M.get_active_held_item()
+	if(istype(victim))
 		if(victim.stat == DEAD)
 			var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
 			var/message = "Are you sure you want to detonate this [victim.species]'s bracer?"
@@ -620,7 +618,7 @@
 				message = "Are you sure you want to send this [victim.species] into the great hunting grounds?"
 			if(istype(bracer))
 				if(forced || alert(message,"Explosive Bracers", "Yes", "No") == "Yes")
-					if(M.get_active_held_item() == G && victim && victim.gloves == bracer && !bracer.exploding)
+					if(M.get_active_held_item() == victim && victim && victim.gloves == bracer && !bracer.exploding)
 						var/area/A = get_area(M)
 						var/turf/T = get_turf(M)
 						if(A)

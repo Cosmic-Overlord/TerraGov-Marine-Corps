@@ -32,21 +32,21 @@
 	keybind_signal = COMSIG_PRED_TOGGLESIGHT
 
 /datum/keybinding/yautja/combistick
-	hotkey_keys = list("L")
+	hotkey_keys = list("E")
 	name = "pred_combistick"
 	full_name = "Yank combi-stick"
 	description = "Yank on your combi-stick's chain, if it's in range. Otherwise... recover it yourself."
 	keybind_signal = COMSIG_PRED_COMBISTICK
 
 /datum/keybinding/yautja/smart_disc
-	hotkey_keys = list("I")
+	hotkey_keys = list("U")
 	name = "pred_smart_disc"
 	full_name = "Call Smart-Disc"
 	description = "Call back your smart-disc, if it's in range. If not you'll have to go retrieve it."
 	keybind_signal = COMSIG_PRED_SMART_DISC
 
 /datum/keybinding/yautja/translator
-	hotkey_keys = list("S")
+	hotkey_keys = list("I")
 	name = "pred_translator"
 	full_name = "Translator"
 	description = "Emit a message from your bracer to those nearby."
@@ -60,28 +60,28 @@
 	keybind_signal = COMSIG_PRED_CRYSTAL
 
 /datum/keybinding/yautja/capsule
-	hotkey_keys = list("U")
+	hotkey_keys = list("S")
 	name = "pred_capsule"
 	full_name = "Create Healing Capsule"
 	description = "Create a healing capsule for your healing gun."
 	keybind_signal = COMSIG_PRED_CAPSULE
 
 /datum/keybinding/yautja/wristblades
-	hotkey_keys = list("E")
+	hotkey_keys = list("L")
 	name = "pred_wristblades"
 	full_name = "Use Wrist Blades"
 	description = "Extend your wrist blades. They cannot be dropped, but can be retracted."
 	keybind_signal = COMSIG_PRED_WRISTBLADES
 
 /datum/keybinding/yautja/caster
-	hotkey_keys = list("P")
+	hotkey_keys = list("L")
 	name = "pred_caster"
 	full_name = "Use Plasma Caster"
 	description = "Activate your plasma caster. If it is dropped it will retract back into your armor."
 	keybind_signal = COMSIG_PRED_CASTER
 
 /datum/keybinding/yautja/cloack
-	hotkey_keys = list("R")
+	hotkey_keys = list("I")
 	name = "pred_cloack"
 	full_name = "Toggle Cloaking Device"
 	description = "Activate your suit's cloaking device. It will malfunction if the suit takes damage or gets excessively wet."

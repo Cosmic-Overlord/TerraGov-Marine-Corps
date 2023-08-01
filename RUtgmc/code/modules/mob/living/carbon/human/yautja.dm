@@ -115,9 +115,9 @@
 	if(SSticker?.mode)
 		GM = SSticker.mode
 		if(H.key in GM.predators)
-			GM.predators[H.key]["Status"] = status
+			GM.predators[lowertext(H.key)]["Status"] = status
 		else
-			GM.predators[H.key] = list("Name" = H.real_name, "Status" = status)
+			GM.predators[lowertext(H.key)] = list("Name" = H.real_name, "Status" = status)
 
 /datum/species/yautja/on_species_gain(mob/living/carbon/human/H, datum/species/old_species)
 	. = ..()

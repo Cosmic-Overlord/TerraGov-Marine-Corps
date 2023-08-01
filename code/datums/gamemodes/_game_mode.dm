@@ -932,8 +932,8 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 
 //===================================================\\
 
-/datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, ignore_pred_num = FALSE)
-	predators[new_predator.ckey] = list("Name" = new_predator.real_name, "Status" = "Alive")
+/datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, client/player, ignore_pred_num = FALSE)
+	predators[lowertext(player.ckey)] = list("Name" = new_predator.real_name, "Status" = "Alive")
 	if(!ignore_pred_num)
 		pred_current_num++
 
@@ -989,7 +989,7 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 			to_chat(pred_candidate, span_warning("There is no Hunt this round! Maybe the next one."))
 		return
 
-	if(pred_candidate.ckey in predators)
+	if(pred_candidate.key in predators)
 		if(show_warning)
 			to_chat(pred_candidate, span_warning("You already were a Yautja! Give someone else a chance."))
 		return

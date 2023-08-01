@@ -259,7 +259,7 @@
 /datum/action/predator_action/bracer/wristblades
 	name = "Use Wrist Blades"
 	action_icon_state = "blades"
-	action_type = ACTION_TOGGLE
+	action_type = ACTION_SELECT
 	power_to_drain = 50
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_PRED_WRISTBLADES,
@@ -272,11 +272,12 @@
 	var/mob/living/carbon/human/human = owner
 	var/obj/item/clothing/gloves/yautja/bracer = human.gloves
 	bracer.wristblades_internal(owner, power_to_drain = power_to_drain)
+	set_toggle(bracer.wristblades_deployed)
 
 /datum/action/predator_action/bracer/caster
 	name = "Use Plasma Caster"
 	action_icon_state = "plasmacannon"
-	action_type = ACTION_TOGGLE
+	action_type = ACTION_SELECT
 	power_to_drain = 50
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_PRED_CASTER,
@@ -289,11 +290,12 @@
 	var/mob/living/carbon/human/human = owner
 	var/obj/item/clothing/gloves/yautja/bracer = human.gloves
 	bracer.caster_internal(owner)
+	set_toggle(bracer.caster_deployed)
 
 /datum/action/predator_action/bracer/cloaker
 	name = "Toggle Cloaking Device"
 	action_icon_state = "cloack"
-	action_type = ACTION_TOGGLE
+	action_type = ACTION_SELECT
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_PRED_CLOACK,
 	)
@@ -305,6 +307,7 @@
 	var/mob/living/carbon/human/human = owner
 	var/obj/item/clothing/gloves/yautja/bracer = human.gloves
 	bracer.cloaker_internal(owner)
+	set_toggle(bracer.cloaked)
 
 /datum/action/predator_action/bracer/activate_suicide
 	name = "Final Countdown (!)"

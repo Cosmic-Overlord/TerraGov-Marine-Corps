@@ -202,6 +202,7 @@
 
 /mob/living/simple_animal/hostile/smartdisc/proc/drop_real_disc()
 	spawner_item.forceMove(loc)
+	spawner_item.clear_boomerang()
 	spawner_item.active = FALSE
 	// don't make GC cry
 	spawner_item.spawned_item = null

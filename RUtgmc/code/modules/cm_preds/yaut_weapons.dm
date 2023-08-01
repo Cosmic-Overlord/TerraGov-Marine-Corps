@@ -286,6 +286,10 @@
 		bracer.owner.update_action_buttons()
 	..()
 
+/obj/item/weapon/yautja/combistick/dropped(mob/living/carbon/human/M)
+	unwield(M)
+	..()
+
 /obj/item/weapon/yautja/combistick/proc/try_to_throw()
 	SIGNAL_HANDLER
 

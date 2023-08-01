@@ -40,7 +40,7 @@
 		return
 
 	if(SSticker.mode)
-		SSticker.mode.initialize_predator(new_predator, clan_rank == CLAN_RANK_ADMIN)
+		SSticker.mode.initialize_predator(new_predator, player, clan_rank == CLAN_RANK_ADMIN)
 
 	return spawn_point
 

@@ -989,7 +989,7 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 			to_chat(pred_candidate, span_warning("There is no Hunt this round! Maybe the next one."))
 		return
 
-	if(pred_candidate.сkey in predators)
+	if(pred_candidate.ckey in predators)
 		if(show_warning)
 			to_chat(pred_candidate, span_warning("You already were a Yautja! Give someone else a chance."))
 		return

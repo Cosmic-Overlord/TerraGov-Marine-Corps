@@ -244,10 +244,7 @@
 /area/yautja)
 "at" = (
 /obj/machinery/atmospherics/components/unary/cryo_cell,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/corsat,
 /area/yautja)
 "au" = (
 /obj/structure/window/full{
@@ -1575,6 +1572,13 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
+"fG" = (
+/obj/machinery/grill,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "gb" = (
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
@@ -1819,6 +1823,13 @@
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
+	},
+/area/yautja)
+"lt" = (
+/obj/machinery/griddle,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
 	},
 /area/yautja)
 "lu" = (
@@ -2117,13 +2128,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
-"sO" = (
-/obj/machinery/grill,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
 "sV" = (
 /obj/machinery/door/airlock/strata{
 	dir = 1;
@@ -2218,13 +2222,6 @@
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
-	},
-/area/yautja)
-"tV" = (
-/obj/machinery/griddle,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
 	},
 /area/yautja)
 "ua" = (
@@ -2495,6 +2492,19 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"De" = (
+/obj/structure/table/mainship{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/machinery/chem_dispenser/beer{
+	pixel_y = 9
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "Dk" = (
 /obj/item/flashlight/slime{
 	anchored = 1
@@ -2658,19 +2668,6 @@
 /obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
 /obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
 /obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"Hb" = (
-/obj/structure/table/mainship{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
-/obj/machinery/chem_dispenser/beer{
-	pixel_y = 9
-	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -5731,7 +5728,7 @@ xO
 JH
 bL
 bj
-sO
+fG
 JH
 cP
 cP
@@ -5803,7 +5800,7 @@ Dk
 JH
 bL
 bj
-tV
+lt
 cP
 bL
 bL
@@ -6307,7 +6304,7 @@ Mb
 JH
 bL
 bj
-Hb
+De
 JH
 cP
 cP

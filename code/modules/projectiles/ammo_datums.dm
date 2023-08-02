@@ -3241,32 +3241,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	hud_state = "plasma_rifle"
 
 	damage = 55
-
-/datum/ammo/energy/yautja/rifle/blast
-	name = "plasma shatterer"
-	icon_state = "bluespace"
-	damage_type = BURN
-
-	hud_state = "plasma_rifle_blast"
-
-	shell_speed = 2
-	damage = 40
-
-/datum/ammo/energy/yautja/rifle/blast/on_hit_mob(mob/M, obj/projectile/P)
-	explosion(get_turf(M), 0, 1, 2, 3)
-	..()
-
-/datum/ammo/energy/yautja/rifle/blast/on_hit_turf(turf/T, obj/projectile/P)
-	explosion(T, 0, 1, 2, 3)
-	..()
-
-/datum/ammo/energy/yautja/rifle/blast/on_hit_obj(obj/O, obj/projectile/P)
-	explosion(get_turf(O), 0, 1, 2, 3)
-	..()
-
-/datum/ammo/energy/yautja/rifle/blast/do_at_max_range(obj/projectile/P)
-	explosion(get_turf(P), 0, 1, 2, 3)
-	..()
+	penetration = 50
 
 /*
 //================================================

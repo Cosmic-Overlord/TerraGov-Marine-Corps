@@ -103,6 +103,10 @@
 			current_goggles = VISION_MODE_OFF
 
 /obj/item/clothing/mask/gas/yautja/proc/add_vision(mob/living/carbon/human/user) //applies current_goggles
+	var/obj/item/G = user.glasses
+	if(G)
+		user.temporarilyRemoveItemFromInventory(G, TRUE)
+		G.forceMove(src)
 	switch(current_goggles)
 		if(VISION_MODE_NVG)
 			user.equip_to_slot_or_del(glasses["nvg"], SLOT_GLASSES, TRUE, TRUE)

@@ -909,7 +909,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
 	name = "plasma rifle"
-	desc = "A long-barreled heavy plasma weapon capable of taking down large game. It has a mounted scope for distant shots and an integrated battery."
+	desc = "A long-barreled heavy plasma weapon. Intended for combat, not hunting. Has an integrated battery that allows for a functionally unlimited amount of shots to be discharged. Equipped with an internal gyroscopic stabilizer allowing its operator to fire the weapon one-handed if desired"
 	icon_state = "plasmarifle"
 	item_state = "plasmarifle"
 	resistance_flags = UNACIDABLE
@@ -969,12 +969,8 @@
 	if(rounds < charge_cost)
 		return
 
-	if(rounds >= charge_cost * 8)
-		ammo_datum_type = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/blast]
-		rounds -= charge_cost * 8
-	else
-		ammo_datum_type = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
-		rounds -= charge_cost
+	ammo_datum_type = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
+	rounds -= charge_cost
 	var/obj/projectile/proj = get_ammo_object()
 	in_chamber = proj
 	return in_chamber

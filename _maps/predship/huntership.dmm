@@ -800,9 +800,9 @@
 	color = "#6b675e";
 	resistance_flags = 1
 	},
-/obj/item/reagent_containers/spray/surgery{
-	pixel_y = 7;
-	color = "#6b675e"
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = -5;
+	pixel_y = 3
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1509,20 +1509,6 @@
 /obj/effect/turf_decal/lvsanddecal/full,
 /turf/open/beach/sand,
 /area/yautja)
-"eq" = (
-/obj/structure/table/reinforced/prison{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
-/obj/item/reagent_containers/glass/beaker{
-	pixel_x = -5;
-	pixel_y = 3
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "er" = (
 /obj/structure/stairs/seamless{
 	icon_state = "staircorners_seamless";
@@ -1706,9 +1692,23 @@
 	dir = 4;
 	id = "Yautja Armory";
 	name = "Yautja Armory";
-	req_one_access = 252;
+	req_one_access = list(252);
 	pixel_x = -7;
 	pixel_y = 11
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
+"gL" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/reagent_containers/spray/surgery{
+	pixel_y = 7;
+	color = "#6b675e"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2645,23 +2645,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
-"DL" = (
-/obj/structure/table/reinforced/prison{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
-/obj/item/reagent_containers/glass/beaker/noreact{
-	pixel_y = -16;
-	pixel_x = 6
-	},
-/obj/item/reagent_containers/glass/beaker/large{
-	pixel_y = 4
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "Es" = (
 /obj/structure/bed/chair/hunter,
 /turf/open/floor/corsat{
@@ -3232,6 +3215,23 @@
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
+	},
+/area/yautja)
+"PD" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/reagent_containers/glass/beaker/noreact{
+	pixel_y = -16;
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/glass/beaker/large{
+	pixel_y = 4
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
 	},
 /area/yautja)
 "PJ" = (
@@ -4862,7 +4862,7 @@ bj
 fg
 cP
 bj
-bR
+gL
 bL
 bL
 bL
@@ -5078,8 +5078,8 @@ bx
 cP
 cP
 bj
-DL
-eq
+PD
+bR
 bA
 aD
 te

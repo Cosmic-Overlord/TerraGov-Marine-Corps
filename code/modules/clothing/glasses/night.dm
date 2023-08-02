@@ -28,7 +28,7 @@
 		slot_glasses_str = 'icons/mob/hunter/pred_gear.dmi'
 	)
 	flags_inventory = COVEREYES
-	flags_item = NODROP|DELONDROP
+	flags_item = NODROP
 	actions_types = null
 
 /obj/item/clothing/glasses/night/yautja/dropped(mob/living/carbon/human/user)

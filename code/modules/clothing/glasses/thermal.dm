@@ -36,7 +36,7 @@
 	)
 	vision_flags = SEE_MOBS
 	flags_inventory = COVEREYES
-	flags_item = NODROP|DELONDROP
+	flags_item = NODROP
 	toggleable = FALSE
 
 /obj/item/clothing/glasses/thermal/yautja/dropped(mob/living/carbon/human/user)

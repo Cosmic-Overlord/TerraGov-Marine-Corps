@@ -33,7 +33,7 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	vision_flags = SEE_TURFS
 	flags_inventory = COVEREYES
-	flags_item = NODROP|DELONDROP
+	flags_item = NODROP
 	actions_types = null
 
 /obj/item/clothing/glasses/meson/yautja/dropped(mob/living/carbon/human/user)

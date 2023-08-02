@@ -84,7 +84,7 @@
 		if(!istype(G,/obj/item/clothing/glasses/night/yautja) && !istype(G,/obj/item/clothing/glasses/meson/yautja) && !istype(G,/obj/item/clothing/glasses/thermal/yautja))
 			to_chat(M, span_warning("You need to remove your glasses first. Why are you even wearing these?"))
 			return
-		M.UnEquip(G, TRUE, src)
+		M.transferItemToLoc(G, src, TRUE)
 	switch_vision_mode()
 	add_vision(M)
 

@@ -311,7 +311,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/verb/healing_capsule()
 	set name = "Create Healing Capsule"
-	set category = "Yautja.Utility"
+	set category = "Yautja"
 	set desc = "Create a healing capsule for your healing gun."
 	set src in usr
 	. = healing_capsule_internal(usr, FALSE)

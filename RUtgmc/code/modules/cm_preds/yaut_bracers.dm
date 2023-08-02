@@ -316,8 +316,8 @@
 	set src in usr
 	. = healing_capsule_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/healing_capsule_internal(mob/caller, forced = FALSE)
-	if(human.stat || (human.lying_angle && !human.resting && !human.IsSleeping()) || (human.IsParalyzed() || human.IsUnconscious()))
+/obj/item/clothing/gloves/yautja/proc/healing_capsule_internal(mob/living/caller, forced = FALSE)
+	if(caller.stat || (caller.lying_angle && !caller.resting && !caller.IsSleeping()) || (caller.IsParalyzed() || caller.IsUnconscious()))
 		return FALSE
 
 	. = check_random_function(caller, forced)
@@ -336,17 +336,17 @@
 		return FALSE
 
 	healing_capsule_timer = TRUE
-	addtimer(CALLBACK(src, span_notice(healing_capsule_ready)), 4 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(healing_capsule_ready)), 4 MINUTES)
 
-	to_chat(caller, SPAN_NOTICE("You feel your bracer churn as it pops out a healing capsule."))
+	to_chat(caller, span_notice("You feel your bracer churn as it pops out a healing capsule."))
 	var/obj/item/tool/surgery/healing_gel/O = new(caller)
 	caller.put_in_active_hand(O)
 	playsound(src, 'sound/machines/click.ogg', 15, 1)
 	return TRUE
 
-/obj/item/clothing/gloves/yautja/hunter/proc/healing_capsule_ready()
+/obj/item/clothing/gloves/yautja/proc/healing_capsule_ready()
 	if(ismob(loc))
-		to_chat(loc, SPAN_NOTICE("Your bracers beep faintly and inform you that a new healing capsule is ready to be created."))
+		to_chat(loc, span_notice("Your bracers beep faintly and inform you that a new healing capsule is ready to be created."))
 	healing_capsule_timer = FALSE
 
 /obj/item/clothing/gloves/yautja/proc/wristblades_internal(mob/living/carbon/human/caller, forced = FALSE, power_to_drain = 50)
@@ -798,7 +798,6 @@
 	actions_to_add = list(
 		new /datum/action/predator_action/bracer/translate,
 		new /datum/action/predator_action/bracer/injectors,
-		new /datum/action/predator_action/bracer/healing_capsule,
 		new /datum/action/predator_action/bracer/call_disc,
 		new /datum/action/predator_action/bracer/yank_combistick,
 		new /datum/action/predator_action/bracer/activate_suicide

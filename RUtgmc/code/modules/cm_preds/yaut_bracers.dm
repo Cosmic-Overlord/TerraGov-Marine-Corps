@@ -194,10 +194,12 @@
 			if(!drain_power(caller, 70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.
 				return TRUE
 			caller.visible_message(span_warning("<b>[caller] yanks [combistick]'s chain back!</b>"), span_warning("<b>You yank [combistick]'s chain back!</b>"))
+			playsound(caller, "chain_swing", 25)
 		else if(caller.put_in_inactive_hand(combistick))///...Try putting it in our inactive hand.
 			if(!drain_power(caller, 70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.
 				return TRUE
 			caller.visible_message(span_warning("<b>[caller] yanks [combistick]'s chain back!</b>"), span_warning("<b>You yank [combistick]'s chain back!</b>"))
+			playsound(caller, "chain_swing", 25)
 		else //If neither hand can hold it, you must not have a free hand.
 			to_chat(caller, span_warning("You need a free hand to do this!</b>"))
 
@@ -961,6 +963,7 @@
 		return FALSE
 	tracked_item.RemoveElement(/datum/element/yautja_tracked_item)
 	to_chat(caller, span_notice("You remove \the <b>[tracked_item]</b> from the tracking system."))
+	playsound(caller.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 	return TRUE
 
 
@@ -988,6 +991,7 @@
 		return FALSE
 	untracked_item.AddElement(/datum/element/yautja_tracked_item)
 	to_chat(caller, span_notice("You add \the <b>[untracked_item]</b> to the tracking system."))
+	playsound(caller.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 	return TRUE
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracername()

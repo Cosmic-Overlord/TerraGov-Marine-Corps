@@ -350,4 +350,6 @@ A good representation is: 'byond applies a volume reduction to the sound every X
 		//pred items
 		if("clan_sword_hit")
 			S = pick('sound/weapons/clan_sword_hit_1.ogg', 'sound/weapons/clan_sword_hit_2.ogg')
+		if("chain_swing")
+			S = pick('sound/items/chain_swing1.ogg', 'sound/items/chain_swing2.ogg', 'sound/items/chain_swing3.ogg')
 	return S

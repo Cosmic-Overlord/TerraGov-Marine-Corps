@@ -345,7 +345,7 @@
 			predator_cape_type = new_cape
 
 		if("predator_cape_color")
-			var/new_cape_color = input(user, "Choose your cape color:", "Cape Color", predator_cape_color) as null|color
+			var/new_cape_color = input(user, "Choose your cape color:", "Cape Color") as null|color
 			if(!new_cape_color)
 				return
 			predator_cape_color = new_cape_color

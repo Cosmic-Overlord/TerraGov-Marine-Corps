@@ -281,12 +281,14 @@
 		if(bracer.combistick)
 			if(src == bracer.combistick)
 				to_chat(user, span_warning("You unlink [bracer] and [src]."))
+				playsound(user.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 				bracer.combistick = null
 			else
 				to_chat(user, span_warning("Before that you need unlink your [bracer] that before linked."))
 		else
 			bracer.combistick = src
 			to_chat(user, span_warning("You link [src] to [bracer]."))
+			playsound(user.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 		bracer.owner.update_action_buttons()
 	..()
 

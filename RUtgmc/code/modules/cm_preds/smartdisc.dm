@@ -28,13 +28,16 @@
 		if(length(bracer.discs) < bracer.max_disc_cap)
 			if(src in bracer.discs)
 				to_chat(user, span_warning("You unlink [bracer] and [src]."))
+				playsound(user.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 				bracer.discs -= src
 			else
 				bracer.discs += src
 				to_chat(user, span_warning("You link [src] to [bracer]."))
+				playsound(user.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 		else
 			if(src in bracer.discs)
 				to_chat(user, span_warning("You unlink [bracer] and [src]."))
+				playsound(user.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 				bracer.discs -= src
 			else
 				to_chat(user, span_warning("Your limit is [bracer.max_disc_cap], unlink before disc, to add another one."))

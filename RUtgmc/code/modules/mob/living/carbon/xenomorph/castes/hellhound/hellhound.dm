@@ -5,6 +5,7 @@
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
 	tier = XENO_TIER_MINION
 	upgrade = XENO_UPGRADE_BASETYPE
+	wound_type = ""
 
 	caste_flags = CASTE_INNATE_HEALING|CASTE_INNATE_PLASMA_REGEN
 

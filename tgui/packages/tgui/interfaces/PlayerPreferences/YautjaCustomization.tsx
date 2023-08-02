@@ -1,10 +1,10 @@
 import { useBackend } from '../../backend';
-import { Section, Flex, LabeledList, Box } from '../../components';
-import { SelectFieldPreference } from './FieldPreferences';
+import { Section, Flex, LabeledList, Box, ColorBox, Button } from '../../components';
+import { TextFieldPreference, SelectFieldPreference } from './FieldPreferences';
 import { ProfilePicture } from './ProfilePicture';
 
 export const YautjaCustomization = (props, context) => {
-  const { data } = useBackend<YautjaCustomizationData>(context);
+  const { act, data } = useBackend<YautjaCustomizationData>(context);
   const {
     has_wl,
     predator_name,
@@ -131,10 +131,16 @@ export const YautjaCustomization = (props, context) => {
                 value={'predator_cape_type'}
                 action={'predator_cape_type'}
               />
-              <SelectFieldPreference
+              <TextFieldPreference
                 label={'Cape Color'}
-                value={'predator_cape_color'}
-                action={'predator_cape_color'}
+                value={predator_cape_color}
+                noAction
+                extra={
+                  <>
+                    <ColorBox color={predator_cape_color} mr={1} />
+                    <Button icon="edit" onClick={() => act('predator_cape_color')} />
+                  </>
+                }
               />
             </LabeledList>
           </Flex.Item>

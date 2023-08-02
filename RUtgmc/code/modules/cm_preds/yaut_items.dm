@@ -861,8 +861,6 @@
 		return
 
 	registered_name = human_user.real_name
-	registered_ref = WEAKREF(human_user)
-	registered_gid = human_user.gid
 	blood_type = human_user.blood_type
 
 	var/list/new_access = list(ACCESS_YAUTJA_SECURE)

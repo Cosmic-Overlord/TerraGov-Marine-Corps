@@ -85,9 +85,6 @@
 			to_chat(M, span_warning("You need to remove your glasses first. Why are you even wearing these?"))
 			return
 		M.UnEquip(G, TRUE, src)
-		G.forceMove(src)
-		M.update_inv_glasses()
-		M.update_sight()
 	switch_vision_mode()
 	add_vision(M)
 
@@ -105,13 +102,13 @@
 /obj/item/clothing/mask/gas/yautja/proc/add_vision(mob/living/carbon/human/user) //applies current_goggles
 	switch(current_goggles)
 		if(VISION_MODE_NVG)
-			user.equip_to_slot_or_del(glasses["nvg"], SLOT_GLASSES, TRUE, TRUE)
+			user.equip_to_slot_if_possible(glasses["nvg"], SLOT_GLASSES, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE)
 			to_chat(user, span_notice("Low-light vision module: activated."))
 		if(VISION_MODE_THERMAL)
-			user.equip_to_slot_or_del(glasses["thermal"], SLOT_GLASSES, TRUE, TRUE)
+			user.equip_to_slot_if_possible(glasses["thermal"], SLOT_GLASSES, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE)
 			to_chat(user, span_notice("Thermal vision module: activated."))
 		if(VISION_MODE_MESON)
-			user.equip_to_slot_or_del(glasses["meson"], SLOT_GLASSES, TRUE, TRUE)
+			user.equip_to_slot_if_possible(glasses["meson"], SLOT_GLASSES, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE)
 			to_chat(user, span_notice("Material vision module: activated."))
 		if(VISION_MODE_OFF)
 			to_chat(user, span_notice("You deactivate your visor."))
@@ -131,8 +128,6 @@
 		if(G) //make your hud fuck off
 			if(current_goggles)
 				user.UnEquip(G, TRUE, src)
-				user.update_inv_glasses()
-				user.update_sight()
 	..()
 
 /obj/item/clothing/mask/gas/yautja/equipped(mob/living/carbon/human/user, slot)
@@ -158,8 +153,6 @@
 		if(G) //make your hud fuck off
 			if(current_goggles)
 				user.UnEquip(G, TRUE, src)
-				user.update_inv_glasses()
-				user.update_sight()
 	..()
 
 /obj/item/clothing/mask/gas/yautja/thrall
@@ -207,7 +200,7 @@
 /obj/item/clothing/mask/gas/yautja/damaged/add_vision(mob/living/carbon/human/user)
 	switch(current_goggles)
 		if(VISION_MODE_NVG)
-			user.equip_to_slot_or_del(glasses["nvg"], ITEM_SLOT_EYES)
+			user.equip_to_slot_if_possible(glasses["nvg"], SLOT_GLASSES, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE)
 			to_chat(user, span_notice("You activate your visor."))
 		if(VISION_MODE_OFF)
 			to_chat(user, span_notice("You deactivate your visor."))

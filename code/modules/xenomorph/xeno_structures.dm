@@ -69,6 +69,7 @@
 	anchored = TRUE
 	max_integrity = 5
 	layer = RESIN_STRUCTURE_LAYER
+	xeno_structure_flags = IGNORE_WEED_REMOVAL
 	destroy_sound = "alien_resin_break"
 	///defines for trap type to trigger on activation
 	var/trap_type
@@ -467,6 +468,7 @@ TUNNEL
 	opacity = FALSE
 	anchored = TRUE
 	max_integrity = 5
+	xeno_structure_flags = IGNORE_WEED_REMOVAL
 
 	hit_sound = "alien_resin_move"
 	destroy_sound = "alien_resin_move"
@@ -1169,7 +1171,7 @@ TUNNEL
 	bound_height = 64
 	obj_integrity = 600
 	max_integrity = 600
-	xeno_structure_flags = CRITICAL_STRUCTURE
+	xeno_structure_flags = IGNORE_WEED_REMOVAL | CRITICAL_STRUCTURE
 	///boost amt to be added per tower per cycle
 	var/boost_amount = 0.25
 
@@ -1201,7 +1203,7 @@ TUNNEL
 	bound_height = 64
 	obj_integrity = 400
 	max_integrity = 400
-	xeno_structure_flags = CRITICAL_STRUCTURE
+	xeno_structure_flags = IGNORE_WEED_REMOVAL | CRITICAL_STRUCTURE
 	///boost amt to be added per tower per cycle
 	var/boost_amount = 0.2
 

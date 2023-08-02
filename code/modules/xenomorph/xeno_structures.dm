@@ -744,6 +744,7 @@ TUNNEL
 
 	icon = 'icons/Xeno/nest.dmi'
 	icon_state = "reinforced_nest"
+	layer = 2.5
 
 	var/obj/structure/bed/nest/structure/pred_nest
 
@@ -757,12 +758,18 @@ TUNNEL
 	var/hive = 0
 	if(hive_ref)
 		hive = hive_ref.hivenumber
+		hive_ref.thick_nests += src
+	else if(hivenumber)
+		GLOB.hive_datums[hivenumber].thick_nests += src
 
 	pred_nest = new /obj/structure/bed/nest/structure(loc, hive, src) // Nest cannot be destroyed unless the structure itself is destroyed
 
 
 /obj/structure/xeno/thick_nest/Destroy()
 	. = ..()
+
+	if(hivenumber)
+		GLOB.hive_datums[hivenumber].thick_nests -= src
 
 	pred_nest?.linked_structure = null
 	QDEL_NULL(pred_nest)

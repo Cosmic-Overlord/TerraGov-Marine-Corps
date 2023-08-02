@@ -1497,7 +1497,7 @@
 /obj/structure/closet/crate/secure{
 	color = "#6b675e";
 	name = "Secure Yautja crate";
-	req_one_access = list(250,251,252)
+	req_one_access = list(252)
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1508,6 +1508,20 @@
 /obj/effect/turf_decal/lvsanddecal/full,
 /obj/effect/turf_decal/lvsanddecal/full,
 /turf/open/beach/sand,
+/area/yautja)
+"eq" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
 /area/yautja)
 "er" = (
 /obj/structure/stairs/seamless{
@@ -1678,23 +1692,6 @@
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"gf" = (
-/obj/structure/table/reinforced/prison{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
-/obj/item/reagent_containers/glass/beaker/noreact{
-	pixel_y = -16;
-	pixel_x = 6
-	},
-/obj/item/reagent_containers/glass/beaker/large{
-	pixel_y = 4
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
 	},
 /area/yautja)
 "gp" = (
@@ -2648,6 +2645,23 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
+"DL" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/reagent_containers/glass/beaker/noreact{
+	pixel_y = -16;
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/glass/beaker/large{
+	pixel_y = 4
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "Es" = (
 /obj/structure/bed/chair/hunter,
 /turf/open/floor/corsat{
@@ -2854,7 +2868,7 @@
 /obj/structure/closet/crate/secure{
 	color = "#6b675e";
 	name = "Secure Yautja crate";
-	req_one_access = list(250,251,252)
+	req_one_access = list(252)
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -3166,20 +3180,6 @@
 "NA" = (
 /turf/open/floor{
 	icon_state = "darkred2"
-	},
-/area/yautja)
-"Os" = (
-/obj/structure/table/reinforced/prison{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
-/obj/item/reagent_containers/glass/beaker{
-	pixel_x = -5;
-	pixel_y = 3
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
 	},
 /area/yautja)
 "OZ" = (
@@ -5078,8 +5078,8 @@ bx
 cP
 cP
 bj
-gf
-Os
+DL
+eq
 bA
 aD
 te

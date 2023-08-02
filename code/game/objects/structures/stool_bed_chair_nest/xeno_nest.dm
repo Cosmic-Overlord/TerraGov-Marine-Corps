@@ -167,7 +167,6 @@
 /obj/structure/bed/nest/structure
 	name = "thick alien nest"
 	desc = "A very thick nest, oozing with a thick sticky substance."
-	icon_state = "pred_nest"
 	force_nest = TRUE
 	var/obj/structure/xeno/thick_nest/linked_structure
 

@@ -231,31 +231,6 @@
 	var/obj/item/clothing/gloves/yautja/bracer = human.gloves
 	bracer.injectors_internal(owner, power_to_drain = power_to_drain)
 
-/datum/action/predator_action/bracer/healing_capsule
-	name = "Create Healing Capsule"
-	action_icon_state = "crystal"
-	power_to_drain = 800
-	keybinding_signals = list(
-		KEYBINDING_NORMAL = COMSIG_PRED_CAPSULE,
-	)
-
-/datum/action/predator_action/bracer/healing_capsulecode/can_use_action()
-	. = ..()
-	if(.)
-		var/mob/living/carbon/human/human = owner
-		var/obj/item/clothing/gloves/yautja/bracer = human.gloves
-		if(!bracer?.healing_capsule_timer)
-			return TRUE
-	return FALSE
-
-/datum/action/predator_action/bracer/healing_capsule/action_activate()
-	if(!can_use_action())
-		return FALSE
-
-	var/mob/living/carbon/human/human = owner
-	var/obj/item/clothing/gloves/yautja/bracer = human.gloves
-	bracer.healing_capsule_internal(owner, power_to_drain = power_to_drain)
-
 /datum/action/predator_action/bracer/wristblades
 	name = "Use Wrist Blades"
 	action_icon_state = "blades"

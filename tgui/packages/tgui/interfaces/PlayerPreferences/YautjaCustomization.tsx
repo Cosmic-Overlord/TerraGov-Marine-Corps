@@ -133,11 +133,11 @@ export const YautjaCustomization = (props, context) => {
               />
               <TextFieldPreference
                 label={'Cape Color'}
-                value={'predator_cape_color'}
+                value={predator_cape_color}
                 noAction
                 extra={
                   <>
-                    <ColorBox color={'predator_cape_color'} mr={1} />
+                    <ColorBox color={predator_cape_color} mr={1} />
                     <Button icon="edit" onClick={() => act('predator_cape_color')} />
                   </>
                 }

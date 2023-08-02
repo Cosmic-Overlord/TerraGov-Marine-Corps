@@ -41,17 +41,17 @@
 
 /obj/item/clothing/glasses/thermal/yautja/dropped(mob/living/carbon/human/user)
 	if(istype(user) && user.glasses == src)
-		user.remove_client_color_matrix("thermal", 1 SECONDS)
+		user.clear_fullscreen("machine", 5)
 	..()
 
 /obj/item/clothing/glasses/thermal/yautja/equipped(mob/living/carbon/human/user, slot)
 	if(slot == SLOT_GLASSES)
-		user.add_client_color_matrix("thermal", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#ff7a7a")))
+		user.overlay_fullscreen("machine", /atom/movable/screen/fullscreen/machine/pred)
 	..()
 
 /obj/item/clothing/glasses/thermal/yautja/unequipped(mob/living/carbon/human/user, slot)
 	if(slot == SLOT_GLASSES)
-		user.remove_client_color_matrix("thermal", 1 SECONDS)
+		user.clear_fullscreen("machine", 5)
 	..()
 
 

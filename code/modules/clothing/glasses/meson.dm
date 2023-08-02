@@ -38,17 +38,17 @@
 
 /obj/item/clothing/glasses/meson/yautja/dropped(mob/living/carbon/human/user)
 	if(istype(user) && user.glasses == src)
-		user.remove_client_color_matrix("meson", 1 SECONDS)
+		user.clear_fullscreen("pred_meson", 5)
 	..()
 
 /obj/item/clothing/glasses/meson/yautja/equipped(mob/living/carbon/human/user, slot)
 	if(slot == SLOT_GLASSES)
-		user.add_client_color_matrix("meson", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#f4ff7a")))
+		user.overlay_fullscreen("pred_meson", /atom/movable/screen/fullscreen/machine/pred/meson)
 	..()
 
 /obj/item/clothing/glasses/meson/yautja/unequipped(mob/living/carbon/human/user, slot)
 	if(slot == SLOT_GLASSES)
-		user.remove_client_color_matrix("meson", 1 SECONDS)
+		user.clear_fullscreen("pred_meson", 5)
 	..()
 
 

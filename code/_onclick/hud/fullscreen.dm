@@ -164,6 +164,15 @@
 	animate(src, alpha = initial(alpha)-30, time = 50, loop = -1)
 	animate(alpha = initial(alpha), time = 20, loop = -1)
 
+/atom/movable/screen/fullscreen/machine/pred
+	alpha = 140
+
+/atom/movable/screen/fullscreen/machine/pred/meson
+	icon_state = "pred_meson"
+
+/atom/movable/screen/fullscreen/machine/pred/night
+	icon_state = "robothalf"
+
 /atom/movable/screen/fullscreen/ivanov_display
 	icon_state = "ivanov"
 	alpha = 180

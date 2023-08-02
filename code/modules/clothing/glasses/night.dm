@@ -33,17 +33,17 @@
 
 /obj/item/clothing/glasses/night/yautja/dropped(mob/living/carbon/human/user)
 	if(istype(user) && user.glasses == src)
-		user.remove_client_color_matrix("nvg", 1 SECONDS)
+		user.clear_fullscreen("robothalf", 5)
 	..()
 
 /obj/item/clothing/glasses/night/yautja/equipped(mob/living/carbon/human/user, slot)
 	if(slot == SLOT_GLASSES)
-		user.add_client_color_matrix("nvg", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#7aff7a")))
+		user.overlay_fullscreen("robothalf", /atom/movable/screen/fullscreen/machine/pred/night)
 	..()
 
 /obj/item/clothing/glasses/night/yautja/unequipped(mob/living/carbon/human/user, slot)
 	if(slot == SLOT_GLASSES)
-		user.remove_client_color_matrix("nvg", 1 SECONDS)
+		user.clear_fullscreen("robothalf", 5)
 	..()
 
 

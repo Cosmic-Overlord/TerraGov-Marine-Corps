@@ -1692,7 +1692,8 @@
 	name = "Yautja Armory";
 	pixel_x = -7;
 	pixel_y = 9;
-	dir = 4
+	dir = 4;
+	req_one_access = 252
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2280,21 +2281,6 @@
 	resistance_flags = 1
 	},
 /obj/item/flashlight/lamp,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"to" = (
-/obj/structure/stairs/seamless{
-	color = "#6b675e"
-	},
-/obj/structure/stairs/seamless{
-	icon_state = "staircorners_seamless";
-	color = "#6b675e";
-	dir = 4;
-	resistance_flags = 1
-	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2965,6 +2951,21 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"JU" = (
+/obj/structure/stairs/seamless{
+	color = "#6b675e"
+	},
+/obj/structure/stairs/seamless{
+	icon_state = "staircorners_seamless";
+	color = "#6b675e";
+	dir = 4;
+	resistance_flags = 1
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "Kp" = (
 /obj/effect/decal/remains/xeno,
 /obj/effect/landmark/weed_node,
@@ -3324,11 +3325,6 @@
 	pixel_y = -25
 	},
 /turf/open/shuttle/dropship/fourteen,
-/area/yautja)
-"Ux" = (
-/turf/closed/wall/cult{
-	color = "#3c3434"
-	},
 /area/yautja)
 "UG" = (
 /obj/structure/barricade/metal{
@@ -5691,9 +5687,9 @@ hV
 bL
 JH
 JH
-Ux
+af
 be
-Ux
+af
 JH
 JH
 JH
@@ -6699,9 +6695,9 @@ bL
 bL
 JH
 JH
-Ux
+af
 MI
-Ux
+af
 JH
 JH
 JH
@@ -7576,7 +7572,7 @@ bL
 bL
 bL
 Fy
-to
+JU
 JH
 bj
 bj

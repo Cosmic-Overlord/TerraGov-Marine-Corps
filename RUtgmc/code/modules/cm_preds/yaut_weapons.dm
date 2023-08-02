@@ -925,6 +925,7 @@
 	charge_cost = 10
 	var/last_regen = 0
 	flags_item = ITEM_PREDATOR|TWOHANDED
+	flags_gun_features = GUN_AMMO_COUNTER|GUN_NO_PITCH_SHIFT_NEAR_EMPTY|GUN_ENERGY|GUN_AMMO_COUNT_BY_PERCENTAGE|GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 
 	fire_delay = 10
 	accuracy_mult = 1.5

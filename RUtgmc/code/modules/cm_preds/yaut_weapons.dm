@@ -424,6 +424,7 @@
 /obj/item/weapon/yautja/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
 	if(!human_adapted && !HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		user.visible_message(span_danger("[user] starts to untangle the chain on \the [src]..."), span_notice("You start to untangle the chain on \the [src]..."))
+		playsound(loc, 'sound/items/chain_fumble.ogg', 25)
 		if(do_after(user, 3 SECONDS, TRUE, src, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE, PROGRESS_BRASS))
 			..()
 	else ..()

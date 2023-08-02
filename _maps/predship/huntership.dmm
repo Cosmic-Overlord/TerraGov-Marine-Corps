@@ -772,9 +772,13 @@
 	layer = 2.79;
 	resistance_flags = 1
 	},
+/obj/item/weapon/gun/energy/yautja/plasmapistol{
+	pixel_y = -7
+	},
 /obj/item/weapon/gun/energy/yautja/plasmapistol,
-/obj/item/weapon/gun/energy/yautja/plasmapistol,
-/obj/item/weapon/gun/energy/yautja/plasmapistol,
+/obj/item/weapon/gun/energy/yautja/plasmapistol{
+	pixel_y = 7
+	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -1486,14 +1490,15 @@
 /turf/open/space/basic,
 /area/space)
 "dP" = (
-/obj/structure/table/reinforced/prison{
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/obj/structure/closet/crate/secure{
 	color = "#6b675e";
-	resistance_flags = 1
+	name = "Secure Yautja crate";
+	req_one_access = list(250,251,252)
 	},
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -1609,19 +1614,54 @@
 	},
 /area/yautja)
 "gb" = (
-/obj/structure/closet/crate,
-/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
-/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
-/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
-/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
-/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
-/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
-/obj/item/stack/medical/heal_pack/ointment/predator,
-/obj/item/stack/medical/heal_pack/ointment/predator,
-/obj/item/stack/medical/heal_pack/ointment/predator,
-/obj/item/stack/medical/heal_pack/ointment/predator,
-/obj/item/stack/medical/heal_pack/ointment/predator,
-/obj/item/stack/medical/heal_pack/ointment/predator,
+/obj/structure/closet/crate{
+	color = "#6b675e"
+	},
+/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/heal_pack/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/heal_pack/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/heal_pack/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/heal_pack/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/heal_pack/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/heal_pack/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/heal_pack/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/heal_pack/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -1652,7 +1692,8 @@
 	name = "Yautja Armory";
 	pixel_x = -7;
 	pixel_y = 9;
-	dir = 4
+	dir = 4;
+	req_one_access = 252
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1732,7 +1773,10 @@
 /area/yautja)
 "ja" = (
 /obj/structure/barricade/metal{
-	dir = 8
+	dir = 8;
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
 	},
 /turf/open/floor/plating/ground/dirtgrassborder{
 	dir = 4
@@ -1852,9 +1896,16 @@
 /area/yautja)
 "lu" = (
 /obj/structure/barricade/metal{
-	dir = 8
+	dir = 8;
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
 	},
-/obj/structure/barricade/metal,
+/obj/structure/barricade/metal{
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
+	},
 /turf/open/floor/plating/ground/dirtgrassborder/corner{
 	dir = 8
 	},
@@ -1884,9 +1935,16 @@
 /area/yautja)
 "mj" = (
 /obj/structure/barricade/metal{
-	dir = 4
+	dir = 4;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	resistance_flags = 1
 	},
-/obj/structure/barricade/metal,
+/obj/structure/barricade/metal{
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
+	},
 /turf/open/ground/grass,
 /area/yautja)
 "mv" = (
@@ -1937,10 +1995,16 @@
 /area/yautja)
 "ny" = (
 /obj/structure/barricade/metal{
-	dir = 1
+	dir = 1;
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
 	},
 /obj/structure/barricade/metal{
-	dir = 4
+	dir = 4;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	resistance_flags = 1
 	},
 /turf/open/ground/grass,
 /area/yautja)
@@ -2036,10 +2100,16 @@
 /area/yautja)
 "pJ" = (
 /obj/structure/barricade/metal{
-	dir = 1
+	dir = 1;
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
 	},
 /obj/structure/barricade/metal{
-	dir = 8
+	dir = 8;
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
 	},
 /turf/open/floor/plating/ground/dirtgrassborder/corner,
 /area/yautja)
@@ -2462,9 +2532,13 @@
 	layer = 2.79;
 	resistance_flags = 1
 	},
+/obj/item/weapon/gun/energy/yautja/plasmarifle{
+	pixel_y = -8
+	},
 /obj/item/weapon/gun/energy/yautja/plasmarifle,
-/obj/item/weapon/gun/energy/yautja/plasmarifle,
-/obj/item/weapon/gun/energy/yautja/plasmarifle,
+/obj/item/weapon/gun/energy/yautja/plasmarifle{
+	pixel_y = 7
+	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2644,7 +2718,10 @@
 /area/yautja)
 "GG" = (
 /obj/structure/barricade/metal{
-	dir = 1
+	dir = 1;
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
 	},
 /turf/open/ground/grass,
 /area/yautja)
@@ -2711,10 +2788,16 @@
 /area/yautja)
 "Hz" = (
 /obj/structure/barricade/metal{
-	dir = 1
+	dir = 1;
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
 	},
 /obj/structure/barricade/metal{
-	dir = 8
+	dir = 8;
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
 	},
 /turf/open/ground/grass,
 /area/yautja)
@@ -2744,13 +2827,17 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "If" = (
-/obj/structure/closet/crate,
 /obj/item/weapon/yautja/scythe,
 /obj/item/weapon/yautja/sword,
 /obj/item/weapon/twohanded/yautja/glaive,
 /obj/item/weapon/yautja/chain,
 /obj/item/weapon/yautja/combistick,
 /obj/item/weapon/twohanded/yautja/glaive/alt,
+/obj/structure/closet/crate/secure{
+	color = "#6b675e";
+	name = "Secure Yautja crate";
+	req_one_access = list(250,251,252)
+	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2864,6 +2951,21 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"JU" = (
+/obj/structure/stairs/seamless{
+	color = "#6b675e"
+	},
+/obj/structure/stairs/seamless{
+	icon_state = "staircorners_seamless";
+	color = "#6b675e";
+	dir = 4;
+	resistance_flags = 1
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "Kp" = (
 /obj/effect/decal/remains/xeno,
 /obj/effect/landmark/weed_node,
@@ -2874,7 +2976,10 @@
 /area/yautja)
 "Ku" = (
 /obj/structure/barricade/metal{
-	dir = 4
+	dir = 4;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	resistance_flags = 1
 	},
 /turf/open/floor/plating/ground/dirtgrassborder{
 	dir = 8
@@ -3056,9 +3161,16 @@
 /area/yautja)
 "Pb" = (
 /obj/structure/barricade/metal{
-	dir = 8
+	dir = 8;
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
 	},
-/obj/structure/barricade/metal,
+/obj/structure/barricade/metal{
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
+	},
 /turf/open/ground/grass,
 /area/yautja)
 "Pm" = (
@@ -3133,9 +3245,16 @@
 /area/yautja)
 "Qx" = (
 /obj/structure/barricade/metal{
-	dir = 4
+	dir = 4;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	resistance_flags = 1
 	},
-/obj/structure/barricade/metal,
+/obj/structure/barricade/metal{
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
+	},
 /turf/open/floor/plating/ground/dirtgrassborder/corner{
 	dir = 4
 	},
@@ -3208,7 +3327,11 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "UG" = (
-/obj/structure/barricade/metal,
+/obj/structure/barricade/metal{
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
+	},
 /turf/open/ground/grass,
 /area/yautja)
 "UR" = (
@@ -3352,10 +3475,16 @@
 /area/yautja)
 "Xn" = (
 /obj/structure/barricade/metal{
-	dir = 1
+	dir = 1;
+	resistance_flags = 1;
+	icon_state = "handrail_strata";
+	name = "handrail"
 	},
 /obj/structure/barricade/metal{
-	dir = 4
+	dir = 4;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	resistance_flags = 1
 	},
 /turf/open/floor/plating/ground/dirtgrassborder/corner{
 	dir = 1
@@ -7443,7 +7572,7 @@ bL
 bL
 bL
 Fy
-dl
+JU
 JH
 bj
 bj

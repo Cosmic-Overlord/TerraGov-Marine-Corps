@@ -800,9 +800,9 @@
 	color = "#6b675e";
 	resistance_flags = 1
 	},
-/obj/item/reagent_containers/glass/beaker{
-	pixel_x = -5;
-	pixel_y = 3
+/obj/item/reagent_containers/spray/surgery{
+	pixel_y = 7;
+	color = "#6b675e"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1562,20 +1562,6 @@
 /obj/machinery/cryopod,
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
-"fm" = (
-/obj/structure/table/reinforced/prison{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
-/obj/item/reagent_containers/spray/surgery{
-	pixel_y = 7;
-	color = "#6b675e"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "fq" = (
 /obj/structure/window/framed/colony/reinforced/hull{
 	color = "#aba9a9"
@@ -1694,6 +1680,23 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
+"gf" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/reagent_containers/glass/beaker/noreact{
+	pixel_y = -16;
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/glass/beaker/large{
+	pixel_y = 4
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "gp" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/corsat{
@@ -1702,13 +1705,13 @@
 	},
 /area/yautja)
 "gG" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/mainship{
+	dir = 4;
 	id = "Yautja Armory";
 	name = "Yautja Armory";
+	req_one_access = 252;
 	pixel_x = -7;
-	pixel_y = 9;
-	dir = 4;
-	req_one_access = 252
+	pixel_y = 11
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2645,23 +2648,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
-"Ek" = (
-/obj/structure/table/reinforced/prison{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
-/obj/item/reagent_containers/glass/beaker/noreact{
-	pixel_y = -16;
-	pixel_x = 6
-	},
-/obj/item/reagent_containers/glass/beaker/large{
-	pixel_y = 4
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "Es" = (
 /obj/structure/bed/chair/hunter,
 /turf/open/floor/corsat{
@@ -3180,6 +3166,20 @@
 "NA" = (
 /turf/open/floor{
 	icon_state = "darkred2"
+	},
+/area/yautja)
+"Os" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
 	},
 /area/yautja)
 "OZ" = (
@@ -4862,7 +4862,7 @@ bj
 fg
 cP
 bj
-fm
+bR
 bL
 bL
 bL
@@ -5078,8 +5078,8 @@ bx
 cP
 cP
 bj
-Ek
-bR
+gf
+Os
 bA
 aD
 te

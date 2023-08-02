@@ -323,7 +323,9 @@
 /area/yautja)
 "aB" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/closet/crate,
+/obj/structure/closet/crate{
+	color = "#6b675e"
+	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -794,29 +796,19 @@
 	},
 /area/yautja)
 "bR" = (
-/obj/machinery/door_control{
-	id = "Yautja Armory";
-	name = "Yautja Armory";
-	pixel_x = -7;
-	pixel_y = 9;
-	dir = 4
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
 	},
-/obj/machinery/door_control{
-	id = "Yautja Armory";
-	name = "Yautja Armory";
-	pixel_x = -7;
-	pixel_y = 9;
-	dir = 4
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = -5;
+	pixel_y = 3
 	},
-/obj/machinery/door_control{
-	id = "Yautja Armory";
-	name = "Yautja Armory";
-	pixel_x = -7;
-	pixel_y = 9;
-	dir = 4
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
 	},
-/turf/open/space,
-/area/space)
+/area/yautja)
 "bU" = (
 /obj/structure/closet/secure_closet/freezer/kitchen{
 	req_access = null;
@@ -867,8 +859,16 @@
 	color = "#6b675e";
 	resistance_flags = 1
 	},
-/obj/item/stack/sheet/xenochitin,
-/obj/item/stack/sheet/xenochitin,
+/obj/item/stack/sheet/xenochitin{
+	pixel_y = -17;
+	pixel_x = -7
+	},
+/obj/item/stack/sheet/xenochitin{
+	pixel_y = -13
+	},
+/obj/structure/xenoautopsy{
+	pixel_y = 10
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1562,6 +1562,20 @@
 /obj/machinery/cryopod,
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
+"fm" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/reagent_containers/spray/surgery{
+	pixel_y = 7;
+	color = "#6b675e"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "fq" = (
 /obj/structure/window/framed/colony/reinforced/hull{
 	color = "#aba9a9"
@@ -1669,10 +1683,11 @@
 /area/yautja)
 "ge" = (
 /obj/machinery/door_control{
-	id = "Yautja Armory";
-	name = "Yautja Armory";
+	id = "Cell Lockdown 4";
+	name = "Cell Lockdown 4";
 	pixel_x = -7;
-	pixel_y = 9
+	pixel_y = 9;
+	dir = 8
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -2628,6 +2643,23 @@
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
+	},
+/area/yautja)
+"Ek" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/reagent_containers/glass/beaker/noreact{
+	pixel_y = -16;
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/glass/beaker/large{
+	pixel_y = 4
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
 	},
 /area/yautja)
 "Es" = (
@@ -4830,7 +4862,7 @@ bj
 fg
 cP
 bj
-ly
+fm
 bL
 bL
 bL
@@ -5046,8 +5078,8 @@ bx
 cP
 cP
 bj
-ly
-ly
+Ek
+bR
 bA
 aD
 te
@@ -8148,7 +8180,7 @@ aa
 aa
 aa
 aa
-bR
+dI
 aa
 aa
 aa

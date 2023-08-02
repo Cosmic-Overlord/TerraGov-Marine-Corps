@@ -636,8 +636,8 @@
 	},
 /area/yautja)
 "bu" = (
-/obj/machinery/door/airlock/yautja{
-	dir = 1;
+/obj/machinery/door/airlock/yautja/secure{
+	dir = 2;
 	name = "\improper Burial Room"
 	},
 /turf/open/shuttle/dropship/fourteen,
@@ -705,9 +705,13 @@
 	},
 /area/yautja)
 "bD" = (
-/obj/machinery/door/airlock/yautja{
-	dir = 1;
-	name = "\improper Unworthy Prey"
+/obj/machinery/door/airlock/yautja/secure{
+	dir = 2;
+	name = "\improper Heavy Armory"
+	},
+/obj/machinery/door/poddoor/shutters/almayer/yautja{
+	name = "Yautja Armory";
+	dir = 2
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
@@ -763,10 +767,14 @@
 	},
 /area/yautja)
 "bN" = (
-/obj/structure/kitchenspike{
-	icon_state = "spikebloodygreen"
+/obj/structure/rack{
+	color = "#6b675e";
+	layer = 2.79;
+	resistance_flags = 1
 	},
-/obj/effect/decal/cleanable/blood/gibs/xeno/body,
+/obj/item/weapon/gun/energy/yautja/plasmapistol,
+/obj/item/weapon/gun/energy/yautja/plasmapistol,
+/obj/item/weapon/gun/energy/yautja/plasmapistol,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -782,15 +790,29 @@
 	},
 /area/yautja)
 "bR" = (
-/obj/structure/kitchenspike{
-	icon_state = "spikebloody"
+/obj/machinery/door_control{
+	id = "Yautja Armory";
+	name = "Yautja Armory";
+	pixel_x = -7;
+	pixel_y = 9;
+	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/gibs,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
+/obj/machinery/door_control{
+	id = "Yautja Armory";
+	name = "Yautja Armory";
+	pixel_x = -7;
+	pixel_y = 9;
+	dir = 4
 	},
-/area/yautja)
+/obj/machinery/door_control{
+	id = "Yautja Armory";
+	name = "Yautja Armory";
+	pixel_x = -7;
+	pixel_y = 9;
+	dir = 4
+	},
+/turf/open/space,
+/area/space)
 "bU" = (
 /obj/structure/closet/secure_closet/freezer/kitchen{
 	req_access = null;
@@ -1463,6 +1485,20 @@
 "dI" = (
 /turf/open/space/basic,
 /area/space)
+"dP" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "eg" = (
 /obj/effect/turf_decal/lvsanddecal/full,
 /obj/effect/turf_decal/lvsanddecal/full,
@@ -1573,21 +1609,19 @@
 	},
 /area/yautja)
 "gb" = (
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/structure/rack{
-	color = "#6b675e";
-	layer = 2.79;
-	resistance_flags = 1
-	},
+/obj/structure/closet/crate,
+/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
+/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
+/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
+/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
+/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
+/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator,
+/obj/item/stack/medical/heal_pack/ointment/predator,
+/obj/item/stack/medical/heal_pack/ointment/predator,
+/obj/item/stack/medical/heal_pack/ointment/predator,
+/obj/item/stack/medical/heal_pack/ointment/predator,
+/obj/item/stack/medical/heal_pack/ointment/predator,
+/obj/item/stack/medical/heal_pack/ointment/predator,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -1595,11 +1629,10 @@
 /area/yautja)
 "ge" = (
 /obj/machinery/door_control{
-	id = "Cell Lockdown 4";
-	name = "Cell Lockdown 4";
+	id = "Yautja Armory";
+	name = "Yautja Armory";
 	pixel_x = -7;
-	pixel_y = 9;
-	dir = 8
+	pixel_y = 9
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1614,17 +1647,16 @@
 	},
 /area/yautja)
 "gG" = (
-/obj/structure/table/reinforced/prison{
-	color = "#6b675e";
-	resistance_flags = 1
+/obj/machinery/door_control{
+	id = "Yautja Armory";
+	name = "Yautja Armory";
+	pixel_x = -7;
+	pixel_y = 9;
+	dir = 4
 	},
-/obj/item/tool/surgery/FixOVein/predatorFixOVein,
-/obj/item/tool/surgery/bonegel/predatorbonegel,
-/obj/item/tool/surgery/bonesetter/predatorbonesetter,
-/obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
 	},
 /area/yautja)
 "hI" = (
@@ -2425,7 +2457,14 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "BB" = (
-/obj/machinery/iv_drip,
+/obj/structure/rack{
+	color = "#6b675e";
+	layer = 2.79;
+	resistance_flags = 1
+	},
+/obj/item/weapon/gun/energy/yautja/plasmarifle,
+/obj/item/weapon/gun/energy/yautja/plasmarifle,
+/obj/item/weapon/gun/energy/yautja/plasmarifle,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2436,11 +2475,7 @@
 	color = "#6b675e";
 	resistance_flags = 1
 	},
-/obj/item/tool/surgery/cautery/predatorcautery,
-/obj/item/tool/surgery/circular_saw/predatorbonesaw,
-/obj/item/tool/surgery/hemostat/predatorhemostat,
-/obj/item/tool/surgery/retractor/predatorretractor,
-/obj/item/tool/surgery/scalpel/predatorscalpel,
+/obj/item/storage/medicomp/full,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2709,8 +2744,13 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "If" = (
-/obj/machinery/optable,
-/obj/effect/decal/cleanable/blood,
+/obj/structure/closet/crate,
+/obj/item/weapon/yautja/scythe,
+/obj/item/weapon/yautja/sword,
+/obj/item/weapon/twohanded/yautja/glaive,
+/obj/item/weapon/yautja/chain,
+/obj/item/weapon/yautja/combistick,
+/obj/item/weapon/twohanded/yautja/glaive/alt,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -3423,8 +3463,12 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "Zs" = (
-/obj/machinery/door/airlock/yautja{
-	name = "\improper Containment"
+/obj/machinery/door/airlock/yautja/secure{
+	dir = 8;
+	name = "\improper Heavy Armory"
+	},
+/obj/machinery/door/poddoor/shutters/almayer/yautja{
+	name = "Yautja Armory"
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -6969,8 +7013,8 @@ aa
 aa
 bj
 bj
-bR
-If
+BB
+JH
 bN
 bj
 bj
@@ -7043,7 +7087,7 @@ bj
 bj
 BB
 JH
-JH
+bN
 bj
 bj
 bj
@@ -7187,7 +7231,7 @@ gb
 JH
 JH
 JH
-JH
+If
 bj
 bj
 bj
@@ -7252,14 +7296,14 @@ bj
 bL
 bL
 bL
-bL
+gG
 bL
 Fy
 dk
 JH
 JH
 JH
-fv
+dP
 bj
 bj
 aa
@@ -7330,7 +7374,7 @@ bD
 dl
 JH
 BK
-gG
+BK
 bj
 bj
 bj
@@ -7975,7 +8019,7 @@ aa
 aa
 aa
 aa
-aa
+bR
 aa
 aa
 aa

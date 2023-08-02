@@ -620,6 +620,7 @@
 		var/turf/T = get_turf(src)
 		if(ispath(spawner_type))
 			new spawner_type(T)
+		qdel(src)
 	return
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/check_eye(mob/living/user)

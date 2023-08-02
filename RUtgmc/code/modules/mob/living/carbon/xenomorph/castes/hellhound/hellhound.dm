@@ -6,6 +6,8 @@
 	tier = XENO_TIER_MINION
 	upgrade = XENO_UPGRADE_BASETYPE
 
+	caste_flags = CASTE_INNATE_HEALING
+
 	charge_type = CHARGE_TYPE_SMALL
 
 	// *** Melee Attacks *** //

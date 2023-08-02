@@ -378,7 +378,6 @@
 				options += list("Leader" = WHITELIST_LEADER)
 
 			var/new_yautja_status = tgui_input_list(user, "Choose your new Yautja Whitelist Status.", "Yautja Status", options)
-
 			if(!new_yautja_status)
 				return
 

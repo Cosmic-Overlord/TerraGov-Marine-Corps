@@ -84,7 +84,7 @@
 		if(!istype(G,/obj/item/clothing/glasses/night/yautja) && !istype(G,/obj/item/clothing/glasses/meson/yautja) && !istype(G,/obj/item/clothing/glasses/thermal/yautja))
 			to_chat(M, span_warning("You need to remove your glasses first. Why are you even wearing these?"))
 			return
-		M.temporarilyRemoveItemFromInventory(G, TRUE) //Get rid of ye existing maicerinho goggles
+		M.UnEquip(G, TRUE, src)
 		G.forceMove(src)
 		M.update_inv_glasses()
 		M.update_sight()
@@ -103,10 +103,6 @@
 			current_goggles = VISION_MODE_OFF
 
 /obj/item/clothing/mask/gas/yautja/proc/add_vision(mob/living/carbon/human/user) //applies current_goggles
-	var/obj/item/G = user.glasses
-	if(G)
-		user.temporarilyRemoveItemFromInventory(G, TRUE)
-		G.forceMove(src)
 	switch(current_goggles)
 		if(VISION_MODE_NVG)
 			user.equip_to_slot_or_del(glasses["nvg"], SLOT_GLASSES, TRUE, TRUE)
@@ -133,9 +129,8 @@
 			action.remove_action(user)
 		var/obj/item/G = user.glasses
 		if(G) //make your hud fuck off
-			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
-				user.temporarilyRemoveItemFromInventory(G, TRUE)
-				G.forceMove(src)
+			if(current_goggles)
+				user.UnEquip(G, TRUE, src)
 				user.update_inv_glasses()
 				user.update_sight()
 	..()
@@ -161,9 +156,8 @@
 			action.remove_action(user)
 		var/obj/item/G = user.glasses
 		if(G) //make your hud fuck off
-			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
-				user.temporarilyRemoveItemFromInventory(G, TRUE)
-				G.forceMove(src)
+			if(current_goggles)
+				user.UnEquip(G, TRUE, src)
 				user.update_inv_glasses()
 				user.update_sight()
 	..()

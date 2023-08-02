@@ -146,6 +146,7 @@
 #define XENO_HIVE_ZETA "zeta_hive"
 #define XENO_HIVE_ADMEME "admeme_hive"
 #define XENO_HIVE_FALLEN "fallen_hive"
+#define XENO_HIVE_FORSAKEN "xeno_hive_forsaken"
 #define XENO_HIVE_YAUTJA "xeno_hive_yautja"
 
 // =============================

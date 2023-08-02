@@ -23,6 +23,8 @@
 #define COMSIG_GLOB_NUKE_DIFFUSED "!nuke_diffused"
 #define COMSIG_GLOB_DISK_GENERATED "!disk_produced"
 
+#define COMSIG_GLOB_YAUTJA_ARMORY_OPENED "yautja_armory_opened"
+
 /// from /obj/machinery/setAnchored(): (machine, anchoredstate)
 #define COMSIG_GLOB_MACHINERY_ANCHORED_CHANGE "!machinery_anchored_change"
 

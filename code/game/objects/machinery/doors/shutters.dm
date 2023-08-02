@@ -260,3 +260,12 @@
 /obj/machinery/door/poddoor/shutters/mainship/cell/cell2
 	name = "\improper Containment Cell 2"
 	id = "Containment Cell 2"
+
+/obj/machinery/door/poddoor/shutters/almayer/yautja
+	name = "Armory Shutter"
+	id = "Yautja Armory"
+	resistance_flags = RESIST_ALL
+
+/obj/machinery/door/poddoor/shutters/almayer/yautja/Initialize()
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_ARMORY_OPENED, PROC_REF(open))

@@ -236,7 +236,7 @@
 	},
 /area/yautja)
 "ar" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Wargear Storage"
 	},
@@ -443,7 +443,7 @@
 	},
 /area/yautja)
 "aP" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Trophy Room"
 	},
@@ -464,7 +464,7 @@
 	},
 /area/yautja)
 "aT" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Operation Room"
 	},
 /turf/open/shuttle/dropship/fourteen,
@@ -530,7 +530,7 @@
 /turf/open/floor/light,
 /area/yautja)
 "be" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Blooded Teleporter"
 	},
 /turf/open/floor/strata{
@@ -567,13 +567,13 @@
 /turf/closed/wall/huntership,
 /area/yautja)
 "bl" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Starboard Wing"
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "bm" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Port Wing"
 	},
 /turf/open/shuttle/dropship/fourteen,
@@ -601,7 +601,7 @@
 	},
 /area/yautja)
 "bp" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Research Chamber"
 	},
@@ -636,7 +636,7 @@
 	},
 /area/yautja)
 "bu" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Burial Room"
 	},
@@ -650,7 +650,7 @@
 	},
 /area/yautja)
 "bx" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Storage Chamber"
 	},
@@ -705,7 +705,7 @@
 	},
 /area/yautja)
 "bD" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Unworthy Prey"
 	},
@@ -722,7 +722,7 @@
 	},
 /area/yautja)
 "bG" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Cooler Room"
 	},
 /turf/open/shuttle/dropship/fourteen,
@@ -813,24 +813,24 @@
 /turf/open/beach/sand,
 /area/yautja)
 "bW" = (
-/obj/machinery/door/poddoor/shutters/mainship{
+/obj/machinery/door/poddoor/shutters/almayer/yautja{
 	dir = 4;
 	id = "Cell Lockdown 1";
 	name = "\improper Cell Shutters"
 	},
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Prisoner Cell 1";
 	opacity = 0
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "bX" = (
-/obj/machinery/door/poddoor/shutters/mainship{
+/obj/machinery/door/poddoor/shutters/almayer/yautja{
 	dir = 4;
 	id = "Cell Lockdown 4";
 	name = "\improper Cell Shutters"
 	},
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Prisoner Cell 4";
 	opacity = 0
 	},
@@ -862,24 +862,24 @@
 	},
 /area/yautja)
 "ce" = (
-/obj/machinery/door/poddoor/shutters/mainship{
+/obj/machinery/door/poddoor/shutters/almayer/yautja{
 	dir = 4;
 	id = "Cell Lockdown 2";
 	name = "\improper Cell Shutters"
 	},
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Prisoner Cell 2";
 	opacity = 0
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "cf" = (
-/obj/machinery/door/poddoor/shutters/mainship{
+/obj/machinery/door/poddoor/shutters/almayer/yautja{
 	dir = 4;
 	id = "Cell Lockdown 5";
 	name = "\improper Cell Shutters"
 	},
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Prisoner Cell 5";
 	opacity = 0
 	},
@@ -925,24 +925,24 @@
 	},
 /area/yautja)
 "cm" = (
-/obj/machinery/door/poddoor/shutters/mainship{
+/obj/machinery/door/poddoor/shutters/almayer/yautja{
 	dir = 4;
 	id = "Cell Lockdown 3";
 	name = "\improper Cell Shutters"
 	},
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Prisoner Cell 3";
 	opacity = 0
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "cn" = (
-/obj/machinery/door/poddoor/shutters/mainship{
+/obj/machinery/door/poddoor/shutters/almayer/yautja{
 	dir = 4;
 	id = "Cell Lockdown 6";
 	name = "\improper Cell Shutters"
 	},
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Prisoner Cell 6";
 	opacity = 0
 	},
@@ -988,7 +988,7 @@
 	},
 /area/yautja)
 "ct" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Fore Rooms"
 	},
@@ -1084,7 +1084,7 @@
 	},
 /area/yautja)
 "cA" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Elder Teleporter"
 	},
 /turf/open/floor/corsat{
@@ -1093,7 +1093,7 @@
 	},
 /area/yautja)
 "cB" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Navigation Chamber"
 	},
@@ -1107,7 +1107,7 @@
 	},
 /area/yautja)
 "cF" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Engine Room"
 	},
@@ -1381,7 +1381,7 @@
 	},
 /area/yautja)
 "dc" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Research Containment"
 	},
@@ -2115,7 +2115,7 @@
 	},
 /area/yautja)
 "sV" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Feed Hall"
 	},
@@ -2499,7 +2499,7 @@
 	},
 /area/yautja)
 "Dr" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	locked = 1;
 	name = "\improper External Airlock"
 	},
@@ -2593,7 +2593,7 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "Gd" = (
-/obj/machinery/door/airlock/strata,
+/obj/machinery/door/airlock/yautja,
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "Gk" = (
@@ -2743,7 +2743,7 @@
 	},
 /area/yautja)
 "Iw" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Hellhound Quarters"
 	},
 /turf/open/floor/corsat{
@@ -2752,7 +2752,7 @@
 	},
 /area/yautja)
 "IC" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Elder Quarters"
 	},
 /turf/open/shuttle/dropship/fourteen,
@@ -2957,7 +2957,7 @@
 	},
 /area/yautja)
 "MI" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Blooded Teleporter"
 	},
 /turf/open/floor/strata{
@@ -3042,7 +3042,7 @@
 	},
 /area/yautja)
 "Pr" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Research Containment"
 	},
 /turf/open/floor/strata{
@@ -3263,7 +3263,7 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "Wg" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Gladiator Hall"
 	},
@@ -3384,7 +3384,7 @@
 	},
 /area/yautja)
 "YL" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Cryo Room"
 	},
@@ -3423,7 +3423,7 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "Zs" = (
-/obj/machinery/door/airlock/strata{
+/obj/machinery/door/airlock/yautja{
 	name = "\improper Containment"
 	},
 /turf/open/floor/strata{

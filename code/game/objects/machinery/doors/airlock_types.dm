@@ -1024,9 +1024,22 @@
 	icon_state = "door_locked"
 	locked = TRUE
 
-/obj/machinery/door/airlock/strata
+//YAUTJA SHIP - CURRENTLY USES STRATA DOORS
+/obj/machinery/door/airlock/yautja
 	name = "\improper Airlock"
-	icon = 'icons/obj/doors/strata_doors.dmi' //Whoever made it so each door is it's own sheet and doesn't dynamically use overlays ought to be drawn and quartered.
+	icon = 'icons/obj/doors/strata_doors.dmi'
 	openspeed = 5
-	req_access = null // Colony side airlocks should not have any sort of access.
+	req_access = null
 	req_one_access = null
+	no_panel = TRUE
+	not_weldable = TRUE
+	resistance_flags = RESIST_ALL
+
+/obj/machinery/door/airlock/yautja/secure
+	req_one_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+
+/obj/machinery/door/airlock/yautja/secure/elder
+	req_one_access = list(ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+
+/obj/machinery/door/airlock/yautja/secure/ancient
+	req_one_access = list(ACCESS_YAUTJA_ANCIENT)

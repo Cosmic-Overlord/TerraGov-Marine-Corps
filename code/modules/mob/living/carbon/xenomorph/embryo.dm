@@ -157,7 +157,8 @@
 
 	if(isyautja(affected_mob))
 		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
-		yautja_announcement(span_yautjaboldbig("WARNING!\n\nAn abomination has been detected at [get_area_name(new_xeno)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately"))
+		yautja_announcement(span_yautjaboldbig("WARNING!\n\nAn abomination has been detected at [get_area_name(new_xeno)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately.\n\nHeavy Armory unlocked."))
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
 	else
 		new_xeno = new(affected_mob)
 

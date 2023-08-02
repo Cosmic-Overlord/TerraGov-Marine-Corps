@@ -302,6 +302,14 @@
 
 	return istype(id_card) ? id_card : null
 
+/mob/living/carbon/human/species/yautja/get_idcard(hand_first = TRUE)
+	. = ..()
+	if(!.)
+		var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+		if(istype(bracer))
+			. = bracer.embedded_id
+	return .
+
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default
 /mob/living/carbon/human/electrocute_act(shock_damage, obj/source, base_siemens_coeff = 1.0, def_zone = null)

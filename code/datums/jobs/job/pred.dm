@@ -81,6 +81,7 @@
 	back = FALSE //Null hecks, no null here
 
 	var/default_cape_type = "None"
+	var/clan_rank
 
 /datum/outfit/job/yautja/pre_equip(mob/living/carbon/human/H, visualsOnly, client/override_client)
 	var/client/mob_client = H.client
@@ -118,7 +119,7 @@
 		cape_color = mob_client.prefs.predator_cape_color
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(H), SLOT_W_UNIFORM)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(H, translator_type, caster_material), SLOT_GLOVES, TRUE, TRUE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(H, translator_type, caster_material, clan_rank), SLOT_GLOVES, TRUE, TRUE)
 	H.equip_to_slot_or_del(new /obj/item/radio/headset/yautja(H), SLOT_EARS)
 	H.equip_to_slot_or_del(new /obj/item/flashlight/lantern(H), SLOT_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/yautja_teleporter(H), SLOT_L_STORE)
@@ -159,6 +160,7 @@
 // YOUNG BLOOD
 /datum/outfit/job/yautja/youngblood
 	name = "Yautja Young"
+	clan_rank = CLAN_RANK_UNBLOODED_INT
 
 /datum/outfit/job/yautja/youngblood/handle_id(mob/living/carbon/human/H)
 	. = ..()
@@ -170,11 +172,13 @@
 /datum/outfit/job/yautja/blooded
 	name = "Yautja Blooded"
 	default_cape_type = PRED_YAUTJA_QUARTER_CAPE
+	clan_rank = CLAN_RANK_BLOODED_INT
 
 // ELITE
 /datum/outfit/job/yautja/elite
 	name = "Yautja Elite"
 	default_cape_type = PRED_YAUTJA_HALF_CAPE
+	clan_rank = CLAN_RANK_ELITE_INT
 
 /datum/outfit/job/yautja/elite/handle_id(mob/living/carbon/human/H)
 	. = ..()
@@ -187,6 +191,7 @@
 	name = "Yautja Elder"
 	default_cape_type = PRED_YAUTJA_THIRD_CAPE
 	ears = /obj/item/radio/headset/yautja/elder
+	clan_rank = CLAN_RANK_ELDER_INT
 
 /datum/outfit/job/yautja/elder/handle_id(mob/living/carbon/human/H)
 	. = ..()
@@ -199,6 +204,7 @@
 	name = "Yautja Leader"
 	default_cape_type = PRED_YAUTJA_CAPE
 	ears = /obj/item/radio/headset/yautja/elder
+	clan_rank = CLAN_RANK_LEADER_INT
 
 /datum/outfit/job/yautja/leader/handle_id(mob/living/carbon/human/H)
 	. = ..()
@@ -211,6 +217,7 @@
 	name = "Yautja Ancient"
 	default_cape_type = PRED_YAUTJA_PONCHO
 	ears = /obj/item/radio/headset/yautja/elder
+	clan_rank = CLAN_RANK_ADMIN_INT
 
 /datum/outfit/job/yautja/ancient/handle_id(mob/living/carbon/human/H)
 	. = ..()

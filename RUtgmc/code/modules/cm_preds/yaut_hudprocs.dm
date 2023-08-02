@@ -102,14 +102,6 @@
 
 // Removing prey from hunt (i.e. it died, it bugged, it left the game, etc.)
 /mob/living/carbon/human/proc/remove_from_hunt()
-	set category = "Yautja"
-	set name = "Remove from Hunt"
-	set desc = "Unmark your hunt target."
-
-	if(stat || (lying_angle && !resting && !IsSleeping()) || (IsParalyzed() || IsUnconscious()))
-		to_chat(src, span_danger("You're not able to do that right now."))
-		return
-
 	if(!hunter_data.prey)
 		to_chat(src, span_danger("You're not hunting anything right now."))
 		return
@@ -131,10 +123,6 @@
 
 
 /mob/living/carbon/human/proc/mark_honored()
-	if(stat || (lying_angle && !resting && !IsSleeping()) || (IsParalyzed() || IsUnconscious()))
-		to_chat(src, span_danger("You're not able to do that right now."))
-		return
-
 	if(!isyautja(src))
 		to_chat(src, span_warning("How did you get this verb?"))
 		return
@@ -168,10 +156,6 @@
 
 
 /mob/living/carbon/human/proc/unmark_honored()
-	if(stat || (lying_angle && !resting && !IsSleeping()) || (IsParalyzed() || IsUnconscious()))
-		to_chat(src, span_danger("You're not able to do that right now."))
-		return
-
 	if(!isyautja(src))
 		to_chat(src, span_warning("How did you get this verb?"))
 		return
@@ -205,10 +189,6 @@
 
 
 /mob/living/carbon/human/proc/mark_dishonored()
-	if(stat || (lying_angle && !resting && !IsSleeping()) || (IsParalyzed() || IsUnconscious()))
-		to_chat(src, span_danger("You're not able to do that right now."))
-		return
-
 	if(!isyautja(src))
 		to_chat(src, span_warning("How did you get this verb?"))
 		return
@@ -245,10 +225,6 @@
 
 
 /mob/living/carbon/human/proc/unmark_dishonored()
-	if(stat || (lying_angle && !resting && !IsSleeping()) || (IsParalyzed() || IsUnconscious()))
-		to_chat(src, span_danger("You're not able to do that right now."))
-		return
-
 	if(!isyautja(src))
 		to_chat(src, span_warning("How did you get this verb?"))
 		return
@@ -286,10 +262,6 @@
 
 
 /mob/living/carbon/human/proc/mark_gear()
-	if(stat || (lying_angle && !resting && !IsSleeping()) || (IsParalyzed() || IsUnconscious()))
-		to_chat(src, span_danger("You're not able to do that right now."))
-		return
-
 	if(!isyautja(src))
 		to_chat(src, span_warning("How did you get this verb?"))
 		return
@@ -317,10 +289,6 @@
 
 
 /mob/living/carbon/human/proc/unmark_gear()
-	if(stat || (lying_angle && !resting && !IsSleeping()) || (IsParalyzed() || IsUnconscious()))
-		to_chat(src, span_danger("You're not able to do that right now."))
-		return
-
 	if(!isyautja(src))
 		to_chat(src, span_warning("How did you get this verb?"))
 		return
@@ -352,10 +320,6 @@
 
 
 /mob/living/carbon/human/proc/mark_thralled()
-	if(stat || (lying_angle && !resting && !IsSleeping()) || (IsParalyzed() || IsUnconscious()))
-		to_chat(src, span_danger("You're not able to do that right now."))
-		return
-
 	if(!isyautja(src))
 		to_chat(src, span_warning("How did you get this verb?"))
 		return
@@ -395,10 +359,6 @@
 
 
 /mob/living/carbon/human/proc/unmark_thralled()
-	if(stat || (lying_angle && !resting && !IsSleeping()) || (IsParalyzed() || IsUnconscious()))
-		to_chat(src, span_danger("You're not able to do that right now."))
-		return
-
 	if(!isyautja(src))
 		to_chat(src, span_warning("How did you get this verb?"))
 		return

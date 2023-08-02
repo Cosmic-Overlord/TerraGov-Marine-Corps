@@ -78,18 +78,18 @@
 	message = "over here!"
 	emote_type = EMOTE_AUDIBLE
 
-/datum/emote/living/carbon/human/species/yautja/roar
-	key = "roar"
-	key_third_person = "roar"
+/datum/emote/living/carbon/human/species/yautja/pred_roar
+	key = "roars"
+	key_third_person = "roars"
 	message = "roars!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/species/yautja/roar/get_sound(mob/living/user)
 	return pick('sound/voice/pred_roar1.ogg', 'sound/voice/pred_roar2.ogg')
 
-/datum/emote/living/carbon/human/species/yautja/roar2
-	key = "roar2"
-	key_third_person = "roar2"
+/datum/emote/living/carbon/human/species/yautja/pred_roar2
+	key = "roars2"
+	key_third_person = "roars2"
 	sound = 'sound/voice/pred_roar3.ogg'
 	message = "roars!"
 	emote_type = EMOTE_AUDIBLE

@@ -615,8 +615,9 @@
 		to_chat(M, span_warning("Not while you're unconcious..."))
 		return
 
-	var/mob/living/carbon/human/victim = M.get_active_held_item()
-	if(istype(victim))
+	var/obj/item/grab/G = M.get_active_held_item()
+	if(istype(G))
+		var/mob/living/carbon/human/victim = G.grabbed_thing
 		if(victim.stat == DEAD)
 			var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
 			var/message = "Are you sure you want to detonate this [victim.species]'s bracer?"
@@ -624,7 +625,7 @@
 				message = "Are you sure you want to send this [victim.species] into the great hunting grounds?"
 			if(istype(bracer))
 				if(forced || alert(message,"Explosive Bracers", "Yes", "No") == "Yes")
-					if(M.get_active_held_item() == victim && victim && victim.gloves == bracer && !bracer.exploding)
+					if(G == victim && victim && victim.gloves == bracer && !bracer.exploding)
 						var/area/A = get_area(M)
 						var/turf/T = get_turf(M)
 						if(A)

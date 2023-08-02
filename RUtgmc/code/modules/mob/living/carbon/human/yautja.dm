@@ -43,15 +43,6 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/butcher,
-		/mob/living/carbon/human/proc/remove_from_hunt,
-		/mob/living/carbon/human/proc/mark_gear,
-		/mob/living/carbon/human/proc/unmark_gear,
-		/mob/living/carbon/human/proc/mark_honored,
-		/mob/living/carbon/human/proc/unmark_honored,
-		/mob/living/carbon/human/proc/mark_dishonored,
-		/mob/living/carbon/human/proc/unmark_dishonored,
-		/mob/living/carbon/human/proc/mark_thralled,
-		/mob/living/carbon/human/proc/unmark_thralled,
 	)
 
 	knock_down_reduction = 4

@@ -1064,7 +1064,7 @@
 	force = 0
 	fire_delay = 3
 	flags_atom = CONDUCT
-	flags_item = NOBLUDGEON|DELONDROP //Can't bludgeon with this.
+	flags_item = NOBLUDGEON //Can't bludgeon with this.
 
 	fire_delay = 5
 	accuracy_mult = 1

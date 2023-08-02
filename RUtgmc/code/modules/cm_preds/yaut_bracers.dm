@@ -625,7 +625,7 @@
 				message = "Are you sure you want to send this [victim.species] into the great hunting grounds?"
 			if(istype(bracer))
 				if(forced || alert(message,"Explosive Bracers", "Yes", "No") == "Yes")
-					if(G == victim && victim && victim.gloves == bracer && !bracer.exploding)
+					if(M.get_active_held_item() == G && victim && victim.gloves == bracer && !bracer.exploding)
 						var/area/A = get_area(M)
 						var/turf/T = get_turf(M)
 						if(A)

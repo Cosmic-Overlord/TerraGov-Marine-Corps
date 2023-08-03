@@ -27,7 +27,7 @@
 
 	var/last_attack = 0
 	var/last_lowered = 0
-	var/cooldown_time = 25 SECONDS
+	var/cooldown_time = 2.5 SECONDS
 
 /obj/item/weapon/shield/riot/yautja/set_shield()
 	return

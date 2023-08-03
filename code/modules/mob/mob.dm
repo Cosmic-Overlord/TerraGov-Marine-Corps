@@ -630,6 +630,8 @@
 /mob/proc/trainteleport(atom/destination)
 	if(!destination || anchored)
 		return FALSE //Gotta go somewhere and be able to move
+	if(z != destination.z)
+		SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, z, destination.z)
 	if(!pulling)
 		return forceMove(destination) //No need for a special proc if there's nothing being pulled.
 	pulledby?.stop_pulling() //The leader of the choo-choo train breaks the pull
@@ -677,6 +679,9 @@
 				conga_line += B.buckled_bodybag
 			end_of_conga = TRUE //Only mobs can continue the cycle.
 	var/area/new_area = get_area(destination)
+	var/old_z
+	if(z != destination.z)
+		old_z = z
 	for(var/atom/movable/AM in conga_line)
 		var/move_dir = get_dir(AM, destination)
 		var/oldLoc
@@ -695,6 +700,8 @@
 		var/mob/M = AM
 		if(istype(M))
 			M.reset_perspective(destination)
+		if(old_z)
+			SEND_SIGNAL(AM, COMSIG_MOVABLE_Z_CHANGED, old_z, AM.z)
 	return TRUE
 
 

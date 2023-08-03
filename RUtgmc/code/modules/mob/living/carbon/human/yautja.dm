@@ -133,8 +133,8 @@
 
 	set_predator_status(H, "Demoted")
 
-	if(H.actions_by_path[/datum/action/minimap/observer])
-		var/datum/action/minimap/observer/mini = H.actions_by_path[/datum/action/minimap/observer]
+	if(H.actions_by_path[/datum/action/minimap/yautja])
+		var/datum/action/minimap/yautja/mini = H.actions_by_path[/datum/action/minimap/yautja]
 		mini.remove_action(src)
 
 /datum/species/yautja/handle_post_spawn(mob/living/carbon/human/H)
@@ -146,8 +146,8 @@
 	GLOB.yautja_mob_list += H
 	#endif
 
-	if(!H.actions_by_path[/datum/action/minimap/observer])
-		var/datum/action/minimap/observer/mini = new
+	if(!H.actions_by_path[/datum/action/minimap/yautja])
+		var/datum/action/minimap/yautja/mini = new
 		mini.give_action(H)
 
 	return ..()

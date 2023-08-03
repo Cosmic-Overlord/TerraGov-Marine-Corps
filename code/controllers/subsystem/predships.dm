@@ -46,6 +46,7 @@ SUBSYSTEM_DEF(predships)
 	if(level)
 		var/new_z = level.z_value
 		var/list/turf/new_spawns = list()
+		SSminimaps.add_zlevel(new_z)
 		for(var/turf/spawnpoint in spawnpoints)
 			if(spawnpoint?.z == new_z)
 				new_spawns += spawnpoint

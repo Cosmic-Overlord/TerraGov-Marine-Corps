@@ -380,7 +380,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 			stat("<b>Activated Sensor Towers:</b>", sensor_mode.sensors_activated)
 
 /mob/dead/verb/join_as_hellhound()
-	set category = "Ghost.Join"
+	set category = "Ghost"
 	set name = "Join as Hellhound"
 	set desc = "Select an alive and available Hellhound. THIS COMES WITH STRICT RULES. READ THEM OR GET BANNED."
 

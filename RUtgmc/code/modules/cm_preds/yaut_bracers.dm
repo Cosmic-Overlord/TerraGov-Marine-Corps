@@ -607,7 +607,7 @@
 			victim.gib() // kills the pred
 			qdel(victim)
 		if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || SSticker.mode.flags_round_type & MODE_SHIPSIDE_SD))
-			explosion(T, 12, 12, 12, 12, 7)///almost a literal ob bombvest, until we port actual explosions that aren't a joke
+			explosion(T, 12, 13, 15, 15, 8)///almost a literal ob bombvest, until we port actual explosions that aren't a joke
 		else
 			explosion(T, 1, 2, 3)
 

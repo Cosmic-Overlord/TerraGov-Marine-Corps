@@ -207,6 +207,9 @@
 		return FALSE
 	return TRUE
 
+/datum/action/xeno_action/activable/pounce/hellhound
+	action_icon_state = "alt_pounce"
+
 // ***************************************
 // *********** Evasion
 // ***************************************

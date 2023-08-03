@@ -6,6 +6,7 @@
 	tier = XENO_TIER_MINION
 	upgrade = XENO_UPGRADE_BASETYPE
 	wound_type = ""
+	upgrade_name = ""
 
 	caste_flags = CASTE_INNATE_HEALING|CASTE_INNATE_PLASMA_REGEN
 
@@ -33,7 +34,8 @@
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/xenohide,
-		/datum/action/xeno_action/activable/pounce,
+		/datum/action/xeno_action/activable/pounce/hellhound,
+		/datum/action/xeno_action/toggle_long_range,
 	)
 
 /mob/living/carbon/xenomorph/hellhound

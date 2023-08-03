@@ -660,7 +660,9 @@
 /area/yautja)
 "by" = (
 /obj/effect/decal/remains/human,
-/obj/alien/egg/hugger,
+/obj/alien/egg/hugger{
+	hivenumber = "forsaken_hive"
+	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -800,9 +802,12 @@
 	color = "#6b675e";
 	resistance_flags = 1
 	},
-/obj/item/reagent_containers/glass/beaker{
-	pixel_x = -5;
-	pixel_y = 3
+/obj/item/reagent_containers/glass/beaker/noreact{
+	pixel_y = -16;
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/glass/beaker/large{
+	pixel_y = 4
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1701,20 +1706,6 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
-"gL" = (
-/obj/structure/table/reinforced/prison{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
-/obj/item/reagent_containers/spray/surgery{
-	pixel_y = 7;
-	color = "#6b675e"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "hI" = (
 /obj/structure/shuttle/window{
 	color = "#6b675e"
@@ -1791,7 +1782,8 @@
 	dir = 8;
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /turf/open/floor/plating/ground/dirtgrassborder{
 	dir = 4
@@ -1914,12 +1906,14 @@
 	dir = 8;
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /obj/structure/barricade/metal{
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /turf/open/floor/plating/ground/dirtgrassborder/corner{
 	dir = 8
@@ -1953,12 +1947,14 @@
 	dir = 4;
 	icon_state = "handrail_strata";
 	name = "handrail";
-	resistance_flags = 1
+	resistance_flags = 1;
+	barricade_type = "handrail"
 	},
 /obj/structure/barricade/metal{
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /turf/open/ground/grass,
 /area/yautja)
@@ -2013,13 +2009,15 @@
 	dir = 1;
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /obj/structure/barricade/metal{
 	dir = 4;
 	icon_state = "handrail_strata";
 	name = "handrail";
-	resistance_flags = 1
+	resistance_flags = 1;
+	barricade_type = "handrail"
 	},
 /turf/open/ground/grass,
 /area/yautja)
@@ -2118,13 +2116,15 @@
 	dir = 1;
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /obj/structure/barricade/metal{
 	dir = 8;
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /turf/open/floor/plating/ground/dirtgrassborder/corner,
 /area/yautja)
@@ -2328,7 +2328,9 @@
 	},
 /area/yautja)
 "ua" = (
-/obj/alien/egg/hugger,
+/obj/alien/egg/hugger{
+	hivenumber = "forsaken_hive"
+	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2446,6 +2448,20 @@
 /obj/structure/table/reinforced/prison{
 	color = "#6b675e";
 	resistance_flags = 1
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
+"wT" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = -5;
+	pixel_y = 3
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2736,7 +2752,8 @@
 	dir = 1;
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /turf/open/ground/grass,
 /area/yautja)
@@ -2806,13 +2823,15 @@
 	dir = 1;
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /obj/structure/barricade/metal{
 	dir = 8;
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /turf/open/ground/grass,
 /area/yautja)
@@ -2994,7 +3013,8 @@
 	dir = 4;
 	icon_state = "handrail_strata";
 	name = "handrail";
-	resistance_flags = 1
+	resistance_flags = 1;
+	barricade_type = "handrail"
 	},
 /turf/open/floor/plating/ground/dirtgrassborder{
 	dir = 8
@@ -3165,6 +3185,20 @@
 	icon_state = "darkred2"
 	},
 /area/yautja)
+"NB" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/reagent_containers/spray/surgery{
+	pixel_y = 7;
+	color = "#6b675e"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "OZ" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
@@ -3179,12 +3213,14 @@
 	dir = 8;
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /obj/structure/barricade/metal{
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /turf/open/ground/grass,
 /area/yautja)
@@ -3215,23 +3251,6 @@
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"PD" = (
-/obj/structure/table/reinforced/prison{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
-/obj/item/reagent_containers/glass/beaker/noreact{
-	pixel_y = -16;
-	pixel_x = 6
-	},
-/obj/item/reagent_containers/glass/beaker/large{
-	pixel_y = 4
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
 	},
 /area/yautja)
 "PJ" = (
@@ -3280,12 +3299,14 @@
 	dir = 4;
 	icon_state = "handrail_strata";
 	name = "handrail";
-	resistance_flags = 1
+	resistance_flags = 1;
+	barricade_type = "handrail"
 	},
 /obj/structure/barricade/metal{
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /turf/open/floor/plating/ground/dirtgrassborder/corner{
 	dir = 4
@@ -3362,7 +3383,8 @@
 /obj/structure/barricade/metal{
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /turf/open/ground/grass,
 /area/yautja)
@@ -3510,13 +3532,15 @@
 	dir = 1;
 	resistance_flags = 1;
 	icon_state = "handrail_strata";
-	name = "handrail"
+	name = "handrail";
+	barricade_type = "handrail"
 	},
 /obj/structure/barricade/metal{
 	dir = 4;
 	icon_state = "handrail_strata";
 	name = "handrail";
-	resistance_flags = 1
+	resistance_flags = 1;
+	barricade_type = "handrail"
 	},
 /turf/open/floor/plating/ground/dirtgrassborder/corner{
 	dir = 1
@@ -4862,7 +4886,7 @@ bj
 fg
 cP
 bj
-gL
+NB
 bL
 bL
 bL
@@ -5078,8 +5102,8 @@ bx
 cP
 cP
 bj
-PD
 bR
+wT
 bA
 aD
 te

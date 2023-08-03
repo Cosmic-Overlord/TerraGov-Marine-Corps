@@ -267,6 +267,7 @@
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
 
 	soft_armor = list(MELEE = 10, BULLET = 10, LASER = 25, ENERGY = 25, BOMB = 30, BIO = 25, FIRE = 25, ACID = 25)
+	resistance_flags = UNACIDABLE
 
 //=================//\\=================\\
 //======================================\\

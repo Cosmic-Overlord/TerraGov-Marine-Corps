@@ -1569,7 +1569,8 @@
 /area/yautja)
 "fq" = (
 /obj/structure/window/framed/colony/reinforced/hull{
-	color = "#aba9a9"
+	basestate = "pred_window";
+	icon_state = "pred_window0"
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
@@ -2224,7 +2225,8 @@
 /area/yautja)
 "sx" = (
 /obj/structure/window/framed/colony/reinforced/hull{
-	color = "#aba9a9"
+	basestate = "pred_window";
+	icon_state = "pred_window0"
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -2721,7 +2723,8 @@
 /area/yautja)
 "Fy" = (
 /obj/structure/window/framed/colony/reinforced/hull{
-	color = "#aba9a9"
+	basestate = "pred_window";
+	icon_state = "pred_window0"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -3458,7 +3461,8 @@
 /area/yautja)
 "VY" = (
 /obj/structure/window/framed/colony/reinforced/hull{
-	color = "#aba9a9"
+	basestate = "pred_window";
+	icon_state = "pred_window0"
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";

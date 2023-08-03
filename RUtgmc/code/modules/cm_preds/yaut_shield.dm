@@ -11,6 +11,7 @@
 	item_state = "shield"
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = ITEM_SLOT_BACK
+	resistance_flags = UNACIDABLE
 
 	var/base_icon_state = "shield"
 

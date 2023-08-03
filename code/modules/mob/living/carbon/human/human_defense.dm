@@ -230,74 +230,43 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	return TRUE
 
-/mob/living/carbon/human/proc/check_pred_shields(damage = 0, attack_text = "the attack", combistick = FALSE, backside_attack = FALSE)
-	var/block_effect = /obj/effect/temp_visual/block
-	var/owner_turf = get_turf(src)
+/mob/living/carbon/human/proc/check_pred_shields(damage = 0, attack_text = "the attack", combistick = FALSE, backside_attack = FALSE, shield_only = FALSE)
 	if(skills.getRating("swordplay") < SKILL_SWORDPLAY_TRAINED)
 		return FALSE
 
-	if(l_hand && istype(l_hand, /obj/item/weapon) && !istype(l_hand, /obj/item/weapon/gun))//Current base is the prob(50-d/3)
-		if(combistick && istype(l_hand, /obj/item/weapon/yautja/combistick) && prob(66))
-			var/obj/item/weapon/yautja/combistick/C = l_hand
-			if(C.on)
-				return TRUE
+	var/block_effect = /obj/effect/temp_visual/block
+	var/owner_turf = get_turf(src)
+	for(var/obj/item/weapon/I in list(l_hand, r_hand))
+		if(I && istype(I, /obj/item/weapon) && !istype(I, /obj/item/weapon/gun))//Current base is the prob(50-d/3)
+			if(combistick && istype(I, /obj/item/weapon/yautja/combistick) && prob(66))
+				var/obj/item/weapon/yautja/combistick/C = I
+				if(C.on)
+					return TRUE
 
-		if(istype(l_hand, /obj/item/weapon/shield/riot/yautja)) // Activable shields
-			var/obj/item/weapon/shield/riot/yautja/S = l_hand
-			var/shield_blocked_l = FALSE
-			if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
-				S.lower_shield(src)
-				shield_blocked_l = TRUE
-			else if(prob(S.passive_block))
-				shield_blocked_l = TRUE
+			if(istype(I, /obj/item/weapon/shield/riot/yautja)) // Activable shields
+				var/obj/item/weapon/shield/riot/yautja/S = I
+				var/shield_blocked_l = FALSE
+				if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
+					S.lower_shield(src)
+					shield_blocked_l = TRUE
+				else if(prob(S.passive_block))
+					shield_blocked_l = TRUE
 
-			if(shield_blocked_l)
+				if(shield_blocked_l)
+					new block_effect(owner_turf, COLOR_YELLOW)
+					playsound(src, 'sound/items/block_shield.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
+					visible_message(span_danger("<B>[src] blocks [attack_text] with the [I.name]!</B>"), null, null, 5)
+					return TRUE
+				// We cannot return FALSE on fail here, because we haven't checked r_hand yet. Dual-wielding shields perhaps!
+
+			if(!istype(I, /obj/item/weapon/shield/riot/yautja) && !shield_only && (prob(30 - round(damage / 3)))) // 'other' shields, like predweapons. Make sure that item/weapon/shield does not apply here, no double-rolls.
 				new block_effect(owner_turf, COLOR_YELLOW)
-				playsound(src, 'sound/items/block_shield.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
-				visible_message(span_danger("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
+				if(istype(I, /obj/item/weapon/shield))
+					playsound(src, 'sound/items/block_shield.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
+				else
+					playsound(src, 'sound/items/parry.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
+				visible_message(span_danger("<B>[src] blocks [attack_text] with the [I.name]!</B>"), null, null, 5)
 				return TRUE
-			// We cannot return FALSE on fail here, because we haven't checked r_hand yet. Dual-wielding shields perhaps!
-
-		var/obj/item/weapon/I = l_hand
-		if(!istype(I, /obj/item/weapon/shield/riot/yautja) && (prob(30 - round(damage / 3)))) // 'other' shields, like predweapons. Make sure that item/weapon/shield does not apply here, no double-rolls.
-			new block_effect(owner_turf, COLOR_YELLOW)
-			if(istype(I, /obj/item/weapon/shield))
-				playsound(src, 'sound/items/block_shield.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
-			else
-				playsound(src, 'sound/items/parry.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
-			visible_message(span_danger("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
-			return TRUE
-
-	if(r_hand && istype(r_hand, /obj/item/weapon) && !istype(r_hand, /obj/item/weapon/gun))
-		if(combistick && istype(r_hand, /obj/item/weapon/yautja/combistick) && prob(66))
-			var/obj/item/weapon/yautja/combistick/C = r_hand
-			if(C.on)
-				return TRUE
-
-		if(istype(r_hand, /obj/item/weapon/shield/riot/yautja)) // Activable shields
-			var/obj/item/weapon/shield/riot/yautja/S = r_hand
-			var/shield_blocked_r = FALSE
-			if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
-				shield_blocked_r = TRUE
-				S.lower_shield(src)
-			else if(prob(S.passive_block))
-				shield_blocked_r = TRUE
-
-			if(shield_blocked_r)
-				new block_effect(owner_turf, COLOR_YELLOW)
-				playsound(src, 'sound/items/block_shield.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
-				visible_message(span_danger("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
-				return TRUE
-
-		var/obj/item/weapon/I = r_hand
-		if(!istype(I, /obj/item/weapon/shield/riot/yautja) && (prob(30 - round(damage / 3)))) // other shields. Don't doublecheck activable here.
-			new block_effect(owner_turf, COLOR_YELLOW)
-			if(istype(I, /obj/item/weapon/shield))
-				playsound(src, 'sound/items/block_shield.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
-			else
-				playsound(src, 'sound/items/parry.ogg', BLOCK_SOUND_VOLUME, vary = TRUE)
-			visible_message(span_danger("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
-			return TRUE
 
 	if(back && istype(back, /obj/item/weapon/shield/riot/yautja) && backside_attack && prob(20))
 		var/obj/item/weapon/shield/riot/yautja/shield = back

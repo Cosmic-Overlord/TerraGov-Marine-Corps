@@ -223,7 +223,6 @@
 			if(get_dist(disc.spawned_item, src) <= 7)
 				to_chat(caller, span_warning("The [disc.spawned_item] skips back towards you!"))
 				disc.spawned_item.drop_real_disc()
-				qdel(disc.spawned_item)
 		else
 			if(get_dist(disc, src) <= 10)
 				if(isturf(disc.loc))

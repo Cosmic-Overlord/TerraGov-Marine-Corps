@@ -214,6 +214,7 @@
 	// don't make GC cry
 	spawner_item.spawned_item = null
 	spawner_item = null
+	qdel(src)
 
 /mob/living/simple_animal/hostile/smartdisc/gib()
 	visible_message("\The [src] explodes!")

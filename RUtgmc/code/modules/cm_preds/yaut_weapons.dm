@@ -1229,7 +1229,7 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/target_action(datum/source, atom/A)
 	if((!istype(A, /mob/living/carbon) && laser_target) || A == laser_target)
 		laser_off()
-	else if(!laser_target)
+	else if(!laser_target && istype(A, /mob/living/carbon))
 		if(last_time_targeted + 3 SECONDS > world.time)
 			to_chat(gun_user, span_danger("You did it too recently!"))
 			return

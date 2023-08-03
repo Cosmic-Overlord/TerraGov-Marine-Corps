@@ -1178,13 +1178,9 @@
 		return in_chamber
 
 /atom/proc/apply_pred_laser(image/laser, laser_layer, layer)
-	if(!laser_layer && !layer)
-		return FALSE
+	return FALSE
 
 /mob/living/carbon/human/apply_pred_laser(image/laser, laser_layer = PRED_LASER_LAYER, layer = PRED_LASER_LAYER)
-	. = ..()
-	if(!.)
-		return FALSE
 	laser.icon_state = "locked"
 	laser.layer = laser_layer
 	overlays_standing[layer] = laser

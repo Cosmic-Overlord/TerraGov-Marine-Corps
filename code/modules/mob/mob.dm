@@ -630,8 +630,6 @@
 /mob/proc/trainteleport(atom/destination)
 	if(!destination || anchored)
 		return FALSE //Gotta go somewhere and be able to move
-	if(z != destination.z)
-		SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, z, destination.z)
 	if(!pulling)
 		return forceMove(destination) //No need for a special proc if there's nothing being pulled.
 	pulledby?.stop_pulling() //The leader of the choo-choo train breaks the pull
@@ -697,11 +695,11 @@
 			new_area.Entered(AM, oldLoc)
 		if(oldLoc)
 			AM.Moved(oldLoc, move_dir)
+		if(old_z)
+			AM.onTransitZ(old_z, AM.z)
 		var/mob/M = AM
 		if(istype(M))
 			M.reset_perspective(destination)
-		if(old_z)
-			SEND_SIGNAL(AM, COMSIG_MOVABLE_Z_CHANGED, old_z, AM.z)
 	return TRUE
 
 

@@ -236,7 +236,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	if(skills.getRating("swordplay") < SKILL_SWORDPLAY_TRAINED)
 		return FALSE
 
-	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
+	if(l_hand && istype(l_hand, /obj/item/weapon) && !istype(l_hand, /obj/item/weapon/gun))//Current base is the prob(50-d/3)
 		if(combistick && istype(l_hand, /obj/item/weapon/yautja/combistick) && prob(66))
 			var/obj/item/weapon/yautja/combistick/C = l_hand
 			if(C.on)
@@ -268,7 +268,7 @@ Contains most of the procs that are called when a mob is attacked by something
 			visible_message(span_danger("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
 			return TRUE
 
-	if(r_hand && istype(r_hand, /obj/item/weapon))
+	if(r_hand && istype(r_hand, /obj/item/weapon) && !istype(r_hand, /obj/item/weapon/gun))
 		if(combistick && istype(r_hand, /obj/item/weapon/yautja/combistick) && prob(66))
 			var/obj/item/weapon/yautja/combistick/C = r_hand
 			if(C.on)

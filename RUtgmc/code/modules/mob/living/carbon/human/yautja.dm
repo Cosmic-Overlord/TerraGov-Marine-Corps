@@ -62,7 +62,7 @@
 
 	hive.max_thick_nests++
 
-	xeno_message("The hive senses that a headhunter has been infected! The thick resin nest is now available in the special structures list!", hivenumber = hive.hivenumber)
+	xeno_message("The hive senses that a headhunter has been infected! The thick resin nest is now available in the mother's blessing!", hivenumber = hive.hivenumber)
 
 /datum/species/yautja/handle_death(mob/living/carbon/human/H, gibbed)
 	if(gibbed)

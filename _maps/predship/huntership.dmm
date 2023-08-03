@@ -800,9 +800,9 @@
 	color = "#6b675e";
 	resistance_flags = 1
 	},
-/obj/item/reagent_containers/spray/surgery{
-	pixel_y = 7;
-	color = "#6b675e"
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = -5;
+	pixel_y = 3
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1497,7 +1497,7 @@
 /obj/structure/closet/crate/secure{
 	color = "#6b675e";
 	name = "Secure Yautja crate";
-	req_one_access = list(250,251,252)
+	req_one_access = list(252)
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1680,23 +1680,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
-"gf" = (
-/obj/structure/table/reinforced/prison{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
-/obj/item/reagent_containers/glass/beaker/noreact{
-	pixel_y = -16;
-	pixel_x = 6
-	},
-/obj/item/reagent_containers/glass/beaker/large{
-	pixel_y = 4
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "gp" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/corsat{
@@ -1709,9 +1692,23 @@
 	dir = 4;
 	id = "Yautja Armory";
 	name = "Yautja Armory";
-	req_one_access = 252;
+	req_one_access = list(252);
 	pixel_x = -7;
 	pixel_y = 11
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
+"gL" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/reagent_containers/spray/surgery{
+	pixel_y = 7;
+	color = "#6b675e"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2854,7 +2851,7 @@
 /obj/structure/closet/crate/secure{
 	color = "#6b675e";
 	name = "Secure Yautja crate";
-	req_one_access = list(250,251,252)
+	req_one_access = list(252)
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -3168,20 +3165,6 @@
 	icon_state = "darkred2"
 	},
 /area/yautja)
-"Os" = (
-/obj/structure/table/reinforced/prison{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
-/obj/item/reagent_containers/glass/beaker{
-	pixel_x = -5;
-	pixel_y = 3
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "OZ" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
@@ -3232,6 +3215,23 @@
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
+	},
+/area/yautja)
+"PD" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/reagent_containers/glass/beaker/noreact{
+	pixel_y = -16;
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/glass/beaker/large{
+	pixel_y = 4
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
 	},
 /area/yautja)
 "PJ" = (
@@ -4862,7 +4862,7 @@ bj
 fg
 cP
 bj
-bR
+gL
 bL
 bL
 bL
@@ -5078,8 +5078,8 @@ bx
 cP
 cP
 bj
-gf
-Os
+PD
+bR
 bA
 aD
 te

@@ -235,6 +235,22 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 	flags_upgrade = ABILITY_DISTRESS
 	building_type = /obj/structure/xeno/spawner
 
+/datum/hive_upgrade/building/nest
+	name = "Thick nest"
+	desc = "A very thick nest, oozing with a thick sticky substance."
+	psypoint_cost = 0
+	icon = "nest"
+	building_type = /obj/structure/xeno/thick_nest
+	building_loc = 0 //This results in spawning the structure under the user.
+	building_time = 5 SECONDS
+
+/datum/hive_upgrade/building/nest/can_buy(mob/living/carbon/xenomorph/buyer, silent = TRUE)
+	. = ..()
+	if(length(buyer.hive.thick_nests) >= buyer.hive.max_thick_nests)
+		to_chat(buyer, span_xenowarning("You cannot build any more thick nests!"))
+		return FALSE
+	return .
+
 /datum/hive_upgrade/defence
 	category = "Defences"
 

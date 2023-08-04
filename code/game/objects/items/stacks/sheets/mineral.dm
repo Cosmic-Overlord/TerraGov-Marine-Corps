@@ -17,6 +17,8 @@ Mineral Sheets
 GLOBAL_LIST_INIT(sandstone_recipes, list ( \
 	new/datum/stack_recipe("pile of dirt", /obj/machinery/portable_atmospherics/hydroponics/soil, 3, time = 1 SECONDS, max_per_turf = STACK_RECIPE_ONE_PER_TILE, on_floor = TRUE), \
 	new/datum/stack_recipe("sandstone door", /obj/structure/mineral_door/sandstone, 10, max_per_turf = STACK_RECIPE_ONE_PER_TILE, on_floor = TRUE), \
+	new/datum/stack_recipe("sandstone fence", /obj/structure/barricade/sandstone, 2, time = 5, max_per_turf = STACK_RECIPE_ONE_PER_TILE, on_floor = 1), \
+	new/datum/stack_recipe("sandstone fence (flat)", /obj/structure/barricade/sandstone/flat, 2, time = 5, max_per_turf = STACK_RECIPE_ONE_PER_TILE, on_floor = 1), \
 	))
 
 GLOBAL_LIST_INIT(runedsandstone_recipes, list ( \

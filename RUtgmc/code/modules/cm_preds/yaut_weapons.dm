@@ -1155,7 +1155,7 @@
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 	to_chat(M, span_notice("You deactivate your plasma caster."))
 	if(laser_target)
-		laser_off(user = user)
+		laser_off(user = M)
 	if(source)
 		forceMove(source)
 		source.caster_deployed = FALSE

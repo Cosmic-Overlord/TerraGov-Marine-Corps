@@ -2005,12 +2005,34 @@
 	new /obj/structure/prop/brazier/torch(loc)
 	qdel(src)
 
-/obj/item/prop/torch_frame
+/obj/item/frame/torch_frame
 	name = "unlit torch"
 	icon = 'icons/obj/structures/torch.dmi'
 	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
 	icon_state = "torch_frame"
 	light_on = FALSE
+
+/obj/item/frame/torch_frame/proc/try_build(turf/on_wall)
+	if(get_dist(on_wall, usr) > 1)
+		return
+	var/ndir = get_dir(usr, on_wall)
+	if(!(ndir in GLOB.cardinals))
+		return
+	var/turf/loc = get_turf(usr)
+	if(!isfloorturf(loc))
+		to_chat(usr, span_warning("[src.name] cannot be placed on this spot."))
+		return
+	to_chat(usr, "Attaching [src] to the wall.")
+	playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
+	var/constrdir = usr.dir
+	if(!do_after(usr, 30, TRUE, on_wall, BUSY_ICON_BUILD))
+		return
+	var/obj/structure/prop/brazier/torch/frame/newlight = new /obj/structure/prop/brazier/torch/frame(get_turf(on_wall))
+	newlight.setDir(constrdir)
+
+	usr.visible_message("[usr.name] attaches [src] to the wall.", \
+		"You attach [src] to the wall.")
+	qdel(src)
 
 /obj/machinery/computer/solars
 	name = "Port Quarter Solar Control"

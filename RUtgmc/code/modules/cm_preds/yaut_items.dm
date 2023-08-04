@@ -81,22 +81,22 @@
 
 	if(legacy != "None")
 		switch(legacy)
-			if("dragon")
+			if("Dragon")
 				name = "\improper 'Armor of the Dragon'"
 				icon_state = "halfarmor_elder_tr"
 				LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor_elder_tr")
 				return
-			if("swamp")
+			if("Swamp")
 				name = "\improper 'Armor of the Swamp Horror'"
 				icon_state = "halfarmor_elder_joshuu"
 				LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor_elder_joshuu")
 				return
-			if("enforcer")
+			if("Enforcer")
 				name = "\improper 'Armor of the Enforcer'"
 				icon_state = "halfarmor_elder_feweh"
 				LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor_elder_feweh")
 				return
-			if("collector")
+			if("Collector")
 				name = "\improper 'Armor of the Ambivalent Collector'"
 				icon_state = "halfarmor_elder_n"
 				LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor_elder_n")

@@ -95,6 +95,7 @@
 
 	H.set_species("Yautja")
 
+	var/using_legacy = "No"
 	var/armor_number = 1
 	var/boot_number = 1
 	var/mask_number = 1
@@ -107,6 +108,7 @@
 	var/cape_color = "#654321"
 
 	if(mob_client)
+		using_legacy = mob_client.prefs.predator_use_legacy
 		armor_number = mob_client.prefs.predator_armor_type
 		boot_number = mob_client.prefs.predator_boot_type
 		mask_number = mob_client.prefs.predator_mask_type
@@ -127,8 +129,8 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(H), SLOT_IN_BELT)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/yautja/hunter/knife(H, boot_number, greave_material), SLOT_SHOES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter(H, armor_number, armor_material), SLOT_WEAR_SUIT)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(H, mask_number, mask_material), SLOT_WEAR_MASK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter(H, armor_number, armor_material, using_legacy), SLOT_WEAR_SUIT)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(H, mask_number, mask_material, using_legacy), SLOT_WEAR_MASK)
 
 	var/cape_path = GLOB.all_yautja_capes[cape_type]
 	if(ispath(cape_path))

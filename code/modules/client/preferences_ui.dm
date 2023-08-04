@@ -69,11 +69,13 @@
 			data["f_style"] = f_style
 		if(PRED_CHARACTER_CUSTOMIZATION)
 			data["has_wl"] = GLOB.roles_whitelist[user.ckey] & WHITELIST_PREDATOR
+			data["legacy"] = GLOB.roles_whitelist[user.ckey] & WHITELIST_YAUTJA_LEGACY
 			data["predator_name"] = predator_name
 			data["predator_gender"] = predator_gender
 			data["predator_age"] = predator_age
 			data["predator_h_style"] = predator_h_style
 			data["predator_skin_color"] = predator_skin_color
+			data["predator_use_legacy"] = predator_use_legacy
 			data["predator_translator_type"] = predator_translator_type
 			data["predator_mask_type"] = predator_mask_type
 			data["predator_armor_type"] = predator_armor_type
@@ -286,6 +288,12 @@
 		if("predator_age")
 			var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(20 to 10000):", "Character Preference", 1234, 10000, 20)
 			if(new_predator_age) predator_age = max(min( round(text2num(new_predator_age)), 10000),20)
+
+		if("predator_use_legacy")
+			var/legacy_choice = tgui_input_list(user, "What legacy set do you wish to use?", "Legacy Set", PRED_LEGACIES)
+			if(!legacy_choice)
+				return
+			predator_use_legacy = legacy_choice
 
 		if("predator_translator_type")
 			var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", PRED_TRANSLATORS)

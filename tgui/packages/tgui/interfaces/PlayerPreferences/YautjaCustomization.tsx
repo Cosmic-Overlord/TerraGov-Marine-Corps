@@ -7,6 +7,7 @@ export const YautjaCustomization = (props, context) => {
   const { act, data } = useBackend<YautjaCustomizationData>(context);
   const {
     has_wl,
+    legacy,
     predator_name,
     predator_gender,
     predator_age,
@@ -78,6 +79,18 @@ export const YautjaCustomization = (props, context) => {
         <Flex>
           <Flex.Item>
             <LabeledList>
+              {legacy ? (
+                <SelectFieldPreference
+                  label={'Legacy Gear'}
+                  value={'predator_use_legacy'}
+                  action={'predator_use_legacy'}
+                />
+              ) : (
+                <SelectFieldPreference
+                  label={'Legacy Gear'}
+                  value="Disabled"
+                />
+              )}
               <SelectFieldPreference
                 label={'Translator Type'}
                 value={'predator_translator_type'}

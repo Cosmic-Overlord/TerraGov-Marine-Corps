@@ -1,5 +1,6 @@
 #define PRED_MATERIALS list("ebony", "silver", "bronze", "crimson", "bone")
 #define PRED_TRANSLATORS list("Modern", "Retro", "Combo")
+#define PRED_LEGACIES list("None", "Dragon", "Swamp", "Enforcer", "Collector")
 #define PRED_SKIN_COLOR list("Tan", "Green", "Purple", "Blue", "Red", "Black")
 
 #define PRED_YAUTJA_CAPE "yautja cape"

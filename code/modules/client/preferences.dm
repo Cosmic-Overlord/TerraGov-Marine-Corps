@@ -64,6 +64,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/predator_age = 100
 	var/predator_h_style = "Standard"
 	var/predator_skin_color = "Tan"
+	var/predator_use_legacy = "None"
 	var/predator_translator_type = "Modern"
 	var/predator_mask_type = 1
 	var/predator_armor_type = 1

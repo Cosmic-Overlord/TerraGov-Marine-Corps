@@ -71,41 +71,47 @@
 	item_state_slots = list(slot_wear_suit_str = "halfarmor1")
 	var/thrall = FALSE//Used to affect icon generation.
 
-/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", elder_restricted = 0)
+/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", legacy = "None")
 	. = ..()
 	if(thrall)
 		return
-	if(elder_restricted)
-		switch(armor_number)
-			if(1341)
+
+	flags_cold_protection = flags_armor_protection
+	flags_heat_protection = flags_armor_protection
+
+	if(legacy != "None")
+		switch(legacy)
+			if("dragon")
 				name = "\improper 'Armor of the Dragon'"
 				icon_state = "halfarmor_elder_tr"
 				LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor_elder_tr")
-			if(7128)
+				return
+			if("swamp")
 				name = "\improper 'Armor of the Swamp Horror'"
 				icon_state = "halfarmor_elder_joshuu"
 				LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor_elder_joshuu")
-			if(9867)
+				return
+			if("enforcer")
 				name = "\improper 'Armor of the Enforcer'"
 				icon_state = "halfarmor_elder_feweh"
 				LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor_elder_feweh")
-			if(4879)
+				return
+			if("collector")
 				name = "\improper 'Armor of the Ambivalent Collector'"
 				icon_state = "halfarmor_elder_n"
 				LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor_elder_n")
+				return
 			else
 				name = "clan elder's armor"
 				icon_state = "halfarmor_elder"
 				LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor_elder")
-	else
-		if(armor_number > 7)
-			armor_number = 1
-		if(armor_number) //Don't change full armor number
-			icon_state = "halfarmor[armor_number]_[armor_material]"
-			LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor[armor_number]_[armor_material]")
+				return
 
-	flags_cold_protection = flags_armor_protection
-	flags_heat_protection = flags_armor_protection
+	if(armor_number > 7)
+		armor_number = 1
+	if(armor_number) //Don't change full armor number
+		icon_state = "halfarmor[armor_number]_[armor_material]"
+		LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor[armor_number]_[armor_material]")
 
 /obj/item/clothing/suit/armor/yautja/hunter
 	name = "clan armor"

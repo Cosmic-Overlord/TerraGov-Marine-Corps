@@ -1184,7 +1184,7 @@
 	apply_overlay(PRED_LASER_LAYER)
 	spawn(2 SECONDS)
 		remove_overlay(PRED_LASER_LAYER)
-	overlays_standing[PRED_LASER_LAYER] = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked-y", "layer" = PRED_LASER_LAYER)
+		overlays_standing[PRED_LASER_LAYER] = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked-y", "layer" = PRED_LASER_LAYER)
 		apply_overlay(PRED_LASER_LAYER)
 	return TRUE
 

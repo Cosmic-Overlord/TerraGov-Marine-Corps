@@ -1154,6 +1154,8 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 	to_chat(M, span_notice("You deactivate your plasma caster."))
+	if(laser_target)
+		laser_off(user = user)
 	if(source)
 		forceMove(source)
 		source.caster_deployed = FALSE
@@ -1206,8 +1208,9 @@
 	remove_overlay(X_PRED_LASER_LAYER)
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/dropped()
-	laser_off()
+/obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/user)
+	if(laser_target)
+		laser_off(user = user)
 	. = ..()
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/process()
@@ -1261,7 +1264,6 @@
 		laser_target = null
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/laser_on(atom/target, mob/user)
-	RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(laser_off))
 	if(user?.client)
 		user.client.click_intercept = src
 		to_chat(user, span_notice("<b>You activate your target marker and take careful aim.</b>"))
@@ -1276,8 +1278,6 @@
 		deactivate_laser_target()
 		accuracy_mult -= 0.50 //We lose a big accuracy bonus vs the now unlasered target
 		STOP_PROCESSING(SSobj, src)
-	if(user)
-		UnregisterSignal(src, COMSIG_ITEM_UNEQUIPPED)
 	if(user?.client)
 		user.client.click_intercept = null
 		to_chat(user, span_notice("<b>You deactivate your target marker.</b>"))

@@ -111,12 +111,12 @@
 	xeno.create_stomp()
 
 	var/mob/living/carbon/carbon = target
-	carbon.SetImmobilized(freeze_duration)
+	carbon.Immobilize(freeze_duration)
 	carbon.apply_effect(0.5, WEAKEN)
 
 	for(var/mob/living/carbon/human/human in oview(round(xeno.life_kills_total * 0.5 + 2), xeno))
 		if(human.stat != DEAD)
-			human.SetImmobilized(freeze_duration)
+			human.Immobilize(freeze_duration)
 
 	for(var/mob/M in view(xeno))
 		if(M && M.client)
@@ -168,9 +168,9 @@
 	var/mob/living/carbon/xenomorph/predalien/xeno = owner
 	var/mob/living/carbon/carbon = target
 
-	carbon.SetImmobilized(30 SECONDS)
+	carbon.Immobilize(30 SECONDS)
 	xeno.anchored = TRUE
-	xeno.SetImmobilized(30 SECONDS)
+	xeno.Immobilize(30 SECONDS)
 
 	if(do_after(xeno, activation_delay, TRUE, carbon, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
 		xeno.visible_message(span_xenohighdanger("[xeno] rips open the guts of [carbon]!"), span_xenohighdanger("You rip open the guts of [carbon]!"))
@@ -189,9 +189,9 @@
 	playsound(owner, 'sound/voice/predalien_growl.ogg', 75, 0)
 
 	xeno.anchored = FALSE
-	xeno.SetImmobilized(0)
+	xeno.Immobilize(0)
 
-	carbon.SetImmobilized(0)
+	carbon.Immobilize(0)
 
 	xeno.visible_message(span_xenodanger("[xeno] rapidly slices into [carbon]!"))
 

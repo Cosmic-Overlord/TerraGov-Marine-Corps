@@ -1038,3 +1038,43 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "utilitybelt_pred"
 	item_state = "utility"
+
+/obj/item/skull
+	name = "skull"
+	icon = 'icons/obj/items/hunter/xeno_skulls.dmi'
+	resistance_flags = INDESTRUCTIBLE
+
+/obj/item/skull/queen
+	name = "Queen skull"
+	desc = "Skull of a prime hive ruler, mother to many."
+	icon_state = "queen_skull"
+
+/obj/item/skull/king
+	name = "King skull"
+	desc = "Skull of a militant hive ruler, lord of destruction."
+	icon_state = "king_skull"
+
+/obj/item/skull/lurker
+	name = "Lurker skull"
+	desc = "Skull of a stealthy xenomorph, a nocturnal entity."
+	icon_state = "lurker_skull"
+
+/obj/item/skull/hunter
+	name = "Hunter skull"
+	desc = "Skull of a stealthy xenomorph, an ambushing predator."
+	icon_state = "hunter_skull"
+
+/obj/item/skull/deacon
+	name = "Deacon skull"
+	desc = "Skull of an unusual xenomorph, a mysterious specimen."
+	icon_state = "deacon_skull"
+
+/obj/item/skull/spitter
+	name = "Spitter skull"
+	desc = "Skull of an acidic xenomorph, a boiling menace."
+	icon_state = "spitter_skull"
+
+/obj/item/skull/warrior
+	name = "Warrior skull"
+	desc = "Skull of a strong xenomorph, a swift fighter."
+	icon_state = "warrior_skull"

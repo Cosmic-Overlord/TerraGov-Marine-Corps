@@ -3,7 +3,7 @@
 /turf/open/space,
 /area/space)
 "ab" = (
-/obj/item/stack/sheet/animalhide/xeno/kinghide{
+/obj/item/skull/king{
 	anchored = 1
 	},
 /obj/structure/table/reinforced/prison{
@@ -1099,10 +1099,8 @@
 	},
 /area/yautja)
 "cz" = (
-/obj/item/stack/sheet/animalhide/xeno{
-	color = "#7899ab";
-	desc = "A strange hide from an enigmatic creature.";
-	name = "deacon hide";
+/obj/item/skull/deacon{
+	pixel_y = -1;
 	anchored = 1
 	},
 /obj/structure/table/reinforced/prison{
@@ -1541,10 +1539,9 @@
 	},
 /area/yautja)
 "eS" = (
-/obj/item/stack/sheet/animalhide/xeno{
-	anchored = 1;
-	name = "Warrior Hide";
-	pixel_y = 30
+/obj/item/skull/warrior{
+	pixel_y = 33;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
@@ -2431,14 +2428,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
-"ww" = (
-/obj/item/stack/sheet/animalhide/xeno{
-	anchored = 1;
-	name = "Lurker Hide";
-	pixel_y = 30
-	},
-/turf/open/shuttle/dropship/fourteen,
-/area/yautja)
 "wH" = (
 /obj/structure/rack{
 	color = "#6b675e";
@@ -2499,11 +2488,9 @@
 	},
 /area/yautja)
 "xO" = (
-/obj/item/stack/sheet/animalhide/xeno{
-	anchored = 1;
-	color = "#524e4e";
-	desc = "An old hide from a fearsome creature.";
-	name = "hunter hide"
+/obj/item/skull/hunter{
+	pixel_y = 5;
+	anchored = 1
 	},
 /obj/structure/table/reinforced/prison{
 	color = "#6b675e";
@@ -2638,10 +2625,9 @@
 	},
 /area/yautja)
 "Cz" = (
-/obj/item/stack/sheet/animalhide/xeno{
-	anchored = 1;
-	name = "Prime Empress Hide";
-	pixel_y = 30
+/obj/item/skull/queen{
+	pixel_y = 33;
+	anchored = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -3143,11 +3129,9 @@
 	},
 /area/yautja)
 "Mb" = (
-/obj/item/stack/sheet/animalhide/xeno{
-	anchored = 1;
-	color = "green";
-	desc = "The skin of a nightmare long thought lost to time.";
-	name = "corroder hide"
+/obj/item/skull/spitter{
+	pixel_y = 4;
+	anchored = 1
 	},
 /obj/structure/table/reinforced/prison{
 	color = "#6b675e";
@@ -3305,10 +3289,9 @@
 	},
 /area/yautja)
 "PN" = (
-/obj/item/stack/sheet/animalhide/xeno{
-	anchored = 1;
-	name = "Spitter Hide";
-	pixel_y = 30
+/obj/item/skull/lurker{
+	pixel_y = 33;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
@@ -5844,7 +5827,7 @@ ap
 cP
 bL
 bj
-eS
+PN
 cP
 KK
 bj
@@ -6708,7 +6691,7 @@ ap
 cP
 bL
 bj
-ww
+eS
 cP
 Uv
 bj

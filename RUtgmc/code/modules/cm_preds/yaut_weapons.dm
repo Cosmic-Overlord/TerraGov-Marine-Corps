@@ -1210,7 +1210,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/user)
 	if(laser_target)
-		laser_off(user = user)
+		laser_off(user)
 	. = ..()
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/process()
@@ -1218,14 +1218,9 @@
 	if(!istype(user))
 		laser_off()
 		return
-	if(!laser_target)
-		laser_off(user)
-		playsound(user,'sound/machines/click.ogg', 25, 1)
-		return
 	if(!line_of_sight(user, laser_target, 24))
-		laser_off()
+		laser_off(user)
 		to_chat(user, span_danger("You lose sight of your target!"))
-		playsound(user,'sound/machines/click.ogg', 25, 1)
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/do_fire(obj/object_to_fire)
 	if(!QDELETED(laser_target))
@@ -1234,7 +1229,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/target_action(datum/source, atom/A)
 	if((!istype(A, /mob/living/carbon) && laser_target) || A == laser_target)
-		laser_off()
+		laser_off(gun_user)
 	else if(!laser_target && istype(A, /mob/living/carbon))
 		if(last_time_targeted + 3 SECONDS > world.time)
 			to_chat(gun_user, span_danger("You did it too recently!"))
@@ -1262,6 +1257,7 @@
 		UnregisterSignal(src, COMSIG_PROJ_SCANTURF)
 		laser_target.remove_pred_laser()
 		laser_target = null
+		playsound(user,'sound/machines/click.ogg', 25, 1)
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/laser_on(atom/target, mob/user)
 	if(user?.client)
@@ -1272,7 +1268,7 @@
 	last_time_targeted = world.time
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/laser_off(datum/source, mob/user)
+/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/laser_off(mob/user)
 	SIGNAL_HANDLER
 	if(laser_target)
 		deactivate_laser_target()

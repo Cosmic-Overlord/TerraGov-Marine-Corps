@@ -812,6 +812,7 @@
 /obj/item/clothing/gloves/yautja/verb/toggle_notification_sound()
 	set name = "Toggle Bracer Sound"
 	set desc = "Toggle your bracer's notification sound."
+	set category = "Yautja"
 	set src in usr
 
 	notification_sound = !notification_sound
@@ -900,10 +901,6 @@
 		if(embedded_id.registered_name)
 			embedded_id.set_user_data(user)
 
-/obj/item/clothing/gloves/yautja/hunter/toggle_notification_sound()
-	set category = "Yautja"
-	..()
-
 /obj/item/clothing/gloves/yautja/hunter/Destroy()
 	QDEL_NULL(caster)
 	QDEL_NULL(embedded_id)
@@ -934,10 +931,6 @@
 		if(cloaked)
 			decloak(human)
 	. = ..()
-
-// Toggle the notification sound
-/obj/item/clothing/gloves/yautja/hunter/toggle_notification_sound()
-	set category = "Yautja"
 
 /obj/item/clothing/gloves/yautja/hunter/verb/check_auto_targets()
 	set name = "Track Yautja Targets"

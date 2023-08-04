@@ -1155,13 +1155,13 @@
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 	to_chat(M, span_notice("You deactivate your plasma caster."))
 	if(laser_target)
-		laser_off(user = M)
+		laser_off(M)
 	if(source)
 		forceMove(source)
 		source.caster_deployed = FALSE
 		source.action_caster.set_toggle(FALSE)
 		return
-	..()
+	. = ..()
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/able_to_fire(mob/user)
 	if(!source)
@@ -1208,11 +1208,6 @@
 	remove_overlay(X_PRED_LASER_LAYER)
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/user)
-	if(laser_target)
-		laser_off(user)
-	. = ..()
-
 /obj/item/weapon/gun/energy/yautja/plasma_caster/process()
 	var/mob/living/user = loc
 	if(!istype(user))
@@ -1236,14 +1231,6 @@
 			return
 		laser_on(A, gun_user)
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/activate_laser_target(atom/target, mob/user)
-	target.apply_pred_laser()
-	laser_target = target
-	to_chat(user, span_danger("You focus your target marker on [target]!"))
-	RegisterSignal(src, COMSIG_PROJ_SCANTURF, PROC_REF(scan_turf_for_target))
-	START_PROCESSING(SSobj, src)
-	accuracy_mult += 0.50 //We get a big accuracy bonus vs the lasered target
-
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/scan_turf_for_target(datum/source, turf/target_turf)
 	SIGNAL_HANDLER
 	if(QDELETED(laser_target) || !isturf(laser_target.loc))
@@ -1252,12 +1239,20 @@
 		return COMPONENT_PROJ_SCANTURF_TARGETFOUND
 	return COMPONENT_PROJ_SCANTURF_TURFCLEAR
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/deactivate_laser_target()
-	if(laser_target)
-		UnregisterSignal(src, COMSIG_PROJ_SCANTURF)
-		laser_target.remove_pred_laser()
-		laser_target = null
-		playsound(user,'sound/machines/click.ogg', 25, 1)
+/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/activate_laser_target(atom/target, mob/user)
+	target.apply_pred_laser()
+	laser_target = target
+	to_chat(user, span_danger("You focus your target marker on [target]!"))
+	RegisterSignal(src, COMSIG_PROJ_SCANTURF, PROC_REF(scan_turf_for_target))
+	START_PROCESSING(SSobj, src)
+	accuracy_mult += 0.50 //We get a big accuracy bonus vs the lasered target
+
+/obj/item/weapon/gun/energy/yautja/plasma_caster/proc/deactivate_laser_target(mob/user)
+	UnregisterSignal(src, COMSIG_PROJ_SCANTURF)
+	laser_target.remove_pred_laser()
+	laser_target = null
+	if(user)
+		playsound(user, 'sound/machines/click.ogg', 25, 1)
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/laser_on(atom/target, mob/user)
 	if(user?.client)

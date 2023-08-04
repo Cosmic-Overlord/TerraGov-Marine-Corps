@@ -1185,6 +1185,7 @@
 	apply_overlay(PRED_LASER_LAYER)
 	spawn(2 SECONDS)
 		laser.icon_state = "locked-y"
+		remove_overlay(PRED_LASER_LAYER)
 		apply_overlay(PRED_LASER_LAYER)
 	return TRUE
 
@@ -1194,6 +1195,7 @@
 	apply_overlay(X_PRED_LASER_LAYER)
 	spawn(2 SECONDS)
 		laser.icon_state = "locked-y"
+		remove_overlay(X_PRED_LASER_LAYER)
 		apply_overlay(X_PRED_LASER_LAYER)
 	return TRUE
 

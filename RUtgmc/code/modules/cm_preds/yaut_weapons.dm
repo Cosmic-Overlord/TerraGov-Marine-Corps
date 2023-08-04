@@ -1180,21 +1180,21 @@
 	return FALSE
 
 /mob/living/carbon/human/apply_pred_laser()
-	var/image/laser = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked", "layer" = PRED_LASER_LAYER)
-	laser.icon_state = "locked"
+	var/mutable_appearance/laser = mutable_appearance('icons/mob/hunter/pred_gear.dmi', "locking-y", PRED_LASER_LAYER)
 	overlays_standing[PRED_LASER_LAYER] = laser
 	apply_overlay(PRED_LASER_LAYER)
 	spawn(2 SECONDS)
 		laser.icon_state = "locked-y"
+		apply_overlay(PRED_LASER_LAYER)
 	return TRUE
 
 /mob/living/carbon/xenomorph/apply_pred_laser()
-	var/image/laser = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked", "layer" = X_PRED_LASER_LAYER)
-	laser.icon_state = "locked"
+	var/mutable_appearance/laser = mutable_appearance('icons/mob/hunter/pred_gear.dmi', "locking-y", X_PRED_LASER_LAYER)
 	overlays_standing[X_PRED_LASER_LAYER] = laser
 	apply_overlay(X_PRED_LASER_LAYER)
 	spawn(2 SECONDS)
 		laser.icon_state = "locked-y"
+		apply_overlay(X_PRED_LASER_LAYER)
 	return TRUE
 
 /mob/living/carbon/proc/remove_pred_laser()

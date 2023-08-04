@@ -286,6 +286,7 @@
 		msg = replacetext(msg, "и", "u")
 		msg = replacetext(msg, "к", "k")
 		msg = replacetext(msg, "ш", "w")
+		msg = replacetext(msg, "м", "m")
 
 	caller.send_speech(msg, 7, caller, bubble_type, null, caller.get_default_language())
 

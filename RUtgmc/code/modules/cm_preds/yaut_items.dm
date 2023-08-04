@@ -111,7 +111,7 @@
 		armor_number = 1
 	if(armor_number) //Don't change full armor number
 		icon_state = "halfarmor[armor_number]_[armor_material]"
-		LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor[armor_number]_[armor_material]")
+		LAZYSET(item_state_slots, slot_wear_suit_str, "halfarmor[armor_number]_[armor_material]")
 
 /obj/item/clothing/suit/armor/yautja/hunter
 	name = "clan armor"

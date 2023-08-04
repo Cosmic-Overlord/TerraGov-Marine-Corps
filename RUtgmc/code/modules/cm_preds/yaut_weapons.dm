@@ -1093,7 +1093,6 @@
 	)
 
 	var/mob/living/carbon/laser_target = null
-	var/image/LT = null
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
 	icon_state = "[initial_icon_state]_[caster_material]"
@@ -1107,8 +1106,6 @@
 	verbs -= /obj/item/weapon/gun/verb/toggle_burstfire
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 	RegisterSignal(src, COMSIG_ITEM_MIDDLECLICKON, PROC_REF(target_action))
-
-	LT = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked-y", "layer" = PRED_LASER_LAYER)
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Destroy()
 	. = ..()
@@ -1177,26 +1174,23 @@
 		in_chamber = get_ammo_object()
 		return in_chamber
 
-/atom/proc/apply_pred_laser(image/laser, laser_layer, layer)
+/atom/proc/apply_pred_laser()
 	return FALSE
 
-/mob/living/carbon/human/apply_pred_laser(image/laser, laser_layer = PRED_LASER_LAYER, layer = PRED_LASER_LAYER)
+/mob/living/carbon/human/apply_pred_laser()
+	var/image/laser = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked", "layer" = PRED_LASER_LAYER)
 	laser.icon_state = "locked"
-	laser.layer = laser_layer
-	overlays_standing[layer] = laser
-	apply_overlay(layer)
+	overlays_standing[PRED_LASER_LAYER] = laser
+	apply_overlay(PRED_LASER_LAYER)
 	spawn(2 SECONDS)
 		laser.icon_state = "locked-y"
 	return TRUE
 
-/mob/living/carbon/xenomorph/apply_pred_laser(image/laser, laser_layer = X_PRED_LASER_LAYER, layer = X_PRED_LASER_LAYER)
-	. = ..()
-	if(!.)
-		return FALSE
+/mob/living/carbon/xenomorph/apply_pred_laser()
+	var/image/laser = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked", "layer" = X_PRED_LASER_LAYER)
 	laser.icon_state = "locked"
-	laser.layer = laser_layer
-	overlays_standing[layer] = laser
-	apply_overlay(layer)
+	overlays_standing[X_PRED_LASER_LAYER] = laser
+	apply_overlay(X_PRED_LASER_LAYER)
 	spawn(2 SECONDS)
 		laser.icon_state = "locked-y"
 	return TRUE
@@ -1245,7 +1239,7 @@
 		laser_on(A, gun_user)
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/activate_laser_target(atom/target, mob/user)
-	target.apply_pred_laser(LT)
+	target.apply_pred_laser()
 	laser_target = target
 	to_chat(user, span_danger("You focus your target marker on [target]!"))
 	RegisterSignal(src, COMSIG_PROJ_SCANTURF, PROC_REF(scan_turf_for_target))

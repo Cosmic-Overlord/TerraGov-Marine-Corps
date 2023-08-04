@@ -2,6 +2,8 @@
 
 //say based modes like binary are in living/say.dm
 
+#define RADIO_CHANNEL_YAUTJA "Yautja"
+
 #define RADIO_CHANNEL_COMMON "Common"
 #define RADIO_CHANNEL_COMMON_REBEL "Common Rebel"
 #define RADIO_CHANNEL_SOM "Common SOM"

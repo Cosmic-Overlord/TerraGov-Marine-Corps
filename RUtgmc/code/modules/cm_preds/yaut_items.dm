@@ -293,6 +293,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_state = "headset"
 	frequency = YAUT_FREQ
+	freqlock = TRUE
 	resistance_flags = UNACIDABLE
 
 /obj/item/radio/headset/yautja/talk_into(atom/movable/talking_movable, message, channel, list/spans, datum/language/language, list/message_mods)

@@ -51,7 +51,8 @@
 	var/max_disc_cap = 2
 	var/list/obj/item/explosive/grenade/spawnergrenade/smartdisc/discs = list()
 
-	var/mob/living/carbon/human/owner //Pred spawned on, or thrall given to.
+	var/mob/living/carbon/human/real_owner //Pred spawned on, or thrall given to.
+	var/mob/living/carbon/human/owner
 	var/obj/item/clothing/gloves/yautja/linked_bracer //Bracer linked to this one (thrall or mentor).
 	var/obj/item/card/id/bracer_chip/embedded_id
 
@@ -89,8 +90,9 @@
 /obj/item/clothing/gloves/yautja/equipped(mob/living/carbon/human/user, slot)
 	if(slot == SLOT_GLOVES)
 		START_PROCESSING(SSobj, src)
-		if(!owner)
-			owner = user
+		owner = user
+		if(!real_owner)
+			real_owner = user
 
 		toggle_lock_internal(user, TRUE)
 		RegisterSignal(user, list(COMSIG_MOB_REVIVE, COMSIG_MOB_DEATH), PROC_REF(update_minimap_icon))

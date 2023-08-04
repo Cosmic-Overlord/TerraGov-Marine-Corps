@@ -1526,6 +1526,20 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"eA" = (
+/obj/structure/table/reinforced/prison{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/xenos_claw{
+	pixel_y = 4;
+	anchored = 1
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "eS" = (
 /obj/item/stack/sheet/animalhide/xeno{
 	anchored = 1;
@@ -1705,6 +1719,13 @@
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
+	},
+/area/yautja)
+"gP" = (
+/obj/machinery/telecomms/server/presets/common,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
 	},
 /area/yautja)
 "hI" = (
@@ -2056,6 +2077,13 @@
 /obj/effect/decal/remains/human{
 	pixel_y = -25
 	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
+"oi" = (
+/obj/machinery/telecomms/bus/preset_four,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2509,6 +2537,13 @@
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
+"ys" = (
+/obj/machinery/telecomms/receiver/preset_right,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "yY" = (
 /obj/machinery/door_control{
 	id = "Cell Lockdown 5";
@@ -2661,20 +2696,6 @@
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
-	},
-/area/yautja)
-"DQ" = (
-/obj/structure/table/reinforced/prison{
-	color = "#6b675e";
-	resistance_flags = 1
-	},
-/obj/item/xenos_claw{
-	pixel_y = 4;
-	anchored = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
 	},
 /area/yautja)
 "Es" = (
@@ -6048,7 +6069,7 @@ aw
 bj
 bj
 JH
-DQ
+eA
 cP
 cP
 cP
@@ -7222,7 +7243,7 @@ BB
 JH
 bN
 bj
-bj
+gP
 bj
 bj
 bj
@@ -7294,7 +7315,7 @@ BB
 JH
 bN
 bj
-bj
+oi
 bj
 bj
 aa
@@ -7366,7 +7387,7 @@ sx
 Zs
 sx
 bj
-bj
+ys
 bj
 bj
 aa

@@ -234,7 +234,7 @@
 /obj/alien/egg/gas
 	desc = "It looks like a suspiciously weird egg"
 	name = "gas egg"
-	icon_state = "egg_gas"
+	icon_state = "gas_egg"
 	integrity_failure = 75 //Highly responsive to poking
 	maturity_time = 15 SECONDS
 	maturity_stage = 2

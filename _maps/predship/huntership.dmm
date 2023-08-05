@@ -2094,11 +2094,6 @@
 /turf/open/beach/sand,
 /area/yautja)
 "ov" = (
-/obj/item/storage/belt/utility/full/pred,
-/obj/item/storage/belt/utility/full/pred,
-/obj/item/storage/belt/utility/full/pred,
-/obj/item/storage/belt/utility/full/pred,
-/obj/item/storage/belt/utility/full/pred,
 /obj/structure/rack{
 	color = "#6b675e";
 	layer = 2.79;
@@ -2107,6 +2102,11 @@
 /obj/item/stack/yautja_rope{
 	pixel_y = 10
 	},
+/obj/item/storage/belt/utility/pred/full,
+/obj/item/storage/belt/utility/pred/full,
+/obj/item/storage/belt/utility/pred/full,
+/obj/item/storage/belt/utility/pred/full,
+/obj/item/storage/belt/utility/pred/full,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

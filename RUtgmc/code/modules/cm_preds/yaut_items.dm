@@ -1032,13 +1032,24 @@
 		else
 			. += span_notice("[src] is still dirty.")
 
-/obj/item/storage/belt/utility/full/pred
+/obj/item/storage/belt/utility/pred
 	name = "\improper Yautja toolbelt"
 	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "utilitybelt_pred"
 	item_state = "utility"
 
+/obj/item/storage/belt/utility/pred/full/Initialize()
+	. = ..()
+	new /obj/item/tool/screwdriver/yautja(src)
+	new /obj/item/tool/wrench/yautja(src)
+	new /obj/item/tool/weldingtool/yautja(src)
+	new /obj/item/tool/crowbar/yautja(src)
+	new /obj/item/tool/wirecutters/yautja(src)
+	new /obj/item/stack/cable_coil(src,30,pick("red","orange"))
+	new /obj/item/multitool/yautja(src)
+
+/// SKULLS
 /obj/item/skull
 	name = "skull"
 	icon = 'icons/obj/items/hunter/xeno_skulls.dmi'
@@ -1078,3 +1089,77 @@
 	name = "Warrior skull"
 	desc = "Skull of a strong xenomorph, a swift fighter."
 	icon_state = "warrior_skull"
+
+/// TOOLS
+
+/obj/item/tool/crowbar/yautja
+	name = "yautja crowbar"
+	desc = "Used to remove floors and to pry open doors, made of an unusual alloy."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "bar"
+	item_state = "bar"
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
+	)
+
+/obj/item/tool/wrench/yautja
+	name = "yautja wrench"
+	desc = "A wrench with many common uses. Made of some bizarre alien bones."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "wrench"
+	item_state = "wrench"
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
+	)
+
+/obj/item/tool/wirecutters/yautja
+	name = "yautja wirecutters"
+	desc = "This cuts wires, also flesh. Made of some razorsharp animal teeth."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "wirescutter"
+	item_state = "wirescutter"
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
+	)
+	random_color = FALSE
+
+/obj/item/tool/screwdriver/yautja
+	name = "yautja screwdriver"
+	desc = "Some hightech screwing abilities."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "screwdriver"
+	item_state = "screwdriver"
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
+	)
+	force = 7
+	random_color = FALSE
+
+/obj/item/multitool/yautja
+	name = "yautja multitool"
+	desc = "Top notch alien tech for B&E through hacking."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "multitool"
+	item_state = "multitool"
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
+	)
+
+/obj/item/tool/weldingtool/yautja
+	name = "yautja chem welding tool"
+	desc = "A complex chemical welding device, keep away from youngblood."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "welder"
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/hunter/items_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/hunter/items_righthand.dmi'
+	)
+	force = 10
+	throwforce = 15
+	usesound = list('sound/items/welder.ogg', 'sound/items/welder2.ogg')
+	max_fuel = 150	//The max amount of fuel the welder can hold

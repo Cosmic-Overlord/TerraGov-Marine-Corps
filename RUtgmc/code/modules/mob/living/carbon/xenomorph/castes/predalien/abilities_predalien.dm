@@ -3,6 +3,7 @@
 // ***************************************
 /datum/action/xeno_action/activable/pounce/predalien
 	name = "Leap"
+	desc = "Leap at your targer stunning and slashing them. Stun duration and damage increases with each stack of hunted prey."
 	action_icon_state = "powerful_pounce"
 
 	range = 5
@@ -22,6 +23,7 @@
 
 /datum/action/xeno_action/activable/predalien_roar
 	name = "Roar"
+	desc = "Buffs nearby xenomorphs with increased slash damage and movement speed, additionally removes invisibility from any prey nearby. Buff strength and duration increases with each stack of hunted prey."
 	action_icon_state = "rage_screech"
 	ability_name = "roar"
 	keybinding_signals = list(
@@ -71,6 +73,7 @@
 
 /datum/action/xeno_action/activable/smash
 	name = "Smash"
+	desc = "Stun a prey in front of you and paralyzes any prey around the target. Paralyze duration increases with each stack of hunted prey."
 	action_icon_state = "super_stomp"
 	ability_name = "smash"
 	keybinding_signals = list(
@@ -131,6 +134,7 @@
 
 /datum/action/xeno_action/activable/devastate
 	name = "Devastate"
+	desc = "Pull out the guts and viscera of your prey dealing brutal damage. Damage increases with each stack of hunted prey."
 	action_icon_state = "butchering"
 	ability_name = "devastate"
 	keybinding_signals = list(

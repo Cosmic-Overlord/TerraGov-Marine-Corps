@@ -289,6 +289,7 @@
 		msg = replacetext(msg, "к", "k")
 		msg = replacetext(msg, "ш", "w")
 		msg = replacetext(msg, "м", "m")
+		msg = replacetext(msg, "п", "n")
 
 	caller.send_speech(msg, 7, caller, bubble_type, null, caller.get_default_language())
 
@@ -1074,11 +1075,13 @@
 
 	if(H.wear_id == embedded_id)
 		to_chat(H, span_notice("You retract your ID chip."))
+		playsound(src, 'sound/machines/click.ogg', 15, 1)
 		move_chip_to_bracer()
 	else if(H.wear_id)
 		to_chat(H, span_warning("Something is obstructing the deployment of your ID chip!"))
 	else
 		to_chat(H, span_notice("You expose your ID chip."))
+		playsound(src, 'sound/machines/click.ogg', 15, 1)
 		if(!H.equip_to_slot_if_possible(embedded_id, SLOT_WEAR_ID, permanent = TRUE, override_nodrop = TRUE))
 			to_chat(H, span_warning("Something went wrong during your chip's deployment! (Make a Bug Report about this)"))
 			move_chip_to_bracer()
@@ -1137,6 +1140,7 @@
 			to_chat(wearer, span_warning("The bracer beeps pleasantly, releasing it's grip on your forearm."))
 		else
 			to_chat(wearer, span_warning("With an angry blare the bracer releases your forearm."))
+		playsound(src, 'sound/items/air_release.ogg', 15, 1)
 		return TRUE
 
 	flags_item |= NODROP
@@ -1144,4 +1148,5 @@
 		to_chat(wearer, span_warning("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
 	else
 		to_chat(wearer, span_warning("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+	playsound(src, 'sound/machines/click.ogg', 15, 1)
 	return TRUE

@@ -51,3 +51,17 @@
 	if(istype(new_bone, /obj/item/armor_module/limb/skeleton/head))
 		new_bone.desc = span_notice("This skull used to be [current_limb.name].")
 	qdel(current_limb)
+
+/obj/machinery/microwave/yautja
+	name = "alien microwave"
+	desc = "Dark alloy sinister machine that heats up cold food."
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+
+/obj/machinery/processor/yautja
+	name = "food grinder"
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+
+/obj/machinery/grill/yautja
+	name = "alien grill"
+	desc = "For grilling the most delicious prey."
+	icon = 'icons/obj/machines/yautja_machines.dmi'

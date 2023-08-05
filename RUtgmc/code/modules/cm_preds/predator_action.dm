@@ -80,7 +80,7 @@
 
 	var/mob/living/carbon/human/human = owner
 	var/obj/item/clothing/mask/gas/yautja/mask = human.wear_mask
-	playsound(mask, 'sound/items/ratchet.ogg', 10, 1)
+	playsound(mask, 'sound/effects/binoctarget.ogg', 10, 1)
 	mask.zoom(owner, 11, 12)
 
 /datum/action/predator_action/mask/togglesight

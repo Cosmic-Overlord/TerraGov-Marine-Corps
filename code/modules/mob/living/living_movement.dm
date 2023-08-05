@@ -1,5 +1,5 @@
 /mob/living/proc/update_pull_movespeed()
-	if(!isyautja(src))
+	if(!HAS_TRAIT(src, TRAIT_SUPER_STRONG))
 		if(!pulling?.drag_delay)
 			remove_movespeed_modifier(MOVESPEED_ID_BULKY_DRAGGING)
 			return

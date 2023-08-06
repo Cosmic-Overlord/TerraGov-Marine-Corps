@@ -55,8 +55,8 @@
 	tier = XENO_TIER_FOUR
 	upgrade = XENO_UPGRADE_ZERO
 
+	var/max_bonuse_life_kills = 10
 	var/butcher_time = 6 SECONDS
-
 
 /mob/living/carbon/xenomorph/predalien/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
@@ -65,6 +65,11 @@
 	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
 	hunter_data.dishonored_set = src
 	hud_set_hunter()
+
+/mob/living/carbon/xenomorph/predalien/Stat()
+	. = ..()
+	if(statpanel("Game"))
+		stat("Life Kills:", "[life_kills_total] / [max_bonuse_life_kills]")
 
 /mob/living/carbon/xenomorph/predalien/proc/announce_spawn()
 	if(!loc)

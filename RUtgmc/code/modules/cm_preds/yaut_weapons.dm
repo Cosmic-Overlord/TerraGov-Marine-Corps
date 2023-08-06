@@ -1183,18 +1183,20 @@
 	overlays_standing[PRED_LASER_LAYER] = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locking-y", "layer" = PRED_LASER_LAYER)
 	apply_overlay(PRED_LASER_LAYER)
 	spawn(2 SECONDS)
-		remove_overlay(PRED_LASER_LAYER)
-		overlays_standing[PRED_LASER_LAYER] = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked-y", "layer" = PRED_LASER_LAYER)
-		apply_overlay(PRED_LASER_LAYER)
+		if(overlays_standing[PRED_LASER_LAYER])
+			remove_overlay(PRED_LASER_LAYER)
+			overlays_standing[PRED_LASER_LAYER] = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked-y", "layer" = PRED_LASER_LAYER)
+			apply_overlay(PRED_LASER_LAYER)
 	return TRUE
 
 /mob/living/carbon/xenomorph/apply_pred_laser()
 	overlays_standing[X_PRED_LASER_LAYER] = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locking-y", "layer" = X_PRED_LASER_LAYER)
 	apply_overlay(X_PRED_LASER_LAYER)
 	spawn(2 SECONDS)
-		remove_overlay(X_PRED_LASER_LAYER)
-		overlays_standing[X_PRED_LASER_LAYER] = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked-y", "layer" = X_PRED_LASER_LAYER)
-		apply_overlay(X_PRED_LASER_LAYER)
+		if(overlays_standing[X_PRED_LASER_LAYER])
+			remove_overlay(X_PRED_LASER_LAYER)
+			overlays_standing[X_PRED_LASER_LAYER] = image("icon" = 'icons/mob/hunter/pred_gear.dmi', "icon_state" = "locked-y", "layer" = X_PRED_LASER_LAYER)
+			apply_overlay(X_PRED_LASER_LAYER)
 	return TRUE
 
 /mob/living/carbon/proc/remove_pred_laser()
@@ -1212,8 +1214,7 @@
 	var/mob/living/user = loc
 	if(!istype(user))
 		laser_off()
-		return
-	if(!line_of_sight(user, laser_target, 24))
+	else if(!line_of_sight(user, laser_target, 24))
 		laser_off(user)
 		to_chat(user, span_danger("You lose sight of your target!"))
 
@@ -1240,19 +1241,24 @@
 	return COMPONENT_PROJ_SCANTURF_TURFCLEAR
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/activate_laser_target(atom/target, mob/user)
+	if(laser_target)
+		laser_off(user)
 	target.apply_pred_laser()
 	laser_target = target
-	to_chat(user, span_danger("You focus your target marker on [target]!"))
+	if(user)
+		to_chat(user, span_danger("You focus your target marker on [target]!"))
 	RegisterSignal(src, COMSIG_PROJ_SCANTURF, PROC_REF(scan_turf_for_target))
 	START_PROCESSING(SSobj, src)
 	accuracy_mult += 0.50 //We get a big accuracy bonus vs the lasered target
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/deactivate_laser_target(mob/user)
-	UnregisterSignal(src, COMSIG_PROJ_SCANTURF)
 	laser_target.remove_pred_laser()
 	laser_target = null
 	if(user)
 		playsound(user, 'sound/machines/click.ogg', 25, 1)
+	UnregisterSignal(src, COMSIG_PROJ_SCANTURF)
+	STOP_PROCESSING(SSobj, src)
+	accuracy_mult -= 0.50 //We lose a big accuracy bonus vs the now unlasered target
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/laser_on(atom/target, mob/user)
 	if(user?.client)
@@ -1264,11 +1270,9 @@
 	return TRUE
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/laser_off(mob/user)
-	SIGNAL_HANDLER
-	if(laser_target)
-		deactivate_laser_target()
-		accuracy_mult -= 0.50 //We lose a big accuracy bonus vs the now unlasered target
-		STOP_PROCESSING(SSobj, src)
+	if(!laser_target)
+		return
+	deactivate_laser_target()
 	if(user?.client)
 		user.client.click_intercept = null
 		to_chat(user, span_notice("<b>You deactivate your target marker.</b>"))

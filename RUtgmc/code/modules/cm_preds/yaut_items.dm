@@ -723,6 +723,7 @@
 	anchored = TRUE
 
 	trapped_mob = C
+	ADD_TRAIT(C, TRAIT_LEASHED, src)
 	beam = beam(C, "chain", 'icons/effects/beam.dmi', INFINITY, INFINITY)
 	RegisterSignal(C, COMSIG_LIVING_DO_RESIST, PROC_REF(resist_callback))
 	RegisterSignal(C, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_dist))
@@ -781,7 +782,7 @@
 
 /obj/item/hunting_trap/proc/resisted()
 	to_chat(trapped_mob, span_danger("You attempt to break out of your tether to [src]. (This will take around [resist_time/10] seconds and you need to stand still)"))
-	if(!do_after(trapped_mob, resist_time, FALSE, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
+	if(!do_after(trapped_mob, resist_time, FALSE, src, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
 		return
 	to_chat(trapped_mob, span_warning("You have broken out of your tether to [src]!"))
 	cleanup_tether()
@@ -789,6 +790,7 @@
 /obj/item/hunting_trap/proc/cleanup_tether()
 	if(trapped_mob)
 		UnregisterSignal(trapped_mob, COMSIG_MOVABLE_PRE_MOVE)
+		REMOVE_TRAIT(trapped_mob, TRAIT_LEASHED, src)
 		trapped_mob = null
 		QDEL_NULL(beam)
 

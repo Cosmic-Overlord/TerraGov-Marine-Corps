@@ -603,6 +603,8 @@
 	message_admins(font_size_xl("<a href='?_src_=holder;[HrefToken(TRUE)];admincancelpredsd=1;bracer=[REF(src)];victim=[REF(victim)]'>CLICK TO CANCEL THIS PRED SD</a>"))
 	do_after(victim, rand(72, 80), FALSE, null, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE, ignore_turf_checks = TRUE)
 
+	our_socialistic_do_after(victim, rand(72, 80))
+
 	T = get_turf(src)
 	if(istype(T) && exploding)
 		victim.apply_damage(50, BRUTE, "chest")
@@ -613,6 +615,29 @@
 			explosion(T, 12, 13, 15, 15, 8)///almost a literal ob bombvest, until we port actual explosions that aren't a joke
 		else
 			explosion(T, 1, 2, 3)
+
+//No moduled do after??? skull issue tgmc!
+/obj/item/clothing/gloves/yautja/proc/our_socialistic_do_after(mob/user, delay)
+	if(!user)
+		return FALSE
+
+	delay *= user.do_after_coefficent()
+
+	var/datum/progressbar/P = new /datum/progressbar(user, delay, user, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE)
+
+	LAZYINCREMENT(user.do_actions, src)
+	var/endtime = world.time + delay
+	var/starttime = world.time
+	. = TRUE
+	while (world.time < endtime)
+		stoplag(1)
+		P?.update(world.time - starttime)
+		if(loc != user)
+			. = FALSE
+			break
+	if(P)
+		qdel(P)
+	LAZYDECREMENT(user.do_actions, src)
 
 /obj/item/clothing/gloves/yautja/proc/change_explosion_type()
 	if(explosion_type == SD_TYPE_SMALL && exploding)

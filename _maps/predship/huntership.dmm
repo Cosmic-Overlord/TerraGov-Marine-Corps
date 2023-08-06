@@ -764,7 +764,9 @@
 	color = "#6b675e";
 	resistance_flags = 1
 	},
-/obj/machinery/processor,
+/obj/machinery/processor/yautja{
+	pixel_y = 4
+	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -817,7 +819,8 @@
 "bU" = (
 /obj/structure/closet/secure_closet/freezer/kitchen{
 	req_access = null;
-	locked = 0
+	locked = 0;
+	icon = 'icons/obj/machines/yautja_machines.dmi'
 	},
 /turf/open/floor{
 	dir = 4;
@@ -1027,7 +1030,8 @@
 /area/yautja)
 "cu" = (
 /obj/structure/closet/secure_closet/freezer/meat{
-	locked = 0
+	locked = 0;
+	icon = 'icons/obj/machines/yautja_machines.dmi'
 	},
 /obj/item/reagent_containers/food/snacks/rawmeatball,
 /obj/item/reagent_containers/food/snacks/rawmeatball,
@@ -1173,7 +1177,8 @@
 	resistance_flags = 1
 	},
 /obj/machinery/reagentgrinder{
-	pixel_y = 6
+	pixel_y = 6;
+	icon = 'icons/obj/machines/yautja_machines.dmi'
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1389,9 +1394,7 @@
 	color = "#6b675e";
 	resistance_flags = 1
 	},
-/obj/machinery/microwave{
-	pixel_y = 4
-	},
+/obj/machinery/microwave/yautja,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -1454,7 +1457,8 @@
 /obj/item/storage/fancy/egg_box,
 /obj/item/storage/fancy/egg_box,
 /obj/structure/closet/secure_closet/freezer/fridge{
-	locked = 0
+	locked = 0;
+	icon = 'icons/obj/machines/yautja_machines.dmi'
 	},
 /turf/open/floor{
 	dir = 1;
@@ -2094,11 +2098,6 @@
 /turf/open/beach/sand,
 /area/yautja)
 "ov" = (
-/obj/item/storage/belt/utility/full/pred,
-/obj/item/storage/belt/utility/full/pred,
-/obj/item/storage/belt/utility/full/pred,
-/obj/item/storage/belt/utility/full/pred,
-/obj/item/storage/belt/utility/full/pred,
 /obj/structure/rack{
 	color = "#6b675e";
 	layer = 2.79;
@@ -2107,6 +2106,11 @@
 /obj/item/stack/yautja_rope{
 	pixel_y = 10
 	},
+/obj/item/storage/belt/utility/pred/full,
+/obj/item/storage/belt/utility/pred/full,
+/obj/item/storage/belt/utility/pred/full,
+/obj/item/storage/belt/utility/pred/full,
+/obj/item/storage/belt/utility/pred/full,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2399,7 +2403,8 @@
 /area/yautja)
 "vI" = (
 /obj/structure/closet/secure_closet/freezer/meat{
-	locked = 0
+	locked = 0;
+	icon = 'icons/obj/machines/yautja_machines.dmi'
 	},
 /turf/open/floor{
 	dir = 4;
@@ -2670,7 +2675,8 @@
 /area/yautja)
 "DF" = (
 /obj/structure/closet/secure_closet/freezer/fridge{
-	locked = 0
+	locked = 0;
+	icon = 'icons/obj/machines/yautja_machines.dmi'
 	},
 /turf/open/floor{
 	dir = 9;
@@ -2971,7 +2977,7 @@
 	},
 /area/yautja)
 "Jy" = (
-/obj/machinery/grill,
+/obj/machinery/grill/yautja,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -3296,7 +3302,9 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "Qi" = (
-/obj/machinery/gibber,
+/obj/machinery/gibber{
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	},
 /turf/open/floor{
 	dir = 6;
 	icon_state = "darkred2"
@@ -3349,7 +3357,8 @@
 /area/yautja)
 "RE" = (
 /obj/structure/closet/secure_closet/freezer/fridge{
-	locked = 0
+	locked = 0;
+	icon = 'icons/obj/machines/yautja_machines.dmi'
 	},
 /turf/open/floor{
 	dir = 6;

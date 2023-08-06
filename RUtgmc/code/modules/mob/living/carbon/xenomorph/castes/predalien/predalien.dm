@@ -69,7 +69,7 @@
 /mob/living/carbon/xenomorph/predalien/Stat()
 	. = ..()
 	if(statpanel("Game"))
-		stat("Life Kills Bonuse:", "[min(xeno.life_kills_total, xeno.max_bonuse_life_kills)] / [max_bonuse_life_kills]")
+		stat("Life Kills Bonuse:", "[min(life_kills_total, max_bonuse_life_kills)] / [max_bonuse_life_kills]")
 
 /mob/living/carbon/xenomorph/predalien/proc/announce_spawn()
 	if(!loc)

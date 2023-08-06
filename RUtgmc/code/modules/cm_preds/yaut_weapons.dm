@@ -923,7 +923,7 @@
 	w_class = WEIGHT_CLASS_GIGANTIC
 	rounds = 100
 	max_rounds = 100
-	charge_cost = 10
+	charge_cost = 5
 	var/last_regen = 0
 	flags_item = ITEM_PREDATOR|TWOHANDED
 	flags_gun_features = GUN_AMMO_COUNTER|GUN_NO_PITCH_SHIFT_NEAR_EMPTY|GUN_ENERGY|GUN_AMMO_COUNT_BY_PERCENTAGE|GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY

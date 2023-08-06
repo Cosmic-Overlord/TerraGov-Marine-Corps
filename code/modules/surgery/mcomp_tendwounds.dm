@@ -35,6 +35,7 @@
 
 /datum/surgery_step/mcomp_wounds/mstabilize_wounds/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	target.heal_overall_damage(40,40)
+	playsound(target, 'sound/misc/cautery.ogg', 25)
 
 	if(isyautja(target))
 		target.emote("click2")
@@ -58,7 +59,7 @@
 	allowed_tools = list(
 		/obj/item/tool/surgery/healing_gun = 100,
 	)
-	min_duration = 5 SECONDS
+	min_duration = 12 SECONDS
 	max_duration = 15 SECONDS
 
 	blood_level = 1
@@ -78,6 +79,7 @@
 
 /datum/surgery_step/mcomp_wounds/mtend_wounds/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	playsound(target, 'sound/misc/heal_gun.ogg', 25)
+	flick("healing_gun_on", tool)
 
 	if(user == target)
 		user.visible_message(span_notice("[user] begins to treat the stabilized wounds on their body with [tool]."),
@@ -125,12 +127,15 @@
 		/obj/item/tool/surgery/wound_clamp = 100,
 		/obj/item/tool/surgery/cautery = 60,
 	)
-	min_duration = 2 SECONDS
+	min_duration = 4 SECONDS
 	max_duration = 10 SECONDS
 
 	depth_op = 0.75
 
 /datum/surgery_step/mcomp_wounds/mclamp_wound/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+	playsound(target, 'sound/misc/cautery2.ogg', 25)
+	flick("wound_clamp_on", tool)
+
 	if(user == target)
 		user.visible_message(span_notice("[user] begins to close the treated wounds on their body with [tool]."),
 			span_notice("You begin to close your treated wounds with [tool]."))
@@ -142,6 +147,7 @@
 
 /datum/surgery_step/mcomp_wounds/mclamp_wound/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	target.heal_overall_damage(65,65) //makes sure that all damage is healed
+	playsound(target, 'sound/misc/cautery.ogg', 25)
 
 	if(user == target)
 		user.visible_message(span_notice("[user] finshes closing the treated wounds on their body with [tool]."),

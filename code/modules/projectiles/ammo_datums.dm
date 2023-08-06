@@ -3240,8 +3240,8 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 
 	hud_state = "plasma_rifle"
 
-	damage = 55
-	penetration = 50
+	damage = 70
+	penetration = 55
 
 /*
 //================================================

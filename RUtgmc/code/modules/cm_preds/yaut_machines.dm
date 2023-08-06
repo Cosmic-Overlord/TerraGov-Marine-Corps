@@ -72,3 +72,7 @@
 
 /obj/machinery/griddle/yautja
 	icon = 'icons/obj/machines/yautja_machines.dmi'
+
+/obj/machinery/chem_master/yautja
+	name = "chemical distributor"
+	icon = 'icons/obj/machines/yautja_machines.dmi'

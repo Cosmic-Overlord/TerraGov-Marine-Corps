@@ -2623,7 +2623,7 @@
 	},
 /area/yautja)
 "BY" = (
-/obj/machinery/griddle,
+/obj/machinery/griddle/yautja,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -3093,7 +3093,7 @@
 	},
 /area/yautja)
 "Lo" = (
-/obj/machinery/vending/dinnerware,
+/obj/machinery/vending/dinnerware/yautja,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

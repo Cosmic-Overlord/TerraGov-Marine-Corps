@@ -395,7 +395,7 @@
 		H.update_inv_l_hand()
 		H.update_inv_r_hand()
 
-	add_fingerprint(user)
+	add_fingerprint(user, "attack_self")
 
 	return
 

@@ -188,11 +188,9 @@
 
 	SEND_SIGNAL(X, COMSIG_XENOMORPH_ATTACK_HUMAN, src)
 
-	if(wear_mask && get_xeno_slash_zone(X, set_location, random_location, no_head) == get_limb("head"))
+	if(wear_mask && X.zone_selected == "head")
 		if(istype(wear_mask, /obj/item/clothing/mask/gas/yautja))
 			var/knock_chance = 1
-			if(X.frenzy_aura > 0)
-				knock_chance += 2 * X.frenzy_aura
 			knock_chance += min(round(X.xeno_caste.melee_damage * X.xeno_melee_damage_modifier * 0.25), 10) //Maximum of 15% chance.
 			if(prob(knock_chance))
 				playsound(loc, "alien_claw_metal", 25, 1)

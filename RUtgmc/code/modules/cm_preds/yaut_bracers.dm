@@ -198,7 +198,7 @@
 	if(.)
 		return
 
-	if(get_dist(combistick, src) <= 7)
+	if(get_dist(combistick, src) <= 7 && istype(combistick.loc, /turf/open))
 		if(combistick in caller.contents) //Can't yank if they are wearing it
 			return FALSE
 		if(caller.put_in_active_hand(combistick))//Try putting it in our active hand, or, if it's full...

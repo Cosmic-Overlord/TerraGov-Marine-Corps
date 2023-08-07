@@ -661,12 +661,15 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "yauttrap0"
 	desc = "A bizarre Yautja device used for trapping and killing prey."
+
+	resistance_flags = BANISH_IMMUNE
+	layer = LOWER_ITEM_LAYER
+
 	var/armed = 0
 	var/resist_time = 15 SECONDS
 	var/obj/effect/ebeam/beam
 	var/tether_range = 5
 	var/mob/trapped_mob
-	layer = LOWER_ITEM_LAYER
 
 /obj/item/hunting_trap/Initialize()
 	. = ..()

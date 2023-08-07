@@ -473,6 +473,14 @@
 	if(!do_after(owner, 0.5 SECONDS, FALSE, A, BUSY_ICON_DANGER, extra_checks = CALLBACK(owner, TYPE_PROC_REF(/mob, break_do_after_checks), list("health" = X.health))))
 		return FALSE
 	var/mob/living/carbon/human/victim = A
+	if(isyautja(victim))
+		victim.emote("laugh")
+		X.Paralyze(75)
+		playsound(X,'sound/effects/hit_kick.ogg', 35, FALSE)
+		victim.balloon_alert(owner, "Snatch failed, we got caught!")
+		to_chat(X, span_xenodanger("[victim] counterattacks during our snatch attemp!"))
+		to_chat(victim, span_danger("[X] tried to steal our equipment, but failed!"))
+		return FALSE
 	stolen_item = victim.get_active_held_item()
 	if(!stolen_item)
 		stolen_item = victim.get_inactive_held_item()

@@ -64,6 +64,7 @@
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6
 	force = 25
+	penetration = 10
 	pry_capable = IS_PRY_CAPABLE_FORCE
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 
@@ -144,6 +145,7 @@
 	icon_state = "scim"
 	item_state = "scim"
 	attack_speed = 5
+	penetration = 15
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = 40
 
@@ -173,6 +175,7 @@
 	resistance_flags = UNACIDABLE
 	force = 37
 	throwforce = 25
+	penetration = 25
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
 	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
@@ -195,6 +198,7 @@
 	flags_equip_slot = ITEM_SLOT_BACK
 	force = 40
 	throwforce = 25
+	penetration = 20
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = TRUE
 	w_class = WEIGHT_CLASS_HUGE
@@ -217,8 +221,9 @@
 	flags_atom = CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = ITEM_SLOT_BELT
-	force = 35
+	force = 30
 	throwforce = 25
+	penetration = 20
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
 	w_class = WEIGHT_CLASS_HUGE
@@ -257,8 +262,9 @@
 	throw_speed = 10
 	throw_range = 4
 	resistance_flags = UNACIDABLE
-	force = 30
-	throwforce = 70
+	force = 25
+	throwforce = 65
+	penetration = 25
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -447,9 +453,10 @@
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = ITEM_SLOT_BACK
 	sharp = IS_SHARP_ITEM_ACCURATE
-	force = 25
+	force = 20
+	penetration = 10
 	w_class = WEIGHT_CLASS_TINY
-	throwforce = 20
+	throwforce = 15
 	throw_speed = 10
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'
@@ -674,7 +681,8 @@
 	flags_item = TWOHANDED
 	force = 20
 	force_wielded = 45
-	throwforce = 35
+	penetration = 25
+	throwforce = 40
 	sharp = IS_SHARP_ITEM_SIMPLE
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
 
@@ -684,7 +692,8 @@
 	icon_state = "glaive"
 	item_state = "glaive"
 	force = 20
-	force_wielded = 50
+	force_wielded = 45
+	penetration = 30
 	throwforce = 20
 	sharp = IS_SHARP_ITEM_BIG
 	flags_atom = CONDUCT
@@ -708,6 +717,7 @@
 	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon. This one is ancient and has suffered serious acid damage, making it near-useless."
 	force = 10
 	force_wielded = 25
+	penetration = 5
 	throwforce = 10
 	icon_state = "glaive_alt"
 	item_state = "glaive_alt"

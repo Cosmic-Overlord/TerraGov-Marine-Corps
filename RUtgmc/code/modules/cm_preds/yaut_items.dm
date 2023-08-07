@@ -293,6 +293,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_state = "headset"
 	frequency = YAUT_FREQ
+	keyslot = /obj/item/encryptionkey/yautja
 	freqlock = TRUE
 	resistance_flags = UNACIDABLE
 
@@ -316,7 +317,7 @@
 	name = "\improper Yautja encryption key"
 	desc = "A complicated encryption device."
 	icon_state = "cypherkey"
-	channels = list(RADIO_CHANNEL_YAUTJA = 1)
+	channels = list(RADIO_CHANNEL_YAUTJA = TRUE)
 
 /obj/item/storage/belt/yautja
 	name = "hunting pouch"

@@ -297,6 +297,9 @@
 	freqlock = TRUE
 	resistance_flags = UNACIDABLE
 
+/obj/item/radio/headset/yautja/attack_self(mob/living/user)
+	return //no cargo shitcode
+
 /obj/item/radio/headset/yautja/talk_into(atom/movable/talking_movable, message, channel, list/spans, datum/language/language, list/message_mods)
 	if(!isyautja(talking_movable)) //Nope.
 		to_chat(talking_movable, span_warning("You try to talk into the headset, but just get a horrible shrieking in your ears!"))

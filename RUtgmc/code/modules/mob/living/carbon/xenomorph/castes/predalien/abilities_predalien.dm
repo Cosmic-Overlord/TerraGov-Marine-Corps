@@ -16,7 +16,7 @@
 	. = ..()
 	var/mob/living/carbon/xenomorph/predalien/xeno = owner
 	if(ishuman(target) && isdroid(target))
-		M.apply_damage(base_damage + damage_scale * min(xeno.life_kills_total, xeno.max_bonuse_life_kills), BRUTE, "chest", MELEE, FALSE, FALSE, TRUE, 20)
+		M.apply_damage(base_damage + damage_scale * min(xeno.life_kills_total, xeno.max_bonus_life_kills), BRUTE, "chest", MELEE, FALSE, FALSE, TRUE, 20)
 
 // ***************************************
 // *********** Roar
@@ -59,7 +59,7 @@
 			var/mob/living/carbon/xenomorph/xeno_target = carbon
 			if(xeno_target.stat == DEAD)
 				continue
-			new /datum/status_effect/xeno_buff(list(xeno_target, xeno, 0.25 SECONDS * min(xeno.life_kills_total, xeno.max_bonuse_life_kills) + 3 SECONDS, bonus_damage_scale * min(xeno.life_kills_total, xeno.max_bonuse_life_kills), (bonus_speed_scale * min(xeno.life_kills_total, xeno.max_bonuse_life_kills))))
+			new /datum/status_effect/xeno_buff(list(xeno_target, xeno, 0.25 SECONDS * min(xeno.life_kills_total, xeno.max_bonus_life_kills) + 3 SECONDS, bonus_damage_scale * min(xeno.life_kills_total, xeno.max_bonus_life_kills), (bonus_speed_scale * min(xeno.life_kills_total, xeno.max_bonus_life_kills))))
 
 	for(var/mob/M in view(xeno))
 		if(M && M.client)
@@ -118,7 +118,7 @@
 	carbon.Immobilize(freeze_duration)
 	carbon.apply_effect(0.5, WEAKEN)
 
-	for(var/mob/living/carbon/human/human in oview(round(min(xeno.life_kills_total, xeno.max_bonuse_life_kills) * 0.5 + 2), xeno))
+	for(var/mob/living/carbon/human/human in oview(round(min(xeno.life_kills_total, xeno.max_bonus_life_kills) * 0.5 + 2), xeno))
 		if(human.stat != DEAD)
 			human.Immobilize(freeze_duration)
 
@@ -182,7 +182,7 @@
 		carbon.spawn_gibs()
 		playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 75, 1)
 		carbon.apply_effect(0.5, WEAKEN)
-		carbon.apply_damage(base_damage + damage_scale * min(xeno.life_kills_total, xeno.max_bonuse_life_kills), BRUTE, "chest", MELEE, FALSE, FALSE, TRUE, 20)
+		carbon.apply_damage(base_damage + damage_scale * min(xeno.life_kills_total, xeno.max_bonus_life_kills), BRUTE, "chest", MELEE, FALSE, FALSE, TRUE, 20)
 
 		xeno.do_attack_animation(carbon, ATTACK_EFFECT_CLAW)
 		spawn()

@@ -512,7 +512,9 @@
 	},
 /area/yautja)
 "aY" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/portable_atmospherics/canister/oxygen{
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1335,7 +1337,9 @@
 	color = "#6b675e";
 	resistance_flags = 1
 	},
-/obj/item/tool/weldingtool/hugetank,
+/obj/item/tool/weldingtool/yautja{
+	pixel_y = 5
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1347,9 +1351,9 @@
 	resistance_flags = 1
 	},
 /obj/item/stack/cable_coil,
-/obj/item/tool/screwdriver{
-	pixel_x = -6;
-	pixel_y = 6
+/obj/item/tool/screwdriver/yautja{
+	pixel_y = 10;
+	pixel_x = -9
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2164,7 +2168,7 @@
 	layer = 2.79;
 	resistance_flags = 1
 	},
-/obj/item/tool/crowbar,
+/obj/item/tool/crowbar/yautja,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2623,7 +2627,7 @@
 	},
 /area/yautja)
 "BY" = (
-/obj/machinery/griddle,
+/obj/machinery/griddle/yautja,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -3093,7 +3097,7 @@
 	},
 /area/yautja)
 "Lo" = (
-/obj/machinery/vending/dinnerware,
+/obj/machinery/vending/dinnerware/yautja,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -3319,7 +3323,7 @@
 	},
 /area/yautja)
 "Qs" = (
-/obj/machinery/chem_master,
+/obj/machinery/chem_master/yautja,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

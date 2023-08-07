@@ -55,7 +55,7 @@
 	tier = XENO_TIER_FOUR
 	upgrade = XENO_UPGRADE_ZERO
 
-	var/max_bonuse_life_kills = 10
+	var/max_bonus_life_kills = 10
 	var/butcher_time = 6 SECONDS
 
 /mob/living/carbon/xenomorph/predalien/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
@@ -69,7 +69,7 @@
 /mob/living/carbon/xenomorph/predalien/Stat()
 	. = ..()
 	if(statpanel("Game"))
-		stat("Life Kills Bonuse:", "[min(life_kills_total, max_bonuse_life_kills)] / [max_bonuse_life_kills]")
+		stat("Life Kills Bonus:", "[min(life_kills_total, max_bonus_life_kills)] / [max_bonus_life_kills]")
 
 /mob/living/carbon/xenomorph/predalien/proc/announce_spawn()
 	if(!loc)

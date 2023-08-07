@@ -5,7 +5,7 @@
 	name = "Yautja"
 	name_plural = "Yautja"
 	brute_mod = 0.28 //Beefy!
-	burn_mod = 0.65
+	burn_mod = 0.45
 	reagent_tag = IS_YAUTJA
 	species_flags = HAS_SKIN_COLOR|NO_POISON|NO_PAIN|USES_ALIEN_WEAPONS|PARALYSE_RESISTANT
 	inherent_traits = list(

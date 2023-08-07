@@ -65,3 +65,14 @@
 	name = "alien grill"
 	desc = "For grilling the most delicious prey."
 	icon = 'icons/obj/machines/yautja_machines.dmi'
+
+/obj/machinery/vending/dinnerware/yautja
+	name = "dinnerplate dispenser"
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+
+/obj/machinery/griddle/yautja
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+
+/obj/machinery/chem_master/yautja
+	name = "chemical distributor"
+	icon = 'icons/obj/machines/yautja_machines.dmi'

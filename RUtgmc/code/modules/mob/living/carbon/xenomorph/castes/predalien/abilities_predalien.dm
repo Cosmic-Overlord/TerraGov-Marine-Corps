@@ -158,7 +158,7 @@
 		to_chat(owner, span_xenowarning("You must target a hostile!"))
 		return FALSE
 
-	if(get_dist(target, owner) > 2)
+	if(get_dist(target, owner) > 1)
 		to_chat(owner, span_xenowarning("[target] is too far away!"))
 		return FALSE
 

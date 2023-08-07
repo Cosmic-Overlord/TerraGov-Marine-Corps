@@ -35,6 +35,11 @@ GLOBAL_LIST_INIT(wraith_banish_very_short_duration_list, typecacheof(list(
 			to_chat(owner, span_xenowarning("We can't blink into this space without vision!"))
 		return FALSE
 
+	if(HAS_TRAIT(owner, TRAIT_LEASHED))
+		if(!silent)
+			to_chat(owner, span_xenowarning("We can't blink when trapped!"))
+		return FALSE
+
 	if(ignore_blocker) //If we don't care about objects occupying the target square, return TRUE; used for checking pathing through transparents
 		return TRUE
 
@@ -197,6 +202,11 @@ GLOBAL_LIST_INIT(wraith_banish_very_short_duration_list, typecacheof(list(
 	if(!ismovableatom(A) || iseffect(A) || istype(A, /obj/alien) || CHECK_BITFIELD(A.resistance_flags, INDESTRUCTIBLE) || CHECK_BITFIELD(A.resistance_flags, BANISH_IMMUNE)) //Cannot banish non-movables/things that are supposed to be invul; also we ignore effects
 		if(!silent)
 			to_chat(owner, span_xenowarning("We cannot banish this!"))
+		return FALSE
+
+	if(HAS_TRAIT(A, TRAIT_LEASHED))
+		if(!silent)
+			to_chat(owner, span_xenowarning("We cannot banish trapped thing!"))
 		return FALSE
 
 	if(HAS_TRAIT(A, TRAIT_TIME_SHIFTED))

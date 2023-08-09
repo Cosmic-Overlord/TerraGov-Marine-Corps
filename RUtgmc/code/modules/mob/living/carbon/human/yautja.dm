@@ -18,6 +18,7 @@
 	paincries = list(MALE = "pred_pain", FEMALE = "pred_pain")
 	goredcries = list(MALE = "pred_pain", FEMALE = "pred_pain")
 	burstscreams = list(MALE = "pred_preburst", FEMALE = "pred_preburst")
+	warcries = list(MALE = "pred_warcry", FEMALE = "pred_warcry")
 
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong

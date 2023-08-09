@@ -191,7 +191,10 @@
 			inertia_dir = get_dir(target, src)
 			step(src, inertia_dir)
 
-		playsound(src, 'sound/effects/throw.ogg', 30, 1)
+		if(istype(I, /obj/item/explosive/grenade/spawnergrenade/smartdisc))
+			playsound(I, 'sound/effects/smartdisk_throw.ogg', 25)
+		else
+			playsound(src, 'sound/effects/throw.ogg', 30, 1)
 		thrown_thing.throw_at(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, spin_throw)
 
 ///Called by the carbon throw_item() proc. Returns null if the item negates the throw, or a reference to the thing to suffer the throw else.

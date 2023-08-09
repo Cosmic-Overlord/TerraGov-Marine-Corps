@@ -275,6 +275,9 @@
 		vehicle.last_move_time += WEED_SLOWDOWN
 		return
 
+	if(HAS_TRAIT(crosser, TRAIT_SUPER_STRONG))
+		return
+
 	if(!ishuman(crosser))
 		return
 

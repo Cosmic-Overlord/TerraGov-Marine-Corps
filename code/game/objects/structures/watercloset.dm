@@ -88,6 +88,7 @@
 				return
 
 			user.visible_message(span_danger("[user] gives [C] a swirlie!"), span_notice("You give [C] a swirlie!"), "You hear a toilet flushing.")
+			playsound(src, 'sound/effects/toilet_flush_new.ogg', 50)
 			log_combat(user, C, "given a swirlie")
 			if(!C.internal)
 				C.adjustOxyLoss(5)

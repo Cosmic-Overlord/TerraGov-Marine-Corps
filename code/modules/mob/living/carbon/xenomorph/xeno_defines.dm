@@ -427,4 +427,6 @@
 
 	var/interference = 0 // Stagger for predator weapons. Prevents hivemind usage, queen overwatching, etc.
 
+	var/talk_sound = "alien_talk" // sound when talking
+
 	COOLDOWN_DECLARE(xeno_health_alert_cooldown)

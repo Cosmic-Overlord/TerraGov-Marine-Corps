@@ -50,6 +50,7 @@
 	pixel_x = -16
 	old_x = -16
 	bubble_icon = "alienroyal"
+	talk_sound = "predalien_talk"
 	mob_size = MOB_SIZE_BIG
 
 	tier = XENO_TIER_FOUR

@@ -20,6 +20,8 @@
 	force = 15
 	throwforce = 25
 
+	hitsound = 'sound/effects/smartdisk_hit.ogg'
+
 	var/mob/living/simple_animal/hostile/smartdisc/spawned_item
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/afterattack(atom/A, mob/user, proximity, params)
@@ -162,7 +164,7 @@
 	melee_damage = 15
 	harm_intent_damage = 10
 	attacktext = "slices"
-	attack_sound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/effects/smartdisk_hit.ogg'
 
 
 	faction = FACTION_YAUTJA

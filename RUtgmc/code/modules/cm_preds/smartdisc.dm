@@ -49,19 +49,16 @@
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/throw_at(atom/target, range, speed, thrower, spin, flying)
 	..()
 	var/mob/user = usr
-	if(!active && isyautja(user) && (icon_state == initial(icon_state)))
+	if(!active && isyautja(user))
 		boomerang(user)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/boomerang(mob/user)
 	var/mob/living/L = find_target(user)
-	icon_state = initial(icon_state) + "_active"
+	active = TRUE
 	if(L)
 		throw_at(L.loc, 4, 6.67, usr)
 	throw_at(usr, 12, 4, usr)
-	addtimer(CALLBACK(src, PROC_REF(clear_boomerang)), 3 SECONDS)
-
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/clear_boomerang()
-	icon_state = initial(icon_state)
+	active = FALSE
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/find_target(mob/user)
 	var/atom/T = null

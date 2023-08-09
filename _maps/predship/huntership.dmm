@@ -689,7 +689,9 @@
 	},
 /area/yautja)
 "bA" = (
-/obj/machinery/chem_dispenser,
+/obj/machinery/chem_dispenser{
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1016,7 +1018,8 @@
 	},
 /obj/machinery/chem_dispenser/soda{
 	dir = 8;
-	pixel_y = 7
+	pixel_y = 7;
+	icon = 'icons/obj/machines/yautja_machines.dmi'
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -3078,7 +3081,8 @@
 	resistance_flags = 1
 	},
 /obj/machinery/chem_dispenser/beer{
-	pixel_y = 9
+	pixel_y = 9;
+	icon = 'icons/obj/machines/yautja_machines.dmi'
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";

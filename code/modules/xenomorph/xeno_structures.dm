@@ -753,16 +753,16 @@ TUNNEL
 	if((isxeno(user) || isobserver(user)) && hivenumber)
 		. += "Used to secure formidable hosts."
 
-/obj/structure/xeno/thick_nest/Initialize(mapload, datum/hive_status/hive_ref)
+/obj/structure/xeno/thick_nest/Initialize(mapload, new_hivenumber)
 	. = ..()
-	var/hive = 0
-	if(hive_ref)
-		hive = hive_ref.hivenumber
-		hive_ref.thick_nests += src
-	else if(hivenumber)
-		GLOB.hive_datums[hivenumber].thick_nests += src
+	if(new_hivenumber)
+		hivenumber = new_hivenumber
 
-	pred_nest = new /obj/structure/bed/nest/structure(loc, hive, src) // Nest cannot be destroyed unless the structure itself is destroyed
+	var/datum/hive_status/hive_ref = GLOB.hive_datums[hivenumber]
+	if(hive_ref)
+		hive_ref.thick_nests += src
+
+	pred_nest = new /obj/structure/bed/nest/structure(loc, hive_ref, src) // Nest cannot be destroyed unless the structure itself is destroyed
 
 
 /obj/structure/xeno/thick_nest/Destroy()

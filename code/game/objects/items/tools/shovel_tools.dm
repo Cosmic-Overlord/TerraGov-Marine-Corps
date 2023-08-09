@@ -183,10 +183,22 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	name = "sharpened " + name
 	shovelspeed = 10
-	force = 60
+	force = 75
 	update_icon()
 
 /obj/item/tool/shovel/etool/examine(mob/user)
 	. = ..()
 	if(sharp)
 		. += span_notice("This one has been sharpened and can no longer be folded.")
+
+/obj/item/tool/shovel/etool/equipped(mob/user, slot)
+	. = ..()
+	toggle_item_bump_attack(user, TRUE)
+
+/obj/item/tool/shovel/etool/dropped(mob/user)
+	. = ..()
+	toggle_item_bump_attack(user, FALSE)
+
+/obj/item/tool/shovel/etool/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/strappable)

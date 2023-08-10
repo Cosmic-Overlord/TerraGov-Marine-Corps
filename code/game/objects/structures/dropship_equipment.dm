@@ -320,7 +320,7 @@
 	desc = "A system that deploys flares stronger than the inputted flares. Fits on the weapon attach points of dropships. You need a powerloader to lift it."
 	icon_state = "flare_system"
 	dropship_equipment_flags = IS_INTERACTABLE
-	point_cost = 150
+	point_cost = 50
 	///cooldown for deployment
 	COOLDOWN_DECLARE(deploy_cooldown)
 	///amount of loaded flares
@@ -378,7 +378,7 @@
 	desc = "A box that deploys a sentry turret. Fits on the weapon attach points of dropships. You need a powerloader to lift it."
 	icon_state = "sentry_system"
 	dropship_equipment_flags = IS_INTERACTABLE
-	point_cost = 500
+	point_cost = 300
 	var/deployment_cooldown
 	var/obj/machinery/deployable/mounted/sentry/deployed_turret
 	var/sentry_type = /obj/item/weapon/gun/sentry/big_sentry/dropship
@@ -607,7 +607,7 @@
 	icon_state = "spotlights"
 	desc = "A set of highpowered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
 	dropship_equipment_flags = IS_INTERACTABLE
-	point_cost = 300
+	point_cost = 50
 	var/spotlights_cooldown
 	var/brightness = 11
 
@@ -740,7 +740,8 @@
 	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its inital production run. Moving this will require some sort of lifter."
 	icon_state = "30mm_cannon"
 	firing_sound = 'sound/weapons/gunship_chaingun.ogg'
-	point_cost = 400
+    firing_delay = 2
+	point_cost = 150
 	dropship_equipment_flags = USES_AMMO|IS_WEAPON|IS_INTERACTABLE
 	ammo_type_used = CAS_30MM
 
@@ -768,7 +769,7 @@
 	desc = "A rocket pod weapon system capable of launching a single laser-guided rocket. Moving this will require some sort of lifter."
 	firing_sound = 'sound/weapons/gunship_rocket.ogg'
 	firing_delay = 5
-	point_cost = 600
+	point_cost = 400
 	ammo_type_used = CAS_MISSILE
 
 /obj/structure/dropship_equipment/weapon/rocket_pod/deplete_ammo()
@@ -792,7 +793,7 @@
 	icon = 'icons/Marine/mainship_props64.dmi'
 	firing_sound = 'sound/weapons/gunship_rocketpod.ogg'
 	firing_delay = 10 //1 seconds
-	point_cost = 600
+	point_cost = 400
 	ammo_type_used = CAS_MINI_ROCKET
 
 /obj/structure/dropship_equipment/weapon/minirocket_pod/update_icon()
@@ -816,7 +817,7 @@
 	icon = 'icons/Marine/mainship_props64.dmi'
 	firing_sound = 'sound/weapons/gunship_laser.ogg'
 	firing_delay = 50 //5 seconds
-	point_cost = 600
+	point_cost = 500
 	dropship_equipment_flags = USES_AMMO|IS_WEAPON|IS_INTERACTABLE
 	ammo_type_used = CAS_LASER_BATTERY
 
@@ -861,7 +862,7 @@
 	equip_category = DROPSHIP_CREW_WEAPON
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "table2-idle"
-	point_cost = 100
+	point_cost = 50
 	var/obj/machinery/optable/deployed_table
 
 /obj/structure/dropship_equipment/operatingtable/Initialize()

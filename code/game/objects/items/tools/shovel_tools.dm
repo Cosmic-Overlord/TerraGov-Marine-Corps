@@ -152,6 +152,10 @@
 	..()
 
 /obj/item/tool/shovel/etool/attack_self(mob/user as mob)
+	if(NODROP)
+		to_chat(user, span_notice("Your grip is too tight to fold [src] right now!"))
+		return
+	folded = !folded
 	if(sharp)
 		to_chat(user, "It has been sharpened and cannot be folded")
 		return
@@ -192,13 +196,20 @@
 		. += span_notice("This one has been sharpened and can no longer be folded.")
 		
 /obj/item/tool/shovel/etool/AltClick(mob/user)
-	if(!can_interact(user) || !ishuman(user) || !(user.l_hand == src || user.r_hand == src))
+	if(!can_interact(user))
+		return ..()
+	if(!ishuman(user))
+		return ..()
+	if(!(user.l_hand == src || user.r_hand == src))
+		return ..()
+	if(folded)
+		to_chat(user, span_notice("You cannot tight your grip around [src] while it is folded!"))
 		return ..()
 	TOGGLE_BITFIELD(flags_item, NODROP)
 	if(CHECK_BITFIELD(flags_item, NODROP))
 		to_chat(user, span_warning("You tighten the grip around [src]!"))
-		return
-	to_chat(user, span_notice("You loosen the grip around [src]!"))
+	else
+		to_chat(user, span_notice("You loosen the grip around [src]!"))
 
 /obj/item/tool/shovel/etool/equipped(mob/user, slot)
 	. = ..()

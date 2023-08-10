@@ -158,7 +158,7 @@
 	mob_size = MOB_SIZE_SMALL
 
 	obj_damage = 50
-	melee_damage = 15
+	melee_damage = 20
 	harm_intent_damage = 10
 	attacktext = "slices"
 	attack_sound = 'sound/effects/smartdisk_hit.ogg'

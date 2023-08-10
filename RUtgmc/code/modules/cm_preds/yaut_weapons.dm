@@ -147,7 +147,7 @@
 	attack_speed = 5
 	penetration = 15
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
-	force = 40
+	force = 32
 
 /*#########################################
 ########### One Handed Weapons ############

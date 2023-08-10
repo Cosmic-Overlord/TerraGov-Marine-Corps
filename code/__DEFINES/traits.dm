@@ -35,11 +35,11 @@
 					_L[trait] -= _T \
 				} \
 			};\
-			if (!length(_L[trait])) { \
+			if (!length_char(_L[trait])) { \
 				_L -= trait; \
 				SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(trait)); \
 			}; \
-			if (!length(_L)) { \
+			if (!length_char(_L)) { \
 				target.status_traits = null \
 			}; \
 		} \
@@ -51,12 +51,12 @@
 		if (_L) { \
 			for (var/_T in _L) { \
 				_L[_T] &= _S;\
-				if (!length(_L[_T])) { \
+				if (!length_char(_L[_T])) { \
 					_L -= _T; \
 					SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(_T)); \
 					}; \
 				};\
-			if (!length(_L)) { \
+			if (!length_char(_L)) { \
 				target.status_traits = null\
 			};\
 		}\
@@ -66,10 +66,10 @@
 #define HAS_TRAIT_FROM_ONLY(target, trait, source) (\
 	target.status_traits ?\
 		(target.status_traits[trait] ?\
-			((source in target.status_traits[trait]) && (length(target.status_traits) == 1))\
+			((source in target.status_traits[trait]) && (length_char(target.status_traits) == 1))\
 			: FALSE)\
 		: FALSE)
-#define HAS_TRAIT_NOT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (length(target.status_traits[trait] - source) > 0) : FALSE) : FALSE)
+#define HAS_TRAIT_NOT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (length_char(target.status_traits[trait] - source) > 0) : FALSE) : FALSE)
 
 // common trait
 #define TRAIT_GENERIC "generic"
@@ -108,7 +108,6 @@
 #define SHATTERING_ROAR_ABILITY_TRAIT "shattering_roar_ability_trait"
 #define ZERO_FORM_BEAM_ABILITY_TRAIT "zero_form_beam_ability_trait"
 #define VALHALLA_TRAIT "valhalla"
-#define WEIGHTBENCH_TRAIT "weightbench"
 #define BOILER_ROOTED_TRAIT "boiler_rooted"
 #define STRAPPABLE_ITEM_TRAIT "strappable_item"
 
@@ -140,7 +139,6 @@
 #define TRAIT_TIME_SHIFTED "time_shifted"
 #define TRAIT_LEASHED "leashed"
 #define TRAIT_CAN_VENTCRAWL "can_ventcrawl"
-#define TRAIT_WORKED_OUT "worked_out" //user has a cqc buff from working out
 ///Makes no footsteps at all
 #define TRAIT_SILENT_FOOTSTEPS "silent_footsteps"
 ///quieter footsteps
@@ -151,6 +149,7 @@
 /// Prevents usage of manipulation appendages (picking, holding or using items, manipulating storage).
 #define TRAIT_HANDS_BLOCKED "handsblocked"
 #define TRAIT_STUNIMMUNE "stun_immunity"
+#define TRAIT_FIRERESISTANT "fire_resistant" // Won't catch on fire
 #define TRAIT_BATONIMMUNE "baton_immunity"
 #define TRAIT_SLEEPIMMUNE "sleep_immunity"
 #define TRAIT_FLASHBANGIMMUNE "flashbang_immunity"
@@ -158,7 +157,6 @@
 #define TRAIT_LEGLESS "legless" //Has lost all the appendages needed to stay standing up.
 #define TRAIT_NOPLASMAREGEN "noplasmaregen"//xeno plasma wont recharge
 #define TRAIT_UNDEFIBBABLE "undefibbable"//human can't be revived
-#define TRAIT_IMMEDIATE_DEFIB "immediate_defib"//immediately revives when defibbed, rather than just healing
 #define TRAIT_HEALING_INFUSION "healing_infusion"//greatly improves natural healing for xenos
 #define TRAIT_PSY_DRAINED "psy_drained"//mob was drained of life force by a xenos
 #define TRAIT_HIVE_TARGET "hive_target"//mob is targeted for draining by the hive
@@ -171,6 +169,7 @@
 #define TRAIT_TURRET_HIDDEN "turret_hidden" //target gets passed over by turrets choosing a victim
 #define TRAIT_MOB_ICON_UPDATE_BLOCKED "icon_blocked" //target should not update its icon_state
 #define TRAIT_VALHALLA_XENO "valhalla_xeno"
+#define TRAIT_BULWARKED_TURF "bulwarked_turf" // turf is affected by bulwark ability
 
 //important_recursive_contents traits
 /*
@@ -206,8 +205,6 @@
 #define TRAIT_TURF_BULLET_MANIPULATION "bullet_manipulation" //This tile is doing something to projectile
 // projectile traits
 #define TRAIT_PROJ_HIT_SOMETHING "hit_something" //If projectile hit something on its path
-//structure traits
-#define BENCH_BEING_USED "bench_being_used"
 
 // UI traits
 /// Inability to access UI hud elements.

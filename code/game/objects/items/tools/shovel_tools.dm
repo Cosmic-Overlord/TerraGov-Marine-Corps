@@ -199,6 +199,6 @@
 	. = ..()
 	toggle_item_bump_attack(user, FALSE)
 
-/obj/item/tool/shovel/etool/Initialize(mapload)
+/obj/item/tool/shovel/etool/Initialize()
 	. = ..()
 	AddElement(/datum/element/strappable)

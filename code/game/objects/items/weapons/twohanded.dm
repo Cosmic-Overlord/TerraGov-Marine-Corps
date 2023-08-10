@@ -275,7 +275,7 @@
 	icon_state = "spear"
 	item_state = "spear"
 	
-/obj/item/weapon/twohanded/spear/tactical/Initialize(mapload)
+/obj/item/weapon/twohanded/spear/tactical/Initialize()
 	. = ..()
 	AddElement(/datum/element/strappable)
 

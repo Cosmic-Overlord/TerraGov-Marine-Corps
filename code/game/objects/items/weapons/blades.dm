@@ -100,7 +100,7 @@
 	attack_speed = 12
 	w_class = WEIGHT_CLASS_BULKY
 	
-/obj/item/weapon/claymore/mercsword/machete/Initialize(mapload)
+/obj/item/weapon/claymore/mercsword/machete/Initialize()
 	. = ..()
 	AddElement(/datum/element/strappable)
 

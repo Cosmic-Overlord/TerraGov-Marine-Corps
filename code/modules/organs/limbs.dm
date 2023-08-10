@@ -107,11 +107,9 @@
 /datum/limb/proc/handle_antibiotics()
 	var/spaceacillin = owner.reagents.get_reagent_amount(/datum/reagent/medicine/spaceacillin)
 	var/polyhexanide = owner.reagents.get_reagent_amount(/datum/reagent/medicine/polyhexanide)
-	var/thwei = owner.reagents.get_reagent_amount(/datum/reagent/thwei)
 
 	var/spaceacillin_curve = list(0,4,3,2)
 	var/polyhexanide_curve = list(0,1,1,10)
-	var/thwei_curve = list(0,10,10,10)
 
 	if (!germ_level || (spaceacillin + polyhexanide) < MIN_ANTIBIOTICS)
 		return
@@ -133,9 +131,6 @@
 
 	if (polyhexanide >= MIN_ANTIBIOTICS)
 		germ_level -= polyhexanide_curve[infection_level]
-
-	if (thwei >= MIN_ANTIBIOTICS)
-		germ_level -= thwei_curve[infection_level]
 
 
 
@@ -423,6 +418,10 @@ Note that amputating the affected organ does in fact remove the infection from t
 /datum/limb/proc/update_germs()
 
 	if(limb_status & (LIMB_ROBOT|LIMB_DESTROYED)) //Robotic limbs shouldn't be infected, nor should nonexistant limbs.
+		germ_level = 0
+		return
+
+	if(isyautja(owner))
 		germ_level = 0
 		return
 

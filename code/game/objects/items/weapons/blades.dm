@@ -101,13 +101,17 @@
 	w_class = WEIGHT_CLASS_BULKY
 	
 /obj/item/weapon/claymore/mercsword/machete/AltClick(mob/user)
-	if(!can_interact(user) || !ishuman(user) || !(user.l_hand == src || user.r_hand == src))
+	if(!can_interact(user))
+		return ..()
+	if(!ishuman(user))
+		return ..()
+	if(!(user.l_hand == src || user.r_hand == src))
 		return ..()
 	TOGGLE_BITFIELD(flags_item, NODROP)
 	if(CHECK_BITFIELD(flags_item, NODROP))
 		to_chat(user, span_warning("You tighten the grip around [src]!"))
-		return
-	to_chat(user, span_notice("You loosen the grip around [src]!"))
+	else
+		to_chat(user, span_notice("You loosen the grip around [src]!"))
 
 /obj/item/weapon/claymore/mercsword/machete/equipped(mob/user, slot)
 	. = ..()

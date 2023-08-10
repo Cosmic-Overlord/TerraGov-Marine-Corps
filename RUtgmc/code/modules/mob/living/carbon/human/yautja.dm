@@ -119,6 +119,21 @@
 	mark_for_hunt.give_action(H)
 	mark_panel.give_action(H)
 
+	for(var/datum/limb/limb in H.limbs)
+		switch(limb.name)
+			if("groin","chest")
+				limb.min_broken_damage = 120
+				limb.max_damage = 350
+			if("head")
+				limb.min_broken_damage = 100
+				limb.max_damage = 350
+			if("l_hand","r_hand","r_foot","l_foot")
+				limb.min_broken_damage = 85
+				limb.max_damage = 180
+			if("r_leg","r_arm","l_leg","l_arm")
+				limb.min_broken_damage = 100
+				limb.max_damage = 225
+
 	set_predator_status(H, "Alive")
 
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
@@ -131,6 +146,24 @@
 	H.blood_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")
 	H.h_style = "Bald"
 	GLOB.yautja_mob_list -= H
+
+	for(var/datum/limb/limb in H.limbs)
+		switch(limb.name)
+			if("groin","chest")
+				limb.min_broken_damage = 60
+				limb.max_damage = 200
+			if("head")
+				limb.min_broken_damage = 40
+				limb.max_damage = 125
+			if("l_hand","r_hand","r_foot","l_foot")
+				limb.min_broken_damage = 37
+				limb.max_damage = 100
+			if("r_arm","l_arm")
+				limb.min_broken_damage = 50
+				limb.max_damage = 150
+			if("r_leg","l_leg")
+				limb.min_broken_damage = 50
+				limb.max_damage = 125
 
 	set_predator_status(H, "Demoted")
 

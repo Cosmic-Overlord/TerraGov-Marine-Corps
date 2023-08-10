@@ -174,7 +174,7 @@
 /obj/item/storage/internal/modular/engineering
 	max_storage_space = 15
 	storage_slots = 5
-	max_w_class = WEIGHT_CLASS_BULKY
+	max_w_class = WEIGHT_CLASS_NORMAL
 	can_hold = list(
 		/obj/item/stack/barbed_wire,
 		/obj/item/stack/sheet,

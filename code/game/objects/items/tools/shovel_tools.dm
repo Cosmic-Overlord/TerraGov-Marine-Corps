@@ -183,10 +183,27 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	name = "sharpened " + name
 	shovelspeed = 10
-	force = 60
+	force = 75
 	update_icon()
 
 /obj/item/tool/shovel/etool/examine(mob/user)
 	. = ..()
 	if(sharp)
 		. += span_notice("This one has been sharpened and can no longer be folded.")
+		
+/obj/item/tool/shovel/etool/AltClick(mob/user)
+	if(!can_interact(user) || !ishuman(user) || !(user.l_hand == src || user.r_hand == src))
+		return ..()
+	TOGGLE_BITFIELD(flags_item, NODROP)
+	if(CHECK_BITFIELD(flags_item, NODROP))
+		to_chat(user, span_warning("You tighten the grip around [src]!"))
+		return
+	to_chat(user, span_notice("You loosen the grip around [src]!"))
+
+/obj/item/tool/shovel/etool/equipped(mob/user, slot)
+	. = ..()
+	toggle_item_bump_attack(user, TRUE)
+
+/obj/item/tool/shovel/etool/dropped(mob/user)
+	. = ..()
+	toggle_item_bump_attack(user, FALSE)

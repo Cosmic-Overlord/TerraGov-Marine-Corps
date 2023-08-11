@@ -200,7 +200,7 @@
 		return ..()
 	if(!ishuman(user))
 		return ..()
-	if(!(user.l_hand == src || user.r_hand == src))
+	if(user.l_hand != src && user.r_hand != src)
 		return ..()
 	if(folded)
 		to_chat(user, span_notice("You cannot tight your grip around [src] while it is folded!"))

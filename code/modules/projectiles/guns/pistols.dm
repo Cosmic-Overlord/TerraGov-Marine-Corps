@@ -741,3 +741,42 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	recoil = -2
 	recoil_unwielded = -2
 	akimbo_additional_delay = 0.8
+
+
+// Tomagun
+/obj/item/weapon/gun/pistol/tomagun
+	name = "\improper TG-7 shotgun pistol"
+	desc = "a very old single-shot pistol with a tomato engraved on the grip is issued to each pilot upon enlistment in a TGMS combat ship to honor combat losses during landings on planets and stations."
+	icon_state = "tomagun"
+	item_state = "tomagun"
+	caliber = CALIBER_12G //codex
+	max_chamber_items = 1 //codex
+	load_method = SINGLE_CASING
+	fire_sound = 'sound/weapons/guns/fire/shotgun_heavy.ogg'
+	dry_fire_sound = 'sound/weapons/guns/fire/shotgun_empty.ogg'
+	reload_sound = 'sound/weapons/guns/interact/shotgun_shell_insert.ogg'
+	hand_reload_sound = 'sound/weapons/guns/interact/shotgun_shell_insert.ogg'
+	opened_sound = 'sound/weapons/guns/interact/shotgun_open.ogg'
+	cocked_sound = null
+	w_class = WEIGHT_CLASS_TINY
+	force = 25
+	default_ammo_type = /datum/ammo/bullet/shotgun/buckshot
+	type_of_casings = "shell"
+	allowed_ammo_types = list()
+	attachable_allowed = list()
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	reciever_flags = AMMO_RECIEVER_TOGGLES_OPEN|AMMO_RECIEVER_TOGGLES_OPEN_EJECTS|AMMO_RECIEVER_HANDFULS
+	gun_skill_category = SKILL_PISTOLS
+	actions_types = list()
+
+	fire_delay = 0.5 SECONDS
+	aim_slowdown = 0
+	wield_delay = 0 SECONDS
+	accuracy_mult = 1
+	accuracy_mult_unwielded = 1
+	scatter = 2
+	scatter_unwielded = 2
+	recoil = -0
+	recoil_unwielded = 5
+	akimbo_additional_delay = 0.5

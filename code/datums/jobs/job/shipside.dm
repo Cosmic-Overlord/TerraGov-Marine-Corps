@@ -357,7 +357,7 @@ Though you are a warrant officer, your authority is limited to the dropship and 
 	gloves = /obj/item/clothing/gloves/yellow
 	glasses = /obj/item/clothing/glasses/sunglasses/aviator
 	head = /obj/item/clothing/head/helmet/marine/pilot
-	r_store = /obj/item/storage/pouch/general/large
+	r_store = /obj/item/weapon/gun/pistol/tomagun
 	l_store = /obj/item/hud_tablet/pilot
 
 /datum/outfit/job/command/pilot/rebel

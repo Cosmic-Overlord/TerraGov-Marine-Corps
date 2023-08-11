@@ -83,6 +83,7 @@
 			/obj/item/weapon/shield/riot/marine/deployable = 6,
 		),
 		"Sidearm" = list(
+			/obj/item/weapon/gun/pistol/tomagun = 10,
 			/obj/item/weapon/gun/pistol/standard_pistol = -1,
 			/obj/item/ammo_magazine/pistol/standard_pistol = -1,
 			/obj/item/weapon/gun/pistol/standard_heavypistol = -1,
@@ -291,6 +292,7 @@
 			/obj/item/weapon/combat_knife/vali_knife = 6,
 		),
 		"Sidearm" = list(
+			/obj/item/weapon/gun/pistol/tomagun = 5,
 			/obj/item/weapon/gun/pistol/standard_pistol = -1,
 			/obj/item/ammo_magazine/pistol/standard_pistol = -1,
 			/obj/item/weapon/gun/pistol/standard_heavypistol = -1,
@@ -476,6 +478,7 @@
 			/obj/item/weapon/shield/riot/marine/deployable = -1,
 		),
 		"Sidearm" = list(
+			/obj/item/weapon/gun/pistol/tomagun = -1,
 			/obj/item/weapon/gun/pistol/standard_pistol = -1,
 			/obj/item/ammo_magazine/pistol/standard_pistol = -1,
 			/obj/item/weapon/gun/pistol/standard_heavypistol = -1,

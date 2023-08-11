@@ -305,7 +305,7 @@
 /obj/item/weapon/yautja/combistick/proc/try_to_throw()
 	SIGNAL_HANDLER
 
-	var/mob/handler = usr
+	var/mob/living/carbon/human/handler = usr
 	if(!istype(handler))
 		return
 

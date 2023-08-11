@@ -105,7 +105,7 @@
 		return ..()
 	if(!ishuman(user))
 		return ..()
-	if(!(user.l_hand == src || user.r_hand == src))
+	if(user.l_hand != src && user.r_hand != src)
 		return ..()
 	TOGGLE_BITFIELD(flags_item, NODROP)
 	if(CHECK_BITFIELD(flags_item, NODROP))

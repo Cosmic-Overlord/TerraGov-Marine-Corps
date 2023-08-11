@@ -351,6 +351,15 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"aD" = (
+/obj/structure/xenoautopsy/tank/hugger{
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "aE" = (
 /obj/structure/table/reinforced/prison{
 	color = "#6b675e";
@@ -886,7 +895,12 @@
 	resistance_flags = 1
 	},
 /obj/item/storage/box/drinkingglasses{
-	pixel_y = 6
+	pixel_y = 6;
+	pixel_x = -9
+	},
+/obj/item/book/manual/barman_recipes{
+	pixel_x = 9;
+	pixel_y = 7
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -998,6 +1012,7 @@
 /area/yautja)
 "cq" = (
 /obj/structure/bed/chair/comfy/black{
+	icon = 'icons/obj/machines/yautja_machines.dmi';
 	dir = 4
 	},
 /turf/open/floor/corsat{
@@ -1032,6 +1047,9 @@
 	locked = 0;
 	icon = 'icons/obj/machines/yautja_machines.dmi'
 	},
+/obj/item/reagent_containers/food/snacks/rawmeatball,
+/obj/item/reagent_containers/food/snacks/rawmeatball,
+/obj/item/reagent_containers/food/snacks/rawmeatball,
 /obj/item/reagent_containers/food/snacks/rawmeatball,
 /obj/item/reagent_containers/food/snacks/rawmeatball,
 /obj/item/reagent_containers/food/snacks/rawmeatball,
@@ -1562,7 +1580,8 @@
 	},
 /area/yautja)
 "eY" = (
-/obj/structure/bed/chair/hunter{
+/obj/structure/bed/chair/comfy/black{
+	icon = 'icons/obj/machines/yautja_machines.dmi';
 	dir = 4
 	},
 /turf/open/shuttle/dropship/fourteen,
@@ -1703,7 +1722,9 @@
 	},
 /area/yautja)
 "gp" = (
-/obj/structure/bed/chair/comfy/black,
+/obj/structure/bed/chair/comfy/black{
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1917,6 +1938,21 @@
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
 	},
+/area/yautja)
+"lr" = (
+/obj/structure/table/mainship{
+	color = "#6b675e";
+	resistance_flags = 1
+	},
+/obj/item/book/manual/chef_recipes{
+	pixel_y = 10;
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -9;
+	pixel_y = 6
+	},
+/turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "lu" = (
 /obj/structure/barricade/metal{
@@ -2276,15 +2312,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
-"te" = (
-/obj/structure/xenoautopsy/tank/hugger{
-	icon = 'icons/obj/machines/yautja_machines.dmi'
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "tf" = (
 /obj/structure/showcase{
 	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
@@ -2446,6 +2473,22 @@
 /obj/item/reagent_containers/food/snacks/flour{
 	pixel_x = -4;
 	pixel_y = 4
+	},
+/obj/item/reagent_containers/food/snacks/flour{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/food/snacks/flour{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/food/snacks/flour{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/food/snacks/flour{
+	pixel_x = 6;
+	pixel_y = 9
 	},
 /obj/item/reagent_containers/food/snacks/flour{
 	pixel_x = 6;
@@ -3228,6 +3271,7 @@
 /area/yautja)
 "OZ" = (
 /obj/structure/bed/chair/comfy/black{
+	icon = 'icons/obj/machines/yautja_machines.dmi';
 	dir = 1
 	},
 /turf/open/floor/corsat{
@@ -3309,7 +3353,19 @@
 /area/yautja)
 "Qj" = (
 /obj/structure/kitchenspike,
-/obj/item/reagent_containers/food/snacks/sliceable/xenomeatbread,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat{
+	pixel_y = 6;
+	pixel_x = 7
+	},
+/obj/item/reagent_containers/food/snacks/carpmeat{
+	pixel_y = 10;
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/food/snacks/carpmeat{
+	pixel_y = -7;
+	pixel_x = 3
+	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2"
@@ -3357,6 +3413,16 @@
 	locked = 0;
 	icon = 'icons/obj/machines/yautja_machines.dmi'
 	},
+/obj/item/reagent_containers/food/snacks/grown/potato,
+/obj/item/reagent_containers/food/snacks/grown/potato,
+/obj/item/reagent_containers/food/snacks/grown/potato,
+/obj/item/reagent_containers/food/snacks/grown/potato,
+/obj/item/reagent_containers/food/snacks/grown/potato,
+/obj/item/reagent_containers/food/snacks/grown/corn,
+/obj/item/reagent_containers/food/snacks/grown/corn,
+/obj/item/reagent_containers/food/snacks/grown/corn,
+/obj/item/reagent_containers/food/snacks/grown/corn,
+/obj/item/reagent_containers/food/snacks/grown/corn,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "darkred2"
@@ -3379,7 +3445,8 @@
 	},
 /area/yautja)
 "SB" = (
-/obj/structure/bed/chair/hunter{
+/obj/structure/bed/chair/comfy/black{
+	icon = 'icons/obj/machines/yautja_machines.dmi';
 	dir = 8
 	},
 /turf/open/shuttle/dropship/fourteen,
@@ -4848,9 +4915,9 @@ JH
 bj
 bY
 cl
-te
-te
-te
+aD
+aD
+aD
 bj
 bj
 bj
@@ -5137,8 +5204,8 @@ bj
 bR
 wT
 bA
-te
-te
+aD
+aD
 bj
 Xv
 JH
@@ -6003,7 +6070,7 @@ bj
 Jy
 JH
 Ia
-cP
+lr
 cP
 cP
 JH

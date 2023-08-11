@@ -162,7 +162,8 @@
 /area/yautja)
 "an" = (
 /obj/machinery/autodoc{
-	dir = 4
+	dir = 4;
+	icon = 'icons/obj/machines/yautja_machines.dmi'
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -345,13 +346,6 @@
 /obj/item/hunting_trap,
 /obj/item/hunting_trap,
 /obj/item/hunting_trap,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"aD" = (
-/obj/structure/xenoautopsy/tank/hugger,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1924,13 +1918,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
-"lr" = (
-/obj/structure/lamarr,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "lu" = (
 /obj/structure/barricade/metal{
 	dir = 8;
@@ -2290,7 +2277,9 @@
 	},
 /area/yautja)
 "te" = (
-/obj/structure/xenoautopsy/tank/alien,
+/obj/structure/xenoautopsy/tank/hugger{
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -3472,7 +3461,9 @@
 	},
 /area/yautja)
 "VN" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer,
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -4857,8 +4848,8 @@ JH
 bj
 bY
 cl
-lr
-aD
+te
+te
 te
 bj
 bj
@@ -5146,7 +5137,7 @@ bj
 bR
 wT
 bA
-aD
+te
 te
 bj
 Xv

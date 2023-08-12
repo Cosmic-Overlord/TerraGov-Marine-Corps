@@ -73,7 +73,7 @@
 	log_admin("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
 
 /datum/job/predator/special_check(mob/new_predator)
-	return GLOB.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR
+	return GLOB.roles_whitelist[new_predator.ckey] & WHITELIST_PREDATOR
 
 /datum/outfit/job/yautja
 	name = "Yautja"

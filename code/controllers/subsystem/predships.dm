@@ -159,6 +159,7 @@ SUBSYSTEM_DEF(predships)
 	user.client.clan_info.sql = "SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey"
 	if(!user.client.clan_info.warn_execute())
 		return
+	user.client.clan_info.next_row_to_take = 1
 	user.client.clan_info.NextRow()
 
 	var/clan_id = clan_id_by_user[user]

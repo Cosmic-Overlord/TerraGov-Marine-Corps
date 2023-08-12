@@ -7,7 +7,7 @@
 	if(!SSdbcore.IsConnected())
 		return // Urgle test without DB... don't make runtime
 
-	if(GLOB.roles_whitelist[ckey] & WHITELIST_PREDATOR && ckey == "nigger")
+	if(GLOB.roles_whitelist[ckey] & WHITELIST_PREDATOR && ckey == "BlackCrystalic") // Test DB fucked for some reason
 		if(clan_info)
 			qdel(clan_info)
 		clan_info = SSdbcore.NewQuery("SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey", list("byond_ckey" = ckey))

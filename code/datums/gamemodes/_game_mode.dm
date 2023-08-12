@@ -978,7 +978,6 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 #define calculate_pred_max (round(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count)
 
 /datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = TRUE)
-
 	if(!pred_candidate.client)
 		return
 

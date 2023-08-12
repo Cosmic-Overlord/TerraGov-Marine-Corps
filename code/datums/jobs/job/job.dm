@@ -114,6 +114,11 @@ GLOBAL_PROTECT(exp_specialmap)
 	return TRUE
 
 
+//Used for a special check of whether to allow a client to latejoin as this job.
+/datum/job/proc/special_check(mob/new_predator)
+	return TRUE
+
+
 /datum/job/proc/equip_dummy(mob/living/carbon/human/dummy/mannequin, datum/outfit/outfit_override = null, client/preference_source)
 	if(!mannequin)
 		CRASH("equip_dummy called without a mannequin")

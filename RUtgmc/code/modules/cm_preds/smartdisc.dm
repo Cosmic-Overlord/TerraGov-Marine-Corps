@@ -57,6 +57,7 @@
 	icon_state = initial(icon_state) + "_active"
 	if(L)
 		throw_at(L.loc, 4, 6.67, usr)
+	sleep(1 SECONDS)
 	throw_at(usr, 12, 4, usr)
 	addtimer(CALLBACK(src, PROC_REF(clear_boomerang)), 3 SECONDS)
 

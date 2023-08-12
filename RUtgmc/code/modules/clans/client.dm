@@ -1,28 +1,13 @@
 /client
 	var/datum/db_query/clan_info
 
-/client/proc/nigga_debug_utility()
-	if(!SSdbcore.IsConnected())
-		return // Urgle test without DB... don't make runtime
-
-	if(GLOB.roles_whitelist[ckey] & WHITELIST_PREDATOR)
-		if(clan_info)
-			qdel(clan_info)
-		clan_info = SSdbcore.NewQuery("SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey", list("byond_ckey" = ckey))
-		clan_info.no_auto_delete = TRUE
-		clan_info.Execute()
-		to_chat(src, span_warning("NIGGA [clan_info.rows.len] IS FUCKED, KILL THAT DB AND KYS GIVE THAT MESSAGE TO BLACKCRYSTALIC"))
-		sleep(30 SECONDS)
-		clan_info.NextRow()
-		to_chat(src, span_warning("pidor debugger end cycle, fuck you nigga"))
-
 /client/proc/load_player_predator_info()
 	set waitfor = FALSE
 
 	if(!SSdbcore.IsConnected())
 		return // Urgle test without DB... don't make runtime
 
-	if(GLOB.roles_whitelist[ckey] & WHITELIST_PREDATOR)
+	if(GLOB.roles_whitelist[ckey] & WHITELIST_PREDATOR && ckey == "nigger")
 		if(clan_info)
 			qdel(clan_info)
 		clan_info = SSdbcore.NewQuery("SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey", list("byond_ckey" = ckey))
@@ -56,6 +41,7 @@
 		if(!clan_info.warn_execute())
 			qdel(clan_info)
 			return
+		to_chat(src, span_warning("NIGGA [clan_info.rows.len] IS FUCKED, KILL THAT DB AND KYS GIVE THAT MESSAGE TO BLACKCRYSTALIC"))
 		clan_info.NextRow()
 
 /client/proc/usr_create_new_clan()

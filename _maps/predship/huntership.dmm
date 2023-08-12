@@ -504,10 +504,10 @@
 /obj/structure/showcase{
 	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
 	dir = 8;
-	icon = 'icons/obj/machines/computer.dmi';
+	icon = 'icons/obj/machines/yautja_machines.dmi';
 	icon_state = "terminal";
 	name = "Radar Console";
-	pixel_x = 7
+	pixel_x = -1
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -799,7 +799,7 @@
 /area/yautja)
 "bO" = (
 /obj/structure/bed/alien{
-	color = "#aba9a9"
+	icon = 'icons/obj/machines/yautja_machines.dmi'
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1300,10 +1300,9 @@
 /obj/structure/showcase{
 	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
 	dir = 4;
-	icon = 'icons/obj/machines/computer.dmi';
+	icon = 'icons/obj/machines/yautja_machines.dmi';
 	icon_state = "terminal";
-	name = "Radar Console";
-	pixel_x = -7
+	name = "Radar Console"
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -2780,7 +2779,7 @@
 	anchored = 1;
 	desc = "A console used by the Hunters for navigation purposes.";
 	dir = 8;
-	icon = 'icons/obj/machines/computer.dmi';
+	icon = 'icons/obj/machines/yautja_machines.dmi';
 	icon_state = "cameras";
 	name = "Hunter Nav Console"
 	},
@@ -2881,10 +2880,11 @@
 /area/yautja)
 "Hv" = (
 /obj/structure/bed{
-	color = "#aba9a9"
+	icon = 'icons/obj/machines/yautja_machines.dmi'
 	},
 /obj/item/bedsheet/captain{
-	color = "#aba9a9"
+	color = "#aba9a9";
+	pixel_x = -1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -3167,7 +3167,7 @@
 /obj/item/moneybag{
 	anchored = 1;
 	desc = "A console designed by the Hunters to assist in flight pathing and navigation.";
-	icon = 'icons/obj/machines/computer.dmi';
+	icon = 'icons/obj/machines/yautja_machines.dmi';
 	icon_state = "overwatch";
 	name = "Hunter Flight Console"
 	},
@@ -3547,7 +3547,7 @@
 	anchored = 1;
 	desc = "A console used by the Hunters for navigation purposes.";
 	dir = 4;
-	icon = 'icons/obj/machines/computer.dmi';
+	icon = 'icons/obj/machines/yautja_machines.dmi';
 	icon_state = "cameras";
 	name = "Hunter Nav Console"
 	},

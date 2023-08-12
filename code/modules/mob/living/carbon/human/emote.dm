@@ -371,7 +371,9 @@
 
 
 /datum/emote/living/carbon/human/laugh/get_sound(mob/living/user)
-	if(user.gender == FEMALE)
+	if(isyautja(user))
+		return pick('sound/voice/pred_laugh1.ogg', 'sound/voice/pred_laugh2.ogg', 'sound/voice/pred_laugh3.ogg', 'sound/voice/pred_laugh4.ogg')
+	if(user.gender == FEMALE && ishuman(user))
 		return 'sound/voice/human_female_laugh_1.ogg'
 	else
 		return pick('sound/voice/human_male_laugh_1.ogg', 'sound/voice/human_male_laugh_2.ogg')

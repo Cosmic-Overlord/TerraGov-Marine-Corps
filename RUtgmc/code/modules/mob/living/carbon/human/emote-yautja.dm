@@ -41,15 +41,6 @@
 	message = "it's a trap!"
 	emote_type = EMOTE_AUDIBLE
 
-/datum/emote/living/carbon/human/species/yautja/laugh
-	key = "laugh"
-	key_third_person = "laugh"
-	message = "laughs"
-	emote_type = EMOTE_AUDIBLE
-
-/datum/emote/living/carbon/human/species/yautja/laugh/get_sound(mob/living/user)
-	return pick('sound/voice/pred_laugh1.ogg', 'sound/voice/pred_laugh2.ogg', 'sound/voice/pred_laugh3.ogg', 'sound/voice/pred_laugh4.ogg')
-
 /datum/emote/living/carbon/human/species/yautja/laugh1
 	key = "laugh1"
 	sound = 'sound/voice/pred_laugh1.ogg'

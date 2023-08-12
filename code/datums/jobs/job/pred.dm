@@ -6,6 +6,7 @@
 	outfit = /datum/outfit/job/yautja/blooded
 	skills_type = /datum/skills/yautja/warrior
 	faction = FACTION_YAUTJA
+	minimap_icon = "predator"
 
 	max_positions = 4
 

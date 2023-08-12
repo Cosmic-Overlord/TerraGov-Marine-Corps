@@ -159,7 +159,7 @@ GLOBAL_LIST_INIT(playable_icons, list(
 	"yankee_medic",
 	"yankee_private",
 	"yankee_smartgunner",
-	"yautja",
+	"predator",
 	"zulu_engi",
 	"zulu_leader",
 	"zulu_medic",

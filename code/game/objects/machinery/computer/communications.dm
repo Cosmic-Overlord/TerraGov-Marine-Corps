@@ -49,7 +49,7 @@
 	if(.)
 		return
 
-	if(is_mainship_level(z))
+	if(!is_mainship_level(z))
 		return
 
 	switch(href_list["operation"])

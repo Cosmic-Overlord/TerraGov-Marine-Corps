@@ -78,6 +78,10 @@
 /obj/alien/egg/ex_act(severity)
 	burst(TRUE)
 
+/obj/alien/egg/forsaken/Initialize(mapload, hivenumber)
+	. = ..()
+	hivenumber = XENO_HIVE_FORSAKEN
+
 /obj/alien/egg/hugger
 	desc = "It looks like a weird egg"
 	name = "hugger egg"

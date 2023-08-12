@@ -122,6 +122,12 @@
 			var/datum/job/job = human.job
 			serialized["nickname"] = human.real_name
 
+			if(mob_poi.hunter_data.thralled)
+				serialized["icon"] = "thrall"
+				serialized["job"] = job.title
+				yautja += list(serialized)
+				continue
+
 			if(ismarinejob(human.job))
 				if(human.assigned_squad)
 					serialized["icon"] = lowertext(human.assigned_squad.name) + "_" + job.minimap_icon
@@ -132,16 +138,18 @@
 			serialized["icon"] = job.minimap_icon
 			serialized["job"] = job.title
 
+			if(isyautja(mob_poi))
+				serialized["icon"] = job.minimap_icon
+				serialized["job"] = job.title
+				yautja += list(serialized)
+				continue
+
 			if(issommarinejob(human.job))
 				som += list(serialized)
 				continue
 
 			if(issurvivorjob(human.job))
 				survivors += list(serialized)
-				continue
-
-			if(isyautja(mob_poi) || mob_poi.hunter_data.thralled)
-				yautja += list(serialized)
 				continue
 
 			humans += list(serialized)

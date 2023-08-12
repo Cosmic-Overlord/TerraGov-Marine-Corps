@@ -160,6 +160,7 @@ GLOBAL_LIST_INIT(playable_icons, list(
 	"yankee_private",
 	"yankee_smartgunner",
 	"predator",
+	"thrall",
 	"zulu_engi",
 	"zulu_leader",
 	"zulu_medic",

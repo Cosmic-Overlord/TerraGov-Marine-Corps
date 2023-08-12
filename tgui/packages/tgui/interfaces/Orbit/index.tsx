@@ -130,7 +130,7 @@ const ObservableContent = (props, context) => {
       <ObservableSection color="teal" section={humans} title="Humans" />
       <ObservableSection color="good" section={survivors} title="Survivors" />
       <ObservableSection color="average" section={som} title="SOM" />
-      <ObservableSection color="darkred" section={yautja} title="Yautjas" />
+      <ObservableSection color="darkred" section={yautja} title="Predators" />
       <ObservableSection section={dead} title="Dead" />
       <ObservableSection section={ghosts} title="Ghosts" />
       <ObservableSection section={misc} title="Misc" />

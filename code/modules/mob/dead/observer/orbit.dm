@@ -106,7 +106,10 @@
 				serialized["icon"] = caste.minimap_icon
 			if(!isnum(xeno.nicknumber))
 				serialized["nickname"] = xeno.nicknumber
-			xenos += list(serialized)
+			if(istype(xeno, /mob/living/carbon/xenomorph/hellhound))
+				yautja += list(serialized)
+			else
+				xenos += list(serialized)
 			continue
 
 		if(isAI(mob_poi))
@@ -137,7 +140,7 @@
 				survivors += list(serialized)
 				continue
 
-			if(isyautja(mob_poi))
+			if(isyautja(mob_poi) || mob_poi.hunter_data.thralled)
 				yautja += list(serialized)
 				continue
 

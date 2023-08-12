@@ -1,5 +1,3 @@
-#define PREDATOR_TO_TOTAL_SPAWN_RATIO 1/40
-
 /datum/job/predator
 	title = JOB_PREDATOR
 	job_category = JOB_PREDATOR

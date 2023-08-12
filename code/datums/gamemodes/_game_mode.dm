@@ -75,6 +75,19 @@ GLOBAL_VAR(common_report) //Contains common part of roundend report
 	initialize_emergency_calls()
 
 
+/datum/game_mode/proc/predator_round()
+	switch(CONFIG_GET(number/pred_raund))
+		if(0)
+			return
+		if(1)
+			if(!prob(CONFIG_GET(number/pred_raund_chance)))
+				return
+
+	var/datum/job/PJ = SSjob.GetJobType(/datum/job/predator)
+	PJ.set_job_positions(min(max(round(length(GLOB.clients) * PREDATOR_TO_TOTAL_SPAWN_RATIO), 1), 4))
+	flags_round_type |= MODE_PREDATOR
+
+
 /datum/game_mode/proc/announce()
 	return TRUE
 

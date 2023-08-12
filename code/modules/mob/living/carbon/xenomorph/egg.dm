@@ -4,7 +4,7 @@
 	flags_atom = CRITICAL_ATOM
 	max_integrity = 80
 	integrity_failure = 20
-	var/can_spawn_player = FALSE
+	var/can_spawn_player = TRUE
 	///What maturity stage are we in
 	var/maturity_stage = 1
 	///Time between two maturity stages
@@ -236,7 +236,7 @@
 	return TRUE
 
 /obj/alien/egg/hugger/forsaken
-	can_spawn_player = TRUE
+	can_spawn_player = FALSE
 	hivenumber = XENO_HIVE_FORSAKEN
 
 /obj/alien/egg/gas

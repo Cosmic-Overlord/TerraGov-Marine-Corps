@@ -1019,14 +1019,14 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 
 /datum/game_mode/proc/join_predator(mob/pred_candidate)
 	var/mob/new_player/NP = new()
+	var/ckey = pred_candidate.client.ckey
 	NP.name = pred_candidate.key
 	NP.key = pred_candidate.key
 	qdel(pred_candidate)
 	NP.assigned_role = SSjob.GetJobType(/datum/job/predator)
 	NP.create_character()
-	var/datum/mind/mind = NP.mind
 	SSjob.spawn_character(NP, TRUE)
 	var/datum/job/job = NP.assigned_role
 	var/mob/new_character = NP.new_character
 	job.after_spawn(new_character)
-	mind.transfer_to(new_character)
+	new_character.ckey = ckey

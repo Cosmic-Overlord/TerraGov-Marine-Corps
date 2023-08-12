@@ -1024,7 +1024,9 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 	qdel(pred_candidate)
 	NP.assigned_role = SSjob.GetJobType(/datum/job/predator)
 	NP.create_character()
+	var/datum/mind/mind = NP.mind
 	SSjob.spawn_character(NP, TRUE)
 	var/datum/job/job = NP.assigned_role
-	job.after_spawn(NP.new_character)
-	NP.mind.transfer_to(NP.new_character)
+	var/mob/new_character = NP.new_character
+	job.after_spawn(new_character)
+	mind.transfer_to(new_character)

@@ -74,6 +74,8 @@
 			continue
 		if(!potential_egg.hugger_type)
 			continue
+		if(!potential_egg.cant_spawn_player)
+			continue
 
 		var/area_egg = get_area(potential_egg)
 		if(area_egg in area_names)

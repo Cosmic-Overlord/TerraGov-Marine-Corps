@@ -4,6 +4,7 @@
 	flags_atom = CRITICAL_ATOM
 	max_integrity = 80
 	integrity_failure = 20
+	var/cant_spawn_player = TRUE
 	///What maturity stage are we in
 	var/maturity_stage = 1
 	///Time between two maturity stages
@@ -77,6 +78,9 @@
 
 /obj/alien/egg/ex_act(severity)
 	burst(TRUE)
+
+/obj/alien/egg/forsaken
+	cant_spawn_player = TRUE
 
 /obj/alien/egg/forsaken/Initialize(mapload, hivenumber)
 	. = ..()

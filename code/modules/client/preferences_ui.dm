@@ -87,6 +87,7 @@
 			data["predator_cape_type"] = predator_cape_type
 			data["predator_cape_color"] = predator_cape_color
 			data["predator_flavor_text"] = predator_flavor_text
+			data["yautja_status"] = yautja_status
 		if(BACKGROUND_INFORMATION)
 			data["slot"] = default_slot
 			data["flavor_text"] = flavor_text

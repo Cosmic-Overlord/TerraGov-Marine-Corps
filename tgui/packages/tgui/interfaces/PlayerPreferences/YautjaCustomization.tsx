@@ -73,6 +73,7 @@ export const YautjaCustomization = (props, context) => {
                 <SelectFieldPreference
                   label={'Yautja Whitelist Status'}
                   value="None"
+                  action={'yautja_status'}
                 />
               )}
             </LabeledList>

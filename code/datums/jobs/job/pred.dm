@@ -71,6 +71,7 @@
 	to_chat(new_predator, span_notice("Your job is to first study your opponents. A hunt cannot commence unless intelligence is gathered."))
 	to_chat(new_predator, span_notice("Hunt at your discretion, yet be observant rather than violent."))
 	log_admin("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
+
 /datum/job/predator/special_check(mob/new_predator)
 	return SSticker.mode.check_predator_late_join(new_predator)
 

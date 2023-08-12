@@ -343,7 +343,7 @@
 		return FALSE
 	if(job.required_playtime_remaining(client))
 		return FALSE
-	if(job.special_check(src))
+	if(!job.special_check(src))
 		return FALSE
 	if(latejoin && !job.special_check_latejoin(client))
 		return FALSE

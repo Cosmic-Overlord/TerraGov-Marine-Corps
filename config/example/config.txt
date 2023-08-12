@@ -99,8 +99,10 @@ ALLOW_AI_MULTICAM
 
 LOOC_ENABLED
 
-PRED_RAUND
-PRED_RAUND_CHANCE
+## 0 mean no auto pred round, 1 using chance of pred round, 2 every round where used preds allowed it
+PRED_ROUND
+## Chance of pred round
+PRED_ROUND_CHANCE
 
 BONES_CAN_BREAK
 LIMBS_CAN_BREAK

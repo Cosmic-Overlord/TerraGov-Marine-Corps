@@ -233,6 +233,7 @@
 	return TRUE
 
 /obj/alien/egg/hugger/forsaken
+	cant_spawn_player = TRUE
 	hivenumber = XENO_HIVE_FORSAKEN
 
 /obj/alien/egg/gas

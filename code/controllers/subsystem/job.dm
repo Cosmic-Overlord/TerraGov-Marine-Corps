@@ -276,7 +276,7 @@ SUBSYSTEM_DEF(job)
 	if(!joined_late || job.job_flags & JOB_FLAG_OVERRIDELATEJOINSPAWN)
 		var/datum/job/terragov/squad/marine = job
 		var/mob/living/carbon/human/h = new_character
-		if(!ishuman(new_character) || !h.assigned_squad || !length_char(GLOB.start_squad_landmarks_list))
+		if(!ishuman(new_character) || !h.assigned_squad || !length(GLOB.start_squad_landmarks_list))
 			spawn_turf = job.return_spawn_turf(new_character, player.client)
 		else
 			spawn_turf = marine.spawn_by_squads(h.assigned_squad.id)

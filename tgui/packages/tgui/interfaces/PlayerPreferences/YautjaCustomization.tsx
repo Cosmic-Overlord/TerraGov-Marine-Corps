@@ -63,11 +63,18 @@ export const YautjaCustomization = (props, context) => {
                 value={'predator_flavor_text'}
                 action={'predator_flavor_text'}
               />
-              <SelectFieldPreference
-                label={'Yautja Whitelist Status'}
-                value={'yautja_status'}
-                action={'yautja_status'}
-              />
+              {yautja_status ? (
+                <SelectFieldPreference
+                  label={'Yautja Whitelist Status'}
+                  value={'yautja_status'}
+                  action={'yautja_status'}
+                />
+              ) : (
+                <SelectFieldPreference
+                  label={'Yautja Whitelist Status'}
+                  value="None"
+                />
+              )}
             </LabeledList>
           </Flex.Item>
           <Flex.Item>
@@ -86,10 +93,7 @@ export const YautjaCustomization = (props, context) => {
                   action={'predator_use_legacy'}
                 />
               ) : (
-                <SelectFieldPreference
-                  label={'Legacy Gear'}
-                  value="Disabled"
-                />
+                <SelectFieldPreference label={'Legacy Gear'} value="Disabled" />
               )}
               <SelectFieldPreference
                 label={'Translator Type'}
@@ -151,7 +155,10 @@ export const YautjaCustomization = (props, context) => {
                 extra={
                   <>
                     <ColorBox color={predator_cape_color} mr={1} />
-                    <Button icon="edit" onClick={() => act('predator_cape_color')} />
+                    <Button
+                      icon="edit"
+                      onClick={() => act('predator_cape_color')}
+                    />
                   </>
                 }
               />

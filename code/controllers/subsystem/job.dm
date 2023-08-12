@@ -274,6 +274,12 @@ SUBSYSTEM_DEF(job)
 	//If we joined at roundstart we should be positioned at our workstation
 	var/turf/spawn_turf
 	if(!joined_late || job.job_flags & JOB_FLAG_OVERRIDELATEJOINSPAWN)
+		var/datum/job/terragov/squad/marine = job
+		var/mob/living/carbon/human/h = new_character
+		if(!ishuman(new_character) || !h.assigned_squad || !length_char(GLOB.start_squad_landmarks_list))
+			spawn_turf = job.return_spawn_turf()
+		else
+			spawn_turf = marine.spawn_by_squads(h.assigned_squad.id)
 		spawn_turf = job.return_spawn_turf(new_character, player.client)
 	if(spawn_turf)
 		SendToAtom(new_character, spawn_turf)
@@ -350,9 +356,14 @@ SUBSYSTEM_DEF(job)
 				SendToAtom(M, pick(GLOB.latejoinsom))
 				return
 		else
-			if(length_char(GLOB.latejoin))
-				SendToAtom(M, pick(GLOB.latejoin))
+			var/mob/living/carbon/human/h = M
+			if(h.assigned_squad && length_char(GLOB.latejoin_squad_landmarks_list))
+				SendToAtom(M, pick(GLOB.latejoin_squad_landmarks_list[h.assigned_squad.id]))
 				return
+			else
+				if(length_char(GLOB.latejoin))
+					SendToAtom(M, pick(GLOB.latejoin))
+					return
 	message_admins("Unable to send mob [M] to late join!")
 	CRASH("Unable to send mob [M] to late join!")
 

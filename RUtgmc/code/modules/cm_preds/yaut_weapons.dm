@@ -1186,6 +1186,19 @@
 		in_chamber = get_ammo_object()
 		return in_chamber
 
+/atom/proc/can_apply_pred_laser()
+	return FALSE
+
+/mob/living/carbon/human/can_apply_pred_laser()
+	if(!overlays_standing[PRED_LASER_LAYER])
+		return TRUE
+	return FALSE
+
+/mob/living/carbon/xenomorph/can_apply_pred_laser()
+	if(!overlays_standing[X_PRED_LASER_LAYER])
+		return TRUE
+	return FALSE
+
 /atom/proc/apply_pred_laser()
 	return FALSE
 
@@ -1209,7 +1222,7 @@
 			apply_overlay(X_PRED_LASER_LAYER)
 	return TRUE
 
-/mob/living/carbon/proc/remove_pred_laser()
+/atom/proc/remove_pred_laser()
 	return FALSE
 
 /mob/living/carbon/human/remove_pred_laser()
@@ -1239,6 +1252,8 @@
 	else if(!laser_target && istype(A, /mob/living/carbon))
 		if(last_time_targeted + 3 SECONDS > world.time)
 			to_chat(gun_user, span_danger("You did it too recently!"))
+			return
+		if(!A.can_apply_pred_laser())
 			return
 		laser_on(A, gun_user)
 

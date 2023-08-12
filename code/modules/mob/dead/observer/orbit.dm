@@ -56,6 +56,7 @@
 	var/list/marines = list()
 	var/list/som = list()
 	var/list/survivors = list()
+	var/list/yautja = list()
 	var/list/xenos = list()
 	var/list/dead = list()
 	var/list/ghosts = list()
@@ -136,6 +137,10 @@
 				survivors += list(serialized)
 				continue
 
+			if(isyautja(mob_poi))
+				yautja += list(serialized)
+				continue
+
 			humans += list(serialized)
 
 	data["dead"] = dead
@@ -145,6 +150,7 @@
 	data["misc"] = misc
 	data["npcs"] = npcs
 	data["marines"] = marines
+	data["yautja"] = yautja
 	data["som"] = som
 	data["survivors"] = survivors
 	data["xenos"] = xenos

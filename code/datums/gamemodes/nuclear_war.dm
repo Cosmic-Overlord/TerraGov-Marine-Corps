@@ -5,6 +5,8 @@
 
 /datum/game_mode/infestation/distress/nuclear_war/post_setup()
 	. = ..()
+	predator_round()
+
 	for(var/i in GLOB.nuke_spawn_locs)
 		new /obj/machinery/nuclearbomb(i)
 	RegisterSignal(SSdcs, COMSIG_GLOB_NUKE_EXPLODED, PROC_REF(on_nuclear_explosion))

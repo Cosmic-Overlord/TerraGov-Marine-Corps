@@ -57,9 +57,9 @@
 	icon_state = initial(icon_state) + "_active"
 	if(L)
 		throw_at(L.loc, 4, 6.67, usr)
+	addtimer(CALLBACK(src, PROC_REF(clear_boomerang)), 3 SECONDS)
 	sleep(1 SECONDS)
 	throw_at(usr, 12, 4, usr)
-	addtimer(CALLBACK(src, PROC_REF(clear_boomerang)), 3 SECONDS)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/clear_boomerang()
 	icon_state = initial(icon_state)

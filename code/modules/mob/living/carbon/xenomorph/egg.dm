@@ -79,13 +79,6 @@
 /obj/alien/egg/ex_act(severity)
 	burst(TRUE)
 
-/obj/alien/egg/forsaken
-	cant_spawn_player = TRUE
-
-/obj/alien/egg/forsaken/Initialize(mapload, hivenumber)
-	. = ..()
-	hivenumber = XENO_HIVE_FORSAKEN
-
 /obj/alien/egg/hugger
 	desc = "It looks like a weird egg"
 	name = "hugger egg"
@@ -238,6 +231,9 @@
 	qdel(facehugger)
 	advance_maturity(stage_ready_to_burst)
 	return TRUE
+
+/obj/alien/egg/hugger/forsaken
+	hivenumber = XENO_HIVE_FORSAKEN
 
 /obj/alien/egg/gas
 	desc = "It looks like a suspiciously weird egg"

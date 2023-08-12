@@ -19,6 +19,7 @@
 
 	force = 15
 	throwforce = 25
+	throw_speed = 1
 
 	hitsound = 'sound/effects/smartdisk_hit.ogg'
 

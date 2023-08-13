@@ -1950,8 +1950,10 @@
 	light_color = "#b49a27"
 
 /obj/structure/prop/brazier/Initialize(...)
-	set_light_on(light_on)
 	. = ..()
+	set_light_on(FALSE)
+	if(light_on)
+		set_light_on(TRUE)
 
 /obj/structure/prop/brazier/frame
 	name = "empty brazier"
@@ -2010,7 +2012,6 @@
 	icon = 'icons/obj/structures/torch.dmi'
 	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
 	icon_state = "torch_frame"
-	light_on = FALSE
 
 /obj/item/frame/torch_frame/proc/try_build(turf/on_wall)
 	if(get_dist(on_wall, usr) > 1)

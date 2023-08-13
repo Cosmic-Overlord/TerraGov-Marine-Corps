@@ -771,6 +771,9 @@
 		return
 
 	var/turf/wearer_turf = get_turf(owner)
+	if(!wearer_turf)
+		return
+
 	SSminimaps.remove_marker(owner)
 	if(!isyautja(owner))
 		if(owner.stat >= DEAD)
@@ -858,6 +861,9 @@
 		return
 
 	var/turf/wearer_turf = get_turf(owner)
+	if(!wearer_turf)
+		return
+
 	if(owner.stat >= DEAD)
 		if(HAS_TRAIT(owner, TRAIT_UNDEFIBBABLE))
 			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, overlay_iconstates = list("undefibbable"))

@@ -50,6 +50,7 @@
 			/obj/item/ammo_magazine/rifle/martini = -1,
 		),
 		"Shotgun" = list(
+			/obj/item/weapon/gun/shotgun/pump/trenchgun = -1,
 			/obj/item/weapon/gun/shotgun/pump/t35 = -1,
 			/obj/item/weapon/gun/shotgun/combat/standardmarine = -1,
 			/obj/item/weapon/gun/shotgun/double/marine = -1,
@@ -258,6 +259,7 @@
 			/obj/item/ammo_magazine/rifle/martini = -1,
 		),
 		"Shotgun" = list(
+			/obj/item/weapon/gun/shotgun/pump/trenchgun = -1,
 			/obj/item/weapon/gun/shotgun/pump/t35 = -1,
 			/obj/item/weapon/gun/shotgun/combat/standardmarine = -1,
 			/obj/item/weapon/gun/shotgun/double/marine = -1,
@@ -442,6 +444,7 @@
 			/obj/item/ammo_magazine/rifle/martini = -1,
 		),
 		"Shotgun" = list(
+			/obj/item/weapon/gun/shotgun/pump/trenchgun = -1,
 			/obj/item/weapon/gun/shotgun/pump/t35 = -1,
 			/obj/item/weapon/gun/shotgun/combat/standardmarine = -1,
 			/obj/item/weapon/gun/shotgun/double/marine = -1,

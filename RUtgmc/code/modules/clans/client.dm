@@ -9,9 +9,11 @@
 
 	if(GLOB.roles_whitelist[ckey] & WHITELIST_PREDATOR)
 		if(clan_info)
-			qdel(clan_info)
-		clan_info = SSdbcore.NewQuery("SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey", list("byond_ckey" = ckey))
-		clan_info.no_auto_delete = TRUE
+			clan_info.sql = "SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey"
+			clan_info.arguments = list("byond_ckey" = ckey)
+		else
+			clan_info = SSdbcore.NewQuery("SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey", list("byond_ckey" = ckey))
+			clan_info.no_auto_delete = TRUE
 		if(!clan_info.warn_execute())
 			qdel(clan_info)
 			return

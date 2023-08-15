@@ -263,7 +263,7 @@
 	throw_range = 4
 	resistance_flags = UNACIDABLE
 	force = 25
-	throwforce = 65
+	throwforce = 45
 	penetration = 25
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE

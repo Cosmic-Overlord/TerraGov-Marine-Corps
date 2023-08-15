@@ -1998,7 +1998,7 @@
 	name = "unlit torch"
 	desc = "It's a torch, but it's not lit.  Use something hot to ignite it, like a welding tool."
 	icon_state = "torch_frame"
-	light_on = FALSE
+	light_range = 0
 
 /obj/structure/prop/brazier/torch/frame/attackby(obj/item/hit_item, mob/user)
 	if(hit_item.damtype != BURN)

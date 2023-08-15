@@ -961,7 +961,7 @@
 	description = "Toggle evasive action, forcing non-friendly projectiles that would hit you to miss."
 	keybind_signal = COMSIG_XENOABILITY_EVASIVE_MANEUVERS
 
-/datum/keybinding/xeno/evasive_maneuvers
+/datum/keybinding/xeno/roar
 	name = "Roar"
 	full_name = "Predalien: Roar"
 	description = "Give bonuses to teamates and deactivate hitech utilities."

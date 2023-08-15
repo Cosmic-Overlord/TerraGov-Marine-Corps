@@ -74,6 +74,15 @@ CREATE TABLE IF NOT EXISTS `ban` (
   KEY `idx_ban_count` (`bantime`,`a_ckey`,`applies_to_admins`,`unbanned_datetime`,`expiration_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE IF NOT EXISTS `clan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) DEFAULT NULL,
+  `description` varchar(2048) NOT NULL,
+  `honor` int(11) DEFAULT 0,
+  `color` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE IF NOT EXISTS `clan_player` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `byond_ckey` varchar(32) DEFAULT NULL,

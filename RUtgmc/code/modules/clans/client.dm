@@ -34,7 +34,7 @@
 		else
 			clan_info.item[3] &= ~CLAN_PERMISSION_ADMIN_MANAGER // Only the leader can manage the ancients
 
-		clan_info.sql = "UPDATE [format_table_name("clan_player")] clan_rank = :clan_rank, permissions = :permissions WHERE byond_ckey = :byond_ckey"
+		clan_info.sql = "UPDATE [format_table_name("clan_player")] SET clan_rank = :clan_rank, permissions = :permissions WHERE byond_ckey = :byond_ckey"
 		clan_info.arguments = list("byond_ckey" = ckey, "clan_rank" = clan_info.item[2], "permissions" = clan_info.item[3])
 		clan_info.Execute()
 

@@ -21,7 +21,11 @@
 /area/lv624/ground/river3)
 "bc" = (
 /obj/structure/platform{
-	dir = 4
+	dir = 4;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/ground/sand9)
@@ -37,12 +41,37 @@
 /turf/open/floor/plating/ground/dirt/typezero,
 /area/lv624/lazarus/sandtemple)
 "bU" = (
-/obj/structure/showcase/six,
-/obj/effect/turf_decal/sandytile,
-/obj/effect/turf_decal/sandytile,
-/turf/open/floor/tile/whiteyellow/full,
+/obj/structure/showcase/six{
+	icon_state = "statue";
+	color = "#95948B";
+	name = "Eternal guardian";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	resistance_flags = 1
+	},
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	soft_armor = list("melee"=20,"bullet"=30,"laser"=25,"energy"=10,"bomb"=15,"bio"=0,"fire"=10,"acid"=10);
+	anchored = 1
+	},
+/obj/item/weapon/harpoon/yautja{
+	pixel_x = -6;
+	anchored = 1;
+	name = "alien harpoon"
+	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "cK" = (
+/obj/structure/barricade/metal{
+	dir = 8;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
 /turf/open/floor/plating/ground/dirtgrassborder{
 	dir = 4
 	},
@@ -52,13 +81,17 @@
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/ground/sand9)
 "dm" = (
-/obj/structure/platform_decoration,
-/obj/effect/turf_decal/sandytile,
+/obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform"
+	},
 /obj/effect/turf_decal/sandytile,
 /obj/effect/turf_decal/grassdecal{
 	dir = 1
 	},
-/turf/open/floor/tile/whiteyellow/full,
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "dD" = (
 /turf/open/floor/plating/ground/dirt,
@@ -69,12 +102,28 @@
 	},
 /area/lv624/ground/river3)
 "er" = (
+/obj/structure/barricade/metal{
+	dir = 1;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
+/obj/structure/barricade/metal{
+	dir = 8;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
 /turf/open/floor/plating/ground/dirtgrassborder/corner,
 /area/lv624/lazarus/sandtemple)
 "fi" = (
 /obj/effect/landmark/weed_node,
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/ground/sand9)
+"fZ" = (
+/obj/structure/prop/brazier/torch/frame,
+/turf/closed/wall/mineral/sandstone/runed,
+/area/lv624/lazarus/sandtemple)
 "gO" = (
 /turf/open/ground/coast/corner,
 /area/lv624/ground/river3)
@@ -85,15 +134,23 @@
 "hB" = (
 /obj/structure/flora/ausbushes/palebush,
 /obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform";
 	dir = 1
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/ground/river3)
 "iB" = (
-/turf/closed/wall/r_wall/chigusa,
+/turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/sand6)
 "jL" = (
 /obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform";
 	dir = 4
 	},
 /turf/open/floor/plating/ground/dirt,
@@ -107,19 +164,21 @@
 /area/lv624/ground/river3)
 "kY" = (
 /obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform";
 	dir = 1
 	},
-/obj/effect/turf_decal/sandytile,
 /obj/effect/turf_decal/grassdecal{
 	dir = 1
 	},
-/turf/open/floor/tile/whiteyellow/full,
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "ls" = (
 /obj/effect/turf_decal/sandytile,
 /obj/effect/turf_decal/sandytile,
-/obj/effect/landmark/weed_node,
-/turf/open/floor/tile/whiteyellow/full,
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "lD" = (
 /turf/open/ground/grass,
@@ -138,6 +197,21 @@
 /obj/structure/flora/ausbushes/palebush,
 /turf/open/ground/river,
 /area/lv624/ground/river3)
+"os" = (
+/obj/structure/platform{
+	dir = 1;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
+	},
+/obj/structure/stairs/seamless{
+	dir = 4;
+	color = "#ffc9b3";
+	resistance_flags = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/lazarus/sandtemple)
 "ps" = (
 /turf/open/ground/coast/corner{
 	dir = 1
@@ -149,10 +223,19 @@
 	},
 /area/lv624/ground/river3)
 "px" = (
-/obj/structure/stairs/seamless/platform{
-	dir = 1
+/obj/structure/stairs/seamless{
+	dir = 4;
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
-/turf/open/floor/tile/whiteyellow/full,
+/obj/structure/platform{
+	dir = 1;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
+	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "pM" = (
 /turf/open/floor/plating/ground/dirtgrassborder{
@@ -165,48 +248,98 @@
 	},
 /area/lv624/ground/river3)
 "qf" = (
-/turf/closed/wall/r_wall/chigusa,
+/turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "qM" = (
 /turf/open/ground/river,
 /area/lv624/ground/sand6)
 "re" = (
 /obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform";
 	dir = 1
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/ground/river3)
 "rI" = (
 /obj/structure/platform,
-/obj/structure/platform,
+/obj/structure/platform{
+	dir = 2;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
+	},
 /obj/structure/stairs/seamless{
-	dir = 4
+	dir = 4;
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
 "rS" = (
-/obj/docking_port/stationary/crashmode,
-/obj/structure/stairs/seamless{
-	dir = 8
+/obj/structure/showcase/six{
+	icon_state = "statue";
+	color = "#95948B";
+	name = "Eternal guardian";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	resistance_flags = 1
 	},
-/turf/open/floor/plating/ground/dirt,
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	soft_armor = list("melee"=20,"bullet"=30,"laser"=25,"energy"=10,"bomb"=15,"bio"=0,"fire"=10,"acid"=10);
+	anchored = 1
+	},
+/obj/item/weapon/harpoon/yautja{
+	pixel_x = 6;
+	anchored = 1;
+	name = "alien harpoon"
+	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "sb" = (
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/ground/sand3)
+"sB" = (
+/obj/structure/barricade/metal{
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
+/turf/open/ground/grass,
+/area/lv624/lazarus/sandtemple)
 "sZ" = (
 /obj/structure/jungle/vines,
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
 "td" = (
-/obj/effect/decal/remains/xeno{
-	pixel_x = -1;
-	pixel_y = 31
+/obj/structure/showcase/six{
+	icon_state = "statue";
+	color = "#95948B";
+	name = "Eternal guardian";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	resistance_flags = 1
 	},
-/obj/structure/showcase,
-/obj/effect/turf_decal/sandytile,
-/obj/effect/turf_decal/sandytile,
-/turf/open/floor/tile/whiteyellow/full,
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/suit/armor/yautja_flavor{
+	soft_armor = list("melee"=20,"bullet"=30,"laser"=25,"energy"=10,"bomb"=15,"bio"=0,"fire"=10,"acid"=10);
+	anchored = 1
+	},
+/obj/item/weapon/harpoon/yautja{
+	pixel_x = -6;
+	anchored = 1;
+	name = "alien harpoon"
+	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "tP" = (
 /obj/structure/jungle/vines,
@@ -214,7 +347,11 @@
 /area/lv624/ground/river3)
 "ue" = (
 /obj/structure/platform{
-	dir = 1
+	dir = 1;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/ground/sand6)
@@ -235,6 +372,10 @@
 /area/lv624/ground/sand9)
 "uE" = (
 /obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform";
 	dir = 4
 	},
 /turf/open/floor/plating/ground/dirt/dug,
@@ -251,37 +392,87 @@
 /area/lv624/ground/jungle8)
 "vU" = (
 /obj/effect/turf_decal/sandytile,
-/turf/open/floor/tile/whiteyellow/full,
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/sand6)
 "wv" = (
 /obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform";
 	dir = 4
 	},
-/obj/structure/stairs/cornerdark/seamless,
-/turf/open/floor/tile/whiteyellow/full,
+/obj/structure/stairs/cornerdark/seamless{
+	color = "#ffc9b3"
+	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "wB" = (
 /obj/structure/flora/grass/brown,
 /turf/open/ground/river,
 /area/lv624/ground/river3)
 "wJ" = (
-/obj/structure/stairs/seamless/platform,
-/turf/open/floor/tile/whiteyellow/full,
+/obj/structure/platform{
+	dir = 1;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
+	},
+/obj/structure/stairs/seamless{
+	dir = 8;
+	color = "#ffc9b3"
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/lazarus/sandtemple)
+"xd" = (
+/obj/structure/barricade/metal{
+	dir = 1;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
+/turf/open/ground/grass,
+/area/lv624/lazarus/sandtemple)
+"xw" = (
+/obj/structure/barricade/metal{
+	dir = 8;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
+/obj/structure/barricade/metal{
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
+/turf/open/ground/grass,
 /area/lv624/lazarus/sandtemple)
 "xO" = (
 /obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform";
 	dir = 8
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/ground/sand9)
 "yn" = (
-/turf/closed/wall/r_wall/chigusa,
+/turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/river3)
 "yp" = (
 /obj/structure/platform,
-/obj/structure/platform,
+/obj/structure/platform{
+	dir = 2;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
+	},
 /obj/structure/stairs/seamless{
-	dir = 8
+	dir = 8;
+	color = "#ffc9b3"
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
@@ -289,6 +480,17 @@
 /turf/open/ground/grass/grass2,
 /area/lv624/ground/jungle8)
 "yW" = (
+/obj/structure/barricade/metal{
+	dir = 8;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
+/obj/structure/barricade/metal{
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
 /turf/open/floor/plating/ground/dirtgrassborder/corner{
 	dir = 8
 	},
@@ -314,30 +516,44 @@
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/ground/sand9)
 "Bi" = (
-/obj/effect/turf_decal/sandytile,
-/obj/effect/landmark/weed_node,
-/turf/open/floor/tile/whiteyellow/full,
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "Bo" = (
+/obj/structure/barricade/metal{
+	dir = 1;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
+/obj/structure/barricade/metal{
+	dir = 4;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
 /turf/open/floor/plating/ground/dirtgrassborder/corner{
 	dir = 1
 	},
 /area/lv624/lazarus/sandtemple)
 "BP" = (
 /obj/structure/platform{
-	dir = 8
+	dir = 8;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
 	},
 /obj/structure/stairs/cornerdark/seamless{
-	dir = 4
+	dir = 4;
+	color = "#ffc9b3"
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
 "CB" = (
-/obj/effect/turf_decal/sandytile,
 /obj/effect/turf_decal/grassdecal{
 	dir = 1
 	},
-/turf/open/floor/tile/whiteyellow/full,
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "Dk" = (
 /obj/structure/jungle/vines/heavy,
@@ -345,9 +561,10 @@
 /area/lv624/ground/jungle8)
 "Dr" = (
 /obj/structure/stairs/seamless{
-	dir = 8
+	dir = 8;
+	color = "#ffc9b3"
 	},
-/turf/open/floor/tile/whiteyellow/full,
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "DU" = (
 /turf/open/ground/coast{
@@ -355,37 +572,41 @@
 	},
 /area/lv624/ground/river3)
 "ED" = (
-/obj/effect/landmark/weed_node,
-/obj/structure/platform_decoration,
-/turf/open/floor/plating/ground/dirt,
-/area/lv624/ground/sand9)
+/obj/structure/jungle/vines,
+/obj/structure/prop/brazier/torch/frame,
+/turf/closed/wall/mineral/sandstone/runed,
+/area/lv624/lazarus/sandtemple)
 "EE" = (
 /obj/structure/jungle/vines,
-/obj/machinery/door/airlock/mainship/generic{
-	desc = "This strange temple is covered in runes. It looks extremely ancient.";
-	dir = 2;
-	name = "Strange Temple"
-	},
-/obj/effect/mapping_helpers/airlock/locked,
-/turf/open/floor/plating/ground/dirt,
+/obj/machinery/door/airlock/sandstone/runed,
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "EJ" = (
 /obj/structure/platform{
-	dir = 1
+	dir = 1;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/ground/river3)
 "ES" = (
-/obj/structure/platform_decoration,
-/obj/structure/stairs/seamless{
-	dir = 8
+/obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform"
 	},
-/turf/open/floor/tile/whiteyellow/full,
+/obj/structure/stairs/seamless{
+	dir = 8;
+	color = "#ffc9b3"
+	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "Fc" = (
 /obj/effect/turf_decal/sandytile,
-/obj/effect/turf_decal/sandytile,
-/turf/open/floor/tile/whiteyellow/full,
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "Fm" = (
 /obj/structure/jungle/vines,
@@ -395,15 +616,27 @@
 /area/lv624/ground/river3)
 "Gj" = (
 /obj/structure/stairs/seamless{
-	dir = 4
+	dir = 4;
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
 "GH" = (
-/turf/closed/wall/r_wall/chigusa,
+/turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/sand3)
 "GR" = (
-/obj/structure/stairs/seamless/platform,
+/obj/structure/platform{
+	dir = 1;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
+	},
+/obj/structure/stairs/seamless{
+	dir = 8;
+	color = "#ffc9b3"
+	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
 "GT" = (
@@ -418,7 +651,11 @@
 /area/lv624/ground/sand9)
 "Hu" = (
 /obj/structure/platform{
-	dir = 8
+	dir = 8;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/ground/river3)
@@ -426,9 +663,17 @@
 /turf/closed/mineral/smooth,
 /area/lv624/ground/caves/rock)
 "Is" = (
-/obj/structure/platform,
+/obj/structure/platform{
+	dir = 2;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
+	},
 /obj/structure/stairs/seamless{
-	dir = 4
+	dir = 4;
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
@@ -458,6 +703,10 @@
 /area/lv624/ground/river3)
 "Kf" = (
 /obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform";
 	dir = 8
 	},
 /turf/open/ground/coast,
@@ -472,26 +721,43 @@
 /area/lv624/ground/river3)
 "Mb" = (
 /obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform";
 	dir = 8
 	},
 /obj/structure/stairs/cornerdark/seamless{
-	dir = 8
+	dir = 8;
+	color = "#ffc9b3"
 	},
-/turf/open/floor/tile/whiteyellow/full,
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "MU" = (
-/obj/structure/platform,
+/obj/structure/platform{
+	dir = 2;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
+	},
 /obj/structure/stairs/seamless{
-	dir = 8
+	dir = 8;
+	color = "#ffc9b3"
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
 "NH" = (
 /obj/structure/platform{
-	dir = 4
+	dir = 4;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
 	},
 /obj/structure/stairs/cornerdark/seamless{
-	dir = 1
+	dir = 1;
+	color = "#ffc9b3"
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
@@ -499,29 +765,54 @@
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
 "NU" = (
-/obj/effect/decal/remains/xeno{
-	pixel_x = 1;
-	pixel_y = 31
+/obj/structure/showcase/six{
+	icon_state = "statue";
+	color = "#95948B";
+	name = "Eternal guardian";
+	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
+	resistance_flags = 1
 	},
-/obj/structure/showcase,
-/obj/effect/turf_decal/sandytile,
+/obj/item/clothing/mask/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/clothing/shoes/yautja_flavor{
+	anchored = 1
+	},
+/obj/item/weapon/harpoon/yautja{
+	pixel_x = 6;
+	anchored = 1;
+	name = "alien harpoon"
+	},
 /obj/structure/jungle/vines,
-/turf/open/floor/tile/whiteyellow/full,
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "Ow" = (
-/obj/structure/stairs/seamless/platform{
-	dir = 1
+/obj/structure/platform{
+	dir = 1;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
+	},
+/obj/structure/stairs/seamless{
+	dir = 4;
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
 "OY" = (
-/obj/structure/platform_decoration,
+/obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform"
+	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/ground/sand9)
 "Pb" = (
-/obj/effect/turf_decal/sandytile,
 /obj/effect/ai_node,
-/turf/open/floor/tile/whiteyellow/full,
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "Pw" = (
 /obj/effect/ai_node,
@@ -529,7 +820,11 @@
 /area/lv624/ground/sand3)
 "PR" = (
 /obj/structure/platform{
-	dir = 1
+	dir = 1;
+	icon_state = "stone";
+	resistance_flags = 1;
+	name = "sandstone platform";
+	color = "#b29082"
 	},
 /obj/structure/jungle/vines,
 /turf/open/ground/coast/corner{
@@ -542,11 +837,23 @@
 /area/lv624/ground/river3)
 "Qq" = (
 /obj/structure/stairs/seamless{
-	dir = 8
+	dir = 8;
+	color = "#ffc9b3"
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
 "Qt" = (
+/obj/structure/barricade/metal{
+	dir = 4;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
+/obj/structure/barricade/metal{
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
 /turf/open/floor/plating/ground/dirtgrassborder/corner{
 	dir = 4
 	},
@@ -558,7 +865,7 @@
 /area/lv624/ground/river3)
 "QK" = (
 /obj/structure/jungle/vines,
-/turf/closed/wall/r_wall/chigusa,
+/turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "QQ" = (
 /turf/open/floor/plating/ground/dirtgrassborder/corner2{
@@ -566,13 +873,23 @@
 	},
 /area/lv624/ground/river3)
 "Ri" = (
+/obj/structure/barricade/metal{
+	dir = 4;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
+/obj/structure/barricade/metal{
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
 /turf/open/ground/grass,
 /area/lv624/lazarus/sandtemple)
 "RZ" = (
 /turf/open/floor/plating/ground/dirt/typeone,
 /area/lv624/lazarus/sandtemple)
 "Sq" = (
-/obj/effect/landmark/weed_node,
 /turf/open/floor/plating/ground/dirt/typetwo,
 /area/lv624/lazarus/sandtemple)
 "SL" = (
@@ -581,15 +898,23 @@
 	},
 /area/lv624/ground/river3)
 "SR" = (
+/obj/structure/barricade/metal{
+	dir = 4;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
 /turf/open/floor/plating/ground/dirtgrassborder{
 	dir = 8
 	},
 /area/lv624/lazarus/sandtemple)
 "Te" = (
 /obj/structure/stairs/seamless{
-	dir = 4
+	dir = 4;
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
-/turf/open/floor/tile/whiteyellow/full,
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "Ue" = (
 /obj/structure/jungle/plantbot1/alien,
@@ -597,6 +922,10 @@
 /area/lv624/ground/river3)
 "Vd" = (
 /obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform";
 	dir = 4
 	},
 /turf/open/floor/plating/ground/dirtgrassborder/corner{
@@ -615,6 +944,10 @@
 /area/lv624/ground/jungle8)
 "Vu" = (
 /obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform";
 	dir = 8
 	},
 /turf/open/floor/plating/ground/dirt,
@@ -637,43 +970,70 @@
 	},
 /area/lv624/ground/river3)
 "Xp" = (
-/obj/effect/turf_decal/sandytile,
-/obj/effect/turf_decal/sandytile,
-/obj/structure/showcase/six,
-/turf/open/floor/tile/whiteyellow/full,
+/obj/structure/prop/brazier/frame_woodened,
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "XN" = (
 /obj/structure/flora/ausbushes/reedbush,
 /turf/open/ground/river,
 /area/lv624/ground/river3)
 "Ya" = (
-/obj/effect/landmark/weed_node,
-/turf/open/floor/plating/ground/dirt,
+/obj/structure/barricade/metal{
+	dir = 1;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
+/obj/structure/barricade/metal{
+	dir = 4;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
+/turf/open/ground/grass,
 /area/lv624/lazarus/sandtemple)
 "Yg" = (
 /obj/effect/ai_node,
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/ground/sand6)
 "YA" = (
-/obj/item/clothing/suit/armor/vest/admiral,
-/obj/effect/turf_decal/sandytile,
-/turf/open/floor/tile/whiteyellow/full,
+/obj/item/clothing/suit/armor/yautja_flavor{
+	soft_armor = list("melee"=20,"bullet"=30,"laser"=25,"energy"=10,"bomb"=15,"bio"=0,"fire"=10,"acid"=10)
+	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "YR" = (
 /turf/open/ground/coast,
 /area/lv624/ground/river3)
 "Zk" = (
-/obj/effect/turf_decal/sandytile,
-/turf/open/floor/tile/whiteyellow/full,
+/obj/structure/barricade/metal{
+	dir = 1;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
+/obj/structure/barricade/metal{
+	dir = 8;
+	icon_state = "handrail_strata";
+	name = "handrail";
+	barricade_type = "handrail"
+	},
+/turf/open/ground/grass,
 /area/lv624/lazarus/sandtemple)
 "ZE" = (
 /obj/structure/platform_decoration{
+	icon_state = "stone_deco";
+	color = "#b29082";
+	resistance_flags = 1;
+	name = "sandstone platform";
 	dir = 1
 	},
 /obj/structure/stairs/seamless{
-	dir = 4
+	dir = 4;
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
-/turf/open/floor/tile/whiteyellow/full,
+/turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "ZM" = (
 /obj/structure/jungle/vines,
@@ -805,7 +1165,7 @@ AP
 AP
 AP
 AP
-ED
+OY
 bc
 xO
 AP
@@ -819,7 +1179,7 @@ Dr
 Qq
 Qq
 Qq
-rS
+Qq
 QK
 qf
 HW
@@ -842,10 +1202,10 @@ YR
 (7,1,1) = {"
 NK
 NK
-Zk
+Bi
+Fc
 ls
 Fc
-Zk
 sZ
 qf
 QK
@@ -855,85 +1215,85 @@ Dr
 Dr
 Qq
 yp
-bU
+rS
 er
 cK
 cK
 cK
 yW
-bU
+rS
 EJ
 YR
 "}
 (8,1,1) = {"
-Ya
-Zk
-Zk
-Zk
-Ya
+NK
+Bi
+Bi
+Bi
+NK
 NK
 sZ
-Zk
-QK
+Fc
+ED
 NU
 YA
-Zk
-Fc
-Zk
+Bi
+Bi
+Bi
 kY
-Ri
+Zk
 Am
 bt
 NK
 Sq
 pM
-Ri
+xw
 EJ
 YR
 "}
 (9,1,1) = {"
 NK
 Pb
-Zk
+Fc
 NK
 GT
 NK
 NK
 GT
 EE
-Fc
 Bi
-Zk
-Zk
-Zk
+Bi
+Bi
+Bi
+Bi
 CB
-Ri
+xd
 Am
 GT
 ZP
 NK
 pM
-Ri
+sB
 EJ
 YR
 "}
 (10,1,1) = {"
-Zk
-Zk
-NK
-NK
-NK
-NK
-Zk
+Bi
 Fc
-QK
+NK
+NK
+NK
+NK
+Fc
+Fc
+ED
 td
-Zk
-Zk
-Zk
+Bi
+Bi
+Bi
 Bi
 dm
-Ri
+Ya
 Am
 RZ
 NK
@@ -947,7 +1307,7 @@ YR
 ls
 NK
 NK
-Zk
+Fc
 NK
 NK
 sZ
@@ -970,7 +1330,7 @@ EJ
 YR
 "}
 (12,1,1) = {"
-px
+os
 Te
 Gj
 Gj
@@ -1126,7 +1486,7 @@ DU
 Vh
 "}
 (18,1,1) = {"
-HW
+qf
 uN
 aw
 aw
@@ -1178,7 +1538,7 @@ Vh
 Ix
 "}
 (20,1,1) = {"
-qf
+fZ
 aw
 aw
 aw

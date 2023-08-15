@@ -200,6 +200,8 @@ var/global/image/hud_icon_hunter_thralled
 
 /mob/living/carbon/hud_set_hunter()
 	var/image/holder = hud_list[HUNTER_HUD]
+	if(!holder)
+		return
 	holder.icon_state = "hudblank"
 	holder.overlays.Cut()
 	if(hunter_data.hunted)
@@ -229,6 +231,8 @@ var/global/image/hud_icon_hunter_thralled
 
 /mob/living/carbon/xenomorph/hud_set_hunter()
 	var/image/holder = hud_list[HUNTER_HUD]
+	if(!holder)
+		return
 	holder.icon_state = "hudblank"
 	holder.overlays.Cut()
 	holder.pixel_x = -18
@@ -252,6 +256,8 @@ var/global/image/hud_icon_hunter_thralled
 	. = ..()
 
 	var/image/holder = hud_list[HUNTER_CLAN]
+	if(!holder)
+		return
 
 	holder.icon_state = "predhud"
 

@@ -18,7 +18,7 @@
 	embedding = list("embed_chance" = 0, "embedded_fall_chance" = 0)
 
 	force = 15
-	throwforce = 25
+	throwforce = 35
 	throw_speed = 1
 
 	hitsound = 'sound/effects/smartdisk_hit.ogg'

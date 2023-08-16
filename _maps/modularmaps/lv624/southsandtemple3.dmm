@@ -78,7 +78,8 @@
 "hG" = (
 /obj/structure/stairs/seamless{
 	dir = 8;
-	color = "#ffc9b3"
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
@@ -249,7 +250,8 @@
 	},
 /obj/structure/stairs/seamless{
 	dir = 8;
-	color = "#ffc9b3"
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
@@ -441,7 +443,8 @@
 "OZ" = (
 /obj/structure/stairs/seamless{
 	dir = 8;
-	color = "#ffc9b3"
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)

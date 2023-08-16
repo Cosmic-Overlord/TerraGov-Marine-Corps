@@ -1078,4 +1078,3 @@
 /turf/open/floor/sandstone/runed
 	name = "sandstone temple floor"
 	icon_state = "runedsandstone"
-	breakable_tile = FALSE

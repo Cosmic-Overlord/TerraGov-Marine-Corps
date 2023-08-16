@@ -1959,6 +1959,7 @@
 	name = "empty brazier"
 	desc = "An empty brazier."
 	icon_state = "brazier_frame"
+	light_range = 0
 	light_on = FALSE
 
 /obj/structure/prop/brazier/frame/attackby(obj/item/hit_item, mob/user)
@@ -1977,6 +1978,7 @@
 	name = "empty full brazier"
 	desc = "An empty brazier. Yet it's also full. What???  Use something hot to ignite it, like a welding tool."
 	icon_state = "brazier_frame_filled"
+	light_range = 0
 	light_on = FALSE
 
 /obj/structure/prop/brazier/frame_woodened/attackby(obj/item/hit_item, mob/user)

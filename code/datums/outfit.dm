@@ -13,7 +13,7 @@
 	var/neck = null
 	var/ears = null
 	var/glasses = null
-	var/id = null
+	var/id = /obj/item/card/id
 	var/l_store = null
 	var/r_store = null
 	var/suit_store = null

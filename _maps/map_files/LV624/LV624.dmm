@@ -8715,7 +8715,8 @@
 	resistance_flags = 1
 	},
 /obj/item/storage/medicomp{
-	name = "alien box"
+	name = "alien box";
+	desc = "A weird alien looking grey box."
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)

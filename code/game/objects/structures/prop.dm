@@ -1944,8 +1944,8 @@
 	icon_state = "brazier"
 	density = TRUE
 	light_on = TRUE
-	light_range = 4
-	light_power = 0.6
+	light_range = 5
+	light_power = 2
 	light_system = STATIC_LIGHT
 	light_color = "#b49a27"
 
@@ -1995,6 +1995,7 @@
 	icon_state = "torch"
 	density = FALSE
 	light_range = 7
+	light_power = 1
 
 /obj/structure/prop/brazier/torch/frame
 	name = "unlit torch"

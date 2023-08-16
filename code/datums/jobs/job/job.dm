@@ -289,6 +289,8 @@ GLOBAL_PROTECT(exp_specialmap)
 
 // Spawning mobs.
 /mob/living/proc/apply_assigned_role_to_spawn(datum/job/assigned_role, client/player, datum/squad/assigned_squad, admin_action = FALSE)
+	if(!player && client)
+		player = client
 	job = assigned_role
 	skills = getSkillsType(job.return_skills_type(player?.prefs))
 	faction = job.faction
@@ -313,7 +315,7 @@ GLOBAL_PROTECT(exp_specialmap)
 			equip_to_slot_or_del(id_card, SLOT_WEAR_ID)
 
 		///Handle pref backpack niggas, no shitcode please in christian TGMC, or I kill you...
-		if(isnull(job.outfit.back) && player.prefs.backpack > BACK_NOTHING)
+		if(player && isnull(job.outfit.back) && player.prefs.backpack > BACK_NOTHING)
 			var/obj/item/storage/backpack/new_backpack
 			switch(player.prefs.backpack)
 				if(BACK_BACKPACK)

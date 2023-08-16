@@ -403,7 +403,8 @@
 	dir = 4
 	},
 /obj/structure/stairs/cornerdark/seamless{
-	color = "#ffc9b3"
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
@@ -421,7 +422,8 @@
 	},
 /obj/structure/stairs/seamless{
 	dir = 8;
-	color = "#ffc9b3"
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
@@ -472,7 +474,8 @@
 	},
 /obj/structure/stairs/seamless{
 	dir = 8;
-	color = "#ffc9b3"
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
@@ -545,7 +548,8 @@
 	},
 /obj/structure/stairs/cornerdark/seamless{
 	dir = 4;
-	color = "#ffc9b3"
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
@@ -562,7 +566,8 @@
 "Dr" = (
 /obj/structure/stairs/seamless{
 	dir = 8;
-	color = "#ffc9b3"
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
@@ -600,7 +605,8 @@
 	},
 /obj/structure/stairs/seamless{
 	dir = 8;
-	color = "#ffc9b3"
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
@@ -635,7 +641,8 @@
 	},
 /obj/structure/stairs/seamless{
 	dir = 8;
-	color = "#ffc9b3"
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
@@ -729,7 +736,8 @@
 	},
 /obj/structure/stairs/cornerdark/seamless{
 	dir = 8;
-	color = "#ffc9b3"
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
@@ -743,7 +751,8 @@
 	},
 /obj/structure/stairs/seamless{
 	dir = 8;
-	color = "#ffc9b3"
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
@@ -757,7 +766,8 @@
 	},
 /obj/structure/stairs/cornerdark/seamless{
 	dir = 1;
-	color = "#ffc9b3"
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)
@@ -838,7 +848,8 @@
 "Qq" = (
 /obj/structure/stairs/seamless{
 	dir = 8;
-	color = "#ffc9b3"
+	color = "#ffc9b3";
+	resistance_flags = 1
 	},
 /turf/open/floor/plating/ground/dirt,
 /area/lv624/lazarus/sandtemple)

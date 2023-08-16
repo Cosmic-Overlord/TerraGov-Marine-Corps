@@ -263,8 +263,8 @@
 	throw_range = 4
 	resistance_flags = UNACIDABLE
 	force = 25
-	throwforce = 65
-	penetration = 25
+	throwforce = 32
+	penetration = 30
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'

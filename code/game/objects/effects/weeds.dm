@@ -142,6 +142,9 @@
 		vehicle.last_move_time += WEED_SLOWDOWN
 		return
 
+	if(HAS_TRAIT(crosser, TRAIT_SUPER_STRONG))
+		return
+
 	if(isxeno(crosser))
 		var/mob/living/carbon/xenomorph/X = crosser
 		X.next_move_slowdown += X.xeno_caste.weeds_speed_mod

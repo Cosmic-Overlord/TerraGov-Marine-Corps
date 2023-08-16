@@ -1944,8 +1944,8 @@
 	icon_state = "brazier"
 	density = TRUE
 	light_on = TRUE
-	light_range = 4
-	light_power = 0.6
+	light_range = 5
+	light_power = 2
 	light_system = STATIC_LIGHT
 	light_color = "#b49a27"
 
@@ -1959,6 +1959,7 @@
 	name = "empty brazier"
 	desc = "An empty brazier."
 	icon_state = "brazier_frame"
+	light_range = 0
 	light_on = FALSE
 
 /obj/structure/prop/brazier/frame/attackby(obj/item/hit_item, mob/user)
@@ -1977,6 +1978,7 @@
 	name = "empty full brazier"
 	desc = "An empty brazier. Yet it's also full. What???  Use something hot to ignite it, like a welding tool."
 	icon_state = "brazier_frame_filled"
+	light_range = 0
 	light_on = FALSE
 
 /obj/structure/prop/brazier/frame_woodened/attackby(obj/item/hit_item, mob/user)
@@ -1993,6 +1995,7 @@
 	icon_state = "torch"
 	density = FALSE
 	light_range = 7
+	light_power = 1
 
 /obj/structure/prop/brazier/torch/frame
 	name = "unlit torch"

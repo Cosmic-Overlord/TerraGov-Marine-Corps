@@ -882,7 +882,7 @@
 	charge = 3000
 	charge_max = 3000
 
-	cloak_alpha = 10
+	cloak_alpha = 4
 
 	action_cloaker = new
 	action_caster = new

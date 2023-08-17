@@ -88,3 +88,10 @@
 /obj/machinery/chem_master/yautja
 	name = "chemical distributor"
 	icon = 'icons/obj/machines/yautja_machines.dmi'
+
+/obj/structure/xenoautopsy/tank/hugger/yautja
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	broken_state = /obj/structure/xenoautopsy/tank/escaped/yautja
+
+/obj/structure/xenoautopsy/tank/escaped/yautja
+	icon = 'icons/obj/machines/yautja_machines.dmi'

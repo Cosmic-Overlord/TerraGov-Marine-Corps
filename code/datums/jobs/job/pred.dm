@@ -49,7 +49,7 @@
 	if(!.)
 		return
 
-	if(!player.clan_info)
+	if(!player || !player.clan_info)
 		return CLAN_RANK_BLOODED
 
 	var/title = clan_ranks[player.clan_info.item[2]]

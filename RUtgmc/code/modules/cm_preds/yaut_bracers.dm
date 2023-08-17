@@ -81,7 +81,7 @@
 		move_chip_to_bracer()
 		if(cloaked)
 			decloak(user)
-		UnregisterSignal(user, list(COMSIG_MOB_REVIVE, COMSIG_MOB_DEATH))
+		UnregisterSignal(user, list(COMSIG_MOB_REVIVE, COMSIG_MOB_DEATH, COMSIG_ATOM_TELEPORT))
 		SSminimaps.remove_marker(user)
 		for(var/datum/action/action in actions_to_add + action_cloaker + action_caster + action_wristblades)
 			action.remove_action(user)
@@ -95,7 +95,7 @@
 			real_owner = user
 
 		toggle_lock_internal(user, TRUE)
-		RegisterSignal(user, list(COMSIG_MOB_REVIVE, COMSIG_MOB_DEATH), PROC_REF(update_minimap_icon))
+		RegisterSignal(user, list(COMSIG_MOB_REVIVE, COMSIG_MOB_DEATH, COMSIG_ATOM_TELEPORT), PROC_REF(update_minimap_icon))
 		INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), user)
 		for(var/datum/action/action in actions_to_add + action_cloaker + action_caster + action_wristblades)
 			action.give_action(user)
@@ -106,7 +106,7 @@
 		move_chip_to_bracer()
 		if(cloaked)
 			decloak(user)
-		UnregisterSignal(user, list(COMSIG_MOB_REVIVE, COMSIG_MOB_DEATH))
+		UnregisterSignal(user, list(COMSIG_MOB_REVIVE, COMSIG_MOB_DEATH, COMSIG_ATOM_TELEPORT))
 		SSminimaps.remove_marker(user)
 		for(var/datum/action/action in actions_to_add + action_cloaker + action_caster + action_wristblades)
 			action.remove_action(user)

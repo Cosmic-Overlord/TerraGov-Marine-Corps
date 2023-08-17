@@ -81,13 +81,13 @@ SUBSYSTEM_DEF(predships)
 	if(clan)
 		clan_players = SSdbcore.NewQuery("SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE clan_id = :clan_id", list("clan_id" = clan.item[1]))
 	else
-		clan_players = SSdbcore.NewQuery("SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE clan_id IS NULL")
+		clan_players = SSdbcore.NewQuery("SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE clan_id = 0")
 
 	if(!clan_players.warn_execute())
 		qdel(clan_players)
 		return
 
-	var/player_rank = user.client.clan_info.item[2]
+	var/player_rank = user.client?.clan_info?.item?[2]
 
 	if(user.client.clan_info.item[3] & CLAN_PERMISSION_ADMIN_MANAGER)
 		player_rank = 999 // Target anyone except other managers

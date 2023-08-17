@@ -486,6 +486,7 @@
 			M.see_invisible = 35
 			new_alpha = 75
 
+		ADD_TRAIT(M, TRAIT_LIGHT_STEP, TRAIT_LIGHT_STEP)
 		log_game("[key_name_admin(usr)] has enabled their cloaking device.")
 		M.visible_message(span_warning("[M] vanishes into thin air!"), span_notice("You are now invisible to normal detection."))
 		playsound(M.loc,'sound/effects/pred_cloakon.ogg', 30)
@@ -1004,6 +1005,7 @@
 		cloak_malfunction = world.time + 10 SECONDS
 
 	cloaked = FALSE
+	REMOVE_TRAIT(user, TRAIT_LIGHT_STEP, TRAIT_LIGHT_STEP)
 	log_game("[key_name_admin(usr)] has disabled their cloaking device.")
 	user.visible_message(span_warning("[user] shimmers into existence!"), span_warning("Your cloaking device deactivates."))
 	playsound(user.loc, 'sound/effects/pred_cloakoff.ogg', 35)

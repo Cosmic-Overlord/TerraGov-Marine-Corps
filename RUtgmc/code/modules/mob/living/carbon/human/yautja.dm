@@ -22,7 +22,7 @@
 
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
-	max_stamina = 200
+	max_stamina = 250
 	blood_color = "#20d450"
 	flesh_color = "#907E4A"
 	speech_sounds = list('sound/voice/pred_click1.ogg', 'sound/voice/pred_click2.ogg')

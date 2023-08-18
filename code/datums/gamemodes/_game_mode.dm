@@ -1020,15 +1020,13 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 #undef calculate_pred_max
 
 /datum/game_mode/proc/join_predator(mob/pred_candidate)
-	var/mob/new_player/NP = new()
-	var/ckey = pred_candidate.client.ckey
-	NP.name = pred_candidate.key
-	NP.key = pred_candidate.key
+	var/datum/job/job = SSjob.GetJobType(/datum/job/predator)
+	var/datum/preferences/prefs = pred_candidate.client.prefs
+	var/spawn_type = job.return_spawn_type(prefs)
+	var/mob/living/carbon/human/new_predator = new spawn_type()
+	new_predator.forceMove(job.return_spawn_turf(pred_candidate, pred_candidate.client))
+	prefs.copy_to(new_predator)
+	new_predator.apply_assigned_role_to_spawn(job)
+	new_predator.ckey = pred_candidate.ckey
+	job.after_spawn(new_predator)
 	qdel(pred_candidate)
-	NP.assigned_role = SSjob.GetJobType(/datum/job/predator)
-	NP.create_character()
-	SSjob.spawn_character(NP, TRUE)
-	var/datum/job/job = NP.assigned_role
-	var/mob/new_character = NP.new_character
-	job.after_spawn(new_character)
-	new_character.ckey = ckey

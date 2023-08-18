@@ -303,6 +303,10 @@
 	switch(X.selected_resin)
 		if(/obj/alien/resin/sticky)
 			build_resin_modifier = 0.5
+		if(/obj/alien/resin/resin_growth)
+			return 0
+		if(/obj/alien/resin/resin_growth/door)
+			return 0
 
 	return (base_wait + scaling_wait - max(0, (scaling_wait * X.health / X.maxHealth))) * build_resin_modifier
 
@@ -442,6 +446,10 @@
 	switch(X.selected_resin)
 		if(/obj/alien/resin/sticky)
 			plasma_cost = initial(plasma_cost) / 3
+		if(/obj/alien/resin/resin_growth)
+			plasma_cost = initial(plasma_cost) / 4 // 25
+		if(/obj/alien/resin/resin_growth/door)
+			plasma_cost = initial(plasma_cost) / 4 // 25
 	if(new_resin)
 		add_cooldown(SSmonitor.gamestate == SHUTTERS_CLOSED ? get_cooldown()/2 : get_cooldown())
 		succeed_activate(SSmonitor.gamestate == SHUTTERS_CLOSED ? plasma_cost/2 : plasma_cost)
@@ -769,6 +777,7 @@
 	update_button_icon()
 
 /datum/action/xeno_action/activable/xeno_spit/deselect()
+	stop_fire()
 	UnregisterSignal(owner, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDRAG, COMSIG_MOB_MOUSEDOWN))
 	return ..()
 
@@ -1049,7 +1058,7 @@
 	owner.visible_message(span_xenonotice("[owner] starts planting an egg."), \
 		span_xenonotice("We start planting an egg."), null, 5)
 
-	if(!do_after(owner, 2.5 SECONDS, TRUE, current_turf, BUSY_ICON_BUILD, extra_checks = CALLBACK(current_turf, /turf/proc/check_alien_construction, owner)))
+	if(!do_after(owner, 2.5 SECONDS, TRUE, current_turf, BUSY_ICON_BUILD, extra_checks = CALLBACK(current_turf, TYPE_PROC_REF(/turf, check_alien_construction), owner)))
 		return fail_activate()
 
 	if(!xeno.loc_weeds_type)

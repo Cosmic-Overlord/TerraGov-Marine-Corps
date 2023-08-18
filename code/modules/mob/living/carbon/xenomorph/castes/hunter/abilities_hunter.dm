@@ -172,7 +172,7 @@
 		M.add_slowdown(1)
 		to_chat(owner, span_xenodanger("Pouncing from the shadows, we stagger our victim."))
 
-/datum/action/xeno_action/stealth/proc/sneak_attack_slash(datum/source, mob/living/target, damage, list/damage_mod, armor_pen)
+/datum/action/xeno_action/stealth/proc/sneak_attack_slash(datum/source, mob/living/target, damage, list/damage_mod, list/armor_mod)
 	SIGNAL_HANDLER
 	if(!can_sneak_attack)
 		return
@@ -182,13 +182,12 @@
 	if(owner.m_intent == MOVE_INTENT_RUN && ( owner.last_move_intent > (world.time - HUNTER_SNEAK_ATTACK_RUN_DELAY) ) ) //Allows us to slash while running... but only if we've been stationary for awhile
 		flavour = "vicious"
 	else
-		armor_pen = HUNTER_SNEAK_SLASH_ARMOR_PEN
+		armor_mod += HUNTER_SNEAK_SLASH_ARMOR_PEN
 		staggerslow_stacks *= 2
 		flavour = "deadly"
 
 	owner.visible_message(span_danger("\The [owner] strikes [target] with [flavour] precision!"), \
 	span_danger("We strike [target] with [flavour] precision!"))
-	target.apply_damage(damage)
 	target.adjust_stagger(staggerslow_stacks)
 	target.add_slowdown(staggerslow_stacks)
 	target.ParalyzeNoChain(1 SECONDS)
@@ -463,15 +462,10 @@
 
 /// Spawns a set of illusions around the hunter
 /datum/action/xeno_action/mirage/proc/spawn_illusions()
-	switch(owner.a_intent)
-		if(INTENT_HARM) //Escort us and attack nearby enemy
-			var/mob/illusion/xeno/center_illusion = new (owner.loc, owner, owner, illusion_life_time)
-			for(var/i in 1 to (illusion_count - 1))
-				illusions += new /mob/illusion/xeno(owner.loc, owner, center_illusion, illusion_life_time)
-			illusions += center_illusion
-		if(INTENT_HELP, INTENT_GRAB, INTENT_DISARM) //Disperse
-			for(var/i in 1 to illusion_count)
-				illusions += new /mob/illusion/xeno(owner.loc, owner, null, illusion_life_time)
+	var/mob/illusion/xeno/center_illusion = new (owner.loc, owner, owner, illusion_life_time)
+	for(var/i in 1 to (illusion_count - 1))
+		illusions += new /mob/illusion/xeno(owner.loc, owner, center_illusion, illusion_life_time)
+	illusions += center_illusion
 	addtimer(CALLBACK(src, PROC_REF(clean_illusions)), illusion_life_time)
 
 /// Clean up the illusions list

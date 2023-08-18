@@ -222,11 +222,12 @@
 	toggle_particles(FALSE)
 	return ..()
 
-/datum/action/xeno_action/emit_neurogas/proc/dispense_gas(count = 3)
+/datum/action/xeno_action/emit_neurogas/proc/dispense_gas(time_left = 3)
+	if(time_left <= 0)
+		return
 	var/mob/living/carbon/xenomorph/defiler/X = owner
-	set waitfor = FALSE
-	var/smoke_range = 2
 	var/datum/effect_system/smoke_spread/xeno/gas
+	var/smoke_range = 2
 
 	switch(X.selected_reagent)
 		if(/datum/reagent/toxin/xeno_neurotoxin)
@@ -240,27 +241,24 @@
 		if(/datum/effect_system/smoke_spread/xeno/acid/light)
 			gas = new /datum/effect_system/smoke_spread/xeno/acid/light(X)
 
-	while(count)
-		if(X.stagger) //If we got staggered, return
-			to_chat(X, span_xenowarning("We try to emit toxins but are staggered!"))
-			toggle_particles(FALSE)
-			return
-		if(X.IsStun() || X.IsParalyzed())
-			to_chat(X, span_xenowarning("We try to emit toxins but are disabled!"))
-			toggle_particles(FALSE)
-			return
-		var/turf/T = get_turf(X)
-		playsound(T, 'sound/effects/smoke.ogg', 25)
-		if(count > 1)
-			gas.set_up(smoke_range, T)
-		else //last emission is larger
-			gas.set_up(CEILING(smoke_range*1.3,1), T)
-		gas.start()
-		T.visible_message(span_danger("Noxious smoke billows from the hulking xenomorph!"))
-		count = max(0,count - 1)
-		sleep(DEFILER_GAS_DELAY)
-
+	if(X.stagger) //If we got staggered, return
+		to_chat(X, span_xenowarning("We try to emit toxins but are staggered!"))
+		toggle_particles(FALSE)
+		return
+	if(X.IsStun() || X.IsParalyzed())
+		to_chat(X, span_xenowarning("We try to emit toxins but are disabled!"))
+		toggle_particles(FALSE)
+		return
+	var/turf/T = get_turf(X)
+	playsound(T, 'sound/effects/smoke.ogg', 25)
+	if(time_left > 1)
+		gas.set_up(smoke_range, T)
+	else //last emission is larger
+		gas.set_up(CEILING(smoke_range*1.3,1), T)
+	gas.start()
+	T.visible_message(span_danger("Noxious smoke billows from the hulking xenomorph!"))
 	toggle_particles(FALSE)
+	addtimer(CALLBACK(src, PROC_REF(dispense_gas), time_left - 1), DEFILER_GAS_DELAY)
 
 // Toggles particles on or off, depending on the defined var.
 /datum/action/xeno_action/emit_neurogas/proc/toggle_particles(activate)
@@ -292,7 +290,7 @@
 	action_icon_state = "inject_egg"
 	desc = "Inject an egg with toxins, killing the larva, but filling it full with gas ready to explode."
 	ability_name = "inject neurogas"
-	plasma_cost = 100
+	plasma_cost = 80
 	cooldown_timer = 5 SECONDS
 	keybind_flags = XACT_KEYBIND_USE_ABILITY
 	keybinding_signals = list(
@@ -335,14 +333,19 @@
 	switch(X.selected_reagent)
 		if(/datum/reagent/toxin/xeno_neurotoxin)
 			newegg.gas_type = /datum/effect_system/smoke_spread/xeno/neuro/medium
+			newegg.icon_state = "gas_egg_n2"
 		if(/datum/reagent/toxin/xeno_ozelomelyn)
 			newegg.gas_type = /datum/effect_system/smoke_spread/xeno/ozelomelyn
+			newegg.icon_state = "gas_egg_o2"
 		if(/datum/reagent/toxin/xeno_hemodile)
 			newegg.gas_type = /datum/effect_system/smoke_spread/xeno/hemodile
+			newegg.icon_state = "gas_egg_h2"
 		if(/datum/reagent/toxin/xeno_transvitox)
 			newegg.gas_type = /datum/effect_system/smoke_spread/xeno/transvitox
+			newegg.icon_state = "gas_egg_t2"
 		if(/datum/effect_system/smoke_spread/xeno/acid/light)
 			newegg.gas_type = /datum/effect_system/smoke_spread/xeno/acid/light
+			newegg.icon_state = "gas_egg_a2"
 	qdel(alien_egg)
 
 	GLOB.round_statistics.defiler_inject_egg_neurogas++
@@ -478,7 +481,7 @@
 
 
 ///Called when we slash while reagent slash is active
-/datum/action/xeno_action/reagent_slash/proc/reagent_slash(datum/source, mob/living/target, damage, list/damage_mod, armor_pen)
+/datum/action/xeno_action/reagent_slash/proc/reagent_slash(datum/source, mob/living/target, damage, list/damage_mod, list/armor_mod)
 	SIGNAL_HANDLER
 
 	if(!target?.can_sting()) //We only care about targets that we can actually sting

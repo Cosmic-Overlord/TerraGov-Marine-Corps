@@ -449,9 +449,9 @@ WEAPONS
 	available_against_xeno_only = TRUE
 
 /datum/supply_packs/weapons/thermobaric
-	name = "RL-57 Thermobaric Launcher"
-	contains = list(/obj/item/weapon/gun/launcher/rocket/m57a4/t57)
-	cost = 500
+	name = "RL-57 Thermobaric Launcher kit"
+	contains = list(/obj/item/storage/holster/backholster/rlquad/full)
+	cost = 550
 	available_against_xeno_only = TRUE
 
 /datum/supply_packs/weapons/thermobaric_wp
@@ -461,9 +461,9 @@ WEAPONS
 	available_against_xeno_only = TRUE
 
 /datum/supply_packs/weapons/specdemo
-	name = "RL-152 SADAR Rocket Launcher"
-	contains = list(/obj/item/weapon/gun/launcher/rocket/sadar)
-	cost = SADAR_PRICE
+	name = "RL-152 SADAR Rocket Launcher kit"
+	contains = list(/obj/item/storage/holster/backholster/rlsadar/full)
+	cost = SADAR_PRICE + 150
 	available_against_xeno_only = TRUE
 
 /datum/supply_packs/weapons/rpg_regular
@@ -599,6 +599,11 @@ WEAPONS
 	name = "SG-85 Smart Handheld Gatling Gun"
 	contains = list(/obj/item/weapon/gun/minigun/smart_minigun)
 	cost = 400
+
+/datum/supply_packs/weapons/minigun_powerpack
+	name = "SG-85 Minigun Powerpack"
+	contains = list(/obj/item/ammo_magazine/minigun_powerpack/smartgun)
+	cost = 150
 
 /datum/supply_packs/weapons/smart_minigun_ammo
 	name = "SG-85 ammo bin"
@@ -1134,8 +1139,6 @@ MEDICAL
 		/obj/item/storage/surgical_tray,
 		/obj/item/clothing/mask/breath/medical,
 		/obj/item/tank/anesthetic,
-		/obj/item/reagent_containers/hypospray/autoinjector/sleeptoxin,
-		/obj/item/reagent_containers/hypospray/autoinjector/sleeptoxin,
 	)
 	cost = 100
 	access = ACCESS_MARINE_MEDBAY
@@ -1750,23 +1753,34 @@ VEHICLES
 
 /datum/supply_packs/vehicles/mounted_hsg
 	name = "Mounted HSG"
-	contains = list(/obj/structure/dropship_equipment/mg_holder)
+	contains = list(/obj/structure/dropship_equipment/weapon_holder/machinegun)
 	cost = 500
+
+/datum/supply_packs/vehicles/minigun_nest
+	name = "Mounted Minigun"
+	contains = list(/obj/structure/dropship_equipment/weapon_holder/minigun)
+	cost = 750
 
 /datum/supply_packs/vehicles/mounted_heavy_laser
 	name = "Mounted Heavy Laser"
-	contains = list(/obj/structure/dropship_equipment/heavylaser_holder)
+	contains = list(/obj/structure/dropship_equipment/weapon_holder/heavylaser)
 	cost = 900
 
 /datum/supply_packs/vehicles/mounted_rr
 	name = "Mounted Heavy Recoilless Rifle"
-	contains = list(/obj/structure/dropship_equipment/heavy_rr_holder)
+	contains = list(/obj/structure/dropship_equipment/weapon_holder/heavy_rr)
 	cost = 1800
 
 /datum/supply_packs/vehicles/hsg_ammo
 	name = "Mounted HSG ammo"
 	contains = list(/obj/item/ammo_magazine/tl102/hsg_nest)
 	cost = 100
+	containertype = /obj/structure/closet/crate/ammo
+
+/datum/supply_packs/vehicles/minigun_ammo
+	name = "Mounted Minigun ammo"
+	contains = list(/obj/item/ammo_magazine/heavy_minigun)
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 
 /datum/supply_packs/vehicles/hl_ammo

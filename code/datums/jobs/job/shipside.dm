@@ -329,8 +329,12 @@ You are in charge of logistics and the overwatch system. You are also in line to
 			new_human.wear_id.paygrade = "CWO"
 		if(3001 to 6000) // 50 hrs
 			new_human.wear_id.paygrade = "O1"
-		if(6001 to INFINITY) // 100 hrs
+		if(6001 to 9000) // 100 hrs
 			new_human.wear_id.paygrade = "O2"
+		if(9001 to 12000) // 150 hrs
+			new_human.wear_id.paygrade = "O3"
+		if(12001 to INFINITY) // 200 hrs
+			new_human.wear_id.paygrade = "MO4"
 
 /datum/job/terragov/command/pilot/radio_help_message(mob/M)
 	. = ..()
@@ -1136,8 +1140,22 @@ Use your office fax machine to communicate with corporate headquarters or to acq
 			new_human.wear_id.paygrade = "Mk.I"
 		if(601 to 3000) // 10 to 50 hrs
 			new_human.wear_id.paygrade = "Mk.II"
-		if(3001 to INFINITY) // more than 50 hrs
+		if(3001 to 6000) // 50 to 100 hrs
 			new_human.wear_id.paygrade = "Mk.III"
+		if(6001 to 9000) // 100 to 150 hrs
+			new_human.wear_id.paygrade = "Mk.IV"
+		if(9001 to 12000) // 150 to 200 hrs
+			new_human.wear_id.paygrade = "Mk.V"
+		if(12001 to 15000) // 200 to 250 hrs
+			new_human.wear_id.paygrade = "Mk.VI"
+		if(15001 to 18000) // 250 to 300 hrs
+			new_human.wear_id.paygrade = "Mk.VII"
+		if(18001 to 21000) // 300 to 350 hrs
+			new_human.wear_id.paygrade = "Mk.VIII"
+		if(21001 to 60000) // 350 to 1000 hrs
+			new_human.wear_id.paygrade = "Mk.IX"
+		if(60001 to INFINITY) // 1000 hrs and more
+			new_human.wear_id.paygrade = "Mk.X"
 
 /datum/job/terragov/silicon/synthetic/radio_help_message(mob/M)
 	. = ..()
@@ -1218,7 +1236,7 @@ If you require any help, use <b>mentorhelp</b> to ask mentors about what you're 
 
 /datum/job/terragov/silicon/ai/announce(mob/living/announced_mob)
 	. = ..()
-	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, PROC_REF(minor_announce), "[announced_mob] has been downloaded to an empty bluespace-networked AI core at [AREACOORD(announced_mob)]."))
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce), "[announced_mob] has been downloaded to an empty bluespace-networked AI core at [AREACOORD(announced_mob)]."))
 
 
 /datum/job/terragov/silicon/ai/config_check()

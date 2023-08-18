@@ -6,6 +6,7 @@
 	var/xeno_structure_flags
 	///Which hive(number) do we belong to?
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/decay_time = 1 SECONDS
 
 /obj/structure/xeno/Initialize(location, hivenumber)
 	. = ..()
@@ -45,6 +46,9 @@
 /// Destroy the xeno structure when the weed it was on is destroyed
 /obj/structure/xeno/proc/weed_removed()
 	SIGNAL_HANDLER
+	addtimer(CALLBACK(src, PROC_REF(structure_decay)), decay_time)
+
+/obj/structure/xeno/proc/structure_decay()
 	obj_destruction(damage_flag = "melee")
 
 /obj/structure/xeno/attack_alien(mob/living/carbon/xenomorph/X, damage_amount, damage_type, damage_flag, effects, armor_penetration, isrightclick)
@@ -170,7 +174,7 @@
 	if(iscarbon(AM))
 		var/mob/living/carbon/crosser = AM
 		crosser.visible_message(span_warning("[crosser] trips on [src]!"), span_danger("You trip on [src]!"))
-		crosser.Paralyze(4 SECONDS)
+		crosser.ParalyzeNoChain(4 SECONDS)
 	switch(trap_type)
 		if(TRAP_HUGGER)
 			if(!AM)
@@ -439,7 +443,7 @@ TUNNEL
 		balloon_alert(M, "Tunnel ended unexpectedly")
 		return
 	M.forceMove(targettunnel)
-	var/double_check = tgui_alert(M, "Emerge here?", "Tunnel: [targettunnel]", list("Yes","Pick another tunnel"))
+	var/double_check = tgui_alert(M, "Emerge here?", "Tunnel: [targettunnel]", list("Yes","Pick another tunnel"), 0)
 	if(M.loc != targettunnel) //double check that we're still in the tunnel in the event it gets destroyed while we still have the interface open
 		return
 	if(double_check == "Pick another tunnel")
@@ -1235,7 +1239,7 @@ TUNNEL
 	///The type of pheromone currently being emitted.
 	var/datum/aura_bearer/current_aura
 	///Strength of pheromones given by this tower.
-	var/aura_strength = 8
+	var/aura_strength = 6
 	///Radius (in tiles) of the pheromones given by this tower.
 	var/aura_radius = 32
 

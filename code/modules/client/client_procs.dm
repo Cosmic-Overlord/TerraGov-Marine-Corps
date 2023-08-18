@@ -1,7 +1,7 @@
 #define UPLOAD_LIMIT 1000000	//Restricts client uploads to the server to 1MB
 #define UPLOAD_LIMIT_ADMIN 10000000	//Restricts admin uploads to the server to 10MB
 
-#define MAX_RECOMMENDED_CLIENT 1589
+#define MAX_RECOMMENDED_CLIENT 1608
 #define MIN_RECOMMENDED_CLIENT 1575
 #define REQUIRED_CLIENT_MAJOR 514
 #define REQUIRED_CLIENT_MINOR 1493
@@ -352,6 +352,10 @@
 //////////////////
 /client/Del()
 	if(!gc_destroyed)
+		gc_destroyed = world.time
+		if (!QDELING(src))
+			stack_trace("Client does not purport to be QDELING, this is going to cause bugs in other places!")
+
 		// Yes this is the same as what's found in qdel(). Yes it does need to be here
 		// Get off my back
 		SEND_SIGNAL(src, COMSIG_PARENT_QDELETING, TRUE)
@@ -409,13 +413,15 @@
 			return
 		click_intercepted = 0 //Just reset. Let's not keep re-checking forever.
 	var/ab = FALSE
-	var/list/L = params2list(params)
+	var/list/modifiers = params2list(params)
 
-	var/dragged = L["drag"]
-	if(dragged && !L[dragged])
+	var/button_clicked = LAZYACCESS(modifiers, "button")
+
+	var/dragged = LAZYACCESS(modifiers, "drag")
+	if(dragged && button_clicked != dragged)
 		return
 
-	if(object && object == middragatom && L["left"])
+	if(object && object == middragatom && button_clicked == "left")
 		ab = max(0, 5 SECONDS - (world.time - middragtime) * 0.1)
 
 	var/mcl = CONFIG_GET(number/minute_click_limit)

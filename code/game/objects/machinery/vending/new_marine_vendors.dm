@@ -93,11 +93,13 @@
 	. = list()
 
 	var/obj/item/card/id/I = user.get_idcard()
-	var/buy_choices = I?.marine_buy_choices
+	var/list/buy_choices = I?.marine_buy_choices
 	var/obj/item/card/id/dogtag/full/ptscheck = new /obj/item/card/id/dogtag/full
 
 	.["cats"] = list()
 	for(var/cat in GLOB.marine_selector_cats)
+		if(!length(buy_choices))
+			break
 		.["cats"][cat] = list(
 			"remaining" = buy_choices[cat],
 			"total" = GLOB.marine_selector_cats[cat],
@@ -430,7 +432,6 @@
 		/obj/item/armor_module/storage/uniform/holster = list(CAT_WEB, "Shoulder handgun holster", 0, "black"),
 		/obj/item/storage/belt/marine = list(CAT_BEL, "Standard ammo belt", 0, "black"),
 		/obj/item/storage/belt/shotgun = list(CAT_BEL, "Shotgun ammo belt", 0, "black"),
-		/obj/item/storage/belt/knifepouch = list(CAT_BEL, "Knives belt", 0, "black"),
 		/obj/item/storage/belt/gun/pistol/standard_pistol = list(CAT_BEL, "Pistol belt", 0, "black"),
 		/obj/item/storage/belt/gun/revolver/standard_revolver = list(CAT_BEL, "Revolver belt", 0, "black"),
 		/obj/item/storage/belt/sparepouch = list(CAT_BEL, "G8 general utility pouch", 0, "black"),

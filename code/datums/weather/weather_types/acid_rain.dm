@@ -56,6 +56,12 @@
 	if(L.fire_stacks > -20)
 		L.fire_stacks = max(-20, L.fire_stacks - 1)
 
+	var/obj/item/clothing/gloves/yautja/hunter/YG = locate(/obj/item/clothing/gloves/yautja/hunter) in L
+	if(isyautja(L) && YG)
+		if(YG.cloaked)
+			YG.decloak(L)
+			to_chat(L, span_highdanger("<i>Rain interferes with your cloaking device!</i>"))
+
 /datum/weather/acid_rain/harmless
 
 	telegraph_message = span_boldannounce("Thunder rumbles far above. You hear droplets drumming against the canopy.")
@@ -87,3 +93,9 @@
 				return
 			else
 				to_chat(L, span_warning(wetmessage))
+
+	var/obj/item/clothing/gloves/yautja/hunter/YG = locate(/obj/item/clothing/gloves/yautja/hunter) in L
+	if(isyautja(L) && YG)
+		if(YG.cloaked)
+			YG.decloak(L)
+			to_chat(L, span_highdanger("<i>Rain interferes with your cloaking device!</i>"))

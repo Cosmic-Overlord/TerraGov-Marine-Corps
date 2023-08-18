@@ -352,9 +352,7 @@
 	},
 /area/yautja)
 "aD" = (
-/obj/structure/xenoautopsy/tank/hugger{
-	icon = 'icons/obj/machines/yautja_machines.dmi'
-	},
+/obj/structure/xenoautopsy/tank/hugger/yautja,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -487,7 +485,9 @@
 	},
 /area/yautja)
 "aW" = (
-/obj/machinery/optable,
+/obj/machinery/optable{
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1618,6 +1618,16 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
+"fx" = (
+/obj/machinery/computer/crew{
+	icon = 'icons/obj/machines/yautja_machines.dmi';
+	pixel_y = 28
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "fF" = (
 /obj/structure/rack{
 	color = "#6b675e";
@@ -1895,7 +1905,9 @@
 	},
 /area/yautja)
 "jR" = (
-/obj/machinery/sleep_console,
+/obj/machinery/sleep_console{
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2110,6 +2122,15 @@
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
+	},
+/area/yautja)
+"oe" = (
+/obj/structure/closet{
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
 	},
 /area/yautja)
 "oi" = (
@@ -2612,7 +2633,9 @@
 	},
 /area/yautja)
 "AA" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/fueltank{
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -3705,7 +3728,9 @@
 	},
 /area/yautja)
 "Ys" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/watertank{
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	},
 /turf/open/floor{
 	dir = 10;
 	icon_state = "darkred2"
@@ -4973,7 +4998,7 @@ aa
 ae
 bj
 bj
-bL
+fx
 cP
 cP
 bL
@@ -6050,11 +6075,11 @@ ap
 cP
 bL
 bj
-bH
+oe
 cP
 bL
 bj
-bH
+oe
 cP
 bL
 bj
@@ -6165,7 +6190,7 @@ cP
 bL
 Xp
 bj
-bH
+oe
 cP
 cP
 fj
@@ -6597,7 +6622,7 @@ cP
 bL
 Im
 bj
-bH
+oe
 cP
 cP
 Be
@@ -6626,11 +6651,11 @@ ap
 cP
 bL
 bj
-bH
+oe
 cP
 bL
 bj
-bH
+oe
 cP
 bL
 bj

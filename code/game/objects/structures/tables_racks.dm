@@ -464,7 +464,7 @@
 	return INITIALIZE_HINT_LATELOAD
 
 
-/obj/structure/table/flipped/LateInitialize(mapload)
+/obj/structure/table/flipped/LateInitialize()
 	. = ..()
 	if(!flipped)
 		flip(dir, TRUE)
@@ -551,7 +551,7 @@
 	return INITIALIZE_HINT_LATELOAD
 
 
-/obj/structure/table/reinforced/flipped/LateInitialize(mapload)
+/obj/structure/table/reinforced/flipped/LateInitialize()
 	. = ..()
 	if(!flipped)
 		flip(dir, TRUE)

@@ -237,7 +237,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/block_effect = /obj/effect/temp_visual/block
 	var/owner_turf = get_turf(src)
 	for(var/obj/item/weapon/I in list(l_hand, r_hand))
-		if(I && istype(I, /obj/item/weapon) && !istype(I, /obj/item/weapon/gun))//Current base is the prob(50-d/3)
+		if(I && istype(I, /obj/item/weapon) && !isgun(I) && !istype(I, /obj/item/weapon/twohanded/offhand))//Current base is the prob(50-d/3)
 			if(combistick && istype(I, /obj/item/weapon/yautja/combistick) && prob(66))
 				var/obj/item/weapon/yautja/combistick/C = I
 				if(C.on)

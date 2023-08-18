@@ -95,7 +95,8 @@
 			real_owner = user
 
 		toggle_lock_internal(user, TRUE)
-		RegisterSignal(user, list(COMSIG_MOB_REVIVE, COMSIG_MOB_DEATH, COMSIG_ATOM_TELEPORT), PROC_REF(update_minimap_icon))
+		RegisterSignal(user, list(COMSIG_MOB_REVIVE, COMSIG_MOB_DEATH), PROC_REF(update_minimap_icon))
+		RegisterSignal(user, list(COMSIG_ATOM_TELEPORT), PROC_REF(owner_teleported))
 		INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), user)
 		for(var/datum/action/action in actions_to_add + action_cloaker + action_caster + action_wristblades)
 			action.give_action(user)
@@ -116,6 +117,11 @@
 	..()
 	if(!isyautja(user))
 		to_chat(user, span_warning("The bracer feels cold against your skin, heavy with an unfamiliar, almost alien weight."))
+
+/obj/item/clothing/gloves/yautja/proc/owner_teleported()
+	if(cloaked)
+		decloak()
+	update_minimap_icon()
 
 //We use this to determine whether we should activate the given verb, or a random verb
 //0 - do nothing, 1 - random function, 2 - this function
@@ -478,7 +484,6 @@
 
 		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
 		RegisterSignal(M, COMSIG_ATOM_BULLET_ACT, PROC_REF(bullet_act_sim))
-		RegisterSignal(M, COMSIG_ATOM_TELEPORT, PROC_REF(decloak))
 
 		cloak_timer = world.time + 1.5 SECONDS
 		if(true_cloak)

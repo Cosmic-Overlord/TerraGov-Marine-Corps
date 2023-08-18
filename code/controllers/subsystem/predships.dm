@@ -78,19 +78,22 @@ SUBSYSTEM_DEF(predships)
 		if(!clan.NextRow())
 			qdel(clan)
 
-	if(clan)
-		clan_players = SSdbcore.NewQuery("SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE clan_id = :clan_id", list("clan_id" = clan.item[1]))
-	else
-		clan_players = SSdbcore.NewQuery("SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE clan_id = 0")
+	clan_players = SSdbcore.NewQuery("SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE clan_id = :clan_id", list("clan_id" = clan ? clan.item[1] : 0))
 
 	if(!clan_players.warn_execute())
 		qdel(clan_players)
 		return
 
-	var/player_rank = user.client?.clan_info?.item?[2]
+	//safety, if something went wrong
+	var/player_rank = 1
+	var/player_permissions = 0
 
-	if(user.client.clan_info.item[3] & CLAN_PERMISSION_ADMIN_MANAGER)
-		player_rank = 999 // Target anyone except other managers
+	if(user.client.clan_info && length(user.client.clan_info.item))
+		player_rank = user.client.clan_info.item[2]
+		player_permissions = user.client.clan_info.item[3]
+
+		if(player_permissions & CLAN_PERMISSION_ADMIN_MANAGER)
+			player_rank = 999 // Target anyone except other managers
 
 	if(clan)
 		. += list(
@@ -102,16 +105,16 @@ SUBSYSTEM_DEF(predships)
 
 			player_rank_pos = player_rank,
 
-			player_delete_clan = (user.client.clan_info.item[3] & CLAN_PERMISSION_ADMIN_MANAGER),
-			player_sethonor_clan = (user.client.clan_info.item[3] & CLAN_PERMISSION_ADMIN_MANAGER),
-			player_setcolor_clan = (user.client.clan_info.item[3] & CLAN_PERMISSION_ADMIN_MODIFY),
+			player_delete_clan = (player_permissions & CLAN_PERMISSION_ADMIN_MANAGER),
+			player_sethonor_clan = (player_permissions & CLAN_PERMISSION_ADMIN_MANAGER),
+			player_setcolor_clan = (player_permissions & CLAN_PERMISSION_ADMIN_MODIFY),
 
-			player_rename_clan = (user.client.clan_info.item[3] & CLAN_PERMISSION_ADMIN_MODIFY),
-			player_setdesc_clan = (user.client.clan_info.item[3] & CLAN_PERMISSION_MODIFY),
-			player_modify_ranks = (user.client.clan_info.item[3] & CLAN_PERMISSION_MODIFY),
+			player_rename_clan = (player_permissions & CLAN_PERMISSION_ADMIN_MODIFY),
+			player_setdesc_clan = (player_permissions & CLAN_PERMISSION_MODIFY),
+			player_modify_ranks = (player_permissions & CLAN_PERMISSION_MODIFY),
 
-			player_purge = (user.client.clan_info.item[3] & CLAN_PERMISSION_ADMIN_MANAGER),
-			player_move_clans = (user.client.clan_info.item[3] & CLAN_PERMISSION_ADMIN_MOVE)
+			player_purge = (player_permissions & CLAN_PERMISSION_ADMIN_MANAGER),
+			player_move_clans = (player_permissions & CLAN_PERMISSION_ADMIN_MOVE)
 		)
 	else
 		. += list(
@@ -131,8 +134,8 @@ SUBSYSTEM_DEF(predships)
 			player_setdesc_clan = FALSE,
 			player_modify_ranks = FALSE,
 
-			player_purge = (user.client.clan_info.item[3] & CLAN_PERMISSION_ADMIN_MANAGER),
-			player_move_clans = (user.client.clan_info.item[3] & CLAN_PERMISSION_ADMIN_MOVE)
+			player_purge = (player_permissions & CLAN_PERMISSION_ADMIN_MANAGER),
+			player_move_clans = (player_permissions & CLAN_PERMISSION_ADMIN_MOVE)
 		)
 
 	while(clan_players.NextRow())
@@ -165,12 +168,13 @@ SUBSYSTEM_DEF(predships)
 	var/clan_id = clan_id_by_user[user]
 	var/datum/db_query/db_query = SSdbcore.NewQuery()
 
+	addtimer(CALLBACK(db_query, GLOBAL_PROC_REF(qdel), db_query), 4 MINUTES)
+
 	switch(action)
 		if(CLAN_ACTION_CLAN_RENAME)
 			db_query.sql = "SELECT id, name, description, honor, color FROM [format_table_name("clan")] WHERE id = :clan_id"
 			db_query.arguments = list("clan_id" = params["clan_id"])
 			if(!db_query.warn_execute())
-				qdel(db_query)
 				return
 			db_query.NextRow()
 			if(!user.client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY))
@@ -188,15 +192,12 @@ SUBSYSTEM_DEF(predships)
 			db_query.sql = "UPDATE [format_table_name("clan")] SET name = :name WHERE id = :clan_id"
 			db_query.arguments = list("clan_id" = clan_id, "name" = trim(input))
 			if(!db_query.warn_execute())
-				qdel(db_query)
 				return
-			qdel(db_query)
 
 		if(CLAN_ACTION_CLAN_SETDESC)
 			db_query.sql = "SELECT id, name, description, honor, color FROM [format_table_name("clan")] WHERE id = :clan_id"
 			db_query.arguments = list("clan_id" = params["clan_id"])
 			if(!db_query.warn_execute())
-				qdel(db_query)
 				return
 			db_query.NextRow()
 			if(!user.client.has_clan_permission(CLAN_PERMISSION_USER_MODIFY))
@@ -213,15 +214,12 @@ SUBSYSTEM_DEF(predships)
 			db_query.sql = "UPDATE [format_table_name("clan")] SET description = :description WHERE id = :clan_id"
 			db_query.arguments = list("clan_id" = clan_id, "description" = trim(input))
 			if(!db_query.warn_execute())
-				qdel(db_query)
 				return
-			qdel(db_query)
 
 		if(CLAN_ACTION_CLAN_SETCOLOR)
 			db_query.sql = "SELECT id, name, description, honor, color FROM [format_table_name("clan")] WHERE id = :clan_id"
 			db_query.arguments = list("clan_id" = params["clan_id"])
 			if(!db_query.warn_execute())
-				qdel(db_query)
 				return
 			db_query.NextRow()
 			if(!user.client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY))
@@ -238,13 +236,11 @@ SUBSYSTEM_DEF(predships)
 			db_query.sql = "UPDATE [format_table_name("clan")] SET color = :color WHERE id = :clan_id"
 			db_query.arguments = list("clan_id" = clan_id, "color" = color)
 			db_query.Execute()
-			qdel(db_query)
 
 		if(CLAN_ACTION_CLAN_SETHONOR)
 			db_query.sql = "SELECT id, name, description, honor, color FROM [format_table_name("clan")] WHERE id = :clan_id"
 			db_query.arguments = list("clan_id" = params["clan_id"])
 			if(!db_query.warn_execute())
-				qdel(db_query)
 				return
 			db_query.NextRow()
 			if(!user.client.has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER))
@@ -261,13 +257,11 @@ SUBSYSTEM_DEF(predships)
 			db_query.sql = "UPDATE [format_table_name("clan")] SET honor = :honor WHERE id = :clan_id"
 			db_query.arguments = list("clan_id" = clan_id, "honor" = input)
 			db_query.Execute()
-			qdel(db_query)
 
 		if(CLAN_ACTION_CLAN_DELETE)
 			db_query.sql = "SELECT id, name, description, honor, color FROM [format_table_name("clan")] WHERE id = :clan_id"
 			db_query.arguments = list("clan_id" = params["clan_id"])
 			if(!db_query.warn_execute())
-				qdel(db_query)
 				return
 			db_query.NextRow()
 			if(!user.client.has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER))
@@ -291,13 +285,11 @@ SUBSYSTEM_DEF(predships)
 			db_query.Execute()
 
 			clan_id_by_user[user] = null
-			qdel(db_query)
 
 		if(CLAN_ACTION_PLAYER_PURGE)
 			db_query.sql = "SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey"
 			db_query.arguments = list("byond_ckey" = params["ckey"])
 			if(!db_query.warn_execute())
-				qdel(db_query)
 				return
 			db_query.NextRow()
 			var/player_rank = user.client.clan_info.item[2]
@@ -323,13 +315,10 @@ SUBSYSTEM_DEF(predships)
 			db_query.arguments = list("byond_ckey" = params["ckey"])
 			db_query.Execute()
 
-			qdel(db_query)
-
 		if(CLAN_ACTION_PLAYER_MOVECLAN)
 			db_query.sql = "SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey"
 			db_query.arguments = list("byond_ckey" = params["ckey"])
 			if(!db_query.warn_execute())
-				qdel(db_query)
 				return
 			db_query.NextRow()
 			var/player_rank = user.client.clan_info.item[2]
@@ -405,13 +394,10 @@ SUBSYSTEM_DEF(predships)
 				db_query.arguments = list("byond_ckey" = params["ckey"], "clan_id" = clans[input])
 				db_query.Execute()
 
-			qdel(db_query)
-
 		if(CLAN_ACTION_PLAYER_MODIFYRANK)
 			db_query.sql = "SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey"
 			db_query.arguments = list("byond_ckey" = params["ckey"])
 			if(!db_query.warn_execute())
-				qdel(db_query)
 				return
 			db_query.NextRow()
 			var/player_rank = user.client.clan_info.item[2]
@@ -456,7 +442,6 @@ SUBSYSTEM_DEF(predships)
 					db_query.Execute()
 
 					var/players_in_rank = length(db_query.rows)
-					qdel(db_query)
 					switch(chosen_rank.limit_type)
 						if(CLAN_LIMIT_NUMBER)
 							if(players_in_rank >= chosen_rank.limit)
@@ -485,8 +470,6 @@ SUBSYSTEM_DEF(predships)
 			db_query.sql = "UPDATE [format_table_name("clan")] SET clan_rank = :clan_rank, permissions = :permissions WHERE byond_ckey = :byond_ckey"
 			db_query.arguments = list("byond_ckey" = params["ckey"], "clan_rank" = clan_ranks_ordered[chosen_rank.name], "permissions" = chosen_rank.permissions)
 			db_query.Execute()
-
-			qdel(db_query)
 
 /datum/clan_ui/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE

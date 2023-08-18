@@ -358,8 +358,17 @@ GLOBAL_PROTECT(admin_verbs_asay)
 	/datum/admins/proc/view_runtimes,
 	/client/proc/toggle_cdn
 	)
+
 GLOBAL_LIST_INIT(admin_verbs_debug, world.AVdebug())
 GLOBAL_PROTECT(admin_verbs_debug)
+
+/world/proc/AVyautja()
+	return list(
+	/client/proc/usr_create_new_clan
+	)
+
+GLOBAL_LIST_INIT(clan_verbs, world.AVyautja())
+GLOBAL_PROTECT(clan_verbs)
 
 /world/proc/AVruntimes()
 	return list(
@@ -533,6 +542,8 @@ GLOBAL_PROTECT(admin_verbs_log)
 			verbs += GLOB.admin_verbs_spawn
 		if(rights & R_LOG)
 			verbs += GLOB.admin_verbs_log
+		if(GLOB.roles_whitelist[ckey] & WHITELIST_YAUTJA_LEADER)
+			verbs += GLOB.clan_verbs
 
 
 /client/proc/remove_admin_verbs()
@@ -551,6 +562,7 @@ GLOBAL_PROTECT(admin_verbs_log)
 		GLOB.admin_verbs_varedit,
 		GLOB.admin_verbs_spawn,
 		GLOB.admin_verbs_log,
+		GLOB.clan_verbs,
 		)
 
 

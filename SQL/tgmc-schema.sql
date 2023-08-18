@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `clan` (
 CREATE TABLE IF NOT EXISTS `clan_player` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `byond_ckey` varchar(32) DEFAULT NULL,
-  `clan_rank` varchar(2048) NOT NULL,
+  `clan_rank` int(11) DEFAULT 0,
   `permissions` int(11) DEFAULT 1,
   `clan_id` int(11) DEFAULT 0,
   `honor` int(11) DEFAULT 0,

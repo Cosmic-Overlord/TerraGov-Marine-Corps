@@ -190,7 +190,7 @@ GLOBAL_PROTECT(exp_specialmap)
 	return
 
 
-/datum/outfit/job/proc/handle_id(mob/living/carbon/human/H)
+/datum/outfit/job/proc/handle_id(mob/living/carbon/human/H, client/override_client)
 	var/datum/job/job = SSjob.GetJobType(jobtype)
 	if(!job)
 		job = H.job
@@ -324,7 +324,7 @@ GLOBAL_PROTECT(exp_specialmap)
 					new_backpack = new /obj/item/storage/backpack/marine/satchel(src)
 			equip_to_slot_or_del(new_backpack, SLOT_BACK)
 
-		job.outfit.handle_id(src)
+		job.outfit.handle_id(src, player)
 
 		var/job_whitelist = job.title
 		var/whitelist_status = job.get_whitelist_status(GLOB.roles_whitelist, player)

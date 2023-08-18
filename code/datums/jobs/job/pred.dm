@@ -139,7 +139,11 @@
 	if(ispath(cape_path))
 		H.equip_to_slot_or_del(new cape_path(H, cape_color), SLOT_BACK)
 
-/datum/outfit/job/yautja/handle_id(mob/living/carbon/human/H)
+/datum/outfit/job/yautja/handle_id(mob/living/carbon/human/H, client/override_client)
+	var/client/mob_client = H.client
+	if(override_client)
+		mob_client = override_client
+
 	var/datum/job/job = SSjob.GetJobType(jobtype)
 	if(!job)
 		job = H.job
@@ -151,11 +155,11 @@
 	H.age = 100
 	H.flavor_text = ""
 
-	if(H.client && H.client.prefs)
-		H.gender = H.client.prefs.predator_gender
-		H.age = H.client.prefs.predator_age
-		final_name = H.client.prefs.predator_name
-		H.flavor_text = H.client.prefs.predator_flavor_text
+	if(H.client && mob_client.prefs)
+		H.gender = mob_client.prefs.predator_gender
+		H.age = mob_client.prefs.predator_age
+		final_name = mob_client.prefs.predator_name
+		H.flavor_text = mob_client.prefs.predator_flavor_text
 		if(!final_name || final_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
 			final_name = "Le'pro"
 
@@ -167,7 +171,7 @@
 	name = "Yautja Young"
 	clan_rank = CLAN_RANK_UNBLOODED_INT
 
-/datum/outfit/job/yautja/youngblood/handle_id(mob/living/carbon/human/H)
+/datum/outfit/job/yautja/youngblood/handle_id(mob/living/carbon/human/H, client/override_client)
 	. = ..()
 	var/new_name = "Young [H.real_name]"
 	H.real_name = new_name
@@ -185,7 +189,7 @@
 	default_cape_type = PRED_YAUTJA_HALF_CAPE
 	clan_rank = CLAN_RANK_ELITE_INT
 
-/datum/outfit/job/yautja/elite/handle_id(mob/living/carbon/human/H)
+/datum/outfit/job/yautja/elite/handle_id(mob/living/carbon/human/H, client/override_client)
 	. = ..()
 	var/new_name = "Elite [H.real_name]"
 	H.real_name = new_name
@@ -198,7 +202,7 @@
 	ears = /obj/item/radio/headset/yautja/elder
 	clan_rank = CLAN_RANK_ELDER_INT
 
-/datum/outfit/job/yautja/elder/handle_id(mob/living/carbon/human/H)
+/datum/outfit/job/yautja/elder/handle_id(mob/living/carbon/human/H, client/override_client)
 	. = ..()
 	var/new_name = "Elder [H.real_name]"
 	H.real_name = new_name
@@ -211,7 +215,7 @@
 	ears = /obj/item/radio/headset/yautja/elder
 	clan_rank = CLAN_RANK_LEADER_INT
 
-/datum/outfit/job/yautja/leader/handle_id(mob/living/carbon/human/H)
+/datum/outfit/job/yautja/leader/handle_id(mob/living/carbon/human/H, client/override_client)
 	. = ..()
 	var/new_name = "Clan Leader [H.real_name]"
 	H.real_name = new_name
@@ -224,7 +228,7 @@
 	ears = /obj/item/radio/headset/yautja/elder
 	clan_rank = CLAN_RANK_ADMIN_INT
 
-/datum/outfit/job/yautja/ancient/handle_id(mob/living/carbon/human/H)
+/datum/outfit/job/yautja/ancient/handle_id(mob/living/carbon/human/H, client/override_client)
 	. = ..()
 	var/new_name = "Ancient [H.real_name]"
 	H.real_name = new_name

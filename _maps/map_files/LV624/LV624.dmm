@@ -5320,6 +5320,10 @@
 	pixel_x = 31
 	},
 /obj/effect/turf_decal/sandytile,
+/obj/structure/closet{
+	icon = 'icons/obj/machines/yautja_machines.dmi'
+	},
+/obj/item/flashlight/lantern,
 /turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "dAB" = (
@@ -14469,9 +14473,12 @@
 /obj/item/stack/sheet/metal{
 	amount = 3
 	},
-/obj/item/clothing/suit/armor/vest,
 /obj/effect/ai_node,
 /obj/effect/turf_decal/sandytile,
+/obj/item/clothing/suit/armor/yautja_flavor{
+	soft_armor = list("melee"=20,"bullet"=30,"laser"=25,"energy"=10,"bomb"=15,"bio"=0,"fire"=10,"acid"=10);
+	icon_state = "fullarmor_bone"
+	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/lazarus/sandtemple)
 "nWm" = (

@@ -48,7 +48,14 @@
 
 	var/mob/living/living = last_damage_source
 	if(istype(living))
-		if(hunter_data && hunter_data.hunter == living)
+		if(hunter_data && hunter_data.hunted)
+			if(hunter_data.hunter == living)
+				to_chat(hunter_data.hunter, span_yautjabold("Your killed your Prey"))
+			else
+				to_chat(hunter_data.hunter, span_yautjabold("Your Prey has been killed!"))
+			hunter_data.hunter.hunter_data.prey = null
+			hunter_data.hunter = null
+			hunter_data.hunted = FALSE
 			INVOKE_ASYNC(hunter_data.hunter.client, TYPE_PROC_REF(/client, add_honor), max(life_kills_total + life_value, default_honor_value))
 		else
 			living.life_kills_total += life_kills_total + life_value

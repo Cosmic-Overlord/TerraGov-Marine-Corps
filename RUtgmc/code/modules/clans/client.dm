@@ -29,7 +29,7 @@
 			clan_info.NextRow()
 
 		if(GLOB.roles_whitelist[ckey] & WHITELIST_YAUTJA_LEADER)
-			clan_info.item[2] = clan_ranks_ordered[CLAN_RANK_ADMIN]
+			clan_info.item[2] = CLAN_RANK_ADMIN_INT
 			clan_info.item[3] |= CLAN_PERMISSION_ALL
 		else
 			clan_info.item[3] &= ~CLAN_PERMISSION_ADMIN_MANAGER // Only the leader can manage the ancients
@@ -101,10 +101,10 @@
 			return
 
 		clan_to_get = clans[input]
-	else if(clan_info.item[1])
+	else if(clan_info.item[4])
 
 		var/options = list(
-			"Your clan" = clan_info.item[1],
+			"Your clan" = clan_info.item[4],
 			"People without clans" = null
 		)
 
@@ -128,7 +128,7 @@
 		return FALSE
 
 	if(clan_id)
-		if(clan_id != clan_info.item[2])
+		if(clan_id != clan_info.item[4])
 			if(warn)
 				to_chat(src, "You do not have permission to perform actions on this clan!")
 			return FALSE
@@ -156,7 +156,7 @@
 	clan_info.next_row_to_take = 1
 	clan_info.NextRow()
 
-	if(clan_info.item[2])
+	if(clan_info.item[4])
 		var/datum/db_query/target_clan = SSdbcore.NewQuery("UPDATE [format_table_name("clan")] SET honor += :honor WHERE id = :clan_id", list("clan_id" = clan_info.item[4], "honor" = number))
 		target_clan.Execute()
 		qdel(target_clan)

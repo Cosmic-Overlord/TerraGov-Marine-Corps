@@ -276,6 +276,8 @@
 	var/force_wielded = 30
 	var/force_unwielded = 10
 	var/force_storage = 5
+	var/throwforce_base = 32
+	var/throwforce_storage = 5
 
 /obj/item/weapon/yautja/combistick/Initialize()
 	. = ..()
@@ -373,7 +375,7 @@
 		flags_item |= TWOHANDED
 		w_class = WEIGHT_CLASS_HUGE
 		force = force_unwielded
-		throwforce = 30
+		throwforce = throwforce_base
 		attack_verb = list("speared", "stabbed", "impaled")
 
 		if(blood_overlay && blood_color)
@@ -390,7 +392,7 @@
 		flags_item &= ~TWOHANDED
 		w_class = WEIGHT_CLASS_TINY
 		force = force_storage
-		throwforce = 30
+		throwforce = throwforce_storage
 		attack_verb = list("thwacked", "smacked")
 		overlays.Cut()
 		on = FALSE

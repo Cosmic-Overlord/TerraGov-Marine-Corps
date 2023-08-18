@@ -87,6 +87,7 @@
 
 /mob/living/carbon/human/species/yautja/on_transformation(subspecies)
 	var/final_name = "Le'pro"
+	ethnicity = "Tan"
 	gender = MALE
 	age = 100
 	flavor_text = ""

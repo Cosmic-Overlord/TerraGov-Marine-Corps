@@ -1621,7 +1621,8 @@
 "fx" = (
 /obj/machinery/computer/crew{
 	icon = 'icons/obj/machines/yautja_machines.dmi';
-	pixel_y = 28
+	pixel_y = 28;
+	density = 0
 	},
 /turf/open/floor/corsat{
 	dir = 1;

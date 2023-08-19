@@ -15,7 +15,7 @@
 /datum/action/xeno_action/activable/pounce/predalien/mob_hit(datum/source, mob/living/M)
 	. = ..()
 	var/mob/living/carbon/xenomorph/predalien/xeno = owner
-	if(ishuman(target) && isdroid(target))
+	if(ishuman(target) || isdroid(target))
 		M.apply_damage(base_damage + damage_scale * min(xeno.life_kills_total, xeno.max_bonus_life_kills), BRUTE, "chest", MELEE, FALSE, FALSE, TRUE, 20)
 
 // ***************************************

@@ -169,6 +169,7 @@
 	flags_atom = CONDUCT
 	flags_item = TWOHANDED
 	force_wielded = 75
+	penetration = 15
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 
 

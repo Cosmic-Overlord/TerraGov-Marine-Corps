@@ -2313,3 +2313,18 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		var/logtext = "[key_name(usr)] has cancelled an OB with the timerid [timerid_to_cancel]"
 		message_admins(logtext)
 		log_admin(logtext)
+
+	else if(href_list["adminunbanish"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/mob/living/carbon/xenomorph/target = locate(href_list["target"])
+		if(!target.banished)
+			to_chat(usr, span_warning("Target already is unbanished."))
+			return
+		if(alert("Are you sure you want to unbanish [target]?",,"Yes","No") != "Yes")
+			return
+		var/reason = stripped_input(src.owner, "Provide a reason for unbunish this xenomorph, [target]", default = "I will not allow meaningless death in my hive!")
+		target.banished = FALSE
+		target.hud_set_banished()
+		xeno_message("<h2 class='alert'><font color='#7575f3'>QUEEN MOTHER BANISHMENT</font></h2>\n[span_alert("By Queen Mother's will, [target] has been unbanished!\n[reason]")]", "xenoannounce", 5, target.hivenumber, sound= sound(get_sfx("queen"), channel = CHANNEL_ANNOUNCEMENTS))
+		message_admins("[src.owner] has unbanish [ADMIN_TPMONTY(target)]. Reason: [reason ? "[reason]" : "no reason"]")

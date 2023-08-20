@@ -681,7 +681,7 @@
 		return
 
 	var/reason = stripped_input(user, "Provide a reason for bunish this xenomorph, [target]")
-	if(isnull(reason))
+	if(!reason)
 		to_chat(user, span_xenonotice("Bunish reason required."))
 		return
 
@@ -692,15 +692,18 @@
 	if(target.banished == FALSE)
 		target.banished = TRUE
 		target.hud_set_banished()
-		xeno_message("[user] banishes  [target] from the Hive!", "xenoannounce", 5, user.hivenumber)
+
+		xeno_message("<h2 class='alert'><font color='#7575f3'>BANISHMENT</font></h2>\n[span_alert("By [user]'s will, [target] has been banished from the hive!\n[reason]")]", "xenoannounce", 5, target.hivenumber, sound= sound(get_sfx("queen"), channel = CHANNEL_ANNOUNCEMENTS))
+		to_chat(target, span_xenohighdanger("The [user] has banished you from the hive! Other xenomorphs may now attack you freely, but your link to the hivemind remains, preventing you from harming other sisters."))
 		log_game("[key_name(user)] has bunish [key_name(target)]. Reason: [reason]")
-		message_admins("[ADMIN_TPMONTY(user)] has bunish [ADMIN_TPMONTY(target)]. Reason: [reason]")
+		message_admins("[ADMIN_TPMONTY(user)] has bunish/(<a href='?_src_=holder;[HrefToken(TRUE)];adminunbanish=1;target=[REF(target)]'>unbanish</a>) [ADMIN_TPMONTY(target)]. Reason: [reason].")
 		return
 
 	if(target.banished == TRUE)
 		target.banished = FALSE
 		target.hud_set_banished()
-		xeno_message("[user] has returned  [target] to the Hive!", "xenoannounce", 5, user.hivenumber)
+
+		xeno_message("By [user]'s will, [target] has been readmitted into the Hive!\n[reason]", "xenoannounce", 5, user.hivenumber, sound= sound(get_sfx("queen"), channel = CHANNEL_ANNOUNCEMENTS))
 		log_game("[key_name(user)] has returned [key_name(target)]. Reason: [reason]")
 		message_admins("[ADMIN_TPMONTY(user)] has returned [ADMIN_TPMONTY(target)]. Reason: [reason]")
 		return

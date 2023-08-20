@@ -121,8 +121,8 @@
 
 	SSpredships.clan_ui.ui_interact(mob)
 
-/client/proc/has_clan_permission(permission_flag, clan_id, warn)
-	if(!clan_info)
+/client/proc/has_clan_permission(permission_flag, clan_id, warn = TRUE)
+	if(!clan_info || length(clan_info.item) != 5)
 		if(warn)
 			to_chat(src, "You do not have a yautja whitelist!")
 		return FALSE

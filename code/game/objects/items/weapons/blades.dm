@@ -112,7 +112,10 @@
 	name = "\improper M2100 \"Ngájhe\" machete"
 	desc = "An older issue USCM machete, never left testing. Designed in the Central African Republic. The notching made it hard to clean, and as such the USCM refused to adopt it - despite the superior bludgeoning power offered. Difficult to carry with the usual kit."
 	icon_state = "arnold-machete"
-	force = 55
+	item_state = "machete_dutch"
+	force = 75
+	penetration = 35
+	attack_speed = 12
 
 /obj/item/weapon/claymore/mercsword/ceremonial
 	name = "Ceremonial Sword"

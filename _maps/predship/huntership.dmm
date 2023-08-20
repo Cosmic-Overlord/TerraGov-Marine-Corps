@@ -163,7 +163,8 @@
 "an" = (
 /obj/machinery/autodoc{
 	dir = 4;
-	icon = 'icons/obj/machines/yautja_machines.dmi'
+	icon = 'icons/obj/machines/yautja_machines.dmi';
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -244,7 +245,9 @@
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
 "at" = (
-/obj/machinery/atmospherics/components/unary/cryo_cell,
+/obj/machinery/atmospherics/components/unary/cryo_cell{
+	resistance_flags = 1
+	},
 /turf/open/floor/corsat,
 /area/yautja)
 "au" = (
@@ -516,7 +519,9 @@
 /area/yautja)
 "aY" = (
 /obj/machinery/portable_atmospherics/canister/oxygen{
-	icon = 'icons/obj/machines/yautja_machines.dmi'
+	icon = 'icons/obj/machines/yautja_machines.dmi';
+	anchored = 1;
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -601,7 +606,9 @@
 	},
 /area/yautja)
 "bo" = (
-/obj/machinery/body_scanconsole,
+/obj/machinery/body_scanconsole{
+	resistance_flags = 1
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -635,7 +642,8 @@
 /area/yautja)
 "bs" = (
 /obj/machinery/bodyscanner{
-	dir = 1
+	dir = 1;
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -951,7 +959,9 @@
 /turf/open/beach/sand,
 /area/yautja)
 "cj" = (
-/obj/machinery/sleeper,
+/obj/machinery/sleeper{
+	resistance_flags = 1
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1096,7 +1106,8 @@
 /area/yautja)
 "cx" = (
 /obj/machinery/autodoc_console{
-	icon = 'icons/obj/machines/yautja_machines.dmi'
+	icon = 'icons/obj/machines/yautja_machines.dmi';
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1621,7 +1632,9 @@
 "fx" = (
 /obj/machinery/computer/crew{
 	icon = 'icons/obj/machines/yautja_machines.dmi';
-	pixel_y = 28
+	pixel_y = 28;
+	density = 0;
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1906,7 +1919,8 @@
 /area/yautja)
 "jR" = (
 /obj/machinery/sleep_console{
-	icon = 'icons/obj/machines/yautja_machines.dmi'
+	icon = 'icons/obj/machines/yautja_machines.dmi';
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -3556,7 +3570,8 @@
 /area/yautja)
 "VN" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer{
-	icon = 'icons/obj/machines/yautja_machines.dmi'
+	icon = 'icons/obj/machines/yautja_machines.dmi';
+	resistance_flags = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;

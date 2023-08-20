@@ -156,7 +156,7 @@
 	H.flavor_text = ""
 
 	if(H.client && mob_client.prefs)
-		H.h_style = client.prefs.predator_h_style
+		H.h_style = mob_client.prefs.predator_h_style
 		H.gender = mob_client.prefs.predator_gender
 		H.age = mob_client.prefs.predator_age
 		final_name = mob_client.prefs.predator_name

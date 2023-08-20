@@ -615,7 +615,7 @@
 			attempt_deevolve(usr, target)
 			return
 		if("Banish/De-Banish")
-			attempt_bunish(usr, target)
+			attempt_banish(usr, target)
 			return
 		if("Abort")
 			attempt_abort(usr, target)
@@ -663,26 +663,26 @@
 	SSblackbox.record_feedback("tally", "round_statistics", -1, "total_xenos_created")
 	qdel(target)
 
-/datum/hive_status/proc/attempt_bunish(mob/living/carbon/xenomorph/user, mob/living/carbon/xenomorph/target)
+/datum/hive_status/proc/attempt_banish(mob/living/carbon/xenomorph/user, mob/living/carbon/xenomorph/target)
 	if(target.is_ventcrawling)
-		to_chat(user, span_xenonotice("Cannot bunish, [target] is ventcrawling."))
+		to_chat(user, span_xenonotice("Cannot banish, [target] is ventcrawling."))
 		return
 
 	if(!isturf(target.loc))
-		to_chat(user, span_xenonotice("Cannot bunish, [target] here."))
+		to_chat(user, span_xenonotice("Cannot banish, [target] here."))
 		return
 
 	if(target.tier == XENO_TIER_FOUR || isxenohivemind(target))
-		to_chat(user, span_xenonotice("Tier does not allow to bunish."))
+		to_chat(user, span_xenonotice("Tier does not allow to banish."))
 		return
 
-	var/confirm = tgui_alert(user, "Are you sure you want to bunish/de-bunish [target]?", null, list("Yes", "No"))
+	var/confirm = tgui_alert(user, "Are you sure you want to banish/de-banish [target]?", null, list("Yes", "No"))
 	if(confirm != "Yes")
 		return
 
-	var/reason = stripped_input(user, "Provide a reason for bunish this xenomorph, [target]")
+	var/reason = stripped_input(user, "Provide a reason for banish this xenomorph, [target]")
 	if(!reason)
-		to_chat(user, span_xenonotice("Bunish reason required."))
+		to_chat(user, span_xenonotice("Banish reason required."))
 		return
 
 	if(!user.check_concious_state())
@@ -695,8 +695,8 @@
 
 		xeno_message("<h2 class='alert'><font color='#7575f3'>BANISHMENT</font></h2>\n[span_alert("By [user]'s will, [target] has been banished from the hive!\n[reason]")]", "xenoannounce", 5, target.hivenumber, sound= sound(get_sfx("queen"), channel = CHANNEL_ANNOUNCEMENTS))
 		to_chat(target, span_xenohighdanger("The [user] has banished you from the hive! Other xenomorphs may now attack you freely, but your link to the hivemind remains, preventing you from harming other sisters."))
-		log_game("[key_name(user)] has bunish [key_name(target)]. Reason: [reason]")
-		message_admins("[ADMIN_TPMONTY(user)] has bunish/(<a href='?_src_=holder;[HrefToken(TRUE)];adminunbanish=1;target=[REF(target)]'>unbanish</a>) [ADMIN_TPMONTY(target)]. Reason: [reason].")
+		log_game("[key_name(user)] has banish [key_name(target)]. Reason: [reason]")
+		message_admins("[ADMIN_TPMONTY(user)] has banish/(<a href='?_src_=holder;[HrefToken(TRUE)];adminunbanish=1;target=[REF(target)]'>unbanish</a>) [ADMIN_TPMONTY(target)]. Reason: [reason].")
 		return
 
 	if(target.banished == TRUE)

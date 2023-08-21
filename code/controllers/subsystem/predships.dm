@@ -386,7 +386,7 @@ SUBSYSTEM_DEF(predships)
 				log_admin("[key_name_admin(user)] has moved [db_query.item[1]] to clan [input].")
 
 				if(!(db_query.item[3] & CLAN_PERMISSION_ADMIN_ANCIENT))
-					db_query.sql = "UPDATE [format_table_name("clan_player")] SET clan_rank = :clan_rank permissions = :permissions WHERE byond_ckey = :byond_ckey"
+					db_query.sql = "UPDATE [format_table_name("clan_player")] SET clan_rank = :clan_rank, permissions = :permissions WHERE byond_ckey = :byond_ckey"
 					db_query.arguments = list("byond_ckey" = params["ckey"], "clan_rank" = clan_ranks_ordered[CLAN_RANK_BLOODED], "permissions" = clan_ranks[CLAN_RANK_BLOODED].permissions)
 					db_query.Execute()
 

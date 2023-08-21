@@ -93,13 +93,9 @@
 
 	H.ethnicity = "Tan"
 	if(mob_client)
-		H.h_style = mob_client.prefs.predator_h_style
 		H.ethnicity = mob_client.prefs.predator_skin_color
 
 	H.set_species("Yautja")
-	H.update_body()
-	H.update_hair()
-	H.regenerate_icons()
 
 	var/using_legacy = "No"
 	var/armor_number = 1
@@ -123,7 +119,7 @@
 		mask_material = mob_client.prefs.predator_mask_material
 		caster_material = mob_client.prefs.predator_caster_material
 		translator_type = mob_client.prefs.predator_translator_type
-		if(mob_client.prefs.predator_cape_type)
+		if(mob_client.prefs.predator_cape_type != "None")
 			cape_type = mob_client.prefs.predator_cape_type
 		cape_color = mob_client.prefs.predator_cape_color
 
@@ -160,6 +156,8 @@
 	H.flavor_text = ""
 
 	if(H.client && mob_client.prefs)
+		H.h_style = mob_client.prefs.predator_h_style
+		H.update_hair()
 		H.gender = mob_client.prefs.predator_gender
 		H.age = mob_client.prefs.predator_age
 		final_name = mob_client.prefs.predator_name

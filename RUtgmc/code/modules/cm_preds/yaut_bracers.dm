@@ -85,7 +85,7 @@
 		SSminimaps.remove_marker(user)
 		for(var/datum/action/action in actions_to_add + action_cloaker + action_caster + action_wristblades)
 			action.remove_action(user)
-		if(!user.hunter_data.claimed_equipment)
+		if(!user.hunter_data?.claimed_equipment)
 			claim_equipment.remove_action(user)
 	..()
 
@@ -102,7 +102,7 @@
 		INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), user)
 		for(var/datum/action/action in actions_to_add + action_cloaker + action_caster + action_wristblades)
 			action.give_action(user)
-		if(!user.hunter_data.claimed_equipment)
+		if(!user.hunter_data?.claimed_equipment)
 			claim_equipment.give_action(user)
 	..()
 
@@ -115,7 +115,7 @@
 		SSminimaps.remove_marker(user)
 		for(var/datum/action/action in actions_to_add + action_cloaker + action_caster + action_wristblades)
 			action.remove_action(user)
-		if(!user.hunter_data.claimed_equipment)
+		if(!user.hunter_data?.claimed_equipment)
 			claim_equipment.remove_action(user)
 	..()
 

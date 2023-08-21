@@ -168,7 +168,7 @@ SUBSYSTEM_DEF(predships)
 	var/clan_id = clan_id_by_user[user]
 	var/datum/db_query/db_query = SSdbcore.NewQuery()
 
-	addtimer(CALLBACK(db_query, GLOBAL_PROC_REF(qdel), db_query), 4 MINUTES)
+	addtimer(CALLBACK(db_query, GLOBAL_PROC_REF(qdel), db_query), 2 MINUTES)
 
 	switch(action)
 		if(CLAN_ACTION_CLAN_RENAME)

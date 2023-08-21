@@ -85,6 +85,8 @@
 		SSminimaps.remove_marker(user)
 		for(var/datum/action/action in actions_to_add + action_cloaker + action_caster + action_wristblades)
 			action.remove_action(user)
+		if(!user.hunter_data.claimed_equipment)
+			claim_equipment.remove_action(user)
 	..()
 
 /obj/item/clothing/gloves/yautja/equipped(mob/living/carbon/human/user, slot)
@@ -100,6 +102,8 @@
 		INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), user)
 		for(var/datum/action/action in actions_to_add + action_cloaker + action_caster + action_wristblades)
 			action.give_action(user)
+		if(!user.hunter_data.claimed_equipment)
+			claim_equipment.give_action(user)
 	..()
 
 /obj/item/clothing/gloves/yautja/unequipped(mob/living/carbon/human/user, slot)
@@ -111,6 +115,8 @@
 		SSminimaps.remove_marker(user)
 		for(var/datum/action/action in actions_to_add + action_cloaker + action_caster + action_wristblades)
 			action.remove_action(user)
+		if(!user.hunter_data.claimed_equipment)
+			claim_equipment.remove_action(user)
 	..()
 
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)
@@ -855,30 +861,21 @@
 	notification_sound = !notification_sound
 	to_chat(usr, span_notice("The bracer's sound is now turned [notification_sound ? "on" : "off"]."))
 
-/obj/item/clothing/gloves/yautja/proc/buy_gear()
-	if(hunter_data.claimed_equipment)
-		to_chat(src, span_warning("You've already claimed your equipment."))
+/obj/item/clothing/gloves/yautja/proc/buy_gear(mob/living/carbon/human/wearer)
+	if(wearer.gloves != src)
+		to_chat(wearer, span_warning("You need to be wearing your thrall bracers to do this."))
 		return
 
-	if(stat || (lying_angle && !resting && !IsSleeping()) || (IsParalyzed() || IsUnconscious()) || lying_angle || buckled)
-		to_chat(src, span_warning("You're not able to do that right now."))
+	if(wearer.hunter_data.claimed_equipment)
+		to_chat(wearer, span_warning("You've already claimed your equipment."))
 		return
 
-	if(!isyautja(src))
-		to_chat(src, span_warning("How did you get this verb?"))
+	if(wearer.stat || (wearer.lying_angle && !wearer.resting && !wearer.IsSleeping()) || (wearer.IsParalyzed() || wearer.IsUnconscious()) || wearer.lying_angle || wearer.buckled)
+		to_chat(wearer, span_warning("You're not able to do that right now."))
 		return
 
-	if(hunter_data.claimed_equipment)
-		to_chat(src, span_warning("You've already claimed your equipment."))
-		return
-
-	if(!istype(get_area(src), /area/yautja))
-		to_chat(src, span_warning("Not here. Only on the ship."))
-		return
-
-	var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
-	if(!istype(bracer))
-		to_chat(src, span_warning("You need to be wearing your bracers to do this."))
+	if(!istype(get_area(wearer), /area/yautja))
+		to_chat(wearer, span_warning("Not here. Only on the ship."))
 		return
 
 	var/sure = alert("An array of powerful weapons are displayed to you. Pick your gear carefully. If you cancel at any point, you will not claim your equipment.", "Sure?", "Begin the Hunt", "No, not now")
@@ -912,47 +909,47 @@
 		if(secondary in restricted)
 			other -= secondary
 
-	hunter_data.claimed_equipment = TRUE
+	wearer.hunter_data.claimed_equipment = TRUE
 
 	switch(main_weapon)
 		if(YAUTJA_GEAR_GLAIVE)
-			equip_to_slot_if_possible(new /obj/item/weapon/twohanded/yautja/glaive(src.loc), SLOT_S_STORE, warning = TRUE)
+			wearer.equip_to_slot_if_possible(new /obj/item/weapon/twohanded/yautja/glaive(wearer.loc), SLOT_S_STORE, warning = TRUE)
 		if(YAUTJA_GEAR_GLAIVE_ALT)
-			equip_to_slot_if_possible(new /obj/item/weapon/twohanded/yautja/glaive/alt(src.loc), SLOT_S_STORE, warning = TRUE)
+			wearer.equip_to_slot_if_possible(new /obj/item/weapon/twohanded/yautja/glaive/alt(wearer.loc), SLOT_S_STORE, warning = TRUE)
 		if(YAUTJA_GEAR_WHIP)
-			equip_to_slot_if_possible(new /obj/item/weapon/yautja/chain(src.loc), SLOT_S_STORE, warning = TRUE)
+			wearer.equip_to_slot_if_possible(new /obj/item/weapon/yautja/chain(wearer.loc), SLOT_S_STORE, warning = TRUE)
 		if(YAUTJA_GEAR_SWORD)
-			equip_to_slot_if_possible(new /obj/item/weapon/yautja/sword(src.loc), SLOT_S_STORE, warning = TRUE)
+			wearer.equip_to_slot_if_possible(new /obj/item/weapon/yautja/sword(wearer.loc), SLOT_S_STORE, warning = TRUE)
 		if(YAUTJA_GEAR_SCYTHE)
-			equip_to_slot_if_possible(new /obj/item/weapon/yautja/scythe(src.loc), SLOT_S_STORE, warning = TRUE)
+			wearer.equip_to_slot_if_possible(new /obj/item/weapon/yautja/scythe(wearer.loc), SLOT_S_STORE, warning = TRUE)
 		if(YAUTJA_GEAR_SCYTHE_ALT)
-			equip_to_slot_if_possible(new /obj/item/weapon/yautja/scythe/alt(src.loc), SLOT_S_STORE, warning = TRUE)
+			wearer.equip_to_slot_if_possible(new /obj/item/weapon/yautja/scythe/alt(wearer.loc), SLOT_S_STORE, warning = TRUE)
 		if(YAUTJA_GEAR_STICK)
-			equip_to_slot_if_possible(new /obj/item/weapon/yautja/combistick(src.loc), SLOT_S_STORE, warning = TRUE)
+			wearer.equip_to_slot_if_possible(new /obj/item/weapon/yautja/combistick(wearer.loc), SLOT_S_STORE, warning = TRUE)
 		if(YAUTJA_GEAR_SCIMS)
-			if(bracer.wristblades_deployed)
-				bracer.wristblades_internal(usr, TRUE)
-			qdel(bracer.left_wristblades)
-			qdel(bracer.right_wristblades)
-			bracer.left_wristblades = new /obj/item/weapon/wristblades/scimitar(bracer)
-			bracer.right_wristblades = new /obj/item/weapon/wristblades/scimitar(bracer)
+			if(wristblades_deployed)
+				wristblades_internal(usr, TRUE)
+			qdel(left_wristblades)
+			qdel(right_wristblades)
+			left_wristblades = new /obj/item/weapon/wristblades/scimitar(src)
+			right_wristblades = new /obj/item/weapon/wristblades/scimitar(src)
 
 	for(var/choice in secondaries)
 		switch(choice)
 			if(YAUTJA_GEAR_LAUNCHER)
-				equip_to_slot_if_possible(new /obj/item/weapon/gun/energy/yautja/spike(src.loc), SLOT_IN_BELT, warning = TRUE)
+				wearer.equip_to_slot_if_possible(new /obj/item/weapon/gun/energy/yautja/spike(wearer.loc), SLOT_IN_BELT, warning = TRUE)
 			if(YAUTJA_GEAR_PISTOL)
-				equip_to_slot_if_possible(new /obj/item/weapon/gun/energy/yautja/plasmapistol(src.loc), SLOT_IN_BELT, warning = TRUE)
+				wearer.equip_to_slot_if_possible(new /obj/item/weapon/gun/energy/yautja/plasmapistol(wearer.loc), SLOT_IN_BELT, warning = TRUE)
 			if(YAUTJA_GEAR_DISC)
-				equip_to_slot_if_possible(new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc), SLOT_IN_BELT, warning = TRUE)
+				wearer.equip_to_slot_if_possible(new /obj/item/explosive/grenade/spawnergrenade/smartdisc(wearer.loc), SLOT_IN_BELT, warning = TRUE)
 			if(YAUTJA_GEAR_FULL_ARMOR)
 				if(wear_suit)
-					dropItemToGround(wear_suit)
-				equip_to_slot_if_possible(new /obj/item/clothing/suit/armor/yautja/hunter/full(src.loc, 0, src.client.prefs.predator_armor_material), SLOT_WEAR_SUIT, warning = TRUE)
+					wearer.dropItemToGround(wear_suit)
+				wearer.equip_to_slot_if_possible(new /obj/item/clothing/suit/armor/yautja/hunter/full(wearer.loc, 0, wearer.client.prefs.predator_armor_material), SLOT_WEAR_SUIT, warning = TRUE)
 			if(YAUTJA_GEAR_SHIELD)
-				equip_to_slot_if_possible(new /obj/item/weapon/shield/riot/yautja(src.loc), SLOT_BACK, warning = TRUE)
+				wearer.equip_to_slot_if_possible(new /obj/item/weapon/shield/riot/yautja(wearer.loc), SLOT_BACK, warning = TRUE)
 			if(YAUTJA_GEAR_DRONE)
-				equip_to_slot_if_possible(new /obj/item/clothing/falcon_drone(src.loc), SLOT_HEAD, warning = TRUE)
+				wearer.equip_to_slot_if_possible(new /obj/item/clothing/falcon_drone(wearer.loc), SLOT_HEAD, warning = TRUE)
 
 	claim_equipment.remove_action(wearer)
 

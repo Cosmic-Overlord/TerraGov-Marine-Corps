@@ -162,7 +162,7 @@
 			return
 		target_clan.NextRow()
 		target_clan.sql = "UPDATE [format_table_name("clan")] SET honor = :honor WHERE id = :clan_id"
-		target_clan.arguments = list("clan_id" = clan_info.item[4], "honor" = number + clan_info.item[4])
+		target_clan.arguments = list("clan_id" = clan_info.item[4], "honor" = number + target_clan.item[4])
 		target_clan.Execute()
 		qdel(target_clan)
 

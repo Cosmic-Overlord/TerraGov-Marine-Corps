@@ -51,8 +51,8 @@
 
 	icobase = 'icons/mob/hunter/r_predator.dmi'
 
-	var/datum/action/predator_action/mark_for_hunt/mark_for_hunt = new
-	var/datum/action/predator_action/mark_panel/mark_panel = new
+	var/list/datum/action/predator_action/mark_for_hunt/mark_for_hunt
+	var/list/datum/action/predator_action/mark_panel/mark_panel
 
 /datum/species/yautja/larva_impregnated(obj/item/alien_embryo/embryo)
 	var/datum/hive_status/hive = GLOB.hive_datums[embryo.hivenumber]
@@ -114,8 +114,10 @@
 	. = ..()
 	var/datum/atom_hud/medical/advanced/A = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	A.remove_hud_from(H)
-	mark_for_hunt.give_action(H)
-	mark_panel.give_action(H)
+	mark_for_hunt[H] = new /datum/action/predator_action/mark_for_hunt
+	mark_panel[H] = new /datum/action/predator_action/mark_panel
+	mark_for_hunt[H].give_action(H)
+	mark_panel[H].give_action(H)
 
 	for(var/datum/limb/limb in H.limbs)
 		switch(limb.name)
@@ -138,8 +140,12 @@
 	..()
 	var/datum/atom_hud/medical/advanced/A = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	A.add_to_hud(H)
-	mark_for_hunt.remove_action(H)
-	mark_panel.remove_action(H)
+	mark_for_hunt[H].remove_action(H)
+	mark_panel[H].remove_action(H)
+	qdel(mark_for_hunt[H])
+	qdel(mark_panel[H])
+	mark_for_hunt -= H
+	mark_panel -= H
 	H.blood_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")
 	H.h_style = "Bald"
 	GLOB.yautja_mob_list -= H

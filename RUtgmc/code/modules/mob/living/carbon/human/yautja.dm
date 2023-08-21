@@ -51,7 +51,6 @@
 
 	icobase = 'icons/mob/hunter/r_predator.dmi'
 
-	var/datum/action/predator_action/pred_buy/pred_buy = new
 	var/datum/action/predator_action/mark_for_hunt/mark_for_hunt = new
 	var/datum/action/predator_action/mark_panel/mark_panel = new
 
@@ -115,7 +114,6 @@
 	. = ..()
 	var/datum/atom_hud/medical/advanced/A = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	A.remove_hud_from(H)
-	pred_buy.give_action(H)
 	mark_for_hunt.give_action(H)
 	mark_panel.give_action(H)
 
@@ -140,7 +138,6 @@
 	..()
 	var/datum/atom_hud/medical/advanced/A = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	A.add_to_hud(H)
-	pred_buy.remove_action(H)
 	mark_for_hunt.remove_action(H)
 	mark_panel.remove_action(H)
 	H.blood_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")

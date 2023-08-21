@@ -56,7 +56,7 @@
 	var/obj/item/clothing/gloves/yautja/linked_bracer //Bracer linked to this one (thrall or mentor).
 	var/obj/item/card/id/bracer_chip/embedded_id
 
-	var/datum/action/predator_action/bracer/buy_thrall_gear/claim_equipment = new
+	var/datum/action/predator_action/bracer/pred_buy/claim_equipment = new
 
 	var/datum/action/predator_action/bracer/cloaker/action_cloaker
 	var/datum/action/predator_action/bracer/caster/action_caster
@@ -855,6 +855,106 @@
 	notification_sound = !notification_sound
 	to_chat(usr, span_notice("The bracer's sound is now turned [notification_sound ? "on" : "off"]."))
 
+/obj/item/clothing/gloves/yautja/proc/buy_gear()
+	if(hunter_data.claimed_equipment)
+		to_chat(src, span_warning("You've already claimed your equipment."))
+		return
+
+	if(stat || (lying_angle && !resting && !IsSleeping()) || (IsParalyzed() || IsUnconscious()) || lying_angle || buckled)
+		to_chat(src, span_warning("You're not able to do that right now."))
+		return
+
+	if(!isyautja(src))
+		to_chat(src, span_warning("How did you get this verb?"))
+		return
+
+	if(hunter_data.claimed_equipment)
+		to_chat(src, span_warning("You've already claimed your equipment."))
+		return
+
+	if(!istype(get_area(src), /area/yautja))
+		to_chat(src, span_warning("Not here. Only on the ship."))
+		return
+
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+	if(!istype(bracer))
+		to_chat(src, span_warning("You need to be wearing your bracers to do this."))
+		return
+
+	var/sure = alert("An array of powerful weapons are displayed to you. Pick your gear carefully. If you cancel at any point, you will not claim your equipment.", "Sure?", "Begin the Hunt", "No, not now")
+	if(sure != "Begin the Hunt")
+		return
+
+	var/list/melee = list(YAUTJA_GEAR_GLAIVE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), YAUTJA_GEAR_WHIP = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "whip"),YAUTJA_GEAR_SWORD = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "clansword"),YAUTJA_GEAR_SCYTHE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), YAUTJA_GEAR_STICK = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "combistick"), YAUTJA_GEAR_SCIMS = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "scim"))
+	var/list/other = list(YAUTJA_GEAR_LAUNCHER = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spikelauncher"), YAUTJA_GEAR_PISTOL = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "plasmapistol"), YAUTJA_GEAR_DISC = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "disc"), YAUTJA_GEAR_FULL_ARMOR = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "fullarmor_ebony"), YAUTJA_GEAR_SHIELD = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "shield"), YAUTJA_GEAR_DRONE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "falcon_drone"))
+	var/list/restricted = list(YAUTJA_GEAR_LAUNCHER, YAUTJA_GEAR_PISTOL, YAUTJA_GEAR_FULL_ARMOR, YAUTJA_GEAR_SHIELD, YAUTJA_GEAR_DRONE) //Can only select them once each.
+
+	var/list/secondaries = list()
+	var/total_secondaries = 2
+
+	var/main_weapon = show_radial_menu(src, src, melee)
+
+	if(main_weapon == YAUTJA_GEAR_SCYTHE)
+		var/list/scythe_variants = list(YAUTJA_GEAR_SCYTHE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), YAUTJA_GEAR_SCYTHE_ALT = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe_alt"))
+		main_weapon = show_radial_menu(src, src, scythe_variants)
+
+	if(main_weapon == YAUTJA_GEAR_GLAIVE)
+		var/list/glaive_variants = list(YAUTJA_GEAR_GLAIVE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), YAUTJA_GEAR_GLAIVE_ALT = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive_alt"))
+		main_weapon = show_radial_menu(src, src, glaive_variants)
+
+	if(!main_weapon)
+		return
+	for(var/i = 1 to total_secondaries)
+		var/secondary = show_radial_menu(src, src, other)
+		if(!secondary)
+			return
+		secondaries += secondary
+		if(secondary in restricted)
+			other -= secondary
+
+	hunter_data.claimed_equipment = TRUE
+
+	switch(main_weapon)
+		if(YAUTJA_GEAR_GLAIVE)
+			equip_to_slot_if_possible(new /obj/item/weapon/twohanded/yautja/glaive(src.loc), SLOT_S_STORE, warning = TRUE)
+		if(YAUTJA_GEAR_GLAIVE_ALT)
+			equip_to_slot_if_possible(new /obj/item/weapon/twohanded/yautja/glaive/alt(src.loc), SLOT_S_STORE, warning = TRUE)
+		if(YAUTJA_GEAR_WHIP)
+			equip_to_slot_if_possible(new /obj/item/weapon/yautja/chain(src.loc), SLOT_S_STORE, warning = TRUE)
+		if(YAUTJA_GEAR_SWORD)
+			equip_to_slot_if_possible(new /obj/item/weapon/yautja/sword(src.loc), SLOT_S_STORE, warning = TRUE)
+		if(YAUTJA_GEAR_SCYTHE)
+			equip_to_slot_if_possible(new /obj/item/weapon/yautja/scythe(src.loc), SLOT_S_STORE, warning = TRUE)
+		if(YAUTJA_GEAR_SCYTHE_ALT)
+			equip_to_slot_if_possible(new /obj/item/weapon/yautja/scythe/alt(src.loc), SLOT_S_STORE, warning = TRUE)
+		if(YAUTJA_GEAR_STICK)
+			equip_to_slot_if_possible(new /obj/item/weapon/yautja/combistick(src.loc), SLOT_S_STORE, warning = TRUE)
+		if(YAUTJA_GEAR_SCIMS)
+			if(bracer.wristblades_deployed)
+				bracer.wristblades_internal(usr, TRUE)
+			qdel(bracer.left_wristblades)
+			qdel(bracer.right_wristblades)
+			bracer.left_wristblades = new /obj/item/weapon/wristblades/scimitar(bracer)
+			bracer.right_wristblades = new /obj/item/weapon/wristblades/scimitar(bracer)
+
+	for(var/choice in secondaries)
+		switch(choice)
+			if(YAUTJA_GEAR_LAUNCHER)
+				equip_to_slot_if_possible(new /obj/item/weapon/gun/energy/yautja/spike(src.loc), SLOT_IN_BELT, warning = TRUE)
+			if(YAUTJA_GEAR_PISTOL)
+				equip_to_slot_if_possible(new /obj/item/weapon/gun/energy/yautja/plasmapistol(src.loc), SLOT_IN_BELT, warning = TRUE)
+			if(YAUTJA_GEAR_DISC)
+				equip_to_slot_if_possible(new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc), SLOT_IN_BELT, warning = TRUE)
+			if(YAUTJA_GEAR_FULL_ARMOR)
+				if(wear_suit)
+					dropItemToGround(wear_suit)
+				equip_to_slot_if_possible(new /obj/item/clothing/suit/armor/yautja/hunter/full(src.loc, 0, src.client.prefs.predator_armor_material), SLOT_WEAR_SUIT, warning = TRUE)
+			if(YAUTJA_GEAR_SHIELD)
+				equip_to_slot_if_possible(new /obj/item/weapon/shield/riot/yautja(src.loc), SLOT_BACK, warning = TRUE)
+			if(YAUTJA_GEAR_DRONE)
+				equip_to_slot_if_possible(new /obj/item/clothing/falcon_drone(src.loc), SLOT_HEAD, warning = TRUE)
+
+	claim_equipment.remove_action(wearer)
 
 /obj/item/clothing/gloves/yautja/thrall
 	name = "thrall bracers"

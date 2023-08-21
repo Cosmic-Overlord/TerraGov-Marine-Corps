@@ -14,18 +14,6 @@
 		return FALSE
 	return TRUE
 
-/datum/action/predator_action/pred_buy
-	name = "Claim Equipment"
-	desc = "Choose equipment for your hunt."
-	action_icon_state = "equipment_selection"
-
-/datum/action/predator_action/pred_buy/action_activate()
-	if(!can_use_action())
-		return FALSE
-
-	var/mob/living/carbon/human/human = owner
-	human.pred_buy()
-
 /datum/action/predator_action/mark_for_hunt
 	name = "Mark for Hunt"
 	desc = "Find your next hunting prey."
@@ -137,18 +125,18 @@
 		return FALSE
 	return TRUE
 
-/datum/action/predator_action/bracer/buy_thrall_gear
+/datum/action/predator_action/bracer/pred_buy
 	name = "Claim Equipment"
 	desc = "Choose equipment for your hunt."
 	action_icon_state = "equipment_selection"
 
-/datum/action/predator_action/bracer/buy_thrall_gear/action_activate()
+/datum/action/predator_action/bracer/pred_buy/action_activate()
 	if(!can_use_action())
 		return FALSE
 
 	var/mob/living/carbon/human/human = owner
 	var/obj/item/clothing/gloves/yautja/bracer = human.gloves
-	bracer.buy_thrall_gear(owner)
+	bracer.buy_gear(owner)
 
 /datum/action/predator_action/bracer/yank_combistick
 	name = "Yank combi-stick"

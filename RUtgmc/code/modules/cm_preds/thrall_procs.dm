@@ -1,5 +1,5 @@
 //Claim gear, same as the Hunter's get.
-/obj/item/clothing/gloves/yautja/proc/buy_thrall_gear(mob/living/carbon/human/wearer)
+/obj/item/clothing/gloves/yautja/thrall/buy_gear(mob/living/carbon/human/wearer)
 	if(wearer.gloves != src)
 		to_chat(wearer, span_warning("You need to be wearing your thrall bracers to do this."))
 		return

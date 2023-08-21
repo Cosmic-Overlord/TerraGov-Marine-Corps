@@ -434,8 +434,7 @@
 		return
 
 	if(caster_deployed)
-		if(caster.loc == caller)
-			caller.transferItemToLoc(caster, src, TRUE)
+		caller.transferItemToLoc(caster, src, TRUE)
 		caster_deployed = FALSE
 	else
 		if(!drain_power(caller, power_to_drain))

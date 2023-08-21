@@ -1025,7 +1025,6 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 	var/spawn_type = job.return_spawn_type(prefs)
 	var/mob/living/carbon/human/new_predator = new spawn_type()
 	new_predator.forceMove(job.return_spawn_turf(pred_candidate, pred_candidate.client))
-	prefs.copy_to(new_predator)
 	new_predator.ckey = pred_candidate.ckey
 	new_predator.apply_assigned_role_to_spawn(job)
 	job.after_spawn(new_predator)

@@ -889,20 +889,20 @@
 	var/list/secondaries = list()
 	var/total_secondaries = 2
 
-	var/main_weapon = show_radial_menu(src, src, melee)
+	var/main_weapon = show_radial_menu(wearer, wearer, melee)
 
 	if(main_weapon == YAUTJA_GEAR_SCYTHE)
 		var/list/scythe_variants = list(YAUTJA_GEAR_SCYTHE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), YAUTJA_GEAR_SCYTHE_ALT = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe_alt"))
-		main_weapon = show_radial_menu(src, src, scythe_variants)
+		main_weapon = show_radial_menu(wearer, wearer, scythe_variants)
 
 	if(main_weapon == YAUTJA_GEAR_GLAIVE)
 		var/list/glaive_variants = list(YAUTJA_GEAR_GLAIVE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), YAUTJA_GEAR_GLAIVE_ALT = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive_alt"))
-		main_weapon = show_radial_menu(src, src, glaive_variants)
+		main_weapon = show_radial_menu(wearer, wearer, glaive_variants)
 
 	if(!main_weapon)
 		return
 	for(var/i = 1 to total_secondaries)
-		var/secondary = show_radial_menu(src, src, other)
+		var/secondary = show_radial_menu(wearer, wearer, other)
 		if(!secondary)
 			return
 		secondaries += secondary

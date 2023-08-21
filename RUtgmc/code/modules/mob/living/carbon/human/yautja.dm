@@ -173,6 +173,8 @@
 
 	H.blood_type = "Y*"
 	H.h_style = "Standard"
+	if(H.client)
+		H.h_style = H.client.prefs.predator_h_style
 	#ifndef UNIT_TESTS // Since this is a hard ref, we shouldn't confuse create_and_destroy
 	GLOB.yautja_mob_list += H
 	#endif

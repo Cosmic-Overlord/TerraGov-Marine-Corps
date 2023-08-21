@@ -145,8 +145,8 @@
 	if(!clan_info)
 		return FALSE
 
-	clan_info.sql = "UPDATE [format_table_name("clan_player")] SET honor += :honor WHERE byond_ckey = :byond_ckey"
-	clan_info.arguments = list("byond_ckey" = ckey, "honor" = number)
+	clan_info.sql = "UPDATE [format_table_name("clan_player")] SET honor = :honor WHERE byond_ckey = :byond_ckey"
+	clan_info.arguments = list("byond_ckey" = ckey, "honor" = number + clan_info.item[5])
 	clan_info.Execute()
 
 	clan_info.sql = "SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey"
@@ -157,7 +157,12 @@
 	clan_info.NextRow()
 
 	if(clan_info.item[4])
-		var/datum/db_query/target_clan = SSdbcore.NewQuery("UPDATE [format_table_name("clan")] SET honor += :honor WHERE id = :clan_id", list("clan_id" = clan_info.item[4], "honor" = number))
+		var/datum/db_query/target_clan = SSdbcore.NewQuery("SELECT id, name, description, honor, color FROM [format_table_name("clan")] WHERE id = :clan_id", list("clan_id" = clan_info.item[4]))
+		if(!target_clan.warn_execute())
+			return
+		target_clan.NextRow()
+		target_clan.sql = "UPDATE [format_table_name("clan")] SET honor = :honor WHERE id = :clan_id"
+		target_clan.arguments = list("clan_id" = clan_info.item[4], "honor" = number + clan_info.item[4])
 		target_clan.Execute()
 		qdel(target_clan)
 

@@ -95,11 +95,11 @@
 	if(mob_client)
 		H.h_style = mob_client.prefs.predator_h_style
 		H.ethnicity = mob_client.prefs.predator_skin_color
-		H.update_body()
-		H.update_hair()
-		H.regenerate_icons()
 
 	H.set_species("Yautja")
+	H.update_body()
+	H.update_hair()
+	H.regenerate_icons()
 
 	var/using_legacy = "No"
 	var/armor_number = 1

@@ -95,6 +95,9 @@
 	if(mob_client)
 		H.h_style = mob_client.prefs.predator_h_style
 		H.ethnicity = mob_client.prefs.predator_skin_color
+		H.update_body()
+		H.update_hair()
+		H.regenerate_icons()
 
 	H.set_species("Yautja")
 
@@ -156,7 +159,6 @@
 	H.flavor_text = ""
 
 	if(H.client && mob_client.prefs)
-		H.h_style = mob_client.prefs.predator_h_style
 		H.gender = mob_client.prefs.predator_gender
 		H.age = mob_client.prefs.predator_age
 		final_name = mob_client.prefs.predator_name

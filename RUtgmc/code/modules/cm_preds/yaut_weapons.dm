@@ -1186,12 +1186,12 @@
 	to_chat(M, span_notice("You deactivate your plasma caster."))
 	if(laser_target)
 		laser_off(M)
-	if(source)
+	. = ..()
+	if(source && !(src in M.contents))
 		forceMove(source)
 		source.caster_deployed = FALSE
 		source.action_caster.set_toggle(FALSE)
 		return
-	. = ..()
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/able_to_fire(mob/user)
 	if(!source)

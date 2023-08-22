@@ -51,8 +51,8 @@
 
 	icobase = 'icons/mob/hunter/r_predator.dmi'
 
-	var/list/datum/action/predator_action/mark_for_hunt/mark_for_hunt
-	var/list/datum/action/predator_action/mark_panel/mark_panel
+	var/list/datum/action/predator_action/mark_for_hunt/mark_for_hunt = list()
+	var/list/datum/action/predator_action/mark_panel/mark_panel = list()
 
 /datum/species/yautja/larva_impregnated(obj/item/alien_embryo/embryo)
 	var/datum/hive_status/hive = GLOB.hive_datums[embryo.hivenumber]
@@ -114,8 +114,8 @@
 	. = ..()
 	var/datum/atom_hud/medical/advanced/A = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	A.remove_hud_from(H)
-	mark_for_hunt[H] = new /datum/action/predator_action/mark_for_hunt
-	mark_panel[H] = new /datum/action/predator_action/mark_panel
+	mark_for_hunt[H] += new /datum/action/predator_action/mark_for_hunt
+	mark_panel[H] += new /datum/action/predator_action/mark_panel
 	mark_for_hunt[H].give_action(H)
 	mark_panel[H].give_action(H)
 

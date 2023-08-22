@@ -549,6 +549,8 @@
 	var/atom/areaLoc = null
 	for(var/obj/item/I as anything in GLOB.loose_yautja_gear)
 		var/atom/loc = get_true_location(I)
+		if(!I)
+			continue
 		if(I.anchored)
 			continue
 		if(is_honorable_carrier(recursive_holder_check(I)))
@@ -1080,13 +1082,13 @@
 	if(.)
 		return
 
-	var/msg = span_info("Current priority targets:")
+	. = span_info("Current priority targets:")
 	if(length(caller.hunter_data.targets))
 		for(var/datum/huntdata/data in caller.hunter_data.targets)
-			msg += span_warning("[data.owner.real_name] located in [get_area_name(data.owner)] and have [data.owner.life_kills_total + data.owner.life_value + 3] honor")
+			. += span_warning("[data.owner.real_name] located in [get_area_name(data.owner)] and have [data.owner.life_kills_total + data.owner.life_value + 3] honor\n")
 	else
-		msg += span_notice("NONE")
-	to_chat(caller, msg)
+		. += span_notice("NONE")
+	to_chat(caller, .)
 
 /obj/item/clothing/gloves/yautja/hunter/verb/track_gear()
 	set name = "Track Yautja Gear"

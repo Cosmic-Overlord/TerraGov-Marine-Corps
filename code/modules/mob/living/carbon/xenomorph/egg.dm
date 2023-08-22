@@ -87,6 +87,7 @@
 	flags_atom = CRITICAL_ATOM
 	max_integrity = 80
 	maturity_time = 15 SECONDS
+	plane = FLOOR_PLANE
 	stage_ready_to_burst = 2
 	trigger_size = 2
 	///What type of hugger are produced here
@@ -243,6 +244,7 @@
 	desc = "It looks like a suspiciously weird egg"
 	name = "gas egg"
 	icon_state = "gas_egg"
+	plane = FLOOR_PLANE
 	integrity_failure = 75 //Highly responsive to poking
 	maturity_time = 15 SECONDS
 	maturity_stage = 2

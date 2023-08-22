@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(hunting)
 
 /datum/controller/subsystem/hunting/fire(resumed, init_tick_checks)
 	for(var/datum/huntdata/data in hunter_datas)
-		if(data.dishonored || data.thralled || !ishuman(data.owner) || !isxeno(data.owner))
+		if(data.dishonored || data.thralled || !(ishuman(data.owner) || isxeno(data.owner)))
 			continue
 		if(ishuman(data.owner) && isyautja(data.owner.species))
 			continue

@@ -282,7 +282,7 @@
 	// Construct the signal
 	var/datum/signal/subspace/vocal/signal = new(src, freq, speaker, language, message, spans)
 
-	if (independent && freq >= MIN_ERT_FREQ && freq <= MAX_ERT_FREQ)
+	if(independent && freq >= MIN_ERT_FREQ && freq <= MAX_ERT_FREQ)
 		signal.data["compression"] = 0
 		signal.transmission_method = TRANSMISSION_SUPERSPACE
 		signal.levels = list(0)

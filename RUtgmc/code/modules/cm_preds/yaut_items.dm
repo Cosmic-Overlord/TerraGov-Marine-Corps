@@ -295,7 +295,16 @@
 	frequency = YAUT_FREQ
 	keyslot = /obj/item/encryptionkey/yautja
 	freqlock = TRUE
+	independent = TRUE
 	resistance_flags = UNACIDABLE
+	var/no_radio_override = TRUE
+
+/obj/item/radio/headset/yautja/set_frequency(new_frequency)
+	if(no_radio_override)
+		new_frequency = YAUT_FREQ
+	SEND_SIGNAL(src, COMSIG_RADIO_NEW_FREQUENCY, args)
+	remove_radio(src, frequency)
+	frequency = add_radio(src, new_frequency)
 
 /obj/item/radio/headset/yautja/attack_self(mob/living/user)
 	return //no cargo shitcode

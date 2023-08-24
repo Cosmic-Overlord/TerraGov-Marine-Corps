@@ -140,6 +140,8 @@ a.popt {text-decoration: none;}
 .xrayradio				{color: #008000;}
 .whiskeyradio			{color: #CC00CC;}
 
+.yautjaradio			{color: #b33d3d;}
+
 .binarysay    			{color: #20c20e; background-color: #000000; display: block;}
 .binarysay a  			{color: #00ff00;}
 .binarysay a:active, .binarysay a:visited {color: #88ff88;}

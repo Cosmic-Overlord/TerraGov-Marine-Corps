@@ -748,13 +748,6 @@
 	},
 /turf/open/shuttle/dropship/fourteen,
 /area/yautja)
-"bH" = (
-/obj/structure/closet,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "bI" = (
 /obj/structure/stairs/seamless{
 	dir = 1;
@@ -1766,13 +1759,6 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
-"gP" = (
-/obj/machinery/telecomms/server/presets/common,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
 "hI" = (
 /obj/structure/shuttle/window{
 	color = "#6b675e"
@@ -2099,6 +2085,13 @@
 	},
 /turf/open/ground/grass,
 /area/yautja)
+"nC" = (
+/obj/machinery/telecomms/relay/preset/telecomms,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "nT" = (
 /obj/structure/table/reinforced/prison{
 	color = "#6b675e";
@@ -2145,13 +2138,6 @@
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
-	},
-/area/yautja)
-"oi" = (
-/obj/machinery/telecomms/bus/preset_four,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
 	},
 /area/yautja)
 "ol" = (
@@ -2599,13 +2585,6 @@
 	pixel_y = 9
 	},
 /turf/open/shuttle/dropship/fourteen,
-/area/yautja)
-"ys" = (
-/obj/machinery/telecomms/receiver/preset_right,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
 /area/yautja)
 "yY" = (
 /obj/machinery/door_control{
@@ -6983,8 +6962,8 @@ bU
 vI
 RE
 bj
-bH
-bH
+oe
+oe
 bj
 bL
 cS
@@ -7345,7 +7324,7 @@ BB
 JH
 bN
 bj
-gP
+nC
 bj
 bj
 bj
@@ -7417,7 +7396,7 @@ BB
 JH
 bN
 bj
-oi
+bj
 bj
 bj
 aa
@@ -7489,7 +7468,7 @@ sx
 Zs
 sx
 bj
-ys
+bj
 bj
 bj
 aa

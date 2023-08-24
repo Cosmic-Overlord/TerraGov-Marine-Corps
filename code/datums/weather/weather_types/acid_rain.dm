@@ -58,7 +58,7 @@
 
 	if(ishuman(L))
 		var/mob/living/carbon/human/human = L
-		if(istype(human.gloves, /obj/item/clothing/gloves/yautja/hunter))
+		if(!istype(human.gloves, /obj/item/clothing/gloves/yautja/hunter))
 			return
 		var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 		if(gloves.cloaked)
@@ -99,7 +99,7 @@
 
 	if(ishuman(L))
 		var/mob/living/carbon/human/human = L
-		if(istype(human.gloves, /obj/item/clothing/gloves/yautja/hunter))
+		if(!istype(human.gloves, /obj/item/clothing/gloves/yautja/hunter))
 			return
 		var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 		if(gloves.cloaked)

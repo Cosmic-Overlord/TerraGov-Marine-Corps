@@ -557,9 +557,10 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 #define HUNTER_STEALTH_COOLDOWN 50 //5 seconds
 #define HUNTER_STEALTH_WALK_PLASMADRAIN 1
 #define HUNTER_STEALTH_RUN_PLASMADRAIN 2
-#define HUNTER_STEALTH_ALPHA 0 //100% transparency
-#define HUNTER_STEALTH_WALK_ALPHA 38 //85% transparency
-#define HUNTER_STEALTH_RUN_ALPHA 128 //50% transparency
+#define HUNTER_STEALTH_STILL_ALPHA 15
+#define HUNTER_STEALTH_WALK_ALPHA 25
+#define HUNTER_STEALTH_RUN_ALPHA 100
+#define HUNTER_STEALTH_BUSY_ALPHA 138
 #define HUNTER_STEALTH_STEALTH_DELAY 30 //3 seconds before 95% stealth
 #define HUNTER_STEALTH_INITIAL_DELAY 20 //2 seconds before we can increase stealth
 #define HUNTER_POUNCE_SNEAKATTACK_DELAY 20 //2 seconds before we can sneak attack
@@ -655,10 +656,12 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 //Boiler defines
 #define BOILER_LUMINOSITY_BASE 0
 #define BOILER_LUMINOSITY_BASE_COLOR LIGHT_COLOR_GREEN
-#define BOILER_LUMINOSITY_AMMO 1 //don't set this to 0. How much each 'piece' of ammo in reserve glows by.
+#define BOILER_LUMINOSITY_AMMO 0.5 //don't set this to 0. How much each 'piece' of ammo in reserve glows by.
 #define BOILER_LUMINOSITY_AMMO_NEUROTOXIN_COLOR LIGHT_COLOR_YELLOW
 #define BOILER_LUMINOSITY_AMMO_CORROSIVE_COLOR LIGHT_COLOR_GREEN
 #define BOILER_GAS_DELAY 0.5 SECONDS
+#define BOILER_BOMBARD_COOLDOWN_REDUCTION 1.5 //Amount of seconds each glob stored reduces bombard cooldown by
+#define	BOILER_LUMINOSITY_THRESHOLD 2 //Amount of ammo needed to start glowing
 
 //Hivelord defines
 #define HIVELORD_TUNNEL_DISMANTLE_TIME 3 SECONDS

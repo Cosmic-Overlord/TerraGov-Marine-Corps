@@ -21,6 +21,7 @@
 	light_system = MOVABLE_LIGHT
 	light_range = 0
 	light_color = COLOR_WHITE
+	appearance_flags = KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
 
 /*
  *  Muzzle Vars
@@ -210,10 +211,10 @@
 	var/min_scatter = -360
 	///Minimum scatter when wielded
 	var/min_scatter_unwielded = -360
-	///Multiplier. Increases or decreases how much bonus scatter is added when burst firing (wielded only).
+	///Multiplier. Increases or decreases how much bonus scatter is added when burst firing, based off burst size
 	var/burst_scatter_mult = 1
-	///Additive number added to accuracy_mult. Defaults to 0 (no change).
-	var/burst_accuracy_mult	= 0
+	///Additive number added to accuracy_mult.
+	var/burst_accuracy_bonus = 0
 	///same vars as above but for unwielded firing.
 	var/accuracy_mult_unwielded = 1
 	///Multiplier. Increased and decreased through attachments. Multiplies the accuracy/scatter penalty of the projectile when firing while moving.
@@ -417,8 +418,8 @@
 	unwield(user)
 	if(ishandslot(slot))
 		set_gun_user(user)
-		return ..()
-	set_gun_user(null)
+	else
+		set_gun_user(null)
 	return ..()
 
 /obj/item/weapon/gun/removed_from_inventory(mob/user)
@@ -706,7 +707,10 @@
 		return
 	set_target(get_turf_on_clickcatcher(object, gun_user, params))
 	if(gun_firemode == GUN_FIREMODE_SEMIAUTO)
-		if(!INVOKE_ASYNC(src, PROC_REF(Fire)) || windup_checked == WEAPON_WINDUP_CHECKING)
+		var/fire_return // todo fix: code expecting return values from async
+		ASYNC
+			fire_return = Fire()
+		if(!fire_return || windup_checked == WEAPON_WINDUP_CHECKING)
 			return
 		reset_fire()
 		return
@@ -1536,6 +1540,10 @@
 ///Disconnects from a worn magazine.
 /obj/item/weapon/gun/proc/drop_connected_mag(datum/source, mob/user)
 	SIGNAL_HANDLER
+	if(!length_char(chamber_items) || !chamber_items[current_chamber_position])
+		return
+	if(!(get_flags_magazine_features(chamber_items[current_chamber_position]) & MAGAZINE_WORN))
+		return
 	unload(user, FALSE)
 
 ///Getter to draw current rounds. Overwrite if the magazine is not a /ammo_magazine
@@ -1713,10 +1721,10 @@
 
 	if(gun_firemode == GUN_FIREMODE_BURSTFIRE || gun_firemode == GUN_FIREMODE_AUTOBURST)
 		if(wielded_fire)
-			gun_accuracy_mult += burst_accuracy_mult
+			gun_accuracy_mult += burst_accuracy_bonus
 			gun_scatter += burst_amount * burst_scatter_mult
 		else
-			gun_accuracy_mult += burst_accuracy_mult * 2
+			gun_accuracy_mult += burst_accuracy_bonus * 2
 			gun_scatter += burst_amount * burst_scatter_mult * 2
 
 	if(dual_wield) //akimbo firing gives terrible scatter

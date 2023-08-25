@@ -31,7 +31,6 @@
 	var/destroy_sound //Sound this object makes when destroyed.
 
 	var/item_fire_stacks = 0	//How many fire stacks it applies
-	var/obj/effect/xenomorph/acid/current_acid = null //If it has acid spewed on it
 
 	var/list/req_access = null
 	var/list/req_one_access = null
@@ -75,7 +74,7 @@
 			GLOB.all_req_one_access[txt_access] = req_one_access
 		else
 			req_one_access = GLOB.all_req_one_access[txt_access]
-
+	add_debris_element()
 
 /obj/Destroy()
 	hard_armor = null
@@ -100,6 +99,10 @@
 	STOP_PROCESSING(SSobj, src)
 	return 0
 
+/obj/get_acid_delay()
+	if(density)
+		return 4 SECONDS
+	return ..()
 
 /obj/proc/updateUsrDialog()
 	if(!CHECK_BITFIELD(obj_flags, IN_USE))

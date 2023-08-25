@@ -108,6 +108,7 @@
 #define SHATTERING_ROAR_ABILITY_TRAIT "shattering_roar_ability_trait"
 #define ZERO_FORM_BEAM_ABILITY_TRAIT "zero_form_beam_ability_trait"
 #define VALHALLA_TRAIT "valhalla"
+#define BOILER_ROOTED_TRAIT "boiler_rooted"
 
 /// A trait given by any status effect
 #define STATUS_EFFECT_TRAIT "status-effect"
@@ -137,6 +138,12 @@
 #define TRAIT_TIME_SHIFTED "time_shifted"
 #define TRAIT_LEASHED "leashed"
 #define TRAIT_CAN_VENTCRAWL "can_ventcrawl"
+///Makes no footsteps at all
+#define TRAIT_SILENT_FOOTSTEPS "silent_footsteps"
+///quieter footsteps
+#define TRAIT_LIGHT_STEP "light_step"
+///noisier footsteps
+#define TRAIT_HEAVY_STEP "heavy_step"
 
 /// Prevents usage of manipulation appendages (picking, holding or using items, manipulating storage).
 #define TRAIT_HANDS_BLOCKED "handsblocked"
@@ -161,6 +168,7 @@
 #define TRAIT_TURRET_HIDDEN "turret_hidden" //target gets passed over by turrets choosing a victim
 #define TRAIT_MOB_ICON_UPDATE_BLOCKED "icon_blocked" //target should not update its icon_state
 #define TRAIT_VALHALLA_XENO "valhalla_xeno"
+#define TRAIT_BULWARKED_TURF "bulwarked_turf" // turf is affected by bulwark ability
 
 //important_recursive_contents traits
 /*
@@ -208,3 +216,6 @@
 //added to escaped humans
 #define TRAIT_HAS_ESCAPED "escaped_marine"
 #define TRAIT_HAS_BEEN_TARGETED "been_targeted"
+
+//added to AIs firing railguns
+#define TRAIT_IS_FIRING_RAILGUN "firing_railgun"

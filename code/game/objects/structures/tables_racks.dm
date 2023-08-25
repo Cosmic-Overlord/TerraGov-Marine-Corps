@@ -44,7 +44,7 @@
 		var/obj/structure/table/table = locate(/obj/structure/table, get_step(location,direction))
 		if(!table)
 			continue
-		INVOKE_NEXT_TICK(table, /atom/proc.update_icon)
+		INVOKE_NEXT_TICK(table, TYPE_PROC_REF(/atom, update_icon))
 
 
 /obj/structure/table/Initialize(mapload)
@@ -405,15 +405,15 @@
 	if(!straight_table_check(turn(direction, 90)) || !straight_table_check(turn(direction, -90)))
 		return FALSE
 
-	verbs -=/obj/structure/table/verb/do_flip
-	verbs +=/obj/structure/table/proc/do_put
+	verbs -= /obj/structure/table/verb/do_flip
+	verbs += /obj/structure/table/proc/do_put
 
 	var/list/targets = list(get_step(src, dir), get_step(src, turn(dir, 45)),get_step(src, turn(dir, -45)))
 	for(var/i in get_turf(src))
 		if(isobserver(i))
 			continue
 		var/atom/movable/thing_to_throw = i
-		if(thing_to_throw.anchored)
+		if(thing_to_throw.anchored || thing_to_throw.move_resist == INFINITY)
 			continue
 		thing_to_throw.throw_at(pick(targets), 1, 1)
 
@@ -464,7 +464,7 @@
 	return INITIALIZE_HINT_LATELOAD
 
 
-/obj/structure/table/flipped/LateInitialize(mapload)
+/obj/structure/table/flipped/LateInitialize()
 	. = ..()
 	if(!flipped)
 		flip(dir, TRUE)
@@ -483,6 +483,9 @@
 	hit_sound = 'sound/effects/woodhit.ogg'
 	max_integrity = 20
 
+/obj/structure/table/woodentable/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_WOOD, -10, 5)
+
 /obj/structure/table/fancywoodentable
 	name = "fancy wooden table"
 	desc = "An expensive fancy wood surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
@@ -490,12 +493,18 @@
 	table_prefix = "fwood"
 	parts = /obj/item/frame/table/fancywood
 
+/obj/structure/table/fancywoodentable/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_WOOD, -10, 5)
+
 /obj/structure/table/rusticwoodentable
 	name = "rustic wooden table"
 	desc = "A rustic wooden surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
 	icon_state = "pwoodtable"
 	table_prefix = "pwood"
 	parts = /obj/item/frame/table/rusticwood
+
+/obj/structure/table/rusticwoodentable/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_WOOD, -10, 5)
 
 /obj/structure/table/black
 	name = "black metal table"
@@ -540,7 +549,7 @@
 	return INITIALIZE_HINT_LATELOAD
 
 
-/obj/structure/table/reinforced/flipped/LateInitialize(mapload)
+/obj/structure/table/reinforced/flipped/LateInitialize()
 	. = ..()
 	if(!flipped)
 		flip(dir, TRUE)
@@ -563,7 +572,7 @@
 		span_notice("You start weakening [src]"))
 		add_overlay(GLOB.welding_sparks)
 		playsound(loc, 'sound/items/welder.ogg', 25, TRUE)
-		if(!do_after(user, 5 SECONDS, TRUE, src, BUSY_ICON_BUILD, extra_checks = CALLBACK(WT, /obj/item/tool/weldingtool/proc/isOn)) || !WT.remove_fuel(1, user))
+		if(!do_after(user, 5 SECONDS, TRUE, src, BUSY_ICON_BUILD, extra_checks = CALLBACK(WT, TYPE_PROC_REF(/obj/item/tool/weldingtool, isOn))) || !WT.remove_fuel(1, user))
 			cut_overlay(GLOB.welding_sparks)
 			return TRUE
 
@@ -577,7 +586,7 @@
 		span_notice("You start welding [src] back together."))
 	add_overlay(GLOB.welding_sparks)
 	playsound(loc, 'sound/items/welder.ogg', 25, TRUE)
-	if(!do_after(user, 5 SECONDS, TRUE, src, BUSY_ICON_BUILD, extra_checks = CALLBACK(WT, /obj/item/tool/weldingtool/proc/isOn)) || !WT.remove_fuel(1, user))
+	if(!do_after(user, 5 SECONDS, TRUE, src, BUSY_ICON_BUILD, extra_checks = CALLBACK(WT, TYPE_PROC_REF(/obj/item/tool/weldingtool, isOn))) || !WT.remove_fuel(1, user))
 		cut_overlay(GLOB.welding_sparks)
 		return TRUE
 

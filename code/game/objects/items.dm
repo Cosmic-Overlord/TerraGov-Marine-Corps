@@ -84,9 +84,7 @@ GLOBAL_DATUM_INIT(welding_sparks_prepdoor, /mutable_appearance, mutable_appearan
 	var/time_to_equip = 0 // set to ticks it takes to equip a worn suit.
 	var/time_to_unequip = 0 // set to ticks it takes to unequip a worn suit.
 
-
 	var/reach = 1
-
 
 	/// Species-specific sprites, concept stolen from Paradise//vg/. Ex: sprite_sheets = list("Combat Robot" = 'icons/mob/species/robot/backpack.dmi') If index term exists and icon_override is not set, this sprite sheet will be used.
 	var/list/sprite_sheets = null
@@ -149,7 +147,6 @@ GLOBAL_DATUM_INIT(welding_sparks_prepdoor, /mutable_appearance, mutable_appearan
 	if(flags_item_map_variant)
 		update_item_sprites()
 
-
 /obj/item/Destroy()
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
 	flags_item &= ~NODROP //so the item is properly unequipped if on a mob.
@@ -209,9 +206,9 @@ GLOBAL_DATUM_INIT(welding_sparks_prepdoor, /mutable_appearance, mutable_appearan
 	. += "[gender == PLURAL ? "They are" : "It is"] a [weight_class_to_text(w_class)] item."
 
 /obj/item/attack_ghost(mob/dead/observer/user)
-	if(!can_interact(user))
+	. = ..()
+	if(. || !can_interact(user))
 		return
-
 	return interact(user)
 
 
@@ -329,8 +326,7 @@ GLOBAL_DATUM_INIT(welding_sparks_prepdoor, /mutable_appearance, mutable_appearan
 				H.UpdateDamageIcon()
 			limb_count++
 		UPDATEHEALTH(H)
-		qdel(current_acid)
-		current_acid = null
+		QDEL_NULL(current_acid)
 	return
 
 ///Called to return an item to equip using the quick equip hotkey. Will try return a stored item, otherwise returns itself to equip.
@@ -828,19 +824,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		return
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
 
-
-	if(is_blind(user))
-		to_chat(user, span_warning("You are too blind to see anything."))
-		return
-
-	if(!user.dextrous)
-		to_chat(user, span_warning("You do not have the dexterity to use \the [zoom_device]."))
-		return
-
-	if(!zoom && user.tinttotal >= TINT_5)
-		to_chat(user, span_warning("Your vision is too obscured for you to look through \the [zoom_device]."))
-		return
-
 	if(!tileoffset)
 		tileoffset = zoom_tile_offset
 	if(!viewsize)
@@ -864,6 +847,18 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			user.client.click_intercept = null
 			user.client.view_size.reset_to_default()
 			animate(user.client, 3*(tileoffset/7), pixel_x = 0, pixel_y = 0)
+		return
+
+	if(is_blind(user))
+		to_chat(user, span_warning("You are too blind to see anything."))
+		return
+
+	if(!user.dextrous)
+		to_chat(user, span_warning("You do not have the dexterity to use \the [zoom_device]."))
+		return
+
+	if(user.tinttotal >= TINT_5)
+		to_chat(user, span_warning("Your vision is too obscured for you to look through \the [zoom_device]."))
 		return
 
 	TIMER_COOLDOWN_START(user, COOLDOWN_ZOOM, 2 SECONDS)

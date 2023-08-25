@@ -3,8 +3,6 @@
 #define XENO_STANDING_HEAL 0.2
 #define XENO_CRIT_DAMAGE 5
 
-#define XENO_HUD_ICON_BUCKETS 16  // should equal the number of icons you use to represent health / plasma (from 0 -> X)
-
 /mob/living/carbon/xenomorph/Life()
 
 	if(!loc)
@@ -191,21 +189,20 @@
 	// Health Hud
 	if(hud_used && hud_used.healths)
 		if(stat != DEAD)
-			var/bucket = get_bucket(XENO_HUD_ICON_BUCKETS, maxHealth, health, get_crit_threshold(), list("full", "critical"))
-			hud_used.healths.icon_state = "health[bucket]"
+			var/amount = round(health * 100 / maxHealth, 5)
+			if(health < 0)
+				amount = 0 //We dont want crit sprite only at 0 health
+			hud_used.healths.icon_state = "health[amount]"
 		else
 			hud_used.healths.icon_state = "health_dead"
 
 	// Plasma Hud
 	if(hud_used && hud_used.alien_plasma_display)
 		if(stat != DEAD)
-			var/bucket = get_bucket(XENO_HUD_ICON_BUCKETS, xeno_caste.plasma_max, plasma_stored, 0, list("full", "empty"))
-			hud_used.alien_plasma_display.icon_state = "power_display_[bucket]"
-			hud_used.alien_plasma_display.desc = "[plasma_stored]/[xeno_caste.plasma_max]"
+			var/amount = round(plasma_stored * 100 / xeno_caste.plasma_max, 5)
+			hud_used.alien_plasma_display.icon_state = "power_display_[amount]"
 		else
-			hud_used.alien_plasma_display.icon_state = "power_display_empty"
-			hud_used.alien_plasma_display.desc = "0/0"
-
+			hud_used.alien_plasma_display.icon_state = "power_display_0"
 
 	interactee?.check_eye(src)
 
@@ -232,6 +229,7 @@
 		return
 	health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
 	med_hud_set_health()
+	handle_regular_hud_updates()
 	update_stat()
 	update_wounds()
 

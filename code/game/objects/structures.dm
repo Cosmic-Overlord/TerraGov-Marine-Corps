@@ -2,7 +2,7 @@
 	icon = 'icons/obj/structures/structures.dmi'
 	var/climbable = FALSE
 	var/climb_delay = 50
-	var/flags_barrier = 0
+	var/flags_barrier = NONE
 	var/broken = FALSE //similar to machinery's stat BROKEN
 	obj_flags = CAN_BE_HIT
 	anchored = TRUE
@@ -214,3 +214,6 @@
 		return
 
 	return interact(user)
+
+/obj/structure/get_acid_delay()
+	return 4 SECONDS

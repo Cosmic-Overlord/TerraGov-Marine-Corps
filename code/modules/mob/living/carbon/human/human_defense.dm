@@ -198,13 +198,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 
 		switch(hit_area)
-			if("head")//Harder to score a stun but if you do it lasts a bit longer
-				if(prob(applied_damage) && stat == CONSCIOUS)
-					Paralyze(modify_by_armor(16, MELEE, def_zone = target_zone))
-					visible_message(span_danger("[src] has been knocked unconscious!"),
-									span_danger("You have been knocked unconscious!"), null, 5)
-					hit_report += "(KO)"
-
+			if("head")
 				if(bloody)//Apply blood
 					if(wear_mask)
 						wear_mask.add_mob_blood(src)
@@ -216,23 +210,13 @@ Contains most of the procs that are called when a mob is attacked by something
 						glasses.add_mob_blood(src)
 						update_inv_glasses(0)
 
-			if("chest")//Easier to score a stun but lasts less time
-				if(prob((applied_damage + 5)) && !incapacitated())
-					apply_effect(modify_by_armor(6, MELEE, def_zone = target_zone), WEAKEN)
-					visible_message(span_danger("[src] has been knocked down!"),
-									span_danger("You have been knocked down!"), null, 5)
-					hit_report += "(KO)"
-
+			if("chest")
 				if(bloody)
 					bloody_body(src)
 
 	//Melee weapon embedded object code.
 	if(affecting.limb_status & LIMB_DESTROYED)
 		hit_report += "(delimbed [affecting.display_name])"
-	else if(I.damtype == BRUTE && !(I.flags_item & (NODROP|DELONDROP)))
-		if (percentage_penetration && weapon_sharp && prob(I.embedding.embed_chance))
-			I.embed_into(src, affecting)
-			hit_report += "(embedded in [affecting.display_name])"
 
 	log_combat(user, src, "attacked", I, "(INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(I.damtype)]) [hit_report.Join(" ")]")
 	if(damage && !user.mind?.bypass_ff && !mind?.bypass_ff && user.faction == faction)

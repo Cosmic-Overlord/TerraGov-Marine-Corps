@@ -1,3 +1,7 @@
+#define LASER_TYPE_CAS "cas_laser"
+#define LASER_TYPE_OB "railgun_laser"
+#define LASER_TYPE_RAILGUN "railgun_laser"
+
 /obj/effect/overlay
 	name = "overlay"
 
@@ -58,6 +62,14 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/lases.dmi'
 	icon_state = "laser_target3"
+	layer = ABOVE_FLY_LAYER
+
+/obj/effect/overlay/pod_warning //Used to indicate incoming POD
+	name = "pod warning"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	icon = 'icons/effects/lases.dmi'
+	icon_state = "pod_laser"
 	layer = ABOVE_FLY_LAYER
 
 //CAS:
@@ -178,6 +190,8 @@
 	var/obj/item/binoculars/tactical/source_binoc
 	var/obj/machinery/camera/laser_cam/linked_cam
 	var/datum/squad/squad
+	///what kind of laser we are, used for signals
+	var/lasertype = LASER_TYPE_RAILGUN
 
 /obj/effect/overlay/temp/laser_target/Initialize(mapload, effect_duration, named, assigned_squad = null)
 	. = ..()
@@ -187,6 +201,13 @@
 	squad = assigned_squad
 	if(squad)
 		squad.squad_laser_targets += src
+	switch(lasertype)
+		if(LASER_TYPE_RAILGUN)
+			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_RAILGUN_LASER_CREATED, src)
+		if(LASER_TYPE_CAS)
+			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CAS_LASER_CREATED, src)
+		if(LASER_TYPE_OB)
+			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_OB_LASER_CREATED, src)
 
 /obj/effect/overlay/temp/laser_target/Destroy()
 	if(squad)
@@ -211,12 +232,12 @@
 
 /obj/effect/overlay/temp/laser_target/cas
 	icon_state = "laser_target_coordinate"
+	lasertype = LASER_TYPE_CAS
 
 /obj/effect/overlay/temp/laser_target/cas/Initialize(mapload, effect_duration, named, assigned_squad = null)
 	. = ..()
 	linked_cam = new(src, name)
 	GLOB.active_cas_targets += src
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CAS_LASER_CREATED, src)
 
 /obj/effect/overlay/temp/laser_target/cas/Destroy()
 	GLOB.active_cas_targets -= src
@@ -229,10 +250,10 @@
 
 /obj/effect/overlay/temp/laser_target/OB
 	icon_state = "laser_target2"
+	lasertype = LASER_TYPE_OB
 
 /obj/effect/overlay/temp/laser_target/OB/Initialize(mapload, effect_duration, named, assigned_squad)
 	. = ..()
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_OB_LASER_CREATED, src)
 	GLOB.active_laser_targets += src
 
 /obj/effect/overlay/temp/laser_target/OB/Destroy()
@@ -347,6 +368,7 @@
 
 /obj/effect/overlay/eye
 	layer = ABOVE_MOB_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon_state = "eye_open"
 	pixel_x = 16
 	pixel_y = 16

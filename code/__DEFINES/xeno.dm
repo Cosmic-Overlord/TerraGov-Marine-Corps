@@ -24,6 +24,8 @@
 #define RESIN_WALL "resin wall"
 #define STICKY_RESIN "sticky resin"
 #define RESIN_DOOR "resin door"
+#define GROWTH_WALL "growth wall"
+#define GROWTH_DOOR "growth door"
 #define ALIEN_NEST "alien nest"
 
 //Xeno reagents defines
@@ -47,6 +49,11 @@
 #define TRAP_ACID_WEAK "weak acid"
 #define TRAP_ACID_NORMAL "acid"
 #define TRAP_ACID_STRONG "strong acid"
+
+//Xeno acid strength defines
+#define WEAK_ACID_STRENGTH 0.016
+#define REGULAR_ACID_STRENGTH 0.04
+#define STRONG_ACID_STRENGTH 0.1
 
 //List of weed types
 GLOBAL_LIST_INIT(weed_type_list, typecacheof(list(

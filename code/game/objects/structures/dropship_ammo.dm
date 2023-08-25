@@ -205,12 +205,12 @@
 	icon_state = "30mm_crate"
 	desc = "A crate full of 30mm bullets used on the dropship heavy guns. Moving this will require some sort of lifter."
 	equipment_type = /obj/structure/dropship_equipment/weapon/heavygun
-	travelling_time =  6 SECONDS
-	ammo_count = 200
-	max_ammo_count = 200
+	travelling_time =  4 SECONDS
+	ammo_count = 260
+	max_ammo_count = 260
 	transferable_ammo = TRUE
 	ammo_used_per_firing = 20
-	point_cost = 75
+	point_cost = 50
 	///Radius of the square that the bullets will strafe
 	var/bullet_spread_range = 2
 	///Width of the square we are attacking, so you can make rectangular attacks later
@@ -253,10 +253,7 @@
 		strafed = strafelist[1]
 		strafelist -= strafed
 		strafed.ex_act(EXPLODE_LIGHT)
-		new /obj/effect/particle_effect/expl_particles(strafed)
 		new /obj/effect/temp_visual/heavyimpact(strafed)
-		for(var/atom/movable/AM AS in strafed)
-			AM.ex_act(EXPLODE_LIGHT)
 
 	if(length_char(strafelist))
 		addtimer(CALLBACK(src, PROC_REF(strafe_turfs), strafelist), 2)
@@ -292,10 +289,7 @@
 
 /obj/structure/ship_ammo/railgun/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(2)
-	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range, adminlog = FALSE, small_animation = TRUE, color = COLOR_CYAN)//no messaging admin, that'd spam them.
-	var/datum/effect_system/expl_particles/P = new
-	P.set_up(4, 0, impact)
-	P.start()
+	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range, adminlog = FALSE, color = COLOR_CYAN)//no messaging admin, that'd spam them.
 	if(!ammo_count)
 		QDEL_IN(src, travelling_time) //deleted after last railgun has fired and impacted the ground.
 
@@ -397,7 +391,7 @@
 	icon_state = "single"
 	travelling_time = 3 SECONDS //not powerful, but reaches target fast
 	ammo_id = ""
-	point_cost = 75
+	point_cost = 50
 	devastating_explosion_range = 2
 	heavy_explosion_range = 4
 	light_explosion_range = 7
@@ -414,7 +408,7 @@
 	desc = "The AGM-227 missile is a mainstay of the overhauled dropship fleet against any mobile or armored ground targets. It's earned the nickname of 'Banshee' from the sudden wail that it emitts right before hitting a target. Useful to clear out large areas. Moving this will require some sort of lifter."
 	icon_state = "banshee"
 	ammo_id = "b"
-	point_cost = 150
+	point_cost = 100
 	devastating_explosion_range = 2
 	heavy_explosion_range = 4
 	light_explosion_range = 7
@@ -432,7 +426,7 @@
 	desc = "The GBU-67 'Keeper II' is the latest in a generation of laser guided weaponry that spans all the way back to the 20th century. Earning its nickname from a shortening of 'Peacekeeper' which comes from the program that developed its guidance system and the various uses of it during peacekeeping conflicts. Its payload is designed to devastate armored targets. Moving this will require some sort of lifter."
 	icon_state = "keeper"
 	ammo_id = "k"
-	point_cost = 300
+	point_cost = 250
 	devastating_explosion_range = 4
 	heavy_explosion_range = 4
 	light_explosion_range = 5
@@ -440,7 +434,7 @@
 
 /obj/structure/ship_ammo/rocket/keeper/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(3)
-	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range, small_animation = TRUE) //tighter blast radius, but more devastating near center
+	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range) //tighter blast radius, but more devastating near center
 	qdel(src)
 
 /obj/structure/ship_ammo/rocket/fatty
@@ -448,7 +442,7 @@
 	desc = "The SM-17 'Fatty' is the most devestating rocket in TGMC arsenal, only second after its big cluster brother in Orbital Cannon. These rocket are also known for highest number of Friendly-on-Friendly incidents due to secondary cluster explosions as well as range of these explosions, TGMC recommends pilots to encourage usage of signal flares or laser for 'Fatty' support. Moving this will require some sort of lifter."
 	icon_state = "fatty"
 	ammo_id = "f"
-	point_cost = 250
+	point_cost = 200
 	devastating_explosion_range = 2
 	heavy_explosion_range = 3
 	light_explosion_range = 4
@@ -473,7 +467,7 @@
 		var/list/coords = impact_coords[i]
 		var/turf/detonation_target = locate(impact.x+coords[1],impact.y+coords[2],impact.z)
 		detonation_target.ceiling_debris_check(2)
-		explosion(detonation_target, devastating_explosion_range, heavy_explosion_range, light_explosion_range, adminlog = FALSE, small_animation = TRUE)
+		explosion(detonation_target, devastating_explosion_range, heavy_explosion_range, light_explosion_range, adminlog = FALSE)
 	qdel(src)
 
 /obj/structure/ship_ammo/rocket/napalm
@@ -491,7 +485,7 @@
 
 /obj/structure/ship_ammo/rocket/napalm/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(3)
-	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range, small_animation = TRUE) //relatively weak
+	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range) //relatively weak
 	flame_radius(fire_range, impact, 60, 30) //cooking for a long time
 	var/datum/effect_system/smoke_spread/phosphorus/warcrime = new
 	warcrime.set_up(fire_range + 1, impact, 7)
@@ -512,7 +506,7 @@
 	ammo_name = "minirocket"
 	travelling_time = 4 SECONDS
 	transferable_ammo = TRUE
-	point_cost = 100
+	point_cost = 85
 	ammo_type = CAS_MINI_ROCKET
 	devastating_explosion_range = 0
 	heavy_explosion_range = 2
@@ -522,11 +516,7 @@
 
 /obj/structure/ship_ammo/minirocket/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(2)
-	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range, adminlog = FALSE, small_animation = TRUE)//no messaging admin, that'd spam them.
-	var/datum/effect_system/expl_particles/P = new
-	P.set_up(4, 0, impact)
-	P.start()
-	addtimer(CALLBACK(src, PROC_REF(delayed_smoke_spread), impact), 0.5 SECONDS)
+	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range, adminlog = FALSE)//no messaging admin, that'd spam them.
 	if(!ammo_count)
 		QDEL_IN(src, travelling_time) //deleted after last minirocket has fired and impacted the ground.
 
@@ -548,7 +538,7 @@
 	name = "incendiary mini rocket stack"
 	desc = "A pack of laser guided incendiary mini rockets. Moving this will require some sort of lifter."
 	icon_state = "minirocket_inc"
-	point_cost = 200
+	point_cost = 150
 	light_explosion_range = 3 //Slightly weaker than standard minirockets
 	fire_range = 3 //Fire range should be the same as the explosion range. Explosion should leave fire, not vice versa
 	prediction_type = CAS_AMMO_INCENDIARY
@@ -570,9 +560,6 @@
 
 /obj/structure/ship_ammo/minirocket/smoke/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(2)
-	var/datum/effect_system/expl_particles/P = new
-	P.set_up(4, 0, impact)
-	P.start()
 	var/datum/effect_system/smoke_spread/tactical/S = new
 	S.set_up(7, impact)// Large radius, but dissipates quickly
 	S.start()
@@ -581,7 +568,7 @@
 	name = "Tanglefoot mini rocket stack"
 	desc = "A pack of laser guided mini rockets loaded with plasma-draining Tanglefoot gas. Moving this will require some sort of lifter."
 	icon_state = "minirocket_tfoot"
-	point_cost = 150
+	point_cost = 100
 	devastating_explosion_range = 0
 	heavy_explosion_range = 0
 	light_explosion_range = 2
@@ -590,9 +577,6 @@
 /obj/structure/ship_ammo/minirocket/tangle/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(2)
 	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range, throw_range = 0)
-	var/datum/effect_system/expl_particles/P = new
-	P.set_up(4, 0, impact)
-	P.start()
 	var/datum/effect_system/smoke_spread/plasmaloss/S = new
 	S.set_up(9, impact, 9)// Between grenade and mortar
 	S.start()
@@ -610,10 +594,6 @@
 
 /obj/structure/ship_ammo/minirocket/illumination/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(2)
-	var/datum/effect_system/expl_particles/P = new/datum/effect_system/expl_particles()
-	P.set_up(4, 0, impact)
-	P.start()
-	addtimer(CALLBACK(src, PROC_REF(delayed_smoke_spread), impact), 0.5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(drop_cas_flare), impact), 1.5 SECONDS)
 	if(!ammo_count)
 		QDEL_IN(src, travelling_time) //deleted after last minirocket has fired and impacted the ground.

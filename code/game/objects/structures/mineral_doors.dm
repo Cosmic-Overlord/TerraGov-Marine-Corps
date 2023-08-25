@@ -189,12 +189,16 @@
 	if(istype(W,/obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
-			TemperatureAct(100)
-	..()
+			var/turf/T = get_turf(src)
+			T.ignite(25, 25)
+			visible_message(span_danger("[src] suddenly combusts!"))
+	return ..()
+
 
 /obj/structure/mineral_door/transparent/phoron/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300)
-		TemperatureAct(exposed_temperature)
+		var/turf/T = get_turf(src)
+		T.ignite(25, 25)
 
 /obj/structure/mineral_door/transparent/phoron/proc/TemperatureAct(temperature)
 
@@ -242,5 +246,9 @@
 	state = D_OPEN
 	icon_state = "woodopen"
 
+/obj/structure/mineral_door/wood/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_WOOD, -10, 5)
+
 #undef D_CLOSED
 #undef D_OPEN
+

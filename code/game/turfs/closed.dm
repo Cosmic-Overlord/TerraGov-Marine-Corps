@@ -12,6 +12,10 @@
 	///used for plasmacutter deconstruction
 	var/open_turf_type = /turf/open/floor/plating
 
+/turf/closed/Initialize(mapload)
+	. = ..()
+	add_debris_element()
+
 /turf/closed/mineral
 	name = "rock"
 	icon = 'icons/turf/walls.dmi'
@@ -19,6 +23,11 @@
 	smoothing_behavior = NONE
 	smoothing_groups = NONE
 	open_turf_type = /turf/open/floor/plating/ground/desertdam/cave/inner_cave_floor
+	minimap_color = NONE
+	resistance_flags = UNACIDABLE
+
+/turf/closed/mineral/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_ROCK, -10, 5, 1)
 
 /turf/closed/mineral/Initialize(mapload)
 	. = ..()
@@ -113,10 +122,14 @@
 	icon = 'icons/turf/walls/jungle.dmi'
 	icon_state = "jungle-0-0-0-0"
 	desc = "Some thick jungle."
+	resistance_flags = UNACIDABLE
 	smoothing_behavior = DIAGONAL_SMOOTHING
 	smoothing_groups = SMOOTH_FLORA
 	walltype = "jungle"
 	open_turf_type = /turf/open/ground/jungle/clear
+
+/turf/closed/gm/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_LEAF, -10, 5)
 
 /turf/closed/gm/tree
 	name = "dense jungle trees"
@@ -131,7 +144,7 @@
 
 /turf/closed/gm/dense
 	name = "dense jungle wall"
-	resistance_flags = PLASMACUTTER_IMMUNE
+	resistance_flags = PLASMACUTTER_IMMUNE|UNACIDABLE
 
 //desertdam rock
 /turf/closed/desertdamrockwall
@@ -185,6 +198,9 @@
 	icon_state = "Single"
 	desc = "It is very thick."
 	open_turf_type = /turf/open/floor/plating/ground/ice
+
+/turf/closed/ice/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SNOW, -10, 5, 1)
 
 /turf/closed/ice/single
 	icon_state = "Single"
@@ -283,6 +299,9 @@
 	resistance_flags = PLASMACUTTER_IMMUNE
 	open_turf_type = /turf/open/floor/plating/ground/ice
 
+/turf/closed/ice_rock/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SNOW, -10, 5, 1)
+
 /turf/closed/ice_rock/single
 	icon_state = "single"
 
@@ -342,6 +361,9 @@
 	plane = FLOOR_PLANE
 	smoothing_behavior = NO_SMOOTHING
 	resistance_flags = PLASMACUTTER_IMMUNE
+
+/turf/closed/shuttle/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -15, 8, 1)
 
 /turf/closed/shuttle/re_corner/notdense
 	icon_state = "re_cornergrass"
@@ -406,6 +428,7 @@
 	icon = 'icons/turf/dropship.dmi'
 	icon_state = "1"
 	plane = GAME_PLANE
+	resistance_flags = RESIST_ALL|PLASMACUTTER_IMMUNE
 
 /turf/closed/shuttle/dropship1/transparent
 	opacity = FALSE
@@ -595,6 +618,7 @@
 	icon = 'icons/turf/dropship2.dmi'
 	icon_state = "1"
 	plane = GAME_PLANE
+	resistance_flags = RESIST_ALL|PLASMACUTTER_IMMUNE
 
 /turf/closed/shuttle/dropship2/transparent
 	opacity = FALSE

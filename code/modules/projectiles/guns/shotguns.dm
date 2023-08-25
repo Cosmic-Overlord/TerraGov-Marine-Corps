@@ -101,14 +101,14 @@
 	starting_attachment_types = list(/obj/item/attachable/stock/t39stock)
 
 	fire_delay = 14 //one shot every 1.4 seconds.
-	accuracy_mult = 1.20
+	accuracy_mult = 1.05
 	accuracy_mult_unwielded = 0.65
 	scatter = 3
 	scatter_unwielded = 12
 	damage_mult = 0.7  //30% less damage. Faster firerate.
-	recoil = 0 //It has a stock on the sprite.
-	recoil_unwielded = 2
-	wield_delay = 1 SECONDS
+	recoil = 2
+	recoil_unwielded = 4
+	wield_delay = 0.8 SECONDS
 	akimbo_additional_delay = 0.9
 
 /obj/item/weapon/gun/shotgun/combat/masterkey
@@ -158,9 +158,9 @@
 	reciever_flags = AMMO_RECIEVER_TOGGLES_OPEN|AMMO_RECIEVER_TOGGLES_OPEN_EJECTS|AMMO_RECIEVER_HANDFULS
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 21,"rail_x" = 15, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 21, "stock_y" = 16)
 
-	fire_delay = 2
 	extra_delay = 2 SECONDS
 	burst_delay = 2
+	fire_delay = 0.65 SECONDS
 	scatter = 4
 	scatter_unwielded = 8
 	recoil = 2
@@ -201,9 +201,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonetknife,
-		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope,
@@ -214,11 +212,11 @@
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 15, "rail_y" = 19, "under_x" = 21, "under_y" = 13, "stock_x" = 13, "stock_y" = 16)
 
-	fire_delay = 5
+	fire_delay = 0.65 SECONDS
 	burst_amount = 1
 	scatter = 3
 	scatter_unwielded = 10
-	recoil = 2
+	recoil = 1
 	recoil_unwielded = 4
 
 
@@ -579,7 +577,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/scope/mini,
-		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/marine,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/magnetic_harness,

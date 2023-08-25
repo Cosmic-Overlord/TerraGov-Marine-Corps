@@ -167,9 +167,10 @@
 /obj/structure/orbital_cannon/proc/handle_ob_firing_effects(target, ob_sound = 'sound/effects/OB_incoming.ogg')
 	flick("OBC_firing",src)
 	playsound(loc, 'sound/effects/obfire.ogg', 100, FALSE, 20, 4)
-	for(var/i in hearers(WARHEAD_FALLING_SOUND_RANGE,target))
-		var/mob/M = i
+	for(var/mob/M AS in hearers(WARHEAD_FALLING_SOUND_RANGE, target))
 		M.playsound_local(target, ob_sound, falloff = 2)
+
+	new /obj/effect/temp_visual/ob_impact(target, tray.warhead)
 
 /obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user)
 	set waitfor = FALSE
@@ -202,7 +203,7 @@
 
 	var/impact_time = 10 SECONDS + (WARHEAD_FLY_TIME * (GLOB.current_orbit/3))
 
-	addtimer(CALLBACK(src, /obj/structure/orbital_cannon/proc/handle_ob_firing_effects, target), impact_time - (0.5 SECONDS))
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/orbital_cannon, handle_ob_firing_effects), target), impact_time - (0.5 SECONDS))
 	var/impact_timerid = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/orbital_cannon, impact_callback), target, inaccurate_fuel), impact_time, TIMER_STOPPABLE)
 
 	var/canceltext = "Warhead: [tray.warhead.warhead_kind]. Impact at [ADMIN_VERBOSEJMP(target)] <a href='?_src_=holder;[HrefToken(TRUE)];cancelob=[impact_timerid]'>\[CANCEL OB\]</a>"
@@ -355,7 +356,7 @@
 
 
 /obj/structure/ob_ammo/obj_destruction(damage_amount, damage_type, damage_flag)
-	explosion(loc, light_impact_range = 2, flash_range = 3, flame_range = 2, small_animation = TRUE)
+	explosion(loc, light_impact_range = 2, flash_range = 3, flame_range = 2)
 	return ..()
 
 
@@ -407,7 +408,7 @@
 	var/total_amt = max(25 - inaccuracy_amt, 20)
 	for(var/i = 1 to total_amt)
 		var/turf/U = pick_n_take(turf_list)
-		explosion(U, 1, 4, 6, 6, throw_range = 0, adminlog = FALSE, small_animation = TRUE) //rocket barrage
+		explosion(U, 1, 4, 6, 6, throw_range = 0, adminlog = FALSE) //rocket barrage
 		sleep(0.1 SECONDS)
 
 /obj/structure/ob_ammo/warhead/plasmaloss
@@ -541,6 +542,7 @@
 	resistance_flags = RESIST_ALL
 	var/cannon_busy = FALSE
 	var/last_firing = 0 //stores the last time it was fired to check when we can fire again
+	var/last_firing_ai = 0 //same thing as last_firing but only cares when the AI last fired
 	var/obj/structure/ship_ammo/railgun/rail_gun_ammo
 
 /obj/structure/ship_rail_gun/Initialize()
@@ -551,22 +553,25 @@
 	rail_gun_ammo.max_ammo_count = 8000 //200 uses or 15 full minutes of firing.
 	rail_gun_ammo.ammo_count = 8000
 
-/obj/structure/ship_rail_gun/proc/fire_rail_gun(turf/T, mob/user)
-	if(cannon_busy)
+/obj/structure/ship_rail_gun/proc/fire_rail_gun(turf/T, mob/user, ignore_cooldown = FALSE, ai_operation = FALSE)
+	if(cannon_busy && !ignore_cooldown)
 		return
 	if(!rail_gun_ammo?.ammo_count)
 		to_chat(user, span_warning("[src] has ran out of ammo."))
 		return
 	flick("Railgun_firing",src)
 	cannon_busy = TRUE
-	last_firing = world.time
+	if(ai_operation)
+		last_firing_ai = world.time
+	else
+		last_firing = world.time
 	playsound(loc, 'sound/weapons/guns/fire/tank_smokelauncher.ogg', 70, 1)
 	playsound(loc, 'sound/weapons/guns/fire/pred_plasma_shot.ogg', 70, 1)
 	var/turf/target = locate(T.x + rand(-4, 4), T.y + rand(-4, 4), T.z)
 	for(var/mob/living/silicon/ai/AI AS in GLOB.ai_list)
 		to_chat(AI, span_notice("NOTICE - \The [src] has fired."))
 	rail_gun_ammo.ammo_count = max(0, rail_gun_ammo.ammo_count - rail_gun_ammo.ammo_used_per_firing)
-	addtimer(CALLBACK(src, /obj/structure/ship_rail_gun/proc/impact_rail_gun, target), 1 SECONDS + (RG_FLY_TIME * (GLOB.current_orbit/3)))
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/ship_rail_gun, impact_rail_gun), target), 1 SECONDS + (RG_FLY_TIME * (GLOB.current_orbit/3)))
 
 /obj/structure/ship_rail_gun/proc/impact_rail_gun(turf/T)
 	rail_gun_ammo.detonate_on(T)

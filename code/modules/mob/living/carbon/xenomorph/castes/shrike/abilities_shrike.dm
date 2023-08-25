@@ -5,6 +5,7 @@
 // ***************************************
 /datum/action/xeno_action/call_of_the_burrowed
 	name = "Call of the Burrowed"
+	desc = "Attempts to summon all currently burrowed larva."
 	action_icon_state = "larva_growth"
 	plasma_cost = 400
 	cooldown_timer = 2 MINUTES
@@ -328,7 +329,7 @@
 	name = "Psychic Grab"
 	action_icon_state = "grab"
 	desc = "Attracts the target to the owner of the ability."
-	cooldown_timer = 12 SECONDS
+	cooldown_timer = 30 SECONDS
 	plasma_cost = 100
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_PSYCHIC_GRAB,

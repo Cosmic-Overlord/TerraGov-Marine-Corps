@@ -62,6 +62,7 @@
 		remove_status_effect(/datum/status_effect/spacefreeze)
 	health = maxHealth - getFireLoss() - getBruteLoss()
 	med_hud_set_health()
+	handle_regular_hud_updates()
 	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_HIVEMIND_MANIFESTATION))
 		return
 	update_wounds()
@@ -101,9 +102,6 @@
 
 /mob/living/carbon/xenomorph/hivemind/gib()
 	return_to_core()
-
-/mob/living/carbon/xenomorph/hivemind/lay_down()
-	return
 
 /mob/living/carbon/xenomorph/hivemind/set_resting()
 	return
@@ -309,6 +307,7 @@
 	max_integrity = 600
 	icon = 'icons/Xeno/weeds.dmi'
 	icon_state = "weed_hivemind4"
+	plane = FLOOR_PLANE
 	var/mob/living/carbon/xenomorph/hivemind/parent
 	xeno_structure_flags = CRITICAL_STRUCTURE|DEPART_DESTRUCTION_IMMUNE
 	///The cooldown of the alert hivemind gets when a hostile is near it's core
@@ -316,6 +315,7 @@
 
 /obj/structure/xeno/hivemindcore/Initialize(mapload)
 	. = ..()
+	GLOB.hive_datums[hivenumber].hivemindcores += src
 	new /obj/alien/weeds/node(loc)
 	set_light(7, 5, LIGHT_COLOR_PURPLE)
 	for(var/turfs in RANGE_TURFS(XENO_HIVEMIND_DETECTION_RANGE, src))
@@ -334,6 +334,7 @@
 		QDEL_NULL(parent)
 	else
 		parent = null
+	GLOB.hive_datums[hivenumber].hivemindcores -= src
 	return ..()
 
 //hivemind cores

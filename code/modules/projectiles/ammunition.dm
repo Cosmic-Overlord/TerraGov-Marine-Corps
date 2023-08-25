@@ -209,7 +209,7 @@
 /obj/item/ammo_magazine/flamer_fire_act(burnlevel)
 	if(!current_rounds)
 		return
-	explosion(loc, 0, 0, 1, 2, throw_range = FALSE, small_animation = TRUE) //blow it up.
+	explosion(loc, 0, 0, 1, 2, throw_range = FALSE) //blow it up.
 	qdel(src)
 
 //Helper proc, to allow us to see a percentage of how full the magazine is.
@@ -423,7 +423,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/big_ammo_box/flamer_fire_act(burnlevel)
 	if(!bullet_amount)
 		return
-	explosion(loc, 0, 0, 1, 2, throw_range = FALSE, small_animation = TRUE) //blow it up.
+	explosion(loc, 0, 0, 1, 2, throw_range = FALSE) //blow it up.
 	qdel(src)
 
 //Deployable shotgun ammo box
@@ -432,7 +432,9 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	desc = "A large, deployable ammo box."
 	icon = 'icons/obj/items/ammo.dmi'
 	icon_state = "ammoboxslug"
+	item_state = "ammoboxslug"
 	w_class = WEIGHT_CLASS_HUGE
+	flags_equip_slot = ITEM_SLOT_BACK
 	///Current stored rounds
 	var/current_rounds = 200
 	///Maximum stored rounds
@@ -547,11 +549,13 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/shotgunbox/buckshot
 	name = "Buckshot Ammo Box"
 	icon_state = "ammoboxbuckshot"
+	item_state = "ammoboxbuckshot"
 	ammo_type = /datum/ammo/bullet/shotgun/buckshot
 
 /obj/item/shotgunbox/flechette
 	name = "Flechette Ammo Box"
 	icon_state = "ammoboxflechette"
+	item_state = "ammoboxflechette"
 	ammo_type = /datum/ammo/bullet/shotgun/flechette
 
 /obj/item/big_ammo_box/mg

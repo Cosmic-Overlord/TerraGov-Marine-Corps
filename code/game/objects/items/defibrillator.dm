@@ -125,7 +125,6 @@
 	stack_trace("Powercell deleted while powering the defib, this isn't supposed to happen normally.")
 	set_dcell(null)
 
-
 /mob/living/proc/get_ghost()
 	if(client) //Let's call up the correct ghost!
 		return null
@@ -140,7 +139,6 @@
 			return ghost
 	return null
 
-
 /mob/living/carbon/human/proc/has_working_organs()
 	var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
 
@@ -150,6 +148,10 @@
 	return TRUE
 
 /obj/item/defibrillator/attack(mob/living/carbon/human/H, mob/living/carbon/human/user)
+	defibrillate(H,user)
+
+///Split proc that actually does the defibrillation. Separated to be used more easily by medical gloves
+/obj/item/defibrillator/proc/defibrillate(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(user.do_actions) //Currently deffibing
 		return
 
@@ -196,10 +198,10 @@
 	if((H.wear_suit && H.wear_suit.flags_atom & CONDUCT))
 		user.visible_message(span_warning("[icon2html(src, viewers(user))] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interferring."))
 		return
-
+	
 	var/mob/dead/observer/G = H.get_ghost()
-	if(istype(G))
-		notify_ghost(G, "<font size=3>Someone is trying to revive your body. Return to it if you want to be resurrected!</font>", ghost_sound = 'sound/effects/gladosmarinerevive.ogg', enter_text = "Enter", enter_link = "reentercorpse=1", source = H, action = NOTIFY_JUMP)
+	if(G)
+		G.reenter_corpse()
 	else if(!H.client)
 		//We couldn't find a suitable ghost, this means the person is not returning
 		user.visible_message(span_warning("[icon2html(src, viewers(user))] \The [src] buzzes: Patient has a DNR."))
@@ -232,7 +234,7 @@
 	if(!issynth(H) && !isrobot(H) && heart && prob(25))
 		heart.take_damage(5) //Allow the defibrillator to possibly worsen heart damage. Still rare enough to just be the "clone damage" of the defib
 
-	if((HAS_TRAIT(H, TRAIT_UNDEFIBBABLE ) && !issynth(H)) || H.suiciding) //synthetic species have no expiration date
+	if(HAS_TRAIT(H, TRAIT_UNDEFIBBABLE) || H.suiciding)
 		user.visible_message(span_warning("[icon2html(src, viewers(user))] \The [src] buzzes: Patient's brain has decayed too much. No remedy possible."))
 		return
 
@@ -336,10 +338,16 @@
 	else
 		UnregisterSignal(user, COMSIG_HUMAN_MELEE_UNARMED_ATTACK)
 
+/obj/item/defibrillator/gloves/unequipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	UnregisterSignal(user, COMSIG_HUMAN_MELEE_UNARMED_ATTACK) //Unregisters in the case of getting delimbed
+
 //when you are wearing these gloves, this will call the normal attack code to begin defibing the target
 /obj/item/defibrillator/gloves/proc/on_unarmed_attack(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	if(user.a_intent != INTENT_HELP)
+		return
 	if(istype(user) && istype(target))
-		attack(target,user)
+		defibrillate(target, user)
 
 /obj/item/defibrillator/gloves/update_icon_state()
 	return

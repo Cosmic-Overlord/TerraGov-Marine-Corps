@@ -256,14 +256,14 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 		new_proj.fire_at(target, main_proj.firer, source, range, speed, new_angle, TRUE)
 
 ///A variant of Fire_bonus_projectiles without fixed scatter and no link between gun and bonus_projectile accuracy
-/datum/ammo/proc/fire_directionalburst(obj/projectile/main_proj, atom/shooter, atom/source, range, speed, angle, target)
+/datum/ammo/proc/fire_directionalburst(obj/projectile/main_proj, atom/shooter, atom/source, projectile_amount, range, speed, angle, target)
 	var/effect_icon = ""
 	var/proj_type = /obj/projectile
 	if(istype(main_proj, /obj/projectile/hitscan))
 		proj_type = /obj/projectile/hitscan
 		var/obj/projectile/hitscan/main_proj_hitscan = main_proj
 		effect_icon = main_proj_hitscan.effect_icon
-	for(var/i = 1 to bonus_projectiles_amount) //Want to run this for the number of bonus projectiles.
+	for(var/i = 1 to projectile_amount) //Want to run this for the number of bonus projectiles.
 		var/obj/projectile/new_proj = new proj_type(main_proj.loc, effect_icon)
 		if(bonus_projectiles_type)
 			new_proj.generate_bullet(bonus_projectiles_type)
@@ -296,7 +296,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 /datum/ammo/proc/drop_nade(turf/T)
 	return
 
-///called on projectile process() when SPECIAL_PROCESS flag is active
+///called on projectile process() when AMMO_SPECIAL_PROCESS flag is active
 /datum/ammo/proc/ammo_process(obj/projectile/proj, damage)
 	CRASH("ammo_process called with unimplemented process!")
 
@@ -589,7 +589,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	name = "armor-piercing submachinegun bullet"
 	hud_state = "smg_ap"
 	damage = 15
-	penetration = 30
+	penetration = 25
 	sundering = 3
 
 /datum/ammo/bullet/smg/acp
@@ -657,6 +657,12 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	penetration = 10
 	sundering = 1.25
 
+/datum/ammo/bullet/rifle/heavy/ap
+	name = "heavy rifle bullet"
+	damage = 25
+	penetration = 25
+	sundering = 3.5
+
 /datum/ammo/bullet/rifle/repeater
 	name = "heavy impact rifle bullet"
 	hud_state = "sniper"
@@ -719,7 +725,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	hud_state = "hivelo_impact"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SUNDERING|AMMO_PASS_THROUGH_MOVABLE
 	damage = 25
-	penetration = 30
+	penetration = 45
 	sundering = 5
 
 /datum/ammo/bullet/rifle/tx8/impact/on_hit_mob(mob/M, obj/projectile/P)
@@ -761,6 +767,12 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	penetration = 15
 	damage = 32.5
 	sundering = 1.25
+
+/datum/ammo/bullet/rifle/standard_br/ap
+	name = "light marksman armor piercing bullet"
+	penetration = 25
+	damage = 27.5
+	sundering = 3.25
 
 /datum/ammo/bullet/rifle/mech
 	name = "super-heavy rifle bullet"
@@ -1252,16 +1264,22 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	hud_state = "minigun"
 	hud_state_empty = "smartgun_empty"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SUNDERING|AMMO_PASS_THROUGH_TURF|AMMO_PASS_THROUGH_MOVABLE
+	accurate_range_min = 6
 	accuracy_var_low = 3
 	accuracy_var_high = 3
-	accurate_range = 5
-	damage = 40
-	penetration = 100
-	sundering = 8
+	damage = 30
+	penetration = 50
+	sundering = 1
 	max_range = 35
+	///Bonus flat damage to walls, balanced around resin walls.
+	var/autocannon_wall_bonus = 20
 
 /datum/ammo/bullet/auto_cannon/on_hit_turf(turf/T, obj/projectile/P)
 	P.proj_max_range -= 20
+
+	if(istype(T, /turf/closed/wall))
+		var/turf/closed/wall/wall_victim = T
+		wall_victim.take_damage((autocannon_wall_bonus))
 
 /datum/ammo/bullet/auto_cannon/on_hit_mob(mob/M, obj/projectile/P)
 	P.proj_max_range -= 5
@@ -1273,15 +1291,19 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 /datum/ammo/bullet/auto_cannon/flak
 	name = "autocannon smart-detonating bullet"
 	hud_state = "sniper_flak"
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SUNDERING|AMMO_PASS_THROUGH_TURF
-	damage = 40
-	penetration = 20
-	sundering = 12
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SUNDERING|AMMO_EXPLOSIVE
+	damage = 50
+	penetration = 30
+	sundering = 5
 	max_range = 30
-	airburst_multiplier	= 1
+	airburst_multiplier = 1
+	autocannon_wall_bonus = 5
 
 /datum/ammo/bullet/auto_cannon/flak/on_hit_mob(mob/victim, obj/projectile/proj)
 	airburst(victim, proj)
+
+/datum/ammo/bullet/auto_cannon/do_at_max_range(turf/T, obj/projectile/proj)
+	airburst(T, proj)
 
 /datum/ammo/bullet/railgun
 	name = "armor piercing railgun slug"
@@ -1356,46 +1378,96 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	shrapnel_chance = 0
 	bonus_projectiles_type = /datum/ammo/bullet/tx54_spread
 	bonus_projectiles_scatter = 10
+	///How many
+	var/bonus_projectile_quantity = 7
 
 	handful_greyscale_config = /datum/greyscale_config/ammo
-	handful_greyscale_colors = "#3ab0c9"
+	handful_greyscale_colors = COLOR_AMMO_AIRBURST
 
 	projectile_greyscale_config = /datum/greyscale_config/projectile
-	projectile_greyscale_colors = "#3ab0c9"
+	projectile_greyscale_colors = COLOR_AMMO_AIRBURST
 
 /datum/ammo/tx54/on_hit_mob(mob/M, obj/projectile/proj)
 	staggerstun(M, proj, stagger = 0, slowdown = 0.5, knockback = 1)
-	bonus_projectiles_amount = 7
 	playsound(proj, sound(get_sfx("explosion_micro")), 30, falloff = 5)
-	fire_directionalburst(proj, proj.firer, proj.shot_from, 4, 3, Get_Angle(proj.firer, M) )
-	bonus_projectiles_amount = 0
+	fire_directionalburst(proj, proj.firer, proj.shot_from, bonus_projectile_quantity, 4, 3, Get_Angle(proj.firer, M) )
 
 /datum/ammo/tx54/on_hit_obj(obj/O, obj/projectile/proj)
-	bonus_projectiles_amount = 7
 	playsound(proj, sound(get_sfx("explosion_micro")), 30, falloff = 5)
-	fire_directionalburst(proj, proj.firer, proj.shot_from, 4, 3, Get_Angle(proj.firer, O) )
-	bonus_projectiles_amount = 0
+	fire_directionalburst(proj, proj.firer, proj.shot_from, bonus_projectile_quantity, 4, 3, Get_Angle(proj.firer, O) )
 
 /datum/ammo/tx54/on_hit_turf(turf/T, obj/projectile/proj)
-	bonus_projectiles_amount = 7
 	playsound(proj, sound(get_sfx("explosion_micro")), 30, falloff = 5)
-	fire_directionalburst(proj, proj.firer, proj.shot_from, 4, 3, Get_Angle(proj.firer, T) )
-	bonus_projectiles_amount = 0
+	fire_directionalburst(proj, proj.firer, proj.shot_from, bonus_projectile_quantity, 4, 3, Get_Angle(proj.firer, T) )
 
 /datum/ammo/tx54/do_at_max_range(turf/T, obj/projectile/proj)
-	bonus_projectiles_amount = 7
 	playsound(proj, sound(get_sfx("explosion_micro")), 30, falloff = 5)
-	fire_directionalburst(proj, proj.firer, proj.shot_from, 4, 3, Get_Angle(proj.firer, get_turf(proj)) )
-	bonus_projectiles_amount = 0
+	fire_directionalburst(proj, proj.firer, proj.shot_from, bonus_projectile_quantity, 4, 3, Get_Angle(proj.firer, get_turf(proj)) )
 
 /datum/ammo/tx54/incendiary
 	name = "20mm incendiary grenade"
 	hud_state = "grenade_fire"
 	bonus_projectiles_type = /datum/ammo/bullet/tx54_spread/incendiary
 	bullet_color = LIGHT_COLOR_FIRE
-	handful_greyscale_colors = "#fa7923"
-	projectile_greyscale_colors = "#fa7923"
+	handful_greyscale_colors = COLOR_AMMO_INCENDIARY
+	projectile_greyscale_colors = COLOR_AMMO_INCENDIARY
 
+/datum/ammo/tx54/smoke
+	name = "20mm tactical smoke grenade"
+	hud_state = "grenade_hide"
+	bonus_projectiles_type = /datum/ammo/bullet/tx54_spread/smoke
+	bonus_projectiles_scatter = 24
+	bonus_projectile_quantity = 5
+	handful_greyscale_colors = COLOR_AMMO_TACTICAL_SMOKE
+	projectile_greyscale_colors = COLOR_AMMO_TACTICAL_SMOKE
+
+/datum/ammo/tx54/smoke/dense
+	name = "20mm smoke grenade"
+	hud_state = "grenade_smoke"
+	bonus_projectiles_type = /datum/ammo/bullet/tx54_spread/smoke/dense
+	handful_greyscale_colors = COLOR_AMMO_SMOKE
+	projectile_greyscale_colors = COLOR_AMMO_SMOKE
+
+/datum/ammo/tx54/smoke/tangle
+	name = "20mm tanglefoot grenade"
+	hud_state = "grenade_drain"
+	bonus_projectiles_type = /datum/ammo/bullet/tx54_spread/smoke/tangle
+	handful_greyscale_colors = COLOR_AMMO_TANGLEFOOT
+	projectile_greyscale_colors = COLOR_AMMO_TANGLEFOOT
+
+/datum/ammo/tx54/razor
+	name = "20mm razorburn grenade"
+	hud_state = "grenade_razor"
+	bonus_projectiles_type = /datum/ammo/bullet/tx54_spread/razor
+	bonus_projectiles_scatter = 50
+	bonus_projectile_quantity = 3
+	handful_greyscale_colors = COLOR_AMMO_RAZORBURN
+	projectile_greyscale_colors = COLOR_AMMO_RAZORBURN
+
+/datum/ammo/tx54/he
+	name = "20mm HE grenade"
+	hud_state = "grenade_he"
+	bonus_projectiles_type = null
+	max_range = 12
+	handful_greyscale_colors = COLOR_AMMO_HIGH_EXPLOSIVE
+	projectile_greyscale_colors = COLOR_AMMO_HIGH_EXPLOSIVE
+
+/datum/ammo/tx54/he/drop_nade(turf/T)
+	explosion(T, 0, 0, 2, 2)
+
+/datum/ammo/tx54/he/on_hit_mob(mob/M, obj/projectile/P)
+	drop_nade(get_turf(M))
+
+/datum/ammo/tx54/he/on_hit_obj(obj/O, obj/projectile/P)
+	drop_nade(get_turf(O))
+
+/datum/ammo/tx54/he/on_hit_turf(turf/T, obj/projectile/P)
+	drop_nade(T.density ? P.loc : T)
+
+/datum/ammo/tx54/he/do_at_max_range(turf/T, obj/projectile/P)
+	drop_nade(T.density ? P.loc : T)
+
+//The secondary projectiles
 /datum/ammo/bullet/tx54_spread
 	name = "Shrapnel"
 	icon_state = "flechette"
@@ -1429,28 +1501,70 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 /datum/ammo/bullet/tx54_spread/incendiary/on_leave_turf(turf/T, atom/firer, obj/projectile/proj)
 	drop_flame(T)
 
-/datum/ammo/tx54/he
-	name = "20mm HE grenade"
-	hud_state = "grenade_he"
-	bonus_projectiles_type = null
-	max_range = 12
-	handful_greyscale_colors = "#b02323"
-	projectile_greyscale_colors = "#b02323"
+/datum/ammo/bullet/tx54_spread/smoke
+	name = "chemical bomblet"
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_PASS_THROUGH_MOB|AMMO_LEAVE_TURF
+	max_range = 3
+	damage = 5
+	penetration = 0
+	sundering = 0
+	///The smoke type loaded in this ammo
+	var/datum/effect_system/smoke_spread/trail_spread_system = /datum/effect_system/smoke_spread/tactical
 
-/datum/ammo/tx54/he/drop_nade(turf/T)
-	explosion(T, 0, 0, 2, 2)
+/datum/ammo/bullet/tx54_spread/smoke/New()
+	. = ..()
 
-/datum/ammo/tx54/he/on_hit_mob(mob/M, obj/projectile/P)
-	drop_nade(get_turf(M))
+	trail_spread_system = new trail_spread_system(only_once = FALSE)
 
-/datum/ammo/tx54/he/on_hit_obj(obj/O, obj/projectile/P)
-	drop_nade(get_turf(O))
+/datum/ammo/bullet/tx54_spread/smoke/Destroy()
+	if(trail_spread_system)
+		QDEL_NULL(trail_spread_system)
+	return ..()
 
-/datum/ammo/tx54/he/on_hit_turf(turf/T, obj/projectile/P)
-	drop_nade(T.density ? P.loc : T)
+/datum/ammo/bullet/tx54_spread/smoke/on_hit_mob(mob/M, obj/projectile/proj)
+	return
 
-/datum/ammo/tx54/he/do_at_max_range(turf/T, obj/projectile/P)
-	drop_nade(T.density ? P.loc : T)
+/datum/ammo/bullet/tx54_spread/smoke/on_leave_turf(turf/T, atom/firer, obj/projectile/proj)
+	trail_spread_system.set_up(0, T)
+	trail_spread_system.start()
+
+/datum/ammo/bullet/tx54_spread/smoke/dense
+	trail_spread_system = /datum/effect_system/smoke_spread/bad
+
+/datum/ammo/bullet/tx54_spread/smoke/tangle
+	trail_spread_system = /datum/effect_system/smoke_spread/plasmaloss
+
+/datum/ammo/bullet/tx54_spread/razor
+	name = "chemical bomblet"
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_PASS_THROUGH_MOB|AMMO_LEAVE_TURF
+	max_range = 4
+	damage = 5
+	penetration = 0
+	sundering = 0
+	///The foam type loaded in this ammo
+	var/datum/effect_system/foam_spread/chemical_payload
+	///The reagent content of the projectile
+	var/datum/reagents/reagent_list
+
+/datum/ammo/bullet/tx54_spread/razor/New()
+	. = ..()
+
+	chemical_payload = new
+	reagent_list = new
+	reagent_list.add_reagent(/datum/reagent/foaming_agent = 1)
+	reagent_list.add_reagent(/datum/reagent/toxin/nanites = 7)
+
+/datum/ammo/bullet/tx54_spread/razor/Destroy()
+	if(chemical_payload)
+		QDEL_NULL(chemical_payload)
+	return ..()
+
+/datum/ammo/bullet/tx54_spread/razor/on_hit_mob(mob/M, obj/projectile/proj)
+	return
+
+/datum/ammo/bullet/tx54_spread/razor/on_leave_turf(turf/T, atom/firer, obj/projectile/proj)
+	chemical_payload.set_up(0, T, reagent_list, RAZOR_FOAM)
+	chemical_payload.start()
 
 /datum/ammo/tx54/mech
 	name = "30mm fragmentation grenade"
@@ -1485,13 +1599,11 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	var/bonus_projectile_speed = 3
 
 /datum/ammo/bullet/micro_rail/do_at_max_range(turf/T, obj/projectile/proj)
-	bonus_projectiles_amount = bonus_projectile_quantity
 	playsound(proj, sound(get_sfx("explosion_micro")), 30, falloff = 5)
 	var/datum/effect_system/smoke_spread/smoke = new
 	smoke.set_up(0, get_turf(proj), 1)
 	smoke.start()
-	fire_directionalburst(proj, proj.firer, proj.shot_from, bonus_projectile_range, bonus_projectile_speed, Get_Angle(proj.firer, get_turf(proj)) )
-	bonus_projectiles_amount = 0
+	fire_directionalburst(proj, proj.firer, proj.shot_from, bonus_projectile_quantity, bonus_projectile_range, bonus_projectile_speed, Get_Angle(proj.firer, get_turf(proj)) )
 
 //piercing scatter shot
 /datum/ammo/bullet/micro_rail/airburst
@@ -1667,31 +1779,24 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	shrapnel_chance = 0
 	bonus_projectiles_type = /datum/ammo/bullet/ags_spread
 	bonus_projectiles_scatter = 20
+	var/bonus_projectile_quantity = 15
 
 
 /datum/ammo/ags_shrapnel/on_hit_mob(mob/M, obj/projectile/proj)
-	bonus_projectiles_amount = 15
 	playsound(proj, sound(get_sfx("explosion_micro")), 30, falloff = 5)
-	fire_directionalburst(proj, proj.firer, proj.shot_from, 2, 3, Get_Angle(proj.firer, M) )
-	bonus_projectiles_amount = 0
+	fire_directionalburst(proj, proj.firer, proj.shot_from, bonus_projectile_quantity, 2, 3, Get_Angle(proj.firer, M) )
 
 /datum/ammo/ags_shrapnel/on_hit_obj(obj/O, obj/projectile/proj)
-	bonus_projectiles_amount = 15
 	playsound(proj, sound(get_sfx("explosion_micro")), 30, falloff = 5)
-	fire_directionalburst(proj, proj.firer, proj.shot_from, 2, 3, Get_Angle(proj.firer, O) )
-	bonus_projectiles_amount = 0
+	fire_directionalburst(proj, proj.firer, proj.shot_from, bonus_projectile_quantity, 2, 3, Get_Angle(proj.firer, O) )
 
 /datum/ammo/ags_shrapnel/on_hit_turf(turf/T, obj/projectile/proj)
-	bonus_projectiles_amount = 15
 	playsound(proj, sound(get_sfx("explosion_micro")), 30, falloff = 5)
-	fire_directionalburst(proj, proj.firer, proj.shot_from, 2, 3, Get_Angle(proj.firer, T) )
-	bonus_projectiles_amount = 0
+	fire_directionalburst(proj, proj.firer, proj.shot_from, bonus_projectile_quantity, 2, 3, Get_Angle(proj.firer, T) )
 
 /datum/ammo/ags_shrapnel/do_at_max_range(turf/T, obj/projectile/proj)
-	bonus_projectiles_amount = 15
 	playsound(proj, sound(get_sfx("explosion_micro")), 30, falloff = 5)
-	fire_directionalburst(proj, proj.firer, proj.shot_from, 2, 3, Get_Angle(proj.firer, get_turf(proj)) )
-	bonus_projectiles_amount = 0
+	fire_directionalburst(proj, proj.firer, proj.shot_from, bonus_projectile_quantity, 2, 3, Get_Angle(proj.firer, get_turf(proj)) )
 
 /datum/ammo/ags_shrapnel/incendiary
 	name = "white phosphorous grenade"
@@ -1719,6 +1824,18 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 
 /datum/ammo/bullet/ags_spread/incendiary/on_hit_mob(mob/M, obj/projectile/proj)
 	return
+
+/datum/ammo/bullet/ags_spread/incendiary/on_hit_mob(mob/M, obj/projectile/P)
+	drop_flame(get_turf(M))
+
+/datum/ammo/bullet/ags_spread/incendiary/on_hit_obj(obj/O, obj/projectile/P)
+	drop_flame(get_turf(O))
+
+/datum/ammo/bullet/ags_spread/incendiary/on_hit_turf(turf/T, obj/projectile/P)
+	drop_flame(get_turf(T))
+
+/datum/ammo/bullet/ags_spread/incendiary/do_at_max_range(turf/T, obj/projectile/P)
+	drop_flame(get_turf(T))
 
 /datum/ammo/bullet/ags_spread/incendiary/drop_flame(turf/T)
 	if(!istype(T))
@@ -1776,7 +1893,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	drop_nade(get_turf(M))
 
 /datum/ammo/rocket/on_hit_obj(obj/O, obj/projectile/P)
-	drop_nade(get_turf(O))
+	drop_nade(O.density ? P.loc : O.loc)
 
 /datum/ammo/rocket/on_hit_turf(turf/T, obj/projectile/P)
 	drop_nade(T.density ? P.loc : T)
@@ -2175,6 +2292,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	sundering = 5
 	bonus_projectiles_type = /datum/ammo/bullet/atgun_spread
 	bonus_projectiles_scatter = 8
+	var/bonus_projectile_quantity = 10
 
 /datum/ammo/rocket/atgun_shell/beehive/drop_nade(turf/T)
 	explosion(T, 0, 0, 0, 1)
@@ -2182,28 +2300,20 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 /datum/ammo/rocket/atgun_shell/beehive/on_hit_mob(mob/M, obj/projectile/proj)
 	staggerstun(M, proj, stagger = 0, slowdown = 0.2, knockback = 1)
 	drop_nade(get_turf(M))
-	bonus_projectiles_amount = 10
 	playsound(proj, sound(get_sfx("explosion_micro")), 30, falloff = 5)
-	fire_directionalburst(proj, proj.firer, proj.shot_from, 5, 3, Get_Angle(proj.firer, M) )
-	bonus_projectiles_amount = 0
+	fire_directionalburst(proj, proj.firer, proj.shot_from, bonus_projectile_quantity, 5, 3, Get_Angle(proj.firer, M) )
 
 /datum/ammo/rocket/atgun_shell/beehive/on_hit_obj(obj/O, obj/projectile/proj)
-	bonus_projectiles_amount = 10
 	playsound(proj, sound(get_sfx("explosion_micro")), 30, falloff = 5)
-	fire_directionalburst(proj, proj.firer, proj.shot_from, 5, 3, Get_Angle(proj.firer, O) )
-	bonus_projectiles_amount = 0
+	fire_directionalburst(proj, proj.firer, proj.shot_from, bonus_projectile_quantity, 5, 3, Get_Angle(proj.firer, O) )
 
 /datum/ammo/rocket/atgun_shell/beehive/on_hit_turf(turf/T, obj/projectile/proj)
-	bonus_projectiles_amount = 10
 	playsound(proj, sound(get_sfx("explosion_micro")), 30, falloff = 5)
-	fire_directionalburst(proj, proj.firer, proj.shot_from, 5, 3, Get_Angle(proj.firer, T) )
-	bonus_projectiles_amount = 0
+	fire_directionalburst(proj, proj.firer, proj.shot_from, bonus_projectile_quantity, 5, 3, Get_Angle(proj.firer, T) )
 
 /datum/ammo/rocket/atgun_shell/beehive/do_at_max_range(turf/T, obj/projectile/proj)
-	bonus_projectiles_amount = 10
 	playsound(proj, sound(get_sfx("explosion_micro")), 30, falloff = 5)
-	fire_directionalburst(proj, proj.firer, proj.shot_from, 5, 3, Get_Angle(proj.firer, get_turf(proj)) )
-	bonus_projectiles_amount = 0
+	fire_directionalburst(proj, proj.firer, proj.shot_from, bonus_projectile_quantity, 5, 3, Get_Angle(proj.firer, get_turf(proj)) )
 
 /datum/ammo/rocket/atgun_shell/beehive/incend
 	name = "napalm shell"
@@ -2262,7 +2372,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	drop_nade(T)
 
 /datum/ammo/mortar/incend/drop_nade(turf/T)
-	explosion(T, 0, 2, 3, 7, throw_range = 0, small_animation = TRUE)
+	explosion(T, 0, 2, 3, 7, throw_range = 0)
 	flame_radius(4, T)
 	playsound(T, 'sound/weapons/guns/fire/flamethrower2.ogg', 35, 1, 4)
 
@@ -2272,7 +2382,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 
 /datum/ammo/mortar/smoke/drop_nade(turf/T)
 	var/datum/effect_system/smoke_spread/smoke = new smoketype()
-	explosion(T, 0, 0, 1, 3, throw_range = 0, small_animation = TRUE)
+	explosion(T, 0, 0, 1, 3, throw_range = 0)
 	playsound(T, 'sound/effects/smoke.ogg', 25, 1, 4)
 	smoke.set_up(10, T, 11)
 	smoke.start()
@@ -2293,7 +2403,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	explosion(T, 1, 6, 7, 12)
 
 /datum/ammo/mortar/howi/incend/drop_nade(turf/T)
-	explosion(T, 0, 3, 0, 3, throw_range = 0, small_animation = TRUE)
+	explosion(T, 0, 3, 0, 3, throw_range = 0)
 	flame_radius(5, T)
 	playsound(T, 'sound/weapons/guns/fire/flamethrower2.ogg', 35, 1, 4)
 
@@ -2333,7 +2443,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	explosion(T, 1, 2, 5, 3)
 
 /datum/ammo/mortar/rocket/incend/drop_nade(turf/T)
-	explosion(T, 0, 3, 0, 3, throw_range = 0, small_animation = TRUE)
+	explosion(T, 0, 3, 0, 3, throw_range = 0)
 	flame_radius(5, T)
 	playsound(T, 'sound/weapons/guns/fire/flamethrower2.ogg', 35, 1, 4)
 
@@ -2345,7 +2455,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	shell_speed = 2.5
 
 /datum/ammo/mortar/rocket/mlrs/drop_nade(turf/T)
-	explosion(T, 0, 0, 4, 2, small_animation = TRUE)
+	explosion(T, 0, 0, 4, 2)
 
 /*
 //================================================
@@ -2395,7 +2505,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	icon_state = "tesla"
 	hud_state = "taser"
 	hud_state_empty = "battery_empty"
-	flags_ammo_behavior = AMMO_ENERGY|SPECIAL_PROCESS
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_SPECIAL_PROCESS
 	shell_speed = 0.1
 	damage = 20
 	penetration = 20
@@ -2405,7 +2515,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	zap_beam(proj, 4, damage)
 
 /datum/ammo/energy/tesla/focused
-	flags_ammo_behavior = AMMO_ENERGY|SPECIAL_PROCESS|AMMO_IFF
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_SPECIAL_PROCESS|AMMO_IFF
 	shell_speed = 0.1
 	damage = 10
 	penetration = 10
@@ -3022,24 +3132,23 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 /datum/ammo/xeno/toxin/proc/set_reagents()
 	spit_reagents = list(/datum/reagent/toxin/xeno_neurotoxin = reagent_transfer_amount)
 
-/datum/ammo/xeno/toxin/on_hit_mob(mob/living/carbon/C, obj/projectile/P)
-	drop_neuro_smoke(get_turf(C))
+/datum/ammo/xeno/toxin/on_hit_mob(mob/living/carbon/carbon_victim, obj/projectile/proj)
+	drop_neuro_smoke(get_turf(carbon_victim))
 
-	if(!istype(C) || C.stat == DEAD || C.issamexenohive(P.firer) )
+	if(!istype(carbon_victim) || carbon_victim.stat == DEAD || carbon_victim.issamexenohive(proj.firer) )
 		return
 
-	if(isnestedhost(C))
+	if(isnestedhost(carbon_victim))
 		return
 
-	C.adjust_stagger(stagger_stacks) //stagger briefly; useful for support
-	C.add_slowdown(slowdown_stacks) //slow em down
+	carbon_victim.adjust_stagger(stagger_stacks)
+	carbon_victim.add_slowdown(slowdown_stacks)
 
 	set_reagents()
-	var/armor_block = (1 - C.get_soft_armor(armor_type, BODY_ZONE_CHEST) * 0.01) //Check the target's armor mod; default to chest
-	for(var/reagent_id in spit_reagents) //modify by armor
-		spit_reagents[reagent_id] *= armor_block
+	for(var/reagent_id in spit_reagents)
+		spit_reagents[reagent_id] = carbon_victim.modify_by_armor(spit_reagents[reagent_id], armor_type, penetration, proj.def_zone)
 
-	C.reagents.add_reagent_list(spit_reagents) //transfer reagents
+	carbon_victim.reagents.add_reagent_list(spit_reagents)
 
 	return ..()
 
@@ -3311,10 +3420,9 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 /datum/ammo/xeno/boiler_gas/proc/set_reagents()
 	spit_reagents = list(/datum/reagent/toxin/xeno_neurotoxin = reagent_transfer_amount)
 
-
 /datum/ammo/xeno/boiler_gas/on_hit_mob(mob/living/victim, obj/projectile/proj)
 	var/turf/target_turf = get_turf(victim)
-	drop_nade(target_turf.density ? get_turf(proj) : target_turf, proj.firer)
+	drop_nade(target_turf.density ? proj.loc : target_turf, proj.firer)
 
 	if(!istype(victim) || victim.stat == DEAD || victim.issamexenohive(proj.firer))
 		return
@@ -3328,17 +3436,16 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 
 	var/mob/living/carbon/carbon_victim = victim
 	set_reagents()
-	var/armor_block = (1 - carbon_victim.get_soft_armor(armor_type, BODY_ZONE_CHEST) * 0.01) //Check the target's armor mod; default to chest
-	for(var/reagent_id in spit_reagents) //modify by armor
-		spit_reagents[reagent_id] *= armor_block
+	for(var/reagent_id in spit_reagents)
+		spit_reagents[reagent_id] = carbon_victim.modify_by_armor(spit_reagents[reagent_id], armor_type, penetration, proj.def_zone)
 
-	carbon_victim.reagents.add_reagent_list(spit_reagents) //transfer reagents
+	carbon_victim.reagents.add_reagent_list(spit_reagents)
 
 /datum/ammo/xeno/boiler_gas/on_hit_obj(obj/O, obj/projectile/P)
 	if(ismecha(O))
 		P.damage *= 7 //Globs deal much higher damage to mechs.
-	var/turf/T = get_turf(O)
-	drop_nade(T.density ? P.loc : T, P.firer)
+	var/turf/target_turf = get_turf(O)
+	drop_nade(O.density ? P.loc : target_turf, P.firer)
 
 /datum/ammo/xeno/boiler_gas/on_hit_turf(turf/T, obj/projectile/P)
 	drop_nade(T.density ? P.loc : T, P.firer) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
@@ -3446,21 +3553,23 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	icon_state = "facehugger"
 	///The type of hugger thrown
 	var/obj/item/clothing/mask/facehugger/hugger_type = /obj/item/clothing/mask/facehugger
+	///The hive of the huggers throw
+	var/hugger_hivenumber = XENO_HIVE_NORMAL
 
 /datum/ammo/xeno/hugger/on_hit_mob(mob/M, obj/projectile/proj)
-	var/obj/item/clothing/mask/facehugger/hugger = new hugger_type(get_turf(M))
+	var/obj/item/clothing/mask/facehugger/hugger = new hugger_type(get_turf(M), hugger_hivenumber)
 	hugger.go_idle()
 
 /datum/ammo/xeno/hugger/on_hit_obj(obj/O, obj/projectile/proj)
-	var/obj/item/clothing/mask/facehugger/hugger = new hugger_type(get_turf(O))
+	var/obj/item/clothing/mask/facehugger/hugger = new hugger_type(get_turf(O), hugger_hivenumber)
 	hugger.go_idle()
 
 /datum/ammo/xeno/hugger/on_hit_turf(turf/T, obj/projectile/P)
-	var/obj/item/clothing/mask/facehugger/hugger = new hugger_type(T.density ? P.loc : T)
+	var/obj/item/clothing/mask/facehugger/hugger = new hugger_type(T.density ? P.loc : T, hugger_hivenumber)
 	hugger.go_idle()
 
 /datum/ammo/xeno/hugger/do_at_max_range(turf/T, obj/projectile/P)
-	var/obj/item/clothing/mask/facehugger/hugger = new hugger_type(T.density ? P.loc : T)
+	var/obj/item/clothing/mask/facehugger/hugger = new hugger_type(T.density ? P.loc : T, hugger_hivenumber)
 	hugger.go_idle()
 
 /datum/ammo/xeno/hugger/slash
@@ -3706,13 +3815,13 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	accuracy = 15
 	max_range = 10
 
-/datum/ammo/grenade_container/on_hit_mob(mob/M,obj/projectile/P)
+/datum/ammo/grenade_container/on_hit_mob(mob/M, obj/projectile/P)
 	drop_nade(get_turf(P))
 
-/datum/ammo/grenade_container/on_hit_obj(obj/O,obj/projectile/P)
-	drop_nade(get_turf(P))
+/datum/ammo/grenade_container/on_hit_obj(obj/O, obj/projectile/P)
+	drop_nade(O.density ? P.loc : O.loc)
 
-/datum/ammo/grenade_container/on_hit_turf(turf/T,obj/projectile/P)
+/datum/ammo/grenade_container/on_hit_turf(turf/T, obj/projectile/P)
 	drop_nade(T.density ? P.loc : T)
 
 /datum/ammo/grenade_container/do_at_max_range(turf/T, obj/projectile/P)

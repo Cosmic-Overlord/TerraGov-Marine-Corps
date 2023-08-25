@@ -494,7 +494,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 				else
 					playsound(supply_shuttle.return_center_turf(), 'sound/machines/elevator_move.ogg', 50, 0)
 					SSshuttle.moveShuttleToTransit(shuttle_id, TRUE)
-					addtimer(CALLBACK(supply_shuttle, /obj/docking_port/mobile/supply/proc/sell), 15 SECONDS)
+					addtimer(CALLBACK(supply_shuttle, TYPE_PROC_REF(/obj/docking_port/mobile/supply, sell)), 15 SECONDS)
 			else
 				var/obj/docking_port/D = SSshuttle.getDock(home_id)
 				supply_shuttle.buy(usr)
@@ -638,6 +638,12 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	var/datum/supply_ui/requests/supply_interface
 	/// Reference to the datum used by the supply drop console
 	var/datum/supply_beacon/beacon_datum
+
+/obj/item/storage/backpack/marine/radiopack/Destroy()
+	if(beacon_datum)
+		UnregisterSignal(beacon_datum, COMSIG_PARENT_QDELETING)
+		QDEL_NULL(beacon_datum)
+	return ..()
 
 /obj/item/storage/backpack/marine/radiopack/examine(mob/user)
 	. = ..()

@@ -33,6 +33,9 @@
 	var/obj/effect/acid_hole/acided_hole //the acid hole inside the wall
 
 
+/turf/closed/wall/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -15, 8, 1)
+
 /turf/closed/wall/Initialize(mapload, ...)
 	. = ..()
 
@@ -491,5 +494,8 @@
 
 		return attack_hand(user)
 
-/turf/closed/wall/can_be_dissolved()
-	return !(resistance_flags & INDESTRUCTIBLE)
+/turf/closed/wall/get_acid_delay()
+	return 5 SECONDS
+
+/turf/closed/wall/dissolvability(acid_strength)
+	return 0.5

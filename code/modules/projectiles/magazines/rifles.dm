@@ -51,6 +51,14 @@
 	max_rounds = 36
 	icon_state_mini = "mag_rifle_big"
 
+/obj/item/ammo_magazine/rifle/standard_carbine/ap
+	name = "\improper AR-18 AP magazine (10x24mm)"
+	desc = "A 10mm armor piercing carbine magazine."
+	icon_state = "t18_ap"
+	bonus_overlay = "t18_ap"
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	max_rounds = 36
+
 //-------------------------------------------------------
 //T12 Assault Rifle
 
@@ -63,6 +71,14 @@
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 50
 	icon_state_mini = "mag_rifle_big"
+
+/obj/item/ammo_magazine/rifle/standard_assaultrifle/ap
+	name = "\improper AR-12 AP magazine (10x24mm)"
+	desc = "A 10mm armor piercing assault rifle magazine."
+	icon_state = "t12_ap"
+	bonus_overlay = "t12_ap"
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	max_rounds = 50
 
 //-------------------------------------------------------
 //T37 DMR
@@ -88,6 +104,15 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	default_ammo = /datum/ammo/bullet/rifle/standard_br
 	max_rounds = 36
+	icon_state_mini = "mag_rifle_big"
+
+/obj/item/ammo_magazine/rifle/standard_br/ap
+	name = "\improper BR-64 AP magazine (10x26.5mm)"
+	desc = "A 10mm armor piercing battle rifle magazine."
+	caliber = CALIBER_10x265_CASELESS
+	icon_state = "t64_ap"
+	bonus_overlay = "t64_ap"
+	default_ammo = /datum/ammo/bullet/rifle/standard_br/ap
 	icon_state_mini = "mag_rifle_big"
 
 //-------------------------------------------------------
@@ -343,6 +368,13 @@
 	max_rounds = 30
 	icon_state_mini = "mag_rifle"
 
+/obj/item/ammo_magazine/rifle/standard_skirmishrifle/ap
+	name = "\improper AR-21 skirmish AP rifle magazine"
+	desc = "A magazine filled with 10x25mm armor piercing rifle rounds for the AR-21."
+	icon_state = "t21_ap"
+	bonus_overlay = "t21_ap"
+	default_ammo = /datum/ammo/bullet/rifle/heavy/ap
+
 //ALF-51B
 
 /obj/item/ammo_magazine/rifle/alf_machinecarbine
@@ -391,21 +423,49 @@
 	max_rounds = 8
 	icon_state_mini = "mag_sniper"
 	greyscale_config = /datum/greyscale_config/ammo
-	greyscale_colors = "#3ab0c9"
+	greyscale_colors = COLOR_AMMO_AIRBURST
 
 /obj/item/ammo_magazine/rifle/tx54/he
 	name = "\improper 20mm HE grenade magazine"
 	desc = "A 20mm magazine loaded with HE grenades. For use with the GL-54 or AR-55."
 	default_ammo = /datum/ammo/tx54/he
 	icon_state = "tx54_airburst"
-	greyscale_colors = "#b02323"
+	greyscale_colors = COLOR_AMMO_HIGH_EXPLOSIVE
 
 /obj/item/ammo_magazine/rifle/tx54/incendiary
 	name = "\improper 20mm incendiary grenade magazine"
 	desc = "A 20mm magazine loaded with incendiary grenades. For use with the GL-54 or AR-55."
 	default_ammo = /datum/ammo/tx54/incendiary
 	icon_state = "tx54_airburst"
-	greyscale_colors = "#fa7923"
+	greyscale_colors = COLOR_AMMO_INCENDIARY
+
+/obj/item/ammo_magazine/rifle/tx54/smoke
+	name = "\improper 20mm tactical smoke grenade magazine"
+	desc = "A 20mm magazine loaded with tactical smoke grenades. For use with the GL-54 or AR-55."
+	default_ammo = /datum/ammo/tx54/smoke
+	icon_state = "tx54_airburst"
+	greyscale_colors = COLOR_AMMO_TACTICAL_SMOKE
+
+/obj/item/ammo_magazine/rifle/tx54/smoke/dense
+	name = "\improper 20mm smoke grenade magazine"
+	desc = "A 20mm magazine loaded with smoke grenades. For use with the GL-54 or AR-55."
+	default_ammo = /datum/ammo/tx54/smoke/dense
+	icon_state = "tx54_airburst"
+	greyscale_colors = COLOR_AMMO_SMOKE
+
+/obj/item/ammo_magazine/rifle/tx54/smoke/tangle
+	name = "\improper 20mm tanglefoot grenade magazine"
+	desc = "A 20mm magazine loaded with tanglefoot grenades. For use with the GL-54 or AR-55."
+	default_ammo = /datum/ammo/tx54/smoke/tangle
+	icon_state = "tx54_airburst"
+	greyscale_colors = COLOR_AMMO_TANGLEFOOT
+
+/obj/item/ammo_magazine/rifle/tx54/razor
+	name = "\improper 20mm razorburn grenade magazine"
+	desc = "A 20mm magazine loaded with razorburn grenades. For use with the GL-54 or AR-55."
+	default_ammo = /datum/ammo/tx54/razor
+	icon_state = "tx54_airburst"
+	greyscale_colors = COLOR_AMMO_RAZORBURN
 
 //-------------------------------------------------------
 //Garand

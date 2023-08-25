@@ -3,7 +3,7 @@
 	reagent_state = LIQUID
 	color = "#A10808"
 	taste_description = "iron"
-	data = new/list("blood_DNA"=null,"blood_type"=null,"blood_colour"= "#A10808", "trace_chem"=null)
+	data = list("blood_DNA"=null,"blood_type"=null,"blood_colour"= "#A10808", "trace_chem"=null)
 
 
 /datum/reagent/blood/reaction_turf(turf/T, volume)//splash the blood all over the place
@@ -406,11 +406,13 @@
 	overdose_threshold = REAGENTS_OVERDOSE
 	overdose_crit_threshold = REAGENTS_OVERDOSE_CRITICAL
 	taste_description = "gross metal"
+	///The effect creates when this reagent is splashed on the ground
+	var/effect_type = /obj/effect/decal/cleanable/liquid_fuel
 
 /datum/reagent/fuel/reaction_turf(turf/T, volume)
 	if(volume <= 3 || !isfloorturf(T))
 		return
-	new /obj/effect/decal/cleanable/liquid_fuel(T, volume) //It already handles dupes on it own turf.
+	new effect_type(T, volume) //It already handles dupes on it own turf.
 
 /datum/reagent/fuel/on_mob_life(mob/living/L)
 	L.adjustToxLoss(1)
@@ -427,6 +429,12 @@
 
 /datum/reagent/fuel/overdose_crit_process(mob/living/L, metabolism)
 	L.apply_damage(1, TOX)
+
+/datum/reagent/fuel/xfuel
+	name = "X-fuel"
+	description = "Type X fuel, for use in flamers for when you really want something nice and crispy"
+	color = COLOR_MODERATE_BLUE
+	effect_type = /obj/effect/decal/cleanable/liquid_fuel/xfuel
 
 /datum/reagent/space_cleaner
 	name = "Space cleaner"

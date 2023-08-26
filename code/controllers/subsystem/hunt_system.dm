@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(hunting)
 	for(var/datum/huntdata/data in hunter_datas)
 		if(data.dishonored || data.thralled || !(ishuman(data.owner) || isxeno(data.owner)))
 			continue
-		if(ishuman(data.owner) && isyautja(data.owner.species))
+		if(ishuman(data.owner) && isyautja(data.owner))
 			continue
 		if(data.owner.stat || (!data.honored && data.owner.life_kills_total < 2 && data.owner.life_value > 1)) // Don't make zero kills xeno as target for additional honor or stunned/dead
 			continue

@@ -34,13 +34,13 @@
 	if(clan_info)
 		clan_info.sql = "SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey"
 		clan_info.arguments = list("byond_ckey" = ckey)
+		clan_info.next_row_to_take = 1
 	else
 		clan_info = SSdbcore.NewQuery("SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey", list("byond_ckey" = ckey))
 		clan_info.no_auto_delete = TRUE
 		if(!clan_info.warn_execute())
 			qdel(clan_info)
 			return
-	clan_info.next_row_to_take = 1
 	if(!clan_info.NextRow())
 		clan_info.sql = "INSERT INTO [format_table_name("clan_player")] (byond_ckey, clan_rank, permissions, clan_id, honor) VALUES (:byond_ckey, 0, 0, 0, 0)"
 		clan_info.Execute()

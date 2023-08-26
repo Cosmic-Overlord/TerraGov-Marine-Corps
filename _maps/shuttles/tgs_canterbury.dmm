@@ -963,6 +963,10 @@
 /obj/machinery/door/airlock/hatch,
 /turf/open/floor/plating/mainship,
 /area/shuttle/canterbury)
+"Ff" = (
+/obj/machinery/roomba,
+/turf/open/floor/plating/plating_catwalk,
+/area/shuttle/canterbury)
 "GZ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/reagentgrinder{
@@ -1326,11 +1330,11 @@ cS
 aO
 bd
 Hv
-aJ
+Ff
 bJ
 an
 cH
-aJ
+Ff
 cK
 bD
 bF

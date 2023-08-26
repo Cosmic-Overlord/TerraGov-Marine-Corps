@@ -88,7 +88,7 @@ SUBSYSTEM_DEF(predships)
 	var/player_rank = 1
 	var/player_permissions = 0
 
-	if(user.client.clan_info && length(user.client.clan_info.item))
+	if(user.client?.clan_info && length(user.client.clan_info.item))
 		player_rank = user.client.clan_info.item[2]
 		player_permissions = user.client.clan_info.item[3]
 

@@ -575,7 +575,7 @@
 		true_desc += " [scalpee.real_name] was [english_list(biography, final_comma_text = ",")]."
 
 	if(scalpee.hunter_data.hunter == user) //You don't get your name on it unless you hunted them yourself.
-		if(scalpee.hunter_data.automatic_target)
+		if(scalpee.hunter_data.automatic_target && scalpee.hunter_data.targeted == user)
 			scalpee.hunter_data.complite_target(user)
 
 		switch(worth)

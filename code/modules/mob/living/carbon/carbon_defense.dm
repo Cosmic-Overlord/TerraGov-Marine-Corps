@@ -92,7 +92,10 @@
 /mob/living/carbon/examine(mob/user)
 	. = ..()
 	if(isyautja(user))
-		. += span_blue("[src] is worth [max(life_kills_total + life_value, default_honor_value)] honor.")
+		var/honor_value = max(life_kills_total + life_value, default_honor_value)
+		if(user.hunter_data && (hunter_data in user.hunter_data.targets))
+			honor_value += 3
+		. += span_blue("[src] is worth [honor_value] honor.")
 		if(hunter_data.automatic_target)
 			. += span_red("[src] marked as target for [hunter_data.targeted.real_name]")
 		if(hunter_data.hunted)

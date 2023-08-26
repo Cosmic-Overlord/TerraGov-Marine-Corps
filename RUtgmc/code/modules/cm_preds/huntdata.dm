@@ -50,6 +50,20 @@
 	target_complited = TRUE
 	INVOKE_ASYNC(user.client, TYPE_PROC_REF(/client, add_honor), owner.life_kills_total + owner.life_value + 3)
 
+/datum/huntdata/proc/death(complited = FALSE)
+	if(complited)
+		to_chat(hunter, span_yautjabold("Your killed your Prey"))
+		var/honor_value = max(owner.life_kills_total + owner.life_value, owner.default_honor_value)
+		if(src in hunter.hunter_data.targets)
+			honor_value += 3
+		INVOKE_ASYNC(hunter.client, TYPE_PROC_REF(/client, add_honor), honor_value)
+		if(hunted)
+			if(hunter)
+				hunter.hunter_data.prey = null
+
+	else
+		to_chat(hunter, span_yautjabold("Your Prey has been killed!"))
+
 /datum/huntdata/proc/clean_data()
 	if(length(targets))
 		for(var/datum/huntdata/data in targets)
@@ -102,6 +116,7 @@
 			to_chat(hunter, span_yautjabold("Your Prey has been utterly destroyed!"))
 			hunter = null
 		hunted = FALSE
+
 	if(prey)
 		prey.hunter_data.hunter = null
 		prey.hunter_data.hunted = FALSE

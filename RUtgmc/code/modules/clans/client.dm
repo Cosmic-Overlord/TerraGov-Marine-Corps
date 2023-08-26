@@ -40,6 +40,7 @@
 		if(!clan_info.warn_execute())
 			qdel(clan_info)
 			return
+	clan_info.next_row_to_take = 1
 	if(!clan_info.NextRow())
 		clan_info.sql = "INSERT INTO [format_table_name("clan_player")] (byond_ckey, clan_rank, permissions, clan_id, honor) VALUES (:byond_ckey, 0, 0, 0, 0)"
 		clan_info.Execute()

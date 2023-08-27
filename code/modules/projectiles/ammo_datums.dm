@@ -51,6 +51,8 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	var/shrapnel_chance = 0
 	///How fast the projectile moves
 	var/shell_speed = 2
+	///Embeding shrapnel type
+	var/shrapnel_type = /obj/item/shard/shrapnel
 	///Type path of the extra projectiles
 	var/bonus_projectiles_type
 	///How many extra projectiles it shoots out. Works kind of like firing on burst, but all of the projectiles travel together
@@ -3848,3 +3850,92 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	handful_amount = 1
 	max_range = 21
 	nade_type = /obj/item/explosive/grenade/ags
+
+/*
+//======
+					Shrapnel
+//======
+*/
+/datum/ammo/bullet/shrapnel
+	name = "shrapnel"
+	icon_state = "buckshot"
+	accurate_range_min = 5
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+	accuracy = 15
+	accurate_range = 32
+	max_range = 8
+	damage = 25
+	penetration = 20
+	shell_speed = 2
+	shrapnel_chance = 5
+/datum/ammo/bullet/shrapnel/incendiary
+	name = "flaming shrapnel"
+	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
+	flags_ammo_behavior = AMMO_INCENDIARY
+
+	shell_speed = 1
+	damage = 20
+	penetration = 20
+
+/datum/ammo/bullet/shrapnel/metal
+	name = "metal shrapnel"
+	icon_state = "shrapnelshot_bit"
+	shell_speed = 1
+	damage = 30
+	shrapnel_chance = 15
+	accuracy = 40
+	penetration = 20
+
+/datum/ammo/bullet/shrapnel/light // weak shrapnel
+	name = "light shrapnel"
+	icon_state = "shrapnel_light"
+
+	damage = 10
+	penetration = 5
+	shell_speed = 1
+	shrapnel_chance = 0
+
+/datum/ammo/bullet/shrapnel/light/human
+	name = "human bone fragments"
+	icon_state = "shrapnel_human"
+
+	shrapnel_chance = 50
+	shrapnel_type = /obj/item/shard/shrapnel/bone_chips/human
+
+/datum/ammo/bullet/shrapnel/light/human/var1 // sprite variants
+	icon_state = "shrapnel_human1"
+
+/datum/ammo/bullet/shrapnel/light/human/var2 // sprite variants
+	icon_state = "shrapnel_human2"
+
+/datum/ammo/bullet/shrapnel/light/xeno
+	name = "alien bone fragments"
+	icon_state = "shrapnel_xeno"
+
+	shrapnel_chance = 50
+	shrapnel_type = /obj/item/shard/shrapnel/bone_chips/xeno
+
+/datum/ammo/bullet/shrapnel/spall // weak shrapnel
+	name = "spall"
+	icon_state = "shrapnel_light"
+
+	damage = 10
+	penetration = 5
+	shell_speed = 1
+	shrapnel_chance = 0
+
+/datum/ammo/bullet/shrapnel/light/glass
+	name = "glass shrapnel"
+	icon_state = "shrapnel_glass"
+
+/datum/ammo/bullet/shrapnel/light/effect/ // no damage, but looks bright and neat
+	name = "sparks"
+
+	damage = 1 // Tickle tickle
+
+/datum/ammo/bullet/shrapnel/light/effect/ver1
+	icon_state = "shrapnel_bright1"
+
+/datum/ammo/bullet/shrapnel/light/effect/ver2
+	icon_state = "shrapnel_bright2"

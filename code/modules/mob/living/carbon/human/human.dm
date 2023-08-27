@@ -125,7 +125,7 @@
 		if(issensorcapturegamemode(SSticker.mode))
 			stat("<b>Activated Sensor Towers:</b>", sensor_mode.sensors_activated)
 
-/mob/living/carbon/human/ex_act(severity)
+/mob/living/carbon/human/ex_act(severity, direction)
 	if(status_flags & GODMODE)
 		return
 
@@ -137,11 +137,11 @@
 	var/armor = get_soft_armor("bomb") * 0.01 //Gets average bomb armor over all limbs.
 
 	if(severity >= EXPLOSION_THRESHOLD_GIB)
-//		var/oldloc = loc
+		var/oldloc = loc
 		gib()
-//		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human, last_damage_data)
-//		create_shrapnel(oldloc, rand(5, 9), direction, 30, /datum/ammo/bullet/shrapnel/light/human/var1, last_damage_data)
-//		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
+		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human)
+		create_shrapnel(oldloc, rand(5, 9), direction, 30, /datum/ammo/bullet/shrapnel/light/human/var1)
+		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2)
 		return
 
 	switch(severity)

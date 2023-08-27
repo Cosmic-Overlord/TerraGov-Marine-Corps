@@ -91,9 +91,9 @@ SUBSYSTEM_DEF(cellauto)
 	// Make explosion effect
 	new /obj/effect/temp_visual/explosion(epicenter, round(power / falloff), color, power)
 	// Explosion enought powerful for making shrapnel
-//	if(power >= 100)
-//		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1)
-//		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2)
+	if(power >= 100)
+		create_shrapnel(epicenter, rand(5,9), direction, , /datum/ammo/bullet/shrapnel/light/effect/ver1)
+		create_shrapnel(epicenter, rand(5,9), direction, , /datum/ammo/bullet/shrapnel/light/effect/ver2)
 	// Drop flames
 	flame_radius(flame_range, epicenter)
 

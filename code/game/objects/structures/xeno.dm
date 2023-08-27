@@ -230,6 +230,12 @@
 		severity *= EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN
 	take_damage(severity * RESIN_EXPLOSIVE_MULTIPLIER * EXPLOSION_DAMAGE_MULTIPLIER_DOOR)
 
+/obj/structure/mineral_door/resin/get_explosion_resistance()
+	if(density)
+		return obj_integrity //this should exactly match the amount of damage needed to destroy the door
+	else
+		return 0
+
 /turf/closed/wall/resin/fire_act()
 	take_damage(50, BURN, "fire")
 

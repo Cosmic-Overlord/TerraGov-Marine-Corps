@@ -16,7 +16,7 @@
 	var/soft_armor_modifier = min((1 - ((get_soft_armor(armor_type, def_zone) - penetration) * 0.01)), 1)
 	return clamp(((damage_amount - hard_armor_modifier) * soft_armor_modifier), 0, damage_amount)
 
-/mob/living/carbon/xenomorph/ex_act(severity)
+/mob/living/carbon/xenomorph/ex_act(severity, direction)
 	if(status_flags & (INCORPOREAL|GODMODE))
 		return
 
@@ -31,9 +31,9 @@
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
-//		var/oldloc = loc
+		var/oldloc = loc
 		gib()
-//		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/xeno, last_damage_data)
+		create_shrapnel(oldloc, rand(16, 24), direction, , /datum/ammo/bullet/shrapnel/light/xeno)
 		return
 
 	if((severity == EXPLODE_DEVASTATE) && ((bomb_effective_armor * 100) <= XENO_EXPLOSION_GIB_THRESHOLD))

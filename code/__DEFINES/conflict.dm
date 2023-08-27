@@ -62,6 +62,9 @@
 #define AMMO_PASS_THROUGH_MOB (1<<21) //If the projectile passes through mobs only causing damage to them
 #define AMMO_SOUND_PITCH (1<<22) //If the projectile ricochet and miss sound is pitched up
 
+/// Projectile is shrpanel which allow it to skip some collisions
+#define PROJECTILE_SHRAPNEL  (1<<0)
+
 //Gun defines for gun related thing. More in the projectile folder.
 //flags_gun_features
 #define GUN_CAN_POINTBLANK (1<<0)

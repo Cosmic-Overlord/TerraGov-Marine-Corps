@@ -86,6 +86,23 @@
 	isSwitchingStates = FALSE
 
 
+/obj/structure/mineral_door/ex_act(severity)
+	severity *= EXPLOSION_DAMAGE_MULTIPLIER_DOOR
+	if(!density)
+		severity *= EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN
+	..()
+
+
+/obj/structure/mineral_door/get_explosion_resistance()
+	if(resistance_flags & UNACIDABLE)
+		return 1000000
+
+	if(density)
+		return obj_integrity/EXPLOSION_DAMAGE_MULTIPLIER_DOOR //this should exactly match the amount of damage needed to destroy the door
+	else
+		return 0
+
+
 /obj/structure/mineral_door/update_icon()
 	if(state)
 		icon_state = "[mineralType]open"

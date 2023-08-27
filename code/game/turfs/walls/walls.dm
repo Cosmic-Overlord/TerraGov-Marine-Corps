@@ -32,11 +32,32 @@
 
 	var/obj/effect/acid_hole/acided_hole //the acid hole inside the wall
 
+/turf/closed/wall/ex_act(severity, direction)
+	if(resistance_flags & INDESTRUCTIBLE)
+		return
+
+	var/location = get_step(get_turf(src), direction) // shrapnel will just collide with the wall otherwise
+	var/exp_damage = severity * EXPLOSION_DAMAGE_MULTIPLIER_WALL
+
+	if(exp_damage > wall_integrity*2)
+		dismantle_wall(FALSE, TRUE)
+		if(!istype(src, /turf/closed/wall/resin))
+			create_shrapnel(location, rand(2,5), direction, , /datum/ammo/bullet/shrapnel/light)
+	else
+		if(istype(src, /turf/closed/wall/resin))
+			exp_damage *= RESIN_EXPLOSIVE_MULTIPLIER
+		else if(prob(25))
+			if(prob(50)) // prevents spam in close corridors etc
+				src.visible_message(span_warning("The explosion causes shards to spall off of [src]!"))
+			create_shrapnel(location, rand(2,5), direction, , /datum/ammo/bullet/shrapnel/spall)
+		take_damage(exp_damage)
+	return
+
 /turf/closed/wall/get_explosion_resistance()
 	if(resistance_flags & RESIST_ALL)
 		return 1000000
 
-	return (wall_integrity - max_integrity)/EXPLOSION_DAMAGE_MULTIPLIER_WALL
+	return (max_integrity - wall_integrity)/EXPLOSION_DAMAGE_MULTIPLIER_WALL
 
 /turf/closed/wall/add_debris_element()
 	AddElement(/datum/element/debris, DEBRIS_SPARKS, -15, 8, 1)
@@ -264,20 +285,6 @@
 
 	ScrapeAway()
 
-
-/turf/closed/wall/ex_act(severity)
-	if(resistance_flags & INDESTRUCTIBLE)
-		return
-	switch(severity)
-		if(0 to EXPLOSION_THRESHOLD_LOW)
-			take_damage(rand(0, 250))
-		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if(prob(75))
-				take_damage(rand(150, 250))
-			else
-				dismantle_wall(TRUE, TRUE)
-		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			dismantle_wall(FALSE, TRUE)
 /turf/closed/wall/attack_animal(mob/living/M as mob)
 	if(M.wall_smash)
 		if((isrwallturf(src)) || (resistance_flags & INDESTRUCTIBLE))

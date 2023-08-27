@@ -517,7 +517,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	var/devastation_range = 0
 	var/heavy_impact_range = 0
 	var/light_impact_range = 0
-	var/choice = input("Bomb Size?") in list("Small Bomb", "Medium Bomb", "Big Bomb", "Maxcap", "Custom Bomb", "Check Range")
+	var/choice = input("Bomb Size?") in list("Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb", "Check Range")
 	switch(choice)
 		if("Small Bomb")
 			devastation_range = 1

@@ -24,6 +24,8 @@
 	var/bomb_slow_multiplier = max(0, 1 - 3.5*bomb_effective_armor)
 	var/bomb_sunder_multiplier = max(0, 1 - bomb_effective_armor)
 
+	//Sunder
+	adjust_sunder(max(0, 50 * (3 - severity) * bomb_sunder_multiplier))
 	if(bomb_effective_armor >= 1)
 		return //immune
 
@@ -37,17 +39,13 @@
 		return
 
 	//Slowdown and stagger
-	var/ex_slowdown = (2 + (4 - severity)) * bomb_slow_multiplier
+	var/ex_slowdown = (severity / 50) * bomb_slow_multiplier
 
 	add_slowdown(max(0, ex_slowdown)) //Slowdown 2 for sentiel from nade
 	adjust_stagger(max(0, ex_slowdown - 2)) //Stagger 2 less than slowdown
 
-	//Sunder
-	adjust_sunder(max(0, 50 * (3 - severity) * bomb_sunder_multiplier))
-
 	//Damage
-	var/ex_damage = 40 + rand(0, 20) + 50*(4 - severity)  //changed so overall damage stays similar
-	apply_damages(ex_damage * 0.5, ex_damage * 0.5, blocked = BOMB, updating_health = TRUE)
+	apply_damages(severity, blocked = BOMB, updating_health = TRUE)
 
 
 /mob/living/carbon/xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone, blocked = 0, sharp = FALSE, edge = FALSE, updating_health = FALSE, penetration)

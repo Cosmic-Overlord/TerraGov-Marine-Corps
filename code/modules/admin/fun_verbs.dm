@@ -574,62 +574,67 @@
 	if(!check_rights(R_FUN))
 		return
 
-	var/choice = tgui_input_list(usr, "What size explosion would you like to produce?", "Drop Bomb", list("CANCEL", "CAS: Widow Maker", "CAS: Banshee", "CAS: Keeper", "CAS: Fatty", "CAS: Napalm", "Small Bomb", "Medium Bomb", "Big Bomb", "Maxcap", "Custom Bomb"))
+	var/turf/epicenter = usr.loc
+	var/list/choices = list("CANCEL", "CAS: Widow Maker", "CAS: Banshee", "CAS: Keeper", "CAS: Fatty", "CAS: Napalm", "Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb")
+	var/list/falloff_shape_choices = list("CANCEL", "Linear", "Exponential")
+	var/choice = tgui_input_list(usr, "What size explosion would you like to produce?", "Drop Bomb", choices)
 	switch(choice)
 		if("CAS: Widow Maker")
-			playsound(usr.loc, 'sound/machines/hydraulics_2.ogg', 70, TRUE)
-			new /obj/effect/overlay/temp/blinking_laser (usr.loc)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(delayed_detonate_bomb), get_turf(usr.loc), 2, 4, 6, 0, 0, 0, 3), 1 SECONDS)
+			playsound(epicenter, 'sound/machines/hydraulics_2.ogg', 70, TRUE)
+			new /obj/effect/overlay/temp/blinking_laser (epicenter)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(delayed_detonate_bomb), get_turf(epicenter), 2, 4, 6, 0, 0, 0, 3), 1 SECONDS)
 		if("CAS: Banshee")
-			playsound(usr.loc, 'sound/machines/hydraulics_2.ogg', 70, TRUE)
-			new /obj/effect/overlay/temp/blinking_laser (usr.loc)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(delayed_detonate_bomb), get_turf(usr.loc), 2, 4, 7, 6, 7, 0, 3), 1 SECONDS)
+			playsound(epicenter, 'sound/machines/hydraulics_2.ogg', 70, TRUE)
+			new /obj/effect/overlay/temp/blinking_laser (epicenter)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(delayed_detonate_bomb), get_turf(epicenter), 2, 4, 7, 6, 7, 0, 3), 1 SECONDS)
 		if("CAS: Keeper")
-			playsound(usr.loc, 'sound/machines/hydraulics_2.ogg', 70, TRUE)
-			new /obj/effect/overlay/temp/blinking_laser (usr.loc)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(delayed_detonate_bomb), get_turf(usr.loc), 4, 5, 5, 6, 0, 0, 3), 1 SECONDS)
+			playsound(epicenter, 'sound/machines/hydraulics_2.ogg', 70, TRUE)
+			new /obj/effect/overlay/temp/blinking_laser (epicenter)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(delayed_detonate_bomb), get_turf(epicenter), 4, 5, 5, 6, 0, 0, 3), 1 SECONDS)
 		if("CAS: Fatty")
-			playsound(usr.loc, 'sound/machines/hydraulics_2.ogg', 70, TRUE)
-			new /obj/effect/overlay/temp/blinking_laser (usr.loc)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(delayed_detonate_bomb_fatty), get_turf(usr.loc)), 1 SECONDS)
+			playsound(epicenter, 'sound/machines/hydraulics_2.ogg', 70, TRUE)
+			new /obj/effect/overlay/temp/blinking_laser (epicenter)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(delayed_detonate_bomb_fatty), get_turf(epicenter)), 1 SECONDS)
 		if("CAS: Napalm")
-			playsound(usr.loc, 'sound/machines/hydraulics_2.ogg', 70, TRUE)
-			new /obj/effect/overlay/temp/blinking_laser (usr.loc)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(delayed_detonate_bomb_napalm), get_turf(usr.loc)), 1 SECONDS)
+			playsound(epicenter, 'sound/machines/hydraulics_2.ogg', 70, TRUE)
+			new /obj/effect/overlay/temp/blinking_laser (epicenter)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(delayed_detonate_bomb_napalm), get_turf(epicenter)), 1 SECONDS)
 		if("Small Bomb")
-			explosion(usr.loc, 1, 2, 3, 3)
+			explosion(epicenter, 1, 2, 3, 3, , , )
 		if("Medium Bomb")
-			explosion(usr.loc, 2, 3, 4, 4)
+			explosion(epicenter, 2, 3, 4, 4, , , )
 		if("Big Bomb")
-			explosion(usr.loc, 3, 5, 7, 5)
-		if("Maxcap")
-			explosion(usr.loc, GLOB.MAX_EX_DEVESTATION_RANGE, GLOB.MAX_EX_HEAVY_RANGE, GLOB.MAX_EX_LIGHT_RANGE, GLOB.MAX_EX_FLASH_RANGE)
+			explosion(epicenter, 3, 5, 7, 5, , , )
 		if("Custom Bomb")
-			var/input_devastation_range = input("Devastation range (in tiles):", "Drop Bomb") as null|num
-			var/input_heavy_impact_range = input("Heavy impact range (in tiles):", "Drop Bomb") as null|num
-			var/input_light_impact_range = input("Light impact range (in tiles):", "Drop Bomb") as null|num
-			var/input_flash_range = input("Flash range (in tiles):", "Drop Bomb") as null|num
-			var/input_flame_range = input("Flame range (in tiles):", "Drop Bomb") as null|num
-			var/input_throw_range = input("Throw range (in tiles):", "Drop Bomb") as null|num
-			if(input_devastation_range < 1 && input_heavy_impact_range < 1 && input_light_impact_range < 1 && input_flash_range < 1 && input_flame_range < 1 && input_throw_range < 1)
+			var/input_power_range = tgui_input_number(usr, "Power?", "Power?")
+			var/input_fallof_range = tgui_input_number(usr, "Falloff?", "Falloff?")
+			var/input_flame_range = tgui_input_number(usr, "Flame?", "Flame?")
+			if(input_flame_range)
+				input_flame_range = clamp(input_flame_range, 0, max(world.maxy, world.maxy))
+
+			var/input_color = input(usr, "Color?", "Color") as color
+			if(input_power_range < 1 && input_flame_range < 1)
 				return
-			var/world_max = max(world.maxy, world.maxy)
-			input_devastation_range = clamp(input_devastation_range, 0, world_max)
-			input_heavy_impact_range = clamp(input_heavy_impact_range, 0, world_max)
-			input_light_impact_range = clamp(input_light_impact_range, 0, world_max)
-			input_flash_range = clamp(input_flash_range, 0, world_max)
-			input_flame_range = clamp(input_flame_range, 0, world_max)
-			switch(tgui_alert(usr, "Deploy payload?", "DIR: [input_devastation_range] | HIR: [input_heavy_impact_range] | LIR: [input_light_impact_range] | FshR: [input_flash_range] | FlmR: [input_flame_range] | ThR: [input_throw_range]", list("Launch!", "Cancel")))
-				if("Launch!")
-					explosion(usr.loc, input_devastation_range, input_heavy_impact_range, input_light_impact_range, input_flash_range, input_flame_range, input_throw_range)
-				else
+
+			var/shape_choice = tgui_input_list(usr, "Select falloff shape?", "Select falloff shape", falloff_shape_choices)
+			var/explosion_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
+			switch(shape_choice)
+				if("CANCEL")
 					return
-			choice = "[choice] ([input_devastation_range], [input_heavy_impact_range], [input_light_impact_range], [input_flash_range], [input_flame_range])" //For better logging.
+				if("Exponential")
+					explosion_shape = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL
+
+			if(tgui_alert(usr, "Deploy payload?", "POWER: [input_power_range] | FALLOF: [input_fallof_range] | FLAME: [input_flame_range] | COLOR: [input_color]", list("Launch!", "Cancel")) == "Launch!")
+				SScellauto.explode(epicenter, input_power_range, input_fallof_range, explosion_shape, input_flame_range, color = input_color)
+			else
+				return
+
+			choice = "[choice] ([input_power_range], [input_fallof_range], [input_flame_range], [input_color])" //For better logging.
 		else
 			return
 
-	log_admin("[key_name(usr)] dropped a [choice] at [AREACOORD(usr.loc)].")
-	message_admins("[ADMIN_TPMONTY(usr)] dropped a [choice] at [ADMIN_VERBOSEJMP(usr.loc)].")
+	log_admin("[key_name(usr)] dropped a [choice] at [AREACOORD(epicenter)].")
+	message_admins("[ADMIN_TPMONTY(usr)] dropped a [choice] at [ADMIN_VERBOSEJMP(epicenter)].")
 
 /proc/delayed_detonate_bomb(turf/impact, input_devastation_range, input_heavy_impact_range, input_light_impact_range, input_flash_range, input_flame_range, input_throw_range, ceiling_debris)
 	if(ceiling_debris)
@@ -653,20 +658,6 @@
 	impact.ceiling_debris_check(3)
 	explosion(impact, 2, 3, 4, 6)
 	flame_radius(5, impact, 60, 30)
-
-
-/datum/admins/proc/drop_dynex_bomb()
-	set category = "Fun"
-	set name = "Drop DynEx Bomb"
-	set desc = "Cause an explosion of varying strength at your location."
-
-	var/ex_power = input("Explosive Power:") as null|num
-	var/turf/epicenter = usr.loc
-	if(ex_power && epicenter)
-		dyn_explosion(epicenter, ex_power)
-		message_admins("[ADMIN_LOOKUPFLW(usr)] creating an admin explosion of power [ex_power] at [epicenter.loc].")
-		log_admin("[key_name(usr)] created a admin explosion of power [ex_power] at [epicenter.loc].")
-
 
 /datum/admins/proc/change_security_level()
 	set category = "Fun"

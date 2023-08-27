@@ -531,10 +531,6 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 			devastation_range = 3
 			heavy_impact_range = 5
 			light_impact_range = 7
-		if("Maxcap")
-			devastation_range = GLOB.MAX_EX_DEVESTATION_RANGE
-			heavy_impact_range = GLOB.MAX_EX_HEAVY_RANGE
-			light_impact_range = GLOB.MAX_EX_LIGHT_RANGE
 		if("Custom Bomb")
 			devastation_range = input("Devastation range (Tiles):") as num
 			heavy_impact_range = input("Heavy impact range (Tiles):") as num

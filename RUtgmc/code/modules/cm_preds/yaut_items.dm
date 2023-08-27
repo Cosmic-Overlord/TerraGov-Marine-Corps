@@ -129,7 +129,6 @@
 
 	soft_armor = list(MELEE = 40, BULLET = 30, LASER = 35, ENERGY = 35, BOMB = 45, BIO = 40, FIRE = 30, ACID = 30)
 	slowdown = 0.7
-	var/speed_timer = 0
 	item_state_slots = list(slot_wear_suit_str = "fullarmor")
 	allowed = list(
 		/obj/item/weapon/harpoon,

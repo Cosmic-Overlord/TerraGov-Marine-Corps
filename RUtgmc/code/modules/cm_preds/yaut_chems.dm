@@ -40,8 +40,11 @@
 				X.add_limb_flags(LIMB_STABILIZED)
 	else
 		L.vomit()
-		L.adjustToxLoss(2)
-		L.adjustFireLoss(3)
+		L.adjustToxLoss(0.1)
+		L.adjustFireLoss(0.1)
+		L.hallucination += 20
+		L.jitter(8)
+		L.dizzy(8)
 		L.reagent_shock_modifier -= PAIN_REDUCTION_HEAVY
 	return ..()
 

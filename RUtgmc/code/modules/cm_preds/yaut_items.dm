@@ -127,8 +127,8 @@
 	flags_armor_protection = CHEST|GROIN|ARMS|HEAD|LEGS
 	flags_item = ITEM_PREDATOR
 
-	soft_armor = list(MELEE = 30, BULLET = 25, LASER = 30, ENERGY = 30, BOMB = 35, BIO = 30, FIRE = 30, ACID = 30)
-	slowdown = 1
+	soft_armor = list(MELEE = 40, BULLET = 30, LASER = 35, ENERGY = 35, BOMB = 45, BIO = 40, FIRE = 30, ACID = 30)
+	slowdown = 0.7
 	var/speed_timer = 0
 	item_state_slots = list(slot_wear_suit_str = "fullarmor")
 	allowed = list(

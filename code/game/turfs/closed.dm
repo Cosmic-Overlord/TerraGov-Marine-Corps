@@ -142,7 +142,7 @@
 	//Not yet
 /turf/closed/gm/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			ChangeTurf(/turf/open/ground/grass)
 
 /turf/closed/gm/dense

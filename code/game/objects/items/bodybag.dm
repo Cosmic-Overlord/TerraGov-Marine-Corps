@@ -232,7 +232,7 @@
 		open()
 		bodybag_occupant.ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			visible_message(span_danger("\The shockwave blows [name] apart!"))
 			qdel(src) //blown apart
 

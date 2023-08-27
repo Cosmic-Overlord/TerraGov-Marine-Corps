@@ -1028,23 +1028,23 @@
 
 /obj/machinery/power/apc/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			cell?.ex_act(1) //More lags woohoo
-			qdel(src)
-		if(EXPLODE_HEAVY)
-			if(prob(50))
-				return
-			set_broken()
-			if(!cell || prob(50))
-				return
-			cell.ex_act(2)
-		if(EXPLODE_LIGHT)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(75))
 				return
 			set_broken()
 			if(!cell || prob(75))
 				return
-			cell.ex_act(3)
+			cell.ex_act(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				return
+			set_broken()
+			if(!cell || prob(50))
+				return
+			cell.ex_act(severity)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cell?.ex_act(severity)
+			qdel(src)
 
 
 /obj/machinery/power/apc/proc/set_broken()

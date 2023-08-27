@@ -346,13 +346,7 @@
 
 
 /obj/structure/girder/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			deconstruct(FALSE)
-		if(EXPLODE_HEAVY)
-			take_damage(200)
-		if(EXPLODE_LIGHT)
-			take_damage(25)
+	take_damage(severity)
 
 
 /obj/structure/girder/displaced

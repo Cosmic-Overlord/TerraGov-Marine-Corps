@@ -134,35 +134,34 @@
 
 /obj/machinery/bodyscanner/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			for(var/atom/movable/A as mob|obj in src)
-				A.loc = src.loc
-				ex_act(severity)
-			qdel(src)
-			return
-		if(EXPLODE_HEAVY)
-			if (prob(50))
-				for(var/atom/movable/A as mob|obj in src)
-					A.loc = src.loc
-					ex_act(severity)
-				qdel(src)
-				return
-		if(EXPLODE_LIGHT)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(!prob(75))
 				return
 			for(var/atom/movable/A as mob|obj in src)
 				A.loc = src.loc
 				ex_act(severity)
 			qdel(src)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(50))
+				for(var/atom/movable/A as mob|obj in src)
+					A.loc = src.loc
+					ex_act(severity)
+				qdel(src)
+				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			for(var/atom/movable/A as mob|obj in src)
+				A.loc = src.loc
+				ex_act(severity)
+			qdel(src)
+			return
 
 /obj/machinery/body_scanconsole/ex_act(severity)
-
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			qdel(src)
-		if(EXPLODE_HEAVY)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
 				qdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			qdel(src)
 
 /obj/machinery/body_scanconsole
 	name = "Body Scanner Console"

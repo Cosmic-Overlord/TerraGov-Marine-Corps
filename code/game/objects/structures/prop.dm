@@ -40,17 +40,17 @@
 
 /obj/machinery/prop/mainship/computer/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			qdel(src)
-		if(EXPLODE_HEAVY)
-			if (prob(25))
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(prob(25))
+				set_broken()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(25))
 				qdel(src)
 				return
-			if (prob(50))
+			if(prob(50))
 				set_broken()
-		if(EXPLODE_LIGHT)
-			if (prob(25))
-				set_broken()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			qdel(src)
 
 
 /obj/machinery/prop/mainship/computer/proc/set_broken()

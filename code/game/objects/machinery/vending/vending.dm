@@ -217,11 +217,11 @@
 
 /obj/machinery/vending/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			qdel(src)
-		if(EXPLODE_HEAVY)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				qdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			qdel(src)
 
 /**
  * Builds shared vendors inventory

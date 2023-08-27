@@ -191,13 +191,11 @@
 
 /obj/structure/barricade/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		if(EXPLODE_HEAVY)
-			take_damage(rand(33, 66))
-		if(EXPLODE_LIGHT)
-			take_damage(rand(10, 33))
+		else
+			take_damage(severity)
 	update_icon()
 
 /obj/structure/barricade/setDir(newdir)
@@ -714,14 +712,7 @@
 
 
 /obj/structure/barricade/metal/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(rand(400, 600))
-		if(EXPLODE_HEAVY)
-			take_damage(rand(150, 350))
-		if(EXPLODE_LIGHT)
-			take_damage(rand(50, 100))
-
+	take_damage(severity)
 	update_icon()
 
 
@@ -975,14 +966,7 @@
 				. += image('icons/Marine/barricades.dmi', icon_state = "[barricade_type]_[closed ? "closed" : "open"]_connection_[get_dir(src, cade)]")
 
 /obj/structure/barricade/plasteel/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(rand(450, 650))
-		if(EXPLODE_HEAVY)
-			take_damage(rand(200, 400))
-		if(EXPLODE_LIGHT)
-			take_damage(rand(50, 150))
-
+	take_damage(severity)
 	update_icon()
 
 #undef BARRICADE_PLASTEEL_LOOSE

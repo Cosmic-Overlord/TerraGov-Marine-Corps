@@ -234,14 +234,14 @@
 		return
 
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			gib()
-		if(EXPLODE_HEAVY)
-			adjustBruteLoss(60)
-			UPDATEHEALTH(src)
-		if(EXPLODE_LIGHT)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			adjustBruteLoss(30)
 			UPDATEHEALTH(src)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			adjustBruteLoss(60)
+			UPDATEHEALTH(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			gib()
 
 
 /mob/living/simple_animal/get_idcard(hand_first)

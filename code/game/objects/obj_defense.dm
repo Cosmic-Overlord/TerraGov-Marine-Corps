@@ -75,14 +75,7 @@
 	. = ..() //contents explosion
 	if(QDELETED(src))
 		return
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(INFINITY, BRUTE, "bomb", 0)
-		if(EXPLODE_HEAVY)
-			take_damage(rand(100, 250), BRUTE, "bomb", 0)
-		if(EXPLODE_LIGHT)
-			take_damage(rand(10, 90), BRUTE, "bomb", 0)
-
+	take_damage(severity, BRUTE, "bomb", 0)
 
 /obj/hitby(atom/movable/AM)
 	. = ..()

@@ -269,16 +269,15 @@
 	if(resistance_flags & INDESTRUCTIBLE)
 		return
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			dismantle_wall(FALSE, TRUE)
-		if(EXPLODE_HEAVY)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			take_damage(rand(0, 250))
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(75))
 				take_damage(rand(150, 250))
 			else
 				dismantle_wall(TRUE, TRUE)
-		if(EXPLODE_LIGHT)
-			take_damage(rand(0, 250))
-
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			dismantle_wall(FALSE, TRUE)
 /turf/closed/wall/attack_animal(mob/living/M as mob)
 	if(M.wall_smash)
 		if((isrwallturf(src)) || (resistance_flags & INDESTRUCTIBLE))

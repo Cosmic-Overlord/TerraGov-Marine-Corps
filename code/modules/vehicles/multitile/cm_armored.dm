@@ -480,13 +480,7 @@ GLOBAL_LIST_INIT(armorvic_dmg_distributions, list(
 
 //severity 1.0 explosions never really happen so we're gonna follow everyone else's example
 /obj/vehicle/multitile/root/cm_armored/ex_act(severity)
-
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(rand(250, 350)) //Devastation level explosives are anti-tank and do real damage.
-
-		if(EXPLODE_HEAVY)
-			take_damage(rand(30, 40)) //Heavy explosions do some damage, but are largely deferred by the armour/bulk.
+	take_damage(severity)
 
 //Honestly copies some code from the Xeno files, just handling some special cases
 /obj/vehicle/multitile/root/cm_armored/attack_alien(mob/living/carbon/xenomorph/M, damage_amount = M.xeno_caste.melee_damage, damage_type = BRUTE, damage_flag = "", effects = TRUE, armor_penetration = 0, isrightclick = FALSE)

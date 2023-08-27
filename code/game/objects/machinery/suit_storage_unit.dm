@@ -68,17 +68,14 @@
 
 /obj/machinery/suit_storage_unit/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			if(prob(50))
-				dump_everything() //So suits dont survive all the time
-			qdel(src)
-
-		if(EXPLODE_HEAVY)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				dump_everything()
 				qdel(src)
-
-
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			if(prob(50))
+				dump_everything() //So suits dont survive all the time
+			qdel(src)
 
 /obj/machinery/suit_storage_unit/interact(mob/user)
 	. = ..()

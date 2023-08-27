@@ -55,16 +55,17 @@ GLOBAL_LIST_INIT(wood_icons, list("wood", "wood-broken"))
 	if(hull_floor)
 		return ..()
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			break_tile_to_plating()
-		if(EXPLODE_HEAVY)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(prob(50))
+				break_tile()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(80))
 				break_tile_to_plating()
 			else
 				break_tile()
-		if(EXPLODE_LIGHT)
-			if(prob(50))
-				break_tile()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			break_tile_to_plating()
+
 	return ..()
 
 

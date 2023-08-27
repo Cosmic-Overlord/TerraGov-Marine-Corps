@@ -207,14 +207,12 @@
 
 /obj/structure/razorwire/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			visible_message(span_danger("[src] is blown apart!"))
 			deconstruct(FALSE)
 			return
-		if(EXPLODE_HEAVY)
-			take_damage(rand(33, 66))
-		if(EXPLODE_LIGHT)
-			take_damage(rand(10, 33))
+		else
+			take_damage(severity)
 	update_icon()
 
 

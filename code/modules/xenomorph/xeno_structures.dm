@@ -25,13 +25,7 @@
 	return ..()
 
 /obj/structure/xeno/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(210)
-		if(EXPLODE_HEAVY)
-			take_damage(140)
-		if(EXPLODE_LIGHT)
-			take_damage(70)
+	take_damage(severity * RESIN_EXPLOSIVE_MULTIPLIER)
 
 /obj/structure/xeno/attack_hand(mob/living/user)
 	balloon_alert(user, "You only scrape at it")
@@ -91,13 +85,7 @@
 	AddElement(/datum/element/connect_loc, listen_connections)
 
 /obj/structure/xeno/trap/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(400)
-		if(EXPLODE_HEAVY)
-			take_damage(200)
-		if(EXPLODE_LIGHT)
-			take_damage(100)
+	take_damage(severity * RESIN_EXPLOSIVE_MULTIPLIER)
 
 /obj/structure/xeno/trap/update_icon_state()
 	switch(trap_type)
@@ -361,13 +349,7 @@ TUNNEL
 	return ..()
 
 /obj/structure/xeno/tunnel/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(210)
-		if(EXPLODE_HEAVY)
-			take_damage(140)
-		if(EXPLODE_LIGHT)
-			take_damage(70)
+	take_damage(severity * RESIN_EXPLOSIVE_MULTIPLIER)
 
 /obj/structure/xeno/tunnel/attackby(obj/item/I, mob/user, params)
 	if(!isxeno(user))
@@ -534,13 +516,7 @@ TUNNEL
 	set_light(charges , charges / 2, LIGHT_COLOR_GREEN)
 
 /obj/structure/xeno/acidwell/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(210)
-		if(EXPLODE_HEAVY)
-			take_damage(140)
-		if(EXPLODE_LIGHT)
-			take_damage(70)
+	take_damage(severity * RESIN_EXPLOSIVE_MULTIPLIER)
 
 /obj/structure/xeno/acidwell/flamer_fire_act(burnlevel) //Removes a charge of acid, but fire is extinguished
 	acid_well_fire_interaction()
@@ -696,13 +672,7 @@ TUNNEL
 	return ..()
 
 /obj/structure/xeno/resin_jelly_pod/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(210)
-		if(EXPLODE_HEAVY)
-			take_damage(140)
-		if(EXPLODE_LIGHT)
-			take_damage(70)
+	take_damage(severity * RESIN_EXPLOSIVE_MULTIPLIER)
 
 /obj/structure/xeno/resin_jelly_pod/examine(mob/user, distance, infix, suffix)
 	. = ..()
@@ -974,13 +944,7 @@ TUNNEL
 	return ..()
 
 /obj/structure/xeno/xeno_turret/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(1500)
-		if(EXPLODE_HEAVY)
-			take_damage(750)
-		if(EXPLODE_LIGHT)
-			take_damage(300)
+	take_damage(severity * RESIN_EXPLOSIVE_MULTIPLIER)
 
 /obj/structure/xeno/xeno_turret/flamer_fire_act(burnlevel)
 	take_damage(burnlevel * 2, BURN, "fire")
@@ -1189,13 +1153,7 @@ TUNNEL
 	return ..()
 
 /obj/structure/xeno/evotower/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(700)
-		if(EXPLODE_HEAVY)
-			take_damage(500)
-		if(EXPLODE_LIGHT)
-			take_damage(300)
+	take_damage(severity * RESIN_EXPLOSIVE_MULTIPLIER)
 
 /obj/structure/xeno/maturitytower
 	name = "Maturity tower"
@@ -1221,11 +1179,7 @@ TUNNEL
 	return ..()
 
 /obj/structure/xeno/maturitytower/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_HEAVY, EXPLODE_DEVASTATE)
-			take_damage(500)
-		if(EXPLODE_LIGHT)
-			take_damage(300)
+	take_damage(severity * RESIN_EXPLOSIVE_MULTIPLIER)
 
 /obj/structure/xeno/pherotower
 	name = "Pheromone tower"
@@ -1255,11 +1209,7 @@ TUNNEL
 	update_icon()
 
 /obj/structure/xeno/pherotower/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_HEAVY, EXPLODE_DEVASTATE)
-			take_damage(500)
-		if(EXPLODE_LIGHT)
-			take_damage(300)
+	take_damage(severity * RESIN_EXPLOSIVE_MULTIPLIER)
 
 /obj/structure/xeno/pherotower/Destroy()
 	GLOB.hive_datums[hivenumber].pherotowers -= src

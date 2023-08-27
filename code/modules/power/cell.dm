@@ -202,20 +202,20 @@
 /obj/item/cell/ex_act(severity)
 
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(prob(25))
+				qdel(src)
+				return
+			if(prob(25))
+				corrupt()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				qdel(src)
+				return
+			if(prob(50))
+				corrupt()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
-		if(EXPLODE_HEAVY)
-			if (prob(50))
-				qdel(src)
-				return
-			if (prob(50))
-				corrupt()
-		if(EXPLODE_LIGHT)
-			if (prob(25))
-				qdel(src)
-				return
-			if (prob(25))
-				corrupt()
 
 
 /obj/item/cell/proc/get_electrocute_damage()

@@ -288,14 +288,14 @@
 //Pipe affected by explosion
 /obj/machinery/disposal/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			qdel(src)
-		if(EXPLODE_HEAVY)
-			if(prob(60))
-				qdel(src)
-		if(EXPLODE_LIGHT)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
 				qdel(src)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(60))
+				qdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			qdel(src)
 
 //Update the icon & overlays to reflect mode & status
 /obj/machinery/disposal/proc/update()
@@ -693,13 +693,7 @@
 
 //Pipe affected by explosion
 /obj/structure/disposalpipe/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			qdel(src)
-		if(EXPLODE_HEAVY)
-			take_damage(rand(5, 15))
-		if(EXPLODE_LIGHT)
-			take_damage(rand(0, 15))
+	take_damage(severity)
 
 //Attack by item. Weldingtool: unfasten and convert to obj/disposalconstruct
 /obj/structure/disposalpipe/attackby(obj/item/I, mob/user, params)

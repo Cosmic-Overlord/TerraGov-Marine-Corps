@@ -20,11 +20,11 @@
 
 /obj/machinery/sleep_console/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			qdel(src)
-		if(EXPLODE_HEAVY)
-			if (prob(50))
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
 				qdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			qdel(src)
 
 
 /obj/machinery/sleep_console/Initialize()
@@ -285,14 +285,14 @@
 	if(filtering)
 		toggle_filter()
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			qdel(src)
-		if(EXPLODE_HEAVY)
-			if(prob(50))
-				qdel(src)
-		if(EXPLODE_LIGHT)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
 				qdel(src)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				qdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			qdel(src)
 
 
 /obj/machinery/sleeper/emp_act(severity)

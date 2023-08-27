@@ -6,14 +6,14 @@
 
 /obj/structure/flora/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			qdel(src)
-		if(EXPLODE_HEAVY)
-			if(prob(70))
-				qdel(src)
-		if(EXPLODE_LIGHT)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(50))
 				qdel(src)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(70))
+				qdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			qdel(src)
 
 
 /obj/structure/flora/flamer_fire_act(burnlevel)
@@ -46,13 +46,7 @@
 	AddComponent(/datum/component/largetransparency)
 
 /obj/structure/flora/tree/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(500)
-		if(EXPLODE_HEAVY)
-			take_damage(rand(140, 300))
-		if(EXPLODE_LIGHT)
-			take_damage(rand(50, 100))
+	take_damage(severity)
 	START_PROCESSING(SSobj, src)
 
 

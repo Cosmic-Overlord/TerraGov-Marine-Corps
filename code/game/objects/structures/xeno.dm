@@ -38,13 +38,7 @@
 	take_damage(burnlevel * 2, BURN, "fire")
 
 /obj/alien/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(500)
-		if(EXPLODE_HEAVY)
-			take_damage((rand(140, 300)))
-		if(EXPLODE_LIGHT)
-			take_damage((rand(50, 100)))
+	take_damage(severity * RESIN_EXPLOSIVE_MULTIPLIER)
 
 /obj/alien/effect_smoke(obj/effect/particle_effect/smoke/S)
 	. = ..()

@@ -143,18 +143,17 @@
 
 /obj/structure/mineral_door/ex_act(severity = 1)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			Dismantle(1)
-		if(EXPLODE_HEAVY)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			hardness -= 0.1
+			CheckHardness()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(20))
 				Dismantle(1)
 			else
 				hardness--
 				CheckHardness()
-		if(EXPLODE_LIGHT)
-			hardness -= 0.1
-			CheckHardness()
-
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			Dismantle(1)
 
 /obj/structure/mineral_door/iron
 	mineralType = "metal"

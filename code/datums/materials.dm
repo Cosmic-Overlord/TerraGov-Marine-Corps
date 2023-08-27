@@ -10,3 +10,6 @@ GLOBAL_LIST_EMPTY(materials)
 
 /datum/material/glass
 	name = "glass"
+
+/datum/material/bone
+	name = "bone"

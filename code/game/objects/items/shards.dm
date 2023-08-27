@@ -150,7 +150,7 @@
 	name = "bone shrapnel chips"
 	gender = PLURAL
 	icon_state = "bonechips"
-	matter = list("bone" = 50)
+	materials = list(/datum/material/bone = 50)
 	desc = "It looks like it came from a prehistoric animal."
 	damage_on_move = 0.6
 

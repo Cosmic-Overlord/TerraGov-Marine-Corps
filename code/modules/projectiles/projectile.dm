@@ -1173,10 +1173,9 @@ So if we are on the 32th absolute pixel coordinate we are on tile 1, but if we a
 	qdel(src)
 
 /mob/living/proc/embed_projectile_shrapnel(obj/projectile/proj)
-	var/obj/item/shard/shrapnel/shrap = new proj.shrapnel_type(get_turf(src), "[proj] shrapnel", " It looks like it was fired from [proj.shot_from ? proj.shot_from : "something unknown"].")
+	var/obj/item/shard/shrapnel/shrap = new proj.ammo.shrapnel_type(get_turf(src), "[proj] shrapnel", " It looks like it was fired from [proj.shot_from ? proj.shot_from : "something unknown"].")
 	if(!shrap.embed_into(src, proj.def_zone, TRUE))
 		qdel(shrap)
-	shrap.on_embed
 
 
 /mob/living/carbon/human/embed_projectile_shrapnel(obj/projectile/proj)

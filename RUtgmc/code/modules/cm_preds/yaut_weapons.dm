@@ -796,7 +796,7 @@
 /datum/yautja_energy_weapon_modes/lethal_bolts
 	rounds_per_shot = 300
 	ammo_datum_type = /datum/ammo/energy/yautja/caster/bolt
-	fire_delay = 15
+	fire_delay = 10
 	fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 	message_to_user = "will now fire plasma bolts"
 	radial_icon_state = "laser_disabler"

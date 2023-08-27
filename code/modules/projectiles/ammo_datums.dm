@@ -3202,16 +3202,16 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	max_range = 8
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_mob(mob/M, obj/projectile/P)
-	explosion(get_turf(M), 1, 2, 5, 3)
+	explosion(get_turf(M), 2, 3, 5, 3)
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_turf(turf/T, obj/projectile/P)
-	explosion(get_turf(T), 1, 2, 5, 3)
+	explosion(get_turf(T), 2, 3, 5, 3)
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O, obj/projectile/P)
-	explosion(get_turf(O), 1, 2, 5, 3)
+	explosion(get_turf(O), 2, 3, 5, 3)
 
 /datum/ammo/energy/yautja/caster/sphere/do_at_max_range(obj/projectile/P)
-	explosion(get_turf(P), 1, 2, 5, 3)
+	explosion(get_turf(P), 2, 3, 5, 3)
 
 
 /datum/ammo/energy/yautja/caster/sphere/stun

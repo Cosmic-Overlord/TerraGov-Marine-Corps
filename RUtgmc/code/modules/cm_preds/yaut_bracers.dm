@@ -305,7 +305,7 @@
 		msg = replacetext(msg, "м", "m")
 		msg = replacetext(msg, "п", "n")
 
-	caller.send_speech(msg, 7, caller, bubble_type, null, caller.get_default_language())
+	caller.send_speech(msg, 7, caller, bubble_type, null)
 
 	var/voice_name = "A strange voice"
 	if(caller.name == caller.real_name && caller.alpha == initial(caller.alpha))

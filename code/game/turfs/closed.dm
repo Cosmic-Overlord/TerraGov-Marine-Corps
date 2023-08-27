@@ -16,6 +16,9 @@
 	. = ..()
 	add_debris_element()
 
+/turf/closed/get_explosion_resistance()
+	return 1000000
+
 /turf/closed/mineral
 	name = "rock"
 	icon = 'icons/turf/walls.dmi'

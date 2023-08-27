@@ -243,10 +243,10 @@
 	///large dirt kickup particle holder
 	var/obj/effect/abstract/particle_holder/large_kickup
 
-/obj/effect/temp_visual/explosion/Initialize(mapload, radius, color, small = FALSE, large = FALSE)
+/obj/effect/temp_visual/explosion/Initialize(mapload, radius, color, power)
 	. = ..()
 	set_light(radius, radius, color)
-	generate_particles(radius, small, large)
+	generate_particles(radius, power)
 	if(iswater(get_turf(src)))
 		icon_state = null
 		return
@@ -258,7 +258,7 @@
 	icon_state = null
 
 ///Generate the particles
-/obj/effect/temp_visual/explosion/proc/generate_particles(radius, small = FALSE, large = FALSE)
+/obj/effect/temp_visual/explosion/proc/generate_particles(radius, power)
 	var/turf/turf_type = get_turf(src)
 	if(iswater(turf_type))
 		smoke_wave = new(src, /particles/wave_water)
@@ -268,33 +268,33 @@
 		sparks = new(src, /particles/water_outwards)
 		large_kickup = new(src, /particles/water_splash_large)
 	else
-		if(small)
+		if(power <= 150)
 			smoke_wave = new(src, /particles/smoke_wave/small)
 		else
 			smoke_wave = new(src, /particles/smoke_wave)
 
-		if(large)
+		if(power > 400)
 			explosion_smoke = new(src, /particles/explosion_smoke/deva)
-		else if(small)
+		else if(power <= 150)
 			explosion_smoke = new(src, /particles/explosion_smoke/small)
 		else
 			explosion_smoke = new(src, /particles/explosion_smoke)
 
 		dirt_kickup = new(src, /particles/dirt_kickup)
-		if(small)
+		if(power <= 150)
 			falling_debris = new(src, /particles/falling_debris/small)
 		else
 			falling_debris = new(src, /particles/falling_debris)
 		sparks = new(src, /particles/sparks_outwards)
 
-		if(large)
+		if(power > 400)
 			large_kickup = new(src, /particles/dirt_kickup_large/deva)
 		else
 			large_kickup = new(src, /particles/dirt_kickup_large)
 
-	if(large)
+	if(power > 400)
 		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 6 * radius, 6 * radius)
-	else if(small)
+	else if(power <= 150)
 		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 3 * radius, 3 * radius)
 	else
 		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 5 * radius, 5 * radius)

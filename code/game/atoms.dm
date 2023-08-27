@@ -338,6 +338,21 @@ directive is properly returned.
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
+/atom/proc/get_explosion_resistance()
+	return 0
+
+/mob/living/get_explosion_resistance()
+	if(density)
+		switch(mob_size)
+			if(MOB_SIZE_SMALL)
+				return 0
+			if(MOB_SIZE_HUMAN)
+				return 20
+			if(MOB_SIZE_XENO)
+				return 20
+			if(MOB_SIZE_BIG)
+				return 40
+	return 0
 
 /// Updates the icon of the atom
 /atom/proc/update_icon()

@@ -61,13 +61,17 @@
 
 
 /obj/structure/window/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(rand(125, 250))
-		if(EXPLODE_HEAVY)
-			take_damage(rand(75, 125))
-		if(EXPLODE_LIGHT)
-			take_damage(rand(25, 75))
+	if(!damageable) //Impossible to destroy
+		return
+
+	take_damage(severity * EXPLOSION_DAMAGE_MULTIPLIER_WINDOW)
+	return
+
+/obj/structure/window/get_explosion_resistance()
+	if(!damageable)
+		return 1000000
+
+	return obj_integrity/EXPLOSION_DAMAGE_MULTIPLIER_WINDOW
 
 //TODO: Make full windows a separate type of window.
 //Once a full window, it will always be a full window, so there's no point

@@ -27,6 +27,14 @@
 	if(bomb_effective_armor >= 1)
 		return //immune
 
+	if(lying_angle)
+		severity *= EXPLOSION_PRONE_MULTIPLIER
+
+	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
+//		var/oldloc = loc
+		gib()
+//		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/xeno, last_damage_data)
+		return
 
 	if((severity == EXPLODE_DEVASTATE) && ((bomb_effective_armor * 100) <= XENO_EXPLOSION_GIB_THRESHOLD))
 		return gib() //Gibs unprotected benos

@@ -32,6 +32,11 @@
 
 	var/obj/effect/acid_hole/acided_hole //the acid hole inside the wall
 
+/turf/closed/wall/get_explosion_resistance()
+	if(resistance_flags & RESIST_ALL)
+		return 1000000
+
+	return (wall_integrity - max_integrity)/EXPLOSION_DAMAGE_MULTIPLIER_WALL
 
 /turf/closed/wall/add_debris_element()
 	AddElement(/datum/element/debris, DEBRIS_SPARKS, -15, 8, 1)

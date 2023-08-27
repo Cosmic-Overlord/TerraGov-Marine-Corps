@@ -142,7 +142,7 @@
 	var/datum/effect_system/smoke_spread/smoke = new smoketype()
 	smoke.set_up(smokeradius, plant_target, 2)
 	smoke.start()
-	plant_target.ex_act(EXPLODE_DEVASTATE)
+	plant_target.ex_act(700)
 	qdel(src)
 
 ///Triggers a warning beep prior to the actual detonation, while also setting the actual detonation timer

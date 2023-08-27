@@ -269,7 +269,7 @@
 		else if(istype(victim, /obj/structure/window))
 			var/obj/structure/window/window_victim = victim
 			if(window_victim.damageable)
-				window_victim.ex_act(EXPLODE_DEVASTATE)
+				window_victim.ex_act(700)
 
 ///cleans up when the charge up is finished or interrupted
 /datum/action/xeno_action/activable/shattering_roar/proc/finish_charging()

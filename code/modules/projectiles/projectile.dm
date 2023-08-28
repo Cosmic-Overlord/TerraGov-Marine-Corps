@@ -187,12 +187,12 @@
 	if(!isturf(loc))
 		loc = get_turf(src)
 		if(!loc)
-			if(!(projectile_flags & PROJECTILE_SHRAPNEL))
-				var/move_turf = get_turf(shooter)
+			if(projectile_flags & PROJECTILE_SHRAPNEL)
+				var/move_turf = get_turf(source)
 				if(move_turf)
 					forceMove(move_turf)
 			else
-				var/move_turf = get_turf(source)
+				var/move_turf = get_turf(shooter)
 				if(move_turf)
 					forceMove(move_turf)
 	starting_turf = loc

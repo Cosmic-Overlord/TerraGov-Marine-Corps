@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(cellauto)
 	return SScellauto.explode(epicenter, power, power/(light_impact_range+2), EXPLOSION_FALLOFF_SHAPE_LINEAR, flame_range, silent, color, direction)
 
 // Call controller for D.O.R.E.C explosion directly
-/datum/controller/subsystem/cellauto/proc/explode(atom/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, flame_range, silent, color, direction)
+/datum/controller/subsystem/cellauto/proc/explode(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, flame_range, silent, color, direction)
 	if(!istype(epicenter))
 		epicenter = get_turf(epicenter)
 
@@ -79,8 +79,6 @@ SUBSYSTEM_DEF(cellauto)
 	E.falloff_shape = falloff_shape
 	E.direction = direction
 
-	// Update epicenter, the ex_acts might have changed the epicenter
-	epicenter = get_turf(epicenter)
 	// Make explosion effect
 	new /obj/effect/temp_visual/explosion(epicenter, round(power / falloff), color, power)
 	// Explosion enought powerful for making shrapnel

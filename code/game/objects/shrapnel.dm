@@ -46,4 +46,4 @@
 			var/mob/user = usr
 			if(!istype(user))
 				user = null
-			S.fire_at(target, user, source, S.ammo.max_range, S.ammo.shell_speed, null, loc_override = null)
+			S.fire_at(target, user, source, S.ammo.max_range, S.ammo.shell_speed, null, loc_override = source)

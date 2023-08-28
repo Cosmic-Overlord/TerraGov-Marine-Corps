@@ -354,7 +354,7 @@ directive is properly returned.
 				return 40
 	return 0
 
-/obj/item/proc/explosion_throw(severity, direction, scatter_multiplier = 1)
+/obj/proc/explosion_throw(severity, direction, scatter_multiplier = 1)
 	if(anchored)
 		return
 

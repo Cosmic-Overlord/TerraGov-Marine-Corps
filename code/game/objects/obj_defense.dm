@@ -69,13 +69,14 @@
 			playsound(loc, 'sound/items/welder.ogg', 50, 1)
 
 
-/obj/ex_act(severity)
+/obj/ex_act(severity, explosion_direction)
 	if(resistance_flags & INDESTRUCTIBLE)
 		return
 	. = ..() //contents explosion
 	if(QDELETED(src))
 		return
 	take_damage(severity, BRUTE, "bomb", 0)
+	explosion_throw(severity, explosion_direction)
 
 /obj/hitby(atom/movable/AM)
 	. = ..()

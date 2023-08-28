@@ -20,14 +20,7 @@
 	if(status_flags & (INCORPOREAL|GODMODE))
 		return
 
-	var/bomb_effective_armor = (soft_armor.getRating("bomb")/100)*get_sunder()
-	var/bomb_sunder_multiplier = max(0, 1 - bomb_effective_armor)
-
-	//Sunder
-	adjust_sunder(max(0, 50 * (3 - severity) * bomb_sunder_multiplier))
-	if(bomb_effective_armor >= 1)
-		return //immune
-
+	var/bomb_sunder_multiplier = max(0, 1 - (soft_armor.getRating("bomb")/100)*get_sunder())
 	if(lying_angle)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
@@ -39,6 +32,8 @@
 
 	//Damage
 	apply_damages(severity, blocked = BOMB, updating_health = TRUE)
+	//Sunder
+	adjust_sunder(max(0, 50 * (3 - severity) * bomb_sunder_multiplier))
 
 	var/powerfactor_value = round(severity * 0.05 ,1)
 	powerfactor_value = min(powerfactor_value,20)
@@ -47,15 +42,7 @@
 		if(mob_size < MOB_SIZE_BIG)
 			add_slowdown(powerfactor_value)
 			adjust_stagger(powerfactor_value/2)
-		else
-			add_slowdown(powerfactor_value/3)
-		explosion_throw(severity, explosion_direction)
-	else if(powerfactor_value > 10)
-		powerfactor_value /= 5
-		Knockdown(powerfactor_value/5)
-		if(mob_size < MOB_SIZE_BIG)
-			add_slowdown(powerfactor_value)
-			adjust_stagger(powerfactor_value/2)
+			explosion_throw(severity, explosion_direction)
 		else
 			add_slowdown(powerfactor_value/3)
 

@@ -76,6 +76,13 @@
 	if(QDELETED(src))
 		return
 	take_damage(severity, BRUTE, "bomb", 0)
+
+/obj/item/ex_act(severity, explosion_direction)
+	if(resistance_flags & INDESTRUCTIBLE)
+		return
+	. = ..() //contents explosion
+	if(QDELETED(src))
+		return
 	explosion_throw(severity, explosion_direction)
 
 /obj/hitby(atom/movable/AM)

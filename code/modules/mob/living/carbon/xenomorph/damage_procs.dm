@@ -21,7 +21,6 @@
 		return
 
 	var/bomb_effective_armor = (soft_armor.getRating("bomb")/100)*get_sunder()
-	var/bomb_slow_multiplier = max(0, 1 - 3.5*bomb_effective_armor)
 	var/bomb_sunder_multiplier = max(0, 1 - bomb_effective_armor)
 
 	//Sunder

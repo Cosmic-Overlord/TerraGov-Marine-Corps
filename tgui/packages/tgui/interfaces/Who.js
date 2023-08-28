@@ -36,7 +36,7 @@ export const Who = (props, context) => {
             </Stack.Item>
           ) : null}
           <Stack.Item height="6px" />
-          {admin && (
+          {admin !== 0 ? (
             <Stack.Item mt={0.2} grow>
               <Section fill>
                 <WhoCollapsible title="Information" color="olive">
@@ -75,7 +75,7 @@ export const Who = (props, context) => {
                 </WhoCollapsible>
               </Section>
             </Stack.Item>
-          )}
+          ) : null}
         </Stack>
       </Window.Content>
     </Window>

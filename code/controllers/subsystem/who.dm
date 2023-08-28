@@ -139,19 +139,19 @@ SUBSYSTEM_DEF(who)
 
 	new_list_data["additional_info"] += list(list(
 		"content" = "TGMC '[SSmapping.configs[SHIP_MAP].map_name]' Personnel: [additiona_data["tgmc"]]",
-		"color" = "#2d199b",
+		"color" = "#472aea",
 		"text" = "Players playing as TGMC '[SSmapping.configs[SHIP_MAP].map_name]' Personnel",
 	))
 
 	new_list_data["additional_info"] += list(list(
 		"content" = "Marines: [additiona_data["marines"]]",
-		"color" = "#2d199b",
+		"color" = "#472aea",
 		"text" = "Players playing as Marines",
 	))
 
 	new_list_data["additional_info"] += list(list(
 		"content" = "Sons of Mars: [additiona_data["som"]]",
-		"color" = "#2d199b",
+		"color" = "#c18e18",
 		"text" = "Players playing as SOM",
 	))
 

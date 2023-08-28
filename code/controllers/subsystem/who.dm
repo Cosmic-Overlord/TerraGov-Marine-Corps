@@ -100,8 +100,8 @@ SUBSYSTEM_DEF(who)
 								additiona_data["infected_humans"]++
 							if(client_mob.faction == FACTION_TERRAGOV)
 								additiona_data["tgmc"]++
-//								if(client_mob.job in (ROLES_MARINES))
-//									additiona_data["marines"]++
+								if(client_mob.job.title in GLOB.jobs_marines)
+									additiona_data["marines"]++
 							else if(client_mob.faction == FACTION_SOM)
 								additiona_data["som"]++
 

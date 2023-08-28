@@ -363,7 +363,7 @@ directive is properly returned.
 
 	if(!direction)
 		direction = pick(GLOB.alldirs)
-	var/range = min(round(severity/src.w_class * 0.2, 1), 14)
+	var/range = min(round(severity * 0.2, 1), 14)
 	if(!direction)
 		range = round( range/2 ,1)
 

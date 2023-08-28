@@ -38,15 +38,27 @@
 		create_shrapnel(oldloc, rand(16, 24), explosion_direction, , /datum/ammo/bullet/shrapnel/light/xeno)
 		return
 
-	//Slowdown and stagger
-	var/ex_slowdown = (severity / 50) * bomb_slow_multiplier
-
-	add_slowdown(max(0, ex_slowdown)) //Slowdown 2 for sentiel from nade
-	adjust_stagger(max(0, ex_slowdown - 2)) //Stagger 2 less than slowdown
-
 	//Damage
 	apply_damages(severity, blocked = BOMB, updating_health = TRUE)
 
+	var/powerfactor_value = round(severity * 0.05 ,1)
+	powerfactor_value = min(powerfactor_value,20)
+	if(powerfactor_value > 0)
+		Knockdown(powerfactor_value/5)
+		if(mob_size < MOB_SIZE_BIG)
+			add_slowdown(powerfactor_value)
+			adjust_stagger(powerfactor_value/2)
+		else
+			add_slowdown(powerfactor_value/3)
+		explosion_throw(severity, explosion_direction)
+	else if(powerfactor_value > 10)
+		powerfactor_value /= 5
+		Knockdown(powerfactor_value/5)
+		if(mob_size < MOB_SIZE_BIG)
+			add_slowdown(powerfactor_value)
+			adjust_stagger(powerfactor_value/2)
+		else
+			add_slowdown(powerfactor_value/3)
 
 /mob/living/carbon/xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone, blocked = 0, sharp = FALSE, edge = FALSE, updating_health = FALSE, penetration)
 	if(status_flags & GODMODE)

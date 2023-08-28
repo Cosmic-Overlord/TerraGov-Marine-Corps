@@ -226,22 +226,21 @@
 		stat("Health:", "[round((health / maxHealth) * 100)]%")
 
 
-/mob/living/simple_animal/ex_act(severity)
+/mob/living/simple_animal/ex_act(severity, explosion_direction)
 	flash_act()
 
 	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
 		gib()
 		return
 
-	switch(severity)
-		if(0 to EXPLOSION_THRESHOLD_LOW)
-			adjustBruteLoss(30)
-			UPDATEHEALTH(src)
-		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			adjustBruteLoss(60)
-			UPDATEHEALTH(src)
-		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			gib()
+	adjustBruteLoss(severity)
+	UPDATEHEALTH(src)
+
+	var/knock_value = min(round(severity*0.1, 1), 10)
+	if(knock_value > 0)
+		apply_effect(knock_value, WEAKEN)
+		apply_effect(knock_value, PARALYZE)
+		explosion_throw(severity, explosion_direction)
 
 
 /mob/living/simple_animal/get_idcard(hand_first)

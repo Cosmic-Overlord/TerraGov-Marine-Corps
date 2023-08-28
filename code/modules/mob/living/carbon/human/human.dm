@@ -149,10 +149,30 @@
 	f_loss += severity/2
 
 	if(!istype(wear_ear, /obj/item/clothing/ears/earmuffs))
-		adjust_ear_damage(severity/30 - (severity/30 * armor), severity/20 - (severity/20 * armor))
+		adjust_ear_damage(severity * 0.15)
 
 	adjust_stagger(severity/70 - (severity/70 * armor))
 	add_slowdown((severity/5 - round(severity/5 * armor, 1)) * 0.01)
+
+	if(severity >= 30)
+		flash_act()
+
+	// Stuns are multiplied by 1 reduced by their medium armor value. So a medium of 30 would mean a 30% reduction.
+	var/knockdown_value = severity * 0.1
+	var/knockdown_minus_armor = min(knockdown_value * armor, 1 SECONDS)
+	var/obj/item/item1 = l_hand
+	var/obj/item/item2 = r_hand
+	apply_effect(round(knockdown_minus_armor), WEAKEN)
+	var/knockout_value = severity * 0.1
+	var/knockout_minus_armor = min(knockout_value * armor * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
+	apply_effect(round(knockout_minus_armor), PARALYZE)
+	apply_effect(round(knockout_minus_armor) * 2, WEAKEN)
+	explosion_throw(severity, explosion_direction)
+
+	if(item1 && isturf(item1.loc))
+		item1.explosion_throw(severity, explosion_direction)
+	if(item2 && isturf(item2.loc))
+		item2.explosion_throw(severity, explosion_direction)
 
 	#ifdef DEBUG_HUMAN_ARMOR
 	to_chat(world, "DEBUG EX_ACT: armor: [armor * 100], b_loss: [b_loss], f_loss: [f_loss]")

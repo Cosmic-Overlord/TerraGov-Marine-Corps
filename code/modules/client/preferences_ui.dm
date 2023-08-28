@@ -170,7 +170,7 @@
 			update_preview_icon()
 			.["mapRef"] = "player_pref_map"
 		if(PRED_CHARACTER_CUSTOMIZATION)
-			update_preview_icon(SSjob.GetJobType(/datum/job/predator))
+			update_preview_icon(SSjob.GetJobType(/datum/job/predator), DUMMY_HUMAN_SLOT_PREFERENCES_ADDITIONAL)
 			.["mapRef"] = "player_pref_map"
 		if(GEAR_CUSTOMIZATION)
 			.["clothing"] = list(
@@ -906,7 +906,7 @@
 		if(CHARACTER_CUSTOMIZATION)
 			update_preview_icon()
 		if(PRED_CHARACTER_CUSTOMIZATION)
-			update_preview_icon(SSjob.GetJobType(/datum/job/predator))
+			update_preview_icon(SSjob.GetJobType(/datum/job/predator), DUMMY_HUMAN_SLOT_PREFERENCES_ADDITIONAL)
 	ui_interact(user, ui)
 	SEND_SIGNAL(current_client, COMSIG_CLIENT_PREFERENCES_UIACTED)
 	return TRUE

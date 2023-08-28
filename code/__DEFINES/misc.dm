@@ -69,6 +69,7 @@ GLOBAL_VAR_INIT(global_unique_id, 1)
 
 //Dummy mob reserve slots
 #define DUMMY_HUMAN_SLOT_PREFERENCES "dummy_preference_preview"
+#define DUMMY_HUMAN_SLOT_PREFERENCES_ADDITIONAL "dummy_preference_preview_second"
 #define DUMMY_HUMAN_SLOT_ADMIN "admintools"
 #define DUMMY_HUMAN_SLOT_MANIFEST "dummy_manifest_generation"
 

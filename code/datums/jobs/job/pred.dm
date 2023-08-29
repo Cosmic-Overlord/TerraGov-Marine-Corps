@@ -8,8 +8,8 @@
 	faction = FACTION_YAUTJA
 	minimap_icon = "predator"
 
-	total_positions = 4
-	max_positions = 4
+	total_positions = 0
+	max_positions = 0
 
 /datum/job/predator/New()
 	. = ..()

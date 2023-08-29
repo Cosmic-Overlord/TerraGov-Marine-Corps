@@ -139,9 +139,10 @@ SUBSYSTEM_DEF(predships)
 		)
 
 	while(clan_players.NextRow())
+		var/clan_rank = (clan_players.item[2] in clan_ranks_ordered) ? clan_ranks_ordered[clan_players.item[2]] : clan_ranks_ordered[1]
 		.["clan_keys"] += list(list(
 			name = clan_players.item[1],
-			rank = clan_ranks_ordered[clan_players.item[2]], // rank_to_give not used here, because we need to get their visual rank, not their position
+			rank = clan_rank, // rank_to_give not used here, because we need to get their visual rank, not their position
 			rank_pos = clan_players.item[3] & CLAN_PERMISSION_ADMIN_MANAGER ? 999 : clan_players.item[2],
 			honor = clan_players.item[5]
 		))

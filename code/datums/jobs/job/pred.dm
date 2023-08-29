@@ -122,8 +122,9 @@
 		mask_material = mob_client.prefs.predator_mask_material
 		caster_material = mob_client.prefs.predator_caster_material
 		translator_type = mob_client.prefs.predator_translator_type
-		if(mob_client.prefs.predator_cape_type != "None")
+		if(mob_client.prefs.predator_cape_type != "Default")
 			cape_type = mob_client.prefs.predator_cape_type
+
 		cape_color = mob_client.prefs.predator_cape_color
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(H), SLOT_W_UNIFORM)

@@ -342,7 +342,7 @@
 			var/datum/job/J = SSjob.GetJobType(/datum/job/predator)
 			var/whitelist_status = clan_ranks_ordered[J.get_whitelist_status(GLOB.roles_whitelist, current_client)]
 
-			var/list/options = list("None")
+			var/list/options = list("None", "Default")
 			for(var/cape_name in GLOB.all_yautja_capes)
 				var/obj/item/clothing/yautja_cape/cape = GLOB.all_yautja_capes[cape_name]
 				if(whitelist_status >= initial(cape.clan_rank_required) || (initial(cape.councillor_override) && (GLOB.roles_whitelist[user.ckey] & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY))))

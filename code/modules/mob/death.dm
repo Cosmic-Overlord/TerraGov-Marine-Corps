@@ -48,8 +48,7 @@
 
 	var/mob/living/living = last_damage_source
 	if(istype(living))
-		if(hunter_data?.hunted)
-			hunter_data.death(hunter_data.hunter == living)
+		hunter_data.death(hunter_data.hunter == living)
 		living.life_kills_total += life_kills_total + life_value
 
 	if(deathmessage && !silent && !gibbing)

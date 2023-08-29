@@ -33,7 +33,7 @@
 		activator.say("أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللَّهِ")
 		TIMER_COOLDOWN_START(user, "Koran", 600 SECONDS)
 		if(prob(10))
-			explosion(activator, 1, 1, 1, 1, 1)
+			SScellauto.explode(loc, 5000, 5000) // حرام، نه، اه
 		if(prob(80))
 			activator.heal_limb_damage(50, 50)
 			activator.adjustCloneLoss(-10)

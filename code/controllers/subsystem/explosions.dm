@@ -86,7 +86,8 @@ SUBSYSTEM_DEF(cellauto)
 		create_shrapnel(epicenter, rand(5,9), direction, , /datum/ammo/bullet/shrapnel/light/effect/ver1)
 		create_shrapnel(epicenter, rand(5,9), direction, , /datum/ammo/bullet/shrapnel/light/effect/ver2)
 	// Drop flames
-	flame_radius(flame_range, epicenter)
+	if(flame_range)
+		flame_radius(flame_range, epicenter)
 
 	// for what that shit, idk
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPLOSION, epicenter, power, falloff, falloff_shape)

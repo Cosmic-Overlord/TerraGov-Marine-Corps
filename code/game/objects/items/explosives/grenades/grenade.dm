@@ -21,8 +21,9 @@
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
 	var/hud_state = "grenade_he"
 	var/hud_state_empty = "grenade_empty"
-	///Light impact range when exploding
-	var/light_impact_range = 4
+	///Exploding vars
+	var/power = 200
+	var/fallof = 50
 
 
 /obj/item/explosive/grenade/Initialize()
@@ -84,7 +85,7 @@
 
 
 /obj/item/explosive/grenade/proc/prime()
-	explosion(loc, light_impact_range = src.light_impact_range)
+	SScellauto.explode(loc, power, fallof)
 	qdel(src)
 
 /obj/item/explosive/grenade/flamer_fire_act(burnlevel)

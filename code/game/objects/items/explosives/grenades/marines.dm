@@ -27,7 +27,8 @@
 	item_state = "grenade_pmc"
 	hud_state = "grenade_frag"
 	icon_state_mini = "grenade_red_white"
-	light_impact_range = 5
+	power = 250
+	fallof = 50
 
 /obj/item/explosive/grenade/m15
 	name = "\improper M15 fragmentation grenade"
@@ -36,7 +37,8 @@
 	item_state = "grenade_ex"
 	hud_state = "grenade_frag"
 	icon_state_mini = "grenade_yellow"
-	light_impact_range = 5
+	power = 200
+	fallof = 40
 
 /obj/item/explosive/grenade/stick
 	name = "\improper Webley Mk15 stick grenade"
@@ -69,7 +71,8 @@
 	icon_state = "alien_grenade"
 	item_state = "alien_grenade"
 	hud_state = "grenade_frag"
-	light_impact_range = 6
+	power = 300
+	fallof = 50
 
 /obj/item/explosive/grenade/sticky
 	name = "\improper M40 adhesive charge grenade"
@@ -77,7 +80,8 @@
 	icon_state = "grenade_sticky"
 	item_state = "grenade_sticky"
 	det_time = 5 SECONDS
-	light_impact_range = 3
+	power = 180
+	fallof = 60
 	///Current atom this grenade is attached to, used to remove the overlay.
 	var/atom/stuck_to
 	///Current image overlay applied to stuck_to, used to remove the overlay after detonation.
@@ -118,7 +122,8 @@
 	icon_state = "grenade_sticky_fire"
 	item_state = "grenade_sticky_fire"
 	det_time = 5 SECONDS
-	light_impact_range = 1
+	power = 100
+	fallof = 100
 
 /obj/item/explosive/grenade/sticky/trailblazer/prime()
 	flame_radius(0.5, get_turf(src))
@@ -204,7 +209,8 @@
 	icon_state = "ags_grenade"
 	item_state = "ags_grenade"
 	det_time = 2 SECONDS
-	light_impact_range = 3
+	power = 200
+	fallof = 75
 
 
 /obj/item/explosive/grenade/smokebomb
@@ -334,12 +340,13 @@
 	det_time = 4 SECONDS
 	dangerous = TRUE
 	icon_state_mini = "grenade_blue_white"
-	light_impact_range = 3
+	power = 200
+	fallof = 75
 
 /obj/item/explosive/grenade/impact/throw_impact(atom/hit_atom, speed)
 	. = ..()
 	if(launched && active && !istype(hit_atom, /turf/open)) //Only contact det if active, we actually hit something, and we're fired from a grenade launcher.
-		explosion(loc, light_impact_range = 1, flash_range = 2)
+		SScellauto.explode(loc, 200, 150)
 		qdel(src)
 
 

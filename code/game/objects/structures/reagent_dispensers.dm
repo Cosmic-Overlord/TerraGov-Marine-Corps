@@ -181,11 +181,11 @@
 		return
 	exploding = TRUE
 	if (reagents.total_volume > 500)
-		explosion(loc, light_impact_range = 4, flame_range = 4)
+		SScellauto.explode(loc, 200, 50, flame_range = 4)
 	else if (reagents.total_volume > 100)
-		explosion(loc, light_impact_range = 3, flame_range = 3)
+		SScellauto.explode(loc, 150, 50, flame_range = 3)
 	else
-		explosion(loc, light_impact_range = 2, flame_range = 2)
+		SScellauto.explode(loc, 100, 50, flame_range = 2)
 	qdel(src)
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(temperature, volume)
@@ -236,13 +236,13 @@
 
 	if(reagents.total_volume > 500)
 		flame_radius(5, loc, 46, 40, 31, 30, colour = "blue")
-		explosion(loc, light_impact_range = 5)
+		SScellauto.explode(loc, 250, 50)
 	else if(reagents.total_volume > 100)
 		flame_radius(4, loc, 46, 40, 31, 30, colour = "blue")
-		explosion(loc, light_impact_range = 4)
+		SScellauto.explode(loc, 200, 50)
 	else
 		flame_radius(3, loc, 46, 40, 31, 30, colour = "blue")
-		explosion(loc, light_impact_range = 3)
+		SScellauto.explode(loc, 150, 50)
 
 	qdel(src)
 

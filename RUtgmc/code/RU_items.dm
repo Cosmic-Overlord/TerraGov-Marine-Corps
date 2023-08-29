@@ -1121,7 +1121,7 @@ SUBSYSTEM_DEF(ru_items)
 	shell_speed = 0.75
 
 /datum/ammo/mortar/knee/drop_nade(turf/T)
-	explosion(T, 0, 1, 4, 2)
+	SScellauto.explode(T, 400, 150)
 
 
 /obj/item/storage/belt/mortar_belt

@@ -382,7 +382,7 @@
 		if(T.welding)
 			to_chat(user, span_warning("That was stupid of you."))
 			log_explosion("[key_name(user)] triggered a weldpack explosion at [AREACOORD(user.loc)].")
-			explosion(src, light_impact_range = 3)
+			SScellauto.explode(loc, 300, 100)
 			qdel(src)
 			return
 		if(T.get_fuel() == T.max_fuel || !reagents.total_volume)

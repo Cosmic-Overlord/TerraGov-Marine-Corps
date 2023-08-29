@@ -164,7 +164,7 @@ Stepping directly on the mine will also blow it up
 	if(triggered)
 		return
 	triggered = TRUE
-	explosion(tripwire ? tripwire.loc : loc, light_impact_range = 3)
+	SScellauto.explode(tripwire ? tripwire.loc : loc, 200, 150)
 	QDEL_NULL(tripwire)
 	qdel(src)
 

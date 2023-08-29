@@ -514,27 +514,22 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	if(!check_rights(R_DEBUG))
 		return
 
-	var/devastation_range = 0
-	var/heavy_impact_range = 0
-	var/light_impact_range = 0
+	var/power = 0
+	var/fallof = 0
 	var/choice = input("Bomb Size?") in list("Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb", "Check Range")
 	switch(choice)
 		if("Small Bomb")
-			devastation_range = 1
-			heavy_impact_range = 2
-			light_impact_range = 3
+			power = 400
+			fallof = 100
 		if("Medium Bomb")
-			devastation_range = 2
-			heavy_impact_range = 3
-			light_impact_range = 4
+			power = 800
+			fallof = 150
 		if("Big Bomb")
-			devastation_range = 3
-			heavy_impact_range = 5
-			light_impact_range = 7
+			power = 1400
+			fallof = 200
 		if("Custom Bomb")
-			devastation_range = input("Devastation range (Tiles):") as num
-			heavy_impact_range = input("Heavy impact range (Tiles):") as num
-			light_impact_range = input("Light impact range (Tiles):") as num
+			power = tgui_input_number(usr, "Power?", "Power?")
+			fallof = tgui_input_number(usr, "Falloff?", "Falloff?")
 		else
 			return
 
@@ -542,7 +537,8 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	if(!epicenter)
 		return
 
-	var/max_range = max(devastation_range, heavy_impact_range, light_impact_range)
+	var/max_range = power / fallof
+	var/actual_power = power
 
 	var/list/turfs_in_range = block(
 		locate(
@@ -567,13 +563,13 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	turfs_by_dist[epicenter] = current_exp_block
 	turfs_in_range[epicenter] = current_exp_block
 
-	if(devastation_range > 0)
+	if(power > 800)
 		epicenter.color = "blue"
 		epicenter.maptext = "D (E) ([current_exp_block])"
-	else if(heavy_impact_range > 0)
+	else if(power > 400)
 		epicenter.color = "red"
 		epicenter.maptext = "H (E) ([current_exp_block])"
-	else if(light_impact_range > 0)
+	else if(power > 0)
 		epicenter.color = "yellow"
 		epicenter.maptext = "L  (E) ([current_exp_block])"
 	else
@@ -633,13 +629,14 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 			if(isnull(turfs_by_dist[expansion_wave_loc]))
 				wipe_colours += expansion_wave_loc
 				turfs_by_dist[expansion_wave_loc] = dist
-				if(devastation_range > dist)
+				actual_power = power - fallof * dist
+				if(actual_power > 800)
 					expansion_wave_loc.color = "blue"
 					expansion_wave_loc.maptext = "D ([dist])"
-				else if(heavy_impact_range > dist)
+				else if(actual_power > 400)
 					expansion_wave_loc.color = "red"
 					expansion_wave_loc.maptext = "H ([dist])"
-				else if(light_impact_range > dist)
+				else if(actual_power > 0)
 					expansion_wave_loc.color = "yellow"
 					expansion_wave_loc.maptext = "L ([dist])"
 				else

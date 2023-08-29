@@ -85,9 +85,11 @@
 		return
 	tgui_alert(user, "Are you really sure to want to try your luck with the devilish roomba?", "The roomba roulette", list("Yes", "Yes!", "Yes?"))
 	if(prob(50))
-		explosion(user, 1, 0, 0, 0, 0, 4, "[user] lost at the roomba roulette")
+		SScellauto.explode(user, 500, 500)
+		visible_message(span_warning("[user] lost at the roomba roulette"))
 		return
-	explosion(src, 1, 0, 0, 0, 0, 4, "[user] won at the roomba roulette")
+	SScellauto.explode(loc, 500, 500)
+	visible_message(span_warning("[user] won at the roomba roulette"))
 	qdel(src)
 
 /obj/machinery/roomba/Bump(atom/A)

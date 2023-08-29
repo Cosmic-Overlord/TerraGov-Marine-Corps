@@ -356,7 +356,7 @@
 
 
 /obj/structure/ob_ammo/obj_destruction(damage_amount, damage_type, damage_flag)
-	explosion(loc, light_impact_range = 2, flash_range = 3, flame_range = 2)
+	SScellauto.explode(loc, 400, 200)
 	return ..()
 
 

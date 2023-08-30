@@ -1036,7 +1036,7 @@
 	if(slot != SLOT_GLOVES)
 		move_chip_to_bracer()
 	else
-		if(embedded_id.registered_name)
+		if(embedded_id?.registered_name)
 			embedded_id.set_user_data(user)
 
 /obj/item/clothing/gloves/yautja/hunter/Destroy()

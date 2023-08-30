@@ -48,7 +48,11 @@
 
 	var/mob/living/living = last_damage_source
 	if(istype(living))
-		hunter_data.death(hunter_data.hunter == living)
+		hunter_data.death()
+		if(hunter_data.hunted)
+			hunter_data.complite_kill(hunter_data.hunter == living)
+		if(ishuman(living) && isyautja(living))
+			INVOKE_ASYNC(living.client, TYPE_PROC_REF(/client, add_honor), life_kills_total + life_value)
 		living.life_kills_total += life_kills_total + life_value
 
 	if(deathmessage && !silent && !gibbing)

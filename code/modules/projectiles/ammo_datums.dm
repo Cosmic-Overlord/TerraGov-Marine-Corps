@@ -3858,7 +3858,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 */
 /datum/ammo/bullet/shrapnel
 	name = "shrapnel"
-	icon_state = "buckshot"
+	icon_state = "buckshot_v1"
 	accurate_range_min = 5
 	flags_ammo_behavior = AMMO_BALLISTIC
 
@@ -3929,7 +3929,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	name = "glass shrapnel"
 	icon_state = "shrapnel_glass"
 
-/datum/ammo/bullet/shrapnel/light/effect/ // no damage, but looks bright and neat
+/datum/ammo/bullet/shrapnel/light/effect // no damage, but looks bright and neat
 	name = "sparks"
 
 	damage = 1 // Tickle tickle

@@ -264,7 +264,8 @@
 	flags_cold_protection = CHEST|GROIN|LEGS|ARMS|FEET|HANDS //Does not cover the head though.
 	flags_heat_protection = CHEST|GROIN|LEGS|ARMS|FEET|HANDS
 	flags_item = ITEM_PREDATOR
-	has_sensor = 1
+	has_sensor = 0
+	sensor_mode = 0
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROTECTION_TEMPERATURE
 

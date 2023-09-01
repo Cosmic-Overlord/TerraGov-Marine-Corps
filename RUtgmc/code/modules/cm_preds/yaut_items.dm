@@ -234,6 +234,9 @@
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
+/obj/item/clothing/shoes/marine/yautja/update_icon()
+	return
+
 /obj/item/clothing/shoes/marine/yautja/hunter
 	name = "clan greaves"
 	desc = "A pair of armored, perfectly balanced boots. Perfect for running through the jungle."

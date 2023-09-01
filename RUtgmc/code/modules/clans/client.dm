@@ -8,7 +8,8 @@
 		return // Urgle test without DB... don't make runtime
 
 	if(GLOB.roles_whitelist[ckey] & WHITELIST_PREDATOR)
-		update_clan_info()
+		if(!update_clan_info())
+			return
 
 		if(GLOB.roles_whitelist[ckey] & WHITELIST_YAUTJA_LEADER)
 			clan_info.item[2] = CLAN_RANK_ADMIN_INT
@@ -31,26 +32,30 @@
 /client/proc/update_clan_info()
 	if(!SSdbcore.IsConnected())
 		return // Urgle test without DB... don't make runtime
-	if(clan_info)
-		clan_info.sql = "SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey"
-		clan_info.arguments = list("byond_ckey" = ckey)
-		clan_info.next_row_to_take = 1
-	else
-		clan_info = SSdbcore.NewQuery("SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey", list("byond_ckey" = ckey))
-		clan_info.no_auto_delete = TRUE
-		if(!clan_info.warn_execute())
-			qdel(clan_info)
-			return
-	if(!clan_info.NextRow())
-		clan_info.sql = "INSERT INTO [format_table_name("clan_player")] (byond_ckey, clan_rank, permissions, clan_id, honor) VALUES (:byond_ckey, 0, 0, 0, 0)"
-		clan_info.Execute()
+	if(GLOB.roles_whitelist[ckey] & WHITELIST_PREDATOR)
+		if(clan_info)
+			clan_info.sql = "SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey"
+			clan_info.arguments = list("byond_ckey" = ckey)
+			clan_info.next_row_to_take = 1
+		else
+			clan_info = SSdbcore.NewQuery("SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey", list("byond_ckey" = ckey))
+			clan_info.no_auto_delete = TRUE
+			if(!clan_info.warn_execute())
+				qdel(clan_info)
+				return
+		if(!clan_info.NextRow())
+			clan_info.sql = "INSERT INTO [format_table_name("clan_player")] (byond_ckey, clan_rank, permissions, clan_id, honor) VALUES (:byond_ckey, 0, 0, 0, 0)"
+			clan_info.Execute()
 
-		clan_info.sql = "SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey"
-		if(!clan_info.warn_execute())
-			qdel(clan_info)
-			return
-		clan_info.next_row_to_take = 1
-		clan_info.NextRow()
+			clan_info.sql = "SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey"
+			if(!clan_info.warn_execute())
+				qdel(clan_info)
+				return
+			clan_info.next_row_to_take = 1
+			clan_info.NextRow()
+		return TRUE
+	else
+		return FALSE
 
 /client/proc/usr_create_new_clan()
 	set name = "Create New Clan"
@@ -128,9 +133,7 @@
 	SSpredships.clan_ui.ui_interact(mob)
 
 /client/proc/has_clan_permission(permission_flag, clan_id, warn = TRUE)
-	update_clan_info()
-
-	if(!clan_info || length(clan_info.item) != 5)
+	if(!update_clan_info() || !clan_info || length(clan_info.item) != 5)
 		if(warn)
 			to_chat(src, "You do not have a yautja whitelist!")
 		return FALSE

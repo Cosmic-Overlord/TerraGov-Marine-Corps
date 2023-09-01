@@ -375,6 +375,8 @@
 
 /obj/structure/ob_ammo/warhead/explosive/warhead_impact(turf/target, inaccuracy_amt = 0)
 	. = ..()
+	SScellauto.explode(target, 2000 / max(inaccuracy_amt, 1), 200, EXPLOSION_FALLOFF_SHAPE_LINEAR, color = "#d67234")
+	sleep(3 SECONDS)
 	SScellauto.explode(target, 2000 / max(inaccuracy_amt, 1), 75, EXPLOSION_FALLOFF_SHAPE_LINEAR, color = "#d67234")
 
 

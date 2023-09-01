@@ -461,7 +461,7 @@
 		var/list/coords = impact_coords[i]
 		var/turf/detonation_target = locate(impact.x+coords[1],impact.y+coords[2],impact.z)
 		detonation_target.ceiling_debris_check(2)
-		SScellauto.explode(impact, power, fallof)
+		SScellauto.explode(detonation_target, power, fallof)
 	qdel(src)
 
 /obj/structure/ship_ammo/rocket/napalm

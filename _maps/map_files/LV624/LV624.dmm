@@ -9150,13 +9150,6 @@
 /obj/item/book/manual/atmospipes,
 /turf/open/floor/tile/dark,
 /area/lv624/lazarus/engineering)
-"hXv" = (
-/obj/structure/jungle/vines,
-/obj/structure/prop/brazier/torch/frame{
-	pixel_y = 32
-	},
-/turf/open/floor/plating/ground/dirt,
-/area/lv624/lazarus/sandtemple)
 "hXF" = (
 /obj/structure/flora/grass/green,
 /obj/structure/jungle/vines/heavy,
@@ -19149,19 +19142,6 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/ground/grass/grass2,
 /area/lv624/ground/jungle3)
-"tvs" = (
-/obj/structure/platform_decoration{
-	icon_state = "stone_deco";
-	color = "#b29082";
-	resistance_flags = 1;
-	name = "sandstone platform";
-	dir = 1
-	},
-/obj/structure/prop/brazier/torch/frame{
-	pixel_y = 32
-	},
-/turf/open/floor/plating/ground/dirt,
-/area/lv624/lazarus/sandtemple)
 "tvw" = (
 /turf/open/ground/coast{
 	dir = 6
@@ -58368,8 +58348,8 @@ ght
 kaX
 nwU
 gKr
-oRZ
-tvs
+qgF
+nBJ
 wJJ
 cYq
 dSf
@@ -59253,8 +59233,8 @@ mlO
 nwU
 gKr
 gKr
-oRZ
-hXv
+qgF
+slg
 slg
 bfw
 bfw

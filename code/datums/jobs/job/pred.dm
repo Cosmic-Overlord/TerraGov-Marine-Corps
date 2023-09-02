@@ -171,6 +171,7 @@
 
 	H.real_name = final_name
 	H.name = final_name
+	H.hud_set_hunter()
 
 // YOUNG BLOOD
 /datum/outfit/job/yautja/youngblood

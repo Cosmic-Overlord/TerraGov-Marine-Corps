@@ -49,21 +49,33 @@
 /datum/huntdata/proc/complite_target(mob/user)
 	target_complited = TRUE
 	INVOKE_ASYNC(user.client, TYPE_PROC_REF(/client, add_honor), owner.life_kills_total + owner.life_value + 3)
+	hunter = null
+	hunted = FALSE
+	owner.hud_set_hunter()
 
-/datum/huntdata/proc/complite_kill(complited = FALSE)
-	if(complited)
+/datum/huntdata/proc/death(mob/killer)
+	if(hunter == killer)
 		var/honor_value = max(owner.life_kills_total + owner.life_value, owner.default_honor_value)
 		if(src in hunter.hunter_data.targets)
 			honor_value += 3
 		to_chat(hunter, span_yautjabold("Your killed your Prey"))
 		INVOKE_ASYNC(hunter.client, TYPE_PROC_REF(/client, add_honor), honor_value + 1)
 		if(hunted)
-			if(hunter)
-				hunter.hunter_data.prey = null
+			hunter.hunter_data.prey = null
 	else
-		to_chat(hunter, span_yautjabold("Your Prey has been killed!"))
-
-/datum/huntdata/proc/death()
+		if(hunter)
+			to_chat(hunter, span_yautjabold("Your Prey has been killed!"))
+			hunter = null
+			hunted = FALSE
+			hunter.hunter_data.prey = null
+			owner.hud_set_hunter()
+		if(targeted)
+			to_chat(targeted, span_yautjabold("Your Target has been killed!"))
+			automatic_target = FALSE
+			target_complited = FALSE
+			targeted.hunter_data.targets -= src
+			targeted = null
+			SShunting.hunter_datas += src
 	if(prey)
 		prey.hunter_data.hunter = null
 		prey.hunter_data.hunted = FALSE
@@ -73,15 +85,14 @@
 /datum/huntdata/proc/clean_data()
 	if(length(targets))
 		for(var/datum/huntdata/data in targets)
+			if(target_complited)
+				continue
+			SShunting.hunter_datas += data
 			data.targeted = null
 			automatic_target = FALSE
-			if(!target_complited)
-				SShunting.hunter_datas += data
-			else
-				target_complited = FALSE
 			targets -= data
 
-	if(targeted)
+	if(targeted && !target_complited)
 		automatic_target = FALSE
 		target_complited = FALSE
 		targeted.hunter_data.targets -= src

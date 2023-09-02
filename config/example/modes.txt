@@ -8,7 +8,7 @@ mode Crash
 endmode
 
 mode Distress Signal
-	requiredplayers 25
+	requiredplayers 100
 endmode
 
 mode Nuclear War

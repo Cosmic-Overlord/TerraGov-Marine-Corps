@@ -125,8 +125,8 @@
 		to_chat(user, span_warning("The bracer feels cold against your skin, heavy with an unfamiliar, almost alien weight."))
 
 /obj/item/clothing/gloves/yautja/proc/owner_teleported()
-	if(cloaked)
-		decloak()
+	if(clocloakedaked)
+		decloak(owner)
 	update_minimap_icon()
 
 //We use this to determine whether we should activate the given verb, or a random verb

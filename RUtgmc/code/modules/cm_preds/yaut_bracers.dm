@@ -125,7 +125,7 @@
 		to_chat(user, span_warning("The bracer feels cold against your skin, heavy with an unfamiliar, almost alien weight."))
 
 /obj/item/clothing/gloves/yautja/proc/owner_teleported()
-	if(clocloakedaked)
+	if(cloaked)
 		decloak(owner)
 	update_minimap_icon()
 

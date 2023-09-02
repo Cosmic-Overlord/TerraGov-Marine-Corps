@@ -190,9 +190,7 @@
 
 	if(wear_mask && X.zone_selected == "head")
 		if(istype(wear_mask, /obj/item/clothing/mask/gas/yautja))
-			var/knock_chance = 1
-			knock_chance += min(round(X.xeno_caste.melee_damage * X.xeno_melee_damage_modifier * 0.25), 10) //Maximum of 15% chance.
-			if(prob(knock_chance))
+			if(prob(5))
 				playsound(loc, "alien_claw_metal", 25, 1)
 				X.visible_message(span_danger("The [X] smashes off [src]'s [wear_mask.name]!"), \
 				span_danger("You smash off [src]'s [wear_mask.name]!"), null, 5)

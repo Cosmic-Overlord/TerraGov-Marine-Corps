@@ -1030,7 +1030,7 @@
 	color = "#90F7F5" // rgb: 200, 165, 220
 	custom_metabolism = REAGENTS_METABOLISM * 0.05
 	overdose_threshold = REAGENTS_OVERDOSE
-	purge_list = list(/datum/reagent/medicine/xenojelly)
+	purge_list = list(/datum/reagent/xenojelly)
 	purge_rate = 5
 	overdose_crit_threshold = REAGENTS_OVERDOSE_CRITICAL
 	scannable = TRUE
@@ -1070,7 +1070,7 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	custom_metabolism = REAGENTS_METABOLISM * 0.5
 	overdose_threshold = REAGENTS_OVERDOSE * 0.5
-	purge_list = list(/datum/reagent/medicine/xenojelly)
+	purge_list = list(/datum/reagent/xenojelly)
 	purge_rate = 5
 	overdose_crit_threshold = REAGENTS_OVERDOSE_CRITICAL * 0.5
 	scannable = TRUE

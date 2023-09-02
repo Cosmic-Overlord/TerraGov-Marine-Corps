@@ -197,6 +197,7 @@
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
+		xenomorph.use_plasma(50)
 
 /obj/item/weapon/yautja/sword
 	name = "clan sword"
@@ -704,12 +705,13 @@
 	item_state = "glaive"
 	force = 20
 	force_wielded = 45
+	reach = 2
 	penetration = 30
 	throwforce = 20
 	sharp = IS_SHARP_ITEM_BIG
 	flags_atom = CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
-	attack_speed = 14 //Default is 7.
+	attack_speed = 20 //Default is 7.
 
 /obj/item/weapon/twohanded/yautja/glaive/attack(mob/living/target, mob/living/carbon/human/user)
 	. = ..()

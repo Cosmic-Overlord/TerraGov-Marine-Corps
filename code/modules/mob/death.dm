@@ -46,12 +46,13 @@
 
 	set_stat(DEAD)
 
-	var/mob/living/living = last_damage_source
-	if(istype(living))
-		hunter_data.death(living)
-		if(ishuman(living) && isyautja(living))
-			INVOKE_ASYNC(living.client, TYPE_PROC_REF(/client, add_honor), life_kills_total + life_value)
-		living.life_kills_total += life_kills_total + life_value
+	if(SSticker.current_state != GAME_STATE_FINISHED && !is_centcom_level(z))
+		var/mob/living/living = last_damage_source
+		if(istype(living))
+			hunter_data.death(living)
+			if(ishuman(living) && isyautja(living))
+				INVOKE_ASYNC(living.client, TYPE_PROC_REF(/client, add_honor), life_kills_total + life_value)
+			living.life_kills_total += life_kills_total + life_value
 
 	if(deathmessage && !silent && !gibbing)
 		visible_message("<b>\The [name]</b> [deathmessage]")

@@ -13,7 +13,7 @@
 	var/list/targets = list()
 	var/mob/living/carbon/targeted
 	var/automatic_target = FALSE
-	var/target_complited = FALSE
+	var/target_completed = FALSE
 
 	//vars for Hunters targeting prey.
 	var/hunted = FALSE
@@ -46,8 +46,8 @@
 	owner = mob_ref
 	SShunting.hunter_datas += src
 
-/datum/huntdata/proc/complite_target(mob/user)
-	target_complited = TRUE
+/datum/huntdata/proc/complete_target(mob/user)
+	target_completed = TRUE
 	INVOKE_ASYNC(user.client, TYPE_PROC_REF(/client, add_honor), owner.life_kills_total + owner.life_value + 3)
 	hunter = null
 	hunted = FALSE
@@ -72,7 +72,7 @@
 		if(targeted)
 			to_chat(targeted, span_yautjabold("Your Target has been killed!"))
 			automatic_target = FALSE
-			target_complited = FALSE
+			target_completed = FALSE
 			targeted.hunter_data.targets -= src
 			targeted = null
 			SShunting.hunter_datas += src
@@ -85,16 +85,16 @@
 /datum/huntdata/proc/clean_data()
 	if(length(targets))
 		for(var/datum/huntdata/data in targets)
-			if(target_complited)
+			if(target_completed)
 				continue
 			SShunting.hunter_datas += data
 			data.targeted = null
 			automatic_target = FALSE
 			targets -= data
 
-	if(targeted && !target_complited)
+	if(targeted && !target_completed)
 		automatic_target = FALSE
-		target_complited = FALSE
+		target_completed = FALSE
 		targeted.hunter_data.targets -= src
 		targeted = null
 

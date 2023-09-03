@@ -579,7 +579,7 @@
 
 	if(scalpee.hunter_data.hunter == user) //You don't get your name on it unless you hunted them yourself.
 		if(scalpee.hunter_data.automatic_target && scalpee.hunter_data.targeted == user)
-			scalpee.hunter_data.complite_target(user)
+			scalpee.hunter_data.complete_target(user)
 
 		switch(worth)
 			if(-1)

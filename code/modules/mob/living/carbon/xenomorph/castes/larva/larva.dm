@@ -6,6 +6,9 @@
 
 	a_intent = INTENT_HELP //Forces help intent for all interactions.
 
+	life_value = 0
+	default_honor_value = 0
+
 	maxHealth = 35
 	health = 35
 	see_in_dark = 8

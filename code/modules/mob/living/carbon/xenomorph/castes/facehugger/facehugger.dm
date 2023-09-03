@@ -14,6 +14,7 @@
 	old_x = -8
 	old_y = -3
 
+	life_value = 0
 	default_honor_value = 0
 
 	tier = XENO_TIER_MINION

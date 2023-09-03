@@ -1810,6 +1810,9 @@
 /obj/item/reagent_containers/food/snacks/bearmeat{
 	pixel_y = -5
 	},
+/obj/item/reagent_containers/hypospray/autoinjector/medicalnanites{
+	layer = 2
+	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkred2"

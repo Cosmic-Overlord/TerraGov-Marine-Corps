@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(hunting)
 			if(xeno.hive == XENO_HIVE_FALLEN)
 				continue
 			var/number_tier = GLOB.tier_as_number[xeno.tier]
-			if(number_tier <= 0 || number_tier == 4)
+			if(number_tier <= 0 || isxenodrone(xeno))
 				continue
 		else
 			continue

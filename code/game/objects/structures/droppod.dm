@@ -289,8 +289,8 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 				targetturf = locate(target_x, target_y,2)
 			break
 
-	addtimer(CALLBACK(src, PROC_REF(dodrop), targetturf, user), 1 SECONDS) //dramatic effect
 	SScellauto.explode(targetturf, 100, 50)
+	addtimer(CALLBACK(src, PROC_REF(dodrop), targetturf, user), 2 SECONDS)
 
 ///Do the stuff when it "hits the ground"
 /obj/structure/droppod/proc/dodrop(turf/targetturf, mob/user)

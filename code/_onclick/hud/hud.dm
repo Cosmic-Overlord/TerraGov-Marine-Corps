@@ -66,7 +66,6 @@
 	mymob = owner
 	hide_actions_toggle = new
 
-	owner.overlay_fullscreen("empty", /atom/movable/screen/fullscreen/empty)
 
 	for(var/mytype in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/rendering_plate)
 		var/atom/movable/screen/plane_master/instance = new mytype()

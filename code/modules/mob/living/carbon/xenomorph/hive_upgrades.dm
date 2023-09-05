@@ -201,6 +201,11 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 				to_chat(buyer, span_xenowarning("Another silo is too close!"))
 				return FALSE
 
+	if(length(GLOB.xeno_resin_silos_by_hive[buyer.hivenumber]) > 0)
+		if(!silent)
+			to_chat(buyer, span_xenowarning("Hive cannot support more than 1 active silo!"))
+		return FALSE
+
 /datum/hive_upgrade/building/evotower
 	name = "Evolution Tower"
 	desc = "Constructs a tower that increases the rate of evolution point generation by 1.25 times per tower."
@@ -335,7 +340,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 	name = "Sticky resin turret"
 	desc = "Places a sticky spit spitting resin turret under you. Must be at least 6 tiles away from other turrets, not near fog and on a weeded area."
 	icon = "resinturret"
-	psypoint_cost = 25
+	psypoint_cost = 40
 	turret_type = /obj/structure/xeno/xeno_turret/sticky
 
 /datum/hive_upgrade/xenos

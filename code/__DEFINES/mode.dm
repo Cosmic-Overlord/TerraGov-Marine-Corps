@@ -49,6 +49,7 @@
 #define MODE_NO_PERMANENT_WOUNDS (1<<13)
 #define MODE_SILOS_SPAWN_MINIONS (1<<14)
 #define MODE_ALLOW_XENO_QUICKBUILD (1<<15)
+#define MODE_ALLOW_PINPOINTER (1<<16)
 
 #define MODE_INFESTATION_X_MAJOR "Xenomorph Major Victory"
 #define MODE_INFESTATION_M_MAJOR "Marine Major Victory"
@@ -123,7 +124,7 @@
 #define COUNT_IGNORE_ALIVE_SSD (COUNT_IGNORE_HUMAN_SSD|COUNT_IGNORE_XENO_SSD)
 
 #define SILO_PRICE 600
-#define XENO_TURRET_PRICE 40
+#define XENO_TURRET_PRICE 80
 
 //How many psy points a hive gets if all generators are corrupted
 #define GENERATOR_PSYCH_POINT_OUTPUT 1

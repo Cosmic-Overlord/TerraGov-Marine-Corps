@@ -183,7 +183,7 @@
 		to_chat(X, "<span class='xenodanger'>We reconsider our mean-spirited bullying of the already secured, helpless host.</span>")
 		return FALSE
 
-	if(isyautja(src) && check_pred_shields(X.xeno_caste.melee_damage * X.xeno_melee_damage_modifier + dam_bonus, backside_attack = dir == get_dir(get_turf(X), get_turf(src)), shield_only = TRUE))
+	if(isyautja(src) && check_pred_shields(X.xeno_caste.melee_damage * X.xeno_melee_damage_modifier + dam_bonus, backside_attack = dir == get_dir(get_turf(X), get_turf(src)), xenomorph = TRUE))
 		return FALSE
 
 	SEND_SIGNAL(X, COMSIG_XENOMORPH_ATTACK_HUMAN, src)

@@ -11,6 +11,9 @@
 	var/scope_zoom = FALSE//codex
 	var/self_recharge = FALSE //codex
 
+	var/can_block_xeno = FALSE
+	var/can_block_chance = 30 // 0-100%
+
 /obj/item/weapon/melee_attack_chain(mob/user, atom/target, params, rightclick)
 	if(target == user && !user.do_self_harm)
 		return

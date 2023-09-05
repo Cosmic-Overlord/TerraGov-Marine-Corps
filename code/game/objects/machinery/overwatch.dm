@@ -260,6 +260,9 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 		if("monitordelta_squad")
 			state = OW_MONITOR
 			current_squad = get_squad_by_id(DELTA_SQUAD)
+		if("monitorforeign_squad")
+			state = OW_MONITOR
+			current_squad = get_squad_by_id(FOREIGN_SQUAD)
 		if("change_operator")
 			if(operator != usr)
 				if(current_squad)

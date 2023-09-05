@@ -691,7 +691,7 @@
 		return
 
 	var/ckey = tgui_input_list(usr, "Select player ckey", "Hail Foreign Legion!", GLOB.clients)
-	if(!ckey)
+	if(!ckey) // shitcode mess for "special" circumstances
 		ckey = ckey(tgui_input_text(usr, "Maybe you write on your own?", "Hail Foreign Legion!"))
 		if(!ckey)
 			return FALSE

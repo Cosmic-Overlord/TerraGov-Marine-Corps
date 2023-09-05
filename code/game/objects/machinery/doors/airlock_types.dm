@@ -880,7 +880,7 @@
 	req_one_access = null
 
 /obj/machinery/door/airlock/mainship/marine/foreign
-	name = "\improper Foreign Squad Preparations"
+	name = "\improper Foreign Legion Preparations"
 	icon = 'icons/obj/doors/mainship/prepdoor_foreign.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_FOREIGN)
@@ -889,22 +889,22 @@
 	dir = SOUTH
 
 /obj/machinery/door/airlock/mainship/marine/foreign/sl
-	name = "\improper Foreign Squad Leader Preparations"
+	name = "\improper Foreign Legion Leader Preparations"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_FOREIGN)
 	req_one_access = null
 
 /obj/machinery/door/airlock/mainship/marine/foreign/engineer
-	name = "\improper Foreign Squad Engineer Preparations"
+	name = "\improper Foreign Legion Engineer Preparations"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_FOREIGN)
 	req_one_access = null
 
 /obj/machinery/door/airlock/mainship/marine/foreign/medic
-	name = "\improper Foreign Squad Medic Preparations"
+	name = "\improper Foreign Legion Medic Preparations"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_FOREIGN)
 	req_one_access = null
 
 /obj/machinery/door/airlock/mainship/marine/foreign/smart
-	name = "\improper Foreign Squad Smartgunner Preparations"
+	name = "\improper Foreign Legion Smartgunner Preparations"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_FOREIGN)
 	req_one_access = null
 

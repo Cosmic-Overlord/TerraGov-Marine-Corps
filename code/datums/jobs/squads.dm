@@ -1,5 +1,6 @@
 /datum/squad
 	var/name = ""
+	var/additional_name = "Squad"
 	var/id = NO_SQUAD
 	var/tracking_id = null // for use with SSdirection
 	var/color = 0 //Color for helmets, etc.
@@ -63,6 +64,7 @@
 
 /datum/squad/foreign
 	name = RADIO_CHANNEL_FOREIGN
+	additional_name = "Legion"
 	id = FOREIGN_SQUAD
 	color = "#3f7d30" // rgb(42, 134, 53)
 	access = list(ACCESS_MARINE_FOREIGN)

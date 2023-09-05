@@ -143,7 +143,7 @@
 		if(ACCESS_MARINE_DELTA)
 			return "Delta Squad"
 		if(ACCESS_MARINE_FOREIGN)
-			return "Foreign Squad"
+			return "Foreign Legion"
 		if(ACCESS_MARINE_RO)
 			return "RO's Office"
 		if(ACCESS_MARINE_CARGO)

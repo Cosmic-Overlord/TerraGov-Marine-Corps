@@ -268,33 +268,33 @@
 		sparks = new(src, /particles/water_outwards)
 		large_kickup = new(src, /particles/water_splash_large)
 	else
-		if(power <= 150)
+		if(power <= EXPLOSION_THRESHOLD_LOW)
 			smoke_wave = new(src, /particles/smoke_wave/small)
 		else
 			smoke_wave = new(src, /particles/smoke_wave)
 
-		if(power > 400)
+		if(power > EXPLOSION_THRESHOLD_HIGH)
 			explosion_smoke = new(src, /particles/explosion_smoke/deva)
-		else if(power <= 150)
+		else if(power <= EXPLOSION_THRESHOLD_MLOW)
 			explosion_smoke = new(src, /particles/explosion_smoke/small)
 		else
 			explosion_smoke = new(src, /particles/explosion_smoke)
 
 		dirt_kickup = new(src, /particles/dirt_kickup)
-		if(power <= 150)
+		if(power <= EXPLOSION_THRESHOLD_LOW)
 			falling_debris = new(src, /particles/falling_debris/small)
 		else
 			falling_debris = new(src, /particles/falling_debris)
 		sparks = new(src, /particles/sparks_outwards)
 
-		if(power > 400)
+		if(power > EXPLOSION_THRESHOLD_MEDIUM)
 			large_kickup = new(src, /particles/dirt_kickup_large/deva)
 		else
 			large_kickup = new(src, /particles/dirt_kickup_large)
 
-	if(power > 400)
+	if(power > EXPLOSION_THRESHOLD_MEDIUM)
 		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 6 * radius, 6 * radius)
-	else if(power <= 150)
+	else if(power <= EXPLOSION_THRESHOLD_MLOW)
 		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 3 * radius, 3 * radius)
 	else
 		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 5 * radius, 5 * radius)

@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(cellauto)
 	return SScellauto.explode(epicenter, power, power/(light_impact_range+2), EXPLOSION_FALLOFF_SHAPE_LINEAR, flame_range, silent, color, direction)
 
 // Call controller for D.O.R.E.C explosion directly
-/datum/controller/subsystem/cellauto/proc/explode(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, flame_range, silent, color, direction)
+/datum/controller/subsystem/cellauto/proc/explode(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, flame_range, silent, color, direction, shrapnel = TRUE)
 	if(!istype(epicenter))
 		epicenter = get_turf(epicenter)
 
@@ -79,12 +79,13 @@ SUBSYSTEM_DEF(cellauto)
 	E.falloff_shape = falloff_shape
 	E.direction = direction
 
+	var/explosion_range = round(power / falloff)
 	// Make explosion effect
-	new /obj/effect/temp_visual/explosion(epicenter, round(power / falloff), color, power)
+	new /obj/effect/temp_visual/explosion(epicenter, explosion_range, color, power)
 	// Explosion enought powerful for making shrapnel
-	if(power >= 100)
-		create_shrapnel(epicenter, rand(5,9), direction, , /datum/ammo/bullet/shrapnel/light/effect/ver1)
-		create_shrapnel(epicenter, rand(5,9), direction, , /datum/ammo/bullet/shrapnel/light/effect/ver2)
+	if(shrapnel)
+		create_shrapnel(epicenter, rand(explosion_range, explosion_range*2), direction, , /datum/ammo/bullet/shrapnel/light/effect/ver1)
+		create_shrapnel(epicenter, rand(explosion_range, explosion_range*2), direction, , /datum/ammo/bullet/shrapnel/light/effect/ver2)
 	// Drop flames
 	if(flame_range)
 		flame_radius(flame_range, epicenter)

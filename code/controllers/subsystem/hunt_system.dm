@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(hunting)
 			if(xeno.hive == XENO_HIVE_FALLEN)
 				continue
 			var/number_tier = GLOB.tier_as_number[xeno.tier]
-			if(number_tier <= 0 || xeno.type in xeno_blacklist)
+			if(number_tier <= 0 || (xeno.type in xeno_blacklist))
 				continue
 		else
 			continue

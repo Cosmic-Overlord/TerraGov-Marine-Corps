@@ -5,9 +5,22 @@ SUBSYSTEM_DEF(hunting)
 
 	var/list/xeno_blacklist = list(
 		/mob/living/carbon/xenomorph/drone
+		/mob/living/carbon/xenomorph/queen
+		/mob/living/carbon/xenomorph/king
+		/mob/living/carbon/xenomorph/shrike
+		/mob/living/carbon/xenomorph/boiler
+		/mob/living/carbon/xenomorph/hivelord
+		/mob/living/carbon/xenomorph/defiler
+		/mob/living/carbon/xenomorph/larva
+		/mob/living/carbon/xenomorph/hivemind
 	)
 	var/list/human_blacklist = list(
 		/datum/job/fallen
+		/datum/job/terragov/command
+		/datum/job/terragov/squad/corpsman
+		/datum/job/som/squad/medic
+		/datum/job/terragov/medical
+		/datum/job/terragov/engineering
 	)
 	var/list/hunter_datas = list()
 

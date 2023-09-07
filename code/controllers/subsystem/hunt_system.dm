@@ -3,6 +3,12 @@ SUBSYSTEM_DEF(hunting)
 	wait = 10 MINUTES
 	flags = SS_NO_INIT
 
+	var/list/xeno_blacklist = list(
+		/mob/living/carbon/xenomorph/drone
+	)
+	var/list/human_blacklist = list(
+		/datum/job/fallen
+	)
 	var/list/hunter_datas = list()
 
 /datum/controller/subsystem/hunting/fire(resumed, init_tick_checks)
@@ -12,14 +18,14 @@ SUBSYSTEM_DEF(hunting)
 		if(ishuman(data.owner))
 			if(isyautja(data.owner))
 				continue
-			if(istype(data.owner.job,  /datum/job/fallen))
+			if(data.owner.job in human_blacklist)
 				continue
 		else if(isxeno(data.owner))
 			var/mob/living/carbon/xenomorph/xeno = data.owner
 			if(xeno.hive == XENO_HIVE_FALLEN)
 				continue
 			var/number_tier = GLOB.tier_as_number[xeno.tier]
-			if(number_tier <= 0 || isxenodrone(xeno))
+			if(number_tier <= 0 || (xeno.type in xeno_blacklist))
 				continue
 		else
 			continue

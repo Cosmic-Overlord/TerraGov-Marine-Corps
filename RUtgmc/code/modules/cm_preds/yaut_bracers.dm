@@ -312,9 +312,11 @@
 		voice_name = "<b>[caller.name]</b>"
 
 	for(var/mob/Q as anything in heard)
-		if(Q.stat && !isobserver(Q))
+		if(Q.stat)
 			continue //Unconscious
-		to_chat(Q, "[span_info("[voice_name] says,")] <span class='[span_class]'>'[msg]'</span>")
+		var/text = "[span_info("[voice_name] says,")] <span class='[span_class]'>'[msg]'</span>"
+		balloon_alert(Q, text)
+		to_chat(Q, text)
 
 /obj/item/clothing/gloves/yautja/proc/injectors_internal(mob/living/caller, forced = FALSE, power_to_drain = 1000)
 	. = check_random_function(caller, forced)

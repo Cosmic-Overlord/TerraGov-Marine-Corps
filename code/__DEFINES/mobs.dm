@@ -406,12 +406,10 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 
 
 // Human Overlay Indexes
-#define PRED_LASER_LAYER 30
-#define LASER_LAYER 29 //For sniper targeting laser
-#define FLAY_LAYER 28
-#define MOTH_WINGS_LAYER 27
-#define MUTATIONS_LAYER 26
-#define DAMAGE_LAYER 25
+#define MOTH_WINGS_LAYER 28
+#define MUTATIONS_LAYER 27
+#define DAMAGE_LAYER 26
+#define FLAY_LAYER 25
 #define UNIFORM_LAYER 24
 #define TAIL_LAYER 23 //bs12 specific. this hack is probably gonna come back to haunt me
 #define ID_LAYER 22
@@ -435,6 +433,8 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 #define BURST_LAYER 4 //Chestburst overlay
 #define OVERHEALTH_SHIELD_LAYER 3
 #define TARGETED_LAYER 2 //for target sprites when held at gun point, and holo cards.
+#define PRED_LASER_LAYER 1.9
+#define LASER_LAYER 1.8
 #define FIRE_LAYER 1 //If you're on fire
 
 #define TOTAL_LAYERS 30

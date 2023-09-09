@@ -61,11 +61,12 @@
 
 /mob/living/carbon/xenomorph/predalien/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
-	addtimer(CALLBACK(src, PROC_REF(announce_spawn)), 3 SECONDS)
-	hunter_data.dishonored = TRUE
-	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
-	hunter_data.dishonored_set = src
-	hud_set_hunter()
+	if(hivenumber == XENO_HIVE_NORMAL)
+		addtimer(CALLBACK(src, PROC_REF(announce_spawn)), 3 SECONDS)
+		hunter_data.dishonored = TRUE
+		hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
+		hunter_data.dishonored_set = src
+		hud_set_hunter()
 
 /mob/living/carbon/xenomorph/predalien/Stat()
 	. = ..()

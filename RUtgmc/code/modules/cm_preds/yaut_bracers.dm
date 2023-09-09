@@ -279,11 +279,9 @@
 		if(ismob(CHM))
 			heard += CHM
 
-	var/bubble_type = "alienroyal"
 	var/span_class = "yautja_translator"
 	if(translator_type != "Modern")
 		if(translator_type == "Retro")
-			bubble_type = "robot"
 			span_class = "retro_translator"
 		msg = replacetext(msg, "a", "@")
 		msg = replacetext(msg, "e", "3")

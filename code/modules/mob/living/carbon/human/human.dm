@@ -1028,7 +1028,7 @@
 		if(SC.camo_active)
 			SC.camo_off(src)
 			return
-	var/list/cont
+	var/list/cont = list()
 	for(var/atom/A in contents)
 		cont += A
 		if(A.contents.len)

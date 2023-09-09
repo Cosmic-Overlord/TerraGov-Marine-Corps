@@ -15,13 +15,15 @@ SUBSYSTEM_DEF(hunting)
 		/mob/living/carbon/xenomorph/hivemind
 	)
 	var/list/human_blacklist = list(
-		/datum/job/fallen,
-		/datum/job/terragov/command,
 		/datum/job/terragov/squad/corpsman,
 		/datum/job/som/squad/medic,
 		/datum/job/terragov/medical,
 		/datum/job/terragov/engineering,
 		/datum/job/terragov/silicon
+	)
+	var/list/human_blacklist_type = list(
+		/datum/job/fallen,
+		/datum/job/terragov/command
 	)
 	var/list/hunter_datas = list()
 
@@ -34,6 +36,9 @@ SUBSYSTEM_DEF(hunting)
 				continue
 			if(data.owner.job in human_blacklist)
 				continue
+			for(var/str in human_blacklist_type)
+				if(istype(data.owner.job, str))
+					continue
 		else if(isxeno(data.owner))
 			var/mob/living/carbon/xenomorph/xeno = data.owner
 			if(xeno.hive == XENO_HIVE_FALLEN)

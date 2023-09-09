@@ -12,11 +12,11 @@
 	var/base_damage = 25
 	var/damage_scale = 10 // How much it scales by every kill
 
-/datum/action/xeno_action/activable/pounce/predalien/mob_hit(datum/source, mob/living/M)
+/datum/action/xeno_action/activable/pounce/predalien/mob_hit(datum/source, mob/living/target)
 	. = ..()
 	var/mob/living/carbon/xenomorph/predalien/xeno = owner
 	if(ishuman(target) || isdroid(target))
-		M.apply_damage(base_damage + damage_scale * min(xeno.life_kills_total, xeno.max_bonus_life_kills), BRUTE, "chest", MELEE, FALSE, FALSE, TRUE, 20)
+		target.apply_damage(base_damage + damage_scale * min(xeno.life_kills_total, xeno.max_bonus_life_kills), BRUTE, "chest", MELEE, FALSE, FALSE, TRUE, 20)
 
 // ***************************************
 // *********** Roar

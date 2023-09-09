@@ -20,7 +20,8 @@ SUBSYSTEM_DEF(hunting)
 		/datum/job/terragov/squad/corpsman,
 		/datum/job/som/squad/medic,
 		/datum/job/terragov/medical,
-		/datum/job/terragov/engineering
+		/datum/job/terragov/engineering,
+		/datum/job/terragov/silicon
 	)
 	var/list/hunter_datas = list()
 

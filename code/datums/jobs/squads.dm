@@ -71,7 +71,7 @@
 	radio_freq = FREQ_FOREIGN
 
 /datum/squad/foreign/assign_initial(mob/new_player/player, datum/job/job, latejoin = FALSE)
-	var/datum/db_query/wl = SSdbcore.NewQuery("SELECT role FROM [format_table_name("foreign_legion")] WHERE ckey = :ckey", list("ckey" = player.ckey))
+	var/datum/db_query/wl = SSdbcore.NewQuery("SELECT role FROM [format_table_name("foreign_legion")] WHERE ckey = :ckey", list("ckey" = ckey(player.ckey)))
 	if(!wl.warn_execute())
 		qdel(wl)
 		return FALSE

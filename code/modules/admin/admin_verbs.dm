@@ -701,7 +701,7 @@
 		return FALSE
 
 	role = foreign_legion_ranks_ordered[role]
-	var/datum/db_query/wl = SSdbcore.NewQuery("INSERT INTO [format_table_name("foreign_legion")] (ckey, role) VALUES (:ckey, :role)", list("ckey" = ckey, "role" = role))
+	var/datum/db_query/wl = SSdbcore.NewQuery("INSERT INTO [format_table_name("foreign_legion")] (ckey, role) VALUES (:ckey, :role)", list(ckey = ckey(ckey), "role" = role))
 	wl.Execute()
 	qdel(wl)
 
@@ -728,7 +728,7 @@
 	if(!player_to_remove)
 		return FALSE
 
-	wl = SSdbcore.NewQuery("DELETE FROM [format_table_name("foreign_legion")] WHERE ckey = :ckey", list("ckey" = player_to_remove))
+	wl = SSdbcore.NewQuery("DELETE FROM [format_table_name("foreign_legion")] WHERE ckey = :ckey", list("ckey" = ckey(player_to_remove)))
 	wl.Execute()
 	qdel(wl)
 

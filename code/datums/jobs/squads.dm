@@ -72,7 +72,10 @@
 
 /datum/squad/foreign/assign_initial(mob/new_player/player, datum/job/job, latejoin = FALSE)
 	var/datum/db_query/wl = SSdbcore.NewQuery("SELECT role FROM [format_table_name("foreign_legion")] WHERE ckey = :ckey", list("ckey" = player.ckey))
-	if(!wl.warn_execute() || !wl.NextRow())
+	if(!wl.warn_execute())
+		qdel(wl)
+		return FALSE
+	if(!wl.NextRow())
 		qdel(wl)
 		return FALSE
 	var/role = wl.item[1]

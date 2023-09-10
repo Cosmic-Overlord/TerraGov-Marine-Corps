@@ -163,6 +163,20 @@
 
 	var/human_adapted = FALSE
 
+	var/charged = FALSE
+	var/ability_primed = FALSE
+	var/ability_charge = 0
+	var/ability_cost = 5
+	var/ability_charge_max = 5
+	var/ability_charge_rate = 1
+
+/obj/item/weapon/yautja/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
+	. = ..()
+	if(!.)
+		return
+	if(ability_charge < ability_charge_max)
+		ability_charge = min(ability_charge + ability_charge_rate, ability_charge_max)
+
 /obj/item/weapon/yautja/AltClick(mob/user)
 	if(!can_interact(user) || !ishuman(user) || !(user.l_hand == src || user.r_hand == src))
 		return ..()
@@ -241,18 +255,72 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	resistance_flags = UNACIDABLE
 
+	ability_cost = 5
+	ability_charge_max = 5
+	ability_charge_rate = 1
+
+/obj/item/weapon/yautja/scythe/verb/use_unique_action()
+	set category = "Weapons"
+	set name = "Unique Action"
+	set desc = "Activate or deactivate the scythe."
+	set src in usr
+	unique_action(usr)
+
 /obj/item/weapon/yautja/scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
-	..()
+	. = ..()
+	if(!.)
+		return
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 15
 
-	if(prob(15))
-		user.visible_message(span_danger("An opening in combat presents itself!"),span_danger("You manage to strike at your foe once more!"))
-		user.spin(5, 1)
-		..() //Do it again! CRIT! This will be replaced by a bleed effect.
+	if(!charged && ability_charge >= ability_cost)
+		var/color = target.get_blood_color()
+		var/alpha = 70
+		charged = TRUE
+		color += num2text(alpha, 2, 16)
+		add_filter("scythe_ready", 1, list("type" = "outline", "color" = color, "size" = 2))
 
-	return
+/obj/item/weapon/yautja/scythe/attack_self(mob/user)
+	..()
+	ability_primed = !ability_primed
+	var/message = "You tighten your grip on [src], preparing to whirl it in a spin."
+	if(!ability_primed)
+		message = "You relax your grip on [src]."
+	to_chat(user, span_warning(message))
+
+/obj/item/weapon/yautja/scythe/unique_action(mob/user)
+	if(user.get_active_held_item() != src)
+		return
+	if(!charged)
+		return
+	if(!ability_primed)
+		to_chat(user, span_warning("You need a stronger grip for this!"))
+		return FALSE
+	user.spin(30, 6)
+	for(var/mob/living/carbon/target in orange(1, user))
+		if(!(ishuman(target) || isxeno(target)) || isyautja(target))
+			continue
+
+		if(target.stat == DEAD)
+			continue
+
+		if(!line_of_sight(user, target))
+			continue
+
+		user.visible_message(span_highdanger("[user] slices open the guts of [target]!"), span_highdanger("You slice open the guts of [target]!"))
+		target.spawn_gibs()
+		playsound(get_turf(target), 'sound/effects/gibbed.ogg', 30, 1)
+		target.apply_effect(1, WEAKEN)
+		target.apply_damage(force * 1.5, BRUTE, "chest", MELEE, FALSE, FALSE, TRUE, 40)
+
+		log_attack("[key_name(target)] was sliced by [key_name(user)] whirling their scythe.")
+
+	ability_charge -= ability_cost
+	remove_filter("scythe_ready")
+	charged = FALSE
+	return TRUE
+
 
 /obj/item/weapon/yautja/scythe/alt
 	name = "double war scythe"
@@ -280,8 +348,11 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
 
+	ability_cost = 1
+	ability_charge_max = 1
+	ability_charge_rate = 1
+
 	var/on = 1
-	var/charged
 
 	var/force_wielded = 30
 	var/force_unwielded = 10
@@ -431,7 +502,8 @@
 	if(isanimal(target))
 		return
 
-	if(!charged)
+
+	if(!charged && ability_charge >= ability_cost)
 		to_chat(user, span_danger("Your combistick's reservoir fills up with your opponent's blood! You may now throw it!"))
 		charged = TRUE
 		var/color = target.get_blood_color()

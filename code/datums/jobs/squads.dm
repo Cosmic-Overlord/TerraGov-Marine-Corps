@@ -157,23 +157,6 @@
 		REBEL_SQUAD_LEADER = 1,
 )
 
-/datum/squad/foreign/rebel
-	id = FOREIGN_SQUAD_REBEL
-	access = list(ACCESS_MARINE_FOREIGN_REBEL)
-	radio_freq = FREQ_FOREIGN_REBEL
-	faction = FACTION_TERRAGOV_REBEL
-	current_positions = list(
-		REBEL_SQUAD_MARINE = 0,
-		REBEL_SQUAD_ENGINEER = 0,
-		REBEL_SQUAD_CORPSMAN = 0,
-		REBEL_SQUAD_SMARTGUNNER = 0,
-		REBEL_SQUAD_LEADER = 0,
-)
-	max_positions = list(
-		REBEL_SQUAD_MARINE = -1,
-		REBEL_SQUAD_LEADER = 1,
-)
-
 //SOM squads
 /datum/squad/zulu
 	name = "Zulu"

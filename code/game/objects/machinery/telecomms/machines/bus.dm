@@ -90,7 +90,7 @@
 
 /obj/machinery/telecomms/bus/preset_three/rebel
 	id = "Bus 3 rebel"
-	freq_listening = list(FREQ_ALPHA_REBEL, FREQ_BRAVO_REBEL, FREQ_CHARLIE_REBEL, FREQ_DELTA_REBEL, FREQ_FOREIGN_REBEL, FREQ_ECHO)
+	freq_listening = list(FREQ_ALPHA_REBEL, FREQ_BRAVO_REBEL, FREQ_CHARLIE_REBEL, FREQ_DELTA_REBEL, FREQ_ECHO)
 	autolinkers = list("processor3_rebel", "alpha_rebel", "bravo_rebel", "charlie_rebel", "delta_rebel")
 
 /obj/machinery/telecomms/bus/preset_four/rebel

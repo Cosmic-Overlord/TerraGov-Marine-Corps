@@ -166,12 +166,6 @@
 	autolinkers = list("delta_rebel")
 
 
-/obj/machinery/telecomms/server/presets/delta/foreign
-	id = "Foreign Server rebel"
-	freq_listening = list(FREQ_FOREIGN_REBEL)
-	autolinkers = list("foreign_rebel")
-
-
 /obj/machinery/telecomms/server/presets/command/rebel
 	id = "Command Server rebel"
 	freq_listening = list(FREQ_COMMAND_REBEL)

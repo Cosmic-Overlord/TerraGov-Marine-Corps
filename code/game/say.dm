@@ -15,7 +15,6 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	"[FREQ_BRAVO_REBEL]" = "bravoradio",
 	"[FREQ_CHARLIE_REBEL]" = "charlieradio",
 	"[FREQ_DELTA_REBEL]" = "deltaradio",
-	"[FREQ_FOREIGN_REBEL]" = "foreignradio",
 	"[FREQ_COMMAND_REBEL]" = "comradio",
 	"[FREQ_AI_REBEL]" = "airadio",
 	"[FREQ_CAS_REBEL]" = "casradio",

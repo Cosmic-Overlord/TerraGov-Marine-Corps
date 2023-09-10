@@ -776,13 +776,6 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	keyslot2 = /obj/item/encryptionkey/med/rebel
 
 
-
-/obj/item/radio/headset/mainship/marine/rebel/foreign
-	name = "marine foreign radio headset"
-	icon_state = "headset_marine_foreign"
-	frequency = FREQ_FOREIGN_REBEL
-	minimap_type = /datum/action/minimap/marine/rebel
-
 /obj/item/radio/headset/mainship/marine/foreign/LateInitialize()
 	. = ..()
 	camera.network += list("foreign_rebel")

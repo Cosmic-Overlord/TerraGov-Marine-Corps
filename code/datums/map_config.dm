@@ -28,7 +28,7 @@
 
 	var/announce_text = ""
 
-	var/squads_max_num = 4
+	var/squads_max_num = 5
 
 
 /proc/load_map_config(filename, default, delete_after, error_if_missing = TRUE)

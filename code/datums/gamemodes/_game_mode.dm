@@ -9,7 +9,7 @@ GLOBAL_VAR(common_report) //Contains common part of roundend report
 	var/votable = TRUE
 	var/required_players = 0
 	var/maximum_players = INFINITY
-	var/squads_max_number = 4
+	var/squads_max_number = 5
 
 	var/round_finished
 	var/list/round_end_states = list()

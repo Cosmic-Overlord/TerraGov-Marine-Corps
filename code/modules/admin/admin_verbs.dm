@@ -690,7 +690,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/ckey = tgui_input_list(usr, "Select player ckey", "Hail Foreign Legion!", GLOB.clients)
+	var/ckey = ckey(tgui_input_list(usr, "Select player ckey", "Hail Foreign Legion!", GLOB.clients))
 	if(!ckey) // shitcode mess for "special" circumstances
 		ckey = ckey(tgui_input_text(usr, "Maybe you write on your own?", "Hail Foreign Legion!"))
 		if(!ckey)
@@ -701,7 +701,7 @@
 		return FALSE
 
 	role = foreign_legion_ranks_ordered[role]
-	var/datum/db_query/wl = SSdbcore.NewQuery("INSERT INTO [format_table_name("foreign_legion")] (ckey, role) VALUES (:ckey, :role)", list(ckey = ckey(ckey), "role" = role))
+	var/datum/db_query/wl = SSdbcore.NewQuery("INSERT INTO [format_table_name("foreign_legion")] (ckey, role) VALUES (:ckey, :role)", list(ckey = ckey, "role" = role))
 	wl.Execute()
 	qdel(wl)
 

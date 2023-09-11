@@ -272,6 +272,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/squads_access = SELECTABLE_SQUADS
 	var/datum/db_query/wl = SSdbcore.NewQuery("SELECT role FROM [format_table_name("foreign_legion")] WHERE ckey = :ckey", list("ckey" = ckey(parent.ckey)))
 	if(!wl.warn_execute() || !wl.NextRow())
-		qdel(wl)
 		squads_access -= RADIO_CHANNEL_FOREIGN
+	qdel(wl)
 	return squads_access

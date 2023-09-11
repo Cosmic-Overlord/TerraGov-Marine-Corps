@@ -145,6 +145,8 @@
 	if(job in SSjob.active_joinable_occupations)
 		job.free_job_positions(1)
 
+	hunter_data.clean_data()
+
 	for(var/obj/item/W in src)
 		W.store_in_cryo()
 

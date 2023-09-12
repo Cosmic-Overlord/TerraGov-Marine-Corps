@@ -42,7 +42,8 @@
 	log_mob_tag("\[[tag]\] CREATED: [key_name(src)]")
 	become_hearing_sensitive()
 
-	hunter_data = new /datum/huntdata(src)
+	if(!hunter_data)
+		hunter_data = new /datum/huntdata(src)
 	hud_set_hunter()
 
 

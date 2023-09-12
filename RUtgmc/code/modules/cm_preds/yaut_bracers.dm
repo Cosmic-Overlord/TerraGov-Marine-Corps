@@ -1101,7 +1101,6 @@
 
 	UnregisterSignal(user, COMSIG_HUMAN_EXTINGUISH)
 	UnregisterSignal(user, COMSIG_ATOM_BULLET_ACT)
-	UnregisterSignal(user, COMSIG_ATOM_TELEPORT)
 
 	if(forced)
 		cloak_malfunction = world.time + 10 SECONDS

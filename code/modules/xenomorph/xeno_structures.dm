@@ -293,7 +293,7 @@ TUNNEL
 	resistance_flags = UNACIDABLE|BANISH_IMMUNE
 	layer = RESIN_STRUCTURE_LAYER
 
-	max_integrity = 140
+	max_integrity = 1500
 
 	hud_possible = list(XENO_TACTICAL_HUD)
 	xeno_structure_flags = IGNORE_WEED_REMOVAL

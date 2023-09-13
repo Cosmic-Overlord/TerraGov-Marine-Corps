@@ -88,7 +88,7 @@ SUBSYSTEM_DEF(who)
 							client_payload["color"] += "#2DACB1"
 							client_payload["text"] += " - Zombie"
 							additiona_data["zombie"]++
-						else if(client_mob.faction == FACTION_YAUTJA)
+						else if(isyautja(client_mob))
 							client_payload["color"] += "#7ABA19"
 							client_payload["text"] += " - Yautja"
 							additiona_data["yautja"]++

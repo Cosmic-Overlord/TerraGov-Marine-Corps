@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Collapsible, Box, Section, Stack } from '../components';
+import { Button, Collapsible, Box, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const Who = (props, context) => {

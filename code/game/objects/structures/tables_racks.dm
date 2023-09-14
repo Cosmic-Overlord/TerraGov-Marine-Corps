@@ -472,6 +472,7 @@
 /obj/structure/table/mainship
 	name = "ship table"
 	icon_state = "shiptable"
+	parts = /obj/item/frame/table/mainship
 	table_prefix = "ship"
 
 /obj/structure/table/mainship/nometal

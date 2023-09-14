@@ -73,6 +73,7 @@
 
 /obj/item/frame/table/mainship/nometal
 	deconstruct_type = null
+	table_type = /obj/structure/table/mainship/nometal
 
 /*
 * Reinforced Table Parts

@@ -4,6 +4,7 @@
 	appearance_flags = TILE_BOUND
 	var/level = 2
 
+	var/status_flags = CANSTUN|CANKNOCKDOWN|CANKNOCKOUT|CANPUSH|CANUNCONSCIOUS|CANCONFUSE	//bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
 	var/flags_atom = NONE
 	var/datum/reagents/reagents = null
 

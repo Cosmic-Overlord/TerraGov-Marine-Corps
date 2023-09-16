@@ -64,6 +64,7 @@
 	setDir(SOUTH)
 	var/matrix/A = matrix()
 	A.Turn(180)
+	status_flags |= INCORPOREAL
 	initial_transform = transform
 	transform = A
 	var/rand_swing = rand(6, 3)
@@ -106,6 +107,7 @@
 	A.Turn(90)
 	transform = A
 	transform = initial_transform
+	status_flags &= ~INCORPOREAL
 	pixel_x = 0
 	pixel_y = 0
 	return COMPONENT_ITEM_NO_ATTACK

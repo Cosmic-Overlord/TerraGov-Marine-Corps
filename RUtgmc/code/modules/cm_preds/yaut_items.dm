@@ -32,6 +32,7 @@
 
 	attachments_by_slot = list(
 		ACCESSORY_SLOT_ARMOR_Y_C,
+		ACCESSORY_SLOT_ARMOR_Y_S,
 		ACCESSORY_SLOT_ARMOR_Y_H,
 		ACCESSORY_SLOT_ARMOR_Y_RL,
 		ACCESSORY_SLOT_ARMOR_Y_LL,
@@ -1038,7 +1039,7 @@
 
 /obj/item/armor_module/limb/skeleton/head/spine
 	icon_state = "spine"
-	slot = ACCESSORY_SLOT_ARMOR_Y_H
+	slot = ACCESSORY_SLOT_ARMOR_Y_S
 
 /obj/item/armor_module/limb/skeleton/torso
 	name = "ribcage"

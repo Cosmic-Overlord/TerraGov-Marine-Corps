@@ -67,6 +67,7 @@
 #define ATTACHMENT_SLOT_CAPE_HIGHLIGHT "cape_highlight"
 
 #define ACCESSORY_SLOT_ARMOR_Y_C "chest_bones"
+#define ACCESSORY_SLOT_ARMOR_Y_S "spine_bones"
 #define ACCESSORY_SLOT_ARMOR_Y_H "head_bones"
 #define ACCESSORY_SLOT_ARMOR_Y_RL "right_leg_bones"
 #define ACCESSORY_SLOT_ARMOR_Y_LL "left_leg_bones"

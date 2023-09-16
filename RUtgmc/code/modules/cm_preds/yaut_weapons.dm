@@ -299,7 +299,7 @@
 	if(!ability_primed)
 		to_chat(user, span_warning("You need a stronger grip for this!"))
 		return FALSE
-	user.spin(30, 2)
+	user.spin(15, 1)
 	for(var/mob/living/carbon/target in orange(1, user))
 		if(!(ishuman(target) || isxeno(target)) || isyautja(target))
 			continue

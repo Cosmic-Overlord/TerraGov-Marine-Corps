@@ -223,6 +223,8 @@
 	force = 40
 	throwforce = 25
 	penetration = 20
+	can_block_xeno = TRUE
+	can_block_chance = 20
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = TRUE
 	w_class = WEIGHT_CLASS_HUGE
@@ -245,7 +247,7 @@
 	flags_atom = CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = ITEM_SLOT_BELT
-	force = 30
+	force = 35
 	throwforce = 25
 	penetration = 20
 	sharp = IS_SHARP_ITEM_SIMPLE
@@ -297,7 +299,7 @@
 	if(!ability_primed)
 		to_chat(user, span_warning("You need a stronger grip for this!"))
 		return FALSE
-	user.spin(30, 6)
+	user.spin(30, 2)
 	for(var/mob/living/carbon/target in orange(1, user))
 		if(!(ishuman(target) || isxeno(target)) || isyautja(target))
 			continue
@@ -312,7 +314,7 @@
 		target.spawn_gibs()
 		playsound(get_turf(target), 'sound/effects/gibbed.ogg', 30, 1)
 		target.apply_effect(1, WEAKEN)
-		target.apply_damage(force * 1.5, BRUTE, "chest", MELEE, FALSE, FALSE, TRUE, 40)
+		target.apply_damage(force * 3, BRUTE, "chest", MELEE, FALSE, FALSE, TRUE, 65)
 
 		log_attack("[key_name(target)] was sliced by [key_name(user)] whirling their scythe.")
 

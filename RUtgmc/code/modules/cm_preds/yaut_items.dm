@@ -389,7 +389,7 @@
 			while(clans.NextRow())
 				if(!SSpredships.is_clanship_loaded(clans.item[1]))
 					continue
-				ship_to_tele += list("[clans.item[2]]" = "[clans.item[1]]: [clans.item[2]]")
+				ship_to_tele += list("[clans.item[2]]" = clans.item[1])
 
 		if(SSpredships.is_clanship_loaded(H.client.clan_info.item[4]))
 			ship_to_tele += list("Your clan" = "[H.client.clan_info.item[4]]")

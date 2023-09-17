@@ -10,11 +10,11 @@
 		return ELEMENT_INCOMPATIBLE
 	self_use = only_self
 	do_after_time = duration
-	RegisterSignal(target, COMSIG_ITEM_ATTACK, PROC_REF(on_attack))
+	RegisterSignal(target, COMSIG_ITEM_ATTACK_ALTERNATE, PROC_REF(on_attack))
 
 /datum/element/shrapnel_removal/Detach(datum/source, force)
 	. = ..()
-	UnregisterSignal(source, COMSIG_ITEM_ATTACK)
+	UnregisterSignal(source, COMSIG_ITEM_ATTACK_ALTERNATE)
 
 /datum/element/shrapnel_removal/proc/on_attack(datum/source, mob/living/M, mob/living/user)
 	SIGNAL_HANDLER

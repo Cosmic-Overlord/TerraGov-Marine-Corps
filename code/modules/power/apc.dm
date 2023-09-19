@@ -509,7 +509,7 @@
 		qdel(I)
 		update_icon()
 
-	if(ishuman(user))
+	else if(ishuman(user))
 		var/mob/living/carbon/human/grabber = user
 		if(grabber.a_intent == INTENT_GRAB)
 			// Yautja Bracer Recharge

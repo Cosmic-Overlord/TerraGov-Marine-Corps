@@ -22,16 +22,18 @@
 // *********** Roar
 // ***************************************
 
+/datum/action/xeno_action/activable/screech
 /datum/action/xeno_action/activable/predalien_roar
 	name = "Roar"
 	desc = "Buffs nearby xenomorphs with increased slash damage and movement speed, additionally removes invisibility from any prey nearby. Buff strength and duration increases with each stack of hunted prey."
 	action_icon_state = "rage_screech"
 	ability_name = "roar"
+	plasma_cost = 50
+	cooldown_timer = 25 SECONDS
+	keybind_flags = XACT_KEYBIND_USE_ABILITY
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_ROAR,
 	)
-	cooldown_timer = 25 SECONDS
-	plasma_cost = 50
 
 	var/predalien_roar = list("sound/voice/predalien_roar.ogg")
 	var/bonus_damage_scale = 2.5
@@ -39,6 +41,9 @@
 
 /datum/action/xeno_action/activable/predalien_roar/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/predalien/xeno = owner
+
+	add_cooldown()
+	succeed_activate()
 
 	playsound(xeno.loc, pick(predalien_roar), 75, 0)
 	xeno.visible_message(span_xenohighdanger("[xeno] emits a guttural roar!"))
@@ -64,9 +69,6 @@
 	for(var/mob/M in view(xeno))
 		if(M && M.client)
 			shake_camera(M, 10, 1)
-
-	add_cooldown()
-	succeed_activate()
 
 // ***************************************
 // *********** Smash

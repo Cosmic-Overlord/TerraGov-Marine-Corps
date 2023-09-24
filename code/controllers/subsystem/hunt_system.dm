@@ -18,12 +18,12 @@ SUBSYSTEM_DEF(hunting)
 		/datum/job/terragov/squad/corpsman,
 		/datum/job/som/squad/medic,
 		/datum/job/terragov/medical,
-		/datum/job/terragov/engineering,
-		/datum/job/terragov/silicon
+		/datum/job/terragov/engineering
 	)
 	var/list/human_blacklist_type = list(
 		/datum/job/fallen,
-		/datum/job/terragov/command
+		/datum/job/terragov/command,
+		/datum/job/terragov/silicon
 	)
 	var/list/hunter_datas = list()
 

@@ -998,6 +998,11 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 			to_chat(pred_candidate, span_warning("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
 		return
 
+	if(is_banned_from(ckey(pred_candidate.key), JOB_PREDATOR))
+		if(show_warning)
+			to_chat(pred_candidate, span_warning("You are banned."))
+		return
+
 	if(!(flags_round_type & MODE_PREDATOR))
 		if(show_warning)
 			to_chat(pred_candidate, span_warning("There is no Hunt this round! Maybe the next one."))

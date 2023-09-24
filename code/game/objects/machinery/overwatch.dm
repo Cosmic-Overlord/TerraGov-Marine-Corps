@@ -675,7 +675,7 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 	var/list/potential_squads = list()
 	for(var/datum/squad/squad AS in watchable_squads)
 		if(squad.can_transfer_in())
-			potential_squads += list(squad.name = squad)
+			potential_squads += squad
 
 	var/datum/squad/new_squad = tgui_input_list(usr, "Choose the marine's new squad", null, potential_squads)
 	if(!new_squad)

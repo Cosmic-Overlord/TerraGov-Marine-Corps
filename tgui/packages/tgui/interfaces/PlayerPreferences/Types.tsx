@@ -40,6 +40,9 @@ type YautjaCustomizationData = {
   predator_cape_type: string;
   predator_cape_color: string;
   predator_flavor_text: string;
+  pred_r_eyes: number;
+  pred_g_eyes: number;
+  pred_b_eyes: number;
   yautja_status: string;
 };
 

@@ -24,8 +24,19 @@ export const YautjaCustomization = (props, context) => {
     predator_cape_type,
     predator_cape_color,
     predator_flavor_text,
+    pred_r_eyes,
+    pred_g_eyes,
+    pred_b_eyes,
     yautja_status,
   } = data;
+
+  const rgbToHex = (red, green, blue) => {
+    const convert = (comp) => {
+      const hex = comp.toString(16);
+      return hex.length === 1 ? `0${hex}` : hex;
+    };
+    return '#' + convert(red) + convert(green) + convert(blue);
+  };
 
   return has_wl ? (
     <>
@@ -57,6 +68,17 @@ export const YautjaCustomization = (props, context) => {
                 label={'Yautja Skin Color'}
                 value={'predator_skin_color'}
                 action={'predator_skin_color'}
+              />
+              <TextFieldPreference
+                label={'Eye Color'}
+                value={rgbToHex(pred_r_eyes, pred_g_eyes, pred_b_eyes)}
+                noAction
+                extra={
+                  <>
+                    <ColorBox color={rgbToHex(pred_r_eyes, pred_g_eyes, pred_b_eyes)} mr={1} />
+                    <Button icon="edit" onClick={() => act('pred_eyecolor')} />
+                  </>
+                }
               />
               <SelectFieldPreference
                 label={'Yautja Flavor Text'}

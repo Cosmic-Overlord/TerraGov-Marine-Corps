@@ -390,6 +390,9 @@
 	READ_FILE(S["pred_h_style"], predator_h_style)
 	READ_FILE(S["pred_skin_color"], predator_skin_color)
 	READ_FILE(S["pred_flavor_text"], predator_flavor_text)
+	READ_FILE(S["pred_r_eyes"], pred_r_eyes)
+	READ_FILE(S["pred_g_eyes"], pred_g_eyes)
+	READ_FILE(S["pred_b_eyes"], pred_b_eyes)
 	READ_FILE(S["yautja_status"], yautja_status)
 
 	READ_FILE(S["real_name"], real_name)
@@ -483,6 +486,10 @@
 	r_facial = sanitize_integer(r_facial, 0, 255, initial(r_facial))
 	g_facial = sanitize_integer(g_facial, 0, 255, initial(g_facial))
 	b_facial = sanitize_integer(b_facial, 0, 255, initial(b_facial))
+
+	pred_r_eyes = sanitize_integer(pred_r_eyes, 0, 255, initial(pred_r_eyes))
+	pred_g_eyes = sanitize_integer(pred_g_eyes, 0, 255, initial(pred_g_eyes))
+	pred_b_eyes = sanitize_integer(pred_b_eyes, 0, 255, initial(pred_b_eyes))
 
 	r_eyes = sanitize_integer(r_eyes, 0, 255, initial(r_eyes))
 	g_eyes = sanitize_integer(g_eyes, 0, 255, initial(g_eyes))
@@ -588,6 +595,10 @@
 	g_facial = sanitize_integer(g_facial, 0, 255, initial(g_facial))
 	b_facial = sanitize_integer(b_facial, 0, 255, initial(b_facial))
 
+	pred_r_eyes = sanitize_integer(pred_r_eyes, 0, 255, initial(pred_r_eyes))
+	pred_g_eyes = sanitize_integer(pred_g_eyes, 0, 255, initial(pred_g_eyes))
+	pred_b_eyes = sanitize_integer(pred_b_eyes, 0, 255, initial(pred_b_eyes))
+
 	r_eyes = sanitize_integer(r_eyes, 0, 255, initial(r_eyes))
 	g_eyes = sanitize_integer(g_eyes, 0, 255, initial(g_eyes))
 	b_eyes = sanitize_integer(b_eyes, 0, 255, initial(b_eyes))
@@ -628,6 +639,9 @@
 	WRITE_FILE(S["pred_h_style"], predator_h_style)
 	WRITE_FILE(S["pred_skin_color"], predator_skin_color)
 	WRITE_FILE(S["pred_flavor_text"], predator_flavor_text)
+	WRITE_FILE(S["pred_r_eyes"], pred_r_eyes)
+	WRITE_FILE(S["pred_g_eyes"], pred_g_eyes)
+	WRITE_FILE(S["pred_b_eyes"], pred_b_eyes)
 	WRITE_FILE(S["yautja_status"], yautja_status)
 
 	WRITE_FILE(S["real_name"], real_name)

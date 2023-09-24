@@ -87,6 +87,9 @@
 			data["predator_cape_type"] = predator_cape_type
 			data["predator_cape_color"] = predator_cape_color
 			data["predator_flavor_text"] = predator_flavor_text
+			data["pred_r_eyes"] = pred_r_eyes
+			data["pred_g_eyes"] = pred_g_eyes
+			data["pred_b_eyes"] = pred_b_eyes
 			data["yautja_status"] = yautja_status
 		if(BACKGROUND_INFORMATION)
 			data["slot"] = default_slot
@@ -377,6 +380,14 @@
 				predator_flavor_text = "None"
 				return
 			predator_flavor_text = strip_html(pred_flv_raw, MAX_MESSAGE_LEN)
+
+		if("pred_eyecolor")
+			var/eyecolor = input(user, "Choose your character's eye colour:", "Character Preference") as null|color
+			if(!eyecolor)
+				return
+			pred_r_eyes = hex2num(copytext_char(eyecolor, 2, 4))
+			pred_g_eyes = hex2num(copytext_char(eyecolor, 4, 6))
+			pred_b_eyes = hex2num(copytext_char(eyecolor, 6, 8))
 
 		if("yautja_status")
 			var/list/options = list("Normal" = WHITELIST_NORMAL)

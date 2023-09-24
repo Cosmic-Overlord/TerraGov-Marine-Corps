@@ -76,6 +76,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/predator_cape_type = "None"
 	var/predator_cape_color = "#654321"
 	var/predator_flavor_text = "None"
+	var/pred_r_eyes = 0
+	var/pred_g_eyes = 0
+	var/pred_b_eyes = 0
 	var/yautja_status = WHITELIST_NORMAL
 
 	//Robot specific preferences

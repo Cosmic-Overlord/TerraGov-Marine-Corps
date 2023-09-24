@@ -166,8 +166,15 @@
 		H.age = mob_client.prefs.predator_age
 		final_name = mob_client.prefs.predator_name
 		H.flavor_text = mob_client.prefs.predator_flavor_text
+		H.r_eyes = mob_client.prefs.pred_r_eyes
+		H.g_eyes = mob_client.prefs.pred_g_eyes
+		H.b_eyes = mob_client.prefs.pred_b_eyes
 		if(!final_name || final_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
 			final_name = "Le'pro"
+
+		H.update_body()
+		H.update_hair()
+		H.regenerate_icons()
 
 	H.real_name = final_name
 	H.name = final_name

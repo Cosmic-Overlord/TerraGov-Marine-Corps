@@ -1008,7 +1008,7 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 			to_chat(pred_candidate, span_warning("You already were a Yautja! Give someone else a chance."))
 		return
 
-	if(get_desired_status(pred_candidate.prefs.yautja_status, WHITELIST_COUNCIL) == WHITELIST_NORMAL)
+	if(get_desired_status(pred_candidate.client.prefs.yautja_status, WHITELIST_COUNCIL) == WHITELIST_NORMAL)
 		var/pred_max = calculate_pred_max
 		if(pred_current_num >= pred_max)
 			if(show_warning)

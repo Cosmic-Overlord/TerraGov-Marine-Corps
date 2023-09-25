@@ -174,6 +174,8 @@
 	. = ..()
 	if(!.)
 		return
+	if(target.stat == DEAD || (!ishuman(target) && !isxeno(target)))
+		return
 	if(ability_charge < ability_charge_max)
 		ability_charge = min(ability_charge + ability_charge_rate, ability_charge_max)
 

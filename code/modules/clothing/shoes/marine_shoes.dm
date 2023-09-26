@@ -12,17 +12,19 @@
 	var/obj/item/storage/internal/pockets = /obj/item/storage/internal/shoes/boot_knife
 
 /obj/item/storage/internal/shoes/boot_knife
-	max_storage_space = 3
-	storage_slots = 1
+	storage_slots = 2
+	max_w_class = WEIGHT_CLASS_TINY
 	draw_mode = TRUE
-	can_hold = list(
+	bypass_w_limit = list(
 		/obj/item/weapon/combat_knife,
-		/obj/item/weapon/gun/pistol/standard_pocketpistol,
-		/obj/item/weapon/gun/shotgun/double/derringer,
 		/obj/item/attachable/bayonetknife,
-		/obj/item/stack/throwing_knife,
 		/obj/item/storage/box/MRE,
+		/obj/item/reagent_containers/food/snacks,
 	)
+	cant_hold = list(
+		/obj/item/stack,
+	)
+	max_storage_space = 4
 
 /obj/item/clothing/shoes/marine/Initialize()
 	. = ..()
@@ -66,6 +68,7 @@
 	for(var/atom/item_in_pocket AS in pockets.contents)
 		if(istype(item_in_pocket, /obj/item/weapon/combat_knife) || istype(item_in_pocket, /obj/item/attachable/bayonetknife) || istype(item_in_pocket, /obj/item/stack/throwing_knife))
 			icon_state += "-knife"
+			break
 
 /obj/item/clothing/shoes/marine/full
 	pockets = /obj/item/storage/internal/shoes/boot_knife/full

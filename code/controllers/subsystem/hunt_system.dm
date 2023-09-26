@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(hunting)
 		if(ishuman(data.owner))
 			if(isyautja(data.owner))
 				continue
-			if(data.owner.job in human_blacklist)
+			if(data.owner.job.type in human_blacklist)
 				continue
 			for(var/str in human_blacklist_type)
 				if(istype(data.owner.job, str))

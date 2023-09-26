@@ -2548,9 +2548,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
 /obj/effect/ai_node,
 /turf/open/floor/plating/plating_catwalk,
 /area/mainship/hallways/port_hallway)
@@ -3214,7 +3211,8 @@
 /area/mainship/hallways/hangar)
 "jc" = (
 /obj/machinery/atmospherics/pipe/manifold/cyan/visible{
-	dir = 1
+	dir = 1;
+	piping_layer = 3
 	},
 /turf/open/floor/mainship/sterile/dark,
 /area/mainship/medical/lower_medical)
@@ -4484,11 +4482,17 @@
 /turf/closed/shuttle/ert/engines/right,
 /area/space)
 "ng" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/plating/plating_catwalk,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/door/airlock/multi_tile/mainship/generic{
+	dir = 2
+	},
+/turf/open/floor/mainship/mono,
 /area/mainship/hallways/port_hallway)
 "nh" = (
 /turf/closed/wall/mainship/research/containment/wall/west,
@@ -5246,7 +5250,8 @@
 /area/mainship/living/briefing)
 "pj" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
-	dir = 10
+	dir = 10;
+	piping_layer = 3
 	},
 /turf/open/floor/mainship/sterile/dark,
 /area/mainship/medical/lower_medical)
@@ -5818,6 +5823,16 @@
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden,
 /turf/open/floor/plating/plating_catwalk,
 /area/mainship/hallways/port_hallway)
+"qZ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 4;
+	piping_layer = 3
+	},
+/turf/open/floor/mainship/sterile/dark,
+/area/mainship/medical/lower_medical)
 "ra" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/mainship/command/cic)
@@ -7364,6 +7379,10 @@
 /area/mainship/medical/lower_medical)
 "vK" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 4;
+	piping_layer = 3
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
 /turf/open/floor/mainship/sterile/dark,
@@ -7375,7 +7394,8 @@
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
-	dir = 4
+	dir = 4;
+	piping_layer = 3
 	},
 /turf/open/floor/mainship/sterile/dark,
 /area/mainship/medical/lower_medical)
@@ -7648,7 +7668,8 @@
 	pixel_x = -6
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
-	dir = 8
+	dir = 8;
+	piping_layer = 3
 	},
 /turf/open/floor/mainship/sterile/side{
 	dir = 8
@@ -7656,7 +7677,8 @@
 /area/mainship/medical/lower_medical)
 "wz" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
-	dir = 9
+	dir = 9;
+	piping_layer = 3
 	},
 /turf/open/floor/mainship/sterile/dark,
 /area/mainship/medical/lower_medical)
@@ -8475,7 +8497,6 @@
 	},
 /obj/effect/ai_node,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/obj/machinery/atmospherics/pipe/manifold4w/scrubbers/visible,
 /turf/open/floor/mainship/floor,
 /area/mainship/living/cafeteria_starboard)
 "yS" = (
@@ -20380,7 +20401,7 @@ kn
 kn
 kn
 kn
-ng
+kn
 kn
 kn
 kn
@@ -21367,7 +21388,7 @@ qA
 kT
 kq
 xO
-uS
+ng
 Mi
 GX
 vw
@@ -22838,7 +22859,7 @@ SG
 kq
 tO
 uX
-jc
+qZ
 nA
 rY
 yv

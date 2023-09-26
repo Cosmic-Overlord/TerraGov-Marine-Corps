@@ -54,6 +54,7 @@
 		boomerang(user)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/boomerang(mob/user)
+	sleep(1 SECONDS)
 	var/mob/living/L = find_target(user)
 	icon_state = initial(icon_state) + "_active"
 	if(L)

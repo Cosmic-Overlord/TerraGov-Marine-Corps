@@ -36,9 +36,13 @@ SUBSYSTEM_DEF(hunting)
 				continue
 			if(data.owner.job.type in human_blacklist)
 				continue
+			var/found = FALSE
 			for(var/str in human_blacklist_type)
 				if(istype(data.owner.job, str))
-					continue
+					found = TRUE
+					break
+			if(found)
+				continue
 		else if(isxeno(data.owner))
 			var/mob/living/carbon/xenomorph/xeno = data.owner
 			if(xeno.hive == XENO_HIVE_FALLEN)

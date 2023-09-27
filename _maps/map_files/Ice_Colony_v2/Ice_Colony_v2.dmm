@@ -25669,6 +25669,12 @@
 /obj/effect/landmark/excavation_site_spawner,
 /turf/open/floor/plating/ground/snow/layer1,
 /area/ice_colony/exterior/surface/valley/west)
+"hBu" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/tile/vault{
+	dir = 8
+	},
+/area/ice_colony/underground/requesition/sec_storage)
 "hBW" = (
 /obj/machinery/atmospherics/pipe/simple/green/hidden,
 /obj/effect/ai_node,
@@ -27437,6 +27443,10 @@
 	},
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/hangar/beta)
+"lvJ" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/exterior/surface/container_yard)
 "lvQ" = (
 /obj/item/shard,
 /obj/structure/window_frame/colony,
@@ -29858,6 +29868,10 @@
 /obj/effect/ai_node,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central)
+"qBl" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/ice,
+/area/ice_colony/exterior/underground/caves/open)
 "qCb" = (
 /turf/open/floor/plating/ground/ice,
 /area/ice_colony/exterior/underground/caves/ice_nw)
@@ -30779,6 +30793,10 @@
 "skL" = (
 /obj/machinery/floodlight/colony,
 /turf/open/floor/plating/ground/snow/layer1,
+/area/ice_colony/exterior/surface/clearing/north)
+"sma" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "snp" = (
 /obj/effect/turf_underlay/icefloor,
@@ -38801,7 +38819,7 @@ uZI
 dPf
 dPf
 dPf
-dPf
+hBu
 dPf
 oji
 qnN
@@ -48878,7 +48896,7 @@ nsF
 hCU
 nsF
 nsF
-nsF
+sma
 nsF
 hCU
 nsF
@@ -58276,7 +58294,7 @@ aVV
 sYo
 aVV
 aVV
-aVV
+lvJ
 aYx
 sYo
 aVW
@@ -62386,7 +62404,7 @@ uHw
 uQB
 uQB
 ePo
-ePo
+qBl
 ePo
 vAV
 uHw

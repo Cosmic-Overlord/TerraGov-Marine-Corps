@@ -2896,6 +2896,7 @@
 /area/outpost/hallway/south_east)
 "nC" = (
 /obj/effect/landmark/sensor_tower_patrol,
+/obj/effect/landmark/sensor_tower_infestation,
 /turf/open/floor/plating/ground/mars/random/sand,
 /area/outpost/yard/east)
 "nE" = (
@@ -4425,6 +4426,10 @@
 	dir = 1
 	},
 /area/outpost/lz1)
+"uq" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/outpost/caves/north_west)
 "ur" = (
 /obj/machinery/door/poddoor/timed_late/containment/landing_zone,
 /turf/open/floor/marking/asteroidwarning{
@@ -8406,6 +8411,10 @@
 "MM" = (
 /turf/open/floor/plating/dmg1,
 /area/outpost/cargo/security)
+"MN" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/outpost/caves/north_east)
 "MR" = (
 /turf/open/floor/plating/ground/mars/cavetodirt{
 	dir = 10
@@ -9052,9 +9061,7 @@
 	dir = 8
 	},
 /obj/structure/paper_bin,
-/obj/effect/spawner/random/plushie{
-
-	},
+/obj/effect/spawner/random/plushie,
 /turf/open/floor/tile/dark/brown2{
 	dir = 8
 	},
@@ -9228,6 +9235,10 @@
 	dir = 4
 	},
 /area/outpost/hallway/west)
+"Qw" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/mars/random/sand,
+/area/outpost/yard/central)
 "Qx" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/tile/dark,
@@ -16359,7 +16370,7 @@ Cp
 Cp
 Cp
 Cp
-Cp
+uq
 Cp
 Cp
 Cp
@@ -18763,7 +18774,7 @@ EA
 EA
 EA
 EA
-EA
+Qw
 EA
 EA
 EA
@@ -26392,7 +26403,7 @@ ja
 ja
 ja
 Yx
-Yx
+MN
 gE
 dk
 Yx

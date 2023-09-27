@@ -42971,6 +42971,10 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/sw)
+"iJU" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/prison/sterilewhite,
+/area/prison/research/secret/biolab)
 "iLd" = (
 /obj/machinery/light{
 	dir = 4
@@ -46051,6 +46055,7 @@
 "raQ" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/landmark/sensor_tower_patrol,
+/obj/effect/landmark/sensor_tower_infestation,
 /turf/open/floor/prison/bright_clean/two,
 /area/prison/yard)
 "rbs" = (
@@ -48242,6 +48247,7 @@
 /area/prison/monorail/west)
 "wHf" = (
 /obj/effect/landmark/sensor_tower_patrol,
+/obj/effect/landmark/sensor_tower_infestation,
 /turf/open/floor/prison/plate,
 /area/prison/cellblock/mediumsec/south)
 "wHm" = (
@@ -86122,7 +86128,7 @@ fpI
 adJ
 aee
 svM
-svM
+iJU
 svM
 afP
 aeX

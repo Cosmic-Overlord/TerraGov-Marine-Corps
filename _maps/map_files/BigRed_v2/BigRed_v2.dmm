@@ -2301,6 +2301,10 @@
 "asJ" = (
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
+"asS" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/bigredv2/caves/southwest)
 "asT" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/machinery/door/poddoor/shutters/mainship{
@@ -9843,6 +9847,10 @@
 	dir = 5
 	},
 /area/bigredv2/caves/lambda_lab)
+"hAC" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/bigredv2/caves/east)
 "hBm" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
@@ -10840,6 +10848,12 @@
 	dir = 5
 	},
 /area/bigredv2/caves/lambda_lab)
+"kvq" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/marking/asteroidwarning{
+	dir = 1
+	},
+/area/bigredv2/outside/s)
 "kvK" = (
 /obj/machinery/atmospherics/pipe/simple/green/hidden{
 	dir = 4
@@ -12032,6 +12046,11 @@
 /obj/effect/landmark/weed_node,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
+"obF" = (
+/obj/effect/landmark/weed_node,
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/mars/random/sand,
+/area/bigredv2/outside/e)
 "oeT" = (
 /obj/structure/cable,
 /obj/effect/landmark/weed_node,
@@ -14362,6 +14381,12 @@
 /obj/effect/ai_node,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
+"vjL" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/mars/dirttosand{
+	dir = 5
+	},
+/area/bigredv2/outside/nw)
 "vlf" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/multi_tile/mainship/medidoor{
@@ -19174,7 +19199,7 @@ aaa
 aaa
 aaa
 aaa
-qqG
+asS
 aaa
 aaa
 aaa
@@ -26245,7 +26270,7 @@ ahP
 ama
 mxa
 mxa
-aiB
+vjL
 ahV
 ahV
 ama
@@ -39801,7 +39826,7 @@ wMP
 wMP
 wMP
 wMP
-blq
+kvq
 jNI
 jNI
 jNI
@@ -46913,7 +46938,7 @@ gga
 gga
 gga
 gga
-ceT
+obF
 scS
 scS
 scS
@@ -58893,7 +58918,7 @@ aaa
 aaa
 aaa
 aaa
-tzo
+hAC
 aaa
 aaa
 aaa

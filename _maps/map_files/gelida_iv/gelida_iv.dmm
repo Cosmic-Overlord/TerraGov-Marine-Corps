@@ -2144,6 +2144,7 @@
 "btf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/sensor_tower_patrol,
+/obj/effect/landmark/sensor_tower_infestation,
 /turf/open/floor/mainship/black/full,
 /area/gelida/indoors/c_block/mining)
 "btm" = (
@@ -12882,6 +12883,7 @@
 /area/gelida/indoors/a_block/hallway)
 "inA" = (
 /obj/item/lightstick/red/anchored,
+/obj/effect/landmark/sensor_tower_infestation,
 /turf/open/floor/plating/ground/snow/layer2,
 /area/gelida/outdoors/colony_streets/north_west_street)
 "inP" = (
@@ -13220,6 +13222,10 @@
 /turf/closed/shuttle/dropship2/front{
 	dir = 4
 	},
+/area/gelida/landing_zone_forecon/landing_zone_4)
+"iyp" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/prison,
 /area/gelida/landing_zone_forecon/landing_zone_4)
 "iyK" = (
 /obj/machinery/constructable_frame/state_2,
@@ -18109,6 +18115,10 @@
 /obj/structure/cable,
 /turf/open/floor/prison,
 /area/gelida/indoors/b_block/bridge)
+"lRi" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/prison/darkred/full,
+/area/gelida/outdoors/colony_streets/north_street)
 "lRq" = (
 /obj/item/trash/chips,
 /obj/structure/bed/chair/sofa/corsat{
@@ -56168,7 +56178,7 @@ vdC
 hMy
 jdx
 jdx
-jdx
+lRi
 cuS
 wGX
 aKo
@@ -70361,7 +70371,7 @@ qMR
 qMR
 nhq
 pYo
-vEM
+iyp
 pYo
 asG
 qMR

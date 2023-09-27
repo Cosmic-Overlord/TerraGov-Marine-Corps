@@ -2375,6 +2375,10 @@
 	dir = 8
 	},
 /area/icarus/exterior/northeastcaves)
+"deQ" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/mainship,
+/area/icarus/interior/swcaveslz)
 "dgc" = (
 /obj/effect/ai_node,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
@@ -7975,6 +7979,11 @@
 	dir = 6
 	},
 /area/icarus/exterior/northeastcaves)
+"kpX" = (
+/obj/structure/monorail,
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/mainship_hull,
+/area/icarus/exterior/northcaves)
 "krh" = (
 /obj/structure/table/mainship,
 /obj/machinery/computer/crew,
@@ -9803,6 +9812,10 @@
 	},
 /turf/open/floor/plating/mainship,
 /area/icarus/interior/bridge)
+"mzF" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/mainship,
+/area/icarus/interior/scrapyardone)
 "mAt" = (
 /obj/structure/window/framed/mainship,
 /turf/open/floor/mainship/cargo/arrow,
@@ -13525,6 +13538,10 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/mainship/mono,
 /area/icarus/interior/swcaveslz)
+"rrV" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/icarus/exterior/northeastcaves)
 "rsf" = (
 /obj/structure/mopbucket,
 /turf/open/floor/plating/mainship,
@@ -16743,6 +16760,10 @@
 /obj/item/stack/rods,
 /turf/open/floor/plating,
 /area/icarus/interior/scrapyardone)
+"vuI" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/mainship,
+/area/icarus/interior/shipbaytwo)
 "vuR" = (
 /obj/machinery/door/airlock/multi_tile/mainship/generic,
 /turf/open/floor/mainship/mono,
@@ -31791,7 +31812,7 @@ twB
 sHq
 xsc
 xsc
-xsc
+mzF
 xsc
 xsc
 xsc
@@ -38441,7 +38462,7 @@ dtS
 dtS
 dtS
 dtS
-dtS
+deQ
 sQu
 dtS
 dtS
@@ -50162,7 +50183,7 @@ vBD
 vBD
 vBD
 vBD
-vBD
+kpX
 vBD
 vBD
 vBD
@@ -51621,7 +51642,7 @@ vtp
 vtp
 loL
 wDO
-wDO
+vuI
 wDO
 yen
 bvG
@@ -60621,7 +60642,7 @@ kYY
 kYY
 kYY
 kYY
-kYY
+rrV
 kYY
 kYY
 kYY

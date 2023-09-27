@@ -1378,6 +1378,7 @@
 /obj/structure/cable,
 /obj/effect/ai_node,
 /obj/machinery/atmospherics/pipe/manifold4w/green/hidden,
+/obj/effect/landmark/sensor_tower_infestation,
 /turf/open/floor/tile/dark,
 /area/icy_caves/caves/south)
 "ia" = (
@@ -5356,6 +5357,10 @@
 /obj/structure/cryofeed,
 /turf/open/floor/engine,
 /area/icy_caves/caves/northwestmonorail)
+"BD" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/shuttle/dropship/floor,
+/area/icy_caves/caves/northwestmonorail)
 "BE" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/drained{
@@ -6097,6 +6102,7 @@
 	},
 /obj/structure/cable,
 /obj/effect/ai_node,
+/obj/effect/landmark/sensor_tower_infestation,
 /turf/open/floor/tile/dark,
 /area/icy_caves/outpost/outside/center)
 "Fq" = (
@@ -9527,6 +9533,11 @@
 /obj/machinery/vending/dinnerware,
 /turf/open/floor/tile/dark,
 /area/icy_caves/caves/northwestmonorail/breakroom)
+"WC" = (
+/obj/effect/landmark/weed_node,
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/ice,
+/area/icy_caves/caves/northern)
 "WD" = (
 /turf/open/floor/plating/ground/snow,
 /area/icy_caves/outpost/LZ1)
@@ -13383,7 +13394,7 @@ ul
 lV
 lV
 lV
-lV
+BD
 Bt
 lV
 lV
@@ -27293,7 +27304,7 @@ SR
 SR
 SR
 Zb
-im
+WC
 bl
 SR
 SR

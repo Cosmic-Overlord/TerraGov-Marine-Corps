@@ -1863,4 +1863,6 @@
 #include "RUtgmc\code\reagents.dm"
 #include "RUtgmc\code\RU_items.dm"
 #include "RUtgmc\code\vendorcw.dm"
+#include "code\datums\gamemodes\sensor_defence.dm"
+#include "code\game\objects\structures\infestation_tower.dm"
 // END_INCLUDE

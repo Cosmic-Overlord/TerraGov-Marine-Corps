@@ -14172,6 +14172,10 @@
 /obj/machinery/power/geothermal,
 /turf/open/floor/plating,
 /area/lv624/lazarus/engineering)
+"olF" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/dirt,
+/area/lv624/ground/sand2)
 "olR" = (
 /turf/open/floor/plating/ground/dirtgrassborder/corner{
 	dir = 4
@@ -16758,6 +16762,10 @@
 /obj/structure/jungle/vines,
 /turf/open/floor/plating,
 /area/lv624/ground/river1)
+"rqk" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/platebotc,
+/area/lv624/lazarus/quartstorage/outdoors)
 "rqK" = (
 /obj/effect/spawner/modularmap/lv624/domes,
 /turf/open/space/basic,
@@ -19575,6 +19583,12 @@
 	dir = 4
 	},
 /area/lv624/lazarus/fitness)
+"uDU" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating,
+/area/lv624/ground/caves/rock)
 "uFl" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /turf/open/floor/tile/purple/whitepurple{
@@ -30203,7 +30217,7 @@ blH
 blH
 biV
 jnE
-rxF
+uDU
 gVt
 hRy
 gYV
@@ -43099,7 +43113,7 @@ agv
 agv
 agv
 agv
-agv
+olF
 dqS
 agv
 agv
@@ -54831,7 +54845,7 @@ tql
 tql
 org
 pMn
-jHh
+rqk
 fbf
 jHh
 jHh

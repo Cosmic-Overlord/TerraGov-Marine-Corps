@@ -6233,6 +6233,10 @@
 /obj/effect/landmark/weed_node,
 /turf/open/floor/mainship/sterile/dark,
 /area/magmoor/medical/surgery)
+"emS" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/mars/random/dirt,
+/area/magmoor/compound)
 "emZ" = (
 /turf/open/floor/mainship/orange{
 	dir = 10
@@ -13763,6 +13767,12 @@
 	},
 /turf/open/floor/tile/white,
 /area/magmoor/civilian/pool)
+"jCP" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/mars/dirttosand{
+	dir = 9
+	},
+/area/magmoor/compound/south)
 "jCW" = (
 /obj/structure/bed/roller,
 /turf/open/floor/mainship/sterile/corner{
@@ -16661,6 +16671,10 @@
 	dir = 4
 	},
 /area/magmoor/cave/northeast)
+"lJh" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/magmoor/cave/north)
 "lJi" = (
 /turf/open/lavaland/basalt/dirt,
 /area/magmoor/compound/northeast)
@@ -17473,6 +17487,10 @@
 	dir = 4
 	},
 /area/magmoor/compound)
+"mol" = (
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/magmoor/cave/northwest)
 "mow" = (
 /obj/machinery/computer/arcade,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -37519,7 +37537,7 @@ efw
 efw
 efw
 efw
-efw
+mol
 efw
 qDf
 efw
@@ -52708,7 +52726,7 @@ nBe
 nHq
 fWG
 hiG
-hiG
+emS
 bgh
 hiG
 rjq
@@ -60916,7 +60934,7 @@ eTo
 pSY
 dum
 dum
-aXw
+jCP
 eTo
 eTo
 eTo
@@ -61949,7 +61967,7 @@ kcd
 kcd
 kcd
 kcd
-kcd
+lJh
 kcd
 kcd
 kcd

@@ -41468,6 +41468,13 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
+"kff" = (
+/obj/effect/ai_node,
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/mars/random/cave{
+	dir = 8
+	},
+/area/desert_dam/exterior/valley/valley_crashsite)
 "kfh" = (
 /obj/effect/turf_decal/warning_stripes/thin,
 /obj/structure/disposalpipe/segment{
@@ -58218,6 +58225,11 @@
 /obj/effect/landmark/weed_node,
 /turf/open/floor/prison/bright_clean/two,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
+"tvf" = (
+/obj/effect/landmark/excavation_site_spawner,
+/obj/effect/landmark/sensor_tower_infestation,
+/turf/open/floor/plating/ground/mars/random/sand,
+/area/desert_dam/exterior/valley/valley_medical)
 "tvA" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/asteroidplating,
@@ -62244,6 +62256,7 @@
 "vIM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/docking_port/stationary/crashmode,
+/obj/effect/landmark/sensor_tower_infestation,
 /turf/open/floor/plating/ground/desertdam/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "vIU" = (
@@ -95475,7 +95488,7 @@ rCV
 rCV
 wOZ
 cdw
-pNQ
+tvf
 pNQ
 ciU
 cfw
@@ -110638,7 +110651,7 @@ aSM
 aJY
 qVZ
 sDw
-tuF
+kff
 aKA
 sDw
 qVZ

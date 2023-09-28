@@ -425,6 +425,7 @@
 #include "code\datums\gamemodes\extended.dm"
 #include "code\datums\gamemodes\infestation.dm"
 #include "code\datums\gamemodes\nuclear_war.dm"
+#include "code\datums\gamemodes\extermination.dm"
 #include "code\datums\gamemodes\objective.dm"
 #include "code\datums\gamemodes\objective_items.dm"
 #include "code\datums\gamemodes\sensor_capture.dm"

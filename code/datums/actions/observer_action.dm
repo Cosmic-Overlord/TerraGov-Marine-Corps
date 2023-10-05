@@ -74,6 +74,8 @@
 			continue
 		if(!potential_egg.hugger_type)
 			continue
+		if(!potential_egg.can_spawn_player)
+			continue
 
 		var/area_egg = get_area(potential_egg)
 		if(area_egg in area_names)
@@ -157,3 +159,34 @@
 		return
 	var/mob/living/carbon/human/H = new_mob
 	H.fully_replace_character_name(H.real_name, H.species.random_name(H.gender))
+
+/datum/action/observer_action/join_predator
+	name = "Join the Hunt"
+	action_icon_state = "pred_ghost"
+
+/datum/action/observer_action/join_predator/give_action(mob/M)
+	var/owner_ckey = M.client?.ckey
+	if(!owner_ckey)
+		return
+
+	if(!(GLOB.roles_whitelist[owner_ckey] & WHITELIST_PREDATOR))
+		return
+
+	if(!SSticker.mode || !(SSticker.mode.flags_round_type & MODE_PREDATOR))
+		RegisterSignal(SSdcs, COMSIG_GLOB_PREDATOR_ROUND_TOGGLED, PROC_REF(handle_button_status_visuals))
+
+	. = ..()
+
+/datum/action/observer_action/join_predator/can_use_action()
+	if(!SSticker.mode || !(SSticker.mode.flags_round_type & MODE_PREDATOR))
+		return FALSE
+	return TRUE
+
+/datum/action/observer_action/join_predator/action_activate()
+	var/mob/dead/observer/activator = owner
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(activator, span_warning("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_predator_late_join(activator))
+		SSticker.mode.join_predator(activator)

@@ -53,6 +53,8 @@
 /datum/atom_hud/medical
 	hud_icons = list(HEALTH_HUD, STATUS_HUD)
 
+/datum/atom_hud/medical/add_to_single_hud(mob/user, mob/target)
+	return ..()
 
 //med hud used by silicons, only shows humans with a uniform with sensor mode activated.
 /datum/atom_hud/medical/basic
@@ -96,19 +98,27 @@
 
 //medical hud used by ghosts
 /datum/atom_hud/medical/observer
-	hud_icons = list(HEALTH_HUD, XENO_EMBRYO_HUD, XENO_REAGENT_HUD, XENO_DEBUFF_HUD, STATUS_HUD, MACHINE_HEALTH_HUD, MACHINE_AMMO_HUD, XENO_BANISHED_HUD)
+	hud_icons = list(HEALTH_HUD, XENO_EMBRYO_HUD, XENO_REAGENT_HUD, XENO_DEBUFF_HUD, STATUS_HUD, MACHINE_HEALTH_HUD, MACHINE_AMMO_HUD, XENO_BANISHED_HUD, HUNTER_CLAN, HUNTER_HUD, HUNTER_HEALTH_HUD)
 
 
 /datum/atom_hud/medical/pain
 	hud_icons = list(PAIN_HUD)
 
 
+/datum/atom_hud/hunter_clan
+	hud_icons = list(HUNTER_CLAN)
+
+
+/datum/atom_hud/hunter_hud
+	hud_icons = list(HUNTER_HUD, HUNTER_HEALTH_HUD)
+
+
 /mob/proc/med_hud_set_health()
 	return
 
 
-/mob/living/carbon/xenomorph/med_hud_set_health()
-	var/image/holder = hud_list[HEALTH_HUD_XENO]
+/mob/living/carbon/xenomorph/med_hud_set_health(hud_holder = HEALTH_HUD_XENO)
+	var/image/holder = hud_list[hud_holder]
 	if(!holder)
 		return
 	if(stat == DEAD)
@@ -121,8 +131,8 @@
 	holder.icon_state = "xenohealth[amount]"
 
 
-/mob/living/carbon/human/med_hud_set_health()
-	var/image/holder = hud_list[HEALTH_HUD]
+/mob/living/carbon/human/med_hud_set_health(hud_holder = HEALTH_HUD)
+	var/image/holder = hud_list[hud_holder]
 	if(stat == DEAD)
 		holder.icon_state = "hudhealth-100"
 		return
@@ -168,6 +178,8 @@
 		else
 			holder.icon_state = "hudhealth-100"
 
+/mob/living/carbon/human/species/yautja/med_hud_set_health(hud_holder = HUNTER_HEALTH_HUD)
+	. = ..()
 
 /mob/proc/med_hud_set_status() //called when mob stat changes, or get a virus/xeno host, etc
 	return
@@ -211,7 +223,7 @@
 		var/transvitox_amount = reagents.get_reagent_amount(/datum/reagent/toxin/xeno_transvitox)
 		var/sanguinal_amount = reagents.get_reagent_amount(/datum/reagent/toxin/xeno_sanguinal)
 		var/ozelomelyn_amount = reagents.get_reagent_amount(/datum/reagent/toxin/xeno_ozelomelyn)
-		var/jellyjuice_amount = reagents.get_reagent_amount(/datum/reagent/medicine/xenojelly)
+		var/jellyjuice_amount = reagents.get_reagent_amount(/datum/reagent/xenojelly)
 		var/medicalnanites_amount = reagents.get_reagent_amount(/datum/reagent/medicine/research/medicalnanites)
 
 		if(neurotox_amount > 10) //Blinking image for particularly high concentrations
@@ -416,6 +428,9 @@
 	if(species?.species_flags & ROBOTIC_LIMBS)
 		return FALSE
 
+	if(HAS_TRAIT(src, TRAIT_FOREIGN_BIO))
+		return FALSE
+
 	var/image/holder = hud_list[PAIN_HUD]
 	if(stat == DEAD)
 		holder.icon_state = "hudhealth-100"
@@ -458,7 +473,7 @@
 
 //Xeno status hud, for xenos
 /datum/atom_hud/xeno
-	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_SUNDER_HUD, XENO_FIRE_HUD, XENO_BANISHED_HUD)
+	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_SUNDER_HUD, XENO_FIRE_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
 
 /datum/atom_hud/xeno_heart
 	hud_icons = list(HEART_STATUS_HUD)

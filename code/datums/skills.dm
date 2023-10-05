@@ -717,3 +717,18 @@ engineer, construction, leadership, medical, surgery, pilot, police, powerloader
 	name = "Skeleton"
 	cqc = SKILL_CQC_TRAINED
 	melee_weapons = SKILL_MELEE_TRAINED
+
+/datum/skills/yautja/warrior
+	name = "Yautja Warrior"
+
+	engineer = SKILL_ENGINEER_ENGI
+	construction = SKILL_CONSTRUCTION_MASTER
+	firearms = SKILL_FIREARMS_TRAINED
+	medical = SKILL_MEDICAL_MASTER
+	cqc = SKILL_CQC_MASTER
+	surgery = SKILL_SURGERY_EXPERT
+	melee_weapons = SKILL_MELEE_SUPER
+	pistols = SKILL_PISTOLS_TRAINED
+	rifles = SKILL_RIFLES_TRAINED
+	police = SKILL_POLICE_MP
+	swordplay = SKILL_SWORDPLAY_TRAINED

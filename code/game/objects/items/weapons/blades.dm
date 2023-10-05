@@ -108,6 +108,21 @@
 	. = ..()
 	toggle_item_bump_attack(user, FALSE)
 
+/obj/item/weapon/claymore/mercsword/machete/arnold
+	name = "\improper M2100 \"Ngájhe\" machete"
+	desc = "An older issue USCM machete, never left testing. Designed in the Central African Republic. The notching made it hard to clean, and as such the USCM refused to adopt it - despite the superior bludgeoning power offered. Difficult to carry with the usual kit."
+	icon_state = "arnold-machete"
+	item_state = "machete_dutch"
+	force = 75
+	penetration = 35
+	attack_speed = 12
+
+/obj/item/weapon/claymore/mercsword/ceremonial
+	name = "Ceremonial Sword"
+	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
+	icon_state = "officer_sword"
+	item_state = "machete"
+
 //FC's sword.
 
 /obj/item/weapon/claymore/mercsword/officersword

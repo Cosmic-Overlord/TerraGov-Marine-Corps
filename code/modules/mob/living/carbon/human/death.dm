@@ -45,6 +45,7 @@
 
 /mob/living/carbon/human/death(gibbing, deathmessage, silent, special_death_message)
 	if(stat == DEAD)
+		species.handle_death(src, gibbing)
 		return ..()
 	if(species.death_message)
 		deathmessage = species.death_message

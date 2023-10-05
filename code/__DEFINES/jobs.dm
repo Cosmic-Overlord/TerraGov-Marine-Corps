@@ -102,6 +102,8 @@
 #define JOB_CAT_XENO "Xenomorph"
 #define JOB_CAT_UNASSIGNED "Unassigned"
 
+#define JOB_PREDATOR "Predator"
+
 #define JOB_COMM_TITLE_SQUAD_LEADER "SL"
 
 #define ROLE_XENOMORPH "Xenomorph"

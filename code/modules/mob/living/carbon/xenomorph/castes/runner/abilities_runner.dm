@@ -77,6 +77,7 @@
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_POUNCE,
 	)
 	use_state_flags = XACT_USE_BUCKLED
+	var/mob_hit_sound = 'sound/voice/alien_pounce.ogg'
 	///How far can we pounce.
 	var/range = 6
 	///For how long will we stun the victim
@@ -129,7 +130,7 @@
 		else
 			X.balloon_alert(X, "Cannot savage, not ready")
 
-	playsound(X.loc, 'sound/voice/alien_pounce.ogg', 25, TRUE)
+	playsound(X.loc, mob_hit_sound, 25, TRUE)
 	X.plasma_stored += pantherplasmaheal
 
 	pounce_complete()
@@ -205,6 +206,9 @@
 	if(target.get_xeno_hivenumber() == owner.get_xeno_hivenumber())
 		return FALSE
 	return TRUE
+
+/datum/action/xeno_action/activable/pounce/hellhound
+	action_icon_state = "alt_pounce"
 
 // ***************************************
 // *********** Evasion
@@ -469,6 +473,14 @@
 	if(!do_after(owner, 0.5 SECONDS, FALSE, A, BUSY_ICON_DANGER, extra_checks = CALLBACK(owner, TYPE_PROC_REF(/mob, break_do_after_checks), list("health" = X.health))))
 		return FALSE
 	var/mob/living/carbon/human/victim = A
+	if(isyautja(victim))
+		victim.emote("laugh")
+		X.Paralyze(75)
+		playsound(X,'sound/effects/hit_kick.ogg', 35, FALSE)
+		victim.balloon_alert(owner, "Snatch failed, we got caught!")
+		to_chat(X, span_xenodanger("[victim] counterattacks during our snatch attemp!"))
+		to_chat(victim, span_danger("[X] tried to steal our equipment, but failed!"))
+		return FALSE
 	stolen_item = victim.get_active_held_item()
 	if(!stolen_item)
 		stolen_item = victim.get_inactive_held_item()

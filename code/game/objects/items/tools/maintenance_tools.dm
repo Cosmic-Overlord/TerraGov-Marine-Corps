@@ -78,13 +78,15 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
 	tool_behaviour = TOOL_WIRECUTTER
+	var/random_color = TRUE
 
 
 /obj/item/tool/wirecutters/Initialize()
 	. = ..()
-	if(prob(50))
-		icon_state = "cutters-y"
-		item_state = "cutters_yellow"
+	if(random_color)
+		if(prob(50))
+			icon_state = "cutters-y"
+			item_state = "cutters_yellow"
 
 
 /obj/item/tool/wirecutters/attack(mob/living/carbon/C, mob/user)

@@ -77,7 +77,7 @@
 #define DEPLOYED_NO_ROTATE  (1<<17) //Disables deployed item rotation abilities to rotate.
 #define DEPLOYED_WRENCH_DISASSEMBLE (1<<18) //If this is on an item, the item can only be disassembled using a wrench once deployed.
 #define FULLY_WIELDED (1<<19) //If the item is properly wielded. Used for guns
-
+#define ITEM_PREDATOR (1<<20)
 //==========================================================================================
 
 //flags_inv_hide

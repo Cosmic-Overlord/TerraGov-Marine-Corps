@@ -2693,6 +2693,10 @@
 	dir = 9
 	},
 /area/magmoor/research)
+"bOR" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/dirt,
+/area/magmoor/compound/southeast)
 "bPS" = (
 /obj/structure/flora/rock/alt,
 /turf/open/floor/plating/ground/mars/random/dirt,
@@ -20852,6 +20856,10 @@
 	},
 /turf/open/floor/mainship/mono,
 /area/magmoor/landing/two)
+"oGG" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/magmoor/cave/east)
 "oGR" = (
 /turf/open/lavaland/lava/single/middle{
 	dir = 1
@@ -21139,6 +21147,10 @@
 	dir = 6
 	},
 /area/magmoor/engi/power)
+"oPL" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/magmoor/cave/southwest)
 "oQq" = (
 /obj/structure/cable,
 /obj/effect/ai_node,
@@ -24149,6 +24161,10 @@
 /obj/effect/landmark/weed_node,
 /turf/open/floor/plating/ground/mars/random/dirt,
 /area/magmoor/compound/north)
+"qPT" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/magmoor/cave/north)
 "qPY" = (
 /turf/open/floor/mainship/orange,
 /area/magmoor/engi/power)
@@ -24578,6 +24594,10 @@
 	},
 /turf/open/floor/mainship/mono,
 /area/magmoor/civilian/arrival/east)
+"rfs" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/magmoor/cave/west)
 "rfA" = (
 /obj/effect/landmark/weed_node,
 /turf/open/floor/plating/ground/mars/dirttosand,
@@ -34729,6 +34749,10 @@
 /obj/effect/landmark/weed_node,
 /turf/open/floor/mainship/sterile/dark,
 /area/magmoor/research/lab)
+"xZV" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/dirt,
+/area/magmoor/compound/northeast)
 "yah" = (
 /obj/structure/platform_decoration/metalplatform_deco{
 	dir = 4
@@ -36844,7 +36868,7 @@ aZd
 jHZ
 aZd
 aZd
-aZd
+rfs
 aZd
 aZd
 aZd
@@ -40900,7 +40924,7 @@ dwS
 dwS
 dwS
 dwS
-dwS
+oPL
 dwS
 dwS
 dwS
@@ -44929,7 +44953,7 @@ dzJ
 kcd
 kcd
 kcd
-kcd
+qPT
 kcd
 kcd
 kcd
@@ -67807,7 +67831,7 @@ nFL
 mXk
 rxl
 cDl
-fJO
+xZV
 fJO
 fJO
 cDl
@@ -71640,7 +71664,7 @@ jRL
 jRL
 jRL
 jRL
-jRL
+bOR
 rxl
 rxl
 rxl
@@ -79755,7 +79779,7 @@ rxl
 rxl
 rxl
 pet
-pet
+oGG
 pet
 kbo
 pet

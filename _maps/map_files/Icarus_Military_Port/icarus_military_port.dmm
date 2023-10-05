@@ -599,6 +599,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/icarus/interior/library)
+"aMk" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/icarus/exterior/northeastcaves)
 "aMn" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/shuttle/dropship/floor,
@@ -3393,6 +3397,10 @@
 /obj/structure/cable,
 /turf/open/floor/mainship/stripesquare,
 /area/icarus/interior/scrapyardone)
+"eIm" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/icarus/exterior/secaves)
 "eJg" = (
 /turf/open/floor/mainship_hull/dir{
 	dir = 8
@@ -6710,6 +6718,10 @@
 	},
 /turf/open/floor/mainship/mono,
 /area/icarus/interior/bridge)
+"iNU" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/mainship/mono,
+/area/icarus/interior/shipbaytwo)
 "iOU" = (
 /obj/structure/prop/mainship/telecomms/bus,
 /turf/open/floor/podhatch/floor,
@@ -8118,6 +8130,10 @@
 	dir = 6
 	},
 /area/icarus/interior/telecomms)
+"kzf" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/icarus/exterior/swcaves)
 "kzu" = (
 /turf/closed/shuttle/dropship2{
 	icon_state = "54"
@@ -17216,6 +17232,10 @@
 /obj/structure/dropship_piece/one/corner/rearleft,
 /turf/open/floor/plating/mainship,
 /area/icarus/interior/lzone)
+"whK" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/mainship,
+/area/icarus/interior/scrapyardone)
 "wib" = (
 /obj/effect/turf_decal/warning_stripes/thin,
 /obj/effect/turf_decal/warning_stripes/thin,
@@ -33222,7 +33242,7 @@ xsc
 xsc
 xsc
 xsc
-xsc
+whK
 xsc
 xsc
 xsc
@@ -35587,7 +35607,7 @@ jqf
 jqf
 rgs
 rgs
-rgs
+kzf
 jqf
 jqf
 rgs
@@ -46710,7 +46730,7 @@ ycw
 ycw
 ycw
 toT
-wMV
+iNU
 wMV
 wMV
 wMV
@@ -55555,7 +55575,7 @@ vUf
 vUf
 vUf
 vUf
-vUf
+eIm
 vUf
 wRp
 wRp
@@ -59767,7 +59787,7 @@ kYY
 kYY
 kYY
 kYY
-kYY
+aMk
 kYY
 kYY
 cFf

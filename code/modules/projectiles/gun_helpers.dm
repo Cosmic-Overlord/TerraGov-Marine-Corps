@@ -165,6 +165,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return TRUE
 	return FALSE
 
+/obj/item/weapon/gun/proc/update_special_overlay(new_icon_state)
+	overlays -= attachment_overlays["special"]
+	attachment_overlays["special"] = null
+	var/image/gun_image = image(icon, src, new_icon_state)
+	attachment_overlays["special"] = gun_image
+	overlays += gun_image
 
 /obj/item/weapon/gun/proc/update_force_list()
 	switch(force)

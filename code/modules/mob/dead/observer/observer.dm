@@ -104,8 +104,13 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(observer_z_changed))
 	LAZYADD(GLOB.observers_by_zlevel["[z]"], src)
 
+	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
+
 	return ..()
 
+/mob/dead/observer/Login()
+	..()
 
 /mob/dead/observer/Destroy()
 	GLOB.ghost_images_default -= ghostimage_default
@@ -373,6 +378,59 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 		var/datum/game_mode/combat_patrol/sensor_capture/sensor_mode = SSticker.mode
 		if(issensorcapturegamemode(SSticker.mode))
 			stat("<b>Activated Sensor Towers:</b>", sensor_mode.sensors_activated)
+
+/mob/dead/verb/join_as_hellhound()
+	set category = "Ghost"
+	set name = "Join as Hellhound"
+	set desc = "Select an alive and available Hellhound. THIS COMES WITH STRICT RULES. READ THEM OR GET BANNED."
+
+	var/mob/dead/current_mob = src
+	if(!current_mob.stat || !current_mob.mind)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, span_warning("The game hasn't started yet!"))
+		return
+
+	var/list/hellhound_mob_list = list() // the list we'll be choosing from
+	for(var/mob/living/carbon/xenomorph/hellhound/Hellhound as anything in GLOB.hellhound_list)
+		if(Hellhound.client)
+			continue
+		hellhound_mob_list[Hellhound.name] = Hellhound
+
+	var/choice = tgui_input_list(usr, "Pick a Hellhound:", "Join as Hellhound", hellhound_mob_list)
+	if(!choice)
+		return
+
+	var/mob/living/carbon/xenomorph/hellhound/Hellhound = hellhound_mob_list[choice]
+	if(!Hellhound || !(Hellhound in GLOB.hellhound_list))
+		return
+
+	if(QDELETED(Hellhound) || Hellhound.client)
+		to_chat(src, span_warning("Something went wrong."))
+		return
+
+	if(Hellhound.stat == DEAD)
+		to_chat(src, span_warning("That Hellhound has died."))
+		return
+
+	current_mob.mind.transfer_to(Hellhound, TRUE)
+	Hellhound.generate_name()
+
+/mob/dead/verb/join_as_yautja()
+	set category = "Ghost"
+	set name = "Join the Hunt"
+	set desc = "If you are whitelisted, and it is the right type of round, join in."
+
+	if(!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, span_warning("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_predator_late_join(src))
+		SSticker.mode.join_predator(src)
 
 /mob/dead/observer/verb/reenter_corpse()
 	set category = "Ghost"

@@ -280,7 +280,7 @@
 	appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
 	see_infrared = TRUE
 	hud_type = /datum/hud/alien
-	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_SUNDER_HUD, XENO_DEBUFF_HUD, XENO_FIRE_HUD, XENO_BANISHED_HUD)
+	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_SUNDER_HUD, XENO_DEBUFF_HUD, XENO_FIRE_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
 	buckle_flags = NONE
 	faction = FACTION_XENO
 	initial_language_holder = /datum/language_holder/xeno
@@ -424,5 +424,9 @@
 
 	///Are we the roony version of this xeno
 	var/is_a_rouny = FALSE
+
+	var/interference = 0 // Stagger for predator weapons. Prevents hivemind usage, queen overwatching, etc.
+
+	var/talk_sound = "alien_talk" // sound when talking
 
 	COOLDOWN_DECLARE(xeno_health_alert_cooldown)

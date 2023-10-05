@@ -227,14 +227,14 @@
 
 /obj/machinery/telecomms/server/presets/common
 	id = "Common Server"
-	freq_listening = list(FREQ_COMMON, FREQ_PMC, FREQ_COLONIST, FREQ_USL, FREQ_DEATHSQUAD, FREQ_IMPERIAL, FREQ_SOM, FREQ_SECTOID, FREQ_ECHO)
+	freq_listening = list(FREQ_COMMON, YAUT_FREQ, FREQ_PMC, FREQ_COLONIST, FREQ_USL, FREQ_DEATHSQUAD, FREQ_IMPERIAL, FREQ_SOM, FREQ_SECTOID, FREQ_ECHO)
 	autolinkers = list("common", "ert")
 
 //adds a proper emergency server in CIC instead of an unlinked one.
 /obj/machinery/telecomms/server/presets/common/cicbackup
 	on = 0
 	id = "Backup Common Server"
-	freq_listening = list(FREQ_COMMON, FREQ_PMC, FREQ_COLONIST, FREQ_USL, FREQ_DEATHSQUAD, FREQ_IMPERIAL, FREQ_SOM, FREQ_SECTOID, FREQ_ECHO)
+	freq_listening = list(FREQ_COMMON, YAUT_FREQ, FREQ_PMC, FREQ_COLONIST, FREQ_USL, FREQ_DEATHSQUAD, FREQ_IMPERIAL, FREQ_SOM, FREQ_SECTOID, FREQ_ECHO)
 	autolinkers = list("common", "ert")
 
 /obj/machinery/telecomms/server/presets/common/rebel

@@ -56,6 +56,7 @@
 	var/list/marines = list()
 	var/list/som = list()
 	var/list/survivors = list()
+	var/list/yautja = list()
 	var/list/xenos = list()
 	var/list/dead = list()
 	var/list/ghosts = list()
@@ -105,7 +106,10 @@
 				serialized["icon"] = caste.minimap_icon
 			if(!isnum(xeno.nicknumber))
 				serialized["nickname"] = xeno.nicknumber
-			xenos += list(serialized)
+			if(istype(xeno, /mob/living/carbon/xenomorph/hellhound))
+				yautja += list(serialized)
+			else
+				xenos += list(serialized)
 			continue
 
 		if(isAI(mob_poi))
@@ -118,6 +122,12 @@
 			var/datum/job/job = human.job
 			serialized["nickname"] = human.real_name
 
+			if(mob_poi.hunter_data.thralled)
+				serialized["icon"] = "thrall"
+				serialized["job"] = job.title
+				yautja += list(serialized)
+				continue
+
 			if(ismarinejob(human.job))
 				if(human.assigned_squad)
 					serialized["icon"] = lowertext(human.assigned_squad.name) + "_" + job.minimap_icon
@@ -127,6 +137,12 @@
 
 			serialized["icon"] = job.minimap_icon
 			serialized["job"] = job.title
+
+			if(isyautja(mob_poi))
+				serialized["icon"] = job.minimap_icon
+				serialized["job"] = job.title
+				yautja += list(serialized)
+				continue
 
 			if(issommarinejob(human.job))
 				som += list(serialized)
@@ -145,6 +161,7 @@
 	data["misc"] = misc
 	data["npcs"] = npcs
 	data["marines"] = marines
+	data["yautja"] = yautja
 	data["som"] = som
 	data["survivors"] = survivors
 	data["xenos"] = xenos

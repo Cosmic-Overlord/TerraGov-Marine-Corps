@@ -1,6 +1,6 @@
 import { useBackend } from '../backend';
 import { AnimatedNumber, Button, Box, NoticeBox, LabeledList, ProgressBar, Section } from '../components';
-import { Window } from '../layouts'
+import { Window } from '../layouts';
 
 type NukeDiskGeneratorData = {
   progress: number;

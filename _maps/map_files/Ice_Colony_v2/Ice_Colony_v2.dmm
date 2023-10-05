@@ -24310,6 +24310,10 @@
 /obj/effect/ai_node,
 /turf/open/floor/plating/ground/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/pass)
+"elO" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/snow/layer1,
+/area/ice_colony/exterior/surface/valley/west)
 "emN" = (
 /obj/effect/landmark/lv624/fog_blocker/xeno_spawn,
 /obj/effect/landmark/xeno_resin_wall,
@@ -26863,6 +26867,10 @@
 	dir = 8
 	},
 /area/ice_colony/surface/research)
+"khJ" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/snow/layer2,
+/area/ice_colony/exterior/surface/valley/northeast)
 "kjW" = (
 /obj/effect/turf_decal/warning_stripes/thin{
 	dir = 9
@@ -27046,6 +27054,10 @@
 /obj/effect/ai_node,
 /turf/open/floor/tile/dark2,
 /area/ice_colony/surface/hydroponics/north)
+"kyy" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/snow/layer2,
+/area/ice_colony/exterior/surface/clearing/north)
 "kyH" = (
 /turf/open/floor/tile/darkgreen/darkgreen2{
 	dir = 4
@@ -28543,6 +28555,10 @@
 	dir = 4
 	},
 /area/ice_colony/underground/hallway/south_east)
+"nPR" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/ice,
+/area/ice_colony/exterior/underground/caves/open)
 "nQo" = (
 /turf/open/floor/tile/dark/blue2{
 	dir = 6
@@ -28599,6 +28615,11 @@
 	dir = 5
 	},
 /area/ice_colony/underground/security/hallway)
+"nWd" = (
+/obj/effect/turf_underlay/icefloor,
+/obj/effect/landmark/yautja_teleport,
+/turf/closed/mineral/smooth/bluefrostwall,
+/area/ice_colony/exterior/underground/caves/rock)
 "nWj" = (
 /turf/open/floor/plating/ground/snow/layer0,
 /area/ice_colony/exterior/underground/caves/ice_se)
@@ -28827,6 +28848,10 @@
 /area/ice_colony/exterior/underground/caves/ice_nw)
 "oxN" = (
 /obj/effect/landmark/fob_sentry_rebel,
+/turf/open/floor/plating/ground/ice,
+/area/ice_colony/exterior/underground/caves/ice_w)
+"oxY" = (
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/plating/ground/ice,
 /area/ice_colony/exterior/underground/caves/ice_w)
 "oyf" = (
@@ -32282,6 +32307,12 @@
 /obj/effect/landmark/weed_node,
 /turf/open/floor/tile/dark2,
 /area/ice_colony/underground/hallway/north_west)
+"voQ" = (
+/obj/effect/landmark/weed_node,
+/obj/effect/ai_node,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/ice,
+/area/ice_colony/exterior/underground/caves/open)
 "vpd" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/toolbox,
@@ -35825,7 +35856,7 @@ dSq
 dSq
 dSq
 ePo
-ePo
+nPR
 ePo
 dSq
 dSq
@@ -35866,7 +35897,7 @@ dSq
 uQB
 uQB
 dSq
-ePo
+nPR
 ePo
 ePo
 ePo
@@ -36186,7 +36217,7 @@ xJX
 uSg
 uSg
 pBf
-pBf
+oxY
 pBf
 pBf
 pBf
@@ -44040,7 +44071,7 @@ uqz
 uqz
 uqz
 uqz
-uqz
+elO
 uqz
 uqz
 uqz
@@ -50559,7 +50590,7 @@ wkf
 wkf
 mqj
 mqj
-mqj
+kyy
 mqj
 mqj
 mqj
@@ -64064,7 +64095,7 @@ ePo
 sij
 ePo
 ePo
-oKP
+voQ
 uQB
 uQB
 uQB
@@ -72620,7 +72651,7 @@ wkf
 mqj
 jmh
 arL
-msn
+khJ
 msn
 msn
 adj
@@ -75862,7 +75893,7 @@ yld
 yld
 pMV
 uSg
-yld
+nWd
 yld
 xJX
 xJX

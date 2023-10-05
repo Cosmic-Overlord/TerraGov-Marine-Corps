@@ -20,6 +20,8 @@
 		var/datum/action/action_to_remove = a
 		action_to_remove.remove_action(src)
 	set_focus(null)
+	if(hunter_data)
+		hunter_data.clean_data()
 	return ..()
 
 /mob/Initialize()
@@ -39,6 +41,10 @@
 	update_movespeed(TRUE)
 	log_mob_tag("\[[tag]\] CREATED: [key_name(src)]")
 	become_hearing_sensitive()
+
+	if(!hunter_data)
+		hunter_data = new /datum/huntdata(src)
+	hud_set_hunter()
 
 
 /mob/Stat()
@@ -142,6 +148,18 @@
 		to_chat(src, "<i>... You can almost hear something ...</i>")
 		return
 	to_chat(src, msg, avoid_highlighting = avoid_highlight)
+
+// Shows three different messages depending on who does it to who and how does it look like to outsiders
+// message_mob: "You do something to X!"
+// message_affected: "Y does something to you!"
+// message_viewer: "X does something to Y!"
+/mob/proc/affected_message(mob/affected, message_mob, message_affected, message_viewer)
+	src.show_message(message_mob, EMOTE_VISIBLE)
+	if(src != affected)
+		affected.show_message(message_affected, EMOTE_VISIBLE)
+	for(var/mob/V in viewers(7, src))
+		if(V != src && V != affected)
+			V.show_message(message_viewer, EMOTE_VISIBLE)
 
 // Show a message to all player mobs who sees this atom
 // Show a message to the src mob (if the src is a mob)
@@ -447,6 +465,9 @@
 			to_chat(src, span_warning("Cannot grab, lacking free hands to do so!"))
 		return FALSE
 
+	if(SEND_SIGNAL(AM, COMSIG_ATTEMPT_MOB_PULL) & COMPONENT_CANCEL_MOB_PULL)
+		return FALSE
+
 	AM.add_fingerprint(src, "pull")
 
 	changeNext_move(CLICK_CD_GRABBING)
@@ -657,6 +678,9 @@
 				conga_line += B.buckled_bodybag
 			end_of_conga = TRUE //Only mobs can continue the cycle.
 	var/area/new_area = get_area(destination)
+	var/old_z
+	if(z != destination.z)
+		old_z = z
 	for(var/atom/movable/AM in conga_line)
 		var/move_dir = get_dir(AM, destination)
 		var/oldLoc
@@ -672,6 +696,8 @@
 			new_area.Entered(AM, oldLoc)
 		if(oldLoc)
 			AM.Moved(oldLoc, move_dir)
+		if(old_z)
+			AM.onTransitZ(old_z, AM.z)
 		var/mob/M = AM
 		if(istype(M))
 			M.reset_perspective(destination)

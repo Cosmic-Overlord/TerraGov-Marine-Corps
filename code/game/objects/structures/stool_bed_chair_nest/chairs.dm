@@ -407,3 +407,12 @@
 	buildstacktype = null
 	resistance_flags = UNACIDABLE
 	dir = WEST
+
+/obj/structure/bed/chair/hunter
+	name = "hunter chair"
+	desc = "An exquisitely crafted chair for a large humanoid hunter."
+	icon = 'icons/turf/walls/hunter.dmi'
+	icon_state = "chair"
+	color = rgb(255,255,255)
+	buildstacktype = null
+	resistance_flags = UNACIDABLE

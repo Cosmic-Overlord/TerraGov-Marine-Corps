@@ -10043,8 +10043,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/yellow/hidden,
-/obj/machinery/atmospherics/pipe/simple/yellow/hidden,
-/obj/machinery/atmospherics/pipe/simple/cyan/hidden/layer1,
 /obj/machinery/door/airlock/mainship/command/officer{
 	dir = 2
 	},
@@ -11746,6 +11744,10 @@
 /obj/machinery/vending/weapon,
 /turf/open/floor/prison,
 /area/sulaco/marine)
+"dlQ" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating,
+/area/sulaco/maintenance/lower_maint)
 "dlV" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/decal/cleanable/cobweb{
@@ -14653,6 +14655,10 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plating,
 /area/sulaco/maintenance/lower_maint2)
+"hsd" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating,
+/area/sulaco/maintenance/upperdeck_north_maint)
 "htm" = (
 /obj/machinery/vending/weapon,
 /turf/open/floor/prison,
@@ -15939,6 +15945,7 @@
 /obj/machinery/light/mainship/small{
 	dir = 4
 	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/plating,
 /area/sulaco/maintenance/lower_maint2)
 "jeg" = (
@@ -19714,6 +19721,10 @@
 	},
 /turf/open/floor/prison,
 /area/mainship/shipboard/weapon_room)
+"ore" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating,
+/area/sulaco/maintenance/lower_maint3)
 "oro" = (
 /obj/machinery/light/mainship{
 	dir = 1
@@ -22876,6 +22887,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cult,
 /area/sulaco/morgue)
+"srn" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating,
+/area/sulaco/maintenance/upperdeck_AIcore_maint)
 "srT" = (
 /obj/structure/bed/chair/nometal{
 	dir = 1
@@ -26379,6 +26394,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/plating,
 /area/sulaco/maintenance/lower_maint2)
 "xca" = (
@@ -44736,7 +44752,7 @@ oBn
 vIO
 hCn
 cDU
-qzH
+ore
 xKi
 mDu
 qDO
@@ -51548,7 +51564,7 @@ aCg
 dGX
 fqv
 aCg
-aCg
+srn
 fqv
 aCg
 aCg
@@ -69511,7 +69527,7 @@ aaa
 nzi
 mDu
 aYZ
-aaW
+hsd
 aYM
 nGG
 bde
@@ -71446,7 +71462,7 @@ aWh
 eRD
 mPZ
 aWh
-aWh
+dlQ
 aWh
 eRD
 mPZ

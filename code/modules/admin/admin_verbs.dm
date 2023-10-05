@@ -690,7 +690,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/ckey = tgui_input_list(usr, "Select player ckey", "Hail Foreign Legion!", GLOB.clients)
+	var/ckey = ckey(tgui_input_list(usr, "Select player ckey", "Hail Foreign Legion!", GLOB.clients))
 	if(!ckey) // shitcode mess for "special" circumstances
 		ckey = ckey(tgui_input_text(usr, "Maybe you write on your own?", "Hail Foreign Legion!"))
 		if(!ckey)
@@ -701,7 +701,7 @@
 		return FALSE
 
 	role = foreign_legion_ranks_ordered[role]
-	var/datum/db_query/wl = SSdbcore.NewQuery("INSERT INTO [format_table_name("foreign_legion")] (ckey, role) VALUES (:ckey, :role)", list("ckey" = ckey, "role" = role))
+	var/datum/db_query/wl = SSdbcore.NewQuery("INSERT INTO [format_table_name("foreign_legion")] (ckey, role) VALUES (:ckey, :role)", list(ckey = ckey, "role" = role))
 	wl.Execute()
 	qdel(wl)
 
@@ -728,7 +728,7 @@
 	if(!player_to_remove)
 		return FALSE
 
-	wl = SSdbcore.NewQuery("DELETE FROM [format_table_name("foreign_legion")] WHERE ckey = :ckey", list("ckey" = player_to_remove))
+	wl = SSdbcore.NewQuery("DELETE FROM [format_table_name("foreign_legion")] WHERE ckey = :ckey", list("ckey" = ckey(player_to_remove)))
 	wl.Execute()
 	qdel(wl)
 
@@ -1499,3 +1499,17 @@
 				to_chat(usr,"---------------------------------")
 				to_chat(usr,"[O.explanation_text] = [result]")
 				to_chat(usr,"----------------------------------")
+
+/client/proc/cmd_admin_create_predator_report()
+	set name = "Report: Yautja AI"
+	set category = "Admin"
+
+	if(!check_rights(R_ADMIN))
+		to_chat(src, "Only administrators may use this command.")
+		return
+	var/input = input(usr, "This is a message from the predator ship's AI. Check with online staff before you send this.", "What?", "") as message|null
+	if(!input)
+		return FALSE
+	yautja_announcement(span_yautjaboldbig(input))
+	message_admins("[key_name_admin(src)] has created a predator ship AI report")
+	log_admin("[key_name_admin(src)] predator ship AI report: [input]")

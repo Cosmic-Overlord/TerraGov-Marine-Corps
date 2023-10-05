@@ -44,6 +44,8 @@
 	var/next_move = 0
 	///Amount added during the next movement_delay(), then is reset.
 	var/next_move_slowdown = 0
+	///Slowdown from readying shields
+	var/shield_slowdown = 0
 	///Amount to adjust action/click delays by, + or -
 	var/next_move_adjust = 0
 	//Value to multiply action/click delays by
@@ -66,6 +68,9 @@
 	var/list/logging = list()
 	var/static/next_mob_id = 0
 	var/immune_to_ssd = FALSE
+
+	///Color matrices to be applied to the client window. Assoc. list.
+	var/list/client_color_matrices
 
 	//HUD and overlays
 	var/hud_type = /datum/hud

@@ -67,6 +67,7 @@ REAGENT SCANNER
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 5
 	throw_range = 10
+	var/alien = FALSE
 	///Skill required to bypass the fumble time.
 	var/skill_threshold = SKILL_MEDICAL_NOVICE
 	///Skill required to have the scanner auto refresh
@@ -98,6 +99,9 @@ REAGENT SCANNER
 		return
 	if(isxeno(M))
 		balloon_alert(user, "Unknown entity")
+		return
+	if(HAS_TRAIT(src, TRAIT_FOREIGN_BIO) && !alien)
+		to_chat(user, "Unknown biology")
 		return
 	if(M.species.species_flags & NO_SCAN)
 		balloon_alert(user, "Not Organic")
@@ -156,7 +160,7 @@ REAGENT SCANNER
 		"blood_type" = patient.blood_type,
 		"blood_amount" = patient.blood_volume,
 
-		"hugged" = !!(patient.status_flags & XENO_HOST)
+		"hugged" = patient.status_flags & XENO_HOST
 	)
 	data["has_unknown_chemicals"] = FALSE
 	var/list/chemicals_lists = list()
@@ -168,7 +172,7 @@ REAGENT SCANNER
 			"name" = reagent.name,
 			"amount" = round(reagent.volume, 0.1),
 			"od" = reagent.overdosed,
-			"dangerous" = reagent.overdosed || istype(reagent, /datum/reagent/toxin) || istype(reagent, /datum/reagent/medicine/xenojelly)
+			"dangerous" = reagent.overdosed || istype(reagent, /datum/reagent/toxin) || istype(reagent, /datum/reagent/xenojelly)
 		)
 	data["has_chemicals"] = length_char(patient.reagents.reagent_list)
 	data["chemicals_lists"] = chemicals_lists
@@ -325,6 +329,14 @@ REAGENT SCANNER
 		return
 	analyze_vitals(M, user, TRUE)
 
+
+/obj/item/healthanalyzer/alien
+	name = "\improper YMX scanner"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "scanner"
+	item_state = "analyzer"
+	desc = "An alien design hand-held body scanner able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
+	alien = TRUE
 
 /obj/item/analyzer
 	desc = "A hand-held environmental scanner which reports current gas levels."

@@ -3589,6 +3589,12 @@
 	},
 /turf/open/floor/mainship/office,
 /area/mainship/patrol_base/som)
+"Yn" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/mainship/black{
+	dir = 6
+	},
+/area/mainship/patrol_base)
 "Yu" = (
 /obj/structure/prop/mainship/sensor_computer3,
 /obj/machinery/light{
@@ -3635,6 +3641,10 @@
 "Zl" = (
 /obj/effect/turf_decal/warning_stripes/box,
 /turf/open/floor/mainship/office,
+/area/mainship/patrol_base/som)
+"Zr" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/concrete,
 /area/mainship/patrol_base/som)
 "Zw" = (
 /obj/machinery/vending/cigarette,
@@ -3795,7 +3805,7 @@ BT
 FZ
 Qa
 XG
-Fk
+Zr
 fz
 If
 If
@@ -5676,7 +5686,7 @@ Ta
 Fk
 Fk
 Fk
-Fk
+Zr
 Fk
 Fk
 Fk
@@ -10721,7 +10731,7 @@ PP
 tU
 NW
 jr
-Ho
+Yn
 Fw
 Sw
 Sw

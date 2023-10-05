@@ -164,6 +164,10 @@
 	if(!can_use_action()) // Check for action now done here as action_activate pipeline has been bypassed with signal activation.
 		return
 
+	if(target.interference)
+		to_chat(src, span_xenowarning("Your target's psychic connection is cut off!"))
+		return
+
 	var/mob/living/carbon/xenomorph/watcher = owner
 	var/mob/living/carbon/xenomorph/old_xeno = watcher.observed_xeno
 	if(old_xeno == target)
@@ -179,6 +183,7 @@
 	RegisterSignal(target, list(COMSIG_XENOMORPH_EVOLVED, COMSIG_XENOMORPH_DEEVOLVED), PROC_REF(on_xeno_evolution))
 	RegisterSignal(watcher, COMSIG_MOVABLE_MOVED, PROC_REF(on_movement))
 	RegisterSignal(watcher, COMSIG_XENOMORPH_TAKING_DAMAGE, PROC_REF(on_damage_taken))
+	RegisterSignal(watcher, COMSIG_XENOMORPH_INTERFERENCE, PROC_REF(on_interference))
 	overwatch_active = TRUE
 	set_toggle(TRUE)
 
@@ -192,7 +197,7 @@
 			observed.hud_set_queen_overwatch()
 	if(do_reset_perspective)
 		watcher.reset_perspective()
-	UnregisterSignal(watcher, list(COMSIG_MOVABLE_MOVED, COMSIG_XENOMORPH_TAKING_DAMAGE))
+	UnregisterSignal(watcher, list(COMSIG_MOVABLE_MOVED, COMSIG_XENOMORPH_TAKING_DAMAGE, COMSIG_XENOMORPH_INTERFERENCE))
 	overwatch_active = FALSE
 	set_toggle(FALSE)
 
@@ -224,6 +229,10 @@
 	if(overwatch_active)
 		stop_overwatch()
 
+/datum/action/xeno_action/watch_xeno/proc/on_interference(datum/source, mob/living/carbon/xenomorph/dead_xeno)
+	SIGNAL_HANDLER
+	if(overwatch_active)
+		stop_overwatch()
 
 // ***************************************
 // *********** Queen zoom

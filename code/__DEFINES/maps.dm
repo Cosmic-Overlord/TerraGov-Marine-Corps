@@ -99,6 +99,7 @@ require only minor tweaks.
 #define SHIP_MAP "ship_map"
 #define ALL_MAPTYPES list(GROUND_MAP, SHIP_MAP)
 #define MAP_TO_FILENAME list(GROUND_MAP = "data/next_map.json", SHIP_MAP = "data/next_ship.json")
+#define HUNTERSHIPS_TEMPLATE_PATH "_maps/predship/huntership.dmm"
 
 // traity things
 #define MAP_COLD "COLD"

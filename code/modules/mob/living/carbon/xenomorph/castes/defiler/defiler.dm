@@ -16,3 +16,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
+
+	life_value = 0
+	default_honor_value = 0

@@ -35,6 +35,8 @@
 	. = ..()
 	SSpoints.add_psy_points(XENO_HIVE_NORMAL, 2000)
 
+	predator_round()
+
 	for(var/obj/effect/landmark/corpsespawner/corpse AS in GLOB.corpse_landmarks_list)
 		corpse.create_mob()
 

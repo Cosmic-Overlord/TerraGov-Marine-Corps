@@ -187,6 +187,9 @@ GLOBAL_LIST_EMPTY(hive_ui_static_data) // init by make_datum_references_lists()
 ///Returns the index of the corresponding static caste data given caste typepath.
 GLOBAL_LIST_EMPTY(hive_ui_caste_index)
 
+GLOBAL_LIST_EMPTY_TYPED(hellhound_list, /mob/living/carbon/xenomorph/hellhound)
+GLOBAL_LIST_EMPTY_TYPED(yautja_mob_list, /mob/living/carbon/human)
+
 /proc/update_config_movespeed_type_lookup(update_mobs = TRUE)
 	var/list/mob_types = list()
 	var/list/entry_value = CONFIG_GET(keyed_list/multiplicative_movespeed)

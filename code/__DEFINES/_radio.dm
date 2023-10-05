@@ -2,6 +2,8 @@
 
 //say based modes like binary are in living/say.dm
 
+#define RADIO_CHANNEL_YAUTJA "Yautja"
+
 #define RADIO_CHANNEL_COMMON "Common"
 #define RADIO_CHANNEL_COMMON_REBEL "Common Rebel"
 #define RADIO_CHANNEL_SOM "Common SOM"
@@ -89,17 +91,18 @@
 #define FREQ_XRAY 1245
 #define FREQ_WHISKEY 1247
 
-#define MIN_ERT_FREQ 1331
-#define FREQ_PMC 1331
-#define FREQ_COLONIST 1335
-#define FREQ_USL 1337
-#define FREQ_DEATHSQUAD 1339
-#define FREQ_IMPERIAL 1341
-#define FREQ_SOM 1343
-#define FREQ_ICC 1345
-#define FREQ_SECTOID 1347
-#define FREQ_ECHO 1349
-#define MAX_ERT_FREQ 1349
+#define MIN_ERT_FREQ 1329
+#define FREQ_PMC 1329
+#define FREQ_COLONIST 1331
+#define FREQ_USL 1333
+#define FREQ_DEATHSQUAD 1335
+#define FREQ_IMPERIAL 1337
+#define FREQ_SOM 1339
+#define FREQ_ICC 1341
+#define FREQ_SECTOID 1343
+#define FREQ_ECHO 1345
+#define YAUT_FREQ 1347
+#define MAX_ERT_FREQ 1347
 
 #define FREQ_COMMAND 1351
 #define FREQ_MEDICAL 1353

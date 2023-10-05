@@ -4996,6 +4996,11 @@
 	},
 /turf/open/floor/freezer,
 /area/bigredv2/outside/virology)
+"aSF" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/bigredv2/caves/northeast)
 "aSQ" = (
 /obj/effect/turf_decal/sandedge{
 	dir = 4
@@ -8068,6 +8073,11 @@
 /obj/effect/spawner/modularmap/bigred/swcorner,
 /turf/open/space/basic,
 /area/space)
+"cDP" = (
+/obj/effect/landmark/weed_node,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/bigredv2/caves/southwest)
 "cEb" = (
 /obj/effect/landmark/start/job/xenomorph,
 /obj/effect/landmark/weed_node,
@@ -10029,6 +10039,10 @@
 /obj/effect/landmark/xeno_resin_wall,
 /turf/open/floor/plating/ground/mars/random/cave,
 /area/bigredv2/caves/east)
+"ihN" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/bigredv2/caves/north)
 "ihU" = (
 /obj/effect/ai_node,
 /turf/open/floor/freezer,
@@ -12013,6 +12027,10 @@
 	dir = 1
 	},
 /area/bigredv2/outside/nw)
+"nWD" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/bigredv2/caves/south)
 "obc" = (
 /obj/machinery/light{
 	dir = 4
@@ -12726,6 +12744,10 @@
 /obj/structure/cable,
 /turf/open/floor/tile/dark,
 /area/bigredv2/outside/nanotrasen_lab/inside)
+"qms" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/bigredv2/caves/northwest)
 "qnd" = (
 /obj/effect/turf_decal/warning_stripes/thin{
 	dir = 1
@@ -12804,6 +12826,10 @@
 /obj/effect/ai_node,
 /turf/open/floor/tile/green/whitegreenfull,
 /area/bigredv2/caves/lambda_lab)
+"qCa" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/sand,
+/area/bigredv2/outside/n)
 "qCi" = (
 /obj/effect/landmark/weed_node,
 /obj/effect/ai_node,
@@ -14391,6 +14417,10 @@
 	dir = 8
 	},
 /area/bigredv2/outside/nanotrasen_lab/inside)
+"voM" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave/rock,
+/area/bigredv2/caves/west)
 "vpK" = (
 /obj/effect/landmark/excavation_site_spawner,
 /turf/open/floor/plating/ground/mars/random/sand,
@@ -16304,7 +16334,7 @@ gCQ
 sNF
 sNF
 hsh
-sNF
+voM
 sNF
 sNF
 sNF
@@ -18651,7 +18681,7 @@ axl
 axl
 axl
 axl
-axl
+qms
 axl
 axl
 aaa
@@ -27426,7 +27456,7 @@ uII
 doA
 qqG
 qqG
-xhy
+cDP
 qqG
 qqG
 qqG
@@ -38583,7 +38613,7 @@ aaa
 aaa
 hXy
 gCQ
-qRX
+ihN
 quE
 qRX
 tHL
@@ -40568,7 +40598,7 @@ gzM
 gzM
 gzM
 gzM
-gzM
+qCa
 gzM
 gzM
 gzM
@@ -44417,7 +44447,7 @@ sQi
 sQi
 sQi
 sQi
-sQi
+nWD
 gCQ
 hXy
 aaa
@@ -56874,7 +56904,7 @@ vop
 vyZ
 bfc
 vyZ
-hFi
+aSF
 vyZ
 gCQ
 gCQ

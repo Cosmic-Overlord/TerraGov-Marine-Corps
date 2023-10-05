@@ -698,6 +698,18 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 			return zone
 
 
+/proc/get_true_location(atom/loc)
+	var/atom/subLoc = loc
+	while(subLoc.z == 0)
+		if (istype(subLoc.loc, /atom))
+			subLoc = subLoc.loc
+		else
+			return subLoc
+	return subLoc
+
+#define get_true_turf(loc) get_turf(get_true_location(loc))
+
+
 //Quick type checks for some tools
 GLOBAL_LIST_INIT(common_tools, typecacheof(list(
 /obj/item/stack/cable_coil,

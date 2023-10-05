@@ -49,6 +49,15 @@
 	var/turf/x2y2 = locate(((centre.x + rad) > world.maxx ? world.maxx : centre.x + rad), ((centre.y + rad) > world.maxy ? world.maxy : centre.y + rad), centre.z)
 	return block(x1y1, x2y2)
 
+/// Will attempt to find what's holding this item if it's being contained by something, ie if it's in a satchel held by a human, this'll return the human
+/proc/recursive_holder_check(obj/item/held_item, recursion_limit = 3)
+	if(recursion_limit <= 0)
+		return held_item
+	if(!held_item.loc || isturf(held_item.loc))
+		return held_item
+	recursion_limit--
+	return recursive_holder_check(held_item.loc, recursion_limit)
+
 // Same as above but for alien candidates.
 /proc/get_alien_candidate()
 	var/mob/dead/observer/picked

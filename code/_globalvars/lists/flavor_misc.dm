@@ -1,9 +1,12 @@
 //Preferences stuff
 GLOBAL_LIST_EMPTY(ethnicities_list)
+GLOBAL_LIST_EMPTY(human_ethnicities_list)
+GLOBAL_LIST_EMPTY(yautja_ethnicities_list)
 	//Hairstyles
 GLOBAL_LIST_EMPTY(hair_styles_list)			//stores /datum/sprite_accessory/hair indexed by name
 GLOBAL_LIST_EMPTY(hair_gradients_list)			//stores /datum/sprite_accessory/hair_gradient indexed by name
 GLOBAL_LIST_EMPTY(facial_hair_styles_list)	//stores /datum/sprite_accessory/facial_hair indexed by name
+GLOBAL_LIST_EMPTY(yautja_hair_styles_list)
 	//Underwear
 GLOBAL_LIST_EMPTY(underwear_list)		//stores /datum/sprite_accessory/underwear indexed by name
 GLOBAL_LIST_INIT(underwear_m, list("Briefs")) //Curse whoever made male/female underwear diffrent colours
@@ -112,10 +115,16 @@ GLOBAL_LIST_INIT(playable_icons, list(
 	"drone",
 	"facehugger",
 	"fieldcommander",
+	"foreign_engi",
+	"foreign_leader",
+	"foreign_medic",
+	"foreign_private",
+	"foreign_smartgunner",
 	"gorger",
 	"hivelord",
 	"hivemind",
 	"hunter",
+	"hellhound",
 	"larva",
 	"mech_pilot",
 	"medical",
@@ -155,6 +164,8 @@ GLOBAL_LIST_INIT(playable_icons, list(
 	"yankee_medic",
 	"yankee_private",
 	"yankee_smartgunner",
+	"predator",
+	"thrall",
 	"zulu_engi",
 	"zulu_leader",
 	"zulu_medic",

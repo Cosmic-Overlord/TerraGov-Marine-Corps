@@ -299,7 +299,7 @@
 /mob/living/carbon/xenomorph/pull_response(mob/puller)
 	if(stat != CONSCIOUS) // If the Xeno is unconscious, don't fight back against a grab/pull
 		return TRUE
-	if(!ishuman(puller))
+	if(!ishuman(puller) || HAS_TRAIT(puller, TRAIT_YAUTJA_TECH))
 		return TRUE
 	var/mob/living/carbon/human/H = puller
 	H.Paralyze(rand(xeno_caste.tacklemin,xeno_caste.tacklemax) * 20)
@@ -327,10 +327,8 @@
 
 	var/datum/atom_hud/hud_to_add = GLOB.huds[DATA_HUD_XENO_INFECTION]
 	hud_to_add.add_hud_to(src)
-
 	hud_to_add = GLOB.huds[DATA_HUD_BASIC]
 	hud_to_add.add_hud_to(src)
-
 	hud_to_add = GLOB.huds[DATA_HUD_XENO_REAGENTS]
 	hud_to_add.add_hud_to(src)
 	hud_to_add = GLOB.huds[DATA_HUD_XENO_TACTICAL] //Allows us to see xeno tactical elements clearly via HUD elements

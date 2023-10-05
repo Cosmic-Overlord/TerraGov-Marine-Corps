@@ -504,6 +504,8 @@
 	allxenos = X.hive.get_all_xenos() //refresh the list to account for any changes during the channel
 	for(var/mob/living/carbon/xenomorph/sister AS in allxenos)
 		sister.remove_filter("summonoutline")
+		if(HAS_TRAIT(sister, TRAIT_LEASHED))
+			continue
 		if(sister.z == X.z)
 			sister.forceMove(get_turf(X))
 	log_game("[key_name(owner)] has summoned hive ([length_char(allxenos)] Xenos) in [AREACOORD(owner)]")

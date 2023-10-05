@@ -174,6 +174,7 @@
 	flags_atom = CONDUCT
 	flags_item = TWOHANDED
 	force_wielded = 75
+	penetration = 15
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 
 
@@ -503,3 +504,22 @@
 		M.apply_effects(stun,weaken)
 
 	return ..()
+
+/obj/item/weapon/twohanded/sledgehammer
+	name = "sledgehammer"
+	desc = "a large block of metal on the end of a pole. Smashing!"
+	icon_state = "sledgehammer"
+	item_state = "sledgehammer"
+	sharp = null
+	edge = 0
+	w_class = WEIGHT_CLASS_BULKY
+	flags_equip_slot = ITEM_SLOT_BACK
+	flags_atom = CONDUCT|TWOHANDED
+	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
+
+//The following is copypasta and not the sledge being a child of the fireaxe due to the fire axe being able to crowbar airlocks
+/obj/item/weapon/twohanded/sledgehammer/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
+	if(!proximity) return
+	..()
+	if(A && (flags_item & WIELDED) && istype(A,/obj/structure/grille)) //destroys grilles in one hit
+		qdel(A)

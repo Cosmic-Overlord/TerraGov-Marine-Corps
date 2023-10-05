@@ -528,26 +528,28 @@
 				turfs_to_pick_from += T
 		turfs += pick(/turf in turfs_to_pick_from)
 	var/turf/picked = pick(turfs)
-	if(!isturf(picked)) return
-	switch(rand(1,2))//Decides randomly to teleport the thrower or the throwee.
-		if(1) // Teleports the person who threw the tomato.
-			s.set_up(3, 1, M)
-			s.start()
-			new/obj/effect/decal/cleanable/molten_item(M.loc) //Leaves a pile of goo behind for dramatic effect.
-			M.loc = picked //
-			sleep(0.1 SECONDS)
-			s.set_up(3, 1, M)
-			s.start() //Two set of sparks, one before the teleport and one after.
-		if(2) //Teleports mob the tomato hit instead.
-			for(var/mob/A in get_turf(hit_atom))//For the mobs in the tile that was hit...
-				s.set_up(3, 1, A)
+	if(!isturf(picked))
+		return
+	spawn()// fuck you debuger, https://media.discordapp.net/attachments/751547412463616030/1124070348195893350/image.png?width=2500&height=265
+		switch(rand(1,2))//Decides randomly to teleport the thrower or the throwee.
+			if(1) // Teleports the person who threw the tomato.
+				s.set_up(3, 1, M)
 				s.start()
-				new/obj/effect/decal/cleanable/molten_item(A.loc) //Leave a pile of goo behind for dramatic effect...
-				A.loc = picked//And teleport them to the chosen location.
+				new/obj/effect/decal/cleanable/molten_item(M.loc) //Leaves a pile of goo behind for dramatic effect.
+				M.loc = picked //
 				sleep(0.1 SECONDS)
-				s.set_up(3, 1, A)
-				s.start()
-	new/obj/effect/decal/cleanable/blood/oil(src.loc)
-	src.visible_message(span_notice("The [src.name] has been squashed, causing a distortion in space-time."),span_moderate("You hear a splat and a crackle."))
-	qdel(src)
+				s.set_up(3, 1, M)
+				s.start() //Two set of sparks, one before the teleport and one after.
+			if(2) //Teleports mob the tomato hit instead.
+				for(var/mob/A in get_turf(hit_atom))//For the mobs in the tile that was hit...
+					s.set_up(3, 1, A)
+					s.start()
+					new/obj/effect/decal/cleanable/molten_item(A.loc) //Leave a pile of goo behind for dramatic effect...
+					A.loc = picked//And teleport them to the chosen location.
+					sleep(0.1 SECONDS)
+					s.set_up(3, 1, A)
+					s.start()
+		new/obj/effect/decal/cleanable/blood/oil(src.loc)
+		src.visible_message(span_notice("The [src.name] has been squashed, causing a distortion in space-time."),span_moderate("You hear a splat and a crackle."))
+		qdel(src)
 

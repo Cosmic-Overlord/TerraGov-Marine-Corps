@@ -88,6 +88,9 @@
 #define ui_ammo3 "EAST-1:28,CENTER+3:29"
 #define ui_ammo4 "EAST-1:28,CENTER+4:31"
 
+//Upper-middle right (damage indicators)
+#define ui_predator_power "EAST-1:28,CENTER:17"
+
 									//borgs
 #define ui_borg_health "EAST-1:28,6:13" //borgs have the health display where humans have the bodytemp indicator.
 #define ui_borg_temp "EAST-1:28,10:21"	//borgs have the bodytemp display where humans have the pressure indicator.

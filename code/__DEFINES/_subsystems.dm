@@ -54,6 +54,7 @@
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 
+#define INIT_ORDER_PROFILER 101
 #define INIT_ORDER_GARBAGE 27
 #define INIT_ORDER_DBCORE 25
 #define INIT_ORDER_SERVER_MAINT 23
@@ -84,6 +85,7 @@
 #define INIT_ORDER_MINIMAPS -15
 #define INIT_ORDER_LIGHTING -20
 #define INIT_ORDER_SHUTTLE -21
+#define INIT_ORDER_PREDSHIPS  -22
 #define INIT_ORDER_PATH -50
 #define INIT_ORDER_EXCAVATION -78
 #define INIT_ORDER_CHAT -100 //Should be last to ensure chat remains smooth during init.

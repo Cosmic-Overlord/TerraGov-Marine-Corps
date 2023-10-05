@@ -66,7 +66,7 @@
 	id = "Receiver B"
 	network = "tcommsat"
 	autolinkers = list("receiverB") // link to relay
-	freq_listening = list(FREQ_COMMON)
+	freq_listening = list(FREQ_COMMON, YAUT_FREQ)
 
 //proper cicbackup reciver
 /obj/machinery/telecomms/receiver/preset_right/cicbackup
@@ -74,7 +74,7 @@
 	id = "Backup Receiver B"
 	network = "tcommsat"
 	autolinkers = list("receiverB") // link to relay
-	freq_listening = list(FREQ_COMMON)
+	freq_listening = list(FREQ_COMMON, YAUT_FREQ)
 
 /obj/machinery/telecomms/receiver/preset_right/rebel
 	id = "Receiver B rebel"

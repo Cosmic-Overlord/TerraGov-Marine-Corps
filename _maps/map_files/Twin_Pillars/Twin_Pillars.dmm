@@ -695,6 +695,12 @@
 	dir = 4
 	},
 /area/mainship/medical/medical_science)
+"aGR" = (
+/obj/structure/cable,
+/obj/machinery/light/small,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/mainship/mono,
+/area/mainship/hull/lower_hull/rebel)
 "aHm" = (
 /obj/structure/table/mainship,
 /obj/machinery/computer/security/marinemainship{
@@ -9358,6 +9364,10 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/mainship/mono,
 /area/mainship/engineering/engineering_workshop/rebel)
+"iyW" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/plating_catwalk,
+/area/mainship/hull/lower_hull/rebel)
 "izv" = (
 /obj/structure/table/woodentable,
 /obj/item/clipboard{
@@ -11692,6 +11702,10 @@
 	dir = 4
 	},
 /area/mainship/medical/medical_science/rebel)
+"kGp" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/mainship/mono,
+/area/mainship/hull/lower_hull/rebel)
 "kGE" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -20813,6 +20827,11 @@
 /obj/machinery/atmospherics/pipe/simple/general/visible/layer1,
 /turf/open/floor/plating,
 /area/mainship/engineering/port_atmos/rebel)
+"sye" = (
+/obj/structure/cable,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/plating_catwalk,
+/area/mainship/hull/lower_hull/rebel)
 "syl" = (
 /obj/structure/disposalpipe/segment/corner{
 	dir = 1
@@ -24683,6 +24702,12 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
 /turf/open/floor/mainship,
 /area/mainship/squads/general/rebel)
+"vUg" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/plating_catwalk,
+/area/mainship/hull/lower_hull/rebel)
 "vUj" = (
 /turf/open/floor/mainship/cargo,
 /area/mainship/squads/req)
@@ -32828,7 +32853,7 @@ nif
 xzi
 xzi
 xzi
-xzi
+iyW
 xzi
 xzi
 xzi
@@ -34076,7 +34101,7 @@ wgc
 wgc
 xWa
 nXL
-vEn
+kGp
 nif
 pWo
 tdn
@@ -35575,7 +35600,7 @@ tRq
 juv
 juv
 wgc
-wnQ
+sye
 wnQ
 wnQ
 wnQ
@@ -38245,7 +38270,7 @@ aza
 thL
 aza
 efi
-sVE
+aGR
 wgc
 juv
 juv
@@ -45105,7 +45130,7 @@ tRq
 juv
 juv
 wgc
-wnQ
+sye
 xMR
 xMR
 jBw
@@ -50284,7 +50309,7 @@ qdP
 uor
 uor
 uor
-uor
+vUg
 xQz
 qdP
 qdP

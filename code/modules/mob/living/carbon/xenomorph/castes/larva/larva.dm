@@ -2,8 +2,12 @@
 	caste_base_type = /mob/living/carbon/xenomorph/larva
 	speak_emote = list("hisses")
 	icon_state = "Bloody Larva"
+	talk_sound = "larva_talk"
 
 	a_intent = INTENT_HELP //Forces help intent for all interactions.
+
+	life_value = 0
+	default_honor_value = 0
 
 	maxHealth = 35
 	health = 35
@@ -94,3 +98,48 @@
 	if(!loc_weeds_type)
 		return 0
 	return 1
+
+/mob/living/carbon/xenomorph/larva/predalien
+	icon = 'icons/Xeno/predalien_larva.dmi'
+	icon_state = "Predalien Larva"
+	base_icon_state = "Predalien Larva"
+	caste_base_type = /mob/living/carbon/xenomorph/larva/predalien
+
+/mob/living/carbon/xenomorph/larva/predalien/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
+	. = ..()
+	hunter_data.dishonored = TRUE
+	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
+	hunter_data.dishonored_set = src
+	hud_set_hunter()
+
+// ***************************************
+// *********** Name
+// ***************************************
+/mob/living/carbon/xenomorph/larva/predalien/generate_name()
+	name = "[hive.prefix] Predalien Larva ([nicknumber])"
+
+	//Update linked data so they show up properly
+	real_name = name
+	if(mind)
+		mind.name = name //This gives them the proper name in deadchat if they explode on death. It's always the small things
+
+// ***************************************
+// *********** Icon
+// ***************************************
+/mob/living/carbon/xenomorph/larva/predalien/update_icons()
+	generate_name()
+
+	color = hive.color
+
+	if(stat == DEAD)
+		icon_state = "[base_icon_state] Dead"
+	else if(handcuffed)
+		icon_state = "[base_icon_state] Cuff"
+
+	else if(lying_angle)
+		if((resting || IsSleeping()) && (!IsParalyzed() && !IsUnconscious() && health > 0))
+			icon_state = "[base_icon_state] Sleeping"
+		else
+			icon_state = "[base_icon_state] Stunned"
+	else
+		icon_state = "[base_icon_state]"

@@ -57,3 +57,16 @@
 		if(!isnewplayer(M) && !isdeaf(M))
 			to_chat(M, "<span class='big bold'><font color = red>[html_encode(title)]</font color><BR>[html_encode(message)]</span><BR>")
 			SEND_SOUND(M, S)
+
+
+//yautja ship AI announcement
+/proc/yautja_announcement(message, title = "You receive a message from your ship AI...", sound_to_play = sound('sound/misc/notice1.ogg'))
+	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
+	for(var/mob/M in targets)
+		if(!isobserver(M)) //observers see everything
+			var/mob/living/carbon/human/H = M
+			if(!isyautja(H) || H.stat != CONSCIOUS)
+				continue
+
+		to_chat(M, html = "<span class='big bold'>[title]</span><BR><BR>[span_alert(message)]")
+		SEND_SOUND(M, sound_to_play)

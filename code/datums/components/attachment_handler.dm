@@ -14,7 +14,7 @@
 	///List of offsets for the parent that adjusts the attachment overlay. slot1_x = 1, slot1_y = 1, slot2_x = 3, slot2_y = 7, etc. Can be null, in that case the offsets for all the attachments default to 0.
 	var/list/attachment_offsets
 	///List of the attachment overlay images. This is so that we can easily swap overlays in and out.
-	var/list/attachable_overlays
+	var/list/attachment_overlays
 
 /datum/component/attachment_handler/Initialize(list/slots, list/attachables_allowed, list/attachment_offsets, list/starting_attachments, datum/callback/can_attach, datum/callback/on_attach, datum/callback/on_detach, list/overlays = list())
 	. = ..()
@@ -28,8 +28,8 @@
 	src.on_detach = on_detach
 	src.can_attach = can_attach
 	src.attachment_offsets = attachment_offsets
-	attachable_overlays = overlays //This is incase the parent wishes to have a stored reference to this list.
-	attachable_overlays += slots
+	attachment_overlays = overlays //This is incase the parent wishes to have a stored reference to this list.
+	attachment_overlays += slots
 
 	var/obj/parent_object = parent
 	if(length_char(starting_attachments) && parent_object.loc) //Attaches starting attachments if the object is not instantiated in nullspace. If it is created in null space, such as in a loadout vendor. It wont create default attachments.
@@ -287,11 +287,11 @@
 	var/obj/item/parent_item = parent
 	for(var/slot in slots) //Cycles through all the slots.
 		var/obj/item/attachment = slots[slot]
-		var/image/overlay = attachable_overlays[slot]
+		var/image/overlay = attachment_overlays[slot]
 		parent_item.overlays -= overlay //First removes the existing overlay that occupies the slots overlay.
 
 		if(!attachment) //No attachment, no overlay.
-			attachable_overlays[slot] = null
+			attachment_overlays[slot] = null
 			continue
 
 		var/list/attachment_data = attachment_data_by_slot[slot]
@@ -323,7 +323,7 @@
 		overlay.pixel_x = slot_x - pixel_shift_x
 		overlay.pixel_y = slot_y - pixel_shift_y
 
-		attachable_overlays[slot] = overlay
+		attachment_overlays[slot] = overlay
 		parent_item.overlays += overlay
 
 ///Updates the mob sprite of the attachment.

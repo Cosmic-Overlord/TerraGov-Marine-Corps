@@ -146,6 +146,8 @@
 #define XENO_HIVE_ZETA "zeta_hive"
 #define XENO_HIVE_ADMEME "admeme_hive"
 #define XENO_HIVE_FALLEN "fallen_hive"
+#define XENO_HIVE_FORSAKEN "forsaken_hive"
+#define XENO_HIVE_YAUTJA "yautja_hive"
 
 // =============================
 // xeno tiers
@@ -359,6 +361,7 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 #define IS_MOTH (1<<3)
 #define IS_SECTOID (1<<4)
 #define IS_MONKEY (1<<5)
+#define IS_YAUTJA (1<<6)
 //=================================================
 
 //AFK status
@@ -403,10 +406,10 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 
 
 // Human Overlay Indexes
-#define LASER_LAYER 28 //For sniper targeting laser
-#define MOTH_WINGS_LAYER 27
-#define MUTATIONS_LAYER 26
-#define DAMAGE_LAYER 25
+#define MOTH_WINGS_LAYER 28
+#define MUTATIONS_LAYER 27
+#define DAMAGE_LAYER 26
+#define FLAY_LAYER 25
 #define UNIFORM_LAYER 24
 #define TAIL_LAYER 23 //bs12 specific. this hack is probably gonna come back to haunt me
 #define ID_LAYER 22
@@ -430,9 +433,11 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 #define BURST_LAYER 4 //Chestburst overlay
 #define OVERHEALTH_SHIELD_LAYER 3
 #define TARGETED_LAYER 2 //for target sprites when held at gun point, and holo cards.
+#define PRED_LASER_LAYER 1.9
+#define LASER_LAYER 1.8
 #define FIRE_LAYER 1 //If you're on fire
 
-#define TOTAL_LAYERS 28
+#define TOTAL_LAYERS 30
 
 #define MOTH_WINGS_BEHIND_LAYER 1
 

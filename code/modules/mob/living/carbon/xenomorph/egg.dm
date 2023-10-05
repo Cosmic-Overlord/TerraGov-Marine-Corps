@@ -4,6 +4,7 @@
 	flags_atom = CRITICAL_ATOM
 	max_integrity = 80
 	integrity_failure = 20
+	var/can_spawn_player = TRUE
 	///What maturity stage are we in
 	var/maturity_stage = 1
 	///Time between two maturity stages
@@ -162,6 +163,9 @@
 	if(!hugger_type)
 		to_chat(user, span_warning("The egg is empty."))
 		return FALSE
+	if(!can_spawn_player)
+		to_chat(user, span_warning("Are you genius?"))
+		return FALSE
 
 	var/datum/hive_status/hive = GLOB.hive_datums[hivenumber]
 	if(!hive.can_spawn_as_hugger(user))
@@ -231,6 +235,10 @@
 	qdel(facehugger)
 	advance_maturity(stage_ready_to_burst)
 	return TRUE
+
+/obj/alien/egg/hugger/forsaken
+	can_spawn_player = FALSE
+	hivenumber = XENO_HIVE_FORSAKEN
 
 /obj/alien/egg/gas
 	desc = "It looks like a suspiciously weird egg"

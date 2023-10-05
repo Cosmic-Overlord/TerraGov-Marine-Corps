@@ -442,6 +442,12 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 				newmob = M.change_mob_type(/mob/living/carbon/xenomorph/shrike, location, null, delmob)
 			if("hivemind")
 				newmob = M.change_mob_type(/mob/living/carbon/xenomorph/hivemind, location, null, delmob)
+			if("hellhound")
+				newmob = M.change_mob_type(/mob/living/carbon/xenomorph/hellhound, location, null, delmob)
+			if("predalien_larva")
+				newmob = M.change_mob_type(/mob/living/carbon/xenomorph/larva/predalien, location, null, delmob)
+			if("predalien")
+				newmob = M.change_mob_type(/mob/living/carbon/xenomorph/predalien, location, null, delmob)
 			if("queen")
 				newmob = M.change_mob_type(/mob/living/carbon/xenomorph/queen, location, null, delmob)
 			if("king")
@@ -450,6 +456,8 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 				newmob = M.change_mob_type(/mob/living/carbon/xenomorph/wraith, location, null, delmob)
 			if("human")
 				newmob = M.change_mob_type(/mob/living/carbon/human, location, null, delmob)
+			if("yautja")
+				newmob = M.change_mob_type(/mob/living/carbon/human/species/yautja, location, null, delmob)
 			if("synthetic")
 				newmob = M.change_mob_type(/mob/living/carbon/human/species/synthetic, location, null, delmob)
 			if("early_synth")
@@ -1130,6 +1138,17 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 				log_admin("[key_name(src)] has [SSevacuation.flags_scuttle & FLAGS_SELF_DESTRUCT_DENY ? "forbidden" : "allowed"] the self-destruct system.")
 				message_admins("[ADMIN_TPMONTY(usr)] has [SSevacuation.flags_scuttle & FLAGS_SELF_DESTRUCT_DENY ? "forbidden" : "allowed"] the self-destruct system.")
 
+	else if(href_list["admincancelpredsd"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/obj/item/clothing/gloves/yautja/hunter/bracer = locate(href_list["bracer"])
+		var/mob/living/carbon/victim = locate(href_list["victim"])
+		if (!istype(bracer))
+			return
+		if (alert("Are you sure you want to cancel this pred SD?",,"Yes","No") != "Yes")
+			return
+		bracer.exploding = FALSE
+		message_admins("[src.owner] has cancelled the predator self-destruct sequence [victim ? "of [victim] ([victim.key])":""].")
 
 	else if(href_list["object_list"])
 		if(!check_rights(R_SPAWN))
@@ -2019,7 +2038,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 				previous = H.gender
 				H.gender = change
 			if("ethnicity")
-				change = input("Select the ethnicity.", "Edit Appearance") as null|anything in sortList(GLOB.ethnicities_list)
+				change = input("Select the ethnicity.", "Edit Appearance") as null|anything in sortList(GLOB.human_ethnicities_list)
 				if(!change || !istype(H))
 					return
 				previous = H.ethnicity

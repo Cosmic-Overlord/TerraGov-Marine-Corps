@@ -912,6 +912,10 @@
 /obj/effect/ai_node,
 /turf/open/ground/grasspatch/grassyellow,
 /area/orion_outpost/ground/outposts)
+"fk" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave/darker,
+/area/orion_outpost/ground/outpostnw)
 "fm" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/drained,
@@ -1614,6 +1618,10 @@
 	dir = 4
 	},
 /area/orion_outpost/surface/building/ammodepot)
+"ji" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave/darker,
+/area/orion_outpost/ground/outpostsw)
 "jj" = (
 /obj/machinery/camera/autoname/lz_camera,
 /turf/open/floor/plating/icefloor/warnplate{
@@ -2749,6 +2757,10 @@
 	dir = 10
 	},
 /area/orion_outpost/ground/outpostw)
+"ox" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave/darker,
+/area/orion_outpost/ground/underground/caveE)
 "oy" = (
 /obj/machinery/light,
 /turf/open/floor/mainship/mono,
@@ -6569,6 +6581,10 @@
 /obj/effect/landmark/excavation_site_spawner,
 /turf/open/ground/grasspatch/grassyellow,
 /area/orion_outpost/ground/outpostcent)
+"Iv" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave/darker,
+/area/orion_outpost/ground/underground/caveS)
 "Ix" = (
 /obj/machinery/door/poddoor/timed_late/containment/landing_zone/lz2{
 	dir = 2
@@ -7357,6 +7373,10 @@
 	dir = 8
 	},
 /turf/open/floor/plating/ground/concrete,
+/area/orion_outpost/ground/outpostw)
+"Mu" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave/darker,
 /area/orion_outpost/ground/outpostw)
 "Mv" = (
 /obj/structure/cable,
@@ -10626,7 +10646,7 @@ YQ
 YQ
 YQ
 Mh
-YQ
+Mu
 ve
 wt
 wt
@@ -12927,7 +12947,7 @@ ve
 ve
 ve
 ve
-ve
+ji
 wt
 wt
 YX
@@ -14653,7 +14673,7 @@ WQ
 ap
 ap
 ap
-lW
+fk
 lW
 lW
 lW
@@ -25858,7 +25878,7 @@ zi
 zi
 zi
 zi
-zi
+Iv
 mR
 mR
 mR
@@ -27095,7 +27115,7 @@ sx
 sx
 Fg
 Fg
-Fg
+ox
 Fg
 Fg
 Fg

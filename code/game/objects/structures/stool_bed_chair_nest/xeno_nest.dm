@@ -13,6 +13,7 @@
 	resistance_flags = UNACIDABLE|XENO_DAMAGEABLE
 	max_integrity = 100
 	var/resisting_time = 0
+	var/force_nest = FALSE
 	layer = RESIN_STRUCTURE_LAYER
 
 /obj/structure/bed/nest/attackby(obj/item/I, mob/user, params)
@@ -62,6 +63,10 @@
 			to_chat(user, span_warning("[H] was recently unbuckled. Wait a bit."))
 			return FALSE
 
+	if(isyautja(buckling_mob) && !force_nest)
+		to_chat(user, span_warning("\The [buckling_mob] seems to be wearing some kind of resin-resistant armor!"))
+		return
+
 	user.visible_message(span_warning("[user] pins [buckling_mob] into [src], preparing the securing resin."),
 	span_warning("[user] pins [buckling_mob] into [src], preparing the securing resin."))
 
@@ -93,9 +98,14 @@
 		silent = TRUE
 		return ..()
 
+	if(force_nest)
+		to_chat(buckled_mob, span_warning("Nest to thick, you can't resist."))
+		return FALSE
+
 	if(buckled_mob.incapacitated(TRUE))
 		to_chat(buckled_mob, span_warning("You're currently unable to try that."))
 		return FALSE
+
 	if(!resisting_time)
 		resisting_time = world.time
 		buckled_mob.visible_message(span_warning("\The [buckled_mob] struggles to break free of \the [src]."),
@@ -103,12 +113,15 @@
 			span_notice("You hear squelching."))
 		addtimer(CALLBACK(src, PROC_REF(unbuckle_time_message), user), NEST_RESIST_TIME)
 		return FALSE
+
 	if(resisting_time + NEST_RESIST_TIME > world.time)
 		to_chat(buckled_mob, span_warning("You're already trying to free yourself. Give it some time."))
 		return FALSE
+
 	buckled_mob.visible_message(span_danger("\The [buckled_mob] breaks free from \the [src]!"),
 		span_danger("You pull yourself free from \the [src]!"),
 		span_notice("You hear squelching."))
+
 	silent = TRUE
 	return ..()
 
@@ -125,7 +138,7 @@
 	. = ..()
 	ENABLE_BITFIELD(buckling_mob.restrained_flags, RESTRAINED_XENO_NEST)
 	buckling_mob.pulledby?.stop_pulling()
-	buckling_mob.reagents.add_reagent(/datum/reagent/medicine/xenojelly, 15)
+	buckling_mob.reagents.add_reagent(/datum/reagent/xenojelly, 15)
 
 /obj/structure/bed/nest/post_unbuckle_mob(mob/living/buckled_mob)
 	. = ..()
@@ -150,3 +163,27 @@
 
 #undef NEST_RESIST_TIME
 #undef NEST_UNBUCKLED_COOLDOWN
+
+/obj/structure/bed/nest/structure
+	name = "thick alien nest"
+	desc = "A very thick nest, oozing with a thick sticky substance."
+	force_nest = TRUE
+	var/obj/structure/xeno/thick_nest/linked_structure
+
+/obj/structure/bed/nest/structure/Initialize(mapload, hive, obj/structure/xeno/thick_nest/to_link)
+	. = ..()
+	if(to_link)
+		linked_structure = to_link
+		max_integrity = linked_structure.max_integrity
+
+/obj/structure/bed/nest/structure/Destroy()
+	. = ..()
+	if(linked_structure)
+		linked_structure.pred_nest = null
+		QDEL_NULL(linked_structure)
+
+/obj/structure/bed/nest/structure/attack_hand(mob/user)
+	if(!isxeno(user))
+		to_chat(user, span_notice("The sticky resin is too strong for you to do anything to this nest"))
+		return FALSE
+	. = ..()

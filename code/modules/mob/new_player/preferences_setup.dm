@@ -123,7 +123,7 @@
 	b_eyes = blue
 
 
-/datum/preferences/proc/update_preview_icon()
+/datum/preferences/proc/update_preview_icon(job_override, dummy_type = DUMMY_HUMAN_SLOT_PREFERENCES)
 	// Determine what job is marked as 'High' priority, and dress them up as such.
 	var/datum/job/previewJob
 	var/highest_pref = JOBS_PRIORITY_NEVER
@@ -132,19 +132,22 @@
 			previewJob = SSjob.GetJob(job)
 			highest_pref = job_preferences[job]
 
+	if(job_override)
+		previewJob = job_override
+
 	if(!previewJob)
-		var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
+		var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(dummy_type)
 		copy_to(mannequin)
 		COMPILE_OVERLAYS(mannequin)
 		parent.show_character_previews(new /mutable_appearance(mannequin))
-		unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
+		unset_busy_human_dummy(dummy_type)
 		return
 
 	if(previewJob.handle_special_preview(parent))
 		return
 
 	// Set up the dummy for its photoshoot
-	var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
+	var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(dummy_type)
 	copy_to(mannequin)
 
 	if(previewJob)
@@ -153,7 +156,7 @@
 
 	COMPILE_OVERLAYS(mannequin)
 	parent.show_character_previews(new /mutable_appearance(mannequin))
-	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
+	unset_busy_human_dummy(dummy_type)
 
 
 /datum/preferences/proc/randomize_species_specific()
@@ -192,16 +195,16 @@
 	character.g_hair = g_hair
 	character.b_hair = b_hair
 
-	character.r_grad	= r_grad
-	character.g_grad	= g_grad
-	character.b_grad	= b_grad
+	character.r_grad = r_grad
+	character.g_grad = g_grad
+	character.b_grad = b_grad
 
 	character.r_facial = r_facial
 	character.g_facial = g_facial
 	character.b_facial = b_facial
 
 	character.h_style = h_style
-	character.grad_style= grad_style
+	character.grad_style = grad_style
 	character.f_style = f_style
 
 	character.citizenship = citizenship
@@ -210,15 +213,6 @@
 	character.moth_wings = moth_wings
 	character.underwear = underwear
 	character.undershirt = undershirt
-
-	if(backpack > BACK_NOTHING)
-		var/obj/item/storage/backpack/new_backpack
-		switch(backpack)
-			if(BACK_BACKPACK)
-				new_backpack = new /obj/item/storage/backpack/marine(character)
-			if(BACK_SATCHEL)
-				new_backpack = new /obj/item/storage/backpack/marine/satchel(character)
-		character.equip_to_slot_or_del(new_backpack, SLOT_BACK)
 
 	character.update_body()
 	character.update_hair()

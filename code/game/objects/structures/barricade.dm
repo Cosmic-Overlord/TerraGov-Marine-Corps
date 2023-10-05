@@ -409,6 +409,21 @@
 		repair_damage(max_integrity)
 		balloon_alert_to_viewers("Repaired")
 
+/obj/structure/barricade/sandstone
+	name = "sandstone fence"
+	desc = "A fence made out of sandstone blocks. Not very sturdy, but can provide some concealment."
+	icon_state = "hr_sandstone"
+	max_integrity = 100
+	stack_type = /obj/item/stack/sheet/mineral/sandstone
+	stack_amount = 2
+	destroyed_stack_amount = 1
+	can_change_dmg_state = FALSE
+	barricade_type = "hr_sandstone"
+	can_wire = FALSE
+
+/obj/structure/barricade/sandstone/flat
+	icon_state = "hr_sandstone_b"
+	barricade_type = "hr_sandstone_b"
 
 /*----------------------*/
 // METAL

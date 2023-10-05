@@ -23,7 +23,7 @@
 
 	var/health_deficiency = max((maxHealth - health), staminaloss)
 
-	if(health_deficiency >= 50)
+	if(health_deficiency >= 50 && !(species?.species_flags & PARALYSE_RESISTANT))
 		add_movespeed_modifier(MOVESPEED_ID_DAMAGE_SLOWDOWN, TRUE, 0, NONE, TRUE, health_deficiency / 50)
 	else
 		remove_movespeed_modifier(MOVESPEED_ID_DAMAGE_SLOWDOWN)
@@ -336,4 +336,7 @@ This function restores all limbs.
 /mob/living/carbon/human/apply_damage(damage = 0, damagetype = BRUTE, def_zone, blocked = 0, sharp = FALSE, edge = FALSE, updating_health = FALSE, penetration)
 	if(status_flags & (GODMODE))
 		return
+
+	last_damage_source = usr //where my cause_data??? no cause_data? https://media.discordapp.net/attachments/1059662710217908245/1128315728081211412/65939r.png?width=842&height=917
+
 	return species.apply_damage(damage, damagetype, def_zone, blocked, sharp, edge, updating_health, penetration, src)

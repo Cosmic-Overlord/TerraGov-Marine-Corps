@@ -72,7 +72,7 @@
 /obj/machinery/telecomms/bus/preset_four
 	id = "Bus 4"
 	network = "tcommsat"
-	freq_listening = list(FREQ_COMMON)
+	freq_listening = list(FREQ_COMMON, YAUT_FREQ)
 	autolinkers = list("processor4", "common")
 
 //proper cicbackup bus
@@ -80,7 +80,7 @@
 	on = 0
 	id = "Backup Bus 4"
 	network = "tcommsat"
-	freq_listening = list(FREQ_COMMON)
+	freq_listening = list(FREQ_COMMON, YAUT_FREQ)
 	autolinkers = list("processor4", "common")
 
 /obj/machinery/telecomms/bus/preset_one/rebel

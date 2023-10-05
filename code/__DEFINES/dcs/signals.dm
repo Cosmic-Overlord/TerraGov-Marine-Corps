@@ -23,6 +23,8 @@
 #define COMSIG_GLOB_NUKE_DIFFUSED "!nuke_diffused"
 #define COMSIG_GLOB_DISK_GENERATED "!disk_produced"
 
+#define COMSIG_GLOB_YAUTJA_ARMORY_OPENED "yautja_armory_opened"
+
 /// from /obj/machinery/setAnchored(): (machine, anchoredstate)
 #define COMSIG_GLOB_MACHINERY_ANCHORED_CHANGE "!machinery_anchored_change"
 
@@ -157,6 +159,8 @@
 #define COMSIG_PARENT_ATTACKBY_ALTERNATE "atom_attackby_alternate" //from base of atom/attackby_alternate(): (/obj/item, /mob/living)
 	#define COMPONENT_NO_AFTERATTACK (1<<0)						//Return this in response if you don't want afterattack to be called
 
+#define COMSIG_ATOM_TELEPORT "atom_teleport"
+
 #define COMSIG_ATOM_CONTENTS_DEL "atom_contents_del"			//from base of atom/handle_atom_del(): (atom/deleted)
 #define COMSIG_ATOM_ENTERED "atom_entered"                      //from base of atom/Entered(): (atom/movable/entering, atom/oldloc, list/atom/oldlocs)
 #define COMSIG_ATOM_EXIT "atom_exit"							//from base of atom/Exit(): (/atom/movable/exiting, direction)
@@ -213,6 +217,8 @@
 	#define COMPONENT_MOVABLE_BLOCK_PRE_MOVE (1<<0)
 #define COMSIG_MOVABLE_MOVED "movable_moved"					//from base of atom/movable/Moved(): (/atom, movement_dir, forced, old_locs)
 #define COMSIG_MOVABLE_PULL_MOVED "movable_pull_moved"		//base base of atom/movable/Moved() (/atom, movement_dir, forced, old_locs)
+#define COMSIG_ATTEMPT_MOB_PULL "attempt_mob_pull"
+	#define COMPONENT_CANCEL_MOB_PULL (1<<0)
 ///from base of atom/movable/Cross(): (/atom/movable)
 #define COMSIG_MOVABLE_CROSS "movable_cross"
 ///from base of atom/movable/update_loc(): (/atom/oldloc)
@@ -278,6 +284,7 @@
 // /obj/item signals
 #define COMSIG_ITEM_APPLY_CUSTOM_OVERLAY "item_apply_custom_overlay" //from base of obj/item/apply_custom(): (/image/standing)
 #define COMSIG_ITEM_ATTACK "item_attack"						//from base of obj/item/attack(): (/mob/living/target, /mob/living/user)
+#define COMSIG_ITEM_ATTEMPT_ATTACK "item_attempt_attack"		//Triggered on the target mob.
 #define COMSIG_ITEM_ATTACK_ALTERNATE "item_attack_alt"			//from base of obj/item/attack_alternate(): (/mob/living/target, /mob/living/user)
 #define COMSIG_ITEM_ATTACK_SELF "item_attack_self"				//from base of obj/item/attack_self(): (/mob)
 	#define COMPONENT_NO_INTERACT (1<<0)
@@ -401,6 +408,9 @@
 #define COMSIG_MOB_HUD_CREATED "mob_hud_created"				//from base of mob/create_mob_hud(): ()
 #define COMSIG_MOB_KEYBINDINGS_UPDATED "mob_bindings_changed"   //from base of datum/preferences/ui_act(): (/datum/keybinding)
 
+/// From /mob/living/verb/resist()
+#define COMSIG_MOB_RECALCULATE_CLIENT_COLOR "mob_recalc_client_color"
+
 #define COMSIG_MOB_SHIELD_DETATCH "mob_shield_detatched"
 #define COMSIG_MOB_ITEM_ATTACK "mob_item_attack"				//from base of /obj/item/attack(): (mob/target, /obj/item/attacking_item)
 #define COMSIG_MOB_ITEM_ATTACK_ALTERNATE "mob_item_attack_alt"	//from base of /obj/item/attack_alternate(): (mob/target, /obj/item/attacking_item)
@@ -498,6 +508,12 @@
 
 #define COMSIG_HUMAN_MARKSMAN_AURA_CHANGED "human_marksman_aura_changed"
 
+/// From /mob/living/carbon/human/ExtinguishMob()
+#define COMSIG_HUMAN_EXTINGUISH "human_extinguish"
+
+/// From /datum/flaying_datum
+#define COMSIG_HUMAN_FLAY_ATTEMPT "human_flay_attempt"
+
 // shuttle signals
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
 
@@ -554,6 +570,8 @@
 
 #define COMSIG_XENOMORPH_FIRE_BURNING "xenomorph_fire_burning"
 #define COMSIG_XENOMORPH_TAKING_DAMAGE "xenomorph_taking_damage" // (target, damagetaken)
+
+#define COMSIG_XENOMORPH_INTERFERENCE "xenomorph_interference"
 
 #define COMSIG_XENOMORPH_BRUTE_DAMAGE "xenomorph_brute_damage" // (amount, amount_mod, passive)
 #define COMSIG_XENOMORPH_BURN_DAMAGE "xenomorph_burn_damage" // (amount, amount_mod, passive)
@@ -785,6 +803,10 @@
 #define COMSIG_XENOABILITY_EVASION "xenoability_evasion"
 #define COMSIG_XENOABILITY_SNATCH "xenoability_snatch"
 
+#define COMSIG_XENOABILITY_ROAR "xenoability_roar"
+#define COMSIG_XENOABILITY_SMASH "xenoability_smash"
+#define COMSIG_XENOABILITY_DEVASTATE "xenoability_devastate"
+
 #define COMSIG_XENOABILITY_VENTCRAWL "xenoability_vent_crawl"
 
 #define COMSIG_XENOABILITY_TOGGLE_AGILITY "xenoability_toggle_agility"
@@ -866,6 +888,23 @@
 #define COMSIG_KB_VALI_CONNECT "keybiding_vali_connect"
 #define COMSIG_KB_SUITANALYZER "keybinding_suitanalyzer"
 
+// yautja abilities for keybindings
+
+#define COMSIG_PRED_MARK_HUNT "pred_mark_hunt"
+#define COMSIG_PRED_MARK_PANEL "pred_mark_panel"
+#define COMSIG_PRED_ZOOM "pred_zoom"
+#define COMSIG_PRED_TOGGLESIGHT "pred_togglesight"
+#define COMSIG_PRED_COMBISTICK "pred_combistick"
+#define COMSIG_PRED_SMART_DISC "pred_smart_disc"
+#define COMSIG_PRED_TRANSLATOR "pred_translator"
+#define COMSIG_PRED_CRYSTAL "pred_crystal"
+#define COMSIG_PRED_CAPSULE "pred_capsule"
+#define COMSIG_PRED_WRISTBLADES "pred_wristblades"
+#define COMSIG_PRED_CASTER "pred_caster"
+#define COMSIG_PRED_CLOACK "pred_cloack"
+#define COMSIG_PRED_SD "pred_sd"
+#define COMSIG_PRED_SD_MODE "pred_sd_mode"
+
 // Ability adding/removing signals
 #define ACTION_GIVEN "gave_an_action"		//from base of /datum/action/proc/give_action(): (datum/action)
 #define ACTION_REMOVED "removed_an_action"	//from base of /datum/action/proc/remove_action(): (datum/action)
@@ -937,3 +976,6 @@
 
 // widow spiderling mark signals
 #define COMSIG_SPIDERLING_MARK "spiderling_mark"
+
+/// From /datum/admins/proc/force_predator_round()
+#define COMSIG_GLOB_PREDATOR_ROUND_TOGGLED "!predator_round_toglged"

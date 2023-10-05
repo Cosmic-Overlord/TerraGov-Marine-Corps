@@ -15,6 +15,8 @@
 	///Fumble delay applied without sufficient skill
 	var/unskilled_delay = SKILL_TASK_TRIVIAL
 
+	var/alien = FALSE
+
 /obj/item/stack/medical/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if(!istype(M))
 		to_chat(user, span_warning("\The [src] cannot be applied to [M]!"))
@@ -29,6 +31,10 @@
 
 	var/mob/living/carbon/human/H = M
 	var/datum/limb/affecting = user.client.prefs.toggles_gameplay & RADIAL_MEDICAL ? radial_medical(H, user) : H.get_limb(user.zone_selected)
+
+	if(HAS_TRAIT(H, TRAIT_FOREIGN_BIO) && !alien)
+		to_chat(user, span_warning("\The [src] is incompatible with the biology of [H]!"))
+		return TRUE
 
 	if(!affecting)
 		return TRUE
@@ -211,6 +217,24 @@
 		return
 	user.visible_message(span_notice("[user] cleans [patient]'s [target_limb.display_name] and seals its wounds with bioglue."),
 		span_notice("You clean and seal all the wounds on [patient]'s [target_limb.display_name]."))
+
+/obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator
+	name = "mending herbs"
+	singular_name = "mending herb"
+	desc = "A poultice made of soft leaves that is rubbed on bruises."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "brute_herbs"
+	heal_brute = 15
+	alien = TRUE
+
+/obj/item/stack/medical/heal_pack/ointment/predator
+	name = "soothing herbs"
+	singular_name = "soothing herb"
+	desc = "A poultice made of cold, blue petals that is rubbed on burns."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "burn_herbs"
+	heal_burn = 15
+	alien = TRUE
 
 /obj/item/stack/medical/heal_pack/advanced/burn_pack
 	name = "advanced burn kit"

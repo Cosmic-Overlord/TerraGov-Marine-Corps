@@ -115,6 +115,12 @@
 /obj/item/card/id/attack_self(mob/user as mob)
 	user.visible_message("[user] shows you: [icon2html(src, viewers(user))] [name]: assignment: [assignment]")
 
+/obj/item/card/id/proc/set_user_data(mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+
+	registered_name = H.real_name
+	blood_type = H.blood_type
 
 /obj/item/card/id/proc/update_label(newname, newjob)
 	if(newname || newjob)

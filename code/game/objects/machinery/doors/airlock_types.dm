@@ -193,6 +193,14 @@
 	icon = 'icons/obj/doors/Doorsand.dmi'
 	mineral = "sandstone"
 
+/obj/machinery/door/airlock/sandstone/runed
+	name = "\improper Runed Sandstone Airlock"
+	icon = 'icons/obj/doors/doorrunedsand.dmi'
+	mineral = "runed sandstone"
+	openspeed = 4 SECONDS
+	resistance_flags = RESIST_ALL
+	color = "#b29082"
+
 /obj/machinery/door/airlock/science
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/doors/Doorsci.dmi'
@@ -1044,3 +1052,23 @@
 	name = "\improper Research Dome"
 	icon_state = "door_locked"
 	locked = TRUE
+
+//YAUTJA SHIP - CURRENTLY USES STRATA DOORS
+/obj/machinery/door/airlock/yautja
+	name = "\improper Airlock"
+	icon = 'icons/obj/doors/strata_doors.dmi'
+	openspeed = 5
+	req_access = null
+	req_one_access = null
+	no_panel = TRUE
+	not_weldable = TRUE
+	resistance_flags = RESIST_ALL
+
+/obj/machinery/door/airlock/yautja/secure
+	req_one_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+
+/obj/machinery/door/airlock/yautja/secure/elder
+	req_one_access = list(ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+
+/obj/machinery/door/airlock/yautja/secure/ancient
+	req_one_access = list(ACCESS_YAUTJA_ANCIENT)

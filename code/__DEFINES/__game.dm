@@ -25,6 +25,7 @@
 #define MAP_TWIN_PILLARS "Twin Pillars"
 #define MAP_COMBAT_PATROL_BASE "Combat Patrol Base"
 
+#define PREDATOR_TO_TOTAL_SPAWN_RATIO 1/20
 
 #define SEE_INVISIBLE_MINIMUM 5
 

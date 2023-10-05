@@ -241,7 +241,7 @@
 			"name" = reagent.name,
 			"amount" = round(reagent.volume, 0.1),
 			"od" = reagent.overdosed,
-			"dangerous" = reagent.overdosed || istype(reagent, /datum/reagent/toxin) || istype(reagent, /datum/reagent/medicine/xenojelly)
+			"dangerous" = reagent.overdosed || istype(reagent, /datum/reagent/toxin) || istype(reagent, /datum/reagent/xenojelly)
 		)
 	data["has_chemicals"] = length_char(connected.occupant.reagents.reagent_list)
 	data["chemicals_lists"] = chemicals_lists

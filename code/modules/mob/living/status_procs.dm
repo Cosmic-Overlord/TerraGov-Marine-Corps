@@ -169,17 +169,13 @@
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_IMMOBILIZE, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
 	if(((status_flags & CANKNOCKDOWN) && !HAS_TRAIT(src, TRAIT_STUNIMMUNE)) || ignore_canstun)
+		if(absorb_stun(amount, ignore_canstun))
+			return
 		var/datum/status_effect/incapacitating/immobilized/I = IsImmobilized()
-		if(amount <= 0)
-			if(I)
-				qdel(I)
-		else
-			if(absorb_stun(amount, ignore_canstun))
-				return
-			if(I)
-				I.duration = world.time + amount
-			else
-				I = apply_status_effect(STATUS_EFFECT_IMMOBILIZED, amount)
+		if(I)
+			I.duration = world.time + amount
+		else if(amount > 0)
+			I = apply_status_effect(STATUS_EFFECT_IMMOBILIZED, amount)
 		return I
 
 ///Adds to remaining duration.

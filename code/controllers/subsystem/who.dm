@@ -88,12 +88,12 @@ SUBSYSTEM_DEF(who)
 							client_payload["color"] += "#2DACB1"
 							client_payload["text"] += " - Zombie"
 							additiona_data["zombie"]++
-//						else if(client_mob.faction == FACTION_YAUTJA)
-//							client_payload["color"] += "#7ABA19"
-//							client_payload["text"] += " - Yautja"
-//							additiona_data["yautja"]++
-//							if(client_mob.status_flags & XENO_HOST)
-//								additiona_data["infected_preds"]++
+						else if(isyautja(client_mob))
+							client_payload["color"] += "#7ABA19"
+							client_payload["text"] += " - Yautja"
+							additiona_data["yautja"]++
+							if(client_mob.status_flags & XENO_HOST)
+								additiona_data["infected_preds"]++
 						else
 							additiona_data["humans"]++
 							if(client_mob.status_flags & XENO_HOST)

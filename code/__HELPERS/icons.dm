@@ -1076,7 +1076,7 @@ ColorTone(rgb, tone)
 		if(J)
 			J.equip_dummy(body, outfit_override = outfit_override)
 		else if(outfit_override)
-			body.equipOutfit(outfit_override, visualsOnly = TRUE)
+			body.equipOutfit(outfit_override, TRUE)
 
 
 		var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")

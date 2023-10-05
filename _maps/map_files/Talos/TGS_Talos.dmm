@@ -7337,8 +7337,12 @@
 /area/mainship/hallways/port_hallway)
 "ftr" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/smg/m25/elite/suppressed,
-/obj/item/weapon/gun/smg/m25/elite/suppressed,
+/obj/item/weapon/gun/smg/m25/elite/suppressed{
+	default_ammo_type = /obj/item/ammo_magazine/smg/m25
+	},
+/obj/item/weapon/gun/smg/m25/elite/suppressed{
+	default_ammo_type = /obj/item/ammo_magazine/smg/m25
+	},
 /obj/item/ammo_magazine/smg/m25,
 /obj/item/ammo_magazine/smg/m25,
 /obj/item/ammo_magazine/smg/m25,

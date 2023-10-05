@@ -334,7 +334,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			face_standing.Blend(facial_s, ICON_OVERLAY)
 
 	if(h_style && !(head?.flags_inv_hide & HIDETOPHAIR))
-		var/datum/sprite_accessory/hair_style = GLOB.hair_styles_list[h_style]
+		var/datum/sprite_accessory/hair_style = species.get_hairstyle(h_style)
 		if(hair_style && (species.name in hair_style.species_allowed))
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			if(hair_style.do_colouration)
@@ -676,9 +676,15 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	remove_overlay(BURST_LAYER)
 	var/mutable_appearance/standing
 	if(chestburst == 1)
-		standing = mutable_appearance('icons/Xeno/Effects.dmi', "burst_stand", -BURST_LAYER)
+		if(isyautja(src))
+			standing = mutable_appearance('icons/Xeno/Effects.dmi', "predburst_stand", -BURST_LAYER)
+		else
+			standing = mutable_appearance('icons/Xeno/Effects.dmi', "burst_stand", -BURST_LAYER)
 	else if(chestburst == 2)
-		standing = mutable_appearance('icons/Xeno/Effects.dmi', "bursted_stand", -BURST_LAYER)
+		if(isyautja(src))
+			standing = mutable_appearance('icons/Xeno/Effects.dmi', "predbursted_stand", -BURST_LAYER)
+		else
+			standing = mutable_appearance('icons/Xeno/Effects.dmi', "bursted_stand", -BURST_LAYER)
 
 	overlays_standing[BURST_LAYER]	= standing
 	apply_overlay(BURST_LAYER)

@@ -280,6 +280,7 @@
 
 	get_message_output("watchlist entry", ckey)
 	validate_key_in_db()
+	load_player_predator_info()
 
 	send_resources()
 

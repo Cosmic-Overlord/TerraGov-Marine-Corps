@@ -24,6 +24,9 @@
 	var/list/obj/structure/xeno/pherotower/pherotowers = list()
 	///list of hivemind cores
 	var/list/obj/structure/xeno/hivemindcore/hivemindcores = list()
+	///list of thick resin nests
+	var/max_thick_nests = 0
+	var/list/obj/structure/xeno/thick_nest/thick_nests = list()
 	var/tier3_xeno_limit
 	var/tier2_xeno_limit
 	///Queue of all observer wanting to join xeno side
@@ -1663,6 +1666,23 @@ to_chat will check for valid clients itself already so no need to double check f
 
 /mob/living/carbon/xenomorph/king/Corrupted/fallen
 	hivenumber = XENO_HIVE_FALLEN
+
+/datum/hive_status/forsaken
+	name = "Forsaken Hive"
+	hivenumber = XENO_HIVE_FORSAKEN
+	prefix = "Forsaken "
+	color = "#cc8ec4"
+
+/datum/hive_status/forsaken/can_xeno_message()
+	return TRUE // can always talk in hivemind
+
+/datum/hive_status/yautja
+	name = "Yautja"
+	hivenumber = XENO_HIVE_YAUTJA
+	prefix = "Yautja "
+
+/datum/hive_status/yautja/can_xeno_message()
+	return FALSE
 
 // ***************************************
 // *********** Xeno hive compare helpers

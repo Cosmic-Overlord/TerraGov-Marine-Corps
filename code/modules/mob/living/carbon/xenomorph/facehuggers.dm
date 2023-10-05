@@ -560,7 +560,11 @@
 
 
 	if(ishuman(user))
-		var/hugsound = user.gender == FEMALE ? get_sfx("female_hugged") : get_sfx("male_hugged")
+		var/hugsound
+		if(isyautja(user))
+			hugsound = get_sfx("pred_hugged")
+		else
+			hugsound = user.gender == FEMALE ? get_sfx("female_hugged") : get_sfx("male_hugged")
 		playsound(loc, hugsound, 25, 0)
 	if(!sterile && !issynth(user))
 		var/stamina_dmg = user.maxHealth + user.max_stamina
@@ -579,6 +583,8 @@
 			embryo.hivenumber = hivenumber
 			if(source?.mind && isxenofacehugger(source)) //If hugger sentient he will get an advantage for becoming a larva
 				embryo.source = source.ckey
+			if(target.species)
+				target.species.larva_impregnated(embryo)
 			GLOB.round_statistics.now_pregnant++
 			SSblackbox.record_feedback("tally", "round_statistics", 1, "now_pregnant")
 			sterile = TRUE

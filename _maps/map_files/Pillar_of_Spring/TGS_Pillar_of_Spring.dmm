@@ -15276,6 +15276,14 @@
 	dir = 8
 	},
 /area/mainship/living/tankerbunks)
+"tHL" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/plating_catwalk,
+/area/mainship/hull/lower_hull)
 "tHY" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
@@ -18601,6 +18609,11 @@
 	},
 /turf/open/floor/mainship/mono,
 /area/mainship/squads/req)
+"xQN" = (
+/obj/structure/cable,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/plating_catwalk,
+/area/mainship/hull/lower_hull)
 "xQT" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
@@ -42517,7 +42530,7 @@ trv
 lmF
 lmF
 lmF
-lmF
+tHL
 dbv
 lmF
 lmF
@@ -47102,7 +47115,7 @@ mBZ
 mBZ
 hRh
 esN
-wPV
+xQN
 ufq
 bTS
 bTS
@@ -52355,7 +52368,7 @@ idy
 gdj
 uvM
 dcY
-wPV
+xQN
 esN
 nWT
 nWT
@@ -55337,7 +55350,7 @@ wPV
 wPV
 uSh
 wPV
-wPV
+xQN
 wPV
 wPV
 wPV
@@ -60279,7 +60292,7 @@ sYv
 qFT
 mDY
 wPV
-wPV
+xQN
 qFT
 sYv
 cbS

@@ -55,6 +55,21 @@
 #define ATTACHMENT_SLOT_UNIFORM "uniform"
 #define ATTACHMENT_SLOT_UNIFORM_TIE "tie"
 
+#define ACCESSORY_SLOT_ARMOR_C "chest_armor"
+
+#define ACCESSORY_SLOT_ARMOR_A "arm_armor"
+#define ACCESSORY_SLOT_ARMOR_L "leg_armor"
+#define ACCESSORY_SLOT_ARMOR_S "armor_storage"
+#define ACCESSORY_SLOT_ARMOR_M "misc_armor"
+
 #define ATTACHMENT_SLOT_BADGE "badge"
 #define ATTACHMENT_SLOT_CAPE "cape"
 #define ATTACHMENT_SLOT_CAPE_HIGHLIGHT "cape_highlight"
+
+#define ACCESSORY_SLOT_ARMOR_Y_C "chest_bones"
+#define ACCESSORY_SLOT_ARMOR_Y_S "spine_bones"
+#define ACCESSORY_SLOT_ARMOR_Y_H "head_bones"
+#define ACCESSORY_SLOT_ARMOR_Y_RL "right_leg_bones"
+#define ACCESSORY_SLOT_ARMOR_Y_LL "left_leg_bones"
+#define ACCESSORY_SLOT_ARMOR_Y_RH "right_hand_bones"
+#define ACCESSORY_SLOT_ARMOR_Y_LH "left_hand_bones"

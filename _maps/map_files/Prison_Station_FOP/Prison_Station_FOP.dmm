@@ -41682,6 +41682,12 @@
 /obj/machinery/door/poddoor/timed_late/containment/landing_zone,
 /turf/closed/wall/r_wall/prison,
 /area/prison/command/quarters)
+"eVS" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/prison/yellow{
+	dir = 1
+	},
+/area/prison/cellblock/mediumsec/south)
 "eWj" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 6
@@ -42224,6 +42230,17 @@
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/hangar_barracks)
+"gEN" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/prison/darkred/full,
+/area/prison/security/checkpoint/maxsec)
 "gFT" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -43558,6 +43575,10 @@
 	dir = 8
 	},
 /area/prison/cellblock/highsec/north/south)
+"kgg" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/prison,
+/area/prison/research/secret/containment)
 "khD" = (
 /obj/effect/landmark/excavation_site_spawner,
 /turf/open/floor/prison/sterilewhite,
@@ -45363,6 +45384,12 @@
 /obj/effect/ai_node,
 /turf/open/floor/prison/bright_clean,
 /area/prison/canteen)
+"prm" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/prison/green{
+	dir = 5
+	},
+/area/prison/hallway/staff)
 "ptw" = (
 /obj/structure/flora/pottedplant/twentyone,
 /turf/open/floor/wood,
@@ -47968,6 +47995,12 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/floor/plating,
 /area/prison/hallway/central)
+"vTy" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/prison/red{
+	dir = 10
+	},
+/area/prison/cellblock/highsec/south/south)
 "vUd" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -68526,7 +68559,7 @@ bZQ
 bZQ
 pzC
 reE
-cri
+vTy
 ceH
 aab
 aab
@@ -82050,7 +82083,7 @@ xhO
 xhO
 axS
 akK
-vJh
+gEN
 axj
 aeR
 jYZ
@@ -82931,7 +82964,7 @@ cjX
 cbN
 cwY
 cuY
-cxz
+eVS
 cvA
 crX
 cyq
@@ -86141,7 +86174,7 @@ agL
 agL
 agL
 agJ
-agL
+kgg
 agL
 agL
 agL
@@ -103656,7 +103689,7 @@ aHi
 aHi
 aMA
 aHh
-vFL
+prm
 aOM
 aQo
 aRu

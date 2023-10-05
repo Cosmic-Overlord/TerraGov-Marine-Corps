@@ -8801,6 +8801,10 @@
 /obj/item/ore/uranium,
 /turf/open/floor/prison,
 /area/gelida/indoors/c_block/mining)
+"fJu" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/fakesnow/alt,
+/area/gelida/outdoors/colony_streets/south_east_street)
 "fJx" = (
 /obj/item/tool/crowbar/red,
 /turf/open/floor/prison/whitepurple/full{
@@ -14358,6 +14362,10 @@
 "jph" = (
 /turf/open/floor/plating/ground/desertdam/asphalt/cement,
 /area/gelida/outdoors/colony_streets/south_west_street)
+"jpp" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/fakesnow/alt,
+/area/gelida/outdoors/colony_streets/south_street)
 "jpK" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -17715,6 +17723,10 @@
 	},
 /turf/open/floor/plating/ground/snow/layer0,
 /area/gelida/outdoors/colony_streets/central_streets)
+"lCr" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/ice,
+/area/gelida/caves/central_caves)
 "lCJ" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -21531,6 +21543,10 @@
 /obj/machinery/computer/intel_computer,
 /turf/open/floor/prison/darkbrown/full,
 /area/gelida/indoors/c_block/casino)
+"ocg" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/fakesnow/alt,
+/area/gelida/outdoors/rock)
 "ocn" = (
 /obj/machinery/atmospherics/pipe/simple/green/hidden,
 /obj/structure/cable,
@@ -28718,6 +28734,10 @@
 	},
 /turf/open/floor/plating/ground/desertdam/asphalt/edge/regular,
 /area/gelida/outdoors/colony_streets/south_east_street)
+"sCk" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/fakesnow,
+/area/gelida/outdoors/colony_streets/central_streets)
 "sCl" = (
 /obj/effect/turf_decal/warning_stripes/thin,
 /obj/effect/turf_decal/warning_stripes/thin{
@@ -30919,6 +30939,10 @@
 	dir = 8
 	},
 /area/gelida/indoors/a_block/kitchen)
+"tZA" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/fakesnow/alt,
+/area/gelida/outdoors/w_rockies)
 "tZM" = (
 /obj/structure/largecrate/random,
 /obj/structure/largecrate/random{
@@ -41503,7 +41527,7 @@ fBJ
 fBJ
 oTB
 fBJ
-bYd
+tZA
 ddP
 fBJ
 fBJ
@@ -47556,7 +47580,7 @@ yfp
 yfp
 yfp
 hoS
-gVv
+sCk
 eVG
 gHP
 aeE
@@ -55185,7 +55209,7 @@ ndb
 ndb
 dvV
 dvV
-dvV
+jpp
 ndb
 ndb
 ndb
@@ -55330,7 +55354,7 @@ uSj
 vaN
 vaN
 vaN
-gVv
+sCk
 aeE
 gHP
 gHP
@@ -57242,7 +57266,7 @@ uGF
 uGF
 gfl
 uGF
-uGF
+lCr
 uGF
 xIt
 xIt
@@ -72898,7 +72922,7 @@ eWY
 eWY
 eWY
 eWY
-oMs
+fJu
 oMs
 oMs
 uGS
@@ -75478,7 +75502,7 @@ ndb
 ndb
 ndb
 gdq
-gdq
+ocg
 nAJ
 nAJ
 ndb

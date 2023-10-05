@@ -10057,6 +10057,12 @@
 	dir = 4
 	},
 /area/mainship/engineering/lower_engine_monitoring)
+"fWa" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/plating_catwalk,
+/area/mainship/hull/port_hull)
 "fYx" = (
 /obj/effect/turf_decal/warning_stripes/thin,
 /obj/machinery/power/terminal{
@@ -17648,6 +17654,11 @@
 	dir = 1
 	},
 /area/mainship/hallways/repair_bay)
+"sOi" = (
+/obj/structure/cable,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/plating_catwalk,
+/area/mainship/hull/starboard_hull)
 "sOM" = (
 /obj/machinery/optable,
 /obj/item/tank/anesthetic,
@@ -19123,6 +19134,11 @@
 /obj/effect/ai_node,
 /turf/open/floor/mainship/orange,
 /area/mainship/engineering/lower_engineering)
+"vxO" = (
+/obj/structure/cable,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/mainship/mono,
+/area/mainship/hull/port_hull)
 "vxW" = (
 /obj/structure/cable,
 /turf/open/floor/mainship/blue/corner{
@@ -19269,6 +19285,7 @@
 /area/mainship/hallways/hangar)
 "vND" = (
 /obj/machinery/light/mainship/small,
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/mainship/mono,
 /area/mainship/hull/port_hull)
 "vOn" = (
@@ -20556,6 +20573,12 @@
 /obj/effect/ai_node,
 /turf/open/floor/mainship/mono,
 /area/mainship/hallways/hangar)
+"ybl" = (
+/obj/structure/cable,
+/obj/machinery/light/mainship/small,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/mainship/mono,
+/area/mainship/hull/port_hull)
 "ybO" = (
 /obj/structure/dropship_equipment/electronics/spotlights,
 /turf/open/floor/mainship/mono,
@@ -44341,7 +44364,7 @@ lzj
 cZJ
 stM
 lzj
-fZA
+vxO
 aVk
 aaa
 aaa
@@ -46096,7 +46119,7 @@ aaa
 aaa
 aaa
 aai
-tDH
+sOi
 abR
 dcq
 xKj
@@ -57400,7 +57423,7 @@ aaa
 aaa
 aaa
 aai
-tDH
+sOi
 aXM
 cik
 aXJ
@@ -63877,7 +63900,7 @@ cej
 cdQ
 cek
 cbn
-sao
+ybl
 aVk
 aaa
 aaa
@@ -71285,7 +71308,7 @@ aai
 aal
 rbR
 rbR
-tDH
+sOi
 tDH
 rbR
 gyz
@@ -73372,7 +73395,7 @@ bgW
 brQ
 tKz
 tih
-tih
+fWa
 btF
 btF
 tih

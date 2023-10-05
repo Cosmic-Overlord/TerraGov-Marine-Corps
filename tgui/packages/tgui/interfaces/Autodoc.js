@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { AnimatedNumber, Button, LabeledList, ProgressBar, Section, Box, NoticeBox} from '../components';
+import { AnimatedNumber, Button, LabeledList, ProgressBar, Section, Box, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
 const damageTypes = [
@@ -33,26 +33,23 @@ export const Autodoc = () => {
 
 const AutodocContent = (props, context) => {
   const { act, data } = useBackend(context);
-  const { hasOccupant, occupant, locked, notice, auto, queue, surgery} = data
+  const { hasOccupant, occupant, locked, notice, auto, queue, surgery } = data;
   return (
     <>
       <Section title="Settings">
         <Button
           content="Lock console"
           onClick={() => act('locktoggle')}
-          color={locked ? "green" : "red"}>
-        </Button>
+          color={locked ? "green" : "red"} />
         <Button
           content="Notifications"
           onClick={() => act('noticetoggle')}
-          color={notice ? "green" : "red"}>
-        </Button>
+          color={notice ? "green" : "red"} />
         <Button
           content="Automatic mode"
           onClick={() => act('automatictoggle')}
           disabled={surgery}
-          color={auto ? "green" : "red"}>
-        </Button>
+          color={auto ? "green" : "red"} />
       </Section>
       <Section title="Occupant">
         <LabeledList>
@@ -100,20 +97,17 @@ const AutodocContent = (props, context) => {
             {!surgery && (
               <Button
                 content="Begin surgery"
-                onClick={() => act('surgery')}>
-              </Button>
+                onClick={() => act('surgery')} />
             )}
             {!auto && (
               <Button
                 content="Clear surgery queue"
-                onClick={() => act('clear')}>
-              </Button>
+                onClick={() => act('clear')} />
             )}
             <Button
               content="Eject patient"
               icon="eject"
-              onClick={() => act('eject')}>
-            </Button>
+              onClick={() => act('eject')} />
           </Section>
           {!auto && !surgery && (
             <Section title="Surgery interface">
@@ -122,122 +116,106 @@ const AutodocContent = (props, context) => {
                   content="Surgical Brute Damage Treatment"
                   disabled={queue.includes("Surgical Brute Damage Treatment")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "brute"
-                  })}>
-                </Button>
+                    surgeryname: "brute",
+                  })} />
                 <Button
                   content="Surgical Burn Damage Treatment"
                   disabled={queue.includes("Surgical Burn Damage Treatment")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "burn"
-                  })}>
-                </Button>
+                    surgeryname: "burn",
+                  })} />
               </Section>
               <Section title="Orthopedic Surgeries">
                 <Button
                   content="Broken Bone Surgery"
                   disabled={queue.includes("Broken Bone Surgery")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "broken"
-                  })}>
-                </Button>
+                    surgeryname: "broken",
+                  })} />
                 <Button
                   content="Internal Bleeding Surgery"
                   disabled={queue.includes("Internal Bleeding Surgery")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "internal"
-                  })}>
-                </Button>
+                    surgeryname: "internal",
+                  })} />
                 <Button
                   content="Foreign Body Removal Surgery"
                   disabled={queue.includes("Foreign Body Removal Surgery")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "shrapnel"
-                  })}>
-                </Button>
+                    surgeryname: "shrapnel",
+                  })} />
                 <Button
                   content="Limb Replacement Surgery"
                   disabled={queue.includes("Limb Replacement Surgery")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "missing"
-                  })}>
-                </Button>
+                    surgeryname: "missing",
+                  })} />
               </Section>
               <Section title="Organ Surgeries">
                 <Button
                   content="Surgical Organ Damage Treatment"
                   disabled={queue.includes("Surgical Organ Damage Treatment")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "organdamage"
-                  })}>
-                </Button>
+                    surgeryname: "organdamage",
+                  })} />
                 <Button
                   content="Organ Infection Treatment"
                   disabled={queue.includes("Organ Infection Treatment")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "organgerms"
-                  })}>
-                </Button>
+                    surgeryname: "organgerms",
+                  })} />
                 <Button
                   content="Corrective Eye Surgery"
                   disabled={queue.includes("Corrective Eye Surgery")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "eyes"
-                  })}>
-                </Button>
+                    surgeryname: "eyes",
+                  })} />
               </Section>
               <Section title="Hematology Treatments">
                 <Button
                   content="Blood Transfer"
                   disabled={queue.includes("Blood Transfer")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "blood"
-                  })}>
-                </Button>
+                    surgeryname: "blood",
+                  })} />
                 <Button
                   content="Toxin Damage Chelation"
                   disabled={queue.includes("Toxin Damage Chelation")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "toxin"
-                  })}>
-                </Button>
+                    surgeryname: "toxin",
+                  })} />
                 <Button
                   content="Dialysis"
                   disabled={queue.includes("Dialysis")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "dialysis"
-                  })}>
-                </Button>
+                    surgeryname: "dialysis",
+                  })} />
                 <Button
                   content="Necrosis Removal Surgery"
                   disabled={queue.includes("Necrosis Removal Surgery")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "necro"
-                  })}>
-                </Button>
+                    surgeryname: "necro",
+                  })} />
                 <Button
                   content="Limb Disinfection Procedure"
                   disabled={queue.includes("Limb Disinfection Procedure")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "limbgerm"
-                  })}>
-                </Button>
+                    surgeryname: "limbgerm",
+                  })} />
               </Section>
               <Section title="Special Surgeries">
                 <Button
                   content="Facial Reconstruction Surgery"
                   disabled={queue.includes("Facial Reconstruction Surgery")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "facial"
-                  })}>
-                </Button>
+                    surgeryname: "facial",
+                  })} />
                 <Button
                   content="Close Open Incision"
                   disabled={queue.includes("Close Open Incision")}
                   onClick={() => act('add_surgery', {
-                    surgeryname: "open"
-                  })}>
-                </Button>
+                    surgeryname: "open",
+                  })} />
               </Section>
             </Section>
           )}

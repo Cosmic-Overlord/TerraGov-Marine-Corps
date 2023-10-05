@@ -145,6 +145,8 @@
 	if(job in SSjob.active_joinable_occupations)
 		job.free_job_positions(1)
 
+	hunter_data.clean_data()
+
 	for(var/obj/item/W in src)
 		W.store_in_cryo()
 
@@ -287,6 +289,8 @@
 	user.forceMove(src)
 
 	occupant = user
+	if(user.species)
+		user.species.handle_cryo(user)
 	update_icon()
 	return TRUE
 

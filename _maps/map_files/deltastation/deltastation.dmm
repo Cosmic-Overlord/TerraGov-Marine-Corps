@@ -550,6 +550,10 @@
 	},
 /turf/open/floor/iron,
 /area/deltastation/cargo/miningoffice)
+"afr" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/deltastation/asteroidcaves/northcaves)
 "aft" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -6195,6 +6199,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/deltastation/security/courtroom)
+"bnC" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/deltastation/asteroidcaves/southlz)
 "bnG" = (
 /obj/structure/window/framed/colony/reinforced/tinted,
 /turf/open/floor/plating,
@@ -12268,6 +12276,10 @@
 /obj/effect/turf_decal/warning_stripes/box/empty,
 /turf/open/floor/iron,
 /area/deltastation/science/robotics/lab)
+"cBw" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/deltastation/asteroidcaves/westerncaves)
 "cBy" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -16873,6 +16885,10 @@
 	},
 /turf/open/floor/iron,
 /area/deltastation/security/office)
+"dyG" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/deltastation/asteroidcaves/northeastcaves)
 "dyJ" = (
 /obj/effect/turf_decal/tile/transparent/neutral{
 	dir = 4
@@ -23493,6 +23509,11 @@
 /obj/effect/turf_decal/sandedge,
 /turf/open/floor/plating,
 /area/deltastation/security/execution/transfer)
+"eJI" = (
+/obj/effect/ai_node,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/deltastation/asteroidcaves/westerncaves)
 "eJT" = (
 /obj/machinery/light{
 	dir = 1
@@ -34246,6 +34267,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/deltastation/security/checkpoint/escape)
+"gQz" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/deltastation/asteroidcaves/securitycaves)
 "gQD" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -41437,6 +41462,11 @@
 	},
 /turf/open/floor/plating,
 /area/deltastation/service/abandoned_gambling_den/gaming)
+"itr" = (
+/obj/effect/landmark/weed_node,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating/ground/mars/random/cave,
+/area/deltastation/asteroidcaves/northcaves)
 "its" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -124330,7 +124360,7 @@ bCp
 bCp
 bCp
 olu
-eUA
+eJI
 olu
 bCp
 bCp
@@ -134333,7 +134363,7 @@ wxm
 bCp
 bCp
 bCp
-bCp
+cBw
 bCp
 wxm
 wxm
@@ -150233,7 +150263,7 @@ kTy
 psq
 kTy
 kyZ
-kTy
+afr
 kyZ
 kTy
 psq
@@ -153482,7 +153512,7 @@ hSn
 hSn
 hSn
 hSn
-hSn
+bnC
 hSn
 vNR
 vNR
@@ -164061,7 +164091,7 @@ vNR
 kTy
 kTy
 kTy
-psq
+itr
 kTy
 kTy
 kTy
@@ -170802,7 +170832,7 @@ sdT
 rHg
 rHg
 rHg
-rHg
+gQz
 rHg
 sdT
 wxm
@@ -171957,7 +171987,7 @@ vNR
 hSn
 hSn
 hSn
-hSn
+bnC
 vNR
 vNR
 vNR
@@ -173358,7 +173388,7 @@ wxm
 nhQ
 nkc
 nhQ
-nhQ
+dyG
 nkc
 wxm
 wxm

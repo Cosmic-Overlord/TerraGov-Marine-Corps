@@ -18,6 +18,8 @@
 
 	var/list/marines_list = list() // list of humans in that squad.
 
+	var/transfer_marines = TRUE
+
 	var/radio_freq = 1461
 	var/mob/living/carbon/human/squad_leader
 	var/mob/living/carbon/human/overwatch_officer
@@ -31,6 +33,11 @@
 	///Faction of that squad
 	var/faction = FACTION_TERRAGOV
 
+/datum/squad/proc/can_transfer_out()
+	return transfer_marines
+
+/datum/squad/proc/can_transfer_in()
+	return transfer_marines
 
 /datum/squad/alpha
 	name = RADIO_CHANNEL_ALPHA
@@ -69,6 +76,7 @@
 	color = "#3f7d30" // rgb(42, 134, 53)
 	access = list(ACCESS_MARINE_FOREIGN)
 	radio_freq = FREQ_FOREIGN
+	transfer_marines = FALSE
 
 /datum/squad/foreign/assign_initial(mob/new_player/player, datum/job/job, latejoin = FALSE)
 	var/datum/db_query/wl = SSdbcore.NewQuery("SELECT role FROM [format_table_name("foreign_legion")] WHERE ckey = :ckey", list("ckey" = ckey(player.ckey)))

@@ -189,7 +189,8 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 						dat += "<b><font color=red>NONE!</font></b> <a href='?src=\ref[src];operation=set_secondary'>\[Set\]</a><br>"
 					dat += "<br>"
 					dat += "<A href='?src=\ref[src];operation=insubordination'>Report a marine for insubordination</a><BR>"
-					dat += "<A href='?src=\ref[src];operation=squad_transfer'>Transfer a marine to another squad</a><BR><BR>"
+					if(current_squad.can_transfer_out())
+						dat += "<A href='?src=\ref[src];operation=squad_transfer'>Transfer a marine to another squad</a><BR><BR>"
 					dat += "<a href='?src=\ref[src];operation=monitor'>Squad Monitor</a><br>"
 					dat += "----------------------<br>"
 					dat += "<b>Rail Gun Control</b><br>"
@@ -671,7 +672,12 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 		to_chat(usr, "[icon2html(src, usr)] [span_warning("Transfer aborted. [transfer_marine] isn't wearing an ID.")]")
 		return
 
-	var/datum/squad/new_squad = tgui_input_list(usr, "Choose the marine's new squad", null,  watchable_squads)
+	var/list/potential_squads = list()
+	for(var/datum/squad/squad AS in watchable_squads)
+		if(squad.can_transfer_in())
+			potential_squads += squad
+
+	var/datum/squad/new_squad = tgui_input_list(usr, "Choose the marine's new squad", null, potential_squads)
 	if(!new_squad)
 		return
 

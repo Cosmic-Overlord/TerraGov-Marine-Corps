@@ -59,3 +59,6 @@ config/motd.txt
 config/policy.json
 config/resources.txt
 config/shipmaps.txt
+config/word_filter.toml
+config/lobby_themes/*
+config/reboot_themes/*

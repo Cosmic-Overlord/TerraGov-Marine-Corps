@@ -336,7 +336,7 @@
 	if(X.health < 0) //If we're at less than 0 HP, it's time to max rage.
 		rage_power = 1
 
-	var/rage_power_radius = CEILING(rage_power * 7, 1) //Define radius of the SFX
+	var/rage_power_radius = CEILING(rage_power * 3, 1) //Define radius of the SFX
 
 	X.visible_message(span_danger("\The [X] becomes frenzied, bellowing with a shuddering roar!"), \
 	span_highdanger("We bellow as our fury overtakes us! RIP AND TEAR!"))
@@ -354,7 +354,7 @@
 		X.overlay_fullscreen("xeno_feast", /atom/movable/screen/fullscreen/bloodlust)
 
 		if(endure_ability.endure_duration) //Check if Endure is active
-			endure_ability.endure_threshold = RAVAGER_ENDURE_HP_LIMIT * (1 + rage_power) //Endure crit threshold scales with Rage Power; min -100, max -200
+			endure_ability.endure_threshold = RAVAGER_ENDURE_HP_LIMIT * (1 + rage_power / 2) //Endure crit threshold scales with Rage Power; min -100, max -200
 
 		if(charge)
 			charge.clear_cooldown() //Reset charge cooldown
@@ -363,19 +363,19 @@
 		RegisterSignal(X, COMSIG_XENOMORPH_ATTACK_LIVING, PROC_REF(drain_slash))
 
 	for(var/turf/affected_tiles AS in RANGE_TURFS(rage_power_radius, X.loc))
-		affected_tiles.Shake(4, 4, 1 SECONDS) //SFX
+		affected_tiles.Shake(duration = 1 SECONDS) //SFX
 
-	for(var/mob/living/L AS in GLOB.mob_living_list) //Roar that applies cool SFX
-		if(L.stat == DEAD || !L.hud_used || (get_dist(L, X) > rage_power_radius || X)) //We don't care about the dead
+	for(var/mob/living/affected_mob in cheap_get_humans_near(X, rage_power_radius) + cheap_get_xenos_near(X, rage_power_radius)) //Roar that applies cool SFX
+		if(affected_mob.stat || X) //We don't care about the dead/unconsious
 			continue
 
-		shake_camera(L, 1 SECONDS, 1)
-		L.Shake(4, 4, 1 SECONDS) //SFX
+		shake_camera(affected_mob, 1 SECONDS, 1)
+		affected_mob.Shake(duration = 1 SECONDS) //SFX
 
 		if(rage_power >= RAVAGER_RAGE_SUPER_RAGE_THRESHOLD) //If we're super pissed it's time to get crazy
 
-			var/atom/movable/screen/plane_master/floor/OT = L.hud_used.plane_masters["[FLOOR_PLANE]"]
-			var/atom/movable/screen/plane_master/game_world/GW = L.hud_used.plane_masters["[GAME_PLANE]"]
+			var/atom/movable/screen/plane_master/floor/OT = affected_mob.hud_used.plane_masters["[FLOOR_PLANE]"]
+			var/atom/movable/screen/plane_master/game_world/GW = affected_mob.hud_used.plane_masters["[GAME_PLANE]"]
 
 			addtimer(CALLBACK(OT, TYPE_PROC_REF(/atom, remove_filter), "rage_outcry"), 1 SECONDS)
 			GW.add_filter("rage_outcry", 2, radial_blur_filter(0.07))

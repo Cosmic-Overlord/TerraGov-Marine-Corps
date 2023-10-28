@@ -176,7 +176,7 @@
 	desc = "Extremely expensive looking blade, with a golden handle and engravings, unexpectedly effective in combat, despite its ceremonial looks, compacted with a vali module."
 	icon_state = "rapier"
 	item_state = "rapier"
-	force = 60
+	force = 30
 	attack_speed = 5
 	flags_item = DRAINS_XENO
 

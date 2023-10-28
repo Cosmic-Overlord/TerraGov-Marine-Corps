@@ -2737,7 +2737,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	icon_state = "overchargedlaser"
 	hud_state = "laser_sniper_overcharge"
 	shell_speed = 2.5
-	damage = 130
+	damage = 100
 	penetration = 80
 	accurate_range_min = 6
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_SUNDERING|AMMO_HITSCAN|AMMO_SNIPER

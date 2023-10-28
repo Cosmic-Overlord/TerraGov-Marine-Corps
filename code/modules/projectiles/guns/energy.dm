@@ -674,6 +674,7 @@
 	starting_attachment_types = list(/obj/item/attachable/scope/laser_sniper_scope)
 
 	actions_types = list(/datum/action/item_action/aim_mode)
+	aim_fire_delay = 1 SECONDS
 	aim_slowdown = 0.7
 	wield_delay = 0.7 SECONDS
 	scatter = 0

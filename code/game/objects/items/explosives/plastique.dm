@@ -134,15 +134,15 @@
 /obj/item/explosive/plastique/proc/detonate()
 	if(QDELETED(plant_target))
 		playsound(plant_target, 'sound/weapons/ring.ogg', 100, FALSE, 25)
-		explosion(plant_target, 0, 0, 0, 1)
+		SScellauto.explode(plant_target, 100, 100)
 		qdel(src)
 		return
-	explosion(plant_target, 0, 0, 1, 0, 0, 1, 0, 1)
+	SScellauto.explode(plant_target, 200, 100)
 	playsound(plant_target, sound(get_sfx("explosion_small")), 100, FALSE, 25)
 	var/datum/effect_system/smoke_spread/smoke = new smoketype()
 	smoke.set_up(smokeradius, plant_target, 2)
 	smoke.start()
-	plant_target.ex_act(EXPLODE_DEVASTATE)
+	plant_target.ex_act(700)
 	qdel(src)
 
 ///Triggers a warning beep prior to the actual detonation, while also setting the actual detonation timer

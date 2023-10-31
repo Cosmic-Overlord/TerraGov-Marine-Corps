@@ -34,11 +34,11 @@
 
 /obj/structure/morgue/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_HEAVY)
-			if(prob(50))
-				return
-		if(EXPLODE_LIGHT)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(95))
+				return
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
 				return
 	for(var/atom/movable/A in src)
 		A.forceMove(loc)

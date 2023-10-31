@@ -148,7 +148,7 @@
 						visible_message("Magnetic containment stabilised.")
 						return
 					visible_message("DANGER! Magnetic containment field failure in 3 ... 2 ... 1 ...")
-					explosion(loc, 2, 3, 5, 8)
+					SScellauto.explode(loc, 600, 100)
 					// Not sure if this is necessary, but just in case the SMES *somehow* survived..
 					qdel(src)
 

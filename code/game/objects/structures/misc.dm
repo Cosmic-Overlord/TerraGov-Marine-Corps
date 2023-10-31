@@ -34,11 +34,11 @@
 
 /obj/structure/showcase/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			qdel(src)
-		if(EXPLODE_HEAVY)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				qdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			qdel(src)
 
 /obj/structure/showcase/yaut
 	name = "alien sarcophagus"
@@ -150,13 +150,7 @@
 	return ..()
 
 /obj/structure/xenoautopsy/tank/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			qdel(src)
-		if(EXPLODE_HEAVY)
-			take_damage(100)
-		if(EXPLODE_LIGHT)
-			take_damage(50)
+	take_damage(severity)
 
 ///Releases whatever is inside the tank
 /obj/structure/xenoautopsy/tank/proc/release_occupant()
@@ -276,14 +270,14 @@
 
 /obj/structure/plasticflaps/ex_act(severity)
 	switch(severity)
-		if (1)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(prob(5))
+				qdel(src)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				qdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
-		if (2)
-			if (prob(50))
-				qdel(src)
-		if (3)
-			if (prob(5))
-				qdel(src)
 
 /obj/structure/plasticflaps/mining //A specific type for mining that doesn't allow airflow because of them damn crates
 	name = "\improper Airtight plastic flaps"

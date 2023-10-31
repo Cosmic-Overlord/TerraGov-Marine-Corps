@@ -16,34 +16,35 @@
 	var/soft_armor_modifier = min((1 - ((get_soft_armor(armor_type, def_zone) - penetration) * 0.01)), 1)
 	return clamp(((damage_amount - hard_armor_modifier) * soft_armor_modifier), 0, damage_amount)
 
-/mob/living/carbon/xenomorph/ex_act(severity)
+/mob/living/carbon/xenomorph/ex_act(severity, explosion_direction)
 	if(status_flags & (INCORPOREAL|GODMODE))
 		return
 
-	var/bomb_effective_armor = (soft_armor.getRating("bomb")/100)*get_sunder()
-	var/bomb_slow_multiplier = max(0, 1 - 3.5*bomb_effective_armor)
-	var/bomb_sunder_multiplier = max(0, 1 - bomb_effective_armor)
+	var/bomb_sunder_multiplier = max(0, 1 - (soft_armor.getRating("bomb")/100)*get_sunder())
+	if(lying_angle)
+		severity *= EXPLOSION_PRONE_MULTIPLIER
 
-	if(bomb_effective_armor >= 1)
-		return //immune
+	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
+		var/oldloc = loc
+		gib()
+		create_shrapnel(oldloc, rand(16, 24), explosion_direction, , /datum/ammo/bullet/shrapnel/light/xeno)
+		return
 
-
-	if((severity == EXPLODE_DEVASTATE) && ((bomb_effective_armor * 100) <= XENO_EXPLOSION_GIB_THRESHOLD))
-		return gib() //Gibs unprotected benos
-
-	//Slowdown and stagger
-	var/ex_slowdown = (2 + (4 - severity)) * bomb_slow_multiplier
-
-	add_slowdown(max(0, ex_slowdown)) //Slowdown 2 for sentiel from nade
-	adjust_stagger(max(0, ex_slowdown - 2)) //Stagger 2 less than slowdown
-
+	//Damage
+	apply_damages(severity, blocked = BOMB, updating_health = TRUE)
 	//Sunder
 	adjust_sunder(max(0, 50 * (3 - severity) * bomb_sunder_multiplier))
 
-	//Damage
-	var/ex_damage = 40 + rand(0, 20) + 50*(4 - severity)  //changed so overall damage stays similar
-	apply_damages(ex_damage * 0.5, ex_damage * 0.5, blocked = BOMB, updating_health = TRUE)
-
+	var/powerfactor_value = round(severity * 0.05 ,1)
+	powerfactor_value = min(powerfactor_value,20)
+	if(powerfactor_value > 0)
+		Knockdown(powerfactor_value/5)
+		if(mob_size < MOB_SIZE_BIG)
+			add_slowdown(powerfactor_value)
+			adjust_stagger(powerfactor_value/2)
+			explosion_throw(severity, explosion_direction)
+		else
+			add_slowdown(powerfactor_value/3)
 
 /mob/living/carbon/xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone, blocked = 0, sharp = FALSE, edge = FALSE, updating_health = FALSE, penetration)
 	if(status_flags & GODMODE)

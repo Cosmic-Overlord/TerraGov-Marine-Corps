@@ -101,7 +101,7 @@
 
 /obj/machinery/deployable/mounted/sentry/deconstruct(disassembled = TRUE)
 	if(!disassembled)
-		explosion(loc, light_impact_range = 3)
+		SScellauto.explode(loc, 150, 75)
 	return ..()
 
 /obj/machinery/deployable/mounted/sentry/on_deconstruction()

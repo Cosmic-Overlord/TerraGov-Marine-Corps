@@ -125,44 +125,54 @@
 		if(issensorcapturegamemode(SSticker.mode))
 			stat("<b>Activated Sensor Towers:</b>", sensor_mode.sensors_activated)
 
-/mob/living/carbon/human/ex_act(severity)
+/mob/living/carbon/human/ex_act(severity, explosion_direction)
 	if(status_flags & GODMODE)
 		return
+
+	if(lying_angle)
+		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	var/b_loss = 0
 	var/f_loss = 0
 	var/armor = get_soft_armor("bomb") * 0.01 //Gets average bomb armor over all limbs.
 
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			b_loss += rand(160, 200)
-			f_loss += rand(160, 200)
+	if(severity >= EXPLOSION_THRESHOLD_GIB)
+		var/oldloc = loc
+		gib()
+		create_shrapnel(oldloc, rand(5, 9), explosion_direction, 45, /datum/ammo/bullet/shrapnel/light/human)
+		create_shrapnel(oldloc, rand(5, 9), explosion_direction, 30, /datum/ammo/bullet/shrapnel/light/human/var1)
+		create_shrapnel(oldloc, rand(5, 9), explosion_direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2)
+		return
 
-			if(!istype(wear_ear, /obj/item/clothing/ears/earmuffs))
-				adjust_ear_damage(60 - (60 * armor), 240 - (240 * armor))
 
-			adjust_stagger(12 - (12 * armor))
-			add_slowdown((120 - round(120 * armor, 1)) * 0.01)
+	b_loss += severity/2
+	f_loss += severity/2
 
-		if(EXPLODE_HEAVY)
-			b_loss += rand(80, 100)
-			f_loss += rand(80, 100)
+	if(!istype(wear_ear, /obj/item/clothing/ears/earmuffs))
+		adjust_ear_damage(severity * 0.15)
 
-			if(!istype(wear_ear, /obj/item/clothing/ears/earmuffs))
-				adjust_ear_damage(30 - (30 * armor), 120 - (120 * armor))
+	adjust_stagger(severity/70 - (severity/70 * armor))
+	add_slowdown((severity/5 - round(severity/5 * armor, 1)) * 0.01)
 
-			adjust_stagger(6 - (6 * armor))
-			add_slowdown((60 - round(60 * armor, 1)) * 0.1)
+	if(severity >= 30)
+		flash_act()
 
-		if(EXPLODE_LIGHT)
-			b_loss += rand(40, 50)
-			f_loss += rand(40, 50)
+	// Stuns are multiplied by 1 reduced by their medium armor value. So a medium of 30 would mean a 30% reduction.
+	var/knockdown_value = severity * 0.1
+	var/knockdown_minus_armor = min(knockdown_value * armor, 1 SECONDS)
+	var/obj/item/item1 = l_hand
+	var/obj/item/item2 = r_hand
+	apply_effect(round(knockdown_minus_armor), WEAKEN)
+	var/knockout_value = severity * 0.1
+	var/knockout_minus_armor = min(knockout_value * armor * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
+	apply_effect(round(knockout_minus_armor), PARALYZE)
+	apply_effect(round(knockout_minus_armor) * 2, WEAKEN)
+	explosion_throw(severity, explosion_direction)
 
-			if(!istype(wear_ear, /obj/item/clothing/ears/earmuffs))
-				adjust_ear_damage(10 - (10 * armor), 30 - (30 * armor))
-
-			adjust_stagger(3 - (3 * armor))
-			add_slowdown((30 - round(30 * armor, 1)) * 0.1)
+	if(item1 && isturf(item1.loc))
+		item1.explosion_throw(severity, explosion_direction)
+	if(item2 && isturf(item2.loc))
+		item2.explosion_throw(severity, explosion_direction)
 
 	#ifdef DEBUG_HUMAN_ARMOR
 	to_chat(world, "DEBUG EX_ACT: armor: [armor * 100], b_loss: [b_loss], f_loss: [f_loss]")

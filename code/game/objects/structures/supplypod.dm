@@ -53,20 +53,20 @@ GLOBAL_LIST_INIT(pod_styles, list(\
 	var/leavingSound
 	var/soundVolume = 80
 	var/bay
-	var/list/explosionSize = list(0, 0, 2, 3)
+	var/list/explosionSize = list(200, 100)
 
 
 /obj/structure/closet/supplypod/bluespacepod
 	style = STYLE_BLUESPACE
 	bluespace = TRUE
-	explosionSize = list(0, 0, 1, 2)
+	explosionSize = list(100, 100)
 	landingDelay = 15
 
 
 /obj/structure/closet/supplypod/centcompod
 	style = STYLE_CENTCOM
 	bluespace = TRUE
-	explosionSize = list(0, 0, 0, 0)
+	explosionSize = list(0, 0)
 	landingDelay = 20
 	resistance_flags = RESIST_ALL
 
@@ -139,9 +139,8 @@ GLOBAL_LIST_INIT(pod_styles, list(\
 		L.adjustBruteLoss(damage)
 		UPDATEHEALTH(L)
 
-	var/explosion_sum = B[1] + B[2] + B[3] + B[4]
-	if(explosion_sum != 0)
-		explosion(get_turf(src), B[1], B[2], B[3], B[4])
+	if(B[1] != 0)
+		SScellauto.explode(get_turf(src), B[1], B[2])
 	else if(!effectQuiet)
 		playsound(src, "explosion", landingSound ? 15 : 80, 1)
 

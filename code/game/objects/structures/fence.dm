@@ -17,13 +17,7 @@
 	//We dont have armor do to being a bit more healthy!
 
 /obj/structure/fence/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			deconstruct(FALSE)
-		if(EXPLODE_HEAVY)
-			take_damage(rand(100, 125))//Almost broken or half way
-		if(EXPLODE_LIGHT)
-			take_damage(rand(50, 75))
+	take_damage(severity)
 
 /obj/structure/fence/attackby(obj/item/I, mob/user, params)
 	. = ..()

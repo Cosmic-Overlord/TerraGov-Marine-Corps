@@ -58,6 +58,22 @@
 /obj/machinery/door/airlock/bumpopen(mob/living/simple_animal/user as mob)
 	..(user)
 
+/obj/machinery/door/airlock/ex_act(severity, explosion_direction)
+	var/exp_damage = severity * EXPLOSION_DAMAGE_MULTIPLIER_DOOR
+	var/location = get_turf(src)
+	if(!density)
+		exp_damage *= EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN
+	if(take_damage(exp_damage)) // destroyed by explosion, shards go flying
+		create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
+
+/obj/machinery/door/airlock/get_explosion_resistance()
+	if(density)
+		if(resistance_flags & UNACIDABLE)
+			return 1000000
+		else
+			return (max_integrity-obj_integrity)/EXPLOSION_DAMAGE_MULTIPLIER_DOOR //this should exactly match the amount of damage needed to destroy the door
+	else
+		return FALSE
 
 /obj/machinery/door/airlock/proc/isElectrified()
 	if(secondsElectrified != MACHINE_NOT_ELECTRIFIED)
@@ -275,7 +291,7 @@
 
 /obj/machinery/door/airlock/projectile_hit(obj/projectile/proj, cardinal_move, uncrossing)
 	. = ..()
-	if(. && is_mainship_level(z)) //log shipside greytiders
+	if(. && is_mainship_level(z) && !(proj.projectile_flags & PROJECTILE_SHRAPNEL)) //log shipside greytiders
 		log_attack("[key_name(proj.firer)] shot [src] with [proj] at [AREACOORD(src)]")
 		if(SSmonitor.gamestate != SHIPSIDE)
 			msg_admin_ff("[ADMIN_TPMONTY(proj.firer)] shot [src] with [proj] in [ADMIN_VERBOSEJMP(src)].")

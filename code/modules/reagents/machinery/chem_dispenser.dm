@@ -101,12 +101,7 @@
 	return b_o
 
 /obj/machinery/chem_dispenser/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(INFINITY)
-		if(EXPLODE_HEAVY)
-			if (prob(50))
-				take_damage(INFINITY)
+	take_damage(severity)
 
 /obj/machinery/chem_dispenser/AltClick(mob/user)
 	. = ..()

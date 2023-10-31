@@ -151,16 +151,15 @@
 //Explosion act
 /turf/open/floor/plating/ground/snow/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			if(slayer)
-				slayer = 0
-		if(EXPLODE_HEAVY)
-			if(slayer && prob(60))
-				slayer = max(slayer - 2, 0)
-		if(EXPLODE_LIGHT)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(slayer && prob(20))
 				slayer = max(slayer - 1, 0)
-
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(slayer && prob(60))
+				slayer = max(slayer - 2, 0)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			if(slayer)
+				slayer = 0
 	update_icon(1, 0)
 	return ..()
 

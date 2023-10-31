@@ -55,15 +55,13 @@
 
 /obj/structure/inflatable/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			qdel(src)
-		if(EXPLODE_HEAVY)
-			deflate(1)
-
-		if(EXPLODE_LIGHT)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(50))
 				deflate(1)
-
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			deflate(1)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			qdel(src)
 
 /obj/structure/inflatable/attackby(obj/item/I, mob/user, params)
 	. = ..()

@@ -200,15 +200,15 @@
 
 /turf/closed/wall/sulaco/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			ChangeTurf(/turf/open/floor/plating)
-		if(EXPLODE_HEAVY)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			take_damage(rand(0, 250))
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(75))
 				take_damage(rand(100, 250))
 			else
 				dismantle_wall(1, 1)
-		if(EXPLODE_LIGHT)
-			take_damage(rand(0, 250))
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			ChangeTurf(/turf/open/floor/plating)
 
 
 /turf/closed/wall/sulaco/hull

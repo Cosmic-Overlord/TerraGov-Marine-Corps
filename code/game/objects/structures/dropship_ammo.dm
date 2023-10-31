@@ -28,12 +28,11 @@
 	///Type of ammo
 	var/ammo_type
 
-	///Range of the centre of the explosion
-	var/devastating_explosion_range = 0
-	///Range of the middle bit of the explosion
-	var/heavy_explosion_range = 0
-	///Range of the outer radius of the explosion
-	var/light_explosion_range = 0
+
+	///Explosion power
+	var/power = 0
+	///Explosion fallof
+	var/fallof = 0
 	///Fire radius, for incendiary weapons
 	var/fire_range = 0
 	///Type of CAS dot indicator effect to be used
@@ -98,7 +97,7 @@
 	if(!epicenter)
 		return
 
-	var/max_range = max(devastating_explosion_range, heavy_explosion_range, light_explosion_range)
+	var/max_range = round(power / fallof)
 
 	var/list/turfs_in_range = block(
 		locate(
@@ -175,7 +174,7 @@
 
 			if(isnull(turfs_by_dist[expansion_wave_loc]))
 				turfs_by_dist[expansion_wave_loc] = dist
-				if(devastating_explosion_range > dist || heavy_explosion_range > dist || light_explosion_range > dist)
+				if(max_range > dist)
 					turfs_impacted += expansion_wave_loc
 				else
 					outline_turfs_impacted += expansion_wave_loc
@@ -252,7 +251,7 @@
 	for(var/i=1 to attack_width)
 		strafed = strafelist[1]
 		strafelist -= strafed
-		strafed.ex_act(EXPLODE_LIGHT)
+		strafed.ex_act(150)
 		new /obj/effect/temp_visual/heavyimpact(strafed)
 
 	if(length_char(strafelist))
@@ -282,14 +281,13 @@
 	transferable_ammo = TRUE
 	point_cost = 0
 	ammo_type = RAILGUN_AMMO
-	devastating_explosion_range = 0
-	heavy_explosion_range = 2
-	light_explosion_range = 4
+	power = 400
+	fallof = 100
 	prediction_type = CAS_AMMO_EXPLOSIVE
 
 /obj/structure/ship_ammo/railgun/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(2)
-	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range, adminlog = FALSE, color = COLOR_CYAN)//no messaging admin, that'd spam them.
+	SScellauto.explode(impact, power, fallof, color = COLOR_CYAN)
 	if(!ammo_count)
 		QDEL_IN(src, travelling_time) //deleted after last railgun has fired and impacted the ground.
 
@@ -392,15 +390,14 @@
 	travelling_time = 3 SECONDS //not powerful, but reaches target fast
 	ammo_id = ""
 	point_cost = 50
-	devastating_explosion_range = 2
-	heavy_explosion_range = 4
-	light_explosion_range = 7
+	power = 500
+	fallof = 75
 	prediction_type = CAS_AMMO_EXPLOSIVE
 	cas_effect = /obj/effect/overlay/blinking_laser/widowmaker
 
 /obj/structure/ship_ammo/rocket/widowmaker/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(3)
-	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range)
+	SScellauto.explode(impact, power, fallof)
 	qdel(src)
 
 /obj/structure/ship_ammo/rocket/banshee
@@ -409,16 +406,15 @@
 	icon_state = "banshee"
 	ammo_id = "b"
 	point_cost = 100
-	devastating_explosion_range = 2
-	heavy_explosion_range = 4
-	light_explosion_range = 7
+	power = 800
+	fallof = 125
 	fire_range = 7
 	prediction_type = CAS_AMMO_INCENDIARY
 	cas_effect = /obj/effect/overlay/blinking_laser/banshee
 
 /obj/structure/ship_ammo/rocket/banshee/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(3)
-	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range, flame_range = fire_range) //more spread out, with flames
+	SScellauto.explode(impact, power, fallof, flame_range = fire_range) //more spread out, with flames
 	qdel(src)
 
 /obj/structure/ship_ammo/rocket/keeper
@@ -427,14 +423,13 @@
 	icon_state = "keeper"
 	ammo_id = "k"
 	point_cost = 250
-	devastating_explosion_range = 4
-	heavy_explosion_range = 4
-	light_explosion_range = 5
+	power = 1200
+	fallof = 200
 	prediction_type = CAS_AMMO_EXPLOSIVE
 
 /obj/structure/ship_ammo/rocket/keeper/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(3)
-	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range) //tighter blast radius, but more devastating near center
+	SScellauto.explode(impact, power, fallof) //tighter blast radius, but more devastating near center
 	qdel(src)
 
 /obj/structure/ship_ammo/rocket/fatty
@@ -443,15 +438,14 @@
 	icon_state = "fatty"
 	ammo_id = "f"
 	point_cost = 200
-	devastating_explosion_range = 2
-	heavy_explosion_range = 3
-	light_explosion_range = 4
+	power = 600
+	fallof = 150
 	prediction_type = CAS_AMMO_EXPLOSIVE
 	cas_effect = /obj/effect/overlay/blinking_laser/fatty
 
 /obj/structure/ship_ammo/rocket/fatty/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(2)
-	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range) //first explosion is small to trick xenos into thinking its a minirocket.
+	SScellauto.explode(impact, power, fallof) //first explosion is small to trick xenos into thinking its a minirocket.
 	addtimer(CALLBACK(src, PROC_REF(delayed_detonation), impact), 3 SECONDS)
 
 /**
@@ -467,7 +461,7 @@
 		var/list/coords = impact_coords[i]
 		var/turf/detonation_target = locate(impact.x+coords[1],impact.y+coords[2],impact.z)
 		detonation_target.ceiling_debris_check(2)
-		explosion(detonation_target, devastating_explosion_range, heavy_explosion_range, light_explosion_range, adminlog = FALSE)
+		SScellauto.explode(detonation_target, power, fallof)
 	qdel(src)
 
 /obj/structure/ship_ammo/rocket/napalm
@@ -476,16 +470,15 @@
 	icon_state = "napalm"
 	ammo_id = "n"
 	point_cost = 200
-	devastating_explosion_range = 2
-	heavy_explosion_range = 3
-	light_explosion_range = 4
+	power = 400
+	fallof = 100
 	fire_range = 5
 	prediction_type = CAS_AMMO_INCENDIARY
 	cas_effect = /obj/effect/overlay/blinking_laser/incendiary
 
 /obj/structure/ship_ammo/rocket/napalm/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(3)
-	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range) //relatively weak
+	SScellauto.explode(impact, power, fallof) //relatively weak
 	flame_radius(fire_range, impact, 60, 30) //cooking for a long time
 	var/datum/effect_system/smoke_spread/phosphorus/warcrime = new
 	warcrime.set_up(fire_range + 1, impact, 7)
@@ -508,15 +501,14 @@
 	transferable_ammo = TRUE
 	point_cost = 85
 	ammo_type = CAS_MINI_ROCKET
-	devastating_explosion_range = 0
-	heavy_explosion_range = 2
-	light_explosion_range = 4
+	power = 400
+	fallof = 100
 	prediction_type = CAS_AMMO_EXPLOSIVE
 	cas_effect = /obj/effect/overlay/blinking_laser/minirocket
 
 /obj/structure/ship_ammo/minirocket/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(2)
-	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range, adminlog = FALSE)//no messaging admin, that'd spam them.
+	SScellauto.explode(impact, power, fallof, flame_range = fire_range) //no messaging admin, that'd spam them.
 	if(!ammo_count)
 		QDEL_IN(src, travelling_time) //deleted after last minirocket has fired and impacted the ground.
 
@@ -539,7 +531,8 @@
 	desc = "A pack of laser guided incendiary mini rockets. Moving this will require some sort of lifter."
 	icon_state = "minirocket_inc"
 	point_cost = 150
-	light_explosion_range = 3 //Slightly weaker than standard minirockets
+	power = 150 //Slightly weaker than standard minirockets
+	fallof = 50
 	fire_range = 3 //Fire range should be the same as the explosion range. Explosion should leave fire, not vice versa
 	prediction_type = CAS_AMMO_INCENDIARY
 	cas_effect = /obj/effect/overlay/blinking_laser/incendiary
@@ -554,9 +547,8 @@
 	icon_state = "minirocket_smoke"
 	point_cost = 25
 	cas_effect = /obj/effect/overlay/blinking_laser/smoke
-	devastating_explosion_range = 0
-	heavy_explosion_range = 0
-	light_explosion_range = 2
+	power = 200
+	fallof = 100
 
 /obj/structure/ship_ammo/minirocket/smoke/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(2)
@@ -569,14 +561,13 @@
 	desc = "A pack of laser guided mini rockets loaded with plasma-draining Tanglefoot gas. Moving this will require some sort of lifter."
 	icon_state = "minirocket_tfoot"
 	point_cost = 100
-	devastating_explosion_range = 0
-	heavy_explosion_range = 0
-	light_explosion_range = 2
+	power = 200
+	fallof = 100
 	cas_effect = /obj/effect/overlay/blinking_laser/tfoot
 
 /obj/structure/ship_ammo/minirocket/tangle/detonate_on(turf/impact, attackdir = NORTH)
 	impact.ceiling_debris_check(2)
-	explosion(impact, devastating_explosion_range, heavy_explosion_range, light_explosion_range, throw_range = 0)
+	SScellauto.explode(impact, power, fallof)
 	var/datum/effect_system/smoke_spread/plasmaloss/S = new
 	S.set_up(9, impact, 9)// Between grenade and mortar
 	S.start()
@@ -587,9 +578,8 @@
 	icon_state = "minirocket_ilm"
 	point_cost = 25 // Not a real rocket, so its cheap
 	cas_effect = /obj/effect/overlay/blinking_laser/flare
-	devastating_explosion_range = 0
-	heavy_explosion_range = 0
-	light_explosion_range = 0
+	power = 0
+	fallof = 0
 	prediction_type = CAS_AMMO_HARMLESS
 
 /obj/structure/ship_ammo/minirocket/illumination/detonate_on(turf/impact, attackdir = NORTH)

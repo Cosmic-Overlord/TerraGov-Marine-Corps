@@ -505,15 +505,15 @@
 
 /obj/machinery/light/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(prob(50))
+				broken()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(75))
+				broken()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
 			return
-		if(EXPLODE_HEAVY)
-			if (prob(75))
-				broken()
-		if(EXPLODE_LIGHT)
-			if (prob(50))
-				broken()
 
 
 //timed process
@@ -544,7 +544,7 @@
 	addtimer(CALLBACK(src, PROC_REF(delayed_explosion)), 0.5 SECONDS)
 
 /obj/machinery/light/proc/delayed_explosion()
-	explosion(loc, 0, 1, 3, 2)
+	SScellauto.explode(loc, 150, 50)
 	qdel(src)
 
 // the light item

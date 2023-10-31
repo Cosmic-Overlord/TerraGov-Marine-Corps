@@ -170,18 +170,11 @@
 
 /obj/item/cell/proc/explode()
 	var/turf/T = get_turf(src.loc)
-/*
-* 1000-cell	explosion(T, 0, 0, 1, 1)
-* 2500-cell	explosion(T, 0, 0, 1, 1)
-* 10000-cell	explosion(T, 0, 1, 3, 3)
-* 15000-cell	explosion(T, 0, 2, 4, 4)
-* */
-	var/devastation_range = 0 //round(charge/11000)
-	var/heavy_impact_range = clamp(round(sqrt(charge) * 0.01), 0, 3)
-	var/light_impact_range = clamp(round(sqrt(charge) * 0.15), 0, 4)
-	var/flash_range = clamp(round(sqrt(charge) * 0.15), -1, 4)
 
-	explosion(T, devastation_range, heavy_impact_range, light_impact_range, flash_range)
+	var/power = clamp(round(sqrt(charge) * 8), 0, 4)
+	var/fallof = clamp(round(sqrt(charge) * 1.5), 0, 4)
+
+	SScellauto.explode(T, power, fallof)
 
 	QDEL_IN(src, 1)
 
@@ -202,20 +195,20 @@
 /obj/item/cell/ex_act(severity)
 
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(prob(25))
+				qdel(src)
+				return
+			if(prob(25))
+				corrupt()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				qdel(src)
+				return
+			if(prob(50))
+				corrupt()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
-		if(EXPLODE_HEAVY)
-			if (prob(50))
-				qdel(src)
-				return
-			if (prob(50))
-				corrupt()
-		if(EXPLODE_LIGHT)
-			if (prob(25))
-				qdel(src)
-				return
-			if (prob(25))
-				corrupt()
 
 
 /obj/item/cell/proc/get_electrocute_damage()

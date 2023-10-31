@@ -289,16 +289,16 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 				targetturf = locate(target_x, target_y,2)
 			break
 
+	SScellauto.explode(targetturf, 100, 50)
+	addtimer(CALLBACK(src, PROC_REF(dodrop), targetturf, user), 2 SECONDS)
+
+///Do the stuff when it "hits the ground"
+/obj/structure/droppod/proc/dodrop(turf/targetturf, mob/user)
 	forceMove(targetturf)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DROPPOD_LANDED, targetturf)
 	pixel_y = 500
 	animate(src, pixel_y = initial(pixel_y), time = falltime, easing = LINEAR_EASING)
-	addtimer(CALLBACK(src, PROC_REF(dodrop), targetturf, user), falltime)
-
-///Do the stuff when it "hits the ground"
-/obj/structure/droppod/proc/dodrop(turf/targetturf, mob/user)
 	deadchat_broadcast(" has landed at [get_area(targetturf)]!", src, occupant)
-	explosion(targetturf,-1,-1,2,-1)
 	playsound(targetturf, 'sound/effects/droppod_impact.ogg', 100)
 	QDEL_NULL(reserved_area)
 	addtimer(CALLBACK(src, PROC_REF(completedrop), user), 7) //dramatic effect

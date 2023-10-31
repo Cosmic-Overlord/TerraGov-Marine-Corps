@@ -144,7 +144,7 @@
 /atom/movable/lighting_mask/rotating_conical
 	icon_state = "light_conical_rotating"
 
-/atom/movable/lighting_mask/ex_act(severity, target)
+/atom/movable/lighting_mask/ex_act(severity, explosion_direction)
 	return
 
 /atom/movable/lighting_mask/fire_act(exposed_temperature, exposed_volume)

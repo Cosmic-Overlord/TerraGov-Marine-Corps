@@ -110,7 +110,6 @@
 	if(CONFIG_GET(flag/log_attack))
 		WRITE_LOG(GLOB.world_game_log, "EXPLOSION: [text]")
 
-
 /proc/log_manifest(text)
 	LAZYADD(GLOB.manifest_log, "\[[stationTimestamp()]\] MANIFEST: [text]")
 	if(CONFIG_GET(flag/log_manifest))

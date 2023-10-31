@@ -16,6 +16,9 @@
 	. = ..()
 	add_debris_element()
 
+/turf/closed/get_explosion_resistance()
+	return 1000000
+
 /turf/closed/mineral
 	name = "rock"
 	icon = 'icons/turf/walls.dmi'
@@ -139,7 +142,7 @@
 	//Not yet
 /turf/closed/gm/ex_act(severity)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			ChangeTurf(/turf/open/ground/grass)
 
 /turf/closed/gm/dense

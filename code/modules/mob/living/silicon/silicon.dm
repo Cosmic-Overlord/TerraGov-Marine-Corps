@@ -165,24 +165,23 @@
 
 /mob/living/silicon/ex_act(severity)
 	flash_act()
-
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(stat == DEAD)
+				return
+			adjustBruteLoss(30)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(stat == DEAD)
+				return
+			adjustBruteLoss(60)
+			adjustFireLoss(60)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(stat == DEAD)
 				return
 			adjustBruteLoss(100)
 			adjustFireLoss(100)
 			if(!anchored)
 				gib()
-		if(EXPLODE_HEAVY)
-			if(stat == DEAD)
-				return
-			adjustBruteLoss(60)
-			adjustFireLoss(60)
-		if(EXPLODE_LIGHT)
-			if(stat == DEAD)
-				return
-			adjustBruteLoss(30)
 
 	UPDATEHEALTH(src)
 

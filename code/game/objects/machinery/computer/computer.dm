@@ -51,22 +51,22 @@
 	if(CHECK_BITFIELD(resistance_flags, INDESTRUCTIBLE))
 		return FALSE
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			qdel(src)
-			return
-		if(EXPLODE_HEAVY)
-			if (prob(25))
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(prob(25))
+				for(var/x in verbs)
+					verbs -= x
+				set_broken()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(25))
 				qdel(src)
 				return
-			if (prob(50))
+			if(prob(50))
 				for(var/x in verbs)
 					verbs -= x
 				set_broken()
-		if(EXPLODE_LIGHT)
-			if (prob(25))
-				for(var/x in verbs)
-					verbs -= x
-				set_broken()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			qdel(src)
+			return
 
 
 /obj/machinery/computer/bullet_act(obj/projectile/Proj)

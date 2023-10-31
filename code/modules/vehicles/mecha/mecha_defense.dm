@@ -85,22 +85,10 @@
 /obj/vehicle/sealed/mecha/contents_explosion(severity, target)
 	severity--
 
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			if(flat_equipment)
-				SSexplosions.highMovAtom += flat_equipment
-			if(trackers)
-				SSexplosions.highMovAtom += trackers
-		if(EXPLODE_HEAVY)
-			if(flat_equipment)
-				SSexplosions.medMovAtom += flat_equipment
-			if(trackers)
-				SSexplosions.medMovAtom += trackers
-		if(EXPLODE_LIGHT)
-			if(flat_equipment)
-				SSexplosions.lowMovAtom += flat_equipment
-			if(trackers)
-				SSexplosions.lowMovAtom += trackers
+	for(var/atom/equipment in flat_equipment)
+		equipment.ex_act(severity)
+	for(var/atom/tracker in trackers)
+		tracker.ex_act(severity)
 
 /obj/vehicle/sealed/mecha/handle_atom_del(atom/A)
 	if(A in occupants) //todo does not work and in wrong file

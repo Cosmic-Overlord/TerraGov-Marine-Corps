@@ -11,14 +11,7 @@
 	var/destroyed = 0
 
 /obj/structure/displaycase/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			deconstruct(FALSE)
-		if(EXPLODE_HEAVY)
-			take_damage(15)
-		if(EXPLODE_LIGHT)
-			take_damage(5)
-
+	take_damage(severity)
 
 /obj/structure/displaycase/update_icon()
 	if(destroyed)

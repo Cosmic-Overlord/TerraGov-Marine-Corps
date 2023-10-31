@@ -631,9 +631,9 @@
 			victim.gib() // kills the pred
 			qdel(victim)
 		if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || SSticker.mode.flags_round_type & MODE_SHIPSIDE_SD))
-			explosion(T, 12, 13, 15, 15, 8)///almost a literal ob bombvest, until we port actual explosions that aren't a joke
+			SScellauto.explode(T, 1200, 100)
 		else
-			explosion(T, 1, 2, 3)
+			SScellauto.explode(T, 600, 200)
 
 //No moduled do after??? skull issue tgmc!
 /obj/item/clothing/gloves/yautja/proc/our_socialistic_do_after(mob/user, delay)
@@ -707,7 +707,7 @@
 						if(A)
 							message_admins(font_size_huge("ALERT: [M] ([M.key]) triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name] [ADMIN_JMP(T)]</font>"))
 							log_attack("[key_name(M)] triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name]")
-						if (!bracer.exploding)
+						if(!bracer.exploding)
 							bracer.explode(victim)
 						M.visible_message(span_warning("[M] presses a few buttons on [victim]'s wrist bracer."),span_danger("You activate the timer. May [victim]'s final hunt be swift."))
 						message_all_yautja("[M.real_name] has triggered [victim.real_name]'s bracer's self-destruction sequence.")

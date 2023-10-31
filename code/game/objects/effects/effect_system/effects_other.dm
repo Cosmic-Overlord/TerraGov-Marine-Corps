@@ -20,4 +20,5 @@
 		location.visible_message(span_danger("The solution violently explodes!"), \
 								span_hear("You hear an explosion!"))
 
-	dyn_explosion(location, amount, flashing_factor)
+	var/range = round((2 * amount)**GLOB.DYN_EX_SCALE)
+	SScellauto.explode(location, amount, range*4, EXPLOSION_FALLOFF_SHAPE_LINEAR)

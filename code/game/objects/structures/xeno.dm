@@ -38,13 +38,7 @@
 	take_damage(burnlevel * 2, BURN, "fire")
 
 /obj/alien/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			take_damage(500)
-		if(EXPLODE_HEAVY)
-			take_damage((rand(140, 300)))
-		if(EXPLODE_LIGHT)
-			take_damage((rand(50, 100)))
+	take_damage(severity * RESIN_EXPLOSIVE_MULTIPLIER)
 
 /obj/alien/effect_smoke(obj/effect/particle_effect/smoke/S)
 	. = ..()
@@ -202,7 +196,6 @@
 		Open()
 		return TRUE
 
-
 /obj/structure/mineral_door/resin/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	var/turf/cur_loc = M.loc
 	if(!istype(cur_loc))
@@ -233,13 +226,15 @@
 	take_damage(burnlevel * 2, BURN, "fire")
 
 /obj/structure/mineral_door/resin/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			qdel()
-		if(EXPLODE_HEAVY)
-			qdel()
-		if(EXPLODE_LIGHT)
-			take_damage((rand(50, 60)))
+	if(!density)
+		severity *= EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN
+	take_damage(severity * RESIN_EXPLOSIVE_MULTIPLIER * EXPLOSION_DAMAGE_MULTIPLIER_DOOR)
+
+/obj/structure/mineral_door/resin/get_explosion_resistance()
+	if(density)
+		return obj_integrity //this should exactly match the amount of damage needed to destroy the door
+	else
+		return 0
 
 /turf/closed/wall/resin/fire_act()
 	take_damage(50, BURN, "fire")

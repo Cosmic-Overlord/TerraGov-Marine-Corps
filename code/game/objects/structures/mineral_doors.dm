@@ -86,6 +86,23 @@
 	isSwitchingStates = FALSE
 
 
+/obj/structure/mineral_door/ex_act(severity)
+	severity *= EXPLOSION_DAMAGE_MULTIPLIER_DOOR
+	if(!density)
+		severity *= EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN
+	..()
+
+
+/obj/structure/mineral_door/get_explosion_resistance()
+	if(resistance_flags & UNACIDABLE)
+		return 1000000
+
+	if(density)
+		return obj_integrity/EXPLOSION_DAMAGE_MULTIPLIER_DOOR //this should exactly match the amount of damage needed to destroy the door
+	else
+		return 0
+
+
 /obj/structure/mineral_door/update_icon()
 	if(state)
 		icon_state = "[mineralType]open"
@@ -143,18 +160,17 @@
 
 /obj/structure/mineral_door/ex_act(severity = 1)
 	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			Dismantle(1)
-		if(EXPLODE_HEAVY)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			hardness -= 0.1
+			CheckHardness()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(20))
 				Dismantle(1)
 			else
 				hardness--
 				CheckHardness()
-		if(EXPLODE_LIGHT)
-			hardness -= 0.1
-			CheckHardness()
-
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			Dismantle(1)
 
 /obj/structure/mineral_door/iron
 	mineralType = "metal"

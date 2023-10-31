@@ -26,16 +26,7 @@
 	occupied = FALSE
 
 /obj/structure/lamarr/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			deconstruct(FALSE)
-		if(EXPLODE_HEAVY)
-			if(prob(50))
-				take_damage(15)
-		if(EXPLODE_LIGHT)
-			if(prob(50))
-				take_damage(5)
-
+	take_damage(severity)
 
 /obj/structure/lamarr/attack_hand(mob/living/user)
 	. = ..()

@@ -31,6 +31,8 @@
 	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).
 	var/can_bloody = TRUE //Can blood spawn on this turf?
 
+	var/list/datum/automata_cell/autocells
+
 	// baseturfs can be either a list or a single turf type.
 	// In class definition like here it should always be a single type.
 	// A list will be created in initialization that figures out the baseturf's baseturf etc.
@@ -187,6 +189,11 @@
 
 		if(!isspaceturf(src))
 			M.inertia_dir = 0
+
+	// Let explosions know that the atom entered
+	for(var/datum/automata_cell/explosion/E in autocells)
+		E.on_turf_entered(arrived)
+
 	..()
 
 /turf/effect_smoke(obj/effect/particle_effect/smoke/S)
@@ -888,36 +895,14 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		else
 			vis_contents -= GLOB.cameranet.vis_contents_opaque
 
-
 /turf/AllowDrop()
 	return TRUE
 
-
-/turf/contents_explosion(severity)
-	for(var/thing in contents)
-		var/atom/movable/thing_in_turf = thing
-		if(thing_in_turf.resistance_flags & INDESTRUCTIBLE)
-			continue
-		switch(severity)
-			if(EXPLODE_DEVASTATE)
-				SSexplosions.highMovAtom[thing_in_turf] += list(src)
-				if(thing_in_turf.flags_atom & PREVENT_CONTENTS_EXPLOSION)
-					continue
-				for(var/a in thing_in_turf.contents)
-					SSexplosions.highMovAtom[a] += list(src)
-			if(EXPLODE_HEAVY)
-				SSexplosions.medMovAtom[thing_in_turf] += list(src)
-				if(thing_in_turf.flags_atom & PREVENT_CONTENTS_EXPLOSION)
-					continue
-				for(var/a in thing_in_turf.contents)
-					SSexplosions.medMovAtom[a] += list(src)
-			if(EXPLODE_LIGHT)
-				SSexplosions.lowMovAtom[thing_in_turf] += list(src)
-				if(thing_in_turf.flags_atom & PREVENT_CONTENTS_EXPLOSION)
-					continue
-				for(var/a in thing_in_turf.contents)
-					SSexplosions.lowMovAtom[a] += list(src)
-
+/turf/proc/get_cell(type)
+	for(var/datum/automata_cell/C in autocells)
+		if(istype(C, type))
+			return C
+	return null
 
 /turf/vv_edit_var(var_name, new_value)
 	var/static/list/banned_edits = list("x", "y", "z")

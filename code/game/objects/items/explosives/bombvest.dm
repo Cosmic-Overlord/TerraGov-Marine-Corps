@@ -58,7 +58,7 @@
 		if(istype(appendage, /datum/limb/chest) || istype(appendage, /datum/limb/groin) || istype(appendage, /datum/limb/head))
 			continue
 		appendage.droplimb()
-	explosion(target, 2, 2, 6, 5, 5)
+	SScellauto.explode(target, 800, 200)
 	qdel(src)
 
 /obj/item/clothing/suit/storage/marine/harness/boomvest/attack_hand_alternate(mob/living/user)
@@ -96,5 +96,5 @@
 		if(istype(appendage, /datum/limb/chest) || istype(appendage, /datum/limb/groin) || istype(appendage, /datum/limb/head))
 			continue
 		appendage.droplimb()
-	explosion(target, 15, 15, 15, 15, 15)
+	SScellauto.explode(target, 2000, 75)
 	qdel(src)

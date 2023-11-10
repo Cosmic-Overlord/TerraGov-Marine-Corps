@@ -14877,9 +14877,7 @@
 /turf/open/floor/freezer,
 /area/lv624/lazarus/toilet)
 "oyz" = (
-/obj/machinery/chem_dispenser/soda{
-	pixel_y = 32
-	},
+/obj/machinery/chem_dispenser/soda,
 /obj/structure/table/reinforced,
 /turf/open/floor/grimy,
 /area/lv624/lazarus/bar)

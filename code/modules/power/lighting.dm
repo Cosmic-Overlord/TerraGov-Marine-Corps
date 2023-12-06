@@ -142,6 +142,7 @@
 	var/flickering = FALSE
 	var/light_type = /obj/item/light_bulb/tube		// the type of light item
 	var/fitting = "tube"
+	var/directional = TRUE
 	///count of number of times switched on/off. this is used to calc the probability the light burns out
 	var/switchcount = 0
 	/// true if rigged to explode
@@ -195,15 +196,16 @@
 
 // create a new lighting fixture
 /obj/machinery/light/Initialize(mapload, ...)
-	switch(dir)
-		if(NORTH)
-			light_pixel_y = 15
-		if(SOUTH)
-			light_pixel_y = -15
-		if(WEST)
-			light_pixel_x = 15
-		if(EAST)
-			light_pixel_x = -15
+	if(directional)
+		switch(dir)
+			if(NORTH)
+				light_pixel_y = 15
+			if(SOUTH)
+				light_pixel_y = -15
+			if(WEST)
+				light_pixel_x = 15
+			if(EAST)
+				light_pixel_x = -15
 	. = ..()
 
 	GLOB.nightfall_toggleable_lights += src
@@ -220,13 +222,14 @@
 
 	update(FALSE)
 
-	switch(dir)
-		if(NORTH)
-			pixel_y = 20
-		if(EAST)
-			pixel_x = 10
-		if(WEST)
-			pixel_x = -10
+	if(directional)
+		switch(dir)
+			if(NORTH)
+				pixel_y = 20
+			if(EAST)
+				pixel_x = 10
+			if(WEST)
+				pixel_x = -10
 
 	return INITIALIZE_HINT_LATELOAD
 

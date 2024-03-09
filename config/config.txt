@@ -119,6 +119,9 @@ POPUP_ADMIN_PM
 ## End of round chat message
 # END_OF_ROUND_CHANNEL game-updates
 
+## Game ban to discord channel message
+# DISCORD_BAN_CHANNEL game-bans
+
 ## TOPIC RATE LIMITING
 ## This allows you to limit how many topic calls (clicking on an interface window) the client can do in any given game second and/or game minute.
 ## Admins are exempt from these limits.
